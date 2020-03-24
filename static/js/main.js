@@ -15,6 +15,7 @@ function main() {
         { date: '2020-03-20', cases : 110 },
         { date: '2020-03-21', cases : 135 },
         { date: '2020-03-22', cases : 158 },
+        { date: '2020-03-23', cases : 162 },
     ]
 
     var cases =  data.map( function(el) { return el.cases });
