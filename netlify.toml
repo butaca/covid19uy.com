@@ -5,5 +5,5 @@ command = "gulp deploy"
 [[redirects]]
 from = "https://coronavirusuy.netlify.com/*"
 to = "https://covid19uy.com/:splat"
-status = 301.0
+status = 301
 force = true
