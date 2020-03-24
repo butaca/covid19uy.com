@@ -8,6 +8,7 @@ const purgecss = require('gulp-purgecss');
 const replace = require('gulp-replace');
 const fs = require('fs');
 const TerserPlugin = require('terser-webpack-plugin');
+const download = require("gulp-download-stream");
 
 const nodeModules = './node_modules';
 
@@ -16,7 +17,7 @@ const paths = {
     srcJS: './assets/js/**/*.js',
     destJS: './static/js',
     mainSCSS: './assets/sass/main.scss',
-    srcSCSS:  './assets/sass/**/*.scss',
+    srcSCSS: './assets/sass/**/*.scss',
     destCSS: './static/css',
     deploy: 'public'
 };
@@ -55,15 +56,15 @@ function hugoBuild(cb) {
     const params = ["--gc", "--verbose", "--cleanDestinationDir", "--ignoreCache"];
     const context = process.env.CONTEXT;
     let baseURL = process.env.URL;
-    if(context == "branch-deploy" || context == "deploy-preview") {
-        baseURL =  process.env.DEPLOY_PRIME_URL;
+    if (context == "branch-deploy" || context == "deploy-preview") {
+        baseURL = process.env.DEPLOY_PRIME_URL;
     }
-    if(baseURL != null) {
+    if (baseURL != null) {
         params.push("--baseURL");
         params.push(baseURL);
         console.log("overriding baseURL with: " + baseURL);
     }
-    
+
     exec('hugo ' + params.join(' '), function (err, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);
@@ -99,8 +100,13 @@ function hugoServer(cb) {
     cb();
 };
 
+function downloadData() {
+    return download({ file: "world.json", url: "https://corona.lmao.ninja/all" })
+        .pipe(gulp.dest("./data/"));
+}
+
 const watch = gulp.parallel([sassWatch, webpackWatch]);
 
-exports.develop = gulp.series([build, gulp.parallel(watch, hugoServer)]);
-exports.deploy = gulp.series([build, hugoBuild, purgeCSS, embedCritialCSS]);
-exports.default = exports.develop
+exports.develop = gulp.series([downloadData, build, gulp.parallel(watch, hugoServer)]);
+exports.deploy = gulp.series([downloadData, build, hugoBuild, purgeCSS, embedCritialCSS]);
+exports.default = exports.develop;
