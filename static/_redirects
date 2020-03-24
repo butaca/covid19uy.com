@@ -1,2 +1,0 @@
-# Redirect default Netlify subdomain to primary domain
-https://coronavirusuy.netlify.com/* https://covid19uy.com/:splat 301!
