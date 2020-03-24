@@ -4,7 +4,7 @@ subtitle: ¡Quedate en casa!
 description: Casos y muertes de Coronavirus COVID-19 en Uruguay actualizado diariamente. Si no querés aparecer en este sitio, quedate en casa.
 ---
 
-Te muestro en esta gráfica actualizada diariamente, los **casos** 😷 y **muertes** 😞 de Coronavirus COVID-19 en Uruguay. Si no querés aparecer en ésta gráfica, **quedate en casa**. Si no querés que tus seres queridos aparezcan en esta gráfica, **quedate en casa**. Si no querés que gente inocente no aparezca en esta gráfica, **quedate en casa**.
+Te muestro en esta gráfica actualizada diariamente, los **casos** 😷 y **muertes** 😞 de Coronavirus COVID-19 en Uruguay. Si no querés aparecer en ésta gráfica, **quedate en casa**. Si no querés que tus seres queridos aparezcan en esta gráfica, **quedate en casa**. Si no querés que gente inocente aparezca en esta gráfica, **quedate en casa**.
 
 Fuente de datos: [Ministerio de Salud Pública][MSP]. Más información sobre la pandemia en Uruguay: [Wikipedia][coronaviruswikipedia].
 
