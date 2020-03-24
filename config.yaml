@@ -1,0 +1,13 @@
+baseURL: "http://example.org/"
+languageCode: "es-uy"
+title: "Covid UY"
+
+disableKinds:
+  - page
+  - section
+  - taxonomy
+  - taxonomyTerm
+
+outputs:
+  home:
+  - HTML
