@@ -1,6 +1,7 @@
 baseURL: "https://covid19uy.com/"
 languageCode: "es-uy"
 title: "Covid UY"
+enableRobotsTXT: true
 
 disableKinds:
   - page
