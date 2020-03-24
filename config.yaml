@@ -2,6 +2,13 @@ baseURL: "https://covid19uy.com/"
 languageCode: "es-uy"
 title: "Covid UY"
 enableRobotsTXT: true
+googleAnalytics: UA-161714981-1
+
+privacy:
+  googleAnalytics:
+    anonymizeIP: true
+    respectDoNotTrack: true
+    useSessionStorage: true
 
 disableKinds:
   - page
@@ -11,4 +18,4 @@ disableKinds:
 
 outputs:
   home:
-  - HTML
+    - HTML
