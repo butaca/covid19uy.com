@@ -8,7 +8,8 @@ const purgecss = require('gulp-purgecss');
 const replace = require('gulp-replace');
 const fs = require('fs');
 const TerserPlugin = require('terser-webpack-plugin');
-const download = require("gulp-download-stream");
+const axios = require("axios");
+const cheerio = require("cheerio");
 
 const nodeModules = './node_modules';
 
@@ -100,9 +101,32 @@ function hugoServer(cb) {
     cb();
 };
 
-function downloadData() {
-    return download({ file: "world.json", url: "https://corona.lmao.ninja/all" })
-        .pipe(gulp.dest("./data/"));
+async function downloadData() {
+    let response;
+    try {
+        response = await axios.get("https://www.worldometers.info/coronavirus/");
+        if (response.status !== 200) {  
+            throw new Error('Unexpected HTTP code when downloading world data: ' + response.status);
+        }
+    }
+    catch (err) {
+        throw err;
+    }
+    const result = {};
+    const html = cheerio.load(response.data);
+    html(".maincounter-number").filter((i, el) => {
+        let count = el.children[0].next.children[0].data || "0";
+        count = parseInt(count.replace(/,/g, "") || "0", 10);
+        if (i === 0) {
+            result.cases = count;
+        } else if (i === 1) {
+            result.deaths = count;
+        } else {
+            result.recovered = count;
+        }
+    });
+    result.updated = Date.now()
+    fs.writeFileSync("./data/world.json", JSON.stringify(result));
 }
 
 const watch = gulp.parallel([sassWatch, webpackWatch]);
