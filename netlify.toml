@@ -11,6 +11,9 @@
 publish = "public"
 command = "gulp deploy"
 
+[build.environment]
+  TZ = "America/Montevideo"
+
 [[redirects]]
 from = "https://coronavirusuy.netlify.com/*"
 to = "https://covid19uy.com/:splat"
