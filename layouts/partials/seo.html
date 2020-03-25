@@ -1,6 +1,8 @@
 {{- $description := .Params.description -}}
 {{- $title := .Title -}}
     <meta name="description" content="{{ $description }}">
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
 
     <meta property="og:title" content="{{ $title }}">
     <meta property="og:type" content="website" />
