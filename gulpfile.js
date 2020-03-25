@@ -125,7 +125,7 @@ async function downloadData() {
             result.recovered = count;
         }
     });
-    result.updated = Date.now()
+    result.updated = Math.floor(Date.now()/1000);
     fs.writeFileSync("./data/world.json", JSON.stringify(result));
 }
 

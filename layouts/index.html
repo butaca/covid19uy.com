@@ -47,10 +47,13 @@
                         </div>
                     </div>
                 </nav>
-                <p class="is-size-7">
+                <div class="has-text-centered is-size-7">
+                    Actualizado: {{ (time (int (.Site.Data.world.updated))).Format "02/01/2006 15:04:05 MST" }}
+                    (hora de Uruguay)
+                    <br />
                     Fuente: <a
                         href="https://www.worldometers.info/coronavirus/">https://www.worldometers.info/coronavirus/</a>
-                </p>
+                </div>
             </div>
         </div>
     </section>
