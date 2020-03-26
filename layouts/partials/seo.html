@@ -15,4 +15,22 @@
     <meta name="twitter:description" content="{{ $description }}">
     <meta name="twitter:url" content="{{ .Permalink }}" />
     <meta name="twitter:image:src" content="{{ "images/seo/twitter_card.jpg" | absURL }}">
+
+    <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "WebSite",
+          "name": {{ $title }},
+          "url": {{ .Permalink }},
+          "image": {
+            "@type": "ImageObject",
+            "url": {{ "images/seo/opengraph.jpg" | absURL }},
+            "height": 1200,
+            "width": 630
+          },
+          "datePublished": {{ .Date }},
+          "dateModified": {{ (time (int (.Site.Data.world.updated))) }},
+          "description": {{ $description }}
+        }
+        </script>
     
