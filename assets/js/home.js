@@ -30,5 +30,10 @@ function main() {
                 data: deaths,
             }]
         },
+        options: {
+            animation: {
+                duration: 0
+            }
+        }
     });
 }
