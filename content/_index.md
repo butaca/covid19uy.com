@@ -5,6 +5,8 @@ description: Casos y muertes de Coronavirus COVID-19 en Uruguay actualizado diar
 date: 2020-03-23T22:07:13-0300
 ---
 
+{{< uruguay >}}
+
 Te muestro en esta gráfica actualizada diariamente, los **casos** 😷 y **muertes** 😞 de Coronavirus COVID-19 en Uruguay. Si no querés aparecer en ésta gráfica, **quedate en casa**. Si no querés que tus seres queridos aparezcan en esta gráfica, **quedate en casa**. Si no querés que gente inocente aparezca en esta gráfica, **quedate en casa**.
 
 **Estamos en guerra** contra un enemigo invisible. La única forma de ganarle es **entre todos**. Cuidate y cuidá a los demás informándote y siguiendo los lineamientos oficiales: [Plan Nacional Coronavirus][MSP_coronavirus].

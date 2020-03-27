@@ -1,0 +1,17 @@
+{{- $lastData := index (last 1 .Site.Data.uruguay) 0 -}}
+{{- $cases := $lastData.cases -}}
+{{- $deaths := cond (isset $lastData "deaths") $lastData.deaths 0 -}}
+<nav class="level">
+    <div class="level-item has-text-centered">
+        <div>
+            <p class="subtitle">Casos 😷</p>
+            <p class="title">{{ lang.NumFmt 0 $cases "- , ."}}</p>
+        </div>
+    </div>
+    <div class="level-item has-text-centered">
+        <div>
+            <p class="subtitle">Muertes 😞</p>
+            <p class="title">{{ lang.NumFmt 0 $deaths "- , ."}}</p>
+        </div>
+    </div>
+</nav>
