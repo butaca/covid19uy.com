@@ -36,4 +36,31 @@ function main() {
             }
         }
     });
+
+    var dialyCases = [];
+    var prevDayCases = 0;
+    for(var i = 0; i < cases.length; ++i) {
+        var todayCases = cases[i];
+        dialyCases.push(todayCases - prevDayCases);
+        prevDayCases = todayCases;
+    }
+
+    ctx = document.getElementById('chart2');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: dates,
+            datasets: [{
+                pointBackgroundColor: "#83d02aff",
+                backgroundColor: "#83d02a80",
+                label: 'Casos Diarios',
+                data: dialyCases,
+            }] 
+        },
+        options: {
+            animation: {
+                duration: 0
+            }
+        }
+    });
 }
