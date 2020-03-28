@@ -1,6 +1,9 @@
-{{- $lastData := index (last 1 .Site.Data.uruguay) 0 -}}
-{{- $cases := $lastData.cases -}}
-{{- $deaths := cond (isset $lastData "deaths") $lastData.deaths 0 -}}
+{{- $deaths := 0 -}}
+{{- $cases := 0 -}}
+{{- range .Site.Data.uruguay -}}
+{{- $deaths = add $deaths (cond (isset . "deaths") .deaths 0)  -}}
+{{- $cases = add $cases .cases -}}
+{{- end -}}
 <div class="box">
     <div class="columns">
         <div class="column is-6">
