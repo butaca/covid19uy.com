@@ -13,6 +13,12 @@ Te muestro en esta gráfica actualizada diariamente, los **casos** 😷 y **muer
 
 **Estamos en guerra** contra un enemigo invisible. La única forma de ganarle es **entre todos**. Cuidate y cuidá a los demás informándote y siguiendo los lineamientos oficiales: [Plan Nacional Coronavirus][MSP_coronavirus].
 
+## ¿Por qué quedarme en casa?
+
+* 😷 Disminuímos la probabilidad de contagiarnos y de contagiar a otros.
+* ⚠️ Alrededor del 60% de las personas con coronavirus muestran síntomas leves o nulos ([fuente][asymptomatic_cases]).
+* 🏥 Ayudamos a **no sobrecargar el sistema de salud** y entonces a **salvar vidas**.
+
 {{< world >}}
 
 ## Los famosos quieren que te quedes en casa
@@ -21,5 +27,6 @@ Te muestro en esta gráfica actualizada diariamente, los **casos** 😷 y **muer
 {{< tweet 1241863548332060680 >}}
 {{< tweet 1241830257256214528 >}}
 
-[MSP_coronavirus]: https://www.gub.uy/ministerio-salud-publica/coronavirus
+[MSP_coronavirus]: https://www.gub.uy/ministerio-salud-publica/comunicacion/publicaciones/informacion-para-poblacion
 [coronaviruswikipedia]: https://es.wikipedia.org/wiki/Pandemia_de_enfermedad_por_coronavirus_de_2020_en_Uruguay
+[asymptomatic_cases]: https://www.medrxiv.org/content/10.1101/2020.03.03.20030593v1
