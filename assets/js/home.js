@@ -5,12 +5,21 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 function main() {
-    var cases = data.map(function (el) { return el.cases });
+    var dialyCases = data.map(function (el) { return el.cases });
     var deaths = data.map(function (el) { return el.deaths != undefined ? el.deaths : 0 });
     var dates = data.map(function (el) {
         var date = new Date(el.date);
         return date.getUTCDate() + "/" + (date.getUTCMonth() + 1)
     });
+
+    var cases = [];
+    var prevDayTotalCases = 0;
+    for (var i = 0; i < dialyCases.length; ++i) {
+        var todayCases = dialyCases[i];
+        var todayTotalCases = todayCases + prevDayTotalCases;
+        cases.push(todayTotalCases);
+        prevDayTotalCases = todayTotalCases;
+    }
 
     var ctx = document.getElementById('chart');
     new Chart(ctx, {
@@ -37,18 +46,7 @@ function main() {
         }
     });
 
-    var dailyTests = data.map(function (el) { return el.dailyTests != undefined ? el.dailyTests : 0 });
-
-    var dialyCases = [];
-    var prevDayCases = 0;
-    for (var i = 0; i < cases.length; ++i) {
-        var todayCases = cases[i];
-        dialyCases.push(todayCases - prevDayCases);
-        prevDayCases = todayCases;
-        if(dailyTests[i] == 0) {
-            dailyTests[i] = dialyCases[i];
-        }
-    }
+    var dailyTests = data.map(function (el) { return el.tests != undefined ? el.tests : el.cases });
 
     ctx = document.getElementById('chart2');
     new Chart(ctx, {
