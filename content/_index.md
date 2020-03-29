@@ -23,9 +23,17 @@ Te muestro en estas gráficas actualizadas diariamente, los **casos** 😷 y **m
 
 ## Los famosos quieren que te quedes en casa
 
+{{< columns >}}
+{{< column >}}
 {{< tweet 1241736445456519175 >}}
+{{< /column >}}
+{{< column >}}
 {{< tweet 1241863548332060680 >}}
+{{< /column >}}
+{{< column >}}
 {{< tweet 1241830257256214528 >}}
+{{< /column >}}
+{{< /columns >}}
 
 [MSP_coronavirus]: https://www.gub.uy/ministerio-salud-publica/comunicacion/publicaciones/informacion-para-poblacion
 [coronaviruswikipedia]: https://es.wikipedia.org/wiki/Pandemia_de_enfermedad_por_coronavirus_de_2020_en_Uruguay
