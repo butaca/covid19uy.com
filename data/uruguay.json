@@ -14,5 +14,6 @@
     { "date": "2020-03-25", "cases" : 28, "tests": 320 },
     { "date": "2020-03-26", "cases" : 21, "tests": 245 },
     { "date": "2020-03-27", "cases" : 36, "tests": 451 },
-    { "date": "2020-03-28", "cases" : 30, "tests": 372 , "deaths" : 1 }
+    { "date": "2020-03-28", "cases" : 30, "tests": 372 , "deaths" : 1 },
+    { "date": "2020-03-29", "cases" : 6,  "tests": 200 , "deaths" : 0 }
 ]
