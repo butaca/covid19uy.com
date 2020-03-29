@@ -19,3 +19,9 @@ from = "https://coronavirusuy.netlify.com/*"
 to = "https://covid19uy.com/:splat"
 status = 301
 force = true
+
+[[redirects]]
+from = "https://covid19uy.netlify.com/*"
+to = "https://covid19uy.com/:splat"
+status = 301
+force = true
