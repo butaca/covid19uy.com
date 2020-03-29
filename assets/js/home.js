@@ -4,22 +4,28 @@ document.addEventListener("DOMContentLoaded", function (event) {
     main();
 });
 
+function getIncrementalValues(values) {
+    var incrementalValues = [];
+    var prevTotal = 0;
+    for (var i = 0; i < values.length; ++i) {
+        var value = values[i];
+        var totalValue = value + prevTotal;
+        incrementalValues.push(totalValue);
+        prevTotal = totalValue;
+    }
+    return incrementalValues;
+}
+
 function main() {
     var dialyCases = data.map(function (el) { return el.cases });
-    var deaths = data.map(function (el) { return el.deaths != undefined ? el.deaths : 0 });
+    var dailyDeaths = data.map(function (el) { return el.deaths != undefined ? el.deaths : 0 });
     var dates = data.map(function (el) {
         var date = new Date(el.date);
         return date.getUTCDate() + "/" + (date.getUTCMonth() + 1)
     });
 
-    var cases = [];
-    var prevDayTotalCases = 0;
-    for (var i = 0; i < dialyCases.length; ++i) {
-        var todayCases = dialyCases[i];
-        var todayTotalCases = todayCases + prevDayTotalCases;
-        cases.push(todayTotalCases);
-        prevDayTotalCases = todayTotalCases;
-    }
+    var cases = getIncrementalValues(dialyCases);
+    var deaths = getIncrementalValues(dailyDeaths);
 
     var ctx = document.getElementById('chart');
     new Chart(ctx, {
