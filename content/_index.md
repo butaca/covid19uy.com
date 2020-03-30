@@ -7,7 +7,7 @@ date: 2020-03-23T22:07:13-0300
 
 {{< uruguay >}}
 
-Te muestro en estas gráficas actualizadas diariamente, los **casos** 😷 y **muertes** 😞 de Coronavirus COVID-19 en Uruguay por un lado y los casos y análisis diarios en el otro. Si no querés aparecer en éstas gráficas, **quedate en casa**. Si no querés que tus seres queridos aparezcan en estas gráficas, **quedate en casa**. Si no querés que gente inocente aparezca en estas gráficas, **quedate en casa**.
+Te muestro en estas gráficas actualizadas diariamente, los **casos totales** 😷 y **muertes** 😞 de Coronavirus COVID-19 en Uruguay por un lado y los casos y análisis diarios en el otro. Si no querés aparecer en éstas gráficas, **quedate en casa**. Si no querés que tus seres queridos aparezcan en estas gráficas, **quedate en casa**. Si no querés que gente inocente aparezca en estas gráficas, **quedate en casa**.
 
 👉 **Quedarse en casa _dentro de lo posible_**. Obviamente algunos de nosotros tenemos que salir a trabajar porque no lo podemos hacer en forma remota y todos en algún momento tenemos que salir sí o sí, como para ir al supermercado o a la farmacia. Todo lo demás puede esperar.
 

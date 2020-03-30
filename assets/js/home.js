@@ -35,7 +35,7 @@ function main() {
             datasets: [{
                 pointBackgroundColor: "#28b8d6ff",
                 backgroundColor: "#28b8d680",
-                label: 'Casos',
+                label: 'Casos Totales',
                 data: cases,
             },
             {
