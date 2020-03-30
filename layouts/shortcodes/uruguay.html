@@ -5,22 +5,24 @@
 {{- $cases = add $cases .cases -}}
 {{- end -}}
 <div class="box">
-    <div class="columns">
-        <div class="column is-6">
-            <nav class="level">
-                <div class="level-item has-text-centered">
-                    <div>
-                        <p class="subtitle">Casos 😷</p>
-                        <p class="title">{{ lang.NumFmt 0 $cases "- , ."}}</p>
-                    </div>
-                </div>
-                <div class="level-item has-text-centered">
-                    <div>
-                        <p class="subtitle">Muertes 😞</p>
-                        <p class="title">{{ lang.NumFmt 0 $deaths "- , ."}}</p>
-                    </div>
-                </div>
-            </nav>
+    <nav class="level">
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="subtitle">Casos 😷</p>
+                <p class="title">{{ lang.NumFmt 0 $cases "- , ."}}</p>
+            </div>
         </div>
-    </div>
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="subtitle">Muertes 😞</p>
+                <p class="title">{{ lang.NumFmt 0 $deaths "- , ."}}</p>
+            </div>
+        </div>
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="subtitle">Recuperados 🙏</p>
+                <p class="title">?</p>
+            </div>
+        </div>
+    </nav>
 </div>
