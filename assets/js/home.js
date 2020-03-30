@@ -27,7 +27,7 @@ function main() {
     var cases = getIncrementalValues(dialyCases);
     var deaths = getIncrementalValues(dailyDeaths);
 
-    var ctx = document.getElementById('chart');
+    var ctx = document.getElementById('chart-total-cases');
     new Chart(ctx, {
         type: 'line',
         data: {
@@ -54,7 +54,7 @@ function main() {
 
     var dailyTests = data.map(function (el) { return el.tests != undefined ? el.tests : el.cases });
 
-    ctx = document.getElementById('chart2');
+    ctx = document.getElementById('chart-daily-cases');
     new Chart(ctx, {
         type: 'bar',
         data: {
@@ -77,6 +77,36 @@ function main() {
                 xAxes: [{
                     stacked: true
                 }]
+            }
+        }
+    });
+
+    var dailyICU = data.map(function (el) { return el.icu != undefined ? el.icu : 0 });
+    var dailyIMCU = data.map(function (el) { return el.imcu != undefined ? el.imcu : 0 });
+    var dailyWard =  data.map(function (el) { return el.ward != undefined ? el.ward : 0 });
+
+    ctx = document.getElementById('chart-daily-hospitalizations');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: dates,
+            datasets: [{
+                backgroundColor: "#ff000080",
+                label: 'Cuidados intensivos',
+                data: dailyICU,
+            },
+            {   backgroundColor: "#ecdb3c80",
+                label: 'Cuidados intermedios',
+                data: dailyIMCU,
+            },
+            {   backgroundColor: "#83d02a80",
+                label: 'Sala',
+                data: dailyWard,
+            }]
+        },
+        options: {
+            animation: {
+                duration: 0
             }
         }
     });
