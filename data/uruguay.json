@@ -15,5 +15,5 @@
     { "date": "2020-03-26", "cases" : 21, "tests": 245, "icu" : 4, "imcu" : 2, "ward": 12 },
     { "date": "2020-03-27", "cases" : 36, "tests": 451, "icu" : 8 },
     { "date": "2020-03-28", "cases" : 30, "tests": 372 , "deaths" : 1, "icu" : 8, "imcu" : 5 },
-    { "date": "2020-03-29", "cases" : 6,  "tests": 200 , "deaths" : 0, "icu" : 10, "imcu" : 2 }
+    { "date": "2020-03-29", "cases" : 6,  "tests": 200 , "icu" : 10, "imcu" : 2 }
 ]
