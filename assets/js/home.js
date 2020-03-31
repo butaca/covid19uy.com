@@ -25,9 +25,37 @@ function main() {
     });
 
     var cases = getIncrementalValues(dialyCases);
+    //TODO: check if data is incremetal or daily, assuming dialy
     var deaths = getIncrementalValues(dailyDeaths);
+    //TODO: check if data is incremetal or daily, asuming daily
+    var recovered = getIncrementalValues(data.map(function (el) { return el.recovered != undefined ? el.recovered : 0 }));
 
-    var ctx = document.getElementById('chart-total-cases');
+    var activeCases = [];
+    for(var i = 0; i < cases.length; ++i) {
+        var todayActiveCases = cases[i] - deaths[i] - recovered[i];
+        activeCases.push(todayActiveCases);
+    }
+
+    var ctx = document.getElementById('chart-active-cases');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dates,
+            datasets: [{
+                pointBackgroundColor: "#28b8d6ff",
+                backgroundColor: "#28b8d680",
+                label: 'Casos Activos',
+                data: activeCases,
+            }]
+        },
+        options: {
+            animation: {
+                duration: 0
+            }
+        }
+    });
+
+    ctx = document.getElementById('chart-total-cases');
     new Chart(ctx, {
         type: 'line',
         data: {
