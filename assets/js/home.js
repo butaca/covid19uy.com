@@ -64,7 +64,8 @@ function main() {
                 label: 'Casos Diarios',
                 data: dialyCases,
             },
-            {   backgroundColor: "#ecdb3c80",
+            {
+                backgroundColor: "#ecdb3c80",
                 label: 'Análisis Diarios',
                 data: dailyTests,
             }]
@@ -83,7 +84,7 @@ function main() {
 
     var dailyICU = data.map(function (el) { return el.icu != undefined ? el.icu : 0 });
     var dailyIMCU = data.map(function (el) { return el.imcu != undefined ? el.imcu : 0 });
-    var dailyWard =  data.map(function (el) { return el.ward != undefined ? el.ward : 0 });
+    // var dailyWard = data.map(function (el) { return el.ward != undefined ? el.ward : 0 });
 
     ctx = document.getElementById('chart-daily-hospitalizations');
     new Chart(ctx, {
@@ -95,14 +96,16 @@ function main() {
                 label: 'Cuidados intensivos',
                 data: dailyICU,
             },
-            {   backgroundColor: "#ecdb3c80",
+            {
+                backgroundColor: "#ecdb3c80",
                 label: 'Cuidados intermedios',
                 data: dailyIMCU,
-            },
+            }/*,
             {   backgroundColor: "#83d02a80",
                 label: 'Sala',
                 data: dailyWard,
-            }]
+            }*/
+            ]
         },
         options: {
             animation: {
