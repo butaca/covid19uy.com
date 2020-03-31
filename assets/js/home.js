@@ -1,4 +1,5 @@
 import data from "../../data/uruguay.json";
+import "./chartjs-elements"
 
 document.addEventListener("DOMContentLoaded", function (event) {
     main();
@@ -31,7 +32,7 @@ function main() {
     var recovered = getIncrementalValues(data.map(function (el) { return el.recovered != undefined ? el.recovered : 0 }));
 
     var activeCases = [];
-    for(var i = 0; i < cases.length; ++i) {
+    for (var i = 0; i < cases.length; ++i) {
         var todayActiveCases = cases[i] - deaths[i] - recovered[i];
         activeCases.push(todayActiveCases);
     }
@@ -138,6 +139,43 @@ function main() {
         options: {
             animation: {
                 duration: 0
+            }
+        }
+    });
+
+    ctx = document.getElementById('chart-total');
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: [
+                'Casos Activos',
+                'Recuperados',
+                'Muertes'
+            ],
+            datasets: [{
+                data: [activeCases[activeCases.length - 1], recovered[recovered.length - 1], deaths[deaths.length - 1]],
+                backgroundColor: ["#28b8d680", "#0000ff80", "#e54acfff"]
+            }]
+        },
+        options: {
+            animation: {
+                duration: 0
+            },
+            scales: {
+                xAxes: [{
+                    display: false
+                }],
+                yAxes: [{
+                    display: false
+                }]
+            },
+            elements: {
+                center: {
+                text: 'Casos totales: ' + cases[cases.length - 1],
+                color: '#36A2EB', //Default black
+                fontStyle: 'Helvetica', //Default Arial
+                sidePadding: 15 //Default 20 (as a percentage)
+              }
             }
         }
     });
