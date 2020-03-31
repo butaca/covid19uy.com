@@ -4,7 +4,6 @@
 {{- range .Site.Data.uruguay -}}
 {{- $deaths = add $deaths (cond (isset . "deaths") .deaths 0)  -}}
 {{- $cases = add $cases .cases -}}
-<!-- TODO: check if recovered data is daily or incremental, assuming daily -->
 {{- $recovered = add $recovered (cond (isset . "recovered") .recovered 0) -}}
 {{- end -}}
 {{- $activeCases := sub (sub $cases $deaths) $recovered -}}

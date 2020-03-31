@@ -26,9 +26,7 @@ function main() {
     });
 
     var cases = getIncrementalValues(dialyCases);
-    //TODO: check if data is incremetal or daily, assuming dialy
     var deaths = getIncrementalValues(dailyDeaths);
-    //TODO: check if data is incremetal or daily, asuming daily
     var recovered = getIncrementalValues(data.map(function (el) { return el.recovered != undefined ? el.recovered : 0 }));
 
     var activeCases = [];
