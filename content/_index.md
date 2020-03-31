@@ -47,9 +47,11 @@ Primero que nada, es súper importante que sigas las recomendaciones de las auto
 
 * [CanastasUY][canastas]
 * [TECHO Uruguay][techouy]
+* [Apoyo al Sistema de Salud Uruguay][colecta]
 
 [MSP_coronavirus]: https://www.gub.uy/ministerio-salud-publica/comunicacion/publicaciones/informacion-para-poblacion
 [coronaviruswikipedia]: https://es.wikipedia.org/wiki/Pandemia_de_enfermedad_por_coronavirus_de_2020_en_Uruguay
 [asymptomatic_cases]: https://www.medrxiv.org/content/10.1101/2020.03.03.20030593v1
 [canastas]: https://www.instagram.com/canastasuy/
 [techouy]: https://www.instagram.com/techo_uy/
+[colecta]: https://bit.ly/2U1hjnu
