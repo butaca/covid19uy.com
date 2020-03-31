@@ -7,12 +7,19 @@
 <!-- TODO: check if recovered data is daily or incremental, assuming daily -->
 {{- $recovered = add $recovered (cond (isset . "recovered") .recovered 0) -}}
 {{- end -}}
+{{- $activeCases := sub (sub $cases $deaths) $recovered -}}
 <div class="box">
     <nav class="level">
         <div class="level-item has-text-centered">
             <div>
                 <p class="subtitle">Casos Totales 😷</p>
                 <p class="title">{{ lang.NumFmt 0 $cases "- , ."}}</p>
+            </div>
+        </div>
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="subtitle">Casos Activos 😷</p>
+                <p class="title">{{ lang.NumFmt 0 $activeCases "- , ."}}</p>
             </div>
         </div>
         <div class="level-item has-text-centered">
