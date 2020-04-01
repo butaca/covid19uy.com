@@ -24,15 +24,14 @@ function getTotal(values) {
 
 function main() {
     var dialyCases = data.map(function (el) { return el.cases });
-    var dailyDeaths = data.map(function (el) { return el.deaths != undefined ? el.deaths : 0 });
     var dates = data.map(function (el) {
         var date = new Date(el.date);
         return date.getUTCDate() + "/" + (date.getUTCMonth() + 1)
     });
 
     var cases = getIncrementalValues(dialyCases);
-    var deaths = getIncrementalValues(dailyDeaths);
-    var recovered = getIncrementalValues(data.map(function (el) { return el.recovered != undefined ? el.recovered : 0 }));
+    var deaths = data.map(function (el) { return el.deaths != undefined ? el.deaths : 0 });
+    var recovered = data.map(function (el) { return el.recovered != undefined ? el.recovered : 0 });
 
     var activeCases = [];
     for (var i = 0; i < cases.length; ++i) {
