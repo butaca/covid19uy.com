@@ -19,12 +19,7 @@ function getIncrementalValues(values) {
 }
 
 function getTotal(values) {
-    var total = 0;
-    for (var i = 0; i < values.length; ++i) {
-        var value = values[i];
-        total += value;
-    }
-    return total;
+    return values.reduce(function (prev, cur) { return prev + cur });
 }
 
 function main() {
@@ -151,7 +146,7 @@ function main() {
         }
     });
 
-    
+
     function isMobile() {
         var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
         return width <= 768;
@@ -166,17 +161,29 @@ function main() {
         chart.update();
     }
 
+    var pieToolTips = {
+        callbacks: {
+            title: function (tooltipItem, data) {
+                return data['labels'][tooltipItem[0]['index']];
+            },
+            label: function (tooltipItem, data) {
+                return data['datasets'][0]['data'][tooltipItem['index']];
+            }
+        }
+    };
+
+    var dataChartTotal = [activeCases[activeCases.length - 1], recovered[recovered.length - 1], deaths[deaths.length - 1]];
+    var totalChartTotal = getTotal(dataChartTotal);
+    var labelsChartTotal = ['Casos Activos', 'Recuperados', 'Muertes'];
+    labelsChartTotal = labelsChartTotal.map(function (label, index) { return label + ': ' + (dataChartTotal[index] / totalChartTotal * 100).toFixed(2) + '%' });
+
     ctx = document.getElementById('chart-total');
     new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: [
-                'Casos Activos',
-                'Recuperados',
-                'Muertes'
-            ],
+            labels: labelsChartTotal,
             datasets: [{
-                data: [activeCases[activeCases.length - 1], recovered[recovered.length - 1], deaths[deaths.length - 1]],
+                data: dataChartTotal,
                 backgroundColor: ["#28b8d680", "#0000ff80", "#e54acfff"]
             }]
         },
@@ -203,7 +210,8 @@ function main() {
             layout: {
                 padding: getPiePadding()
             },
-            onResize: onResizePie
+            onResize: onResizePie,
+            tooltips: pieToolTips
         }
     });
 
@@ -211,16 +219,17 @@ function main() {
     var totalPositives = cases[cases.length - 1];
     var totalNegatives = totalTests - totalPositives;
 
+    var chartAnalysisData = [totalPositives, totalNegatives];
+    var chartAnalysisLabels = ['Positivos', 'Negativos'];
+    chartAnalysisLabels = chartAnalysisLabels.map(function (label, index) { return label + ': ' + (chartAnalysisData[index] / totalTests * 100).toFixed(2) + '%' });
+
     ctx = document.getElementById('chart-analysis');
     new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: [
-                'Positivos',
-                'Negativos',
-            ],
+            labels: chartAnalysisLabels,
             datasets: [{
-                data: [totalPositives, totalNegatives],
+                data: chartAnalysisData,
                 backgroundColor: ["#28b8d680", "#0000ff80"]
             }]
         },
@@ -247,7 +256,8 @@ function main() {
             layout: {
                 padding: getPiePadding()
             },
-            onResize: onResizePie
+            onResize: onResizePie,
+            tooltips: pieToolTips
         }
     });
 }
