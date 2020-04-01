@@ -9,11 +9,12 @@ date: 2020-03-23T22:07:13-0300
 
 Te muestro en estas gráficas actualizadas diariamente:
 
-* Los casos activos de Coronavirus COVID-19 en Uruguay
-* Los **casos totales** 😷 y **muertes** 😞 de Coronavirus COVID-19 en Uruguay
-* Los casos y análisis diarios de Coronavirus COVID-19 en Uruguay
-* Las hospitalizaciones diarias de Coronavirus COVID-19 en Uruguay
-* Comparación de casos totales, casos activos, recuperados y muertes de Coronavirus COVID-19 en Uruguay
+* Los casos activos
+* Los **casos totales** 😷 y **muertes** 😞
+* Los casos y análisis diarios
+* Comparación de análisis totales, positivos y negativos
+* Las hospitalizaciones diarias
+* Comparación de casos totales, casos activos, recuperados y muertes
 
 Si no querés aparecer en éstas gráficas, **quedate en casa**. Si no querés que tus seres queridos aparezcan en estas gráficas, **quedate en casa**. Si no querés que gente inocente aparezca en estas gráficas, **quedate en casa**.
 

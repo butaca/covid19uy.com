@@ -1,4 +1,5 @@
 import data from "../../data/uruguay.json";
+import constants from "../../data/uruguay-constants.json";
 import "./chartjs-elements"
 
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -15,6 +16,15 @@ function getIncrementalValues(values) {
         prevTotal = totalValue;
     }
     return incrementalValues;
+}
+
+function getTotal(values) {
+    var total = 0;
+    for (var i = 0; i < values.length; ++i) {
+        var value = values[i];
+        total += value;
+    }
+    return total;
 }
 
 function main() {
@@ -169,11 +179,51 @@ function main() {
             },
             elements: {
                 center: {
-                text: 'Casos totales: ' + cases[cases.length - 1],
-                color: '#36A2EB', //Default black
-                fontStyle: 'Helvetica', //Default Arial
-                sidePadding: 15 //Default 20 (as a percentage)
-              }
+                    text: 'Casos totales: ' + cases[cases.length - 1],
+                    color: '#36A2EB',
+                    fontStyle: 'Helvetica',
+                    sidePadding: 15
+                }
+            }
+        }
+    });
+
+    var totalTests = getTotal(dailyTests) + constants.unreportedDailyTests;
+    var totalPositives = cases[cases.length - 1];
+    var totalNegatives = totalTests - totalPositives;
+
+    ctx = document.getElementById('chart-analysis');
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: [
+                'Positivos',
+                'Negativos',
+            ],
+            datasets: [{
+                data: [totalPositives, totalNegatives],
+                backgroundColor: ["#28b8d680", "#0000ff80"]
+            }]
+        },
+        options: {
+            animation: {
+                duration: 0
+            },
+            scales: {
+                xAxes: [{
+                    display: false
+                }],
+                yAxes: [{
+                    display: false
+                }]
+            },
+            elements: {
+                center: {
+                    text: 'Análisis totales: ' + totalTests,
+                    color: '#36A2EB',
+                    fontStyle: 'Helvetica',
+                    sidePadding: 15
+                }
             }
         }
     });
