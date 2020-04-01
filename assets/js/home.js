@@ -151,6 +151,21 @@ function main() {
         }
     });
 
+    
+    function isMobile() {
+        var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        return width <= 768;
+    }
+
+    function getPiePadding() {
+        return isMobile() ? 0 : 50;
+    }
+
+    function onResizePie(chart) {
+        chart.options.layout.padding = getPiePadding();
+        chart.update();
+    }
+
     ctx = document.getElementById('chart-total');
     new Chart(ctx, {
         type: 'doughnut',
@@ -186,8 +201,9 @@ function main() {
                 }
             },
             layout: {
-                padding: 50
-            }
+                padding: getPiePadding()
+            },
+            onResize: onResizePie
         }
     });
 
@@ -229,8 +245,9 @@ function main() {
                 }
             },
             layout: {
-                padding: 50
-            }
+                padding: getPiePadding()
+            },
+            onResize: onResizePie
         }
     });
 }
