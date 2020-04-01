@@ -184,6 +184,9 @@ function main() {
                     fontStyle: 'Helvetica',
                     sidePadding: 15
                 }
+            },
+            layout: {
+                padding: 50
             }
         }
     });
@@ -224,6 +227,9 @@ function main() {
                     fontStyle: 'Helvetica',
                     sidePadding: 15
                 }
+            },
+            layout: {
+                padding: 50
             }
         }
     });
