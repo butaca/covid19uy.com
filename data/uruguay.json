@@ -15,8 +15,8 @@
     { "date": "2020-03-26", "cases" : 21, "tests": 245, "icu" : 4, "imcu" : 2, "ward": 12 },
     { "date": "2020-03-27", "cases" : 36, "tests": 451, "icu" : 8 },
     { "date": "2020-03-28", "cases" : 30, "tests": 372 , "icu" : 8, "imcu" : 5 , "deaths" : 1},
-    { "date": "2020-03-29", "cases" : 6,  "tests": 200 , "icu" : 10, "imcu" : 2, "deaths" : 1 },
-    { "date": "2020-03-30", "cases" : 10, "tests": 299 , "icu" : 11, "imcu" : 1, "ward": 10, "deaths" : 1, "recovered": 25 },
-    { "date": "2020-03-31", "cases" : 18, "tests": 394 , "icu" : 12, "imcu" : 1, "deaths" : 1, "recovered": 41 },
-    { "date": "2020-04-01", "cases" : 12, "tests": 289 , "icu" : 15, "deaths" : 2, "recovered": 62 }
+    { "date": "2020-03-29", "cases" : 6,  "tests": 200 , "icu" : 10, "imcu" : 2, "deaths" : 1 , "healthWorkerCases": 25 },
+    { "date": "2020-03-30", "cases" : 10, "tests": 299 , "icu" : 11, "imcu" : 1, "ward": 10, "deaths" : 1, "recovered": 25, "healthWorkerCases": 27 },
+    { "date": "2020-03-31", "cases" : 18, "tests": 394 , "icu" : 12, "imcu" : 1, "deaths" : 1, "recovered": 41, "healthWorkerCases": 32 },
+    { "date": "2020-04-01", "cases" : 12, "tests": 289 , "icu" : 15, "deaths" : 2, "recovered": 62, "healthWorkerCases": 36 }
 ]
