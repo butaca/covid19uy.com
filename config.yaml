@@ -20,3 +20,30 @@ disableKinds:
 outputs:
   home:
     - HTML
+
+params:
+  share:
+    - name: Facebook
+      icon: fab fa-facebook
+      url: https://facebook.com/sharer/sharer.php?u=$url
+      target: _blank
+    - name: Twitter
+      icon: fab fa-twitter
+      url: https://twitter.com/intent/tweet/?text=$title&url=$url
+      target: _blank
+    - name: E-Mail
+      icon: fas fa-envelope
+      url: mailto:?subject=$title&body=$url
+      target: _self
+    - name: LinkedIn
+      icon: fab fa-linkedin
+      url: https://www.linkedin.com/shareArticle?mini=true&url=$url&title=$title&summary=$title&source=$url
+      target: _blank
+    - name: Reddit
+      icon: fab fa-reddit
+      url: https://reddit.com/submit/?url=$url&resubmit=true&title=$title
+      target: _blank
+    - name: WhatsApp
+      icon: fab fa-whatsapp
+      url: whatsapp://send?text=$title%20$url
+      target: _blank
