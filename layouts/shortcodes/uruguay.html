@@ -6,12 +6,19 @@
 {{- $deaths := cond (isset $last "deaths") $last.deaths 0  -}}
 {{- $recovered := cond (isset $last "recovered") $last.recovered 0  -}}
 {{- $activeCases := sub (sub $cases $deaths) $recovered -}}
+{{- $healthWorkerCases := cond (isset $last "healthWorkerCases") $last.healthWorkerCases 0  -}}
 <div class="box">
     <nav class="level">
         <div class="level-item has-text-centered">
             <div>
                 <p class="subtitle">Casos Totales 😷</p>
                 <p class="title">{{ lang.NumFmt 0 $cases "- , ."}}</p>
+            </div>
+        </div>
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="subtitle">Trabajadores de la salud 👩‍⚕️👨‍⚕️</p>
+                <p class="title">{{ lang.NumFmt 0 $healthWorkerCases "- , ."}}</p>
             </div>
         </div>
         <div class="level-item has-text-centered">
