@@ -9,7 +9,7 @@ date: 2020-03-23T22:07:13-0300
 
 Te muestro en estas gráficas actualizadas diariamente:
 
-* Los casos activos
+* Los casos activos 👈 ésta es la curva que tenemos que achatar ("flatten the curve")
 * Los **casos totales** 😷 y **muertes** 😞
 * Los casos y análisis diarios
 * Comparación de análisis totales, positivos y negativos
