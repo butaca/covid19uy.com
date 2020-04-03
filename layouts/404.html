@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ i18n "404title" }}</title>
+    <title>404 Página no encontrada</title>
     <link href='/css/main.css' rel="stylesheet">
 </head>
 
@@ -12,7 +12,7 @@
     <section class="section">
         <div class="container">
             <h1 class="title">
-                {{ i18n "404title" }}
+                404 Página no encontrada
             </h1>
             <div class="content">
                 <div class="columns">
@@ -22,8 +22,8 @@
                         </figure>
                     </div>
                 </div>
-                <p>{{ i18n "404message"}}</p>
-                <p><a href="{{ "/" | absLangURL }}">{{ i18n "backTo"}} {{ .Site.Title }}</a>.</p>
+                <p>No encontramos ésta página. Por favor, comunicate si pensás que es un error.</p>
+                <p><a href="/">Volver a {{ .Site.Title }}</a>.</p>
             </div>
         </div>
     </section>

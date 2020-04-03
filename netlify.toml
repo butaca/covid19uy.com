@@ -37,16 +37,3 @@ from = "https://covid19uy.netlify.app/*"
 to = "https://covid19uy.com/:splat"
 status = 301
 force = true
-
-[[redirects]]
-from = "/*"
-to = "/en/:splat"
-status = 302
-conditions = {Language = ["en"]}
-force = false
-
-[[redirects]]
-from = "/en/*"
-to = "/en/404.html"
-status = 302
-force = false

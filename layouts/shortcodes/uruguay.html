@@ -11,32 +11,32 @@
     <nav class="level">
         <div class="level-item has-text-centered">
             <div>
-                <p class="subtitle">{{ i18n "totalCases" }} 😷</p>
-                <p class="title">{{ lang.NumFmt 0 $cases .Site.Params.numberFormat }}</p>
+                <p class="subtitle">Casos Totales 😷</p>
+                <p class="title">{{ lang.NumFmt 0 $cases "- , ."}}</p>
             </div>
         </div>
         <div class="level-item has-text-centered">
             <div>
-                <p class="subtitle">{{ i18n "healthCareWorkerCases" }} 👩‍⚕️👨‍⚕️</p>
-                <p class="title">{{ lang.NumFmt 0 $healthWorkerCases .Site.Params.numberFormat }}</p>
+                <p class="subtitle">Trabajadores de la salud 👩‍⚕️👨‍⚕️</p>
+                <p class="title">{{ lang.NumFmt 0 $healthWorkerCases "- , ."}}</p>
             </div>
         </div>
         <div class="level-item has-text-centered">
             <div>
-                <p class="subtitle">{{ i18n "activeCases" }} 😷</p>
-                <p class="title">{{ lang.NumFmt 0 $activeCases .Site.Params.numberFormat }}</p>
+                <p class="subtitle">Casos Activos 😷</p>
+                <p class="title">{{ lang.NumFmt 0 $activeCases "- , ."}}</p>
             </div>
         </div>
         <div class="level-item has-text-centered">
             <div>
-                <p class="subtitle">{{ i18n "recovered" }} 🙏</p>
-                <p class="title">{{ lang.NumFmt 0 $recovered .Site.Params.numberFormat }}</p>
+                <p class="subtitle">Recuperados 🙏</p>
+                <p class="title">{{ lang.NumFmt 0 $recovered "- , ."}}</p>
             </div>
         </div>
         <div class="level-item has-text-centered">
             <div>
-                <p class="subtitle">{{ i18n "deaths" }} 😞</p>
-                <p class="title">{{ lang.NumFmt 0 $deaths .Site.Params.numberFormat }}</p>
+                <p class="subtitle">Muertes 😞</p>
+                <p class="title">{{ lang.NumFmt 0 $deaths "- , ."}}</p>
             </div>
         </div>
     </nav>

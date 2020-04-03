@@ -19,11 +19,6 @@
                 {{ .Title }}
             </h1>
             <h2 class="subtitle">{{ .Params.subtitle }}</h2>
-            {{ range .Translations }}
-            <a href="{{ .Permalink }}" class="lang-link">
-                <i class="fas fa-language fa-2x"></i>{{ .Language.LanguageName }}
-            </a>
-            {{ end }}
             <div class="columns is-centered is-multiline">
                 <div class="column is-6">
                     <canvas id="chart-active-cases" width="100%" height="100%"></canvas>
@@ -45,9 +40,7 @@
                 </div>
             </div>
             <div>
-                <p class="has-text-centered is-size-7">{{ i18n "dataSource" }}: <a
-                        href="https://www.gub.uy/ministerio-salud-publica/coronavirus">{{ i18n "msp" }}</a>.
-                </p>
+                <p class="has-text-centered is-size-7">Fuente de datos: <a href="https://www.gub.uy/ministerio-salud-publica/coronavirus">Ministerio de Salud Pública</a>.</p>
             </div>
             <div class="content">
                 {{ .Content }}

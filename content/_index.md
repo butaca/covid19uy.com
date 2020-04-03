@@ -1,13 +1,13 @@
 ---
 title: Coronavirus COVID-19 en Uruguay
 subtitle: ¡Quedate en casa!
-description: Casos y muertes de Coronavirus COVID-19 en Uruguay actualizado diariamente con información oficial. Si no querés aparecer en este sitio, quedate en casa.
+description: Casos y muertes de Coronavirus COVID-19 en Uruguay actualizado diariamente. Si no querés aparecer en este sitio, quedate en casa.
 date: 2020-03-23T22:07:13-0300
 ---
 
 {{< uruguay >}}
 
-Te muestro en estas gráficas actualizadas diariamente con **información oficial**:
+Te muestro en estas gráficas actualizadas diariamente:
 
 * Los casos activos 👈 ésta es la curva que tenemos que achatar ("flatten the curve")
 * Los **casos totales** 😷 y **muertes** 😞

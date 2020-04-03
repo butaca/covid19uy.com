@@ -1,6 +1,7 @@
 baseURL: "https://covid19uy.com/"
 languageCode: "es-UY"
-DefaultContentLanguage: es
+DefaultContentLanguage: es-UY
+title: "Coronavirus COVID-19 en Uruguay"
 enableRobotsTXT: true
 googleAnalytics: UA-161714981-1
 
@@ -46,19 +47,3 @@ params:
       icon: fab fa-whatsapp
       url: whatsapp://send?text=$title%20$url
       target: _blank
-
-languages:
-  es:
-    languageName: Español
-    weight: 1
-    title: "Coronavirus COVID-19 en Uruguay"
-    params:
-      numberFormat: "- , ."
-      dateFormat: "02/01/2006 15:04:05"
-  en:
-    languageName: English
-    weight: 2
-    title: "Coronavirus COVID-19 in Uruguay"
-    params:
-      numberFormat: "- . ,"
-      dateFormat: "01/02/2006 03:04:05 PM"

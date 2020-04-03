@@ -1,7 +1,5 @@
 import data from "../../data/uruguay.json";
 import constants from "../../data/uruguay-constants.json";
-import langEs from "../../i18n/es.yaml";
-import langEn from "../../i18n/en.yaml";
 import "./chartjs-elements"
 
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -25,26 +23,10 @@ function getTotal(values) {
 }
 
 function main() {
-    var langs = {
-        es : langEs,
-        en : langEn
-    }
-
-    var htmlLang = document.documentElement.getAttribute("lang");
-
-    var lang = langs.es;
-    if(langs.hasOwnProperty(htmlLang)) {
-        lang = langs[htmlLang];
-    }
-
-    var flipDate = htmlLang == "en";
-
     var dialyCases = data.map(function (el) { return el.cases });
     var dates = data.map(function (el) {
         var date = new Date(el.date);
-        var day = date.getUTCDate();
-        var month = (date.getUTCMonth() + 1);
-        return flipDate ? month + "/" + day : day + "/" + month;
+        return date.getUTCDate() + "/" + (date.getUTCMonth() + 1)
     });
 
     var cases = getIncrementalValues(dialyCases);
@@ -65,7 +47,7 @@ function main() {
             datasets: [{
                 pointBackgroundColor: "#28b8d6ff",
                 backgroundColor: "#28b8d680",
-                label: lang.activeCases.other,
+                label: 'Casos Activos',
                 data: activeCases,
             }]
         },
@@ -84,13 +66,13 @@ function main() {
             datasets: [{
                 pointBackgroundColor: "#28b8d6ff",
                 backgroundColor: "#28b8d680",
-                label: lang.totalCases.other,
+                label: 'Casos Totales',
                 data: cases,
             },
             {
                 pointBackgroundColor: "#e54acfff",
                 backgroundColor: "#e54acfff",
-                label: lang.deaths.other,
+                label: 'Muertes',
                 data: deaths,
             }]
         },
@@ -110,12 +92,12 @@ function main() {
             labels: dates,
             datasets: [{
                 backgroundColor: "#83d02a80",
-                label: lang.dailyCases.other,
+                label: 'Casos Diarios',
                 data: dialyCases,
             },
             {
                 backgroundColor: "#ecdb3c80",
-                label: lang.dailyTests.other,
+                label: 'Análisis Diarios',
                 data: dailyTests,
             }]
         },
@@ -142,12 +124,12 @@ function main() {
             labels: dates,
             datasets: [{
                 backgroundColor: "#ff000080",
-                label: lang.icu.other,
+                label: 'Cuidados intensivos',
                 data: dailyICU,
             },
             {
                 backgroundColor: "#ecdb3c80",
-                label: lang.imcu.other,
+                label: 'Cuidados intermedios',
                 data: dailyIMCU,
             }/*,
             {   backgroundColor: "#83d02a80",
@@ -191,7 +173,7 @@ function main() {
 
     var dataChartTotal = [activeCases[activeCases.length - 1], recovered[recovered.length - 1], deaths[deaths.length - 1]];
     var totalChartTotal = getTotal(dataChartTotal);
-    var labelsChartTotal = [lang.activeCases.other, lang.recovered.other, lang.deaths.other];
+    var labelsChartTotal = ['Casos Activos', 'Recuperados', 'Muertes'];
     labelsChartTotal = labelsChartTotal.map(function (label, index) { return label + ': ' + (dataChartTotal[index] / totalChartTotal * 100).toFixed(2) + '%' });
 
     ctx = document.getElementById('chart-total');
@@ -218,7 +200,7 @@ function main() {
             },
             elements: {
                 center: {
-                    text: lang.totalCases.other + ': ' + cases[cases.length - 1],
+                    text: 'Casos totales: ' + cases[cases.length - 1],
                     color: '#36A2EB',
                     fontStyle: 'Helvetica',
                     sidePadding: 15
@@ -237,7 +219,7 @@ function main() {
     var totalNegatives = totalTests - totalPositives;
 
     var chartAnalysisData = [totalPositives, totalNegatives];
-    var chartAnalysisLabels = [lang.positives.other, lang.negatives.other];
+    var chartAnalysisLabels = ['Positivos', 'Negativos'];
     chartAnalysisLabels = chartAnalysisLabels.map(function (label, index) { return label + ': ' + (chartAnalysisData[index] / totalTests * 100).toFixed(2) + '%' });
 
     ctx = document.getElementById('chart-analysis');
@@ -264,7 +246,7 @@ function main() {
             },
             elements: {
                 center: {
-                    text: lang.totalTests.other + ': ' + totalTests,
+                    text: 'Análisis totales: ' + totalTests,
                     color: '#36A2EB',
                     fontStyle: 'Helvetica',
                     sidePadding: 15
