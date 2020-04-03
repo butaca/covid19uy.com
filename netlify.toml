@@ -39,8 +39,8 @@ status = 301
 force = true
 
 [[redirects]]
-from = "/*"
-to = "/en/:splat"
+from = "/"
+to = "/en"
 status = 302
 conditions = {Language = ["en"]}
 force = true
