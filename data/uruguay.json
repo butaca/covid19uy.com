@@ -19,5 +19,6 @@
     { "date": "2020-03-30", "cases" : 10, "tests": 299 , "icu" : 11, "imcu" : 1, "ward": 10, "deaths" : 1, "recovered": 25, "healthWorkerCases": 27 },
     { "date": "2020-03-31", "cases" : 18, "tests": 394 , "icu" : 12, "imcu" : 1, "deaths" : 1, "recovered": 41, "healthWorkerCases": 32 },
     { "date": "2020-04-01", "cases" : 12, "tests": 289 , "icu" : 15, "deaths" : 2, "recovered": 62, "healthWorkerCases": 36 },
-    { "date": "2020-04-02", "cases" : 19, "tests": 356 , "icu" : 13, "deaths" : 4, "recovered": 68, "healthWorkerCases": 41 }
+    { "date": "2020-04-02", "cases" : 19, "tests": 356 , "icu" : 13, "deaths" : 4, "recovered": 68, "healthWorkerCases": 41 },
+    { "date": "2020-04-03", "cases" : 17, "tests": 322 , "icu" : 13, "imcu" : 1, "deaths" : 4, "recovered": 86, "healthWorkerCases": 43 }
 ]
