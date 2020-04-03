@@ -43,7 +43,7 @@ from = "/*"
 to = "/en/:splat"
 status = 302
 conditions = {Language = ["en"]}
-force = false
+force = true
 
 [[redirects]]
 from = "/en/*"
