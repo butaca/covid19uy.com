@@ -9,6 +9,8 @@ privacy:
     anonymizeIP: true
     respectDoNotTrack: true
     useSessionStorage: true
+  twitter:
+    enableDNT: true
 
 disableKinds:
   - page
