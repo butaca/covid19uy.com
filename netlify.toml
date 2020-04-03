@@ -48,5 +48,5 @@ force = true
 [[redirects]]
 from = "/en/*"
 to = "/en/404.html"
-status = 302
+status = 404
 force = false
