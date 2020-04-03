@@ -42,7 +42,16 @@ function webpackBuild() {
             plugins: [
                 new TerserPlugin()
             ],
-            mode: "production"
+            mode: "production",
+            module: {
+                rules: [
+                  {
+                    test: /\.ya?ml$/,
+                    type: 'json',
+                    use: 'yaml-loader'
+                  }
+                ]
+              }
         }))
         .pipe(gulp.dest(paths.destJS));
 };

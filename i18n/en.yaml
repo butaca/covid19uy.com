@@ -1,0 +1,74 @@
+worldTitle:
+  other: Numbers in the world 🌍
+
+updated:
+  other: Updated
+
+uyTime:
+  other: Uruguayan Time
+
+dataSource:
+  other: Data source
+
+totalCases:
+  other: Total Cases
+
+recovered:
+  other: Recovered
+
+deaths:
+  other: Deaths
+
+healthCareWorkerCases:
+  other: Healthcare worker cases
+
+activeCases:
+  other: Active Cases
+
+collaborate:
+  other: Do you want to collaborate? (Design, code, ideas, suggestions, etc.)
+
+contactMe:
+  other: Contact me!
+
+siteMadeBy:
+  other: Made with ❤️ by
+
+sponsoredBy:
+  other: Sponsored by
+
+shareMe:
+  other: Share me!
+
+404title:
+  other: 404 File not found
+
+404message:
+  other: We did not find this page. Please communicate if you think it is a mistake.
+
+backTo:
+  other: Back to
+
+msp:
+  other: Ministry of Public Health
+
+dailyCases:
+  other: Daily Cases
+
+dailyTests:
+  other: Daily Tests
+
+icu:
+  other: Intensive care
+
+imcu:
+  other: Intermediate care
+
+positives:
+  other: Positives
+
+negatives:
+  other: Negatives
+
+totalTests:
+  other: Total tests

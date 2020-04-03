@@ -1,19 +1,21 @@
 <footer id="footer" class="footer">
     <div class="container">
         <div class="content has-text-centered is-size-7">
+            {{ if ne .Kind "404" }}
             {{ partial "share.html" . }}
             <hr>
+            {{ end }}
             <p>
-                ¿Querés colaborar? (Diseño, código, ideas, suegerencias, etc.) <a
-                    href="https://www.juanfornos.com/es/#contact">Contactame!</a> 🙏
+                {{ i18n "collaborate"}} <a href="https://www.juanfornos.com/es/#contact">{{ i18n "contactMe" }}</a> 🙏
             </p>
             <p>
-                Sitio hecho con ❤️ por <a href="https://www.juanfornos.com">Juan Fornos</a>.
+                {{ i18n "siteMadeBy" }}<a href="https://www.juanfornos.com"> Juan Fornos</a>.
             </p>
             <p>
-                <b>Patrocinado por</b>:
+                <b>{{ i18n "sponsoredBy" }}</b>:
                 <a href="https://www.netlify.com">
-                    <img class="netlify-logo" width="98" height="27" src="{{ "images/netlify-logo.svg" | relURL}}" alt="Netlify">
+                    <img class="netlify-logo" width="98" height="27" src="{{ "images/netlify-logo.svg" | relURL}}"
+                        alt="Netlify">
                 </a>
             </p>
         </div>
