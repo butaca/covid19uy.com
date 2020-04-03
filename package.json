@@ -10,6 +10,7 @@
         "gulp-purgecss": "^1.1.1",
         "gulp-replace": "^1.0.0",
         "gulp-sass": "^4.0.1",
+        "js-cookie": "^2.2.1",
         "terser-webpack-plugin": "^2.3.1",
         "webpack-stream": "5.2.1",
         "yaml-loader": "^0.6.0"

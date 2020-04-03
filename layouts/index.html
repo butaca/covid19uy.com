@@ -20,7 +20,7 @@
             </h1>
             <h2 class="subtitle">{{ .Params.subtitle }}</h2>
             {{ range .Translations }}
-            <a href="{{ .Permalink }}" class="lang-link">
+            <a href="{{ .Permalink }}" class="lang-link" data-lang="{{ .Language }}">
                 <i class="fas fa-language fa-2x"></i>{{ .Language.LanguageName }}
             </a>
             {{ end }}

@@ -2,7 +2,8 @@ import data from "../../data/uruguay.json";
 import constants from "../../data/uruguay-constants.json";
 import langEs from "../../i18n/es.yaml";
 import langEn from "../../i18n/en.yaml";
-import "./chartjs-elements"
+import "./chartjs-elements";
+import Cookies from 'js-cookie';
 
 document.addEventListener("DOMContentLoaded", function (event) {
     main();
@@ -24,16 +25,26 @@ function getTotal(values) {
     return values.reduce(function (prev, cur) { return prev + cur });
 }
 
+function addEventListener(el, eventName, handler) {
+    if (el.addEventListener) {
+        el.addEventListener(eventName, handler);
+    } else {
+        el.attachEvent('on' + eventName, function () {
+            handler.call(el);
+        });
+    }
+}
+
 function main() {
     var langs = {
-        es : langEs,
-        en : langEn
+        es: langEs,
+        en: langEn
     }
 
     var htmlLang = document.documentElement.getAttribute("lang");
 
     var lang = langs.es;
-    if(langs.hasOwnProperty(htmlLang)) {
+    if (langs.hasOwnProperty(htmlLang)) {
         lang = langs[htmlLang];
     }
 
@@ -277,4 +288,12 @@ function main() {
             tooltips: pieToolTips
         }
     });
+
+    var langLinks = document.querySelectorAll('.lang-link');
+    for (var i = 0; i < langLinks.length; ++i) {
+        var langLink = langLinks[i];
+        addEventListener(langLink, "click", function() {
+            Cookies.set("nf_lang", langLink.getAttribute('data-lang'));
+        });
+    }
 }
