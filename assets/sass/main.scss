@@ -4,3 +4,12 @@
     vertical-align: middle;
     margin-left: 8px;
 }
+
+.lang-link {
+    display: flex;
+    align-items: center;
+}
+
+.lang-link > svg {
+    margin-right: 0.2em;
+}

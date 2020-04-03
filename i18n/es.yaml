@@ -1,0 +1,75 @@
+worldTitle:
+  other: Números en el mundo 🌍
+
+updated:
+  other: Actualizado
+
+uyTime:
+  other: Hora de Uruguay
+
+dataSource:
+  other: Fuente de datos
+
+totalCases:
+  other: Casos Totales
+
+recovered:
+  other: Recuperados
+
+deaths:
+  other: Muertes
+
+healthCareWorkerCases:
+  other: Trabajadores de la salud
+
+activeCases:
+  other: Casos Activos
+
+collaborate:
+  other: ¿Querés colaborar? (Diseño, código, ideas, sugerencias, etc.)
+
+contactMe:
+  other: Contactame!
+
+siteMadeBy:
+  other: Sitio hecho con ❤️ por
+
+sponsoredBy:
+  other: Patrocinado por
+
+shareMe:
+  other: Compartime!
+
+404title:
+  other: 404 Página no encontrada
+
+404message:
+  other: No encontramos ésta página. Por favor, comunicate si pensás que es un error.
+
+backTo:
+  other: Volver a
+
+msp:
+  other: Ministerio de Salud Pública
+
+dailyCases:
+  other: Casos Diarios
+
+dailyTests:
+  other: Análisis Diarios
+
+icu:
+  other: Cuidados intensivos
+
+imcu:
+  other: Cuidados intermedios
+
+positives:
+  other: Positivos
+
+negatives:
+  other: Negativos
+
+totalTests:
+  other: Análisis totales
+  
