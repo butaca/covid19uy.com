@@ -4,7 +4,7 @@
 {{- range .Site.Params.share -}}
 {{- $url := (replace .url "$url" $permalink) -}}
 {{- $url = (replace $url "$title" $title) -}}
-<a href="{{ $url | safeURL }}" target="{{ .target }}" aria-label="{{ .name }}">
+<a href="{{ $url | safeURL }}" target="{{ .target }}" aria-label="{{ .name }}" {{ if eq .target "_blank" }}rel="noopener noreferrer"{{ end }}>
     <span class="icon is-large">
         <i class="{{ .icon }} fa-2x"></i>
     </span>
