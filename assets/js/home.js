@@ -138,12 +138,12 @@ function main() {
         data: {
             labels: dates,
             datasets: [{
-                backgroundColor: "#83d02a80",
+                backgroundColor: "#97DBEAFF",
                 label: lang.dailyCases.other,
                 data: dialyCases,
             },
             {
-                backgroundColor: "#ecdb3c80",
+                backgroundColor: "#83d02a80",
                 label: lang.dailyTests.other,
                 data: dailyTests,
             }]
