@@ -53,7 +53,7 @@ Primero que nada, es súper importante que sigas las recomendaciones de las auto
 
 * [CanastasUY][canastas]
 * [TECHO Uruguay][techouy]
-* [Apoyo al Sistema de Salud Uruguay][colecta]
+* [#NosCuidamosEntreTodos][colecta]
 
 [MSP_coronavirus]: https://www.gub.uy/ministerio-salud-publica/comunicacion/publicaciones/informacion-para-poblacion
 [coronaviruswikipedia]: https://es.wikipedia.org/wiki/Pandemia_de_enfermedad_por_coronavirus_de_2020_en_Uruguay
