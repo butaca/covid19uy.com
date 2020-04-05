@@ -10,6 +10,7 @@ const fs = require('fs');
 const TerserPlugin = require('terser-webpack-plugin');
 const axios = require("axios");
 const cheerio = require("cheerio");
+const moment = require("moment");
 
 const nodeModules = './node_modules';
 
@@ -45,13 +46,13 @@ function webpackBuild() {
             mode: "production",
             module: {
                 rules: [
-                  {
-                    test: /\.ya?ml$/,
-                    type: 'json',
-                    use: 'yaml-loader'
-                  }
+                    {
+                        test: /\.ya?ml$/,
+                        type: 'json',
+                        use: 'yaml-loader'
+                    }
                 ]
-              }
+            }
         }))
         .pipe(gulp.dest(paths.destJS));
 };
@@ -110,11 +111,13 @@ function hugoServer(cb) {
     cb();
 };
 
+var updatedDate = null;
+
 async function downloadData() {
     let response;
     try {
         response = await axios.get("https://www.worldometers.info/coronavirus/");
-        if (response.status !== 200) {  
+        if (response.status !== 200) {
             throw new Error('Unexpected HTTP code when downloading world data: ' + response.status);
         }
     }
@@ -134,13 +137,26 @@ async function downloadData() {
             result.recovered = count;
         }
     });
-    result.updated = Math.floor(Date.now()/1000);
+    updatedDate = result.updated = Math.floor(Date.now() / 1000);
     fs.writeFileSync("./data/world.json", JSON.stringify(result));
 }
 
 const watch = gulp.parallel([sassWatch, webpackWatch]);
 
+function updateLastMod() {
+    return gulp.src('content/_index*.md')
+        .pipe(replace(/^lastmod.*/m, function () {
+            if (updatedDate == null) {
+                updatedDate = Date.now() / 1000;
+            }
+            return 'lastmod: ' + moment(updatedDate * 1000).format("YYYY-MM-DDTHH:mm:ssZZ");
+        }))
+        .pipe(gulp.dest('content'));
+}
+
 exports.webpackBuild = webpackBuild;
 exports.develop = gulp.series([downloadData, build, gulp.parallel(watch, hugoServer)]);
-exports.deploy = gulp.series([downloadData, build, hugoBuild, purgeCSS, embedCritialCSS]);
+exports.deploy = gulp.series([downloadData, updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS]);
 exports.default = exports.develop;
+
+exports.updateLastMod = updateLastMod;
