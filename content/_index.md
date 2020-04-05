@@ -14,7 +14,7 @@ Te muestro en estas gráficas actualizadas diariamente con **información oficia
 
 * Los casos activos 👈 ésta es la curva que tenemos que achatar ("flatten the curve")
 * Los **casos totales** 😷 y **muertes** 😞
-* Los casos y tests diarios
+* Tests diarios y positivos diarios
 * Comparación de tests totales, positivos y negativos
 * Las hospitalizaciones diarias
 * Comparación de casos totales, casos activos, recuperados y muertes

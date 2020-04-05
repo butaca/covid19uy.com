@@ -53,7 +53,7 @@ msp:
   other: Ministerio de Salud Pública
 
 dailyCases:
-  other: Casos Diarios
+  other: Positivos Diarios
 
 dailyTests:
   other: Tests Diarios

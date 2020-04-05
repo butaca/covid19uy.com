@@ -14,7 +14,7 @@ With these graphs updated daily with **official information** I show you:
 
 * Active cases 👈 this is the curve that we have to flatten
 * **Total cases** 😷 and **deaths** 😞
-* Daily cases and tests
+* Daily tests and daily positives
 * Comparison of total, positive and negative tests
 * Daily hospitalizations
 * Comparison of total cases, active cases, recovered cases and deaths
