@@ -1,29 +1,30 @@
-<h2>{{ i18n "worldTitle"}}</h2>
+<h2 id="world">{{ i18n "worldTitle"}}</h2>
 <div class="box">
-<nav class="level">
-    <div class="level-item has-text-centered">
-        <div>
-            <p class="subtitle">{{ i18n "totalCases" }} 😷</p>
-            <p class="title">{{ lang.NumFmt 0 .Site.Data.world.cases .Site.Params.numberFormat }}</p>
+    <nav class="level">
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="subtitle">{{ i18n "totalCases" }} 😷</p>
+                <p class="title">{{ lang.NumFmt 0 .Site.Data.world.cases .Site.Params.numberFormat }}</p>
+            </div>
         </div>
-    </div>
-    <div class="level-item has-text-centered">
-        <div>
-            <p class="subtitle">{{ i18n "recovered" }} 🙏</p>
-            <p class="title">{{ lang.NumFmt 0 .Site.Data.world.recovered .Site.Params.numberFormat}}</p>
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="subtitle">{{ i18n "recovered" }} 🙏</p>
+                <p class="title">{{ lang.NumFmt 0 .Site.Data.world.recovered .Site.Params.numberFormat}}</p>
+            </div>
         </div>
-    </div>
-    <div class="level-item has-text-centered">
-        <div>
-            <p class="subtitle">{{ i18n "deaths" }} 😞</p>
-            <p class="title">{{ lang.NumFmt 0 .Site.Data.world.deaths .Site.Params.numberFormat}}</p>
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="subtitle">{{ i18n "deaths" }} 😞</p>
+                <p class="title">{{ lang.NumFmt 0 .Site.Data.world.deaths .Site.Params.numberFormat}}</p>
+            </div>
         </div>
+    </nav>
+    <div class="has-text-centered is-size-7">
+        {{ i18n "updated" }}: {{ (time (int (.Site.Data.world.updated))).Format .Site.Params.dateFormat }}
+        ({{ i18n "uyTime"}})
+        <br />
+        {{ i18n "dataSource"}}: <a href="https://www.worldometers.info/coronavirus/" target="_blank"
+            rel="noopener noreferrer">https://www.worldometers.info/coronavirus/</a>
     </div>
-</nav>
-<div class="has-text-centered is-size-7">
-    {{ i18n "updated" }}: {{ (time (int (.Site.Data.world.updated))).Format .Site.Params.dateFormat }}
-    ({{ i18n "uyTime"}})
-    <br />
-    {{ i18n "dataSource"}}: <a href="https://www.worldometers.info/coronavirus/" target="_blank" rel="noopener noreferrer">https://www.worldometers.info/coronavirus/</a>
-</div>
 </div>

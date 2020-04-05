@@ -1,0 +1,40 @@
+<nav id="navbar" class="navbar is-info" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="{{ "/" | absLangURL }}">
+            <span class="has-text-warning has-text-weight-semibold">
+                covid19uy.com
+            </span>
+        </a>
+
+        <a id="navbarBurger" role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarMenu" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" href="{{ "/#uruguay" }}">
+                {{ i18n "uruguay" }}
+            </a>
+            <a class="navbar-item" href="{{ "/#world" }}">
+                {{ i18n "world" }}
+            </a>
+
+            <a class="navbar-item" href="{{ "/#footer" }}">
+                {{ i18n "contact" }}
+            </a>
+        </div>
+        <div class="navbar-end">
+            <div class="buttons">
+                {{ range .Translations }}
+                <div class="navbar-item">
+                    <a href="{{ .Permalink }}" class="button is-info lang-link" data-lang="{{ .Language }}">
+                        <i class="fas fa-language fa-2x"></i>{{ .Language.LanguageName }}
+                    </a>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+</nav>

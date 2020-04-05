@@ -13,17 +13,13 @@
 </head>
 
 <body>
+    {{ partial "navbar.html" . }}
     <section class="section">
         <div class="container">
             <h1 class="title">
                 {{ .Title }}
             </h1>
             <h2 class="subtitle">{{ .Params.subtitle }}</h2>
-            {{ range .Translations }}
-            <a href="{{ .Permalink }}" class="lang-link" data-lang="{{ .Language }}">
-                <i class="fas fa-language fa-2x"></i>{{ .Language.LanguageName }}
-            </a>
-            {{ end }}
             <div class="columns is-centered is-multiline">
                 <div class="column is-6">
                     <canvas id="chart-active-cases" width="100%" height="100%"></canvas>

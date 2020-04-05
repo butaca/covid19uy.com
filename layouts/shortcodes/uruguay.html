@@ -7,7 +7,7 @@
 {{- $recovered := cond (isset $last "recovered") $last.recovered 0  -}}
 {{- $activeCases := sub (sub $cases $deaths) $recovered -}}
 {{- $healthWorkerCases := cond (isset $last "healthWorkerCases") $last.healthWorkerCases 0  -}}
-<div class="box">
+<div id="uruguay" class="box">
     <nav class="level">
         <div class="level-item has-text-centered">
             <div>

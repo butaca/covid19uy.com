@@ -5,9 +5,35 @@ import langEn from "../../i18n/en.yaml";
 import "./chartjs-elements";
 import Cookies from 'js-cookie';
 
-document.addEventListener("DOMContentLoaded", function (event) {
-    main();
-});
+document.addEventListener("DOMContentLoaded", main);
+
+function burger() {
+    var navbar = document.getElementById('navbar');
+    var navbarMenu = document.getElementById('navbarMenu');
+    var navbarBurger = document.getElementById('navbarBurger');
+
+    var toggleBurger = function () {
+        navbar.classList.toggle('is-active');
+        navbarMenu.classList.toggle('is-active');
+    };
+
+    var navBarLinks = navbar.querySelectorAll('a[href^="#"]');
+    navBarLinks.forEach(function() {
+        el.addEventListener('click', toggleBurger);
+    });
+
+    navbarBurger.addEventListener('click', toggleBurger);
+    
+    var isVisible = function(elem) { return !!elem && !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length); };
+
+    document.addEventListener('click', function() {
+        if (!navbarBurger.contains(event.target) && isVisible(navbarBurger) && !navbarMenu.contains(event.target) && isVisible(navbarMenu)) {
+            if (navbarMenu.classList.contains('is-active')) {
+                toggleBurger();
+            }
+        }
+    });
+}
 
 function getIncrementalValues(values) {
     var incrementalValues = [];
@@ -25,17 +51,9 @@ function getTotal(values) {
     return values.reduce(function (prev, cur) { return prev + cur });
 }
 
-function addEventListener(el, eventName, handler) {
-    if (el.addEventListener) {
-        el.addEventListener(eventName, handler);
-    } else {
-        el.attachEvent('on' + eventName, function () {
-            handler.call(el);
-        });
-    }
-}
-
 function main() {
+    burger();
+
     var langs = {
         es: langEs,
         en: langEn
@@ -292,7 +310,7 @@ function main() {
     var langLinks = document.querySelectorAll('.lang-link');
     for (var i = 0; i < langLinks.length; ++i) {
         var langLink = langLinks[i];
-        addEventListener(langLink, "click", function() {
+        langLink.addEventListener('click', function() {
             Cookies.set("nf_lang", langLink.getAttribute('data-lang'));
         });
     }
