@@ -56,7 +56,7 @@ dailyCases:
   other: Casos Diarios
 
 dailyTests:
-  other: Análisis Diarios
+  other: Tests Diarios
 
 icu:
   other: Cuidados intensivos
@@ -71,7 +71,7 @@ negatives:
   other: Negativos
 
 totalTests:
-  other: Análisis totales
+  other: Tests totales
 
 uruguay: 
   other: 🇺🇾 Uruguay
