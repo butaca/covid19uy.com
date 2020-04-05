@@ -21,7 +21,7 @@ With these graphs updated daily with **official information** I show you:
 
 If you don't want to appear in these charts, **stay at home**. If you don't want your loved ones to appear in these charts, **stay at home**. If you don't want innocent people to appear in these charts, **stay at home**.
 
-👉 **Stay at home _when possible_**. Obviously some of us have to go out to work because we cannot do it remotely and all of us at some point need to go out, like going to the supermarket or the pharmacy. Everything else can wait.
+👉 **Stay at home _when possible_**. Obviously some of us have to go out to work because we cannot do it remotely and all of us at some point need to go out, due to a need of force majeure. Everything else can wait.
 
 **We are at war** against an invisible enemy. The only way to defeat it is by **working together**. Take care of yourself and others by informing yourself and following the official guidelines (in Uruguay): [Coronavirus National Plan][MSP_coronavirus].
 

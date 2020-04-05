@@ -21,7 +21,7 @@ Te muestro en estas gráficas actualizadas diariamente con **información oficia
 
 Si no querés aparecer en éstas gráficas, **quedate en casa**. Si no querés que tus seres queridos aparezcan en estas gráficas, **quedate en casa**. Si no querés que gente inocente aparezca en estas gráficas, **quedate en casa**.
 
-👉 **Quedarse en casa _dentro de lo posible_**. Obviamente algunos de nosotros tenemos que salir a trabajar porque no lo podemos hacer en forma remota y todos en algún momento tenemos que salir sí o sí, como para ir al supermercado o a la farmacia. Todo lo demás puede esperar.
+👉 **Quedarse en casa _dentro de lo posible_**. Obviamente algunos de nosotros tenemos que salir a trabajar porque no lo podemos hacer en forma remota y todos en algún momento tenemos que salir sí o sí, por alguna necesidad de fuerza mayor. Todo lo demás puede esperar.
 
 **Estamos en guerra** contra un enemigo invisible. La única forma de ganarle es **entre todos**. Cuidate y cuidá a los demás informándote y siguiendo los lineamientos oficiales: [Plan Nacional Coronavirus][MSP_coronavirus].
 
