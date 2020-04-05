@@ -16,7 +16,7 @@ const nodeModules = './node_modules';
 
 const paths = {
     webpackEntry: './assets/js/index.js',
-    srcJS: ['./assets/js/**/*.js', './data/**/*.json'],
+    srcJS: ['./assets/js/**/*.js', './data/**/*.json', './i18n/**/*.yaml'],
     destJS: './static/js',
     mainSCSS: './assets/sass/main.scss',
     srcSCSS: './assets/sass/**/*.scss',
