@@ -1,6 +1,6 @@
 ---
-title: Coronavirus COVID-19 in Uruguay
-subtitle: Stay at home!
+title: "Coronavirus COVID-19 in Uruguay | #StayHome"
+subtitle: Stay home!
 description: Cases and deaths of Coronavirus COVID-19 in Uruguay updated daily with official information. If you don't want to appear on this site, stay home.
 date: 2020-03-23T22:07:13-0300
 lastmod: 2020-04-04T20:21:12-0300
@@ -19,13 +19,13 @@ With these graphs updated daily with **official information** I show you:
 * Daily hospitalizations
 * Comparison of total cases, active cases, recovered cases and deaths
 
-If you don't want to appear in these charts, **stay at home**. If you don't want your loved ones to appear in these charts, **stay at home**. If you don't want innocent people to appear in these charts, **stay at home**.
+If you don't want to appear in these charts, **stay home**. If you don't want your loved ones to appear in these charts, **stay home**. If you don't want innocent people to appear in these charts, **stay home**.
 
-👉 **Stay at home _when possible_**. Obviously some of us have to go out to work because we cannot do it remotely and all of us at some point need to go out, due to a need of force majeure. Everything else can wait.
+👉 **Stay home _when possible_**. Obviously some of us have to go out to work because we cannot do it remotely and all of us at some point need to go out, due to a need of force majeure. Everything else can wait.
 
 **We are at war** against an invisible enemy. The only way to defeat it is by **working together**. Take care of yourself and others by informing yourself and following the official guidelines (in Uruguay): [Coronavirus National Plan][MSP_coronavirus].
 
-## Why stay at home?
+## Why stay home?
 
 * 😷 We decrease the probability of infecting ourselves and infecting others.
 * ⚠️ About 60% of people with coronaviruses show mild or no symptoms ([source][asymptomatic_cases]).
@@ -33,7 +33,7 @@ If you don't want to appear in these charts, **stay at home**. If you don't want
 
 {{< world >}}
 
-## Celebrities want you to stay at home
+## Celebrities want you to stay home
 
 {{< columns class="is-multiline">}}
 {{< column class="is-4">}}
@@ -49,7 +49,7 @@ If you don't want to appear in these charts, **stay at home**. If you don't want
 
 ## How can I help?
 
-First of all, it is super important that you follow the recommendations of the authorities and that you stay at home as much as possible. You can also collaborate with charitable foundations that are doing an outstanding effort:
+First of all, it is super important that you follow the recommendations of the authorities and that you stay home as much as possible. You can also collaborate with charitable foundations that are doing an outstanding effort:
 
 * [CanastasUY][canastas]
 * [TECHO Uruguay][techouy]
