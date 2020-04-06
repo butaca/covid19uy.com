@@ -82,3 +82,20 @@ world:
 contact:
   other: ✉️ Contacto
   
+graphTitleActiveCases:
+  other: Evolución de casos
+
+graphTitleTotalCases:
+  other: Casos acumulados
+
+graphTitleDailyCases:
+  other: Tests y casos diarios
+
+graphTitleTotalTests:
+  other: Tests totales
+
+graphTitleDailyHospitalizations:
+  other: Hospitalizaciones diarias
+
+graphTitleTotals:
+  other: Casos totales

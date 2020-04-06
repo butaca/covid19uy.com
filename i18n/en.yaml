@@ -81,4 +81,22 @@ world:
 
 contact:
   other: ✉️ Contact
+
+graphTitleActiveCases:
+  other: Cases evolution
+
+graphTitleTotalCases:
+  other: Cumulative cases
+
+graphTitleDailyCases:
+  other: Daily tests and cases
+
+graphTitleTotalTests:
+  other: Total tests
+
+graphTitleDailyHospitalizations:
+  other: Daily Hospitalizations
+
+graphTitleTotals:
+  other: Total Cases
   
