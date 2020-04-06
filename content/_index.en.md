@@ -8,7 +8,9 @@ sitemap:
   changefreq: hourly
 ---
 
+<!--
 {{< uruguay >}}
+-->
 
 With these graphs updated daily with **official information** I show you:
 

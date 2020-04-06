@@ -7,8 +7,9 @@ lastmod: 2020-04-04T20:21:12-0300
 sitemap:
   changefreq: hourly
 ---
-
+<!--
 {{< uruguay >}}
+-->
 
 Te muestro en estas gráficas actualizadas diariamente con **información oficial**:
 

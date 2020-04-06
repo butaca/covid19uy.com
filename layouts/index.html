@@ -20,6 +20,9 @@
                 {{ .Title }}
             </h1>
             <h2 class="subtitle">{{ .Params.subtitle }}</h2>
+            <div class="content">
+                {{ partial "uruguay.html" . }}
+            </div>
             {{- $columnClass := "column is-4" -}}
             <div class="columns is-centered is-multiline">
                 <div class="{{ $columnClass }}">
@@ -55,7 +58,8 @@
             </div>
             <div>
                 <p class="has-text-centered is-size-7">{{ i18n "dataSource" }}: <a
-                        href="https://www.gub.uy/ministerio-salud-publica/coronavirus" target="_blank" rel="noopener noreferrer">{{ i18n "msp" }}</a>.
+                        href="https://www.gub.uy/ministerio-salud-publica/coronavirus" target="_blank"
+                        rel="noopener noreferrer">{{ i18n "msp" }}</a>.
                 </p>
             </div>
             <div class="content">
