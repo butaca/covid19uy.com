@@ -3,6 +3,7 @@ $section-padding-medium: 4.5rem 1.5rem;
 $section-padding-large: 9rem 1.5rem;
 
 @import "bulma/bulma";
+@import 'spacing';
 
 .netlify-logo {
     vertical-align: middle;
