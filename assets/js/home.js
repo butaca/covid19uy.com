@@ -18,15 +18,15 @@ function burger() {
     };
 
     var navBarLinks = navbar.querySelectorAll('a[href^="#"]');
-    navBarLinks.forEach(function() {
+    navBarLinks.forEach(function () {
         el.addEventListener('click', toggleBurger);
     });
 
     navbarBurger.addEventListener('click', toggleBurger);
-    
-    var isVisible = function(elem) { return !!elem && !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length); };
 
-    document.addEventListener('click', function() {
+    var isVisible = function (elem) { return !!elem && !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length); };
+
+    document.addEventListener('click', function () {
         if (!navbarBurger.contains(event.target) && isVisible(navbarBurger) && !navbarMenu.contains(event.target) && isVisible(navbarMenu)) {
             if (navbarMenu.classList.contains('is-active')) {
                 toggleBurger();
@@ -96,6 +96,18 @@ function main() {
                 backgroundColor: "#28b8d680",
                 label: lang.activeCases.other,
                 data: activeCases,
+            },
+            {
+                pointBackgroundColor: "#0000ffff",
+                backgroundColor: "#0000ff80",
+                label: lang.recovered.other,
+                data: recovered,
+            },
+            {
+                pointBackgroundColor: "#e54acfff",
+                backgroundColor: "#e54acfff",
+                label: lang.deaths.other,
+                data: deaths,
             }]
         },
         options: {
@@ -115,12 +127,6 @@ function main() {
                 backgroundColor: "#28b8d680",
                 label: lang.totalCases.other,
                 data: cases,
-            },
-            {
-                pointBackgroundColor: "#e54acfff",
-                backgroundColor: "#e54acfff",
-                label: lang.deaths.other,
-                data: deaths,
             }]
         },
         options: {
@@ -310,7 +316,7 @@ function main() {
     var langLinks = document.querySelectorAll('.lang-link');
     for (var i = 0; i < langLinks.length; ++i) {
         var langLink = langLinks[i];
-        langLink.addEventListener('click', function() {
+        langLink.addEventListener('click', function () {
             Cookies.set("nf_lang", langLink.getAttribute('data-lang'));
         });
     }
