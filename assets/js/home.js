@@ -265,17 +265,17 @@ function main() {
     var totalPositives = cases[cases.length - 1];
     var totalNegatives = totalTests - totalPositives;
 
-    var chartAnalysisData = [totalPositives, totalNegatives];
-    var chartAnalysisLabels = [lang.positives.other, lang.negatives.other];
-    chartAnalysisLabels = chartAnalysisLabels.map(function (label, index) { return label + ': ' + (chartAnalysisData[index] / totalTests * 100).toFixed(2) + '%' });
+    var chartTestsData = [totalPositives, totalNegatives];
+    var chartTestsLabels = [lang.positives.other, lang.negatives.other];
+    chartTestsLabels = chartTestsLabels.map(function (label, index) { return label + ': ' + (chartTestsData[index] / totalTests * 100).toFixed(2) + '%' });
 
-    ctx = document.getElementById('chart-analysis');
+    ctx = document.getElementById('chart-tests');
     new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: chartAnalysisLabels,
+            labels: chartTestsLabels,
             datasets: [{
-                data: chartAnalysisData,
+                data: chartTestsData,
                 backgroundColor: ["#28b8d680", "#0000ff80"]
             }]
         },
