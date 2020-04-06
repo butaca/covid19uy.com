@@ -27,14 +27,10 @@
             </a>
         </div>
         <div class="navbar-end">
-            <div class="buttons">
-                {{ range .Translations }}
-                <div class="navbar-item">
-                    <a href="{{ .Permalink }}" class="button is-info lang-link" data-lang="{{ .Language }}">
-                        <i class="fas fa-language fa-2x"></i>{{ .Language.LanguageName }}
-                    </a>
-                </div>
-                {{ end }}
-            </div>
+            {{ range .Translations }}
+            <a href="{{ .Permalink }}" class="navbar-item lang-link" data-lang="{{ .Language }}">
+                <i class="fas fa-language fa-2x"></i>{{ .Language.LanguageName }}
+            </a>
+            {{ end }}
         </div>
 </nav>
