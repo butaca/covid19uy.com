@@ -13,7 +13,7 @@ function burger() {
     var navbarBurger = document.getElementById('navbarBurger');
 
     var toggleBurger = function () {
-        navbar.classList.toggle('is-active');
+        navbarBurger.classList.toggle('is-active');
         navbarMenu.classList.toggle('is-active');
     };
 
