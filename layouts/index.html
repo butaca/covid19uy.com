@@ -20,35 +20,36 @@
                 {{ .Title }}
             </h1>
             <h2 class="subtitle">{{ .Params.subtitle }}</h2>
+            {{- $columnClass := "column is-4" -}}
             <div class="columns is-centered is-multiline">
-                <div class="column is-6">
+                <div class="{{ $columnClass }}">
                     {{ partial "chart-title.html" (i18n "graphTitleActiveCases")}}
                     <canvas id="chart-active-cases" width="100%" height="100%"></canvas>
                     {{ partial "uruguay-updated-date.html" . }}
                 </div>
-                <div class="column is-6">
+                <div class="{{ $columnClass }}">
                     {{ partial "chart-title.html" (i18n "graphTitleTotalCases")}}
                     <canvas id="chart-total-cases" width="100%" height="100%"></canvas>
                     {{ partial "uruguay-updated-date.html" . }}
                 </div>
-                <div class="column is-6">
-                    {{ partial "chart-title.html" (i18n "graphTitleDailyCases")}}
-                    <canvas id="chart-daily-cases" width="100%" height="100%"></canvas>
+                <div class="{{ $columnClass }}">
+                    {{ partial "chart-title.html" (i18n "graphTitleTotals")}}
+                    <canvas id="chart-total" width="100%" height="100%"></canvas>
                     {{ partial "uruguay-updated-date.html" . }}
                 </div>
-                <div class="column is-6">
-                    {{ partial "chart-title.html" (i18n "graphTitleTotalTests")}}
-                    <canvas id="chart-tests" width="100%" height="100%"></canvas>
-                    {{ partial "uruguay-updated-date.html" . }}
-                </div>
-                <div class="column is-6">
+                <div class="{{ $columnClass }}">
                     {{ partial "chart-title.html" (i18n "graphTitleDailyHospitalizations")}}
                     <canvas id="chart-daily-hospitalizations" width="100%" height="100%"></canvas>
                     {{ partial "uruguay-updated-date.html" . }}
                 </div>
-                <div class="column is-6">
-                    {{ partial "chart-title.html" (i18n "graphTitleTotals")}}
-                    <canvas id="chart-total" width="100%" height="100%"></canvas>
+                <div class="{{ $columnClass }}">
+                    {{ partial "chart-title.html" (i18n "graphTitleDailyCases")}}
+                    <canvas id="chart-daily-cases" width="100%" height="100%"></canvas>
+                    {{ partial "uruguay-updated-date.html" . }}
+                </div>
+                <div class="{{ $columnClass }}">
+                    {{ partial "chart-title.html" (i18n "graphTitleTotalTests")}}
+                    <canvas id="chart-tests" width="100%" height="100%"></canvas>
                     {{ partial "uruguay-updated-date.html" . }}
                 </div>
             </div>

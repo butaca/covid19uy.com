@@ -198,14 +198,13 @@ function main() {
         }
     });
 
-
     function isMobile() {
         var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
         return width <= 768;
     }
 
     function getPiePadding() {
-        return isMobile() ? 0 : 50;
+        return isMobile() ? 0 : 0;
     }
 
     function onResizePie(chart) {
