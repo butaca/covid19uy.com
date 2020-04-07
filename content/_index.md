@@ -11,7 +11,7 @@ sitemap:
 {{< uruguay >}}
 -->
 
-Te muestro en estas gráficas actualizadas diariamente con **información oficial**:
+Te muestro en estas gráficas actualizadas diariamente con **información pública oficial**:
 
 * Los casos activos 👈 ésta es la curva que tenemos que achatar ("flatten the curve")
 * Los **casos totales** 😷 y **muertes** 😞

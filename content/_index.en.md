@@ -12,7 +12,7 @@ sitemap:
 {{< uruguay >}}
 -->
 
-With these graphs updated daily with **official information** I show you:
+With these graphs updated daily with **public official information** I show you:
 
 * Active cases 👈 this is the curve that we have to flatten
 * **Total cases** 😷 and **deaths** 😞
