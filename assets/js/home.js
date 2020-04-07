@@ -111,6 +111,13 @@ function main() {
             }]
         },
         options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        min: 1
+                    }
+                }]
+            },
             animation: {
                 duration: 0
             }
