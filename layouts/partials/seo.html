@@ -18,11 +18,6 @@
     <meta name="twitter:url" content="{{ .Permalink }}" />
     <meta name="twitter:image:src" content="{{ "images/seo/twitter_card.jpg" | absURL }}">
 
-    {{- $translations := slice -}}
-    {{- range .AllTranslations -}}
-    {{- $translations = $translations | append .Language.Params.SchemaName -}}
-    {{- end -}}
-
     <script type="application/ld+json">
         {
           "@context": "http://schema.org",
@@ -38,8 +33,7 @@
           "datePublished": {{ .Date }},
           "dateModified": {{ (time (int (.Site.Data.world.updated))) }},
           "description": {{ $description }},
-          "inLanguage": {{ .Language.Params.SchemaName }},
-          "availableLanguage": {{$translations}} 
+          "inLanguage": {{ .Language.Params.SchemaName }}
         }
         </script>
     
