@@ -29,7 +29,7 @@ Si no querés aparecer en éstas gráficas, **quedate en casa**. Si no querés q
 ## ¿Por qué quedarme en casa?
 
 * 😷 Disminuímos la probabilidad de contagiarnos y de contagiar a otros.
-* ⚠️ Alrededor del 60% de las personas con coronavirus muestran síntomas leves o nulos ([fuente][asymptomatic_cases]).
+* ⚠️ Alrededor del 60% de las personas con coronavirus muestran síntomas leves o nulos. [[fuente][asymptomatic_cases]]
 * 🏥 Ayudamos a **no sobrecargar el sistema de salud** y entonces a **salvar vidas**.
 
 {{< world >}}

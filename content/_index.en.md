@@ -30,7 +30,7 @@ If you don't want to appear in these charts, **stay home**. If you don't want yo
 ## Why stay home?
 
 * 😷 We decrease the probability of infecting ourselves and infecting others.
-* ⚠️ About 60% of people with coronaviruses show mild or no symptoms ([source][asymptomatic_cases]).
+* ⚠️ About 60% of people with coronavirus show mild or no symptoms. [[source][asymptomatic_cases]]
 * 🏥 We help to **avoid overloading the health system** and therefore to **save lives**.
 
 {{< world >}}
