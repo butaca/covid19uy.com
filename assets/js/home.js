@@ -143,22 +143,32 @@ function main() {
         }
     });
 
-    var dailyTests = data.map(function (el) { return el.tests != undefined ? el.tests : el.cases });
+    var firstValidIndex = -1;
+
+    var dailyTests = data.map(function (el, index) {
+        var valid = el.tests != undefined;
+        if(firstValidIndex < 0) {
+            if(valid) {
+                firstValidIndex = index;
+            }
+        }
+        return valid ? el.tests : el.cases
+    });
 
     ctx = document.getElementById('chart-daily-cases');
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: dates,
+            labels: dates.slice(firstValidIndex),
             datasets: [{
                 backgroundColor: "#97DBEAFF",
                 label: lang.dailyCases.other,
-                data: dialyCases,
+                data: dialyCases.slice(firstValidIndex),
             },
             {
                 backgroundColor: "#83d02a80",
                 label: lang.dailyTests.other,
-                data: dailyTests,
+                data: dailyTests.slice(firstValidIndex),
             }]
         },
         options: {
@@ -177,20 +187,29 @@ function main() {
     var dailyIMCU = data.map(function (el) { return el.imcu != undefined ? el.imcu : 0 });
     // var dailyWard = data.map(function (el) { return el.ward != undefined ? el.ward : 0 });
 
+    firstValidIndex = -1;
+
+    for(var i = 0; i < dailyICU.length; ++i) {
+        if(firstValidIndex < 0 && (dailyICU[i] > 0 || dailyIMCU[i] > 0)) {
+            firstValidIndex = i;
+            break;
+        }
+    }
+
     ctx = document.getElementById('chart-daily-hospitalizations');
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: dates,
+            labels: dates.slice(firstValidIndex),
             datasets: [{
                 backgroundColor: "#ff000080",
                 label: lang.icu.other,
-                data: dailyICU,
+                data: dailyICU.slice(firstValidIndex),
             },
             {
                 backgroundColor: "#ecdb3c80",
                 label: lang.imcu.other,
-                data: dailyIMCU,
+                data: dailyIMCU.slice(firstValidIndex),
             }/*,
             {   backgroundColor: "#83d02a80",
                 label: 'Sala',
