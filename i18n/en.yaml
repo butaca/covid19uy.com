@@ -99,4 +99,7 @@ graphTitleDailyHospitalizations:
 
 graphTitleTotals:
   other: Total Cases
+
+graphTitleDailyPositives:
+  other: Percentage of daily positive tests
   

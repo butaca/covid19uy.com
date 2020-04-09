@@ -319,6 +319,58 @@ function main() {
         }
     });
 
+    var dialyTestsUnfiltered = data.map(function (el) { return el.tests });
+
+    var firstValidIndex = -1;
+
+    var dailyPositivesPercent = dialyCases.map(function (cases, index) {
+        var tests = dialyTestsUnfiltered[index];
+        if (tests != undefined) {
+            if(firstValidIndex < 0) {
+                firstValidIndex = index;
+            }
+            return (cases / tests * 100).toFixed(2);
+        }
+        else {
+            return 0;
+        }
+    });
+
+    ctx = document.getElementById('chart-tests-dialy-positives');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dates.slice(firstValidIndex),
+            datasets: [{
+                pointBackgroundColor: "#28b8d6ff",
+                backgroundColor: "#28b8d680",
+                label: lang.graphTitleDailyPositives.other,
+                data: dailyPositivesPercent.slice(firstValidIndex),
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        callback: function (value) {
+                            return value + "%"
+                        }
+                    }
+                }]
+            },
+            tooltips: {
+                callbacks: {
+                    label: function (tooltipItem, data) {
+                        return data['datasets'][0]['data'][tooltipItem['index']] + " %";
+                    }
+                }
+            },
+            animation: {
+                duration: 0
+            }
+        }
+    });
+
     var langLinks = document.querySelectorAll('.lang-link');
     for (var i = 0; i < langLinks.length; ++i) {
         var langLink = langLinks[i];

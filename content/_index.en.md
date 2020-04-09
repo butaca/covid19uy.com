@@ -15,11 +15,12 @@ sitemap:
 With these graphs updated daily with **public official information** I show you:
 
 * Active cases 👈 this is the curve that we have to flatten
-* **Total cases** 😷 and **deaths** 😞
+* Total cumulative cases
+* Comparison of total cases, active cases, recovered cases and deaths
 * Daily tests and daily positives
+* Percentage of daily positive tests
 * Comparison of total, positive and negative tests
 * Daily hospitalizations
-* Comparison of total cases, active cases, recovered cases and deaths
 
 If you don't want to appear in these charts, **stay home**. If you don't want your loved ones to appear in these charts, **stay home**. If you don't want innocent people to appear in these charts, **stay home**.
 

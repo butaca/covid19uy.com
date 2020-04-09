@@ -14,11 +14,12 @@ sitemap:
 Te muestro en estas gráficas actualizadas diariamente con **información pública oficial**:
 
 * Los casos activos 👈 ésta es la curva que tenemos que achatar ("flatten the curve")
-* Los **casos totales** 😷 y **muertes** 😞
+* Casos acumulados totales
+* Comparación de casos totales, casos activos, recuperados y muertes
 * Tests diarios y positivos diarios
+* Porcentaje de tests positivos diarios
 * Comparación de tests totales, positivos y negativos
 * Las hospitalizaciones diarias
-* Comparación de casos totales, casos activos, recuperados y muertes
 
 Si no querés aparecer en éstas gráficas, **quedate en casa**. Si no querés que tus seres queridos aparezcan en estas gráficas, **quedate en casa**. Si no querés que gente inocente aparezca en estas gráficas, **quedate en casa**.
 
