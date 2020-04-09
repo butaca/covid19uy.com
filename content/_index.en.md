@@ -59,7 +59,10 @@ First of all, it is super important that you follow the recommendations of the a
 * [CanastasUY][canastas]
 * [TECHO Uruguay][techouy]
 * [#NosCuidamosEntreTodos][NosCuidamosEntreTodos]
-* [Donations for the National Coronavirus Plan COVID-19][donacionesPN]
+
+Or you can collaborate with government institutions:
+
+* [Donations for the National Coronavirus COVID-19 Plan][donacionesPN]
 
 [MSP_coronavirus]: https://www.gub.uy/ministerio-salud-publica/comunicacion/publicaciones/informacion-para-poblacion
 [coronaviruswikipedia]: https://es.wikipedia.org/wiki/Pandemia_de_enfermedad_por_coronavirus_de_2020_en_Uruguay

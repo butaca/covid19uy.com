@@ -53,11 +53,14 @@ Si no querés aparecer en éstas gráficas, **quedate en casa**. Si no querés q
 
 ## ¿Cómo puedo ayudar?
 
-Primero que nada, es súper importante que sigas las recomendaciones de las autoridades y que te quedes en tu casa dentro de lo posible. También podes colaborar con fundaciones benéficas que están dejando todo en la cancha:
+Primero que nada, es súper importante que sigas las recomendaciones de las autoridades y que te quedes en tu casa dentro de lo posible. También podés colaborar con fundaciones benéficas que están dejando todo en la cancha:
 
 * [CanastasUY][canastas]
 * [TECHO Uruguay][techouy]
 * [#NosCuidamosEntreTodos][NosCuidamosEntreTodos]
+
+O bien podés colaborar con instituciones gubernamentales:
+
 * [Donaciones para el Plan Nacional Coronavirus COVID-19][donacionesPN]
 
 [MSP_coronavirus]: https://www.gub.uy/ministerio-salud-publica/comunicacion/publicaciones/informacion-para-poblacion
