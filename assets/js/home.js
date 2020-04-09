@@ -35,18 +35,6 @@ function burger() {
     });
 }
 
-function getIncrementalValues(values) {
-    var incrementalValues = [];
-    var prevTotal = 0;
-    for (var i = 0; i < values.length; ++i) {
-        var value = values[i];
-        var totalValue = value + prevTotal;
-        incrementalValues.push(totalValue);
-        prevTotal = totalValue;
-    }
-    return incrementalValues;
-}
-
 function getTotal(values) {
     return values.reduce(function (prev, cur) { return prev + cur });
 }
@@ -68,23 +56,71 @@ function main() {
 
     var flipDate = htmlLang == "en";
 
-    var dialyCases = data.map(function (el) { return el.cases });
-    var dates = data.map(function (el) {
+    var cases = [];
+    var dialyCases = [];
+    var dates = [];
+    var deaths = [];
+    var recovered = [];
+    var activeCases = [];
+    var dailyICU = [];
+    var dailyIMCU = [];
+    var firstHopitalizationsValidIndex = -1;
+    var prevDayTotalCases = 0;
+    var firstValidHealthcareWorkerIndex = -1;
+    var prevHealthcareWorkers = 0;
+    var dailyHealthcareWorkers = [];
+    var dailyHealthcareWorkersPercent = [];
+    var dailyTests = [];
+    var firstDailyTestsValidIndex = -1;
+    var dailyPositivesPercent = [];
+
+    data.forEach(function (el, index) {
+        var todayCases = el.cases;
+        dialyCases.push(todayCases);
+
         var date = new Date(el.date);
         var day = date.getUTCDate();
         var month = (date.getUTCMonth() + 1);
-        return flipDate ? month + "/" + day : day + "/" + month;
+        dates.push(flipDate ? month + "/" + day : day + "/" + month);
+
+        var todayTotalDeaths = el.deaths != undefined ? el.deaths : 0;
+        deaths.push(todayTotalDeaths);
+
+        var todayTotalRecovered = el.recovered != undefined ? el.recovered : 0;
+        recovered.push(todayTotalRecovered);
+
+        var todayTotalCases = prevDayTotalCases + todayCases;
+        cases.push(todayTotalCases);
+        prevDayTotalCases += todayCases;
+
+        activeCases.push(todayTotalCases - todayTotalDeaths - todayTotalRecovered);
+
+        var todayICU = el.icu != undefined ? el.icu : 0;
+        var todayIMCU = el.imcu != undefined ? el.imcu : 0;
+
+        dailyICU.push(todayICU);
+        dailyIMCU.push(todayIMCU);
+
+        if (firstHopitalizationsValidIndex < 0 && (todayICU > 0 || todayIMCU > 0)) {
+            firstHopitalizationsValidIndex = index;
+        }
+
+        var todayHealthcareWorker = el.healthWorkerCases - prevHealthcareWorkers;
+        dailyHealthcareWorkers.push(todayHealthcareWorker);
+        prevHealthcareWorkers = el.healthWorkerCases;
+        if (firstValidHealthcareWorkerIndex < 0 && el.healthWorkerCases != undefined) {
+            firstValidHealthcareWorkerIndex = index + 1;
+        }
+
+        dailyHealthcareWorkersPercent.push(todayHealthcareWorker / todayCases * 100).toFixed(2);
+
+        var todayTests = el.tests;
+        if (firstDailyTestsValidIndex < 0 && todayTests != undefined) {
+            firstDailyTestsValidIndex = index;
+        }
+        dailyTests.push(todayTests != undefined ? todayTests : todayCases);
+        dailyPositivesPercent.push(todayCases / todayTests * 100).toFixed(2);
     });
-
-    var cases = getIncrementalValues(dialyCases);
-    var deaths = data.map(function (el) { return el.deaths != undefined ? el.deaths : 0 });
-    var recovered = data.map(function (el) { return el.recovered != undefined ? el.recovered : 0 });
-
-    var activeCases = [];
-    for (var i = 0; i < cases.length; ++i) {
-        var todayActiveCases = cases[i] - deaths[i] - recovered[i];
-        activeCases.push(todayActiveCases);
-    }
 
     var ctx = document.getElementById('chart-active-cases');
     new Chart(ctx, {
@@ -143,32 +179,20 @@ function main() {
         }
     });
 
-    var firstValidIndex = -1;
-
-    var dailyTests = data.map(function (el, index) {
-        var valid = el.tests != undefined;
-        if(firstValidIndex < 0) {
-            if(valid) {
-                firstValidIndex = index;
-            }
-        }
-        return valid ? el.tests : el.cases
-    });
-
     ctx = document.getElementById('chart-daily-cases');
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: dates.slice(firstValidIndex),
+            labels: dates.slice(firstDailyTestsValidIndex),
             datasets: [{
                 backgroundColor: "#97DBEAFF",
                 label: lang.dailyCases.other,
-                data: dialyCases.slice(firstValidIndex),
+                data: dialyCases.slice(firstDailyTestsValidIndex),
             },
             {
                 backgroundColor: "#83d02a80",
                 label: lang.dailyTests.other,
-                data: dailyTests.slice(firstValidIndex),
+                data: dailyTests.slice(firstDailyTestsValidIndex),
             }]
         },
         options: {
@@ -183,38 +207,21 @@ function main() {
         }
     });
 
-    var dailyICU = data.map(function (el) { return el.icu != undefined ? el.icu : 0 });
-    var dailyIMCU = data.map(function (el) { return el.imcu != undefined ? el.imcu : 0 });
-    // var dailyWard = data.map(function (el) { return el.ward != undefined ? el.ward : 0 });
-
-    firstValidIndex = -1;
-
-    for(var i = 0; i < dailyICU.length; ++i) {
-        if(firstValidIndex < 0 && (dailyICU[i] > 0 || dailyIMCU[i] > 0)) {
-            firstValidIndex = i;
-            break;
-        }
-    }
-
     ctx = document.getElementById('chart-daily-hospitalizations');
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: dates.slice(firstValidIndex),
+            labels: dates.slice(firstHopitalizationsValidIndex),
             datasets: [{
                 backgroundColor: "#ff000080",
                 label: lang.icu.other,
-                data: dailyICU.slice(firstValidIndex),
+                data: dailyICU.slice(firstHopitalizationsValidIndex),
             },
             {
                 backgroundColor: "#ecdb3c80",
                 label: lang.imcu.other,
-                data: dailyIMCU.slice(firstValidIndex),
-            }/*,
-            {   backgroundColor: "#83d02a80",
-                label: 'Sala',
-                data: dailyWard,
-            }*/
+                data: dailyIMCU.slice(firstHopitalizationsValidIndex),
+            }
             ]
         },
         options: {
@@ -338,33 +345,16 @@ function main() {
         }
     });
 
-    var dialyTestsUnfiltered = data.map(function (el) { return el.tests });
-
-    var firstValidIndex = -1;
-
-    var dailyPositivesPercent = dialyCases.map(function (cases, index) {
-        var tests = dialyTestsUnfiltered[index];
-        if (tests != undefined) {
-            if (firstValidIndex < 0) {
-                firstValidIndex = index;
-            }
-            return (cases / tests * 100).toFixed(2);
-        }
-        else {
-            return 0;
-        }
-    });
-
     ctx = document.getElementById('chart-tests-dialy-positives');
     new Chart(ctx, {
         type: 'line',
         data: {
-            labels: dates.slice(firstValidIndex),
+            labels: dates.slice(firstDailyTestsValidIndex),
             datasets: [{
                 pointBackgroundColor: "#28b8d6ff",
                 backgroundColor: "#28b8d680",
                 label: lang.graphTitleDailyPositives.other,
-                data: dailyPositivesPercent.slice(firstValidIndex),
+                data: dailyPositivesPercent.slice(firstDailyTestsValidIndex),
             }]
         },
         options: {
@@ -390,32 +380,21 @@ function main() {
         }
     });
 
-    firstValidIndex = -1;
-    var prevHealthcareWorkers = 0;
-    var healthcareWorkers = data.map(function (el) { return el.healthWorkerCases });
-    healthcareWorkers.forEach(function (val, index) {
-        healthcareWorkers[index] = val - prevHealthcareWorkers;
-        prevHealthcareWorkers = val;
-        if (firstValidIndex < 0 && val != undefined) {
-            firstValidIndex = index + 1;
-        }
-    });
-
     ctx = document.getElementById('chart-healthcare-workers');
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: dates.slice(firstValidIndex),
+            labels: dates.slice(firstValidHealthcareWorkerIndex),
             datasets: [
                 {
                     backgroundColor: "#01C6B2FF",
                     label: lang.healthCareWorkerCases.other,
-                    data: healthcareWorkers.slice(firstValidIndex),
+                    data: dailyHealthcareWorkers.slice(firstValidHealthcareWorkerIndex),
                 },
                 {
                     backgroundColor: "#97DBEAFF",
                     label: lang.dailyCases.other,
-                    data: dialyCases.slice(firstValidIndex),
+                    data: dialyCases.slice(firstValidHealthcareWorkerIndex),
                 }]
         },
         options: {
@@ -430,19 +409,15 @@ function main() {
         }
     });
 
-    var healthcareWorkersPercent = healthcareWorkers.map(function(hc, index){
-        return (hc / dialyCases[index] * 100).toFixed(2);
-    });
-
     ctx = document.getElementById('chart-healthcare-workers-percent');
     new Chart(ctx, {
         type: 'line',
         data: {
-            labels: dates.slice(firstValidIndex),
+            labels: dates.slice(firstValidHealthcareWorkerIndex),
             datasets: [{
                 backgroundColor: "#01C6B2FF",
                 label: lang.graphTitleHealthcareWorkersPercent.other,
-                data: healthcareWorkersPercent.slice(firstValidIndex),
+                data: dailyHealthcareWorkersPercent.slice(firstValidHealthcareWorkerIndex),
             }]
         },
         options: {
