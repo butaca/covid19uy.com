@@ -20,6 +20,8 @@ With these graphs updated daily with **public official information** I show you:
 * Daily tests and daily positives
 * Percentage of daily positive tests
 * Comparison of total, positive and negative tests
+* Daily cases of health workers and daily positives
+* Daily percentages of health worker cases
 * Daily hospitalizations
 
 If you don't want to appear in these charts, **stay home**. If you don't want your loved ones to appear in these charts, **stay home**. If you don't want innocent people to appear in these charts, **stay home**.

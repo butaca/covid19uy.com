@@ -19,6 +19,8 @@ Te muestro en estas gráficas actualizadas diariamente con **información públi
 * Tests diarios y positivos diarios
 * Porcentaje de tests positivos diarios
 * Comparación de tests totales, positivos y negativos
+* Casos dirarios de trabajadores de la salud y positivos diarios
+* Porcentajes diarios de casos de trabajadores de la salud
 * Las hospitalizaciones diarias
 
 Si no querés aparecer en éstas gráficas, **quedate en casa**. Si no querés que tus seres queridos aparezcan en estas gráficas, **quedate en casa**. Si no querés que gente inocente aparezca en estas gráficas, **quedate en casa**.
