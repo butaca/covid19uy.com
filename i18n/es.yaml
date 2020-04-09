@@ -102,3 +102,9 @@ graphTitleTotals:
 
 graphTitleDailyPositives:
   other: Porcentaje de tests positivos diarios
+
+graphTitleHealthcareWorkers:
+  other: Casos dirarios de trabajadores de la salud
+
+graphTitleHealthcareWorkersPercent:
+  other: Porcentaje de casos de trabajadores de la salud

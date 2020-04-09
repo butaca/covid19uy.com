@@ -326,7 +326,7 @@ function main() {
     var dailyPositivesPercent = dialyCases.map(function (cases, index) {
         var tests = dialyTestsUnfiltered[index];
         if (tests != undefined) {
-            if(firstValidIndex < 0) {
+            if (firstValidIndex < 0) {
                 firstValidIndex = index;
             }
             return (cases / tests * 100).toFixed(2);
@@ -346,6 +346,84 @@ function main() {
                 backgroundColor: "#28b8d680",
                 label: lang.graphTitleDailyPositives.other,
                 data: dailyPositivesPercent.slice(firstValidIndex),
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        callback: function (value) {
+                            return value + "%"
+                        }
+                    }
+                }]
+            },
+            tooltips: {
+                callbacks: {
+                    label: function (tooltipItem, data) {
+                        return data['datasets'][0]['data'][tooltipItem['index']] + " %";
+                    }
+                }
+            },
+            animation: {
+                duration: 0
+            }
+        }
+    });
+
+    firstValidIndex = -1;
+    var prevHealthcareWorkers = 0;
+    var healthcareWorkers = data.map(function (el) { return el.healthWorkerCases });
+    healthcareWorkers.forEach(function (val, index) {
+        healthcareWorkers[index] = val - prevHealthcareWorkers;
+        prevHealthcareWorkers = val;
+        if (firstValidIndex < 0 && val != undefined) {
+            firstValidIndex = index + 1;
+        }
+    });
+
+    ctx = document.getElementById('chart-healthcare-workers');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: dates.slice(firstValidIndex),
+            datasets: [
+                {
+                    backgroundColor: "#01C6B2FF",
+                    label: lang.healthCareWorkerCases.other,
+                    data: healthcareWorkers.slice(firstValidIndex),
+                },
+                {
+                    backgroundColor: "#97DBEAFF",
+                    label: lang.dailyCases.other,
+                    data: dialyCases.slice(firstValidIndex),
+                }]
+        },
+        options: {
+            animation: {
+                duration: 0
+            },
+            scales: {
+                xAxes: [{
+                    stacked: true
+                }]
+            }
+        }
+    });
+
+    var healthcareWorkersPercent = healthcareWorkers.map(function(hc, index){
+        return (hc / dialyCases[index] * 100).toFixed(2);
+    });
+
+    ctx = document.getElementById('chart-healthcare-workers-percent');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dates.slice(firstValidIndex),
+            datasets: [{
+                backgroundColor: "#01C6B2FF",
+                label: lang.graphTitleHealthcareWorkersPercent.other,
+                data: healthcareWorkersPercent.slice(firstValidIndex),
             }]
         },
         options: {

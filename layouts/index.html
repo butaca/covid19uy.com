@@ -56,6 +56,16 @@
                     {{ partial "uruguay-updated-date.html" . }}
                 </div>
                 <div class="{{ $columnClass }}">
+                    {{ partial "chart-title.html" (i18n "graphTitleHealthcareWorkers")}}
+                    <canvas id="chart-healthcare-workers" width="100%" height="100%"></canvas>
+                    {{ partial "uruguay-updated-date.html" . }}
+                </div>
+                <div class="{{ $columnClass }}">
+                    {{ partial "chart-title.html" (i18n "graphTitleHealthcareWorkersPercent")}}
+                    <canvas id="chart-healthcare-workers-percent" width="100%" height="100%"></canvas>
+                    {{ partial "uruguay-updated-date.html" . }}
+                </div>
+                <div class="{{ $columnClass }}">
                     {{ partial "chart-title.html" (i18n "graphTitleDailyHospitalizations")}}
                     <canvas id="chart-daily-hospitalizations" width="100%" height="100%"></canvas>
                     {{ partial "uruguay-updated-date.html" . }}
