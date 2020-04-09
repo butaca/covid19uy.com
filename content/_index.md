@@ -13,15 +13,15 @@ sitemap:
 
 Te muestro en estas gráficas actualizadas diariamente con **información pública oficial**:
 
-* Los casos activos 👈 ésta es la curva que tenemos que achatar ("flatten the curve")
-* Casos acumulados totales
-* Comparación de casos totales, casos activos, recuperados y muertes
-* Tests diarios y positivos diarios
-* Porcentaje de tests positivos diarios
-* Comparación de tests totales, positivos y negativos
-* Casos diarios de trabajadores de la salud y positivos diarios
-* Porcentajes diarios de casos de trabajadores de la salud
-* Las hospitalizaciones diarias
+* **{{< i18n "graphTitleActiveCases">}}**: Casos activos por día, recuperados y muertes. 👈 ésta es la curva que tenemos que achatar ("flatten the curve"). Los casos activos son los personas que en éste momento tienen el virus, calculados como el total de casos menos los recuperados y las muertes.
+* **{{< i18n "graphTitleTotalCases">}}**: En cada día, suma total de casos confirmados hasta ese día.
+* **{{< i18n "graphTitleTotals">}}**: Comparación del total de casos registrados hasta el momento: porcentaje de casos activos, recuperados y muertes.
+* **{{< i18n "graphTitleDailyCases">}}**: Cantidad de tests realizados en cada día y cuántos de ellos dieron positivos.
+* **{{< i18n "graphTitleDailyPositives">}}**: De todos los tests realizados cada día, qué porcentaje de tests dieron positivos en ese día.
+* **{{< i18n "graphTitleTotalTests">}}**: Comparación de todos los tests realizados hasta el momento: porcentaje de positivos y negativos.
+* **{{< i18n "graphTitleHealthcareWorkers">}}**: Cantidad de casos positivos en cada día y cuántos de ellos corresponden a trabajadores de la salud.
+* **{{< i18n "graphTitleHealthcareWorkersPercent">}}**: De los casos positivos de cada día,qué porcentaje correspondiente a trabajadores de la salud en ese día.
+* **{{< i18n "graphTitleDailyHospitalizations">}}**: Cantidad de hospitalizaciones (cuidados intermedios y cuidados intensivos) por día.
 
 Si no querés aparecer en éstas gráficas, **quedate en casa**. Si no querés que tus seres queridos aparezcan en estas gráficas, **quedate en casa**. Si no querés que gente inocente aparezca en estas gráficas, **quedate en casa**.
 
