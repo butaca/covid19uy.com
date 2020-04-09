@@ -3,6 +3,7 @@ $section-padding-medium: 3rem 3rem;
 $section-padding-large: 2rem 2rem;
 
 @import "bulma/bulma";
+@import "bulma-tooltip/src/sass/index";
 @import 'spacing';
 
 .netlify-logo {

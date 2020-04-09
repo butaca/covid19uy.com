@@ -85,26 +85,53 @@ contact:
 graphTitleActiveCases:
   other: Evolución de casos
 
+graphTitleActiveCasesDesc:
+  other: Casos activos por día, recuperados y muertes. 👈 ésta es la curva que tenemos que achatar ("flatten the curve"). Los casos activos son los personas que en éste momento tienen el virus, calculados como el total de casos menos los recuperados y las muertes.
+
 graphTitleTotalCases:
   other: Casos acumulados
+
+graphTitleTotalCasesDesc:
+  other: En cada día, suma total de casos confirmados hasta ese día.
 
 graphTitleDailyCases:
   other: Tests y casos diarios
 
+graphTitleDailyCasesDesc:
+  other: Cantidad de tests realizados en cada día y cuántos de ellos dieron positivos.
+
 graphTitleTotalTests:
   other: Tests totales
+
+graphTitleTotalTestsDesc:
+  other: "Comparación de todos los tests realizados hasta el momento: porcentaje de positivos y negativos."
 
 graphTitleDailyHospitalizations:
   other: Hospitalizaciones diarias
 
+graphTitleDailyHospitalizationsDesc:
+  other: Cantidad de hospitalizaciones (cuidados intermedios y cuidados intensivos) por día.
+
 graphTitleTotals:
   other: Casos totales
+
+graphTitleTotalsDesc:
+  other: "Comparación del total de casos registrados hasta el momento: porcentaje de casos activos, recuperados y muertes."
 
 graphTitleDailyPositives:
   other: Porcentaje de tests positivos diarios
 
+graphTitleDailyPositivesDesc:
+  other: De todos los tests realizados cada día, qué porcentaje de tests dieron positivos en ese día.
+
 graphTitleHealthcareWorkers:
   other: Casos diarios de trabajadores de la salud
 
+graphTitleHealthcareWorkersDesc:
+  other: Cantidad de casos positivos en cada día y cuántos de ellos corresponden a trabajadores de la salud.
+
 graphTitleHealthcareWorkersPercent:
   other: Porcentaje de casos de trabajadores de la salud
+
+graphTitleHealthcareWorkersPercentDesc:
+  other: De los casos positivos de cada día, qué porcentaje correspondiente a trabajadores de la salud en ese día.

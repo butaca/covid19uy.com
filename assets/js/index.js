@@ -7,8 +7,9 @@ import { faReddit } from '@fortawesome/free-brands-svg-icons';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faLanguage } from '@fortawesome/free-solid-svg-icons';
+import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 
-library.add(faFacebook, faTwitter, faLinkedin, faReddit, faWhatsapp, faEnvelope, faLanguage);
+library.add(faFacebook, faTwitter, faLinkedin, faReddit, faWhatsapp, faEnvelope, faLanguage, faQuestionCircle);
 
 import './home';
 

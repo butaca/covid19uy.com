@@ -85,27 +85,54 @@ contact:
 graphTitleActiveCases:
   other: Cases evolution
 
+graphTitleActiveCasesDesc:
+  other: Active cases per day, recovered and deaths. 👈 this is the curve that we have to flatten. The active cases are the people that currently have the virus, calculated as the total cases minus the recovered and deaths.
+
 graphTitleTotalCases:
   other: Cumulative cases
+
+graphTitleTotalCasesDesc:
+  other: On each day, the total sum of confirmed cases up to that day.
 
 graphTitleDailyCases:
   other: Daily tests and cases
 
+graphTitleDailyCasesDesc:
+  other: Number of tests carried out each day and how many of them were positive.
+
 graphTitleTotalTests:
   other: Total tests
+
+graphTitleTotalTestsDesc:
+  other: "Comparison of all tests performed so far: percentage of positives and negatives."
 
 graphTitleDailyHospitalizations:
   other: Daily Hospitalizations
 
+graphTitleDailyHospitalizationsDesc:
+  other: Number of hospitalizations (intermediate care and intensive care) per day.
+
 graphTitleTotals:
   other: Total Cases
+
+graphTitleTotalsDesc:
+  other: "Comparison of the total cases registered so far: percentage of active cases, recovered and deaths."
 
 graphTitleDailyPositives:
   other: Percentage of daily positive tests
 
+graphTitleDailyPositivesDesc:
+  other: Of all the tests performed each day, what percentage of tests where positive on that day.
+
 graphTitleHealthcareWorkers:
   other: Daily healthcare workers cases
 
+graphTitleHealthcareWorkersDesc:
+  other: Number of positive cases in each day and how many of them correspond to healthcare workers.
+
 graphTitleHealthcareWorkersPercent:
   other: Percentage of healthcare workers cases
+
+graphTitleHealthcareWorkersPercentDesc:
+  other: Of the positive cases of each day, what percentage correspond to healthcare workers on that day.
   

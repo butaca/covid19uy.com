@@ -14,15 +14,7 @@ sitemap:
 
 With these graphs updated daily with **public official information** I show you:
 
-* **{{< i18n "graphTitleActiveCases">}}**: Active cases per day, recovered and deaths. 👈 this is the curve that we have to flatten. The active cases are the people that currently have the virus, calculated as the total cases minus the recovered and deaths.
-* **{{< i18n "graphTitleTotalCases">}}**: On each day, the total sum of confirmed cases up to that day.
-* **{{< i18n "graphTitleTotals">}}**: Comparison of the total cases registered so far: percentage of active cases, recovered and deaths.
-* **{{< i18n "graphTitleDailyCases">}}**: Number of tests carried out each day and how many of them were positive.
-* **{{< i18n "graphTitleDailyPositives">}}**: Of all the tests performed each day, what percentage of tests where positive on that day.
-* **{{< i18n "graphTitleTotalTests">}}**: Comparison of all tests performed so far: percentage of positives and negatives.
-* **{{< i18n "graphTitleHealthcareWorkers">}}**: Number of positive cases in each day and how many of them correspond to healthcare workers.
-* **{{< i18n "graphTitleHealthcareWorkersPercent">}}**: Of the positive cases of each day, what percentage corresponding to healthcare workers on that day.
-* **{{< i18n "graphTitleDailyHospitalizations">}}**: Number of hospitalizations (intermediate care and intensive care) per day.
+{{< charts-desc >}}
 
 If you don't want to appear in these charts, **stay home**. If you don't want your loved ones to appear in these charts, **stay home**. If you don't want innocent people to appear in these charts, **stay home**.
 

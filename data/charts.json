@@ -1,0 +1,47 @@
+[
+    {
+        "id": "chart-active-cases",
+        "title": "graphTitleActiveCases",
+        "desc": "graphTitleActiveCasesDesc"
+    },
+    {
+        "id": "chart-total-cases",
+        "title": "graphTitleTotalCases",
+        "desc": "graphTitleTotalCasesDesc"
+    },
+    {
+        "id": "chart-total",
+        "title": "graphTitleTotals",
+        "desc": "graphTitleTotalsDesc"
+    },
+    {
+        "id": "chart-daily-cases",
+        "title": "graphTitleDailyCases",
+        "desc": "graphTitleDailyCasesDesc"
+    },
+    {
+        "id": "chart-tests-dialy-positives",
+        "title": "graphTitleDailyPositives",
+        "desc": "graphTitleDailyPositivesDesc"
+    },
+    {
+        "id": "chart-tests",
+        "title": "graphTitleTotalTests",
+        "desc": "graphTitleTotalTestsDesc"
+    },
+    {
+        "id": "chart-healthcare-workers",
+        "title": "graphTitleHealthcareWorkers",
+        "desc": "graphTitleHealthcareWorkersDesc"
+    },
+    {
+        "id": "chart-healthcare-workers-percent",
+        "title": "graphTitleHealthcareWorkersPercent",
+        "desc": "graphTitleHealthcareWorkersPercentDesc"
+    },
+    {
+        "id": "chart-daily-hospitalizations",
+        "title": "graphTitleDailyHospitalizations",
+        "desc": "graphTitleDailyHospitalizationsDesc"
+    }
+]
