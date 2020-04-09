@@ -112,14 +112,14 @@ function main() {
             firstValidHealthcareWorkerIndex = index + 1;
         }
 
-        dailyHealthcareWorkersPercent.push(todayHealthcareWorker / todayCases * 100).toFixed(2);
+        dailyHealthcareWorkersPercent.push((todayHealthcareWorker / todayCases * 100).toFixed(2));
 
         var todayTests = el.tests;
         if (firstDailyTestsValidIndex < 0 && todayTests != undefined) {
             firstDailyTestsValidIndex = index;
         }
         dailyTests.push(todayTests != undefined ? todayTests : todayCases);
-        dailyPositivesPercent.push(todayCases / todayTests * 100).toFixed(2);
+        dailyPositivesPercent.push((todayCases / todayTests * 100).toFixed(2));
     });
 
     var ctx = document.getElementById('chart-active-cases');
