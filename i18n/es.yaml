@@ -17,7 +17,7 @@ recovered:
   other: Recuperados
 
 deaths:
-  other: Muertes
+  other: Fallecidos
 
 healthCareWorkerCases:
   other: Trabajadores de la salud
@@ -86,7 +86,7 @@ graphTitleActiveCases:
   other: Evolución de casos
 
 graphTitleActiveCasesDesc:
-  other: Casos activos por día, recuperados y muertes. 👈 ésta es la curva que tenemos que achatar ("flatten the curve"). Los casos activos son calculados como el total de casos menos los recuperados y las muertes.
+  other: Casos activos por día, recuperados y fallecidos. 👈 ésta es la curva que tenemos que achatar ("flatten the curve"). Los casos activos son calculados como el total de casos menos los recuperados y los fallecidos.
 
 graphTitleTotalCases:
   other: Casos acumulados
@@ -116,7 +116,7 @@ graphTitleTotals:
   other: Casos totales
 
 graphTitleTotalsDesc:
-  other: "Comparación del total de casos registrados hasta el momento: porcentaje de casos activos, recuperados y muertes."
+  other: "Comparación del total de casos registrados hasta el momento: porcentaje de casos activos, recuperados y fallecidos."
 
 graphTitleDailyPositives:
   other: Porcentaje de tests positivos diarios
