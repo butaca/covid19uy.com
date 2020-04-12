@@ -1,0 +1,45 @@
+{{- $last := last 2 .Site.Data.uruguay -}}
+{{- $today := index $last 1 -}}
+{{- $yesterday := index $last 0 -}}
+{{- $tests := $today.tests }}
+{{- $cases := $today.cases -}}
+{{- $deaths := sub $today.deaths $yesterday.deaths -}}
+{{- $recovered := sub $today.recovered $yesterday.recovered -}}
+{{- $healthWorkerCases := sub $today.healthWorkerCases $yesterday.healthWorkerCases -}}
+{{- $healthWorkerPercent := mul (div $healthWorkerCases $cases) 100 -}}
+
+<div id="uruguay">
+    <span class="tag is-warning">{{ i18n "todayNumbers" }}: {{ dateFormat .Site.Params.dateFormatCompact $today.date }}</span>
+    <nav class="level box has-padding-sm">
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="subtitle">{{ i18n "tests" }} 🧪</p>
+                <p class="title">{{ lang.NumFmt 0 $tests .Site.Params.numberFormat }}</p>
+            </div>
+        </div>
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="subtitle">{{ i18n "positives" }} 😷</p>
+                <p class="title">{{ lang.NumFmt 0 $cases .Site.Params.numberFormat }}</p>
+            </div>
+        </div>
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="subtitle">{{ i18n "healthCareWorkerCases" }} 👩‍⚕️👨‍⚕️</p>
+                <p class="title">{{ lang.NumFmt 0 $healthWorkerCases .Site.Params.numberFormat }} ({{ lang.NumFmt 2 $healthWorkerPercent .Site.Params.numberFormat }}%)</p>
+            </div>
+        </div>
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="subtitle">{{ i18n "recovered" }} 🙏</p>
+                <p class="title">{{ lang.NumFmt 0 $recovered .Site.Params.numberFormat }}</p>
+            </div>
+        </div>
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="subtitle">{{ i18n "deaths" }} 😞</p>
+                <p class="title">{{ lang.NumFmt 0 $deaths .Site.Params.numberFormat }}</p>
+            </div>
+        </div>
+    </nav>
+</div>

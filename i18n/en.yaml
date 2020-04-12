@@ -135,4 +135,9 @@ graphTitleHealthcareWorkersPercent:
 
 graphTitleHealthcareWorkersPercentDesc:
   other: Of the positive cases of each day, what percentage correspond to healthcare workers on that day.
-  
+
+tests:
+  other: Tests
+
+todayNumbers:
+  other: Today numbers
