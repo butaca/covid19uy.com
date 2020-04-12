@@ -28,5 +28,6 @@
     { "date": "2020-04-08", "cases" : 32, "tests": 448 , "icu" : 14, "imcu" : 4, "deaths" : 7, "recovered": 192, "healthWorkerCases": 61 },
     { "date": "2020-04-09", "cases" : 17, "tests": 681 , "icu" : 13, "imcu" : 4, "deaths" : 7, "recovered": 206, "healthWorkerCases": 62, "duplicates": 22 },
     { "date": "2020-04-10", "cases" : 21, "tests": 640 , "icu" : 15, "imcu" : 0, "deaths" : 7, "recovered": 214, "healthWorkerCases": 66, "duplicates": 29 },
-    { "date": "2020-04-11", "cases" : 7 , "tests": 618 , "icu" : 16, "imcu" : 1, "deaths" : 7, "recovered": 224, "healthWorkerCases": 71, "duplicates": 29 }
+    { "date": "2020-04-11", "cases" : 7 , "tests": 618 , "icu" : 16, "imcu" : 1, "deaths" : 7, "recovered": 224, "healthWorkerCases": 71, "duplicates": 29 },
+    { "date": "2020-04-12", "cases" : 11, "tests": 660 , "icu" : 16, "imcu" : 0, "deaths" : 7, "recovered": 231, "healthWorkerCases": 77, "duplicates": 32 }
 ]
