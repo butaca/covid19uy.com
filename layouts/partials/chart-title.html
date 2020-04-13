@@ -1,3 +1,7 @@
-<h3 class="has-text-centered title is-6 has-margin-bottom-xs has-tooltip-multiline" data-tooltip="{{ .desc }}">
-    {{ .title }} <i class="far fa-question-circle"></i>
+<h3 class="has-text-centered title is-6 has-margin-bottom-xs">
+    <span class="has-tooltip-multiline" data-tooltip="{{ .desc }}">
+        {{ .title }} <i class="far fa-question-circle"></i> {{ if .displayPositivesAndCasesInfo }}
+    </span>
+    <span class="has-tooltip-multiline" data-tooltip="{{ i18n "positivesAndCasesInfo"}}">⚠️</span>
+    {{ end }}
 </h3>

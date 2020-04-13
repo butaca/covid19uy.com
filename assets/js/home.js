@@ -56,8 +56,8 @@ function main() {
 
     var flipDate = htmlLang == "en";
 
-    var cases = [];
-    var dialyCases = [];
+    var positives = [];
+    var dialyPositives = [];
     var dates = [];
     var deaths = [];
     var recovered = [];
@@ -65,7 +65,7 @@ function main() {
     var dailyICU = [];
     var dailyIMCU = [];
     var firstHopitalizationsValidIndex = -1;
-    var prevDayTotalCases = 0;
+    var prevDayTotalPositives = 0;
     var firstValidHealthcareWorkerIndex = -1;
     var prevHealthcareWorkers = 0;
     var dailyHealthcareWorkers = [];
@@ -73,10 +73,11 @@ function main() {
     var dailyTests = [];
     var firstDailyTestsValidIndex = -1;
     var dailyPositivesPercent = [];
+    var cases = [];
 
     data.forEach(function (el, index) {
-        var todayCases = el.cases;
-        dialyCases.push(todayCases);
+        var todayPositives = el.positives;
+        dialyPositives.push(todayPositives);
 
         var date = new Date(el.date);
         var day = date.getUTCDate();
@@ -89,11 +90,14 @@ function main() {
         var todayTotalRecovered = el.recovered != undefined ? el.recovered : 0;
         recovered.push(todayTotalRecovered);
 
-        var todayTotalCases = prevDayTotalCases + todayCases;
-        cases.push(todayTotalCases);
-        prevDayTotalCases += todayCases;
+        var todayTotalPositives = prevDayTotalPositives + todayPositives;
+        positives.push(todayTotalPositives);
+        prevDayTotalPositives += todayPositives;
 
-        activeCases.push(todayTotalCases - todayTotalDeaths - todayTotalRecovered);
+        var totalTodayCases = el.cases != undefined ? el.cases : todayTotalPositives;
+        cases.push(totalTodayCases);
+
+        activeCases.push(totalTodayCases - todayTotalDeaths - todayTotalRecovered);
 
         var todayICU = el.icu != undefined ? el.icu : 0;
         var todayIMCU = el.imcu != undefined ? el.imcu : 0;
@@ -112,14 +116,14 @@ function main() {
             firstValidHealthcareWorkerIndex = index + 1;
         }
 
-        dailyHealthcareWorkersPercent.push((todayHealthcareWorker / todayCases * 100).toFixed(2));
+        dailyHealthcareWorkersPercent.push((todayHealthcareWorker / todayPositives * 100).toFixed(2));
 
         var todayTests = el.tests;
         if (firstDailyTestsValidIndex < 0 && todayTests != undefined) {
             firstDailyTestsValidIndex = index;
         }
-        dailyTests.push(todayTests != undefined ? todayTests : todayCases);
-        dailyPositivesPercent.push((todayCases / todayTests * 100).toFixed(2));
+        dailyTests.push(todayTests != undefined ? todayTests : todayPositives);
+        dailyPositivesPercent.push((todayPositives / todayTests * 100).toFixed(2));
     });
 
     var ctx = document.getElementById('chart-active-cases');
@@ -187,7 +191,7 @@ function main() {
             datasets: [{
                 backgroundColor: "#97DBEAFF",
                 label: lang.dailyCases.other,
-                data: dialyCases.slice(firstDailyTestsValidIndex),
+                data: dialyPositives.slice(firstDailyTestsValidIndex),
             },
             {
                 backgroundColor: "#83d02a80",
@@ -300,7 +304,7 @@ function main() {
     });
 
     var totalTests = getTotal(dailyTests) + constants.unreportedDailyTests;
-    var totalPositives = cases[cases.length - 1];
+    var totalPositives = positives[positives.length - 1];
     var totalNegatives = totalTests - totalPositives;
 
     var chartTestsData = [totalPositives, totalNegatives];
@@ -394,7 +398,7 @@ function main() {
                 {
                     backgroundColor: "#97DBEAFF",
                     label: lang.dailyCases.other,
-                    data: dialyCases.slice(firstValidHealthcareWorkerIndex),
+                    data: dialyPositives.slice(firstValidHealthcareWorkerIndex),
                 }]
         },
         options: {

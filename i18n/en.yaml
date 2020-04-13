@@ -86,7 +86,7 @@ graphTitleActiveCases:
   other: Cases evolution
 
 graphTitleActiveCasesDesc:
-  other: Active cases per day, recovered and deaths. 👈 this is the curve that we have to flatten. The active cases are calculated as the total cases minus the recovered and deaths.
+  other: Active cases per day, recovered and deaths. 👈 this is the curve that we have to flatten. The active cases are the people that currently have the virus, calculated as the total cases minus the recovered and deaths.
 
 graphTitleTotalCases:
   other: Cumulative cases
@@ -95,7 +95,7 @@ graphTitleTotalCasesDesc:
   other: On each day, the total sum of confirmed cases up to that day.
 
 graphTitleDailyCases:
-  other: Daily tests and cases
+  other: Daily tests and positives
 
 graphTitleDailyCasesDesc:
   other: Number of tests carried out each day and how many of them were positive.
@@ -141,3 +141,6 @@ tests:
 
 todayNumbers:
   other: Today numbers
+
+positivesAndCasesInfo:
+  other: ⚠️ Until 4/8 the number of people with the virus was not reported, but the number of positive tests. There are people with the virus that were tested positive more than once. Therefore until 04/08, positive cases (people with the virus) are assumed as the positive tests due to lack of information.

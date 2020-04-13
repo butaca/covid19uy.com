@@ -2,11 +2,11 @@
 {{- $today := index $last 1 -}}
 {{- $yesterday := index $last 0 -}}
 {{- $tests := $today.tests }}
-{{- $cases := $today.cases -}}
+{{- $positives := $today.positives -}}
 {{- $deaths := sub $today.deaths $yesterday.deaths -}}
 {{- $recovered := sub $today.recovered $yesterday.recovered -}}
 {{- $healthWorkerCases := sub $today.healthWorkerCases $yesterday.healthWorkerCases -}}
-{{- $healthWorkerPercent := mul (div $healthWorkerCases $cases) 100 -}}
+{{- $healthWorkerPercent := mul (div $healthWorkerCases $positives) 100 -}}
 
 <div id="uruguay">
     <span class="tag is-warning">{{ i18n "todayNumbers" }}: {{ dateFormat .Site.Params.dateFormatCompact $today.date }}</span>
@@ -20,7 +20,7 @@
         <div class="level-item has-text-centered">
             <div>
                 <p class="subtitle">{{ i18n "positives" }} 😷</p>
-                <p class="title">{{ lang.NumFmt 0 $cases .Site.Params.numberFormat }}</p>
+                <p class="title">{{ lang.NumFmt 0 $positives .Site.Params.numberFormat }}</p>
             </div>
         </div>
         <div class="level-item has-text-centered">

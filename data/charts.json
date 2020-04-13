@@ -2,12 +2,14 @@
     {
         "id": "chart-active-cases",
         "title": "graphTitleActiveCases",
-        "desc": "graphTitleActiveCasesDesc"
+        "desc": "graphTitleActiveCasesDesc",
+        "displayPositivesAndCasesInfo": true
     },
     {
         "id": "chart-total-cases",
         "title": "graphTitleTotalCases",
-        "desc": "graphTitleTotalCasesDesc"
+        "desc": "graphTitleTotalCasesDesc",
+        "displayPositivesAndCasesInfo": true
     },
     {
         "id": "chart-total",

@@ -1,8 +1,9 @@
-{{- $cases := 0 -}}
+{{- $positives := 0 -}}
 {{- range .Site.Data.uruguay -}}
-{{- $cases = add $cases .cases -}}
+{{- $positives = add $positives .positives -}}
 {{- end -}}
 {{- $last := index (last 1 .Site.Data.uruguay) 0 -}}
+{{- $cases := $last.cases -}}
 {{- $deaths := cond (isset $last "deaths") $last.deaths 0  -}}
 {{- $recovered := cond (isset $last "recovered") $last.recovered 0  -}}
 {{- $activeCases := sub (sub $cases $deaths) $recovered -}}
@@ -10,6 +11,12 @@
 {{- $healthWorkerPercent := mul (div $healthWorkerCases $cases) 100 -}}
 <div id="uruguay" class="box has-padding-sm">
     <nav class="level">
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="subtitle">{{ i18n "positives" }} 🧪</p>
+                <p class="title">{{ lang.NumFmt 0 $positives .Site.Params.numberFormat }}</p>
+            </div>
+        </div>
         <div class="level-item has-text-centered">
             <div>
                 <p class="subtitle">{{ i18n "totalCases" }} 😷</p>
