@@ -8,7 +8,7 @@
 {{- $healthWorkerCases := sub $today.healthWorkerCases $yesterday.healthWorkerCases -}}
 {{- $healthWorkerPercent := mul (div $healthWorkerCases $positives) 100 -}}
 
-<div id="uruguay">
+<div id="uruguay-today">
     <span class="tag is-warning">{{ i18n "todayNumbers" }}: {{ dateFormat .Site.Params.dateFormatCompact $today.date }}</span>
     <nav class="level box has-padding-sm">
         <div class="level-item has-text-centered">
