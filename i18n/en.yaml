@@ -144,3 +144,9 @@ todayNumbers:
 
 positivesAndCasesInfo:
   other: ⚠️ Until 4/8 the number of people with the virus was not reported, but the number of positive tests. There are people with the virus that were tested positive more than once. Therefore until 04/08, positive cases (people with the virus) are assumed as the positive tests due to lack of information.
+
+and:
+  other: and
+
+sinae:
+  other: National Emergency System

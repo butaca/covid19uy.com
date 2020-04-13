@@ -144,3 +144,9 @@ todayNumbers:
 
 positivesAndCasesInfo:
   other: ⚠️ Hasta el 8/04 no se informó la cantidad de personas con el virus, sino la cantidad de tests positivos. Hay personas con el virus que se realizaron el test y dieron positivo más de una vez. Entonces hasta el 8/04, se asume que los casos positivos (personas con el virus) equivalen a los tests positivos por falta de información.
+
+and:
+  other: "y"
+
+sinae:
+  other: Sistema Nacional de Emergencias
