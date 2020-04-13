@@ -48,9 +48,13 @@ If you don't want to appear in these charts, **stay home**. If you don't want yo
 
 First of all, it is super important that you follow the recommendations of the authorities and that you stay home as much as possible. You can also collaborate with charitable foundations that are doing an outstanding effort:
 
-* [CanastasUY][canastas]
-* [TECHO Uruguay][techouy]
-* [#NosCuidamosEntreTodos][NosCuidamosEntreTodos]
+{{< div "donations" >}}
+
+* [CanastasUY](https://www.instagram.com/canastasuy/)
+* [TECHO Uruguay](https://www.instagram.com/techo_uy/)
+* [#NosCuidamosEntreTodos](https://bit.ly/2U1hjnu)
+
+{{< /div >}}
 
 Or you can collaborate with government institutions:
 
@@ -59,7 +63,4 @@ Or you can collaborate with government institutions:
 [MSP_coronavirus]: https://www.gub.uy/ministerio-salud-publica/comunicacion/publicaciones/informacion-para-poblacion
 [coronaviruswikipedia]: https://es.wikipedia.org/wiki/Pandemia_de_enfermedad_por_coronavirus_de_2020_en_Uruguay
 [asymptomatic_cases]: https://www.medrxiv.org/content/10.1101/2020.03.03.20030593v1
-[canastas]: https://www.instagram.com/canastasuy/
-[techouy]: https://www.instagram.com/techo_uy/
-[NosCuidamosEntreTodos]: https://bit.ly/2U1hjnu
 [donacionesPN]: https://www.gub.uy/sistema-nacional-emergencias/comunicacion/comunicados/donaciones-para-plan-nacional-coronavirus-covid-19
