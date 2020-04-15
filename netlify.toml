@@ -45,6 +45,93 @@ status = 302
 conditions = {Language = ["en"]}
 force = true
 
+#### Netlify doesn't allow condition negation. As a workaround I'm redirecting the most popular languages to the English site. 
+[[redirects]]
+from = "/"
+to = "/en"
+status = 302
+conditions = {Language = ["zh"]}
+force = true
+
+[[redirects]]
+from = "/"
+to = "/en"
+status = 302
+conditions = {Language = ["ar"]}
+force = true
+
+[[redirects]]
+from = "/"
+to = "/en"
+status = 302
+conditions = {Language = ["pt"]}
+force = true
+
+[[redirects]]
+from = "/"
+to = "/en"
+status = 302
+conditions = {Language = ["id"]}
+force = true
+
+[[redirects]]
+from = "/"
+to = "/en"
+status = 302
+conditions = {Language = ["ja"]}
+force = true
+
+[[redirects]]
+from = "/"
+to = "/en"
+status = 302
+conditions = {Language = ["ru"]}
+force = true
+
+[[redirects]]
+from = "/"
+to = "/en"
+status = 302
+conditions = {Language = ["fr"]}
+force = true
+
+[[redirects]]
+from = "/"
+to = "/en"
+status = 302
+conditions = {Language = ["de"]}
+force = true
+
+[[redirects]]
+from = "/"
+to = "/en"
+status = 302
+conditions = {Language = ["it"]}
+force = true
+
+[[redirects]]
+from = "/"
+to = "/en"
+status = 302
+conditions = {Language = ["tr"]}
+force = true
+
+[[redirects]]
+from = "/"
+to = "/en"
+status = 302
+conditions = {Language = ["fa"]}
+force = true
+
+[[redirects]]
+from = "/"
+to = "/en"
+status = 302
+conditions = {Language = ["vi"]}
+force = true
+
+#### Workaround end
+
 [[redirects]]
 from = "/en/*"
 to = "/en/404.html"
