@@ -451,7 +451,7 @@ function main() {
     for (var i = 0; i < langLinks.length; ++i) {
         var langLink = langLinks[i];
         langLink.addEventListener('click', function () {
-            Cookies.set("nf_lang", langLink.getAttribute('data-lang'));
+            Cookies.set("nf_lang", langLink.getAttribute('data-lang'), { expires: 365 * 10 });
         });
     }
 }
