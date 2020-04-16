@@ -7,7 +7,7 @@
 {{- $deaths := cond (isset $last "deaths") $last.deaths 0  -}}
 {{- $recovered := cond (isset $last "recovered") $last.recovered 0  -}}
 {{- $activeCases := sub (sub $cases $deaths) $recovered -}}
-{{- $healthWorkerCases := cond (isset $last "healthWorkerCases") $last.healthWorkerCases 0  -}}
+{{- $healthWorkerCases := cond (isset $last "hc") $last.hc 0  -}}
 {{- $healthWorkerPercent := mul (div $healthWorkerCases $cases) 100 -}}
 <div id="uruguay" class="box has-padding-sm">
     <nav class="level">

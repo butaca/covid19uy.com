@@ -5,7 +5,7 @@
 {{- $positives := $today.positives -}}
 {{- $deaths := sub $today.deaths $yesterday.deaths -}}
 {{- $recovered := sub $today.recovered $yesterday.recovered -}}
-{{- $healthWorkerCases := sub $today.healthWorkerCases $yesterday.healthWorkerCases -}}
+{{- $healthWorkerCases := sub $today.hc $yesterday.hc -}}
 {{- $healthWorkerPercent := mul (div $healthWorkerCases $positives) 100 -}}
 
 <div id="uruguay-today">
