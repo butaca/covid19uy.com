@@ -33,5 +33,6 @@
     { "date": "2020-04-13", "positives" :  9, "tests": 462 , "icu" : 15, "imcu" : 0, "deaths" : 8, "recovered": 248, "hc": 79, "cases": 483 },
     { "date": "2020-04-14", "positives" : 12, "tests": 693 , "icu" : 14, "imcu" : 0, "deaths" : 8, "recovered": 260, "hc": 80, "cases": 492 },
     { "date": "2020-04-15", "positives" :  6, "tests": 519 , "icu" : 13, "imcu" : 0, "deaths" : 9, "recovered": 272, "hc": 82, "cases": 493 },
-    { "date": "2020-04-16", "positives" : 13, "tests": 791 , "icu" : 13, "imcu" : 0, "deaths" : 9, "recovered": 286, "hc": 82, "cases": 502 , "hcRecovered": 39 }
+    { "date": "2020-04-16", "positives" : 13, "tests": 791 , "icu" : 13, "imcu" : 0, "deaths" : 9, "recovered": 286, "hc": 82, "cases": 502 , "hcRecovered": 39 },
+    { "date": "2020-04-17", "positives" : 18, "tests": 510 , "icu" : 12, "imcu" : 0, "deaths" : 9, "recovered": 294, "hc": 82, "cases": 508 , "hcRecovered": 41 }
 ]
