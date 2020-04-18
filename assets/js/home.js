@@ -404,7 +404,7 @@ function main() {
                 },
                 {
                     backgroundColor: "#97DBEAFF",
-                    label: lang.dailyPositives.other,
+                    label: lang.dailyCases.other,
                     data: dailyCases.slice(firstValidHealthcareWorkerIndex),
                 }]
         },

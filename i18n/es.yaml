@@ -16,6 +16,9 @@ totalCases:
 newCases:
   other: Casos Nuevos
 
+dailyCases:
+  other: Casos Diarios
+
 recovered:
   other: Recuperados
 
@@ -146,7 +149,7 @@ todayNumbers:
   other: Números de hoy
 
 positivesAndCasesInfo:
-  other: ⚠️ Hasta el 8/4 no se informó la cantidad de personas con el virus, sino la cantidad de tests positivos. Hay personas con el virus que se realizaron el test y dieron positivo más de una vez. Entonces hasta el 8/4, se asume que los casos positivos (personas con el virus) equivalen a los tests positivos por falta de información.
+  other: ⚠️ Hasta el 8/4 no se informó los casos de personas con el virus, sino la cantidad de tests positivos. Hay personas con el virus que se realizaron el test y dieron positivo más de una vez. Entonces hasta el 8/4, se asumen como casos (personas con el virus) a los tests positivos por falta de información.
 
 and:
   other: "y"

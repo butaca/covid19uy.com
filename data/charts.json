@@ -34,12 +34,14 @@
     {
         "id": "chart-healthcare-workers",
         "title": "graphTitleHealthcareWorkers",
-        "desc": "graphTitleHealthcareWorkersDesc"
+        "desc": "graphTitleHealthcareWorkersDesc",
+        "displayPositivesAndCasesInfo": true
     },
     {
         "id": "chart-healthcare-workers-percent",
         "title": "graphTitleHealthcareWorkersPercent",
-        "desc": "graphTitleHealthcareWorkersPercentDesc"
+        "desc": "graphTitleHealthcareWorkersPercentDesc",
+        "displayPositivesAndCasesInfo": true
     },
     {
         "id": "chart-daily-hospitalizations",

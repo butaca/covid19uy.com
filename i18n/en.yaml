@@ -76,6 +76,9 @@ totalTests:
 newCases:
   other: New cases
 
+dailyCases:
+  other: Daily Cases
+
 uruguay: 
   other: 🇺🇾 Uruguay
 
@@ -146,7 +149,7 @@ todayNumbers:
   other: Today numbers
 
 positivesAndCasesInfo:
-  other: ⚠️ Until 4/8 the number of people with the virus was not reported, but the number of positive tests. There are people with the virus that were tested positive more than once. Therefore until 4/8, positive cases (people with the virus) are assumed as the positive tests due to lack of information.
+  other: ⚠️ Until 4/8 the number of cases (people with the virus) was not reported, but the number of positive tests. There are people with the virus that were tested positive more than once. Therefore until 4/8, cases (people with the virus) are assumed as the positive tests due to lack of information.
 
 and:
   other: and
