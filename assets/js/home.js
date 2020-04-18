@@ -190,7 +190,7 @@ function main() {
         }
     });
 
-    ctx = document.getElementById('chart-daily-cases');
+    ctx = document.getElementById('chart-daily-tests');
     new Chart(ctx, {
         type: 'bar',
         data: {

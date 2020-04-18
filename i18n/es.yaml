@@ -100,10 +100,10 @@ graphTitleTotalCases:
 graphTitleTotalCasesDesc:
   other: En cada día, suma total de casos confirmados hasta ese día.
 
-graphTitleDailyCases:
+graphTitleDailyTests:
   other: Tests y positivos diarios
 
-graphTitleDailyCasesDesc:
+graphTitleDailyTestsDesc:
   other: Cantidad de tests realizados en cada día y cuántos de ellos dieron positivos.
 
 graphTitleTotalTests:

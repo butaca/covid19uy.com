@@ -17,9 +17,9 @@
         "desc": "graphTitleTotalsDesc"
     },
     {
-        "id": "chart-daily-cases",
-        "title": "graphTitleDailyCases",
-        "desc": "graphTitleDailyCasesDesc"
+        "id": "chart-daily-tests",
+        "title": "graphTitleDailyTests",
+        "desc": "graphTitleDailyTestsDesc"
     },
     {
         "id": "chart-tests-dialy-positives",
