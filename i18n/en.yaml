@@ -73,6 +73,9 @@ negatives:
 totalTests:
   other: Total tests
 
+newCases:
+  other: New cases
+
 uruguay: 
   other: 🇺🇾 Uruguay
 

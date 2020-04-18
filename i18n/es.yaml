@@ -13,6 +13,9 @@ dataSource:
 totalCases:
   other: Casos Totales
 
+newCases:
+  other: Casos Nuevos
+
 recovered:
   other: Recuperados
 
