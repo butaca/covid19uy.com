@@ -142,6 +142,12 @@ graphTitleHealthcareWorkersPercent:
 graphTitleHealthcareWorkersPercentDesc:
   other: Of the new cases of each day, what percentage correspond to healthcare workers on that day.
 
+graphTitleDailyCases:
+  other: Daily new cases
+
+graphTitleDailyCasesDesc:
+  other: Number of new cases in each day
+
 tests:
   other: Tests
 

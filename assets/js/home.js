@@ -107,7 +107,8 @@ function main() {
         }
 
         var todayCases = totalTodayCases - prevDayTotalCases;
-        todayCases = Math.max(todayHealthcareWorker, todayCases);
+        todayCases = Math.max(0, todayCases);
+
         prevDayTotalCases = totalTodayCases;
         dailyCases.push(todayCases);
 
@@ -238,6 +239,29 @@ function main() {
         options: {
             animation: {
                 duration: 0
+            }
+        }
+    });
+
+    ctx = document.getElementById('chart-daily-cases');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: dates,
+            datasets: [{
+                backgroundColor: "#97DBEAFF",
+                label: lang.dailyCases.other,
+                data: dailyCases,
+            }]
+        },
+        options: {
+            animation: {
+                duration: 0
+            },
+            scales: {
+                xAxes: [{
+                    stacked: true
+                }]
             }
         }
     });

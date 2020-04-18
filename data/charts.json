@@ -32,6 +32,12 @@
         "desc": "graphTitleTotalTestsDesc"
     },
     {
+        "id": "chart-daily-cases",
+        "title": "graphTitleDailyCases",
+        "desc": "graphTitleDailyCasesDesc",
+        "displayPositivesAndCasesInfo": true
+    },
+    {
         "id": "chart-healthcare-workers",
         "title": "graphTitleHealthcareWorkers",
         "desc": "graphTitleHealthcareWorkersDesc",
