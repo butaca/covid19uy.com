@@ -74,6 +74,8 @@ function main() {
     var firstDailyTestsValidIndex = -1;
     var dailyPositivesPercent = [];
     var cases = [];
+    var dailyCases = [];
+    var prevDayTotalCases = 0;
 
     data.forEach(function (el, index) {
         var todayPositives = el.positives;
@@ -97,6 +99,18 @@ function main() {
         var totalTodayCases = el.cases != undefined ? el.cases : todayTotalPositives;
         cases.push(totalTodayCases);
 
+        var todayHealthcareWorker = el.hc - prevHealthcareWorkers;
+        dailyHealthcareWorkers.push(todayHealthcareWorker);
+        prevHealthcareWorkers = el.hc;
+        if (firstValidHealthcareWorkerIndex < 0 && el.hc != undefined) {
+            firstValidHealthcareWorkerIndex = index + 1;
+        }
+
+        var todayCases = totalTodayCases - prevDayTotalCases;
+        todayCases = Math.max(todayHealthcareWorker, todayCases);
+        prevDayTotalCases = totalTodayCases;
+        dailyCases.push(todayCases);
+
         activeCases.push(totalTodayCases - todayTotalDeaths - todayTotalRecovered);
 
         var todayICU = el.icu != undefined ? el.icu : 0;
@@ -109,14 +123,7 @@ function main() {
             firstHopitalizationsValidIndex = index;
         }
 
-        var todayHealthcareWorker = el.hc - prevHealthcareWorkers;
-        dailyHealthcareWorkers.push(todayHealthcareWorker);
-        prevHealthcareWorkers = el.hc;
-        if (firstValidHealthcareWorkerIndex < 0 && el.hc != undefined) {
-            firstValidHealthcareWorkerIndex = index + 1;
-        }
-
-        dailyHealthcareWorkersPercent.push((todayHealthcareWorker / todayPositives * 100).toFixed(2));
+        dailyHealthcareWorkersPercent.push((Math.min(1, Math.max(0, todayHealthcareWorker / todayCases)) * 100).toFixed(2));
 
         var todayTests = el.tests;
         if (firstDailyTestsValidIndex < 0 && todayTests != undefined) {
@@ -398,7 +405,7 @@ function main() {
                 {
                     backgroundColor: "#97DBEAFF",
                     label: lang.dailyPositives.other,
-                    data: dialyPositives.slice(firstValidHealthcareWorkerIndex),
+                    data: dailyCases.slice(firstValidHealthcareWorkerIndex),
                 }]
         },
         options: {

@@ -128,13 +128,13 @@ graphTitleHealthcareWorkers:
   other: Daily healthcare workers cases
 
 graphTitleHealthcareWorkersDesc:
-  other: Number of positive cases in each day and how many of them correspond to healthcare workers.
+  other: Number of new cases in each day and how many of them correspond to healthcare workers.
 
 graphTitleHealthcareWorkersPercent:
   other: Percentage of healthcare workers cases
 
 graphTitleHealthcareWorkersPercentDesc:
-  other: Of the positive cases of each day, what percentage correspond to healthcare workers on that day.
+  other: Of the new cases of each day, what percentage correspond to healthcare workers on that day.
 
 tests:
   other: Tests

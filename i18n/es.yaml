@@ -128,13 +128,13 @@ graphTitleHealthcareWorkers:
   other: Casos diarios de trabajadores de la salud
 
 graphTitleHealthcareWorkersDesc:
-  other: Cantidad de casos positivos en cada día y cuántos de ellos corresponden a trabajadores de la salud.
+  other: Cantidad de casos nuevos en cada día y cuántos de ellos corresponden a trabajadores de la salud.
 
 graphTitleHealthcareWorkersPercent:
   other: Porcentaje de casos de trabajadores de la salud
 
 graphTitleHealthcareWorkersPercentDesc:
-  other: De los casos positivos de cada día, qué porcentaje correspondiente a trabajadores de la salud en ese día.
+  other: De los nuevos casos de cada día, qué porcentaje correspondiente a trabajadores de la salud en ese día.
 
 tests:
   other: Tests
