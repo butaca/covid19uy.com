@@ -190,7 +190,7 @@ function main() {
             labels: dates.slice(firstDailyTestsValidIndex),
             datasets: [{
                 backgroundColor: "#97DBEAFF",
-                label: lang.dailyCases.other,
+                label: lang.dailyPositives.other,
                 data: dialyPositives.slice(firstDailyTestsValidIndex),
             },
             {
@@ -397,7 +397,7 @@ function main() {
                 },
                 {
                     backgroundColor: "#97DBEAFF",
-                    label: lang.dailyCases.other,
+                    label: lang.dailyPositives.other,
                     data: dialyPositives.slice(firstValidHealthcareWorkerIndex),
                 }]
         },

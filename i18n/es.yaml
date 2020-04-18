@@ -52,7 +52,7 @@ backTo:
 msp:
   other: Ministerio de Salud Pública
 
-dailyCases:
+dailyPositives:
   other: Positivos Diarios
 
 dailyTests:
