@@ -67,9 +67,16 @@ function hugoBuild(cb) {
     const params = ["--gc", "--verbose", "--cleanDestinationDir", "--ignoreCache"];
     const context = process.env.CONTEXT;
     let baseURL = process.env.URL;
+    let environment = "production";
+    
     if (context == "branch-deploy" || context == "deploy-preview") {
         baseURL = process.env.DEPLOY_PRIME_URL;
+        environment = "development";
     }
+
+    params.push("--environment");
+    params.push(environment);
+
     if (baseURL != null) {
         params.push("--baseURL");
         params.push(baseURL);
