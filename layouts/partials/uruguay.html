@@ -1,8 +1,8 @@
 {{- $positives := 0 -}}
-{{- range .Site.Data.uruguay -}}
+{{- range .Site.Data.uruguay.data -}}
 {{- $positives = add $positives .positives -}}
 {{- end -}}
-{{- $last := index (last 1 .Site.Data.uruguay) 0 -}}
+{{- $last := index (last 1 .Site.Data.uruguay.data) 0 -}}
 {{- $cases := $last.cases -}}
 {{- $deaths := cond (isset $last "deaths") $last.deaths 0  -}}
 {{- $recovered := cond (isset $last "recovered") $last.recovered 0  -}}

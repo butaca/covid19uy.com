@@ -1,4 +1,4 @@
-{{- $last := last 2 .Site.Data.uruguay -}}
+{{- $last := last 2 .Site.Data.uruguay.data -}}
 {{- $today := index $last 1 -}}
 {{- $yesterday := index $last 0 -}}
 {{- $tests := $today.tests }}

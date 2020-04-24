@@ -1,5 +1,4 @@
 import data from "../../data/uruguay.json";
-import constants from "../../data/uruguay-constants.json";
 import langEs from "../../i18n/es.yaml";
 import langEn from "../../i18n/en.yaml";
 import "./chartjs-elements";
@@ -77,7 +76,7 @@ function main() {
     var dailyCases = [];
     var prevDayTotalCases = 0;
 
-    data.forEach(function (el, index) {
+    data.data.forEach(function (el, index) {
         var todayPositives = el.positives;
         dialyPositives.push(todayPositives);
 
@@ -334,7 +333,7 @@ function main() {
         }
     });
 
-    var totalTests = getTotal(dailyTests) + constants.unreportedDailyTests;
+    var totalTests = getTotal(dailyTests) + data.unreportedDailyTests;
     var totalPositives = positives[positives.length - 1];
     var totalNegatives = totalTests - totalPositives;
 
