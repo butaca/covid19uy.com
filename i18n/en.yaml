@@ -92,7 +92,7 @@ graphTitleActiveCases:
   other: Cases evolution
 
 graphTitleActiveCasesDesc:
-  other: Active cases per day, recovered and deaths. 👈 this is the curve that we have to flatten. The active cases are the people that currently have the virus, calculated as the total cases minus the recovered and deaths.
+  other: Active cases per day, recovered and deaths. 👉 The active cases curve is the one we have to flatten. The active cases are the people that currently have the virus, calculated as the total cases minus the recovered and deaths.
 
 graphTitleTotalCases:
   other: Cumulative cases
