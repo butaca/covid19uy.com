@@ -165,5 +165,3 @@ exports.webpackBuild = webpackBuild;
 exports.develop = gulp.series([downloadData, build, gulp.parallel(watch, hugoServer)]);
 exports.deploy = gulp.series([downloadData, updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS]);
 exports.default = exports.develop;
-
-exports.updateLastMod = updateLastMod;
