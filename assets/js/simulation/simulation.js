@@ -14,7 +14,7 @@ function getRandomInt(min, max) {
 
 var Disease = {
     infectionDistance: 16,
-    infectionProb: 0.25,
+    infectionProb: 0.5,
     infectionMinDays: 0.1,
     daysDuration: 14,
     mortalityRate: 0.03
@@ -103,6 +103,7 @@ var Person = function (x, y, areaWidth, areaHeight) {
     this.setState(State.NORMAL);
     this.infectedTime = 0;
     this.exposureTime = 0;
+    this.exposedLastFrame = false;
 };
 
 Person.prototype.setState = function (state) {
@@ -124,6 +125,7 @@ Person.prototype.setState = function (state) {
 
 Person.prototype.addExposureTime = function (time) {
     this.exposureTime += time;
+    this.exposedLastFrame = true;
 }
 
 Person.prototype.update = function (dt) {
@@ -164,7 +166,7 @@ Person.prototype.update = function (dt) {
         //TODO: assuming 1 day = 1 second
         var infectionDays = this.exposureTime;
 
-        if (infectionDays >= Disease.infectionMinDays && Math.random() < Disease.infectionProb) {
+        if (infectionDays >= Disease.infectionMinDays && Math.random() <= Disease.infectionProb) {
             this.setState(State.INFECTED);
         }
     } else if (this.state == State.INFECTED) {
@@ -181,5 +183,9 @@ Person.prototype.update = function (dt) {
                 this.setState(State.RECOVERED);
             }
         }
+    }
+
+    if(!this.exposedLastFrame) {
+        this.exposureTime = 0;
     }
 }
