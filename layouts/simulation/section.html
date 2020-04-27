@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Simulation</title>
+    <title>{{ .Title }}</title>
     <!-- TODO: optimize -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
     <script defer src='https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js'></script>
@@ -15,6 +15,7 @@
     <section class="section">
         <div class="container">
             <div class="content">
+                <h1 class="title">{{ .Title }}</h1>
                 <div class="columns is-centered">
                     <div class="column is-6">
                         <canvas id="sim" width="512" height="512"></canvas>
