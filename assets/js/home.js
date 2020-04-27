@@ -4,7 +4,11 @@ import langEn from "../../i18n/en.yaml";
 import "./chartjs-elements";
 import Cookies from 'js-cookie';
 
-document.addEventListener("DOMContentLoaded", main);
+if (document.readyState === 'loading') {
+    document.addEventListener("DOMContentLoaded", main);
+} else {
+    main();
+}
 
 function burger() {
     var navbar = document.getElementById('navbar');
