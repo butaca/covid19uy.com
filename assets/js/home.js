@@ -147,18 +147,6 @@ function main() {
                 backgroundColor: "#28b8d680",
                 label: lang.activeCases.other,
                 data: activeCases,
-            },
-            {
-                pointBackgroundColor: "#0000ffff",
-                backgroundColor: "#0000ff80",
-                label: lang.recovered.other,
-                data: recovered,
-            },
-            {
-                pointBackgroundColor: "#e54acfff",
-                backgroundColor: "#e54acfff",
-                label: lang.deaths.other,
-                data: deaths,
             }]
         },
         options: {
@@ -185,6 +173,18 @@ function main() {
                 backgroundColor: "#28b8d680",
                 label: lang.totalCases.other,
                 data: cases,
+            },
+            {
+                pointBackgroundColor: "#0000ffff",
+                backgroundColor: "#0000ff80",
+                label: lang.recovered.other,
+                data: recovered,
+            },
+            {
+                pointBackgroundColor: "#e54acfff",
+                backgroundColor: "#e54acfff",
+                label: lang.deaths.other,
+                data: deaths,
             }]
         },
         options: {
