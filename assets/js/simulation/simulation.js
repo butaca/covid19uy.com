@@ -17,7 +17,7 @@ function onDOMLoaded() {
     const Disease = {
         contagionDistance: 16,
         contagionProb: 0.1,
-        contagionMinDays: 0.05,
+        contagionMinDays: 1/24,
         infectionDurationDays: 14,
         mortalityRate: 0.03,
     };
