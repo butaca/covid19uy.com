@@ -16,6 +16,104 @@
         <div class="container">
             <div class="content">
                 <h1 class="title">{{ .Title }}</h1>
+                <div class="columns">
+                    <div class="column is-6">
+                        <div>
+                            <!-- TODO: i18n -->
+                            <p class="is-size-5 has-text-weight-bold">
+                                Disease
+                            </p>
+
+                            <table class="table is-narrow is-hoverable">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <label for="contagion-distance">
+                                                Contagion distance:
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <input id="contagion-distance" type="range" min="1" max="100" value="16">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="contagion-prob">
+                                                Contagion probability (%):
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <input id="contagion-prob" type="range" min="0" max="100" value="10">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="contagion-min-hours">
+                                                Contagion minimum time (hours):
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <input id="contagion-min-hours" type="range" min="0" max="24" value="1">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="infection-duration">
+                                                Infection duration (days):
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <input id="infection-duration" type="range" min="0" max="100" value="14">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="mortality-rate">
+                                                Mortality rate (%):
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <input id="mortality-rate" type="range" min="0" max="100" value="3">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="column is-6">
+                        <div>
+                            <!-- TODO: i18n -->
+                            <p class="is-size-5 has-text-weight-bold">
+                                Society
+                            </p>
+                            <table class="table is-narrow is-hoverable">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <label for="avoidance-distance">
+                                                Avoidance distance:
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <input id="avoidance-distance" type="range" min="0" max="100" value="32">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="avodiance-prob">
+                                                Avoidance probability (%):
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <input id="avodiance-prob" type="range" min="0" max="100" value="80">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
                 <!-- TODO: i18n -->
                 <button id="restart" class="button">Restart</button>
                 <div class="columns is-centered">
