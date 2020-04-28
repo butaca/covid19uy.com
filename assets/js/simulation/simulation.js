@@ -24,7 +24,7 @@ function onDOMLoaded() {
 
     const Society = {
         avoidanceDistance: 32,
-        avoidanceProb: 0
+        avoidanceProb: 0.8
     };
 
     const State = {
