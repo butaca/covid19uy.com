@@ -101,28 +101,27 @@ function onDOMLoaded() {
             this.avoidanceY = 0;
             this.do.x += dt * velX;
             this.do.y += dt * velY;
-            const halfRadius = this.radius * 0.5;
-            const left = this.do.x - halfRadius;
+            const left = this.do.x - this.radius;
             if (left < 0) {
-                this.do.x = -left + halfRadius;
+                this.do.x = -left + this.radius;
                 this.dirX *= -1;
             }
             else {
-                const right = this.do.x + halfRadius;
+                const right = this.do.x + this.radius;
                 if (right > this.areaWidth) {
-                    this.do.x = this.areaWidth - (right - this.areaWidth) - halfRadius;
+                    this.do.x = this.areaWidth - (right - this.areaWidth) - this.radius;
                     this.dirX *= -1;
                 }
             }
-            const top = this.do.y - halfRadius;
+            const top = this.do.y - this.radius;
             if (top < 0) {
-                this.do.y = -top + halfRadius;
+                this.do.y = -top + this.radius;
                 this.dirY *= -1;
             }
             else {
-                const bottom = this.do.y + halfRadius;
+                const bottom = this.do.y + this.radius;
                 if (bottom > this.areaHeight) {
-                    this.do.y = this.areaHeight - (bottom - this.areaHeight) - halfRadius;
+                    this.do.y = this.areaHeight - (bottom - this.areaHeight) - this.radius;
                     this.dirY *= -1;
                 }
             }
