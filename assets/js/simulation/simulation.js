@@ -132,8 +132,9 @@ function onDOMLoaded() {
     };
 
     const DiseaseChart = function (id, people) {
-        this.sampleTime = 0.5;
+        this.sampleTime = 0.25;
         this.time = 0;
+        this.totalTime = 0;
         this.done = false;
         this.people = people;
         const ctx = document.getElementById(id);
@@ -172,6 +173,7 @@ function onDOMLoaded() {
     DiseaseChart.prototype.update = function (dt) {
         if (!this.done) {
             this.time -= dt;
+            this.totalTime += dt;
             if (this.time <= 0) {
                 let totalInfected = 0;
                 let totalDeaths = 0;
@@ -187,7 +189,8 @@ function onDOMLoaded() {
                 this.time += this.sampleTime;
                 this.chart.data.datasets[0].data.push(totalInfected);
                 this.chart.data.datasets[1].data.push(totalDeaths);
-                this.chart.data.labels.push((this.chart.data.labels.length + 1).toString());
+                //TODO: assuming 1 day = 1 second
+                this.chart.data.labels.push(Math.floor(this.totalTime));
                 this.chart.update();
                 if (totalInfected == 0) {
                     this.done = true;
