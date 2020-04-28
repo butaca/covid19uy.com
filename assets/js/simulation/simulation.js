@@ -16,7 +16,7 @@ function onDOMLoaded() {
 
     const Disease = {
         infectionDistance: 16,
-        infectionProb: 0.5,
+        infectionProb: 0.1,
         infectionMinDays: 0.1,
         daysDuration: 14,
         mortalityRate: 0.03
@@ -107,8 +107,13 @@ function onDOMLoaded() {
             //TODO: assuming 1 day = 1 second
             const infectionDays = this.exposureTime;
 
-            if (infectionDays >= Disease.infectionMinDays && Math.random() <= Disease.infectionProb) {
-                this.setState(State.INFECTED);
+            if (infectionDays >= Disease.infectionMinDays) {
+                if(Math.random() <= Disease.infectionProb) {
+                    this.setState(State.INFECTED);
+                }
+                else {
+                    this.exposureTime = 0.0;
+                }
             }
         } else if (this.state == State.INFECTED) {
             this.infectedTime += dt;
