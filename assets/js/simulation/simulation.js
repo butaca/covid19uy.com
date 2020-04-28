@@ -30,14 +30,21 @@ function onDOMLoaded() {
     }
 
     const Person = function (texture, radius, x, y, areaWidth, areaHeight) {
+        this.startX = x;
+        this.startY = y;
         this.areaWidth = areaWidth;
         this.areaHeight = areaHeight;
         this.radius = radius;
         this.do = new PIXI.Sprite(texture);
         this.do.anchor.set(0.5, 0.5);
-        this.do.x = x;
-        this.do.y = y;
+
+        this.restart();
+    };
+
+    Person.prototype.restart = function() {
         this.speed = 64;
+        this.do.x = this.startX;
+        this.do.y = this.startY;
         let dirAngle = Math.random() * Math.PI * 2 - Math.PI;
         this.dirX = Math.cos(dirAngle);
         this.dirY = Math.sin(dirAngle);
@@ -138,9 +145,6 @@ function onDOMLoaded() {
 
     const DiseaseChart = function (id, people) {
         this.sampleTime = 0.25;
-        this.time = 0;
-        this.totalTime = 0;
-        this.done = false;
         this.people = people;
         const ctx = document.getElementById(id);
         this.chart = new Chart(ctx, {
@@ -173,6 +177,8 @@ function onDOMLoaded() {
                 }
             }
         });
+
+        this.restart();
     };
 
     DiseaseChart.prototype.update = function (dt) {
@@ -202,6 +208,16 @@ function onDOMLoaded() {
                 }
             }
         }
+    };
+
+    DiseaseChart.prototype.restart = function() {
+        this.chart.data.datasets[0].data = [];
+        this.chart.data.datasets[1].data = [];
+        this.chart.data.labels = [];
+        this.chart.update();
+        this.time = 0;
+        this.totalTime = 0;
+        this.done = false;
     };
 
     const width = 512;
@@ -235,14 +251,27 @@ function onDOMLoaded() {
         }
     }
 
-    const randomPerson = people[getRandomInt(0, people.length)];
-    randomPerson.setState(State.INFECTED);
-
     app.ticker.add(function () { gameLoop(app.ticker.deltaMS * 0.001); });
 
     const chart = new DiseaseChart("chart", people);
 
+    const btnRestart = document.getElementById('restart');
+    btnRestart.addEventListener('click', restart);
+
+    let restartGame = true;
+
     function gameLoop(dt) {
+        if(restartGame) {
+            for(var i = 0; i < people.length; ++i) {
+                people[i].restart();
+            }
+            chart.restart();
+            restartGame = false;
+
+            const randomPerson = people[getRandomInt(0, people.length)];
+            randomPerson.setState(State.INFECTED);
+        }
+
         for (let i = 0; i < people.length; ++i) {
             people[i].update(dt);
         }
@@ -275,5 +304,10 @@ function onDOMLoaded() {
             app.ticker.stop();
         }
 
+    }
+
+    function restart() {
+        app.ticker.start();
+        restartGame = true;
     }
 }
