@@ -269,20 +269,6 @@ function main() {
         }
     });
 
-    function isMobile() {
-        var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-        return width <= 768;
-    }
-
-    function getPiePadding() {
-        return isMobile() ? 0 : 0;
-    }
-
-    function onResizePie(chart) {
-        chart.options.layout.padding = getPiePadding();
-        chart.update();
-    }
-
     var pieToolTips = {
         callbacks: {
             title: function (tooltipItem, data) {
@@ -329,10 +315,6 @@ function main() {
                     sidePadding: 15
                 }
             },
-            layout: {
-                padding: getPiePadding()
-            },
-            onResize: onResizePie,
             tooltips: pieToolTips
         }
     });
@@ -375,10 +357,6 @@ function main() {
                     sidePadding: 15
                 }
             },
-            layout: {
-                padding: getPiePadding()
-            },
-            onResize: onResizePie,
             tooltips: pieToolTips
         }
     });
