@@ -53,5 +53,10 @@
         "id": "chart-daily-hospitalizations",
         "title": "graphTitleDailyHospitalizations",
         "desc": "graphTitleDailyHospitalizationsDesc"
+    },
+    {
+        "id": "chart-daily-hospitalizations-percent",
+        "title": "graphTitleDailyHospitalizationsPercent",
+        "desc": "graphTitleDailyHospitalizationsPercentDesc"
     }
 ]
