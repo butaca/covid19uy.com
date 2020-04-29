@@ -206,7 +206,7 @@ function main() {
         data: {
             labels: dates.slice(firstDailyTestsValidIndex),
             datasets: [{
-                backgroundColor: "#d9554c80",
+                backgroundColor: "#7732a880",
                 label: lang.dailyPositives.other,
                 data: dialyPositives.slice(firstDailyTestsValidIndex),
             },
@@ -340,7 +340,7 @@ function main() {
             labels: chartTestsLabels,
             datasets: [{
                 data: chartTestsData,
-                backgroundColor: ["#d9554c80", "#83d02a80"]
+                backgroundColor: ["#7732a880", "#83d02a80"]
             }]
         },
         options: {
@@ -373,8 +373,8 @@ function main() {
         data: {
             labels: dates.slice(firstDailyTestsValidIndex),
             datasets: [{
-                pointBackgroundColor: "#d9554cff",
-                backgroundColor: "#d9554c80",
+                pointBackgroundColor: "#7732a8ff",
+                backgroundColor: "#7732a880",
                 label: lang.graphTitleDailyPositives.other,
                 data: dailyPositivesPercent.slice(firstDailyTestsValidIndex),
             }]
