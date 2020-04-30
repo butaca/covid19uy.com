@@ -226,7 +226,7 @@ function onDOMLoaded() {
 
         restart() {
             for (let i = 0; i < this.chart.data.datasets.length; ++i) {
-                this.chart.data.datasets[0].data = [];
+                this.chart.data.datasets[i].data = [];
             }
             this.chart.data.labels = [];
             this.chart.update();
