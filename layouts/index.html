@@ -20,6 +20,12 @@
             <h1 class="title">
                 {{ .Title }}
             </h1>
+            <div>
+                <a href="{{ "/simulation" | relLangURL }}">
+                    <span class="tag is-danger">{{ i18n "new"}}</span>
+                    {{ i18n "simulation" }}
+                </a>
+            </div>
             <div class="content">
                 {{ partial "uruguay.html" . }}
             </div>
@@ -43,7 +49,7 @@
                 <p class="has-text-centered is-size-7 has-padding-top-sm">{{ i18n "dataSource" }}:
                     <a href="https://www.gub.uy/ministerio-salud-publica/coronavirus" target="_blank"
                         rel="noopener noreferrer">{{ i18n "msp" }}</a> {{ i18n "and" }}
-                        <a href="https://www.gub.uy/sistema-nacional-emergencias/" target="_blank"
+                    <a href="https://www.gub.uy/sistema-nacional-emergencias/" target="_blank"
                         rel="noopener noreferrer">Sistema Nacional de Emergencias</a>.
                 </p>
             </div>

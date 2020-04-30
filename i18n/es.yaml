@@ -200,3 +200,9 @@ avoidanceDistance:
 
 avodianceProb:
   other: Probabilidad de distanciamiento social (%)
+
+new:
+  other: Nuevo!
+
+simulation:
+  other: Simulación de coronavirus

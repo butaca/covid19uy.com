@@ -27,6 +27,11 @@ Si no querés aparecer en éstas gráficas, **quedate en casa**. Si no querés q
 * ⚠️ Alrededor del 60% de las personas con coronavirus muestran síntomas leves o nulos. [[fuente][asymptomatic_cases]]
 * 🏥 Ayudamos a **no sobrecargar el sistema de salud** y entonces a **salvar vidas**.
 
+{{< tag class="is-danger" >}}
+NUEVO!
+{{< /tag >}}
+Te invito a jugar con mi [simulador de coronavirus][simulator] donde podrás ver de manera visual el impacto del distanciamiento social.
+
 {{< world >}}
 
 ## Los famosos quieren que te quedes en casa
@@ -63,3 +68,4 @@ O bien podés colaborar con instituciones gubernamentales:
 [coronaviruswikipedia]: https://es.wikipedia.org/wiki/Pandemia_de_enfermedad_por_coronavirus_de_2020_en_Uruguay
 [asymptomatic_cases]: https://www.medrxiv.org/content/10.1101/2020.03.03.20030593v1
 [donacionesPN]: https://www.gub.uy/sistema-nacional-emergencias/comunicacion/comunicados/donaciones-para-plan-nacional-coronavirus-covid-19
+[simulator]: /simulation

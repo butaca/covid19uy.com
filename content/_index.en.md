@@ -28,6 +28,11 @@ If you don't want to appear in these charts, **stay home**. If you don't want yo
 * ⚠️ About 60% of people with coronavirus show mild or no symptoms. [[source][asymptomatic_cases]]
 * 🏥 We help to **avoid overloading the health system** and therefore to **save lives**.
 
+{{< tag class="is-danger" >}}
+New!
+{{< /tag >}}
+I invite you to play with my [coronavirus simulator][simulator] where you can visually see the impact of social distancing.
+
 {{< world >}}
 
 ## Celebrities want you to stay home
@@ -64,3 +69,4 @@ Or you can collaborate with government institutions:
 [coronaviruswikipedia]: https://es.wikipedia.org/wiki/Pandemia_de_enfermedad_por_coronavirus_de_2020_en_Uruguay
 [asymptomatic_cases]: https://www.medrxiv.org/content/10.1101/2020.03.03.20030593v1
 [donacionesPN]: https://www.gub.uy/sistema-nacional-emergencias/comunicacion/comunicados/donaciones-para-plan-nacional-coronavirus-covid-19
+[simulator]: /en/simulation
