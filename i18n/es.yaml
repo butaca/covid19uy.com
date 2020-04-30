@@ -92,13 +92,13 @@ graphTitleActiveCases:
   other: Evolución de casos
 
 graphTitleActiveCasesDesc:
-  other: Casos activos por día, recuperados y muertes. 👉 La curva de casos activos es la que tenemos que achatar ("flatten the curve"). Los casos activos son los personas que en éste momento tienen el virus, calculados como el total de casos menos los recuperados y las muertes.
+  other: Casos activos por día. 👉 Esta es la curva que tenemos que achatar ("flatten the curve"). Los casos activos son los personas que en éste momento tienen el virus, calculados como el total de casos menos los recuperados y los fallecidos.
 
 graphTitleTotalCases:
-  other: Casos acumulados
+  other: Casos acumulados, recuperados y fallecidos
 
 graphTitleTotalCasesDesc:
-  other: En cada día, suma total de casos confirmados hasta ese día.
+  other: En cada día, suma total de casos confirmados, recuperados y fallecidos hasta ese día.
 
 graphTitleDailyTests:
   other: Tests y positivos diarios
@@ -117,6 +117,12 @@ graphTitleDailyHospitalizations:
 
 graphTitleDailyHospitalizationsDesc:
   other: Cantidad de personas que se encuentran en cuidados intermedios y cuidados intensivos cada día.
+
+graphTitleDailyHospitalizationsPercent:
+  other: Porcentaje de hospitalizaciones
+
+graphTitleDailyHospitalizationsPercentDesc:
+  other: Porcentaje de hospitalizaciones de los casos activos en cada día.
 
 graphTitleTotals:
   other: Casos totales

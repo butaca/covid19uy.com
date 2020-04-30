@@ -92,13 +92,13 @@ graphTitleActiveCases:
   other: Cases evolution
 
 graphTitleActiveCasesDesc:
-  other: Active cases per day, recovered and deaths. 👉 The active cases curve is the one we have to flatten. The active cases are the people that currently have the virus, calculated as the total cases minus the recovered and deaths.
+  other: Active cases per day. 👉 This is the curve we have to flatten. The active cases are the people that currently have the virus, calculated as the total cases minus the recovered and deaths.
 
 graphTitleTotalCases:
-  other: Cumulative cases
+  other: Cumulative cases, recovered and deaths
 
 graphTitleTotalCasesDesc:
-  other: On each day, the total sum of confirmed cases up to that day.
+  other: On each day, the total sum of confirmed cases, recovered and deaths up to that day.
 
 graphTitleDailyTests:
   other: Daily tests and positives
@@ -117,6 +117,12 @@ graphTitleDailyHospitalizations:
 
 graphTitleDailyHospitalizationsDesc:
   other: Number of people in intermediate care and intensive care each day.
+
+graphTitleDailyHospitalizationsPercent:
+  other: Hospitalizations percentage
+
+graphTitleDailyHospitalizationsPercentDesc:
+  other: Percentage of hospitalizations of active cases on each day.
 
 graphTitleTotals:
   other: Total Cases

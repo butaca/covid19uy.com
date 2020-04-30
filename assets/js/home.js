@@ -4,7 +4,11 @@ import langEn from "../../i18n/en.yaml";
 import "./chartjs-elements";
 import Cookies from 'js-cookie';
 
-document.addEventListener("DOMContentLoaded", main);
+if (document.readyState === 'loading') {
+    document.addEventListener("DOMContentLoaded", main);
+} else {
+    main();
+}
 
 function burger() {
     var navbar = document.getElementById('navbar');
@@ -63,6 +67,8 @@ function main() {
     var activeCases = [];
     var dailyICU = [];
     var dailyIMCU = [];
+    var dailyICUPercent = [];
+    var dailyIMCUPercent = [];
     var firstHopitalizationsValidIndex = -1;
     var prevDayTotalPositives = 0;
     var firstValidHealthcareWorkerIndex = -1;
@@ -111,13 +117,17 @@ function main() {
         prevDayTotalCases = totalTodayCases;
         dailyCases.push(todayCases);
 
-        activeCases.push(totalTodayCases - todayTotalDeaths - todayTotalRecovered);
+        var todayActiveCases = totalTodayCases - todayTotalDeaths - todayTotalRecovered;
+        activeCases.push(todayActiveCases);
 
         var todayICU = el.icu != undefined ? el.icu : 0;
         var todayIMCU = el.imcu != undefined ? el.imcu : 0;
 
         dailyICU.push(todayICU);
         dailyIMCU.push(todayIMCU);
+
+        dailyICUPercent.push((todayICU / todayActiveCases * 100).toFixed(2));
+        dailyIMCUPercent.push((todayIMCU / todayActiveCases * 100).toFixed(2));
 
         if (firstHopitalizationsValidIndex < 0 && (todayICU > 0 || todayIMCU > 0)) {
             firstHopitalizationsValidIndex = index;
@@ -143,18 +153,6 @@ function main() {
                 backgroundColor: "#28b8d680",
                 label: lang.activeCases.other,
                 data: activeCases,
-            },
-            {
-                pointBackgroundColor: "#0000ffff",
-                backgroundColor: "#0000ff80",
-                label: lang.recovered.other,
-                data: recovered,
-            },
-            {
-                pointBackgroundColor: "#e54acfff",
-                backgroundColor: "#e54acfff",
-                label: lang.deaths.other,
-                data: deaths,
             }]
         },
         options: {
@@ -181,6 +179,18 @@ function main() {
                 backgroundColor: "#28b8d680",
                 label: lang.totalCases.other,
                 data: cases,
+            },
+            {
+                pointBackgroundColor: "#0000ffff",
+                backgroundColor: "#0000ff80",
+                label: lang.recovered.other,
+                data: recovered,
+            },
+            {
+                pointBackgroundColor: "#e54acfff",
+                backgroundColor: "#e54acfff",
+                label: lang.deaths.other,
+                data: deaths,
             }]
         },
         options: {
@@ -196,12 +206,12 @@ function main() {
         data: {
             labels: dates.slice(firstDailyTestsValidIndex),
             datasets: [{
-                backgroundColor: "#97DBEAFF",
+                backgroundColor: "#7732a880",
                 label: lang.dailyPositives.other,
                 data: dialyPositives.slice(firstDailyTestsValidIndex),
             },
             {
-                backgroundColor: "#83d02a80",
+                backgroundColor: "#ecdb3c80",
                 label: lang.dailyTests.other,
                 data: dailyTests.slice(firstDailyTestsValidIndex),
             }]
@@ -265,20 +275,6 @@ function main() {
         }
     });
 
-    function isMobile() {
-        var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-        return width <= 768;
-    }
-
-    function getPiePadding() {
-        return isMobile() ? 0 : 0;
-    }
-
-    function onResizePie(chart) {
-        chart.options.layout.padding = getPiePadding();
-        chart.update();
-    }
-
     var pieToolTips = {
         callbacks: {
             title: function (tooltipItem, data) {
@@ -325,10 +321,6 @@ function main() {
                     sidePadding: 15
                 }
             },
-            layout: {
-                padding: getPiePadding()
-            },
-            onResize: onResizePie,
             tooltips: pieToolTips
         }
     });
@@ -348,7 +340,7 @@ function main() {
             labels: chartTestsLabels,
             datasets: [{
                 data: chartTestsData,
-                backgroundColor: ["#28b8d680", "#0000ff80"]
+                backgroundColor: ["#7732a880", "#83d02a80"]
             }]
         },
         options: {
@@ -371,10 +363,6 @@ function main() {
                     sidePadding: 15
                 }
             },
-            layout: {
-                padding: getPiePadding()
-            },
-            onResize: onResizePie,
             tooltips: pieToolTips
         }
     });
@@ -385,8 +373,8 @@ function main() {
         data: {
             labels: dates.slice(firstDailyTestsValidIndex),
             datasets: [{
-                pointBackgroundColor: "#28b8d6ff",
-                backgroundColor: "#28b8d680",
+                pointBackgroundColor: "#7732a8ff",
+                backgroundColor: "#7732a880",
                 label: lang.graphTitleDailyPositives.other,
                 data: dailyPositivesPercent.slice(firstDailyTestsValidIndex),
             }]
@@ -468,6 +456,48 @@ function main() {
                 callbacks: {
                     label: function (tooltipItem, data) {
                         return data['datasets'][0]['data'][tooltipItem['index']] + " %";
+                    }
+                }
+            },
+            animation: {
+                duration: 0
+            }
+        }
+    });
+
+    ctx = document.getElementById('chart-daily-hospitalizations-percent');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dates.slice(firstHopitalizationsValidIndex),
+            datasets: [{
+                pointBackgroundColor: "#d9554cff",
+                backgroundColor: "#d9554c80",
+                label: lang.icu.other,
+                data: dailyICUPercent.slice(firstHopitalizationsValidIndex),
+            }/*,
+            {
+                pointBackgroundColor: "#d9554cff",
+                backgroundColor: "#ecdb3c80",
+                label: lang.imcu.other,
+                data: dailyIMCUPercent.slice(firstHopitalizationsValidIndex),
+            }*/
+        ]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        callback: function (value) {
+                            return value + "%"
+                        }
+                    }
+                }]
+            },
+            tooltips: {
+                callbacks: {
+                    label: function (tooltipItem, data) {
+                        return data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']] + " %";
                     }
                 }
             },
