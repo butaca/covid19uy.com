@@ -4,3 +4,5 @@ static/js/main.js
 static/js/main.js.LICENSE.txt
 public
 world.json
+static/simulation/js/simulation.js
+static/simulation/js/simulation.js.LICENSE.txt

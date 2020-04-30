@@ -15,7 +15,7 @@ const moment = require("moment");
 const nodeModules = './node_modules';
 
 const paths = {
-    webpackEntry: './assets/js/index.js',
+    webpackEntry: './assets/js/home.js',
     srcJS: ['./assets/js/**/*.js', './data/**/*.json', './i18n/**/*.yaml'],
     destJS: './static/js',
     mainSCSS: './assets/sass/main.scss',
@@ -23,6 +23,12 @@ const paths = {
     destCSS: './static/css',
     deploy: 'public'
 };
+
+const simulationPaths = {
+    webpackEntry: './assets/js/simulation/simulation.js',
+    srcJS: './assets/js/**/*.js',
+    destJS: './static/simulation/js',
+}
 
 function sassBuild() {
     return gulp.src(paths.mainSCSS)
@@ -61,7 +67,35 @@ function webpackWatch() {
     return gulp.watch(paths.srcJS, webpackBuild);
 };
 
-const build = gulp.parallel([sassBuild, webpackBuild]);
+function simulationBuild() {
+    
+    return gulp.src(simulationPaths.webpackEntry)
+        .pipe(webpack({
+            output: {
+                filename: 'simulation.js',
+            },
+            plugins: [
+                new TerserPlugin()
+            ],
+            mode: "production",
+            module: {
+                rules: [
+                    {
+                        test: /\.ya?ml$/,
+                        type: 'json',
+                        use: 'yaml-loader'
+                    }
+                ]
+            }
+        }))
+        .pipe(gulp.dest(simulationPaths.destJS));
+};
+
+function simulationWatch() {
+    return gulp.watch(simulationPaths.srcJS, simulationBuild);
+};
+
+const build = gulp.series([gulp.parallel([sassBuild, webpackBuild]), simulationBuild]);
 
 function hugoBuild(cb) {
     const params = ["--gc", "--verbose", "--cleanDestinationDir", "--ignoreCache"];
@@ -148,7 +182,7 @@ async function downloadData() {
     fs.writeFileSync("./data/world.json", JSON.stringify(result));
 }
 
-const watch = gulp.parallel([sassWatch, webpackWatch]);
+const watch = gulp.parallel([sassWatch, webpackWatch, simulationWatch]);
 
 function updateLastMod() {
     return gulp.src('content/_index*.md')

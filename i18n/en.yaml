@@ -168,3 +168,35 @@ and:
 
 sinae:
   other: National Emergency System
+
+### Simulator
+
+restart:
+  other: Restart
+
+virus:
+  other: Virus
+
+society:
+  other: Society
+
+contagionDistanceTitle:
+  other: Contagion distance
+
+contagionProbTitle:
+  other: Contagion probability (%)
+
+contagionMinHours:
+  other: Contagion minimum time (hours)
+
+infectionDuration:
+  other: Infection duration (days)
+
+mortalityRate:
+  other: Mortality rate (%)
+
+avoidanceDistance:
+  other: Social distancing
+
+avodianceProb:
+  other: Social distancing probability (%)

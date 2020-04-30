@@ -168,3 +168,35 @@ and:
 
 sinae:
   other: Sistema Nacional de Emergencias
+
+### Simulator
+
+restart:
+  other: Reiniciar
+
+virus:
+  other: Virus
+
+society:
+  other: Sociedad
+
+contagionDistanceTitle:
+  other: Distancia de contagio
+
+contagionProbTitle:
+  other: Probabilidad de contagio (%)
+
+contagionMinHours:
+  other: Tiempo mínimo de contagio (horas)
+
+infectionDuration:
+  other: Duración de la infección (días)
+
+mortalityRate:
+  other: Tasa de mortalidad (%)
+
+avoidanceDistance:
+  other: Distanciamiento social 
+
+avodianceProb:
+  other: Probabilidad de distanciamiento social (%)

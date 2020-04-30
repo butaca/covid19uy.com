@@ -1,0 +1,56 @@
+<div class="columns">
+    <div class="column is-6">
+        <div>
+            <p class="is-size-5 has-text-weight-bold">
+                {{ i18n "virus" }}
+            </p>
+
+            <table class="table is-narrow is-hoverable">
+                <tbody>
+                    {{ range .Site.Data.simulation.disease  }}
+                    <tr>
+                        <td>
+                            <label for="{{ .id }}">{{ i18n .title }}:</label>
+                        </td>
+                        <td>
+                            <div class="simulation-param">
+                                <!-- TODO: move style to css -->
+                                <span class="tag is-info is-light has-text-weight-bold" style="min-width: 5em;"></span>
+                                <input id="{{ .id }}" type="range" min="{{ .min }}" max="{{ .max }}"
+                                    value="{{ .default }}">
+                            </div>
+                        </td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="column is-6">
+        <div>
+            <p class="is-size-5 has-text-weight-bold">
+                {{ i18n "society" }}
+            </p>
+            <table class="table is-narrow is-hoverable">
+                <tbody>
+                    {{ range .Site.Data.simulation.society  }}
+                    <tr>
+                        <td>
+                            <label for="{{ .id }}">{{ i18n .title }}:</label>
+                        </td>
+                        <td>
+                            <div class="simulation-param">
+                                <!-- TODO: move style to css -->
+                                <span class="tag is-info is-light has-text-weight-bold" style="min-width: 5em;"></span>
+                                <input id="{{ .id }}" type="range" min="{{ .min }}" max="{{ .max }}"
+                                    value="{{ .default }}">
+                            </div>
+                        </td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
