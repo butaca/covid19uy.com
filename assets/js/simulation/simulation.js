@@ -17,7 +17,7 @@ function onDOMLoaded() {
     const Disease = {
         contagionDistance: 16,
         contagionProb: 0.1,
-        contagionMinDays: 1/24,
+        contagionMinDays: 1 / 24,
         infectionDurationDays: 14,
         mortalityRate: 0.03,
     };
@@ -225,7 +225,7 @@ function onDOMLoaded() {
         }
 
         restart() {
-            for(let i = 0; i < this.chart.data.datasets.length; ++i) {
+            for (let i = 0; i < this.chart.data.datasets.length; ++i) {
                 this.chart.data.datasets[0].data = [];
             }
             this.chart.data.labels = [];
@@ -234,7 +234,34 @@ function onDOMLoaded() {
             this.totalTime = 0;
             this.done = false;
         }
-        
+
+    }
+
+    let bindings = {};
+    bindings["contagion-distance"] = { target: Disease, name: "contagionDistance", update(value) { this.target[this.name] = value; } };
+    bindings["contagion-prob"] = { target: Disease, name: "contagionProb", update(value) { this.target[this.name] = value * 0.01; } };
+    bindings["contagion-min-hours"] = { target: Disease, name: "contagionMinDays", update(value) { this.target[this.name] = value / 24; } };
+    bindings["infection-duration"] = { target: Disease, name: "infectionDurationDays", update(value) { this.target[this.name] = value; } };
+    bindings["mortality-rate"] = { target: Disease, name: "mortalityRate", update(value) { this.target[this.name] = value * 0.01; } };
+
+    bindings["avoidance-distance"] = { target: Society, name: "avoidanceDistance", update(value) { this.target[this.name] = value; } };
+    bindings["avodiance-prob"] = { target: Society, name: "avoidanceProb", update(value) { this.target[this.name] = value * 0.01; } };
+
+    const ranges = document.querySelectorAll(".simulation-param");
+    for (let i = 0; i < ranges.length; ++i) {
+        const range = ranges[i];
+        const input = range.querySelector("input");
+        const tag = range.querySelector(".tag");
+        if (input && tag) {
+            function updateTag() {
+                tag.innerHTML = input.value;
+                let binding = bindings[input.id];
+                binding.update(input.value);
+            }
+            updateTag();
+            input.addEventListener('input', updateTag);
+            input.addEventListener('change', updateTag);
+        }
     }
 
     const width = 512;
@@ -344,6 +371,7 @@ function onDOMLoaded() {
     }
 
     function restart() {
+        app.ticker.stop();
         app.ticker.start();
         restartGame = true;
     }
