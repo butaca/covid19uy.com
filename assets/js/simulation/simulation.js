@@ -187,7 +187,8 @@ function onDOMLoaded() {
                     }]
                 },
                 options: {
-                    responsive: false,
+                    responsive: true,
+                    maintainAspectRatio: true,
                     scales: {
                         yAxes: [{
                             ticks: {
@@ -278,6 +279,16 @@ function onDOMLoaded() {
 
     const app = new PIXI.Application({ view: document.getElementById('sim'), width: width, height: height, backgroundColor: 0xFAFAFA });
 
+    const resizeCanvas = function() {
+        const parent = app.view.parentNode;
+        const clientSize = Math.min(parent.clientWidth, parent.clientHeight);
+        console.log(parent.clientWidth, parent.clientHeight);
+        app.renderer.resize(clientSize, clientSize);
+        app.stage.scale.set(clientSize / width, clientSize / height);
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+
     const peopleContainer = new PIXI.Container();
     app.stage.addChild(peopleContainer);
 
@@ -311,6 +322,8 @@ function onDOMLoaded() {
 
     let restartGame = true;
 
+    resizeCanvas();
+
     function gameLoop(dt) {
         if (restartGame) {
             for (let i = 0; i < people.length; ++i) {
@@ -331,7 +344,7 @@ function onDOMLoaded() {
         for (let i = 0; i < people.length; ++i) {
             const person = people[i];
 
-            if(avoidanceProbDirty) {
+            if (avoidanceProbDirty) {
                 person.updateAvoidance();
             }
 
