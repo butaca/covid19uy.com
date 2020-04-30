@@ -47,7 +47,8 @@
         { "date": "2020-04-25", "cases": 596, "recovered": 370, "deaths": 14, "icu": 9, "hc": 93, "hcRecovered": 60, "tests": 662, "positives": 46 },
         { "date": "2020-04-26", "cases": 606, "recovered": 375, "deaths": 15, "icu": 10, "hc": 93, "hcRecovered": 61, "tests": 567, "positives": 12 },
         { "date": "2020-04-27", "cases": 620, "recovered": 386, "deaths": 15, "icu": 11, "hc": 95, "hcRecovered": 65, "tests": 442, "positives": 2 },
-        { "date": "2020-04-28", "cases": 625, "recovered": 394, "deaths": 15, "icu": 11, "hc": 95, "hcRecovered": 66, "tests": 635, "positives": 6 }
+        { "date": "2020-04-28", "cases": 625, "recovered": 394, "deaths": 15, "icu": 11, "hc": 95, "hcRecovered": 66, "tests": 635, "positives": 6 },
+        { "date": "2020-04-29", "cases": 630, "recovered": 412, "deaths": 15, "icu": 11, "hc": 95, "hcRecovered": 71, "tests": 876, "positives": 18 }
     ]
 }
 
