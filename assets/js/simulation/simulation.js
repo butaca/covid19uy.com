@@ -1,4 +1,6 @@
-import '../index'
+import burger from '../burger'
+import nfCookies from '../nf-cookies'
+import '../icons'
 
 import * as PIXI from 'pixi.js'
 import langEs from "../../../i18n/es.yaml";
@@ -17,6 +19,8 @@ function getRandomInt(min, max) {
 }
 
 function onDOMLoaded() {
+    burger();
+    nfCookies();
 
     const langs = {
         es: langEs,

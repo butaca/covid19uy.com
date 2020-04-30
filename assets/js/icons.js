@@ -11,6 +11,4 @@ import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 
 library.add(faFacebook, faTwitter, faLinkedin, faReddit, faWhatsapp, faEnvelope, faLanguage, faQuestionCircle);
 
-import './home';
-
 dom.watch();

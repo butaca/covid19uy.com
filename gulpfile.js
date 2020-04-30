@@ -15,8 +15,8 @@ const moment = require("moment");
 const nodeModules = './node_modules';
 
 const paths = {
-    webpackEntry: './assets/js/index.js',
-    srcJS: ['./assets/js/*.js', './data/**/*.json', './i18n/**/*.yaml'],
+    webpackEntry: './assets/js/home.js',
+    srcJS: ['./assets/js/**/*.js', './data/**/*.json', './i18n/**/*.yaml'],
     destJS: './static/js',
     mainSCSS: './assets/sass/main.scss',
     srcSCSS: './assets/sass/**/*.scss',
@@ -26,7 +26,7 @@ const paths = {
 
 const simulationPaths = {
     webpackEntry: './assets/js/simulation/simulation.js',
-    srcJS: './assets/js/simulation/*.js',
+    srcJS: './assets/js/**/*.js',
     destJS: './static/simulation/js',
 }
 

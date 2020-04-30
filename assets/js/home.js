@@ -2,40 +2,14 @@ import data from "../../data/uruguay.json";
 import langEs from "../../i18n/es.yaml";
 import langEn from "../../i18n/en.yaml";
 import "./chartjs-elements";
-import Cookies from 'js-cookie';
+import nfCookies from './nf-cookies'
+import burger from './burger'
+import './icons'
 
 if (document.readyState === 'loading') {
     document.addEventListener("DOMContentLoaded", main);
 } else {
     main();
-}
-
-function burger() {
-    var navbar = document.getElementById('navbar');
-    var navbarMenu = document.getElementById('navbarMenu');
-    var navbarBurger = document.getElementById('navbarBurger');
-
-    var toggleBurger = function () {
-        navbarBurger.classList.toggle('is-active');
-        navbarMenu.classList.toggle('is-active');
-    };
-
-    var navBarLinks = navbar.querySelectorAll('a[href^="#"]');
-    navBarLinks.forEach(function () {
-        el.addEventListener('click', toggleBurger);
-    });
-
-    navbarBurger.addEventListener('click', toggleBurger);
-
-    var isVisible = function (elem) { return !!elem && !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length); };
-
-    document.addEventListener('click', function () {
-        if (!navbarBurger.contains(event.target) && isVisible(navbarBurger) && !navbarMenu.contains(event.target) && isVisible(navbarMenu)) {
-            if (navbarMenu.classList.contains('is-active')) {
-                toggleBurger();
-            }
-        }
-    });
 }
 
 function getTotal(values) {
@@ -44,6 +18,7 @@ function getTotal(values) {
 
 function main() {
     burger();
+    nfCookies();
 
     var langs = {
         es: langEs,
@@ -506,12 +481,4 @@ function main() {
             }
         }
     });
-
-    var langLinks = document.querySelectorAll('.lang-link');
-    for (var i = 0; i < langLinks.length; ++i) {
-        var langLink = langLinks[i];
-        langLink.addEventListener('click', function () {
-            Cookies.set("nf_lang", langLink.getAttribute('data-lang'), { expires: 365 * 10 });
-        });
-    }
 }
