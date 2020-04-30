@@ -59,11 +59,12 @@ function onDOMLoaded() {
             this.exposedLastFrame = false;
             this.avoidanceX = 0;
             this.avoidanceY = 0;
+            this.forceDisableAvoidance = false;
             this.updateAvoidance();
         }
 
         updateAvoidance() {
-            this.avoidanceEnabled = Math.random() < Society.avoidanceProb;
+            this.avoidance = Math.random() < Society.avoidanceProb;
         }
 
         setState(state) {
@@ -89,7 +90,7 @@ function onDOMLoaded() {
         }
 
         update(dt) {
-            if (this.avoidanceEnabled) {
+            if (!this.forceDisableAvoidance && this.avoidance) {
                 let avoidanceMagSqrd = this.avoidanceX * this.avoidanceX + this.avoidanceY * this.avoidanceY;
                 if (avoidanceMagSqrd > 0) {
                     let avoidanceMag = Math.sqrt(avoidanceMagSqrd);
@@ -320,6 +321,7 @@ function onDOMLoaded() {
 
             const randomPerson = people[getRandomInt(0, people.length)];
             randomPerson.setState(State.INFECTED);
+            randomPerson.forceDisableAvoidance = true;
         }
 
         for (let i = 0; i < people.length; ++i) {
