@@ -1,24 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ .Lang }}">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ .Title }}</title>
-    <!-- TODO: optimize -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+    <link href='/css/main.css' rel="stylesheet">
     <script defer src='https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js'></script>
-    <script defer src="js/simulation.js"></script>
+    <script defer src="{{ "/simulation/js/simulation.js" | absURL }}"></script>
 </head>
 
 <body>
+    {{ partial "navbar-simulation.html" . }}
     <section class="section">
         <div class="container">
             <div class="content">
                 <h1 class="title">{{ .Title }}</h1>
-                <!-- TODO: i18n -->
                 <div class="buttons">
-                    <button id="restart" class="button">Restart</button>
+                    <button id="restart" class="button is-success is-light">{{ i18n "restart" }}</button>
                 </div>
                 <div class="columns is-centered">
                     <div class="column is-5 is-paddingless">
@@ -33,6 +32,7 @@
             </div>
         </div>
     </section>
+    {{ partial "footer.html" . }}
 </body>
 
 </html>

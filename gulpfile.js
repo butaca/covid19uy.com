@@ -73,12 +73,20 @@ function simulationBuild() {
         .pipe(webpack({
             output: {
                 filename: 'simulation.js',
-            },/*
+            },
             plugins: [
                 new TerserPlugin()
             ],
-            mode: "production",*/
-            mode: "development"
+            mode: "production",
+            module: {
+                rules: [
+                    {
+                        test: /\.ya?ml$/,
+                        type: 'json',
+                        use: 'yaml-loader'
+                    }
+                ]
+            }
         }))
         .pipe(gulp.dest(simulationPaths.destJS));
 };

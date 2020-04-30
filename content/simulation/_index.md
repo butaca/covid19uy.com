@@ -1,3 +1,3 @@
 ---
-title: Coronavirus COVID-19 Simulation
+title: Simulación Coronavirus COVID-19
 ---

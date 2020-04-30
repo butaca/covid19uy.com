@@ -2,39 +2,39 @@
     "disease":[
         {
             "id": "contagion-distance",
-            "title": "Contagion distance",
+            "title": "contagionDistanceTitle",
             "min": 1, "max": 100, "default": 16
         },
         {
             "id": "contagion-prob",
-            "title": "Contagion probability (%)",
+            "title": "contagionProbTitle",
             "min": 0, "max": 100, "default": 10
         },
         {
             "id": "contagion-min-hours",
-            "title": "Contagion minimum time (hours)",
+            "title": "contagionMinHours",
             "min": 0, "max": 24, "default": 1
         },
         {
             "id": "infection-duration",
-            "title": "Infection duration (days)",
+            "title": "infectionDuration",
             "min": 1, "max": 100, "default": 14
         },
         {
             "id": "mortality-rate",
-            "title": "Mortality rate (%)",
+            "title": "mortalityRate",
             "min": 0, "max": 100, "default": 3
         }
     ],
     "society":[
         {
             "id": "avoidance-distance",
-            "title": "Avoidance distance",
+            "title": "avoidanceDistance",
             "min": 0, "max": 32, "default": 32
         },
         {
             "id": "avodiance-prob",
-            "title": "Avoidance probability (%)",
+            "title": "avodianceProb",
             "min": 0, "max": 100, "default": 80
         }
     ]

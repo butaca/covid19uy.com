@@ -1,9 +1,8 @@
 <div class="columns">
     <div class="column is-6">
         <div>
-            <!-- TODO: i18n -->
             <p class="is-size-5 has-text-weight-bold">
-                Disease
+                {{ i18n "virus" }}
             </p>
 
             <table class="table is-narrow is-hoverable">
@@ -11,8 +10,7 @@
                     {{ range .Site.Data.simulation.disease  }}
                     <tr>
                         <td>
-                            <!-- TODO: i18n -->
-                            <label for="{{ .id }}">{{ .title }}:</label>
+                            <label for="{{ .id }}">{{ i18n .title }}:</label>
                         </td>
                         <td>
                             <div class="simulation-param">
@@ -31,17 +29,15 @@
 
     <div class="column is-6">
         <div>
-            <!-- TODO: i18n -->
             <p class="is-size-5 has-text-weight-bold">
-                Society
+                {{ i18n "society" }}
             </p>
             <table class="table is-narrow is-hoverable">
                 <tbody>
                     {{ range .Site.Data.simulation.society  }}
                     <tr>
                         <td>
-                            <!-- TODO: i18n -->
-                            <label for="{{ .id }}">{{ .title }}:</label>
+                            <label for="{{ .id }}">{{ i18n .title }}:</label>
                         </td>
                         <td>
                             <div class="simulation-param">

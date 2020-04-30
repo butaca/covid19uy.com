@@ -1,4 +1,8 @@
+import '../index'
+
 import * as PIXI from 'pixi.js'
+import langEs from "../../../i18n/es.yaml";
+import langEn from "../../../i18n/en.yaml";
 
 if (document.readyState === 'loading') {
     document.addEventListener("DOMContentLoaded", onDOMLoaded);
@@ -13,6 +17,18 @@ function getRandomInt(min, max) {
 }
 
 function onDOMLoaded() {
+
+    const langs = {
+        es: langEs,
+        en: langEn
+    }
+
+    const htmlLang = document.documentElement.getAttribute("lang");
+
+    let lang = langs.es;
+    if (langs.hasOwnProperty(htmlLang)) {
+        lang = langs[htmlLang];
+    }
 
     const Disease = {
         contagionDistance: 16,
@@ -166,7 +182,7 @@ function onDOMLoaded() {
         constructor(id, people) {
             this.sampleTime = 0.25;
             this.people = people;
-            const ctx = document.getElementById(id);
+            var ctx = document.getElementById(id);
             this.chart = new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -174,15 +190,13 @@ function onDOMLoaded() {
                     datasets: [{
                         pointBackgroundColor: "#28b8d6ff",
                         backgroundColor: "#28b8d680",
-                        //TODO: i18n
-                        label: "Active Cases",
+                        label: lang.activeCases.other,
                         data: [],
                     },
                     {
                         pointBackgroundColor: "#e54acfff",
                         backgroundColor: "#e54acfff",
-                        //TODO: i18n
-                        label: "Deaths",
+                        label: lang.deaths.other,
                         data: [],
                     }]
                 },
@@ -282,7 +296,6 @@ function onDOMLoaded() {
     const resizeCanvas = function() {
         const parent = app.view.parentNode;
         const clientSize = Math.min(parent.clientWidth, parent.clientHeight);
-        console.log(parent.clientWidth, parent.clientHeight);
         app.renderer.resize(clientSize, clientSize);
         app.stage.scale.set(clientSize / width, clientSize / height);
     }
