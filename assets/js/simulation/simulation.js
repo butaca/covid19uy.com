@@ -132,7 +132,7 @@ function onDOMLoaded() {
             if (this.state == State.NORMAL) {
                 //TODO: assuming 1 day = 1 second
                 const infectionDays = this.exposureTime;
-                if (infectionDays >= Disease.contagionMinDays) {
+                if (infectionDays > 0 && infectionDays >= Disease.contagionMinDays) {
                     if (Math.random() <= Disease.contagionProb) {
                         this.setState(State.INFECTED);
                     }
