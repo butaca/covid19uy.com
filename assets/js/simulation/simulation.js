@@ -59,6 +59,10 @@ function onDOMLoaded() {
             this.exposedLastFrame = false;
             this.avoidanceX = 0;
             this.avoidanceY = 0;
+            this.updateAvoidance();
+        }
+
+        updateAvoidance() {
             this.avoidanceEnabled = Math.random() < Society.avoidanceProb;
         }
 
@@ -237,6 +241,8 @@ function onDOMLoaded() {
 
     }
 
+    let avoidanceProbDirty = false;
+
     let bindings = {};
     bindings["contagion-distance"] = { target: Disease, name: "contagionDistance", update(value) { this.target[this.name] = value; } };
     bindings["contagion-prob"] = { target: Disease, name: "contagionProb", update(value) { this.target[this.name] = value * 0.01; } };
@@ -245,7 +251,7 @@ function onDOMLoaded() {
     bindings["mortality-rate"] = { target: Disease, name: "mortalityRate", update(value) { this.target[this.name] = value * 0.01; } };
 
     bindings["avoidance-distance"] = { target: Society, name: "avoidanceDistance", update(value) { this.target[this.name] = value; } };
-    bindings["avodiance-prob"] = { target: Society, name: "avoidanceProb", update(value) { this.target[this.name] = value * 0.01; } };
+    bindings["avodiance-prob"] = { target: Society, name: "avoidanceProb", update(value) { this.target[this.name] = value * 0.01; avoidanceProbDirty = true; } };
 
     const ranges = document.querySelectorAll(".simulation-param");
     for (let i = 0; i < ranges.length; ++i) {
@@ -323,6 +329,10 @@ function onDOMLoaded() {
         for (let i = 0; i < people.length; ++i) {
             const person = people[i];
 
+            if(avoidanceProbDirty) {
+                person.updateAvoidance();
+            }
+
             for (let j = i + 1; j < people.length; ++j) {
                 const otherPerson = people[j];
                 const dx = person.do.x - otherPerson.do.x;
@@ -361,6 +371,8 @@ function onDOMLoaded() {
                 }
             }
         }
+
+        avoidanceProbDirty = false;
 
         chart.update(dt);
 
