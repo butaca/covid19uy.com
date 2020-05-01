@@ -1,0 +1,36 @@
+{{- $last := index (last 1 .Site.Data.uruguay.data) 0 -}}
+{{- $cases := $last.cases -}}
+{{- $hcCases := cond (isset $last "hc") $last.hc 0  -}}
+{{- $hcRecovered := cond (isset $last "hcRecovered") $last.hcRecovered 0  -}}
+{{- $hcDeaths := cond (isset $last "hcDeaths") $last.hcDeaths 0  -}}
+{{- $hcActive := sub $hcCases (add $hcRecovered $hcDeaths) -}}
+{{- $hcPercent := mul (div $hcCases $cases) 100 -}}
+<h2 id="hc">{{ i18n "healthCareWorkerCases"}} </h2>
+<div class="box has-padding-sm">
+    <nav class="level">
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="subtitle">{{ i18n "healthCareWorkerCases" }} 😷</p>
+                <p class="title">{{ lang.NumFmt 0 $hcCases .Site.Params.numberFormat }}</p>
+            </div>
+        </div>
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="subtitle">{{ i18n "activeCases" }} 😷</p>
+                <p class="title">{{ lang.NumFmt 0 $hcActive .Site.Params.numberFormat }}</p>
+            </div>
+        </div>
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="subtitle">{{ i18n "recovered" }} 🙏</p>
+                <p class="title">{{ lang.NumFmt 0 $hcRecovered .Site.Params.numberFormat}}</p>
+            </div>
+        </div>
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="subtitle">{{ i18n "deaths" }} 😞</p>
+                <p class="title">{{ lang.NumFmt 0 $hcDeaths .Site.Params.numberFormat}}</p>
+            </div>
+        </div>
+    </nav>
+</div>
