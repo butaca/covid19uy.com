@@ -77,7 +77,13 @@ function onDOMLoaded() {
         }
     }
 
-    app.ticker.add(function () { gameLoop(app.ticker.deltaMS * 0.001 * Simulation.speed); });
+    app.ticker.add(function () { 
+        let dt = app.ticker.deltaMS * 0.001;
+        let loops = Math.round(Simulation.speed);
+        for(let i = 0; i < loops; ++i) {
+            gameLoop(dt);
+        }
+    });
 
     const chart = new DiseaseChart("chart", people, lang);
 
