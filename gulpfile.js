@@ -64,11 +64,11 @@ function webpackBuild() {
 };
 
 function webpackWatch() {
-    return gulp.watch(paths.srcJS, webpackBuild);
+    return gulp.watch(paths.srcJS, gulp.series(webpackBuild, simulationBuild));
 };
 
 function simulationBuild() {
-    
+
     return gulp.src(simulationPaths.webpackEntry)
         .pipe(webpack({
             output: {
@@ -91,18 +91,14 @@ function simulationBuild() {
         .pipe(gulp.dest(simulationPaths.destJS));
 };
 
-function simulationWatch() {
-    return gulp.watch(simulationPaths.srcJS, simulationBuild);
-};
-
-const build = gulp.series([gulp.parallel([sassBuild, webpackBuild]), simulationBuild]);
+const build = gulp.series(gulp.parallel(sassBuild, webpackBuild), simulationBuild);
 
 function hugoBuild(cb) {
     const params = ["--gc", "--verbose", "--cleanDestinationDir", "--ignoreCache"];
     const context = process.env.CONTEXT;
     let baseURL = process.env.URL;
     let environment = "production";
-    
+
     if (context == "branch-deploy" || context == "deploy-preview") {
         baseURL = process.env.DEPLOY_PRIME_URL;
         environment = "development";
@@ -182,7 +178,7 @@ async function downloadData() {
     fs.writeFileSync("./data/world.json", JSON.stringify(result));
 }
 
-const watch = gulp.parallel([sassWatch, webpackWatch, simulationWatch]);
+const watch = gulp.parallel(sassWatch, webpackWatch);
 
 function updateLastMod() {
     return gulp.src('content/_index*.md')
@@ -196,6 +192,6 @@ function updateLastMod() {
 }
 
 exports.webpackBuild = webpackBuild;
-exports.develop = gulp.series([downloadData, build, gulp.parallel(watch, hugoServer)]);
-exports.deploy = gulp.series([downloadData, updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS]);
+exports.develop = gulp.series(downloadData, build, gulp.parallel(watch, hugoServer));
+exports.deploy = gulp.series(downloadData, updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);
 exports.default = exports.develop;
