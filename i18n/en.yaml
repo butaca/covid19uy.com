@@ -169,6 +169,15 @@ and:
 sinae:
   other: National Emergency System
 
+graphTitleDailyActiveCases:
+  other: Daily new active cases
+
+graphTitleDailyActiveCasesDesc:
+  other: In each day, number of new active cases (people with the virus) compared to the previous day. A negative number means that the number of people with the virus decreased that day.
+
+newActiveCases:
+  other: New active cases
+
 ### Simulator
 
 restart:

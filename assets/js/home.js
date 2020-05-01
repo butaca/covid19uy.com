@@ -40,6 +40,8 @@ function main() {
     var deaths = [];
     var recovered = [];
     var activeCases = [];
+    var dailyActiveCases = [];
+    var prevTodayActiveCases = 0;
     var dailyICU = [];
     var dailyIMCU = [];
     var dailyICUPercent = [];
@@ -94,6 +96,9 @@ function main() {
 
         var todayActiveCases = totalTodayCases - todayTotalDeaths - todayTotalRecovered;
         activeCases.push(todayActiveCases);
+
+        dailyActiveCases.push(todayActiveCases - prevTodayActiveCases);
+        prevTodayActiveCases = todayActiveCases;
 
         var todayICU = el.icu != undefined ? el.icu : 0;
         var todayIMCU = el.imcu != undefined ? el.imcu : 0;
@@ -476,6 +481,26 @@ function main() {
                     }
                 }
             },
+            animation: {
+                duration: 0
+            }
+        }
+    });
+
+    ctx = document.getElementById('chart-daily-active-cases');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: dates,
+            datasets: [{
+                pointBackgroundColor: "#28b8d6ff",
+                backgroundColor: "#28b8d680",
+                label: lang.newActiveCases.other,
+                data: dailyActiveCases,
+            }
+        ]
+        },
+        options: {
             animation: {
                 duration: 0
             }

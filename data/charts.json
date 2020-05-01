@@ -38,6 +38,12 @@
         "displayPositivesAndCasesInfo": true
     },
     {
+        "id": "chart-daily-active-cases",
+        "title": "graphTitleDailyActiveCases",
+        "desc": "graphTitleDailyActiveCasesDesc",
+        "displayPositivesAndCasesInfo": true
+    },
+    {
         "id": "chart-healthcare-workers",
         "title": "graphTitleHealthcareWorkers",
         "desc": "graphTitleHealthcareWorkersDesc",

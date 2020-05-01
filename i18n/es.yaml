@@ -169,6 +169,15 @@ and:
 sinae:
   other: Sistema Nacional de Emergencias
 
+graphTitleDailyActiveCases:
+  other: Nuevos casos activos diarios
+
+graphTitleDailyActiveCasesDesc:
+  other: En cada día, cantidad de nuevos casos activos (personas con el virus) con respecto al día anterior. Un número negativo significa que ese día disminuyó la cantidad de personas con el virus.
+
+newActiveCases:
+  other: Nuevos casos activos
+
 ### Simulator
 
 restart:
