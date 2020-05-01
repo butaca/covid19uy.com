@@ -204,5 +204,11 @@ avodianceProb:
 new:
   other: New!
 
-simulation:
+simulationTitle:
   other: Coronavirus simulation
+
+simulation:
+  other: Simulation
+
+speed:
+  other: Speed

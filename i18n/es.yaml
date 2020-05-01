@@ -204,5 +204,11 @@ avodianceProb:
 new:
   other: Nuevo!
 
-simulation:
+simulationTitle:
   other: Simulación de coronavirus
+
+simulation:
+  other: Simulación
+
+speed:
+  other: Velocidad

@@ -1,41 +1,64 @@
 {
-    "disease":[
+    "disease": [
         {
             "id": "contagion-distance",
             "title": "contagionDistanceTitle",
-            "min": 1, "max": 100, "default": 16
+            "min": 1,
+            "max": 100,
+            "default": 16
         },
         {
             "id": "contagion-prob",
             "title": "contagionProbTitle",
-            "min": 0, "max": 100, "default": 10
+            "min": 0,
+            "max": 100,
+            "default": 10
         },
         {
             "id": "contagion-min-hours",
             "title": "contagionMinHours",
-            "min": 0, "max": 24, "default": 1
+            "min": 0,
+            "max": 24,
+            "default": 1
         },
         {
             "id": "infection-duration",
             "title": "infectionDuration",
-            "min": 1, "max": 100, "default": 14
+            "min": 1,
+            "max": 100,
+            "default": 14
         },
         {
             "id": "mortality-rate",
             "title": "mortalityRate",
-            "min": 0, "max": 100, "default": 3
+            "min": 0,
+            "max": 100,
+            "default": 3
         }
     ],
-    "society":[
+    "society": [
         {
             "id": "avoidance-distance",
             "title": "avoidanceDistance",
-            "min": 0, "max": 32, "default": 32
+            "min": 0,
+            "max": 32,
+            "default": 32
         },
         {
             "id": "avodiance-prob",
             "title": "avodianceProb",
-            "min": 0, "max": 100, "default": 80
+            "min": 0,
+            "max": 100,
+            "default": 80
+        }
+    ],
+    "simulation": [
+        {
+            "id": "simulation-speed",
+            "title": "speed",
+            "min": 1,
+            "max": 4,
+            "default": 1
         }
     ]
 }

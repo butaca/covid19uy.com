@@ -11,6 +11,10 @@ const Society = {
     avoidanceProb: 0.8
 };
 
+const Simulation = {
+    speed: 1
+}
+
 let Bindings = {};
 Bindings.avoidanceProbDirty = false;
 Bindings["contagion-distance"] = { target: Disease, name: "contagionDistance", update(value) { this.target[this.name] = value; } };
@@ -21,6 +25,8 @@ Bindings["mortality-rate"] = { target: Disease, name: "mortalityRate", update(va
 
 Bindings["avoidance-distance"] = { target: Society, name: "avoidanceDistance", update(value) { this.target[this.name] = value; } };
 Bindings["avodiance-prob"] = { target: Society, name: "avoidanceProb", update(value) { this.target[this.name] = value * 0.01; Bindings.avoidanceProbDirty = true; } };
+
+Bindings["simulation-speed"] = { target: Simulation, name: "speed", update(value) { this.target[this.name] = value; } };
 
 if (document.readyState === 'loading') {
     document.addEventListener("DOMContentLoaded", initRanges);
@@ -47,4 +53,4 @@ function initRanges() {
     }
 }
  
-export { Disease, Society, Bindings };
+export { Disease, Society, Bindings, Simulation };

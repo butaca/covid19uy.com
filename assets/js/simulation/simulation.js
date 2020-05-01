@@ -5,7 +5,7 @@ import '../icons'
 import * as PIXI from 'pixi.js'
 import langEs from "../../../i18n/es.yaml";
 import langEn from "../../../i18n/en.yaml";
-import { Disease, Society, Bindings } from './params'
+import { Disease, Society, Bindings, Simulation } from './params'
 import { Person, State } from './person'
 import { DiseaseChart } from './chart'
 
@@ -77,7 +77,7 @@ function onDOMLoaded() {
         }
     }
 
-    app.ticker.add(function () { gameLoop(app.ticker.deltaMS * 0.001); });
+    app.ticker.add(function () { gameLoop(app.ticker.deltaMS * 0.001 * Simulation.speed); });
 
     const chart = new DiseaseChart("chart", people, lang);
 
