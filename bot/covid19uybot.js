@@ -8,6 +8,14 @@ const T = new Twitter({
     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
+function reply(tweetIdStr) {
+    T.post('statuses/update', {
+        status: "En mi sitio pueden ver los datos por día, en 12 gráficas: https://covid19uy.com \n\n#QuedateEnCasa #CoronavirusUy #CoronavirusEnUruguay #COVID19Uruguay",
+        in_reply_to_status_id : tweetIdStr,
+        auto_populate_reply_metadata: true
+    });
+}
+
 const SINAE_USER_ID = "840325920";
 const MSP_USER_ID = "3305529657";
 
@@ -20,13 +28,13 @@ const stream = T.stream('statuses/filter', {
 
 stream.on('data', tweet => {
     if (tweet.user != null && tweet.user != undefined && tweet.retweeted_status == undefined && tweet.quoted_status == undefined && tweet.in_reply_to_status_id == undefined) {
+        console.log("https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str);
         if (tweet.user.id_str == SINAE_USER_ID || tweet.user.id_str == MSP_USER_ID) {
             var lowerCaseText = tweet.text.toLowerCase();
             if ((lowerCaseText.indexOf("informe") != -1 || lowerCaseText.indexOf("visualizador") != -1) && (lowerCaseText.indexOf("coronavirus") != -1 || lowerCaseText.indexOf("covid") != -1)) {
                 console.log("https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str);
-                T.post('statuses/update', { status: "En mi sitio pueden ver los datos por día, en 12 gráficas: https://covid19uy.com \n\n#QuedateEnCasa #CoronavirusUy #CoronavirusEnUruguay #COVID19Uruguay", in_reply_to_status_id : tweet.id_str, auto_populate_reply_metadata: true });
+                reply(tweet.id_str);
             }
         }
     }
 });
-
