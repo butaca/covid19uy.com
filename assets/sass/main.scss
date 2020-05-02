@@ -2,9 +2,16 @@ $section-padding: 1rem 1rem;
 $section-padding-medium: 3rem 3rem;
 $section-padding-large: 2rem 2rem;
 
+$title-size: 1.5rem;
+$subtitle-size: 1.25rem;
+
 @import "bulma/bulma";
 @import "bulma-tooltip/src/sass/index";
 @import 'spacing';
+
+h2 {
+    font-size: $subtitle-size !important;
+}
 
 .netlify-logo {
     vertical-align: middle;
