@@ -11,6 +11,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const axios = require("axios");
 const cheerio = require("cheerio");
 const moment = require("moment");
+const autoprefixer = require('gulp-autoprefixer');
 
 const nodeModules = './node_modules';
 
@@ -33,6 +34,7 @@ const simulationPaths = {
 function sassBuild() {
     return gulp.src(paths.mainSCSS)
         .pipe(sass({ outputStyle: 'compressed', includePaths: [nodeModules] }).on('error', sass.logError))
+        .pipe(autoprefixer())
         .pipe(gulp.dest(paths.destCSS));
 };
 
