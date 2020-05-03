@@ -1,4 +1,12 @@
 require('dotenv').config();
+
+const Push = require('pushover-notifications');
+
+const push = new Push({
+    user: process.env.PUSHOVER_USER,
+    token: process.env.PUSHOVER_TOKEN,
+});
+
 const Twitter = require('twitter-lite');
 
 const T = new Twitter({
@@ -33,8 +41,10 @@ const onData = data => {
         if (tweet.retweeted_status == undefined && tweet.in_reply_to_status_id == undefined && FOLLOW_IDS.indexOf(tweet.user.id_str) != -1) {
             var lowerCaseText = tweet.text.toLowerCase();
             if ((lowerCaseText.indexOf("informe") != -1 || lowerCaseText.indexOf("visualizador") != -1) && (lowerCaseText.indexOf("coronavirus") != -1 || lowerCaseText.indexOf("covid") != -1)) {
-                console.log("https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str);
+                const tweetURL = "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
                 reply(tweet.id_str);
+                console.log(tweetURL);
+                push.send({ message: 'Auto replay to: ' + tweetURL });
             }
         }
     }
@@ -91,6 +101,3 @@ const createStream = () => {
 }
 
 createStream();
-
-
-
