@@ -89,7 +89,7 @@ contact:
   other: ✉️ Contact
 
 graphTitleActiveCases:
-  other: Cases evolution
+  other: Daily active cases
 
 graphTitleActiveCasesDesc:
   other: Active cases per day. 👉 This is the curve we have to flatten. The active cases are the people that currently have the virus, calculated as the total cases minus the recovered and deaths.
