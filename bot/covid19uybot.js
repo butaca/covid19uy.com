@@ -37,9 +37,9 @@ const onData = data => {
     // filter out non tweet data
     if (data.user) {
         const tweet = data;
-        // filter out retweets, replies and mentions
-        if (tweet.retweeted_status == undefined && tweet.in_reply_to_status_id == undefined && FOLLOW_IDS.indexOf(tweet.user.id_str) != -1) {
-            var lowerCaseText = tweet.text.toLowerCase();
+        // filter out mentions by other users and retweets
+        if (FOLLOW_IDS.indexOf(tweet.user.id_str) != -1 && tweet.retweeted_status == undefined) {
+            const lowerCaseText = tweet.text.toLowerCase();
             if ((lowerCaseText.indexOf("informe") != -1 || lowerCaseText.indexOf("visualizador") != -1) && (lowerCaseText.indexOf("coronavirus") != -1 || lowerCaseText.indexOf("covid") != -1)) {
                 const tweetURL = "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
                 reply(tweet.id_str);
