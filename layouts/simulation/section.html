@@ -31,6 +31,9 @@
                     <button id="restart" class="button is-success is-light">{{ i18n "restart" }}</button>
                 </div>
                 {{ partial "simulation-params.html" . }}
+                <div class="box">
+                    {{ .Content }}
+                </div>
             </div>
         </div>
     </section>
