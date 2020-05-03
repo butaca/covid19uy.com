@@ -5,6 +5,8 @@ $section-padding-large: 2rem 2rem;
 $title-size: 1.5rem;
 $subtitle-size: 1.25rem;
 
+$button-padding-horizontal: 0.5em;
+
 @import "bulma/bulma";
 @import "bulma-tooltip/src/sass/index";
 @import 'spacing';
@@ -34,3 +36,24 @@ h2 {
 .simulation-param .tag {
     min-width: 5em;
 }
+
+.kofi-icon {
+    height:26px!important;
+    width:40px!important;
+    content:url('https://storage.ko-fi.com/cdn/cup-border.png');
+    animation: kofi-wiggle 3s infinite;
+    margin-right: 0.5em;
+}
+
+@keyframes kofi-wiggle {
+    0%  { transform: rotate(0) scale(1) }
+    60% { transform: rotate(0) scale(1) }
+    75% { transform: rotate(0) scale(1.12) }
+    80% { transform: rotate(0) scale(1.1) }
+    84% { transform: rotate(-10deg) scale(1.1) }
+    88% { transform: rotate(10deg) scale(1.1) }
+    92% { transform: rotate(-10deg) scale(1.1) }
+    96% { transform: rotate(10deg) scale(1.1) }
+    100% { transform: rotate(0) scale(1) }
+}
+

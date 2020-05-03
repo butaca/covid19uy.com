@@ -20,6 +20,9 @@
             </a>
         </div>
         <div class="navbar-end">
+            <div class="navbar-item">
+                {{ partial "ko-fi.html" . }}
+            </div>
             {{ range .Translations }}
             <a href="{{ .Permalink }}" class="navbar-item lang-link" data-lang="{{ .Language }}">
                 <i class="fas fa-language fa-2x"></i>{{ .Language.LanguageName }}
