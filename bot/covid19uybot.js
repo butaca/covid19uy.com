@@ -56,21 +56,26 @@ const reconnect = (calm) => {
         if(stream) {
             stream.destroy();
             stream = null;
+            console.log('stream destroyed');
         }
+        console.log('reconnecting in ' + (reconnectionWait/1000).toFixed(2) + ' seconds');
         setTimeout(reconnectionWait, createStream);
         reconnectionWait = Math.min(reconnectionWait * 2, RECONNECTION_WAIT_MAX);
     });
 }
 
 const onStart = () => {
+    console.log("stream started");
     reconnectionWait = RECONNECTION_WAIT_MIN;
 }
 
 const onEnd = () => {
+    console.log("stream ended");
     reconnect(false);
 };
 
 const onError = (error) => {
+    console.log("stream error: " + error.status);
     reconnect(error.status === 420 || error.status === 429);
 }
 
@@ -83,6 +88,7 @@ const createStream = () => {
     stream.on('data', onData);
     stream.on('error', onError);
     stream.on('end', onEnd);
+    console.log('stream created');
 }
 
 createStream();
