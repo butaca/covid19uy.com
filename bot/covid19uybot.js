@@ -29,9 +29,8 @@ const onData = data => {
     // filter out non tweet data
     if (data.user) {
         const tweet = data;
-        // filter out retweets and replies
-        if (tweet.retweeted_status == undefined && tweet.in_reply_to_status_id == undefined) {
-            console.log("https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str);
+        // filter out retweets, replies and mentions
+        if (tweet.retweeted_status == undefined && tweet.in_reply_to_status_id == undefined && FOLLOW_IDS.indexOf(tweet.user.id_str) != -1) {
             var lowerCaseText = tweet.text.toLowerCase();
             if ((lowerCaseText.indexOf("informe") != -1 || lowerCaseText.indexOf("visualizador") != -1) && (lowerCaseText.indexOf("coronavirus") != -1 || lowerCaseText.indexOf("covid") != -1)) {
                 console.log("https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str);
@@ -49,16 +48,16 @@ const RECONNECTION_CALM_WAIT = 20 * 1000;
 let reconnectionWait = RECONNECTION_WAIT_MIN;
 
 const reconnect = (calm) => {
-    if(calm) {
+    if (calm) {
         reconnectionWait = Math.max(reconnectionWait, RECONNECTION_CALM_WAIT);
     }
     process.nextTick(() => {
-        if(stream) {
+        if (stream) {
             stream.destroy();
             stream = null;
             console.log('stream destroyed');
         }
-        console.log('reconnecting in ' + (reconnectionWait/1000).toFixed(2) + ' seconds');
+        console.log('reconnecting in ' + (reconnectionWait / 1000).toFixed(2) + ' seconds');
         setTimeout(reconnectionWait, createStream);
         reconnectionWait = Math.min(reconnectionWait * 2, RECONNECTION_WAIT_MAX);
     });
