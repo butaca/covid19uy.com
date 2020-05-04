@@ -40,10 +40,13 @@ h2 {
 .kofi-icon {
     height:26px!important;
     width:40px!important;
-    content:url('../images/cup-border.png');
     display: initial;
     animation: kofi-wiggle 3s infinite;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
     margin-right: 0.5em;
+    backface-visibility: hidden;
+    animation-delay: 0s, .5s;
 }
 
 @keyframes kofi-wiggle {
