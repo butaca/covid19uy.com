@@ -5,7 +5,7 @@
         "@fortawesome/free-regular-svg-icons": "^5.13.0",
         "@fortawesome/free-solid-svg-icons": "^5.13.0",
         "axios": "^0.19.2",
-        "bulma": "^0.8.0",
+        "bulma": "^0.8.2",
         "bulma-tooltip": "^3.0.2",
         "cheerio": "^1.0.0-rc.3",
         "gulp": "^4.0.2",
