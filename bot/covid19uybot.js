@@ -27,12 +27,20 @@ const FOLLOW_IDS = [SINAE_USER_ID, MSP_USER_ID, COM_PRESIDENCIA, OPS_OMS_URUGUAY
 const WORDS = ["información", "informe", "visualizador"];
 const COVID_WORDS = ["coronavirus", "covid"];
 
-const reply = (tweetIdStr) => {
-    T.post('statuses/update', {
-        status: "En mi sitio pueden ver los datos por día, en 12 gráficas: https://covid19uy.com \n\n#QuedateEnCasa #CoronavirusUy #CoronavirusEnUruguay #COVID19Uruguay",
-        in_reply_to_status_id: tweetIdStr,
-        auto_populate_reply_metadata: true
-    });
+const replyTo = (tweet) => {
+    const tweetURL = "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
+    try {
+        T.post("statuses/update", {
+            status: "En mi sitio pueden ver los datos por día, en 12 gráficas: https://covid19uy.com\n\n#QuedateEnCasa #CoronavirusUy #CoronavirusEnUruguay #COVID19Uruguay",
+            in_reply_to_status_id: tweet.id_str,
+            auto_populate_reply_metadata: true
+        });
+        push.send({ message: "Auto reply to: " + tweetURL });
+        console.log(tweetURL);
+    }
+    catch (e) {
+        console.error("Error replying to tweet " + tweetURL + "\n" + e.stack);
+    }
 };
 
 const hasWord = (text, words) => {
@@ -53,10 +61,7 @@ const onData = data => {
         if (FOLLOW_IDS.indexOf(tweet.user.id_str) != -1 && tweet.retweeted_status == undefined) {
             const lowerCaseText = tweet.text.toLowerCase();
             if (hasWord(lowerCaseText, WORDS) && hasWord(lowerCaseText, COVID_WORDS)) {
-                const tweetURL = "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
-                reply(tweet.id_str);
-                push.send({ message: 'Auto reply to: ' + tweetURL });
-                console.log(tweetURL);
+                replyTo(tweet);
             }
         }
     }
