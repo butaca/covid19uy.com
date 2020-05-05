@@ -24,14 +24,26 @@ const LUIS_LACALLE_POU = "189861728";
 const ALVARO_DELGADO = "231870362";
 
 const FOLLOW_IDS = [SINAE_USER_ID, MSP_USER_ID, COM_PRESIDENCIA, OPS_OMS_URUGUAY, LUIS_LACALLE_POU, ALVARO_DELGADO];
+const WORDS = ["información", "informe", "visualizador"];
+const COVID_WORDS = ["coronavirus", "covid"];
 
-function reply(tweetIdStr) {
+const reply = (tweetIdStr) => {
     T.post('statuses/update', {
         status: "En mi sitio pueden ver los datos por día, en 12 gráficas: https://covid19uy.com \n\n#QuedateEnCasa #CoronavirusUy #CoronavirusEnUruguay #COVID19Uruguay",
         in_reply_to_status_id: tweetIdStr,
         auto_populate_reply_metadata: true
     });
-}
+};
+
+const hasWord = (text, words) => {
+    for (let i = 0; i < words.length; ++i) {
+        let word = words[i];
+        if (text.indexOf(word) != -1) {
+            return true;
+        }
+    }
+    return false;
+};
 
 const onData = data => {
     // filter out non tweet data
@@ -40,11 +52,11 @@ const onData = data => {
         // filter out mentions by other users and retweets
         if (FOLLOW_IDS.indexOf(tweet.user.id_str) != -1 && tweet.retweeted_status == undefined) {
             const lowerCaseText = tweet.text.toLowerCase();
-            if ((lowerCaseText.indexOf("informe") != -1 || lowerCaseText.indexOf("visualizador") != -1) && (lowerCaseText.indexOf("coronavirus") != -1 || lowerCaseText.indexOf("covid") != -1)) {
+            if (hasWord(lowerCaseText, WORDS) && hasWord(lowerCaseText, COVID_WORDS)) {
                 const tweetURL = "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
                 reply(tweet.id_str);
+                push.send({ message: 'Auto reply to: ' + tweetURL });
                 console.log(tweetURL);
-                push.send({ message: 'Auto replay to: ' + tweetURL });
             }
         }
     }
@@ -68,15 +80,15 @@ const reconnect = (calm) => {
             console.log('stream destroyed');
         }
         console.log('reconnecting in ' + (reconnectionWait / 1000).toFixed(2) + ' seconds');
-        setTimeout(reconnectionWait, createStream);
+        setTimeout(createStream, reconnectionWait);
         reconnectionWait = Math.min(reconnectionWait * 2, RECONNECTION_WAIT_MAX);
     });
-}
+};
 
 const onStart = () => {
     console.log("stream started");
     reconnectionWait = RECONNECTION_WAIT_MIN;
-}
+};
 
 const onEnd = () => {
     console.log("stream ended");
@@ -86,7 +98,7 @@ const onEnd = () => {
 const onError = (error) => {
     console.log("stream error: " + error.status);
     reconnect(error.status === 420 || error.status === 429);
-}
+};
 
 const createStream = () => {
     stream = T.stream('statuses/filter', {
@@ -98,6 +110,6 @@ const createStream = () => {
     stream.on('error', onError);
     stream.on('end', onEnd);
     console.log('stream created');
-}
+};
 
 createStream();
