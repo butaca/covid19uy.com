@@ -1,3 +1,8 @@
+const fs = require('fs');
+const yaml = require('js-yaml');
+const file = fs.readFileSync('./covid19uybot.yml', 'utf-8');
+const config = yaml.safeLoad(file);
+
 require('dotenv').config();
 
 const Twitter = require('twitter-lite');
@@ -13,7 +18,7 @@ T.get("account/verify_credentials").then(main).catch(console.error);
 
 function replay(id) {
     T.post("statuses/update", {
-        status: process.env.REPLY_MESSAGE,
+        status: config.reply,
         in_reply_to_status_id: id,
         auto_populate_reply_metadata: true
     }).then(() => {

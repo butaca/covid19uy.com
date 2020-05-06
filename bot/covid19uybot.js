@@ -1,5 +1,10 @@
 require('dotenv').config();
 
+const fs = require('fs');
+const yaml = require('js-yaml');
+const file = fs.readFileSync('./covid19uybot.yml', 'utf-8');
+const config = yaml.safeLoad(file);
+
 const Push = require('pushover-notifications');
 
 const push = new Push({
@@ -16,21 +21,10 @@ const T = new Twitter({
     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-const SINAE_USER_ID = "840325920";
-const MSP_USER_ID = "3305529657";
-const COM_PRESIDENCIA = "380961080";
-const OPS_OMS_URUGUAY = "1673800032";
-const LUIS_LACALLE_POU = "189861728";
-const ALVARO_DELGADO = "231870362";
-
-const FOLLOW_IDS = [SINAE_USER_ID, MSP_USER_ID, COM_PRESIDENCIA, OPS_OMS_URUGUAY, LUIS_LACALLE_POU, ALVARO_DELGADO];
-const WORDS = ["información", "informe", "visualizador"];
-const COVID_WORDS = ["coronavirus", "covid"];
-
 const replyToTweet = (tweet) => {
     const tweetURL = "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
     T.post("statuses/update", {
-        status: process.env.REPLY_MESSAGE,
+        status: config.reply,
         in_reply_to_status_id: tweet.id_str,
         auto_populate_reply_metadata: true
     }).then(() => {
@@ -59,9 +53,9 @@ const onData = data => {
     if (data.user) {
         const tweet = data;
         // filter out mentions by other users and retweets
-        if (FOLLOW_IDS.indexOf(tweet.user.id_str) != -1 && tweet.retweeted_status == undefined) {
+        if (config.follow.indexOf(tweet.user.id_str) != -1 && tweet.retweeted_status == undefined) {
             const lowerCaseText = tweet.text.toLowerCase();
-            if (hasWord(lowerCaseText, WORDS) && hasWord(lowerCaseText, COVID_WORDS)) {
+            if (hasWord(lowerCaseText, config.words) && hasWord(lowerCaseText, config.covidWords)) {
                 replyToTweet(tweet);
             }
         }
@@ -108,7 +102,7 @@ const onError = (error) => {
 
 const createStream = () => {
     stream = T.stream('statuses/filter', {
-        follow: FOLLOW_IDS.join(','),
+        follow: config.follow.join(','),
         tweet_mode: 'extended'
     });
     stream.on('start', onStart);

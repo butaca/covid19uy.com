@@ -1,0 +1,15 @@
+reply: "En mi sitio pueden ver los datos por día, en 12 gráficas: https://covid19uy.com\n\n#QuedateEnCasa #CoronavirusUy #CoronavirusEnUruguay #COVID19Uruguay"
+follow:
+  - "840325920"  # SINAE
+  - "3305529657" # MSP
+  - "380961080"  # Comunicación Presidencial
+  - "1673800032" # OPS/OMS Uruguay
+  - "189861728"  # Luis Lacalle Pou
+  - "231870362"  # Álvaro Delgado
+words:
+  - información
+  - informe
+  - visualizador
+covidWords:
+  - coronavirus
+  - covid
