@@ -29,18 +29,19 @@ const COVID_WORDS = ["coronavirus", "covid"];
 
 const replyTo = (tweet) => {
     const tweetURL = "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
-    try {
-        T.post("statuses/update", {
-            status: "En mi sitio pueden ver los datos por día, en 12 gráficas: https://covid19uy.com\n\n#QuedateEnCasa #CoronavirusUy #CoronavirusEnUruguay #COVID19Uruguay",
-            in_reply_to_status_id: tweet.id_str,
-            auto_populate_reply_metadata: true
-        });
-        push.send({ message: "Auto reply to: " + tweetURL });
-        console.log(tweetURL);
-    }
-    catch (e) {
-        console.error("Error replying to tweet " + tweetURL + "\n" + e.stack);
-    }
+    T.post("statuses/update", {
+        status: "En mi sitio pueden ver los datos por día, en 12 gráficas: https://covid19uy.com\n\n#QuedateEnCasa #CoronavirusUy #CoronavirusEnUruguay #COVID19Uruguay",
+        in_reply_to_status_id: tweet.id_str,
+        auto_populate_reply_metadata: true
+    }).then(() => {
+        let m = "Auto reply to: " + tweetURL;
+        push.send({ message: m });
+        console.log(m);
+    }).catch((e) => {
+        let m = "Error replying to tweet: " + tweetURL + "\n" + e;
+        push.send({ message: m });
+        console.error(m);
+    });
 };
 
 const hasWord = (text, words) => {
