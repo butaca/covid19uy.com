@@ -23,5 +23,11 @@
     "scripts": {
         "develop": "gulp develop",
         "build": "gulp deploy"
+    },
+    "dependencies": {
+        "dotenv": "^8.2.0",
+        "js-yaml": "^3.13.1",
+        "pushover-notifications": "^1.2.2",
+        "twitter-lite": "^0.11.0"
     }
 }
