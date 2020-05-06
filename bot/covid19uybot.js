@@ -30,7 +30,7 @@ const COVID_WORDS = ["coronavirus", "covid"];
 const replyToTweet = (tweet) => {
     const tweetURL = "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
     T.post("statuses/update", {
-        status: "En mi sitio pueden ver los datos por día, en 12 gráficas: https://covid19uy.com\n\n#QuedateEnCasa #CoronavirusUy #CoronavirusEnUruguay #COVID19Uruguay",
+        status: process.env.REPLY_MESSAGE,
         in_reply_to_status_id: tweet.id_str,
         auto_populate_reply_metadata: true
     }).then(() => {
