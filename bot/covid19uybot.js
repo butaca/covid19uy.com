@@ -118,4 +118,4 @@ const createStream = () => {
     console.log('stream created');
 };
 
-createStream();
+T.get("account/verify_credentials").then(createStream).catch(console.error);
