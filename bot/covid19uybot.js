@@ -27,7 +27,7 @@ const FOLLOW_IDS = [SINAE_USER_ID, MSP_USER_ID, COM_PRESIDENCIA, OPS_OMS_URUGUAY
 const WORDS = ["información", "informe", "visualizador"];
 const COVID_WORDS = ["coronavirus", "covid"];
 
-const replyTo = (tweet) => {
+const replyToTweet = (tweet) => {
     const tweetURL = "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
     T.post("statuses/update", {
         status: "En mi sitio pueden ver los datos por día, en 12 gráficas: https://covid19uy.com\n\n#QuedateEnCasa #CoronavirusUy #CoronavirusEnUruguay #COVID19Uruguay",
@@ -62,7 +62,7 @@ const onData = data => {
         if (FOLLOW_IDS.indexOf(tweet.user.id_str) != -1 && tweet.retweeted_status == undefined) {
             const lowerCaseText = tweet.text.toLowerCase();
             if (hasWord(lowerCaseText, WORDS) && hasWord(lowerCaseText, COVID_WORDS)) {
-                replyTo(tweet);
+                replyToTweet(tweet);
             }
         }
     }
