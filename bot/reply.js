@@ -23,7 +23,7 @@ function replay(id) {
         auto_populate_reply_metadata: true
     }).then(() => {
         console.log("Success: " + id);
-    }).error(console.error);
+    }).catch(console.error);
 }
 
 function main() {
