@@ -76,13 +76,10 @@ function simulationBuild() {
             output: {
                 filename: 'simulation.js',
             },
-            /*
             plugins: [
                 new TerserPlugin()
             ],
             mode: "production",
-            */
-            mode: "development",
             module: {
                 rules: [
                     {
