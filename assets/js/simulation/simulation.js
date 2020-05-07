@@ -44,6 +44,9 @@ function onDOMLoaded() {
 
     const app = new PIXI.Application({ view: document.getElementById('sim'), width: width, height: height, backgroundColor: 0xFAFAFA });
 
+    app.renderer.plugins.interaction.destroy();
+    app.renderer.plugins.interaction = null;
+
     const resizeCanvas = function () {
         const parent = app.view.parentNode;
         const clientSize = Math.min(parent.clientWidth, parent.clientHeight);
