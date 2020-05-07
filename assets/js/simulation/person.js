@@ -9,12 +9,13 @@ const State = {
 };
 
 class Person {
-    constructor(texture, radius, x, y, areaWidth, areaHeight) {
+    constructor(texture, radius, x, y, areaWidth, areaHeight, sharedState) {
         this.startX = x;
         this.startY = y;
         this.areaWidth = areaWidth;
         this.areaHeight = areaHeight;
         this.radius = radius;
+        this.sharedState = sharedState;
         this.do = new PIXI.Sprite(texture);
         this.do.anchor.set(0.5, 0.5);
         this.restart();
@@ -121,7 +122,12 @@ class Person {
             //TODO: assuming 1 day = 1 second
             const infectedDays = this.infectedTime;
             if (infectedDays >= Disease.infectionDurationDays) {
-                if (Math.random() <= Disease.mortalityRate) {
+                let mortalityRate = Disease.mortalityRate;
+                if (this.sharedState.totalInfected >= Society.healthSystemCapacity) {
+                    mortalityRate = Math.min(mortalityRate + Society.overloadMortalityRateIncrease, 1.0);
+                }
+
+                if (Math.random() <= mortalityRate) {
                     this.setState(State.DEAD);
                 }
                 else {

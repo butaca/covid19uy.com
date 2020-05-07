@@ -38,6 +38,13 @@
     ],
     "society": [
         {
+            "id": "health-system-capacity",
+            "title": "healthSystemCapacity",
+            "min": 0,
+            "max": 256,
+            "default": 128
+        },
+        {
             "id": "avoidance-distance",
             "title": "avoidanceDistance",
             "min": 0,

@@ -1,9 +1,32 @@
 import { State } from './person'
+import { Society } from './params'
+
+Chart.pluginService.register({
+    afterDraw: chart => {
+        if (typeof chart.config.options.lineAt != 'undefined') {
+            const lineAt = chart.config.options.lineAt;
+            const ctx = chart.chart.ctx;
+            const xAxe = chart.scales[chart.config.options.scales.xAxes[0].id];
+            const yAxe = chart.scales[chart.config.options.scales.yAxes[0].id];
+
+            ctx.strokeStyle = "#d9554c";
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            const lineY = yAxe.top + yAxe.height * (lineAt - yAxe.max) / (yAxe.min - yAxe.max);
+            ctx.moveTo(xAxe.left, lineY);
+            ctx.lineTo(xAxe.right, lineY);
+            ctx.stroke();
+            ctx.fillStyle = ctx.strokeStyle;
+            ctx.fillText(chart.lang.healthSystemCapacity.other, xAxe.left + 4, lineY - 8);
+        }
+    }
+});
 
 class DiseaseChart {
-    constructor(id, people, lang) {
+    constructor(id, people, lang, state) {
         this.sampleTime = 0.25;
         this.people = people;
+        this.state = state;
         var ctx = document.getElementById(id);
         this.chart = new Chart(ctx, {
             type: 'line',
@@ -23,6 +46,7 @@ class DiseaseChart {
                 }]
             },
             options: {
+                lineAt: Society.healthSystemCapacity,
                 responsive: true,
                 maintainAspectRatio: true,
                 scales: {
@@ -34,7 +58,15 @@ class DiseaseChart {
                 }
             }
         });
+        this.chart.lang = lang;
         this.restart();
+        let chart = this.chart;
+        setInterval(function () {
+            if (Society.healthSystemCapacity != chart.options.lineAt) {
+                chart.options.lineAt = Society.healthSystemCapacity;
+                chart.update();
+            }
+        }, 1 / 60 * 1000);
     }
 
     update(dt) {
@@ -42,24 +74,14 @@ class DiseaseChart {
             this.time -= dt;
             this.totalTime += dt;
             if (this.time <= 0) {
-                let totalInfected = 0;
-                let totalDeaths = 0;
-                for (let i = 0; i < this.people.length; ++i) {
-                    const person = this.people[i];
-                    if (person.state == State.INFECTED) {
-                        totalInfected++;
-                    }
-                    else if (person.state == State.DEAD) {
-                        totalDeaths++;
-                    }
-                }
+
                 this.time += this.sampleTime;
-                this.chart.data.datasets[0].data.push(totalInfected);
-                this.chart.data.datasets[1].data.push(totalDeaths);
+                this.chart.data.datasets[0].data.push(this.state.totalInfected);
+                this.chart.data.datasets[1].data.push(this.state.totalDeaths);
                 //TODO: assuming 1 day = 1 second
                 this.chart.data.labels.push(Math.floor(this.totalTime));
                 this.chart.update();
-                if (totalInfected == 0) {
+                if (this.state.totalInfected == 0) {
                     this.done = true;
                 }
             }

@@ -58,6 +58,11 @@ function onDOMLoaded() {
 
     const people = [];
 
+    const state = {
+        totalInfected: 0,
+        totalDeaths: 0
+    };
+
     const cellWidth = width / cols;
     const cellHeight = height / rows;
 
@@ -71,21 +76,21 @@ function onDOMLoaded() {
 
     for (let col = 0; col < cols; ++col) {
         for (let row = 0; row < rows; ++row) {
-            let person = new Person(personTexture, radius, (col + 0.5) * cellWidth, (row + 0.5) * cellHeight, width, height);
+            let person = new Person(personTexture, radius, (col + 0.5) * cellWidth, (row + 0.5) * cellHeight, width, height, state);
             peopleContainer.addChild(person.do);
             people.push(person);
         }
     }
 
-    app.ticker.add(function () { 
+    app.ticker.add(function () {
         let dt = app.ticker.deltaMS * 0.001;
         let loops = Math.round(Simulation.speed);
-        for(let i = 0; i < loops; ++i) {
+        for (let i = 0; i < loops; ++i) {
             gameLoop(dt);
         }
     });
 
-    const chart = new DiseaseChart("chart", people, lang);
+    const chart = new DiseaseChart("chart", people, lang, state);
 
     const btnRestart = document.getElementById('restart');
     btnRestart.addEventListener('click', restart);
@@ -154,6 +159,19 @@ function onDOMLoaded() {
                     otherPerson.avoidanceX -= toPersonX;
                     otherPerson.avoidanceY -= toPersonY;
                 }
+            }
+        }
+
+        state.totalDeaths = 0;
+        state.totalInfected = 0;
+        
+        for (let i = 0; i < people.length; ++i) {
+            const person = people[i];
+            if (person.state == State.INFECTED) {
+                state.totalInfected++;
+            }
+            else if (person.state == State.DEAD) {
+                state.totalDeaths++;
             }
         }
 

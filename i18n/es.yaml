@@ -222,5 +222,10 @@ simulation:
 speed:
   other: Velocidad
 
+healthSystemCapacity:
+  other: "Capacidad del sistema de salud"
+
+# Misc
+
 kofi:
   other: Comprame un café

@@ -7,8 +7,10 @@ const Disease = {
 };
 
 const Society = {
+    healthSystemCapacity: 128,
     avoidanceDistance: 32,
-    avoidanceProb: 0.8
+    avoidanceProb: 0.8,
+    overloadMortalityRateIncrease: 0.1
 };
 
 const Simulation = {
@@ -23,6 +25,7 @@ Bindings["contagion-min-hours"] = { target: Disease, name: "contagionMinDays", u
 Bindings["infection-duration"] = { target: Disease, name: "infectionDurationDays", update(value) { this.target[this.name] = value; } };
 Bindings["mortality-rate"] = { target: Disease, name: "mortalityRate", update(value) { this.target[this.name] = value * 0.01; } };
 
+Bindings["health-system-capacity"] = { target: Society, name: "healthSystemCapacity", update(value) { this.target[this.name] = value; } };
 Bindings["avoidance-distance"] = { target: Society, name: "avoidanceDistance", update(value) { this.target[this.name] = value; } };
 Bindings["avodiance-prob"] = { target: Society, name: "avoidanceProb", update(value) { this.target[this.name] = value * 0.01; Bindings.avoidanceProbDirty = true; } };
 
