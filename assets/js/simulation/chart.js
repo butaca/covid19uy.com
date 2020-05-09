@@ -1,8 +1,7 @@
-import { State } from './person'
 import { Society } from './params'
 
 Chart.pluginService.register({
-    afterDraw: chart => {
+    afterDraw: function(chart) {
         if (typeof chart.config.options.lineAt != 'undefined') {
             const lineAt = chart.config.options.lineAt;
             const ctx = chart.chart.ctx;
