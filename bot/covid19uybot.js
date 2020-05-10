@@ -32,11 +32,17 @@ const replyToTweet = (tweet) => {
         push.send({ message: m });
         console.log(m);
     }).catch((e) => {
-        let m = "Error replying to tweet: " + tweetURL + "\n" + e;
+        let m = "Error replying to tweet: " + tweetURL + "\n" + JSON.stringify(e);
         push.send({ message: m });
         console.error(m);
     });
 };
+
+const notify = (tweet) => {
+    const tweetURL = "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
+    push.send({ message: tweetURL });
+    console.log(m);
+}
 
 const hasWord = (text, words) => {
     for (let i = 0; i < words.length; ++i) {
@@ -56,7 +62,12 @@ const onData = data => {
         if (config.follow.indexOf(tweet.user.id_str) != -1 && tweet.retweeted_status == undefined) {
             const lowerCaseText = tweet.text.toLowerCase();
             if (hasWord(lowerCaseText, config.words) && hasWord(lowerCaseText, config.covidWords)) {
-                replyToTweet(tweet);
+                if (config.replayEnabled) {
+                    replyToTweet(tweet);
+                }
+                else {
+                    notify(tweet);
+                }
             }
         }
     }
@@ -96,7 +107,7 @@ const onEnd = () => {
 };
 
 const onError = (error) => {
-    console.log("stream error: " + error.status);
+    console.log("stream error: " + JSON.stringify(error));
     reconnect(error.status === 420 || error.status === 429);
 };
 
