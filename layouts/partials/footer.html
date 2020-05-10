@@ -11,9 +11,12 @@
             <p>
                 {{ i18n "siteMadeBy" }}<a href="https://butaca.uy" target="_blank" rel="noopener noreferrer"> Juan Fornos</a>.
             </p>
+            {{- if .Site.Params.kofi -}}
             <div>
                 {{ partial "ko-fi.html" . }}
-            </p>
+            </div>
+            <br>
+            {{- end -}}
             <p>
                 <b>{{ i18n "supportedBy" }}</b>:
                 <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer">

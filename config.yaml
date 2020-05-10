@@ -22,6 +22,7 @@ outputs:
     - HTML
 
 params:
+  kofi: false
   share:
     - name: Facebook
       icon: fab fa-facebook
