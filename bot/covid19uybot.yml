@@ -1,20 +1,28 @@
+---
 reply:
-  - "En mi sitio pueden ver los datos por día, en 12 gráficas: https://covid19uy.com"
-  - "En https://covid19uy.com pueden ver la evolución del virus a lo largo del tiempo."
-  - "En mi simulación del virus se pueden ver claramente los efectos del distanciamiento social: https://covid19uy.com/simulation/"
-  - "Si les interesa, hice el sitio https://covid19uy.com que muestra los datos por día."
-  - "Estamos en guerra contra un enemigo invisible. La única forma de ganarle es entre todos. https://covid19uy.com"
-  - "Si podés, quédate en casa. Si tenés que salir, mantené 1.5 metros de distancia con otras personas y usá tapabocas. Al volver lavate las manos y desinfectá todo lo que traigas a la casa. https://covid19uy.com”
-replyHashtags:
-  - "#QuedateEnCasa #CoronavirusUy #CoronavirusEnUruguay #COVID19Uruguay"
+  - "En mi sitio pueden ver los datos por día,
+     en 12 gráficas: https://covid19uy.com"
+  - "En https://covid19uy.com pueden ver
+     la evolución del virus a lo largo del tiempo."
+  - "En mi simulación del virus se pueden ver claramente
+     los efectos del distanciamiento social: https://covid19uy.com/simulation/"
+  - "Si les interesa, hice el sitio https://covid19uy.com
+     que muestra los datos por día."
+  - "Estamos en guerra contra un enemigo invisible.
+     La única forma de ganarle es entre todos. https://covid19uy.com"
+  - "Si podés, quédate en casa. Si tenés que salir, mantené 1.5 metros de
+     distancia con otras personas y usá tapabocas. Al volver lavate las manos
+     y desinfectá todo lo que traigas a la casa. https://covid19uy.com"
+replyHashtags: "#QuedateEnCasa #CoronavirusUy
+                #CoronavirusEnUruguay #COVID19Uruguay"
 replayEnabled: true
 follow:
-  - "840325920"  # SINAE
-  - "3305529657" # MSP
-  - "380961080"  # Comunicación Presidencial
-  - "1673800032" # OPS/OMS Uruguay
-  - "189861728"  # Luis Lacalle Pou
-  - "231870362"  # Álvaro Delgado
+  - "840325920"    # SINAE
+  - "3305529657"   # MSP
+  - "380961080"    # Comunicación Presidencial
+  - "1673800032"   # OPS/OMS Uruguay
+  - "189861728"    # Luis Lacalle Pou
+  - "231870362"    # Álvaro Delgado
 words:
   - información
   - informe
