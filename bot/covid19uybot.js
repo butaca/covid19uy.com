@@ -21,10 +21,24 @@ const T = new Twitter({
     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
+let replyMessages = [];
+
+const getReplyMessage = () => {
+    if(replyMessages.length == 0) {
+        replyMessages = Array.from(config.reply);
+    }
+    
+    let randomIndex = Math.floor(Math.random() * replyMessages.length);
+    let message = replyMessages[randomIndex];
+    replyMessages.splice(randomIndex, 1);
+
+    return message += "\n\n" + config.replyHashtags;
+}
+
 const replyToTweet = (tweet) => {
     const tweetURL = "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
     T.post("statuses/update", {
-        status: config.reply,
+        status: config.reply[Math.floor(Math.random() * config.reply.length)],
         in_reply_to_status_id: tweet.id_str,
         auto_populate_reply_metadata: true
     }).then(() => {

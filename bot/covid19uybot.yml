@@ -1,5 +1,11 @@
-reply: "En mi sitio pueden ver los datos por día, en 12 gráficas: https://covid19uy.com\n\n#QuedateEnCasa #CoronavirusUy #CoronavirusEnUruguay #COVID19Uruguay"
-replayEnabled: false
+reply:
+  - "En mi sitio pueden ver los datos por día, en 12 gráficas: https://covid19uy.com"
+  - "En https://covid19uy.com pueden ver la evolución del virus a lo largo del tiempo."
+  - "En mi simulación del virus se pueden ver claramente los efectos del distanciamiento social: https://covid19uy.com/simulation/"
+  - "Si les interesa, hice el sitio https://covid19uy.com que muestra los datos por día."
+replyHashtags:
+  - "#QuedateEnCasa #CoronavirusUy #CoronavirusEnUruguay #COVID19Uruguay"
+replayEnabled: true
 follow:
   - "840325920"  # SINAE
   - "3305529657" # MSP
