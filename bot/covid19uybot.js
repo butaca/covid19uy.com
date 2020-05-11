@@ -32,13 +32,15 @@ const getReplyMessage = () => {
     let message = replyMessages[randomIndex];
     replyMessages.splice(randomIndex, 1);
 
-    return message += "\n\n" + config.replyHashtags;
+    message += "\n\n" + config.replyHashtags;
+
+    return message;
 }
 
 const replyToTweet = (tweet) => {
     const tweetURL = "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
     T.post("statuses/update", {
-        status: config.reply[Math.floor(Math.random() * config.reply.length)],
+        status: getReplyMessage(),
         in_reply_to_status_id: tweet.id_str,
         auto_populate_reply_metadata: true
     }).then(() => {
