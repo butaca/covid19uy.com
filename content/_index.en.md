@@ -33,7 +33,7 @@ If you _have_ to go out, **keep 1.5 meters (~5 feet) away from other people** an
 {{< tag class="is-danger" >}}
 New!
 {{< /tag >}}
-I invite you to play with my [coronavirus simulator][simulator] where you can visually see the impact of social distancing.
+I invite you to try my [interactive coronavirus simulation][simulator] where you can visually see the impact of social distancing.
 
 {{< world >}}
 

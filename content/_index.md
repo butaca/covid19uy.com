@@ -32,7 +32,7 @@ Si _tenés_ que salir, **mantené 1.5 metros de distancia** con otras personas y
 {{< tag class="is-danger" >}}
 NUEVO!
 {{< /tag >}}
-Te invito a jugar con mi [simulador de coronavirus][simulator] donde podrás ver de manera visual el impacto del distanciamiento social.
+Te invito a probar mi [simulación de coronavirus interactiva][simulator] donde podrás ver de manera visual el impacto del distanciamiento social.
 
 {{< world >}}
 
