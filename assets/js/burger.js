@@ -9,7 +9,7 @@ export default function burger() {
     };
 
     var navBarLinks = navbar.querySelectorAll('a[href^="#"]');
-    navBarLinks.forEach(function () {
+    navBarLinks.forEach(function (el) {
         el.addEventListener('click', toggleBurger);
     });
 
