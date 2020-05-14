@@ -28,6 +28,7 @@ Si _tenés_ que salir, **mantené 1.5 metros de distancia** con otras personas y
 * 😷 Disminuímos la probabilidad de contagiarnos y de contagiar a otros.
 * ⚠️ Alrededor del 60% de las personas con coronavirus muestran síntomas leves o nulos. [[fuente][asymptomatic_cases]]
 * 🏥 Ayudamos a **no sobrecargar el sistema de salud** y entonces a **salvar vidas**.
+* 🤩 [Los famosos quieren que te quedes en casa](/celebrities)
 
 {{< tag class="is-danger" >}}
 NUEVO!
@@ -35,20 +36,6 @@ NUEVO!
 Te invito a probar mi [simulación de coronavirus interactiva][simulator] donde podrás ver de manera visual el impacto del distanciamiento social.
 
 {{< world >}}
-
-## Los famosos quieren que te quedes en casa
-
-{{< columns class="is-multiline">}}
-{{< column class="is-4">}}
-{{< tweet 1241736445456519175 >}}
-{{< /column >}}
-{{< column class="is-4">}}
-{{< tweet 1241863548332060680 >}}
-{{< /column >}}
-{{< column class="is-4">}}
-{{< tweet 1241830257256214528 >}}
-{{< /column >}}
-{{< /columns >}}
 
 ## ¿Cómo puedo ayudar?
 

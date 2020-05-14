@@ -29,6 +29,7 @@ If you _have_ to go out, **keep 1.5 meters (~5 feet) away from other people** an
 * 😷 We decrease the probability of infecting ourselves and infecting others.
 * ⚠️ About 60% of people with coronavirus show mild or no symptoms. [[source][asymptomatic_cases]]
 * 🏥 We help to **avoid overloading the health system** and therefore to **save lives**.
+* 🤩 [Celebrities want you to stay home](/en/celebrities)
 
 {{< tag class="is-danger" >}}
 New!
@@ -36,20 +37,6 @@ New!
 I invite you to try my [interactive coronavirus simulation][simulator] where you can visually see the impact of social distancing.
 
 {{< world >}}
-
-## Celebrities want you to stay home
-
-{{< columns class="is-multiline">}}
-{{< column class="is-4">}}
-{{< tweet 1241736445456519175 >}}
-{{< /column >}}
-{{< column class="is-4">}}
-{{< tweet 1241863548332060680 >}}
-{{< /column >}}
-{{< column class="is-4">}}
-{{< tweet 1241830257256214528 >}}
-{{< /column >}}
-{{< /columns >}}
 
 ## How can I help?
 
