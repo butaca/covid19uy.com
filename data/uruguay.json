@@ -62,7 +62,8 @@
         { "date": "2020-05-10", "cases": 707, "recovered": 517, "deaths": 19, "icu": 8, "hc": 100, "hcRecovered": 89, "hcDeaths" : 1, "tests": 563, "positives": 7 },
         { "date": "2020-05-11", "cases": 711, "recovered": 523, "deaths": 19, "icu": 8, "hc": 100, "hcRecovered": 90, "hcDeaths" : 1, "tests": 673, "positives": 5 },
         { "date": "2020-05-12", "cases": 717, "recovered": 532, "deaths": 19, "icu": 8, "hc": 101, "hcRecovered": 90, "hcDeaths" : 1, "tests": 803, "positives": 7 },
-        { "date": "2020-05-13", "cases": 719, "recovered": 545, "deaths": 19, "icu": 8, "hc": 101, "hcRecovered": 90, "hcDeaths" : 1, "tests": 709, "positives": 9 }
+        { "date": "2020-05-13", "cases": 719, "recovered": 545, "deaths": 19, "icu": 8, "hc": 101, "hcRecovered": 90, "hcDeaths" : 1, "tests": 709, "positives": 9 },
+        { "date": "2020-05-14", "cases": 724, "recovered": 547, "deaths": 19, "icu": 7, "hc": 101, "hcRecovered": 90, "hcDeaths" : 1, "tests": 1000, "positives": 7 }
     ]
 }
 
