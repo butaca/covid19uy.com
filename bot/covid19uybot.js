@@ -70,7 +70,10 @@ const hasWord = (text, words) => {
     return false;
 };
 
+let lastPing = Date.now();
+
 const onData = data => {
+    lastPing = Date.now();
     // filter out non tweet data
     if (data.user) {
         const tweet = data;
@@ -101,6 +104,7 @@ let reconnectionTimeout = null;
 
 const reconnect = (calm) => {
     if (calm) {
+        console.log("received calm message, incrementing reconnection wait time.");
         reconnectionWait = Math.max(reconnectionWait, RECONNECTION_CALM_WAIT);
         // cancel current pending reconnection
         if (reconnectionTimeout != null) {
@@ -110,21 +114,23 @@ const reconnect = (calm) => {
     }
 
     if (reconnectionTimeout == null) {
+        if (stream) {
+            stream.off('start', onStart);
+            stream.off('data', onData);
+            stream.off('error', onError);
+            stream.off('end', onEnd);
+            stream.off('ping', onPing);
+        }
         process.nextTick(() => {
             if (stream) {
-                stream.off('start', onStart);
-                stream.off('data', onData);
-                stream.off('error', onError);
-                stream.off('end', onEnd);
-                stream.off('ping', onPing);
                 stream.destroy();
                 stream = null;
                 console.log('stream destroyed');
             }
             console.log('reconnecting in ' + (reconnectionWait / 1000).toFixed(2) + ' seconds');
-            reconnectionTimeout = setTimeout(() => { 
+            reconnectionTimeout = setTimeout(() => {
                 reconnectionTimeout = null;
-                createStream(); 
+                createStream();
             }, reconnectionWait);
             reconnectionWait = Math.min(reconnectionWait * 2, RECONNECTION_WAIT_MAX);
         });
@@ -136,29 +142,28 @@ const reconnect = (calm) => {
 };
 
 const onStart = () => {
+    lastPing = Date.now();
     console.log("stream started");
     reconnectionWait = RECONNECTION_WAIT_MIN;
 };
 
 const onEnd = () => {
+    lastPing = Date.now();
     console.log("stream ended");
     reconnect(false);
 };
 
 const onError = (error) => {
+    lastPing = Date.now();
     console.log("stream error: " + JSON.stringify(error));
     reconnect(error.status === 420 || error.status === 429);
 };
 
-let lastPing = -1;
-
 const checkPingDelta = (ping) => {
-    if (lastPing > 0) {
-        let delta = ping - lastPing;
-        if (delta > RECONNECTION_PING_MAX) {
-            console.log("Max ping exceeded: " + (delta / 1000).toFixed(2) + ", reconnecting...");
-            reconnect(false);
-        }
+    let delta = ping - lastPing;
+    if (delta > RECONNECTION_PING_MAX) {
+        console.log("Max ping exceeded: " + (delta / 1000).toFixed(2) + ", reconnecting...");
+        reconnect(false);
     }
 };
 
@@ -169,7 +174,6 @@ const onPing = () => {
 };
 
 const createStream = () => {
-    lastPing = -1;
     stream = T.stream('statuses/filter', {
         follow: config.follow.join(','),
         tweet_mode: 'extended'
