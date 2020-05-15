@@ -94,23 +94,40 @@ let stream = null;
 const RECONNECTION_WAIT_MIN = 2 * 1000;
 const RECONNECTION_WAIT_MAX = 120 * 1000;
 const RECONNECTION_CALM_WAIT = 20 * 1000;
-const RECONNECTION_PING_MAX = 90 * 1000;
+const RECONNECTION_PING_MAX = 20 * 1000;
 let reconnectionWait = RECONNECTION_WAIT_MIN;
+
+let reconnectionTimeout = null;
 
 const reconnect = (calm) => {
     if (calm) {
         reconnectionWait = Math.max(reconnectionWait, RECONNECTION_CALM_WAIT);
-    }
-    process.nextTick(() => {
-        if (stream) {
-            stream.destroy();
-            stream = null;
-            console.log('stream destroyed');
+        // cancel current pending reconnection
+        if (reconnectionTimeout != null) {
+            clearTimeout(reconnectionTimeout);
+            reconnectionTimeout = null;
         }
-        console.log('reconnecting in ' + (reconnectionWait / 1000).toFixed(2) + ' seconds');
-        setTimeout(createStream, reconnectionWait);
-        reconnectionWait = Math.min(reconnectionWait * 2, RECONNECTION_WAIT_MAX);
-    });
+    }
+
+    if (reconnectionTimeout == null) {
+        process.nextTick(() => {
+            if (stream) {
+                stream.destroy();
+                stream = null;
+                console.log('stream destroyed');
+            }
+            console.log('reconnecting in ' + (reconnectionWait / 1000).toFixed(2) + ' seconds');
+            reconnectionTimeout = setTimeout(() => { 
+                reconnectionTimeout = null;
+                createStream(); 
+            }, reconnectionWait);
+            reconnectionWait = Math.min(reconnectionWait * 2, RECONNECTION_WAIT_MAX);
+        });
+    }
+    else {
+        console.log('skiping reconnection since another one is pending')
+    }
+
 };
 
 const onStart = () => {
