@@ -112,6 +112,11 @@ const reconnect = (calm) => {
     if (reconnectionTimeout == null) {
         process.nextTick(() => {
             if (stream) {
+                stream.off('start', onStart);
+                stream.off('data', onData);
+                stream.off('error', onError);
+                stream.off('end', onEnd);
+                stream.off('ping', onPing);
                 stream.destroy();
                 stream = null;
                 console.log('stream destroyed');
