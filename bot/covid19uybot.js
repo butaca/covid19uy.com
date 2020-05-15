@@ -94,7 +94,7 @@ let stream = null;
 const RECONNECTION_WAIT_MIN = 2 * 1000;
 const RECONNECTION_WAIT_MAX = 120 * 1000;
 const RECONNECTION_CALM_WAIT = 20 * 1000;
-const RECONNECTION_PING_MAX = 20 * 1000;
+const RECONNECTION_PING_MAX = 90 * 1000;
 let reconnectionWait = RECONNECTION_WAIT_MIN;
 
 let reconnectionTimeout = null;
