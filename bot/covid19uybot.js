@@ -24,10 +24,10 @@ const T = new Twitter({
 let replyMessages = [];
 
 const getReplyMessage = () => {
-    if(replyMessages.length == 0) {
+    if (replyMessages.length == 0) {
         replyMessages = Array.from(config.reply);
     }
-    
+
     let randomIndex = Math.floor(Math.random() * replyMessages.length);
     let message = replyMessages[randomIndex];
     replyMessages.splice(randomIndex, 1);
@@ -94,6 +94,7 @@ let stream = null;
 const RECONNECTION_WAIT_MIN = 2 * 1000;
 const RECONNECTION_WAIT_MAX = 120 * 1000;
 const RECONNECTION_CALM_WAIT = 20 * 1000;
+const RECONNECTION_PING_MAX = 90 * 1000;
 let reconnectionWait = RECONNECTION_WAIT_MIN;
 
 const reconnect = (calm) => {
@@ -127,7 +128,26 @@ const onError = (error) => {
     reconnect(error.status === 420 || error.status === 429);
 };
 
+let lastPing = -1;
+
+const checkPingDelta = (ping) => {
+    if (lastPing > 0) {
+        let delta = ping - lastPing;
+        if (delta > RECONNECTION_PING_MAX) {
+            console.log("Max ping exceeded: " + (delta / 1000).toFixed(2) + ", reconnecting...");
+            reconnect(false);
+        }
+    }
+};
+
+const onPing = () => {
+    let ping = Date.now();
+    checkPingDelta(ping);
+    lastPing = ping;
+};
+
 const createStream = () => {
+    lastPing = -1;
     stream = T.stream('statuses/filter', {
         follow: config.follow.join(','),
         tweet_mode: 'extended'
@@ -136,7 +156,13 @@ const createStream = () => {
     stream.on('data', onData);
     stream.on('error', onError);
     stream.on('end', onEnd);
+    stream.on('ping', onPing);
     console.log('stream created');
 };
 
-T.get("account/verify_credentials").then(createStream).catch(console.error);
+const main = () => {
+    createStream();
+    setInterval(() => { checkPingDelta(Date.now()); }, RECONNECTION_PING_MAX);
+};
+
+T.get("account/verify_credentials").then(main).catch(console.error);
