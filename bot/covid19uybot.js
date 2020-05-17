@@ -1,18 +1,50 @@
 require('dotenv').config();
-
 const fs = require('fs');
 const yaml = require('js-yaml');
-const file = fs.readFileSync('./covid19uybot.yml', 'utf-8');
-const config = yaml.safeLoad(file);
-
+const Twitter = require('twitter-lite');
 const Push = require('pushover-notifications');
+
+const CONFIG_FILENAME = './covid19uybot.yml';
+const CONFIG_ENCODING = 'utf-8';
+
+let config = null;
+
+const loadConfig = () => {
+    let file = fs.readFileSync(CONFIG_FILENAME, CONFIG_ENCODING);
+    config = yaml.safeLoad(file);
+};
+
+loadConfig();
+
+const reloadConfig = () => {
+    const prevFollow = config.follow;
+    loadConfig();
+    console.log("config reloaded");
+
+    const sameFollow = (arr1, arr2) => {
+        if(arr1.length == arr2.length) {
+            for(let i = 0; i < arr1.length; ++i) {
+                if(arr1[i] != arr2[i]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    };
+
+    if(!sameFollow(prevFollow, config.follow)) {
+        console.log("follow changed on config, recreating stream...");
+        reconnect(false);
+    }
+};
+
+fs.watch(CONFIG_FILENAME, CONFIG_ENCODING, reloadConfig);
 
 const push = new Push({
     user: process.env.PUSHOVER_USER,
     token: process.env.PUSHOVER_TOKEN,
 });
-
-const Twitter = require('twitter-lite');
 
 const T = new Twitter({
     consumer_key: process.env.TWITTER_CONSUMER_KEY,
