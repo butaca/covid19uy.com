@@ -32,7 +32,9 @@ const getReplyMessage = () => {
     let message = replyMessages[randomIndex];
     replyMessages.splice(randomIndex, 1);
 
-    message += "\n\n" + config.replyHashtags;
+    if(config.hashtagsEnabled) {
+        message += "\n\n" + config.replyHashtags;
+    }
 
     return message;
 }

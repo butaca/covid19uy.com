@@ -29,9 +29,10 @@ reply:
      Es mi manera de ayudar."
   - "Si tenés una idea o sugerencia para mi sitio https://covid19uy.com
      no dudes en contactarme! 🙏"
+replayEnabled: true
 replyHashtags: "#QuedateEnCasa #CoronavirusUy
                 #CoronavirusEnUruguay #COVID19Uruguay"
-replayEnabled: true
+hashtagsEnabled: true
 follow:
   - "840325920"    # SINAE
   - "3305529657"   # MSP
