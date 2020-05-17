@@ -47,3 +47,8 @@ words:
 covidWords:
   - coronavirus
   - covid
+reconnection:
+  minWait: 1000
+  maxWait: 120000
+  calmWait: 20000
+  maxPing: 90000

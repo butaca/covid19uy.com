@@ -96,18 +96,14 @@ const onData = data => {
 
 let stream = null;
 
-const RECONNECTION_WAIT_MIN = 2 * 1000;
-const RECONNECTION_WAIT_MAX = 120 * 1000;
-const RECONNECTION_CALM_WAIT = 20 * 1000;
-const RECONNECTION_PING_MAX = 90 * 1000;
-let reconnectionWait = RECONNECTION_WAIT_MIN;
+let reconnectionWait = config.reconnection.minWait;
 
 let reconnectionTimeout = null;
 
 const reconnect = (calm) => {
     if (calm) {
         console.log("received calm message, incrementing reconnection wait time.");
-        reconnectionWait = Math.max(reconnectionWait, RECONNECTION_CALM_WAIT);
+        reconnectionWait = Math.max(reconnectionWait, config.reconnection.calmWait);
         // cancel current pending reconnection
         if (reconnectionTimeout != null) {
             clearTimeout(reconnectionTimeout);
@@ -134,7 +130,7 @@ const reconnect = (calm) => {
                 reconnectionTimeout = null;
                 createStream();
             }, reconnectionWait);
-            reconnectionWait = Math.min(reconnectionWait * 2, RECONNECTION_WAIT_MAX);
+            reconnectionWait = Math.min(reconnectionWait * 2, config.reconnection.maxWait);
         });
     }
     else {
@@ -146,7 +142,7 @@ const reconnect = (calm) => {
 const onStart = () => {
     lastPing = Date.now();
     console.log("stream started");
-    reconnectionWait = RECONNECTION_WAIT_MIN;
+    reconnectionWait = config.reconnection.minWait;
 };
 
 const onEnd = () => {
@@ -163,7 +159,7 @@ const onError = (error) => {
 
 const checkPingDelta = (ping) => {
     let delta = ping - lastPing;
-    if (delta > RECONNECTION_PING_MAX) {
+    if (delta > config.reconnection.maxPing) {
         console.log("Max ping exceeded: " + (delta / 1000).toFixed(2) + ", reconnecting...");
         reconnect(false);
     }
@@ -190,7 +186,7 @@ const createStream = () => {
 
 const main = () => {
     createStream();
-    setInterval(() => { checkPingDelta(Date.now()); }, RECONNECTION_PING_MAX);
+    setInterval(() => { checkPingDelta(Date.now()); }, config.reconnection.maxPing);
 };
 
 T.get("account/verify_credentials").then(main).catch(console.error);
