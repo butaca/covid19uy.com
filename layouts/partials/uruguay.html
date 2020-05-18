@@ -8,7 +8,10 @@
 {{- $recovered := cond (isset $last "recovered") $last.recovered 0  -}}
 {{- $activeCases := sub (sub $cases $deaths) $recovered -}}
 {{- $healthWorkerCases := cond (isset $last "hc") $last.hc 0  -}}
-{{- $healthWorkerPercent := mul (div $healthWorkerCases $cases) 100 -}}
+{{- $healthWorkerPercent := 0 -}}
+{{- if gt $cases 0 -}}
+{{- $healthWorkerPercent = mul (div $healthWorkerCases $cases) 100 -}}
+{{- end -}}
 <div id="uruguay" class="box has-padding-sm">
     <nav class="level">
         <!--<div class="level-item has-text-centered">

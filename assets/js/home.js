@@ -106,21 +106,22 @@ function main() {
         dailyICU.push(todayICU);
         dailyIMCU.push(todayIMCU);
 
-        dailyICUPercent.push((todayICU / todayActiveCases * 100).toFixed(2));
-        dailyIMCUPercent.push((todayIMCU / todayActiveCases * 100).toFixed(2));
+        dailyICUPercent.push((todayActiveCases > 0 ? (todayICU / todayActiveCases * 100) : 0).toFixed(2));
+        dailyIMCUPercent.push((todayActiveCases > 0 ? (todayIMCU / todayActiveCases * 100) : 0).toFixed(2));
 
         if (firstHopitalizationsValidIndex < 0 && (todayICU > 0 || todayIMCU > 0)) {
             firstHopitalizationsValidIndex = index;
         }
 
-        dailyHealthcareWorkersPercent.push((Math.min(1, Math.max(0, todayHealthcareWorker / todayCases)) * 100).toFixed(2));
+        var todayCasesHC = Math.max(todayHealthcareWorker, todayCases);
+        dailyHealthcareWorkersPercent.push((todayCasesHC > 0 ? (Math.min(1, Math.max(0, todayHealthcareWorker / todayCasesHC)) * 100) : 0).toFixed(2));
 
         var todayTests = el.tests;
         if (firstDailyTestsValidIndex < 0 && todayTests != undefined) {
             firstDailyTestsValidIndex = index;
         }
         dailyTests.push(todayTests != undefined ? todayTests : todayPositives);
-        dailyPositivesPercent.push((todayPositives / todayTests * 100).toFixed(2));
+        dailyPositivesPercent.push(((todayTests > 0 ? (todayPositives / todayTests) : 0) * 100).toFixed(2));
     });
 
     var ctx = document.getElementById('chart-active-cases');

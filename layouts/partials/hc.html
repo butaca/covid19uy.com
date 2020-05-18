@@ -4,7 +4,10 @@
 {{- $hcRecovered := cond (isset $last "hcRecovered") $last.hcRecovered 0  -}}
 {{- $hcDeaths := cond (isset $last "hcDeaths") $last.hcDeaths 0  -}}
 {{- $hcActive := sub $hcCases (add $hcRecovered $hcDeaths) -}}
-{{- $hcPercent := mul (div $hcCases $cases) 100 -}}
+{{- $hcPercent := 0 -}}
+{{- if gt $cases 0 -}}
+{{- $hcPercent = mul (div $hcCases $cases) 100 -}}
+{{- end -}}
 <h2 id="hc">{{ i18n "healthCareWorkerCases"}} </h2>
 <div class="box has-padding-sm">
     <nav class="level">

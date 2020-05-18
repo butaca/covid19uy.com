@@ -7,8 +7,10 @@
 {{- $deaths := sub $today.deaths $yesterday.deaths -}}
 {{- $recovered := sub $today.recovered $yesterday.recovered -}}
 {{- $healthWorkerCases := sub $today.hc $yesterday.hc -}}
-{{- $healthWorkerPercent := mul (div $healthWorkerCases $cases) 100 -}}
-
+{{- $healthWorkerPercent := 0 -}}
+{{- if gt $cases 0 -}}
+{{- $healthWorkerPercent = mul (div $healthWorkerCases $cases) 100 -}}
+{{- end -}}
 <div id="uruguay-today">
     <span class="tag is-warning">{{ i18n "todayNumbers" }}: {{ dateFormat .Site.Params.dateFormatCompact $today.date }}</span>
     <nav class="level box has-padding-sm">
