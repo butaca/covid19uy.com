@@ -57,6 +57,10 @@
                 <br>
                 {{ .Content }}
             </div>
+            <h2>
+                {{- $twitterPage := .GetPage "twitter" -}}
+                <a href="{{ $twitterPage.Permalink }}"><span class="tag is-danger has-margin-right-sm">{{ i18n "new"}}</span>{{ $twitterPage.Title }}</a>
+            </h2>
         </div>
     </section>
     {{ partial "footer.html" . }}
