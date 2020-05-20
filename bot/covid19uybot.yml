@@ -35,11 +35,11 @@ replyHashtags: "#QuedateEnCasa #CoronavirusUy
 hashtagsEnabled: true
 follow:
   - "840325920"    # SINAE
-  - "3305529657"   # MSP
-  - "380961080"    # Comunicación Presidencial
-  - "1673800032"   # OPS/OMS Uruguay
-  - "189861728"    # Luis Lacalle Pou
-  - "231870362"    # Álvaro Delgado
+# - "3305529657"   # MSP
+# - "380961080"    # Comunicación Presidencial
+# - "1673800032"   # OPS/OMS Uruguay
+# - "231870362"    # Álvaro Delgado
+# - "189861728"    # Luis Lacalle Pou
 words:
   - información
   - informe
