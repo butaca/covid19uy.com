@@ -32,7 +32,7 @@ reply:
 replayEnabled: true
 replyHashtags: "#QuedateEnCasa #CoronavirusUy
                 #CoronavirusEnUruguay #COVID19Uruguay"
-hashtagsEnabled: true
+hashtagsEnabled: false
 follow:
   - "840325920"    # SINAE
 # - "3305529657"   # MSP
