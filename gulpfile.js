@@ -19,6 +19,7 @@ const paths = {
     webpackEntry: './assets/js/home.js',
     srcJS: ['./assets/js/**/*.js', './data/**/*.json', './i18n/**/*.yaml'],
     destJS: './static/js',
+    destJSFilename: 'main.js',
     mainSCSS: './assets/sass/main.scss',
     srcSCSS: './assets/sass/**/*.scss',
     destCSS: './static/css',
@@ -29,6 +30,14 @@ const simulationPaths = {
     webpackEntry: './assets/js/simulation/simulation.js',
     srcJS: './assets/js/**/*.js',
     destJS: './static/simulation/js',
+    destJSFilename: 'simulation.js',
+}
+
+const twitterPaths = {
+    webpackEntry: './assets/js/twitter/twitter.js',
+    srcJS: './assets/js/**/*.js',
+    destJS: './static/twitter/js',
+    destJSFilename: 'twitter.js',
 }
 
 function sassBuild() {
@@ -42,11 +51,11 @@ function sassWatch() {
     return gulp.watch(paths.srcSCSS, sassBuild);
 };
 
-function webpackBuild() {
-    return gulp.src(paths.webpackEntry)
+function webpackBuild(options) {
+    return gulp.src(options.webpackEntry)
         .pipe(webpack({
             output: {
-                filename: 'main.js',
+                filename: options.destJSFilename,
             },
             plugins: [
                 new TerserPlugin()
@@ -62,38 +71,26 @@ function webpackBuild() {
                 ]
             }
         }))
-        .pipe(gulp.dest(paths.destJS));
+        .pipe(gulp.dest(options.destJS));
+}
+
+function webpackBuildMain() {
+    return webpackBuild(paths);
 };
 
 function webpackWatch() {
-    return gulp.watch(paths.srcJS, gulp.series(webpackBuild, simulationBuild));
+    return gulp.watch(paths.srcJS, gulp.series(webpackBuildMain, simulationBuild, twitterBuild));
 };
 
 function simulationBuild() {
-
-    return gulp.src(simulationPaths.webpackEntry)
-        .pipe(webpack({
-            output: {
-                filename: 'simulation.js',
-            },
-            plugins: [
-                new TerserPlugin()
-            ],
-            mode: "production",
-            module: {
-                rules: [
-                    {
-                        test: /\.ya?ml$/,
-                        type: 'json',
-                        use: 'yaml-loader'
-                    }
-                ]
-            }
-        }))
-        .pipe(gulp.dest(simulationPaths.destJS));
+    return webpackBuild(simulationPaths);
 };
 
-const build = gulp.series(gulp.parallel(sassBuild, webpackBuild), simulationBuild);
+function twitterBuild() {
+    return webpackBuild(twitterPaths);
+}
+
+const build = gulp.series(gulp.parallel(sassBuild, webpackBuildMain), simulationBuild, twitterBuild);
 
 function hugoBuild(cb) {
     const params = ["--gc", "--verbose", "--cleanDestinationDir", "--ignoreCache"];
@@ -193,7 +190,7 @@ function updateLastMod() {
         .pipe(gulp.dest('content'));
 }
 
-exports.webpackBuild = webpackBuild;
+exports.webpackBuild = webpackBuildMain;
 exports.develop = gulp.series(downloadData, build, gulp.parallel(watch, hugoServer));
 exports.deploy = gulp.series(downloadData, updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);
 exports.default = exports.develop;
