@@ -17,8 +17,11 @@ const T = new Twitter({
 T.get("account/verify_credentials").then(main).catch(console.error);
 
 function replay(id) {
+    let randomIndex = Math.floor(Math.random() * config.reply.length);
+    var message = config.reply[randomIndex];
+
     T.post("statuses/update", {
-        status: config.reply,
+        status: message,
         in_reply_to_status_id: id,
         auto_populate_reply_metadata: true
     }).then(() => {
