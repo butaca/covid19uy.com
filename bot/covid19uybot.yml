@@ -41,9 +41,9 @@ follow:
 # - "231870362"    # Álvaro Delgado
 # - "189861728"    # Luis Lacalle Pou
 words:
-  - información
-  - informe
   - visualizador
+# - información
+# - informe
 covidWords:
   - coronavirus
   - covid
