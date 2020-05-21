@@ -1,4 +1,17 @@
+import burger from '../burger'
+import nfCookies from '../nf-cookies'
 import '../icons'
+
+if (document.readyState === 'loading') {
+    document.addEventListener("DOMContentLoaded", onDOMLoaded);
+} else {
+    onDOMLoaded();
+}
+
+function onDOMLoaded() {
+    burger();
+    nfCookies();
+}
 
 window.twttr = (function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0],
