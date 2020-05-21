@@ -17,16 +17,19 @@
         <div class="container">
             <div class="content">
                 <h1 class="title">{{ .Title }}</h1>
-                {{ .Content }}
+                <article class="message is-info">
+                    <div class="message-body">
+                        {{ .Content }}
+                    </div>
+                </article>
                 <div class="columns is-multiline">
                     {{ $context := . }}
                     {{ range .Site.Data.twitter.tweets }}
                     <div class="column is-4">
-                    {{ partial "twitter" (dict "context" $context "id" .) }}
+                        {{ partial "twitter" (dict "context" $context "id" .) }}
                     </div>
                     {{ end }}
                 </div>
-
             </div>
         </div>
     </section>

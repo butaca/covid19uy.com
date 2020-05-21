@@ -21,10 +21,11 @@
                 {{ .Title }}
             </h1>
             <div>
-                <a href="{{ "/simulation" | relLangURL }}">
-                    <span class="tag is-danger">{{ i18n "new"}}</span>
-                    {{ i18n "simulationTitle" }}
-                </a>
+                <p class="has-margin-bottom-sm">
+                    {{- $twitterPage := .GetPage "twitter" -}}
+                    <a href="{{ $twitterPage.Permalink }}"><span
+                            class="tag is-danger has-margin-right-sm">{{ i18n "new"}}</span>{{ $twitterPage.Title }}</a>
+                </p>
             </div>
             <div class="content">
                 {{ partial "uruguay.html" . }}
@@ -57,10 +58,6 @@
                 <br>
                 {{ .Content }}
             </div>
-            <h2>
-                {{- $twitterPage := .GetPage "twitter" -}}
-                <a href="{{ $twitterPage.Permalink }}"><span class="tag is-danger has-margin-right-sm">{{ i18n "new"}}</span>{{ $twitterPage.Title }}</a>
-            </h2>
         </div>
     </section>
     {{ partial "footer.html" . }}
