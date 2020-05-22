@@ -218,7 +218,7 @@ const createStream = () => {
 
 const main = () => {
     createStream();
-    setInterval(() => { checkPingDelta(Date.now()); }, config.reconnection.maxPing);
+    setInterval(() => { checkPingDelta(Date.now()); }, config.reconnection.minWait);
 };
 
 T.get("account/verify_credentials").then(main).catch(console.error);
