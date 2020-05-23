@@ -1,5 +1,8 @@
 <h2 class="is-marginless">{{ i18n "shareMe" }}</h2>
 {{- $permalink := .Permalink -}}
+<!-- URL encode hack -->
+{{- $permalink = replace $permalink ":" "%3A" -}}
+{{- $permalink = replace $permalink "/" "%2F" -}}
 {{- $title := .Title -}}
 {{- range .Site.Params.share -}}
 {{- $url := (replace .url "$url" $permalink) -}}
