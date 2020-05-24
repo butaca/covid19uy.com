@@ -1,0 +1,26 @@
+{
+    "deaths": [
+        { "date": "2020-03-28", "age": 71, "s": "M", "dep": "Montevideo", "prev": true, "meta": "Ex ministro de la Corte Electoral Rodolfo González Rissotto. Padecía patologías severas previas.", "source": "https://ladiaria.com.uy/articulo/2020/3/fallecio-la-primera-persona-por-coronavirus-en-uruguay/" },
+        { "date": "2020-04-01", "age": 61, "s": "M", "dep": "Montevideo", "prev": true, "icu": true, "meta": "Juan José López Lerena. Padecía múltiples patologías previas.", "source": "https://www.elpais.com.uy/informacion/salud/segunda-persona-fallecida-uruguay-coronavirus.html" },
+        { "date": "2020-04-02", "age": 66, "s": "F", "dep": "Montevideo", "prev": true, "icu": true, "meta": "Padecía múltiples patologías previas." },
+        { "date": "2020-04-02", "age": 65, "s": "M", "dep": "Montevideo", "prev": true, "icu": true, "meta": "Padecía enfermedades crónicas preexistentes." },
+        { "date": "2020-04-04", "age": 53, "s": "F", "dep": "Montevideo", "prev": true, "meta": "Padecían patologías severas previas." },
+        { "date": "2020-04-05", "age": 84, "s": "M", "dep": "Montevideo", "prev": true, "meta": "Padecía patologías previas." },
+        { "date": "2020-04-07", "age": 84, "s": "M", "dep": "Maldonado", "prev": true, "meta": "Padecía patologías previas." },
+        { "date": "2020-04-12", "age": 69, "s": "M", "dep": "Montevideo", "prev": true, "icu": true, "meta": "Juan José Noueched. Padecía patologías previas.", "source": "https://www.elpais.com.uy/informacion/salud/miercoles-registro-novena-muerte-coronavirus-uruguay.html"},
+        { "date": "2020-04-15", "age": 76, "s": "M", "dep": "Montevideo", "icu": true, "meta" : "Álvaro Rodríguez, presidente del club Trouville.", "source": "https://www.elpais.com.uy/informacion/salud/sinae-confirmo-decimo-fallecimiento-covid-personas-han-dado-positivo.html" },
+        { "date": "2020-04-19", "age": 64, "s": "M", "dep": "Montevideo", "icu": true },
+        { "date": "2020-04-21", "age": 83, "s": "M", "dep": "Maldonado", "icu": true, "meta": "Ciudadano argentino.", "source": "https://www.elpais.com.uy/informacion/salud/fallecio-hombre-coronavirus-maldonado-victima-numero.html" },
+        { "date": "2020-04-21", "age": 69, "s": "M", "dep": "Montevideo", "icu": true, "meta": "José «Pino» Marciano, vicepresidente de Rentistas", "source": "https://www.uypress.net/auc.aspx?103955" },
+        { "date": "2020-04-25", "age": 75, "s": "M", "dep": "Maldonado", "prev": true, "meta": "Múltiples patologías", "source": "https://www.elobservador.com.uy/nota/fallecio-mujer-de-93-anos-por-coronavirus-2020425105842" },
+        { "date": "2020-04-25", "age": 93, "s": "F", "dep": "Montevideo", "icu": true, "meta": "SINAE: Se encontraba internada en un residencial geriátrico. El Observador: había ingresado a cuidados intensivos del Hospital Evangélico.", "source": "https://www.elobservador.com.uy/nota/fallecio-mujer-de-93-anos-por-coronavirus-2020425105842" },
+        { "date": "2020-04-26", "age": 93, "s": "M", "dep": "Montevideo" },
+        { "date": "2020-04-30", "age": 93, "s": "F", "dep": "Montevideo" },
+        { "date": "2020-04-30", "age": 75, "s": "M", "dep": "Maldonado" },
+        { "date": "2020-05-08", "age": 49, "s": "M", "dep": "Montevideo", "prev": true, "icu:": true, "meta": " El paciente tenía obesidad, diabetes, problemas cardíacos y nefropatía. Además, su madre y su tía, de 80 años, tuvieron coronavirus y se recuperaron.", "source": "https://www.elobservador.com.uy/nota/murio-un-hombre-de-49-anos-por-coronavirus-y-las-victimas-ascienden-a-18-20205814370" },
+        { "date": "2020-05-10", "age": 85, "s": "M", "dep": "Montevideo", "meta": "Vivía en un residencial de adultos mayores." },
+        { "date": "2020-05-17", "age": 76, "s": "M", "dep": "Montevideo", "prev": false, "icu": true, "source": "https://www.elpais.com.uy/informacion/salud/fallecio-paciente-numero-coronavirus-hay-cursando-enfermedad.html" },
+        { "date": "2020-05-23", "age": 76, "s": "M", "dep": "Rivera" },
+        { "date": "2020-05-23", "age": 90, "s": "M", "dep": "Rivera", "prev": true, "meta": "Presentaba antecedentes patológicos de enfermedades pulmonares", "source": "https://www.elobservador.com.uy/nota/a-horas-de-la-primera-muerte-msp-confirmo-segundo-fallecido-por-coronavirus-en-rivera-2020523203529" }
+    ]
+}
