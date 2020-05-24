@@ -11,6 +11,9 @@ let config = null;
 
 const loadConfig = () => {
     let file = fs.readFileSync(CONFIG_FILENAME, CONFIG_ENCODING);
+    if(file.length == 0) {
+        return;
+    }
     config = yaml.safeLoad(file);
 };
 
