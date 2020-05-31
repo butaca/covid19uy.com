@@ -1,0 +1,17 @@
+[
+    {
+        "id": "chart-region-active-cases",
+        "title": "graphTitleRegionActiveCases",
+        "desc": "graphTitleRegionActiveCasesDesc"
+    },
+    {
+        "id": "chart-region-cases",
+        "title": "graphTitleRegionCases",
+        "desc": "graphTitleRegionCasesDesc"
+    },
+    {
+        "id": "chart-region-deaths",
+        "title": "graphTitleRegionDeaths",
+        "desc": "graphTitleRegionDeathsDesc"
+    }
+]

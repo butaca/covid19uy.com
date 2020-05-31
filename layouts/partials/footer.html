@@ -2,14 +2,22 @@
     <div class="container">
         <div class="content has-text-centered is-size-7">
             {{ if ne .Kind "404" }}
+            {{- $twitterPage := .GetPage "twitter" -}}
+            <p class="has-margin-bottom-sm">
+                {{- $twitterPage := .GetPage "twitter" -}}
+                <a href="{{ $twitterPage.Permalink }}"><span
+                        class="tag is-danger has-margin-right-sm">{{ i18n "new"}}</span>{{ $twitterPage.Title }}</a>
+            </p>
             {{ partial "share.html" . }}
             <hr>
             {{ end }}
             <p>
-                {{ i18n "collaborate"}} <a href="https://butaca.uy" target="_blank" rel="noopener noreferrer"> {{ i18n "contactMe" }}</a> 🙏
+                {{ i18n "collaborate"}} <a href="https://butaca.uy" target="_blank" rel="noopener noreferrer">
+                    {{ i18n "contactMe" }}</a> 🙏
             </p>
             <p>
-                {{ i18n "siteMadeBy" }}<a href="https://butaca.uy" target="_blank" rel="noopener noreferrer"> Juan Fornos</a>.
+                {{ i18n "siteMadeBy" }}<a href="https://butaca.uy" target="_blank" rel="noopener noreferrer"> Juan
+                    Fornos</a>.
             </p>
             {{- if .Site.Params.kofi -}}
             <div>

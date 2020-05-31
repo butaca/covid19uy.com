@@ -35,6 +35,8 @@ NUEVO!
 {{< /tag >}}
 Te invito a probar mi [simulación de coronavirus interactiva][simulator] donde podrás ver de manera visual el impacto del distanciamiento social.
 
+{{< region >}}
+
 {{< world >}}
 
 ## ¿Cómo puedo ayudar?

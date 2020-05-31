@@ -3,8 +3,10 @@ import langEs from "../../i18n/es.yaml";
 import langEn from "../../i18n/en.yaml";
 import "./chartjs-elements";
 import nfCookies from './nf-cookies'
-import burger from './burger'
+import burger from './burger'
 import './icons'
+import population from "../../data/world-population.json";
+import region from "../../data/region.json";
 
 if (document.readyState === 'loading') {
     document.addEventListener("DOMContentLoaded", main);
@@ -463,7 +465,7 @@ function main() {
                 label: lang.imcu.other,
                 data: dailyIMCUPercent.slice(firstHopitalizationsValidIndex),
             }*/
-        ]
+            ]
         },
         options: {
             scales: {
@@ -499,11 +501,126 @@ function main() {
                 label: lang.newActiveCases.other,
                 data: dailyActiveCases,
             }
-        ]
+            ]
         },
         options: {
             animation: {
                 duration: 0
+            }
+        }
+    });
+
+    var regionDays = Math.min(dates.length, region.data.argentina.cases.length);
+
+    region.data.uruguay = {
+        dates: dates,
+        cases: cases,
+        recovered: recovered,
+        deaths: deaths
+    };
+
+    region.data.uruguay.color = "#72a5d5";
+    region.data.argentina.color = "#0338a8";
+    region.data.brazil.color = "#fee103";
+    region.data.chile.color = "#cf291d";
+    region.data.paraguay.color = "#029a3a";
+
+    var countries = Object.keys(region.data);
+    var activeCasesDatasets = [];
+    var casesDatasets = [];
+    var deathsDatasets = [];
+    for (var i = 0; i < countries.length; ++i) {
+        var countryName = countries[i];
+        var country = region.data[countryName];
+        var populationFactor = 1000000 / population[countryName];
+
+        activeCasesDatasets.push({
+            pointRadius: 0,
+            pointHoverRadius: 2,
+            borderWidth: 2,
+            pointBackgroundColor: country.color,
+            borderColor: country.color,
+            label: lang[countryName].other,
+            fill: false,
+            data: country.cases.slice(0, regionDays).map((el, index) => Math.round((el - country.recovered[index] - country.deaths[index]) * populationFactor)),
+        });
+
+        casesDatasets.push({
+            pointRadius: 0,
+            pointHoverRadius: 2,
+            borderWidth: 2,
+            pointBackgroundColor: country.color,
+            borderColor: country.color,
+            label: lang[countryName].other,
+            fill: false,
+            data: country.cases.slice(0, regionDays).map(el => Math.round(el * populationFactor)),
+        });
+
+        deathsDatasets.push({
+            pointRadius: 0,
+            pointHoverRadius: 2,
+            borderWidth: 2,
+            pointBackgroundColor: country.color,
+            borderColor: country.color,
+            label: lang[countryName].other,
+            fill: false,
+            data: country.deaths.slice(0, regionDays).map(el => Math.round(el * populationFactor)),
+        });
+    }
+
+    ctx = document.getElementById('chart-region-active-cases');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dates,
+            datasets: activeCasesDatasets
+        },
+        options: {
+            animation: {
+                duration: 0
+            },
+            legend: {
+                labels: {
+                    usePointStyle: true
+                }
+            }
+        }
+    });
+
+    ctx = document.getElementById('chart-region-cases');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dates,
+            datasets: casesDatasets
+        },
+        options: {
+            animation: {
+                duration: 0
+            },
+            legend: {
+                labels: {
+                    usePointStyle: true
+                }
+            }
+        }
+    });
+
+    ctx = document.getElementById('chart-region-deaths');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dates,
+            datasets: deathsDatasets
+        },
+        options: {
+            animation: {
+                duration: 0
+            },
+            legend: {
+                labels: {
+                    usePointStyle: true
+                }
             }
         }
     });

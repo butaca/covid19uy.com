@@ -14,6 +14,7 @@ const moment = require("moment");
 const autoprefixer = require('gulp-autoprefixer');
 const { promisify } = require('util');
 const csv = require('csv-parser');
+const uruguay = require("./data/uruguay.json");
 
 const writeFilePromise = promisify(fs.writeFile);
 
@@ -196,8 +197,10 @@ async function downloadPopulationData() {
     const html = cheerio.load(response.data);
     html("table tbody tr").each((i, el) => {
         const country = el.children[3].children[0].children[0].data.toLowerCase();
-        const population = parseInt(el.children[5].children[0].data.replace(/,/g, ""));
-        result[country] = population;
+        if (country === 'uruguay' || Object.keys(Countries).indexOf(country) != -1) {
+            const population = parseInt(el.children[5].children[0].data.replace(/,/g, ""));
+            result[country] = population;
+        }
     });
     await writeFilePromise("./data/world-population.json", JSON.stringify(result));
 }
@@ -215,16 +218,19 @@ function updateLastMod() {
         .pipe(gulp.dest('content'));
 }
 
-let Countries = {
-    Argentina: { dates: [], cases: [], recovered: [], deaths: [] },
-    Brazil: { dates: [], cases: [], recovered: [], deaths: [] },
-    Chile: { dates: [], cases: [], recovered: [], deaths: [] },
-    Paraguay: { dates: [], cases: [], recovered: [], deaths: [] }
+const Countries = {
+    argentina: { cases: [], recovered: [], deaths: [] },
+    brazil: { cases: [], recovered: [], deaths: [] },
+    chile: { cases: [], recovered: [], deaths: [] },
+    paraguay: { cases: [], recovered: [], deaths: [] }
 };
 
 const COUNTRIES_DATA_BASE_URL = 'https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/';
+const REFERENCE_DATE = moment(uruguay.data[0].date, "YYYY-MM-DD");
+let lastDate = null;
+let firstDate = null;
 
-async function downloadCountryData(file, property, addDates) {
+async function downloadCountryData(file, property) {
     var req = {
         method: 'get',
         url: COUNTRIES_DATA_BASE_URL + file,
@@ -234,19 +240,26 @@ async function downloadCountryData(file, property, addDates) {
     const res = await axios(req);
     const stream = res.data.pipe(csv());
     stream.on('data', data => {
-        const countryName = data['Country/Region'];
+        const countryName = data['Country/Region'].toLowerCase();
         const country = Countries[countryName];
         if (country) {
             const keys = Object.keys(data);
             for (let i = 0; i < keys.length; ++i) {
                 const key = keys[i];
                 const dataDate = moment(key, "MM/DD/YY");
-                if (dataDate.isValid()) {
-                    const value = parseInt(data[key]);
-                    const date = dataDate.format("YYYY-MM-DD");
-                    if (addDates) {
-                        country.dates.push(date);
+                if (dataDate.isValid() && dataDate >= REFERENCE_DATE) {
+                    if (firstDate == null) {
+                        firstDate = dataDate;
                     }
+                    if (i == keys.length - 1) {
+                        if (lastDate == null) {
+                            lastDate = dataDate;
+                        }
+                        else if (dataDate.unix() != lastDate.unix()) {
+                            throw new Error("Unexpected last date: " + dataDate + ", prev one: " + lastDate);
+                        }
+                    }
+                    const value = parseInt(data[key]);
                     country[property].push(value);
                 }
             }
@@ -261,17 +274,18 @@ async function downloadCountryData(file, property, addDates) {
 
 async function downloadCountriesData() {
     await Promise.all([
-        downloadCountryData('time_series_covid19_confirmed_global.csv', 'cases', true),
-        downloadCountryData('time_series_covid19_recovered_global.csv', 'recovered', false),
-        downloadCountryData('time_series_covid19_deaths_global.csv', 'deaths', false)
+        downloadCountryData('time_series_covid19_confirmed_global.csv', 'cases'),
+        downloadCountryData('time_series_covid19_recovered_global.csv', 'recovered'),
+        downloadCountryData('time_series_covid19_deaths_global.csv', 'deaths')
     ]);
 
-    var writeFilePromises = [];
-    const countriesKeys = Object.keys(Countries);
-    for (let i = 0; i < countriesKeys.length; ++i) {
-        writeFilePromises.push(writeFilePromise("./data/" + countriesKeys[i].toLowerCase() + ".json", JSON.stringify(Countries[countriesKeys[i]])));
+    var regionObj = {
+        firstDate: firstDate.format("YYYY-MM-DD"),
+        lastDate: lastDate.format("YYYY-MM-DD"),
+        data: Countries
     }
-    return Promise.all(writeFilePromises);
+
+    return writeFilePromise("./data/region.json", JSON.stringify(regionObj));
 }
 
 exports.webpackBuild = webpackBuildMain;

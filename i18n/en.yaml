@@ -80,10 +80,16 @@ dailyCases:
   other: Daily Cases
 
 uruguay: 
-  other: 🇺🇾 Uruguay
+  other: Uruguay
 
 world:
   other: 🌍 World
+
+region:
+  other: Region
+
+regionTitle:
+  other: Comparison to the countries of the region
 
 contact:
   other: ✉️ Contact
@@ -154,6 +160,24 @@ graphTitleDailyCases:
 graphTitleDailyCasesDesc:
   other: Number of new cases in each day
 
+graphTitleRegionActiveCases:
+  other: Active cases per million inhabitants in the region
+
+graphTitleRegionActiveCasesDesc:
+  other: Comparison of active cases (people with the virus) per million inhabitants in the countries of the region.
+
+graphTitleRegionCases:
+  other: Cumulative cases per million inhabitants in the region
+
+graphTitleRegionCasesDesc:
+  other: Comparison of cumulative cases per million inhabitants in the countries of the region.
+
+graphTitleRegionDeaths:
+  other: Deaths per million inhabitants in the region
+
+graphTitleRegionDeathsDesc:
+  other: Comparison of deaths per million inhabitants in the countries of the region.
+
 tests:
   other: Tests
 
@@ -168,6 +192,9 @@ and:
 
 sinae:
   other: National Emergency System
+
+csse:
+  other: COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University
 
 graphTitleDailyActiveCases:
   other: Daily new active cases
@@ -229,3 +256,17 @@ healthSystemCapacity:
 
 kofi:
   other: Buy me a coffee
+
+# Countries
+
+argentina:
+  other: "Argentina"
+
+brazil:
+  other: "Brazil"
+
+chile:
+  other: "Chile"
+
+paraguay:
+  other: "Paraguay"

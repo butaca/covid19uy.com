@@ -36,6 +36,8 @@ New!
 {{< /tag >}}
 I invite you to try my [interactive coronavirus simulation][simulator] where you can visually see the impact of social distancing.
 
+{{< region >}}
+
 {{< world >}}
 
 ## How can I help?

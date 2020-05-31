@@ -1,0 +1,24 @@
+<div id="region" class="content">
+    <h2>{{ i18n "regionTitle" }}</h2>
+    <div class="columns is-centered is-multiline">
+        {{ $context := . }}
+        {{- range .Site.Data.chartsRegion -}}
+        <div class="column is-4">
+            {{ partial "chart-title.html" (dict "title" (i18n .title) "desc" (i18n .desc) "displayPositivesAndCasesInfo" .displayPositivesAndCasesInfo) }}
+            <canvas id="{{ .id }}" width="100%" height="100%"></canvas>
+            {{ partial "region-updated-date.html" $context }}
+        </div>
+        {{- end -}}
+    </div>
+    <p class="has-text-centered is-size-7 has-padding-top-sm">{{ i18n "dataSource" }}:
+        <a href="https://github.com/CSSEGISandData/COVID-19" target="_blank"
+            rel="noopener noreferrer">{{ i18n "csse" }}</a> {{ i18n "and" }} 
+        <a href="https://www.worldometers.info/world-population/population-by-country/" target="_blank"
+            rel="noopener noreferrer">https://www.worldometers.info/world-population/population-by-country/</a>.
+    </p>
+    <ul>
+        {{- range .Site.Data.chartsRegion  -}}
+        <li><strong>{{ i18n .title }}</strong>: {{ i18n .desc }}</li>
+        {{- end -}}
+    </ul>
+</div>
