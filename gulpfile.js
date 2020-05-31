@@ -181,6 +181,27 @@ async function downloadData() {
     await writeFilePromise("./data/world.json", JSON.stringify(result));
 }
 
+async function downloadPopulationData() {
+    let response;
+    try {
+        response = await axios.get("https://www.worldometers.info/world-population/population-by-country/");
+        if (response.status !== 200) {
+            throw new Error('Unexpected HTTP code when downloading world data: ' + response.status);
+        }
+    }
+    catch (err) {
+        throw err;
+    }
+    const result = {};
+    const html = cheerio.load(response.data);
+    html("table tbody tr").each((i, el) => {
+        const country = el.children[3].children[0].children[0].data.toLowerCase();
+        const population = parseInt(el.children[5].children[0].data.replace(/,/g, ""));
+        result[country] = population;
+    });
+    await writeFilePromise("./data/world-population.json", JSON.stringify(result));
+}
+
 const watch = gulp.parallel(sassWatch, webpackWatch);
 
 function updateLastMod() {
@@ -223,7 +244,7 @@ async function downloadCountryData(file, property, addDates) {
                 if (dataDate.isValid()) {
                     const value = parseInt(data[key]);
                     const date = dataDate.format("YYYY-MM-DD");
-                    if(addDates) {
+                    if (addDates) {
                         country.dates.push(date);
                     }
                     country[property].push(value);
@@ -254,6 +275,6 @@ async function downloadCountriesData() {
 }
 
 exports.webpackBuild = webpackBuildMain;
-exports.develop = gulp.series(gulp.parallel(downloadData, downloadCountriesData), build, gulp.parallel(watch, hugoServer));
-exports.deploy = gulp.series(gulp.parallel(downloadData, downloadCountriesData), updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);
+exports.develop = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData), build, gulp.parallel(watch, hugoServer));
+exports.deploy = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData), updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);
 exports.default = exports.develop;
