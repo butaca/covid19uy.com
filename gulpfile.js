@@ -12,6 +12,7 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const moment = require("moment");
 const autoprefixer = require('gulp-autoprefixer');
+const { promisify } = require('util')
 
 const nodeModules = './node_modules';
 
@@ -174,7 +175,7 @@ async function downloadData() {
         }
     });
     updatedDate = result.updated = Math.floor(Date.now() / 1000);
-    fs.writeFileSync("./data/world.json", JSON.stringify(result));
+    await promisify(fs.writeFile)("./data/world.json", JSON.stringify(result));
 }
 
 const watch = gulp.parallel(sassWatch, webpackWatch);
