@@ -12,7 +12,10 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const moment = require("moment");
 const autoprefixer = require('gulp-autoprefixer');
-const { promisify } = require('util')
+const { promisify } = require('util');
+const csv = require('csv-parser');
+
+const writeFilePromise = promisify(fs.writeFile);
 
 const nodeModules = './node_modules';
 
@@ -175,7 +178,7 @@ async function downloadData() {
         }
     });
     updatedDate = result.updated = Math.floor(Date.now() / 1000);
-    await promisify(fs.writeFile)("./data/world.json", JSON.stringify(result));
+    await writeFilePromise("./data/world.json", JSON.stringify(result));
 }
 
 const watch = gulp.parallel(sassWatch, webpackWatch);
@@ -191,7 +194,66 @@ function updateLastMod() {
         .pipe(gulp.dest('content'));
 }
 
+let Countries = {
+    Argentina: { dates: [], cases: [], recovered: [], deaths: [] },
+    Brazil: { dates: [], cases: [], recovered: [], deaths: [] },
+    Chile: { dates: [], cases: [], recovered: [], deaths: [] },
+    Paraguay: { dates: [], cases: [], recovered: [], deaths: [] }
+};
+
+const COUNTRIES_DATA_BASE_URL = 'https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/';
+
+async function downloadCountryData(file, property, addDates) {
+    var req = {
+        method: 'get',
+        url: COUNTRIES_DATA_BASE_URL + file,
+        responseType: 'stream'
+    }
+
+    const res = await axios(req);
+    const stream = res.data.pipe(csv());
+    stream.on('data', data => {
+        const countryName = data['Country/Region'];
+        const country = Countries[countryName];
+        if (country) {
+            const keys = Object.keys(data);
+            for (let i = 0; i < keys.length; ++i) {
+                const key = keys[i];
+                const dataDate = moment(key, "MM/DD/YY");
+                if (dataDate.isValid()) {
+                    const value = parseInt(data[key]);
+                    const date = dataDate.format("YYYY-MM-DD");
+                    if(addDates) {
+                        country.dates.push(date);
+                    }
+                    country[property].push(value);
+                }
+            }
+        }
+    });
+
+    return new Promise((resolve, reject) => {
+        stream.on("error", reject);
+        stream.on("end", resolve);
+    });
+}
+
+async function downloadCountriesData() {
+    await Promise.all([
+        downloadCountryData('time_series_covid19_confirmed_global.csv', 'cases', true),
+        downloadCountryData('time_series_covid19_recovered_global.csv', 'recovered', false),
+        downloadCountryData('time_series_covid19_deaths_global.csv', 'deaths', false)
+    ]);
+
+    var writeFilePromises = [];
+    const countriesKeys = Object.keys(Countries);
+    for (let i = 0; i < countriesKeys.length; ++i) {
+        writeFilePromises.push(writeFilePromise("./data/" + countriesKeys[i].toLowerCase() + ".json", JSON.stringify(Countries[countriesKeys[i]])));
+    }
+    return Promise.all(writeFilePromises);
+}
+
 exports.webpackBuild = webpackBuildMain;
-exports.develop = gulp.series(downloadData, build, gulp.parallel(watch, hugoServer));
-exports.deploy = gulp.series(downloadData, updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);
+exports.develop = gulp.series(gulp.parallel(downloadData, downloadCountriesData), build, gulp.parallel(watch, hugoServer));
+exports.deploy = gulp.series(gulp.parallel(downloadData, downloadCountriesData), updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);
 exports.default = exports.develop;

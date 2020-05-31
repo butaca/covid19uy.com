@@ -9,3 +9,7 @@ static/simulation/js/simulation.js.LICENSE.txt
 bot/.env
 static/twitter/js/twitter.js
 static/twitter/js/twitter.js.LICENSE.txt
+data/argentina.json
+data/brazil.json
+data/chile.json
+data/paraguay.json
