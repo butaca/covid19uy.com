@@ -21,6 +21,7 @@
         { "date": "2020-05-10", "age": 85, "s": "M", "dep": "Montevideo", "meta": "Vivía en un residencial de adultos mayores." },
         { "date": "2020-05-17", "age": 76, "s": "M", "dep": "Montevideo", "prev": false, "icu": true, "source": "https://www.elpais.com.uy/informacion/salud/fallecio-paciente-numero-coronavirus-hay-cursando-enfermedad.html" },
         { "date": "2020-05-23", "age": 76, "s": "M", "dep": "Rivera" },
-        { "date": "2020-05-23", "age": 90, "s": "M", "dep": "Rivera", "prev": true, "meta": "Presentaba antecedentes patológicos de enfermedades pulmonares", "source": "https://www.elobservador.com.uy/nota/a-horas-de-la-primera-muerte-msp-confirmo-segundo-fallecido-por-coronavirus-en-rivera-2020523203529" }
+        { "date": "2020-05-23", "age": 90, "s": "M", "dep": "Rivera", "prev": true, "meta": "Presentaba antecedentes patológicos de enfermedades pulmonares", "source": "https://www.elobservador.com.uy/nota/a-horas-de-la-primera-muerte-msp-confirmo-segundo-fallecido-por-coronavirus-en-rivera-2020523203529" },
+        { "date": "2020-06-01", "age": 63, "s": "F", "dep": "Montevideo", "icu": true, "meta": "Estaba internada en una sala de cuidados intensivos de la Asociación Española, en Montevideo.", "source": "https://www.elobservador.com.uy/nota/murio-por-covid-19-una-mujer-de-63-anos-que-estaba-internada-en-montevideo-202061121034" }
     ]
 }
