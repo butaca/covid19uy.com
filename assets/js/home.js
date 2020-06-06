@@ -126,6 +126,9 @@ function main() {
         dailyPositivesPercent.push(((todayTests > 0 ? (todayPositives / todayTests) : 0) * 100).toFixed(2));
     });
 
+    var pointRadius = 2;
+    var pointHoverRadius = 3;
+
     var ctx = document.getElementById('chart-active-cases');
     new Chart(ctx, {
         type: 'line',
@@ -136,6 +139,8 @@ function main() {
                 backgroundColor: "#28b8d680",
                 label: lang.activeCases.other,
                 data: activeCases,
+                pointRadius: pointRadius,
+                pointHoverRadius: pointHoverRadius
             }]
         },
         options: {
@@ -162,18 +167,24 @@ function main() {
                 backgroundColor: "#28b8d680",
                 label: lang.totalCases.other,
                 data: cases,
+                pointRadius: pointRadius,
+                pointHoverRadius: pointHoverRadius
             },
             {
                 pointBackgroundColor: "#0000ffff",
                 backgroundColor: "#0000ff80",
                 label: lang.recovered.other,
                 data: recovered,
+                pointRadius: pointRadius,
+                pointHoverRadius: pointHoverRadius
             },
             {
                 pointBackgroundColor: "#e54acfff",
                 backgroundColor: "#e54acfff",
                 label: lang.deaths.other,
                 data: deaths,
+                pointRadius: pointRadius,
+                pointHoverRadius: pointHoverRadius
             }]
         },
         options: {
@@ -360,6 +371,8 @@ function main() {
                 backgroundColor: "#7732a880",
                 label: lang.graphTitleDailyPositives.other,
                 data: dailyPositivesPercent.slice(firstDailyTestsValidIndex),
+                pointRadius: pointRadius,
+                pointHoverRadius: pointHoverRadius
             }]
         },
         options: {
@@ -423,6 +436,8 @@ function main() {
                 backgroundColor: "#01C6B2FF",
                 label: lang.graphTitleHealthcareWorkersPercent.other,
                 data: dailyHealthcareWorkersPercent.slice(firstValidHealthcareWorkerIndex),
+                pointRadius: pointRadius,
+                pointHoverRadius: pointHoverRadius
             }]
         },
         options: {
@@ -458,6 +473,8 @@ function main() {
                 backgroundColor: "#d9554c80",
                 label: lang.icu.other,
                 data: dailyICUPercent.slice(firstHopitalizationsValidIndex),
+                pointRadius: pointRadius,
+                pointHoverRadius: pointHoverRadius
             }/*,
             {
                 pointBackgroundColor: "#d9554cff",
