@@ -11,7 +11,7 @@ let config = null;
 
 const loadConfig = () => {
     let file = fs.readFileSync(CONFIG_FILENAME, CONFIG_ENCODING);
-    if(file.length == 0) {
+    if (file.length == 0) {
         return;
     }
     config = yaml.safeLoad(file);
@@ -25,9 +25,9 @@ const reloadConfig = () => {
     console.log("config reloaded");
 
     const sameFollow = (arr1, arr2) => {
-        if(arr1.length == arr2.length) {
-            for(let i = 0; i < arr1.length; ++i) {
-                if(arr1[i] != arr2[i]) {
+        if (arr1.length == arr2.length) {
+            for (let i = 0; i < arr1.length; ++i) {
+                if (arr1[i] != arr2[i]) {
                     return false;
                 }
             }
@@ -36,7 +36,7 @@ const reloadConfig = () => {
         return false;
     };
 
-    if(!sameFollow(prevFollow, config.follow)) {
+    if (!sameFollow(prevFollow, config.follow)) {
         console.log("follow changed on config, recreating stream...");
         reconnect(false);
     }
@@ -67,7 +67,7 @@ const getReplyMessage = () => {
     let message = replyMessages[randomIndex];
     replyMessages.splice(randomIndex, 1);
 
-    if(config.hashtagsEnabled) {
+    if (config.hashtagsEnabled) {
         message += "\n\n" + config.replyHashtags;
     }
 
@@ -157,9 +157,14 @@ const reconnect = (calm) => {
         }
         process.nextTick(() => {
             if (stream) {
-                stream.destroy();
+                try {
+                    stream.destroy();
+                    console.log('stream destroyed');
+                }
+                catch (error) {
+                    console.log("Error destoying the stream: " + JSON.stringify(error));
+                }
                 stream = null;
-                console.log('stream destroyed');
             }
             console.log('reconnecting in ' + (reconnectionWait / 1000).toFixed(2) + ' seconds');
             reconnectionTimeout = setTimeout(() => {
