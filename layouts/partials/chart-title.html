@@ -4,4 +4,8 @@
     </span>
     <span class="has-tooltip-multiline" data-tooltip="{{ i18n "positivesAndCasesInfo"}}">⚠️</span>
     {{ end }}
+    {{ if .displayUnreportedPositiviesInfo }}
+    </span>
+    <span class="has-tooltip-multiline" data-tooltip="{{ i18n "unreportedPositiviesInfo"}}">⚠️</span>
+    {{ end }}
 </h3>

@@ -19,17 +19,20 @@
     {
         "id": "chart-daily-tests",
         "title": "graphTitleDailyTests",
-        "desc": "graphTitleDailyTestsDesc"
+        "desc": "graphTitleDailyTestsDesc",
+        "displayUnreportedPositiviesInfo": true
     },
     {
         "id": "chart-tests-dialy-positives",
         "title": "graphTitleDailyPositives",
-        "desc": "graphTitleDailyPositivesDesc"
+        "desc": "graphTitleDailyPositivesDesc",
+        "displayUnreportedPositiviesInfo": true
     },
     {
         "id": "chart-tests",
         "title": "graphTitleTotalTests",
-        "desc": "graphTitleTotalTestsDesc"
+        "desc": "graphTitleTotalTestsDesc",
+        "displayUnreportedPositiviesInfo": true
     },
     {
         "id": "chart-daily-cases",
