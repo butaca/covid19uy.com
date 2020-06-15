@@ -98,7 +98,7 @@ function twitterBuild() {
 const build = gulp.series(gulp.parallel(sassBuild, webpackBuildMain), simulationBuild, twitterBuild);
 
 function hugoBuild(cb) {
-    const params = ["--gc", "--verbose", "--cleanDestinationDir", "--ignoreCache"];
+    const params = ["--gc", "--verbose", "--cleanDestinationDir"];
     const context = process.env.CONTEXT;
     let baseURL = process.env.URL;
     let environment = "production";
