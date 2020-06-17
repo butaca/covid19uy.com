@@ -112,6 +112,12 @@ graphTitleDailyTests:
 graphTitleDailyTestsDesc:
   other: Cantidad de tests realizados en cada día y cuántos de ellos dieron positivos.
 
+graphTitleDailyTestsNew:
+  other: Tests diarios
+
+graphTitleDailyTestsNewDesc:
+  other: Cantidad de tests realizados en cada día.
+
 graphTitleTotalTests:
   other: Tests totales
 
@@ -188,7 +194,7 @@ positivesAndCasesInfo:
   other: ⚠️ Hasta el 8/4 no se informó los casos de personas con el virus, sino la cantidad de tests positivos. Hay personas con el virus que se realizaron el test y dieron positivo más de una vez. Entonces hasta el 8/4, se asumen como casos (personas con el virus) a los tests positivos por falta de información.
 
 unreportedPositiviesInfo:
-  other: ⚠️ A partir del 15/06 el SINAE dejó de informar los tests positivos diarios y acumulados. Se asumen como positivos diarios a la cantidad de casos nuevos. Tener en cuenta que a parir de la fecha mencionada las gráficas no son del todo correctas por falta de información.
+  other: ⚠️ A partir del 15/06 el SINAE dejó de informar los tests positivos diarios y acumulados. Por lo tanto, las gráficas de tests están actualizadas hasta el 14/06.
 
 and:
   other: "y"
@@ -259,6 +265,12 @@ healthSystemCapacity:
 
 kofi:
   other: Comprame un café
+
+archive:
+  other: Archivo
+
+archiveDesc:
+  other: Las siguientes gráficas ya no se actualizan porque la información necesaria dejó de ser proporsionada. 
 
 # Countries
 

@@ -60,10 +60,14 @@ function main() {
     var cases = [];
     var dailyCases = [];
     var prevDayTotalCases = 0;
+    var positiveTestsChartsMaxIndex = -1;
 
     data.data.forEach(function (el, index) {
         var todayPositives = el.positives;
-        dialyPositives.push(todayPositives);
+        if (todayPositives != undefined) {
+            positiveTestsChartsMaxIndex = index;
+            dialyPositives.push(todayPositives);
+        }
 
         var date = new Date(el.date);
         var day = date.getUTCDate();
@@ -76,9 +80,11 @@ function main() {
         var todayTotalRecovered = el.recovered != undefined ? el.recovered : 0;
         recovered.push(todayTotalRecovered);
 
-        var todayTotalPositives = prevDayTotalPositives + todayPositives;
-        positives.push(todayTotalPositives);
-        prevDayTotalPositives += todayPositives;
+        if (todayPositives != undefined) {
+            var todayTotalPositives = prevDayTotalPositives + todayPositives;
+            positives.push(todayTotalPositives);
+            prevDayTotalPositives += todayPositives;
+        }
 
         var totalTodayCases = el.cases != undefined ? el.cases : todayTotalPositives;
         cases.push(totalTodayCases);
@@ -122,8 +128,11 @@ function main() {
         if (firstDailyTestsValidIndex < 0 && todayTests != undefined) {
             firstDailyTestsValidIndex = index;
         }
-        dailyTests.push(todayTests != undefined ? todayTests : todayPositives);
-        dailyPositivesPercent.push(((todayTests > 0 ? (todayPositives / todayTests) : 0) * 100).toFixed(2));
+
+        if (todayPositives != undefined) {
+            dailyTests.push(todayTests != undefined ? todayTests : todayPositives);
+            dailyPositivesPercent.push(((todayTests > 0 ? (todayPositives / todayTests) : 0) * 100).toFixed(2));
+        }
     });
 
     var pointRadius = 2;
@@ -198,16 +207,39 @@ function main() {
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: dates.slice(firstDailyTestsValidIndex),
+            labels: dates.slice(firstDailyTestsValidIndex, positiveTestsChartsMaxIndex + 1),
             datasets: [{
                 backgroundColor: "#7732a880",
                 label: lang.dailyPositives.other,
-                data: dialyPositives.slice(firstDailyTestsValidIndex),
+                data: dialyPositives.slice(firstDailyTestsValidIndex, positiveTestsChartsMaxIndex + 1),
             },
             {
                 backgroundColor: "#ecdb3c80",
                 label: lang.dailyTests.other,
-                data: dailyTests.slice(firstDailyTestsValidIndex),
+                data: dailyTests.slice(firstDailyTestsValidIndex, positiveTestsChartsMaxIndex + 1),
+            }]
+        },
+        options: {
+            animation: {
+                duration: 0
+            },
+            scales: {
+                xAxes: [{
+                    stacked: true
+                }]
+            }
+        }
+    });
+
+    ctx = document.getElementById('chart-daily-tests-new');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: dates.slice(firstDailyTestsValidIndex),
+            datasets: [{
+                backgroundColor: "#ecdb3c80",
+                label: lang.dailyTests.other,
+                data: dailyTests.slice(firstDailyTestsValidIndex,),
             }]
         },
         options: {
@@ -365,12 +397,12 @@ function main() {
     new Chart(ctx, {
         type: 'line',
         data: {
-            labels: dates.slice(firstDailyTestsValidIndex),
+            labels: dates.slice(firstDailyTestsValidIndex, positiveTestsChartsMaxIndex + 1),
             datasets: [{
                 pointBackgroundColor: "#7732a8ff",
                 backgroundColor: "#7732a880",
                 label: lang.graphTitleDailyPositives.other,
-                data: dailyPositivesPercent.slice(firstDailyTestsValidIndex),
+                data: dailyPositivesPercent.slice(firstDailyTestsValidIndex, positiveTestsChartsMaxIndex + 1),
                 pointRadius: pointRadius,
                 pointHoverRadius: pointHoverRadius
             }]

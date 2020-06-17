@@ -2,7 +2,6 @@
 {{- $today := index $last 1 -}}
 {{- $yesterday := index $last 0 -}}
 {{- $tests := $today.tests }}
-{{- $positives := $today.positives -}}
 {{- $cases := sub $today.cases $yesterday.cases -}}
 {{- $deaths := sub $today.deaths $yesterday.deaths -}}
 {{- $recovered := sub $today.recovered $yesterday.recovered -}}
@@ -18,12 +17,6 @@
             <div>
                 <p class="subtitle">{{ i18n "tests" }} 🧪</p>
                 <p class="title">{{ lang.NumFmt 0 $tests .Site.Params.numberFormat }}</p>
-            </div>
-        </div>
-        <div class="level-item has-text-centered">
-            <div>
-                <p class="subtitle">{{ i18n "positives" }} 🧪</p>
-                <p class="title">{{ lang.NumFmt 0 $positives .Site.Params.numberFormat }}</p>
             </div>
         </div>
         <div class="level-item has-text-centered">

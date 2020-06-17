@@ -1,7 +1,3 @@
-{{- $positives := 0 -}}
-{{- range .Site.Data.uruguay.data -}}
-{{- $positives = add $positives .positives -}}
-{{- end -}}
 {{- $last := index (last 1 .Site.Data.uruguay.data) 0 -}}
 {{- $cases := $last.cases -}}
 {{- $deaths := cond (isset $last "deaths") $last.deaths 0  -}}
@@ -14,12 +10,6 @@
 {{- end -}}
 <div id="uruguay" class="box has-padding-sm">
     <nav class="level">
-        <!--<div class="level-item has-text-centered">
-            <div>
-                <p class="subtitle">{{ i18n "positives" }} 🧪</p>
-                <p class="title">{{ lang.NumFmt 0 $positives .Site.Params.numberFormat }}</p>
-            </div>
-        </div>-->
         <div class="level-item has-text-centered">
             <div>
                 <p class="subtitle">{{ i18n "totalCases" }} 😷</p>

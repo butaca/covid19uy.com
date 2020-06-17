@@ -46,9 +46,6 @@
                 <p class="is-size-7">
                     {{ i18n "positivesAndCasesInfo" }}
                 </p>
-                <p class="is-size-7">
-                    {{ i18n "unreportedPositiviesInfo" }}
-                </p>
                 <p class="has-text-centered is-size-7 has-padding-top-sm">{{ i18n "dataSource" }}:
                     <a href="https://www.gub.uy/ministerio-salud-publica/coronavirus" target="_blank"
                         rel="noopener noreferrer">{{ i18n "msp" }}</a> {{ i18n "and" }}
@@ -59,6 +56,22 @@
             <div class="content">
                 <br>
                 {{ .Content }}
+                <div id="archive">
+                    <h2>{{ i18n "archive" }}</h2>
+                    <p>{{ i18n "archiveDesc" }}</p>
+                    <div class="columns is-centered is-multiline">
+                        {{ $context := . }}
+                        {{- range .Site.Data.chartsArchive -}}
+                        <div class="column is-4">
+                            {{ partial "chart-title.html" (dict "title" (i18n .title) "desc" (i18n .desc) "displayPositivesAndCasesInfo" .displayPositivesAndCasesInfo "displayUnreportedPositiviesInfo" .displayUnreportedPositiviesInfo) }}
+                            <canvas id="{{ .id }}" width="100%" height="100%"></canvas>
+                        </div>
+                        {{- end -}}
+                    </div>
+                    <p class="is-size-7">
+                        {{ i18n "unreportedPositiviesInfo" }}
+                    </p>
+                </div>
             </div>
         </div>
     </section>

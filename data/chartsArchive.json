@@ -1,0 +1,20 @@
+[
+    {
+        "id": "chart-daily-tests",
+        "title": "graphTitleDailyTests",
+        "desc": "graphTitleDailyTestsDesc",
+        "displayUnreportedPositiviesInfo": true
+    },
+    {
+        "id": "chart-tests-dialy-positives",
+        "title": "graphTitleDailyPositives",
+        "desc": "graphTitleDailyPositivesDesc",
+        "displayUnreportedPositiviesInfo": true
+    },
+    {
+        "id": "chart-tests",
+        "title": "graphTitleTotalTests",
+        "desc": "graphTitleTotalTestsDesc",
+        "displayUnreportedPositiviesInfo": true
+    }
+]
