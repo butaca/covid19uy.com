@@ -131,7 +131,7 @@ graphTitleDailyHospitalizationsDesc:
   other: Cantidad de personas que se encuentran en cuidados intermedios y cuidados intensivos cada día.
 
 graphTitleDailyHospitalizationsPercent:
-  other: Porcentaje de hospitalizaciones
+  other: Porcentaje de hospitalizaciones de casos activos
 
 graphTitleDailyHospitalizationsPercentDesc:
   other: Porcentaje de hospitalizaciones de los casos activos en cada día.

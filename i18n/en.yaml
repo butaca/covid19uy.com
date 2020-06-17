@@ -131,7 +131,7 @@ graphTitleDailyHospitalizationsDesc:
   other: Number of people in intermediate care and intensive care each day.
 
 graphTitleDailyHospitalizationsPercent:
-  other: Hospitalizations percentage
+  other: Hospitalizations percentage of active cases
 
 graphTitleDailyHospitalizationsPercentDesc:
   other: Percentage of hospitalizations of active cases on each day.
