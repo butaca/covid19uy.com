@@ -129,8 +129,9 @@ function main() {
             firstDailyTestsValidIndex = index;
         }
 
+
+        dailyTests.push(todayTests != undefined ? todayTests : todayPositives);
         if (todayPositives != undefined) {
-            dailyTests.push(todayTests != undefined ? todayTests : todayPositives);
             dailyPositivesPercent.push(((todayTests > 0 ? (todayPositives / todayTests) : 0) * 100).toFixed(2));
         }
     });
@@ -239,7 +240,7 @@ function main() {
             datasets: [{
                 backgroundColor: "#ecdb3c80",
                 label: lang.dailyTests.other,
-                data: dailyTests.slice(firstDailyTestsValidIndex,),
+                data: dailyTests.slice(firstDailyTestsValidIndex),
             }]
         },
         options: {
