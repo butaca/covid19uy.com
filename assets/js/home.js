@@ -352,8 +352,8 @@ function main() {
         }
     });
 
-    var totalTests = getTotal(dailyTests) + data.unreportedDailyTests;
-    var totalPositives = positives[positives.length - 1];
+    var totalTests = getTotal(dailyTests.slice(0, positiveTestsChartsMaxIndex + 1)) + data.unreportedDailyTests;
+    var totalPositives = positives.slice(0, positiveTestsChartsMaxIndex + 1)[positives.length - 1];
     var totalNegatives = totalTests - totalPositives;
 
     var chartTestsData = [totalPositives, totalNegatives];
