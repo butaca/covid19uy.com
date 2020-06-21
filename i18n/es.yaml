@@ -199,6 +199,9 @@ unreportedPositiviesInfo:
 and:
   other: "y"
 
+publishedBy:
+  other: publicados por
+
 sinae:
   other: Sistema Nacional de Emergencias
 

@@ -199,6 +199,9 @@ unreportedPositiviesInfo:
 and:
   other: and
 
+publishedBy:
+  other: published by
+
 sinae:
   other: National Emergency System
 
