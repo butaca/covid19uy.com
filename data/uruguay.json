@@ -100,7 +100,8 @@
         { "date": "2020-06-17", "cases": 849, "recovered": 810, "deaths": 24, "icu": 4, "hc": 110, "hcRecovered": 107, "hcDeaths" : 1, "tests": 729 },
         { "date": "2020-06-18", "cases": 850, "recovered": 814, "deaths": 24, "icu": 4, "hc": 110, "hcRecovered": 107, "hcDeaths" : 1, "tests": 681 },
         { "date": "2020-06-19", "cases": 853, "recovered": 814, "deaths": 24, "icu": 4, "hc": 112, "hcRecovered": 107, "hcDeaths" : 1, "tests": 338 },
-        { "date": "2020-06-20", "cases": 859, "recovered": 815, "deaths": 25, "icu": 4, "hc": 115, "hcRecovered": 107, "hcDeaths" : 1, "tests": 643 }
+        { "date": "2020-06-20", "cases": 859, "recovered": 815, "deaths": 25, "icu": 4, "hc": 115, "hcRecovered": 107, "hcDeaths" : 1, "tests": 643 },
+        { "date": "2020-06-21", "cases": 876, "recovered": 814, "deaths": 25, "icu": 4, "hc": 120, "hcRecovered": 107, "hcDeaths" : 1, "tests": 412 }
     ]
 }
 
