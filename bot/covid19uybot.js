@@ -230,4 +230,13 @@ const main = () => {
     setInterval(() => { checkPingDelta(Date.now()); }, config.reconnection.minWait);
 };
 
-T.get("account/verify_credentials").then(main).catch(console.error);
+const login = () => {
+    T.get("account/verify_credentials").then(main).catch((error) => {
+        console.log('error logging in: ' + JSON.stringify(error));
+        console.log('retrying in ' + reconnectionWait/1000 + " seconds");
+        setTimeout(login, reconnectionWait);
+        reconnectionWait = Math.min(reconnectionWait * 2, config.reconnection.maxWait);
+    });
+}
+
+login();
