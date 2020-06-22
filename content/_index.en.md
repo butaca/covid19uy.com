@@ -42,7 +42,11 @@ I invite you to try my [interactive coronavirus simulation][simulator] where you
 
 ## How can I help?
 
-First of all, it is super important that you follow the recommendations of the authorities and that you stay home as much as possible. You can also collaborate with charitable foundations that are doing an outstanding effort:
+First of all, it is super important that you follow the recommendations of the authorities and that you stay home as much as possible.
+
+Download [**Coronavirus UY** (oficial MSP app, link on the bottom of the page)](https://www.gub.uy/ministerio-salud-publica/coronavirus) and activate the exposure alerts if your device is compatible.
+
+You can also collaborate with charitable foundations that are doing an outstanding effort:
 
 {{< div "donations" >}}
 

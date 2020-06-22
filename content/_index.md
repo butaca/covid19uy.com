@@ -41,7 +41,11 @@ Te invito a probar mi [simulación de coronavirus interactiva][simulator] donde 
 
 ## ¿Cómo puedo ayudar?
 
-Primero que nada, es súper importante que sigas las recomendaciones de las autoridades y que te quedes en tu casa dentro de lo posible. También podés colaborar con fundaciones benéficas que están dejando todo en la cancha:
+Primero que nada, es súper importante que sigas las recomendaciones de las autoridades y que te quedes en tu casa dentro de lo posible.
+
+Bajá [**Coronavirus UY** (app oficial del MSP, link abajo del todo de la página)](https://www.gub.uy/ministerio-salud-publica/coronavirus) y activá las alertas de exposición si tu dispositivo es compatible.
+
+También podés colaborar con fundaciones benéficas que están dejando todo en la cancha:
 
 {{< div "donations" >}}
 
