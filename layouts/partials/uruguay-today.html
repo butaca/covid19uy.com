@@ -9,6 +9,9 @@
 {{- $healthWorkerPercent := 0 -}}
 {{- if gt $cases 0 -}}
 {{- $healthWorkerPercent = mul (div $healthWorkerCases $cases) 100 -}}
+{{- if gt $healthWorkerPercent 100 -}}
+{{- $healthWorkerPercent = 100 -}}
+{{- end -}}
 {{- end -}}
 <div id="uruguay-today">
     <span class="tag is-warning">{{ i18n "todayNumbers" }}: {{ dateFormat .Site.Params.dateFormatCompact $today.date }}</span>
