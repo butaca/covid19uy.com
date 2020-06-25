@@ -19,6 +19,8 @@ disableKinds:
 outputs:
   home:
     - HTML
+  section:
+    - HTML
 
 params:
   kofi: false
