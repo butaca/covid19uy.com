@@ -14,7 +14,7 @@ privacy:
 disableKinds:
   - page
   - taxonomy
-  - taxonomyTerm
+  - term
 
 outputs:
   home:
