@@ -11,3 +11,5 @@ static/twitter/js/twitter.js
 static/twitter/js/twitter.js.LICENSE.txt
 data/world-population.json
 data/region.json
+trigger_build_master.sh
+trigger_build_develop.sh
