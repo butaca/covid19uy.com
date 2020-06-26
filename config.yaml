@@ -23,6 +23,9 @@ outputs:
     - HTML
 
 params:
+  repo:
+    url: https://bitbucket.org/juanfornos/covid19uy.com
+    icon: fab fa-bitbucket
   kofi: false
   share:
     - name: Facebook
