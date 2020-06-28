@@ -20,7 +20,7 @@ If you don't want to appear in these charts, **stay home**. If you don't want yo
 
 👉 **Stay home _when possible_**. Obviously some of us have to go out to work because we cannot do it remotely and all of us at some point need to go out, due to a need of force majeure. Everything else can wait.
 
-If you _have_ to go out, **keep 1.5 meters (~5 feet) away from other people** and **use a face mask** to protect yourself and others. You don't need to wear special face masks reserved for highly exposed people like healthcare workers. A strong, washable homemade fabric face mask is enough to cover your entire nose and mouth. When you return home, **wash your hands** and disinfect everything you bring home and what you have touched before washing your hands.
+If you _have_ to go out, **keep 1.5 meters (~5 feet) away from other people** and **use a face mask** to protect yourself and others. You don't need to wear special face masks reserved for highly exposed people like healthcare workers. A strong, washable homemade fabric face mask is enough to cover your entire nose and mouth. Avoid touching your face without washing your hands first. When you return home, **wash your hands** and disinfect everything you bring home and what you have touched before washing your hands.
 
 **We are at war** against an invisible enemy. The only way to defeat it is by **working together**. Take care of yourself and others by informing yourself and following the official guidelines (in Uruguay): [Coronavirus National Plan][MSP_coronavirus].
 
