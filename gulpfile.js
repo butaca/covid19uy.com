@@ -146,7 +146,7 @@ function embedCritialCSS() {
 };
 
 function hugoServer(cb) {
-    const hugoProc = exec('hugo server --disableFastRender --i18n-warnings --noHTTPCache --forceSyncStatic --gc');
+    const hugoProc = exec('hugo server --templateMetrics --disableFastRender --i18n-warnings --noHTTPCache --forceSyncStatic --gc');
     hugoProc.stdout.pipe(process.stdout);
     hugoProc.stderr.pipe(process.stderr);
     cb();
