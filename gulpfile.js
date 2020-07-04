@@ -225,7 +225,7 @@ const Countries = {
     paraguay: { cases: [], recovered: [], deaths: [] }
 };
 
-const COUNTRIES_DATA_BASE_URL = 'https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/';
+const COUNTRIES_DATA_BASE_URL = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/';
 const REFERENCE_DATE = moment(uruguay.data[0].date, "YYYY-MM-DD");
 let lastDate = null;
 let firstDate = null;
