@@ -27,6 +27,7 @@
         { "date": "2020-06-20", "age": 84, "s": "F", "dep": "Montevideo" },
         { "date": "2020-06-24", "age": 69, "s": "M", "dep": "Rivera" },
         { "date": "2020-06-28", "age": 64, "s": "F", "dep": "Treinta y Tres" },
-        { "date": "2020-07-01", "age": 64, "s": "M", "dep": "Salto" }
+        { "date": "2020-07-01", "age": 64, "s": "M", "dep": "Salto" },
+        { "date": "2020-07-06", "age": 70, "s": "F", "dep": "Montevideo", "icu": true, "meta": "La mujer estaba internada desde marzo de este año luego de presentar diversos síntomas como tos, fiebre y falta de aire tras regresar de un viaje por el Caribe.", "source": "https://www.elpais.com.uy/informacion/salud/fallecio-coronavirus-mujer-anos-unica-internada-cti.html" }
     ]
 }
