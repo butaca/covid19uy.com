@@ -199,10 +199,12 @@ const onError = (error) => {
 };
 
 const checkPingDelta = (ping) => {
-    let delta = ping - lastPing;
-    if (delta > config.reconnection.maxPing) {
-        console.log("Max ping exceeded: " + (delta / 1000).toFixed(2) + ", reconnecting...");
-        reconnect(false);
+    if (reconnectionTimeout == null) {
+        let delta = ping - lastPing;
+        if (delta > config.reconnection.maxPing) {
+            console.log("Max ping exceeded: " + (delta / 1000).toFixed(2) + ", reconnecting...");
+            reconnect(false);
+        }
     }
 };
 
@@ -223,6 +225,7 @@ const createStream = () => {
     stream.on('end', onEnd);
     stream.on('ping', onPing);
     console.log('stream created');
+    lastPing = Date.now();
 };
 
 const main = () => {
@@ -233,7 +236,7 @@ const main = () => {
 const login = () => {
     T.get("account/verify_credentials").then(main).catch((error) => {
         console.log('error logging in: ' + JSON.stringify(error));
-        console.log('retrying in ' + reconnectionWait/1000 + " seconds");
+        console.log('retrying in ' + reconnectionWait / 1000 + " seconds");
         setTimeout(login, reconnectionWait);
         reconnectionWait = Math.min(reconnectionWait * 2, config.reconnection.maxWait);
     });
