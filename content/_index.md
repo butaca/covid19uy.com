@@ -19,7 +19,7 @@ Si no querés aparecer en éstas gráficas, **quedate en casa**. Si no querés q
 
 👉 **Quedarse en casa _dentro de lo posible_**. Obviamente algunos de nosotros tenemos que salir a trabajar porque no lo podemos hacer en forma remota y todos en algún momento tenemos que salir sí o sí, por alguna necesidad de fuerza mayor. Todo lo demás puede esperar.
 
-Si _tenés_ que salir, **mantené 1.5 metros de distancia** con otras personas y **usá un tapabocas** para protegerte y proteger a los demás. No es necesario que uses los tapabocas especiales reservados para personas muy expuestas como los trabajadores de la salud. Es suficiente con un tapabocas de tela fuerte casero lavable que te cubra la totalidad de la nariz y boca. Evitá tocarte la cara sin antes lavarte las manos. Al volver a casa, **lavate las manos** y desinfectá todo lo que traigas a la casa y lo que hayas tocado antes de lavarte las manos.
+Si _tenés_ que salir, **mantené 2 metros de distancia** con otras personas y **usá un tapabocas** para protegerte y proteger a los demás. No es necesario que uses los tapabocas especiales reservados para personas muy expuestas como los trabajadores de la salud. Es suficiente con un tapabocas de tela fuerte casero lavable que te cubra la totalidad de la nariz y boca. Evitá tocarte la cara sin antes lavarte las manos. Al volver a casa, **lavate las manos** y desinfectá todo lo que traigas a la casa y lo que hayas tocado antes de lavarte las manos.
 
 **Estamos en guerra** contra un enemigo invisible. La única forma de ganarle es **entre todos**. Cuidate y cuidá a los demás informándote y siguiendo los lineamientos oficiales: [Plan Nacional Coronavirus][MSP_coronavirus].
 
