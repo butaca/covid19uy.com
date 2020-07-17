@@ -29,6 +29,7 @@
         "dotenv": "^8.2.0",
         "js-yaml": "^3.13.1",
         "pushover-notifications": "^1.2.2",
-        "twitter-lite": "^0.14.0"
+        "twitter-lite": "^0.14.0",
+        "twitter-text": "^3.1.0"
     }
 }

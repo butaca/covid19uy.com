@@ -2,6 +2,7 @@ require('dotenv').config();
 const fs = require('fs');
 const yaml = require('js-yaml');
 const Twitter = require('twitter-lite');
+const twitterText = require('twitter-text')
 const Push = require('pushover-notifications');
 
 const CONFIG_FILENAME = './covid19uybot.yml';
@@ -68,7 +69,25 @@ const getReplyMessage = () => {
     replyMessages.splice(randomIndex, 1);
 
     if (config.hashtagsEnabled) {
-        message += "\n\n" + config.replyHashtags;
+        const hashtags = config.replyHashtags;
+
+        if(hashtags.length > 0) {
+            var newMessage = message + "\n\n" + hashtags[0];
+            var parseResult = twitterText.parseTweet(newMessage);
+            if(parseResult.valid) {
+                message = newMessage;
+                for(let i = 1; i < hashtags.length; ++i) {
+                    newMessage = message + " " + hashtags[i];
+                    parseResult = twitterText.parseTweet(newMessage)
+                    if(parseResult.valid) {
+                        message = newMessage;
+                    }
+                    else {
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     return message;

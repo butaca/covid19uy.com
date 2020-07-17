@@ -31,8 +31,13 @@ reply:
   - "Si tenés una idea o sugerencia para mi sitio https://covid19uy.com
      no dudes en contactarme! 🙏"
 replayEnabled: true
-replyHashtags: "#QuedateEnCasa #CoronavirusUy
-                #CoronavirusEnUruguay #COVID19Uruguay"
+replyHashtags:
+  - "#2mt"
+  - "#DFS"
+  - "#QuedateEnCasa"
+  - "#CoronavirusUy"
+  - "#CoronavirusEnUruguay"
+  - "#COVID19Uruguay"
 hashtagsEnabled: false
 follow:
   - "840325920"    # SINAE
