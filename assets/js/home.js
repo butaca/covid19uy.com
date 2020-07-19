@@ -7,6 +7,7 @@ import burger from './burger'
 import './icons'
 import population from "../../data/world-population.json";
 import region from "../../data/region.json";
+import departmentsData from "../../data/uruguayDepartments.json"
 
 if (document.readyState === 'loading') {
     document.addEventListener("DOMContentLoaded", main);
@@ -674,4 +675,38 @@ function main() {
             }
         }
     });
+
+    var departments = departmentsData.departments;
+    var uruguayMap = document.getElementById("uruguay-map");
+
+    var paths = uruguayMap.getElementsByTagName("path");
+    for (var i = 0; i < paths.length; ++i) {
+        (function (path) {
+            var department = departments[path.getAttribute("name")];
+            var activeCases = department;
+            if (activeCases > 0) {
+                var center = path.getAttribute("center").split(",");
+                var x = center[0];
+                var y = center[1];
+
+                var svgNS = "http://www.w3.org/2000/svg";
+                var newText = document.createElementNS(svgNS, "text");
+                newText.setAttribute("x", x);
+                newText.setAttribute("y", y);
+                newText.setAttribute("font-size", "42");
+                newText.setAttribute("dominant-baseline", "middle");
+                newText.setAttribute("text-anchor", "middle");
+                newText.setAttribute("pointer-events", "none");
+                newText.setAttribute("fill", "black");
+                newText.setAttribute("stroke-width", "0");
+                newText.setAttribute("font-weight", "bold");
+
+                var textNode = document.createTextNode(activeCases.toString());
+                newText.appendChild(textNode);
+                uruguayMap.appendChild(newText);
+
+                path.setAttribute('style', 'fill: #9bdcea');
+            }
+        })(paths[i])
+    }
 }

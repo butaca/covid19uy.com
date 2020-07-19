@@ -291,3 +291,6 @@ paraguay:
 
 sourceCode:
   other: Código fuente
+
+activeCasesByDepartment:
+  other: Casos activos por departamento
