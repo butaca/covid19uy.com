@@ -679,6 +679,16 @@ function main() {
     var departments = departmentsData.departments;
     var uruguayMap = document.getElementById("uruguay-map");
 
+    var minActives = Number.MAX_SAFE_INTEGER;
+    var maxActives = 0;
+    for (var key in departments) {
+        if (departments.hasOwnProperty(key)) {
+            var actives = departments[key];
+            minActives = Math.min(minActives, actives);           
+            maxActives = Math.max(maxActives, actives);
+        }
+    }
+
     var paths = uruguayMap.getElementsByTagName("path");
     for (var i = 0; i < paths.length; ++i) {
         (function (path) {
@@ -705,7 +715,11 @@ function main() {
                 newText.appendChild(textNode);
                 uruguayMap.appendChild(newText);
 
-                path.setAttribute('style', 'fill: #9bdcea');
+                path.setAttribute('style', 'fill: #40bfdb');
+
+                var n = 0.25 + 0.75 * (activeCases - minActives)/(maxActives - minActives);
+                console.log(n);
+                path.setAttribute("fill-opacity", n);
             }
         })(paths[i])
     }
