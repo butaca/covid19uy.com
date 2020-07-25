@@ -24,8 +24,8 @@ outputs:
 
 params:
   repo:
-    url: https://bitbucket.org/juanfornos/covid19uy.com
-    icon: fab fa-bitbucket
+    url: https://github.com/butaca/covid19uy.com
+    icon: fab fa-github
   kofi: false
   share:
     - name: Facebook
