@@ -3,6 +3,9 @@
 {{- $yesterday := index $last 0 -}}
 {{- $tests := $today.tests }}
 {{- $cases := sub $today.cases $yesterday.cases -}}
+{{- if isset $today "forcedNewCases" -}}
+{{- $cases = $today.forcedNewCases -}}
+{{- end -}}
 {{- $deaths := sub $today.deaths $yesterday.deaths -}}
 {{- $recovered := sub $today.recovered $yesterday.recovered -}}
 {{- $healthWorkerCases := sub $today.hc $yesterday.hc -}}
