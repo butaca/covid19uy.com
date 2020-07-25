@@ -24,9 +24,14 @@
                 </article>
                 <div class="columns is-multiline">
                     {{ $context := . }}
-                    {{ range first 15 .Site.Data.twitter.tweets }}
+                    {{ $preloadCount := 15 }}
+                    {{ range first $preloadCount .Site.Data.twitter.tweets }}
                     <div class="column is-4">
                         {{ partial "twitter" (dict "context" $context "id" .) }}
+                    </div>
+                    {{ end }}
+                    {{ range after $preloadCount .Site.Data.twitter.tweets }}
+                    <div class="tweet column is-4" data-tweet="{{.}}">
                     </div>
                     {{ end }}
                 </div>
