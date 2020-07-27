@@ -29,7 +29,7 @@
         { "date": "2020-06-28", "age": 64, "s": "F", "dep": "Treinta y Tres" },
         { "date": "2020-07-01", "age": 64, "s": "M", "dep": "Salto" },
         { "date": "2020-07-06", "age": 70, "s": "F", "dep": "Montevideo", "icu": true, "meta": "La mujer estaba internada desde marzo de este año luego de presentar diversos síntomas como tos, fiebre y falta de aire tras regresar de un viaje por el Caribe.", "source": "https://www.elpais.com.uy/informacion/salud/fallecio-coronavirus-mujer-anos-unica-internada-cti.html" },
-        { "date": "2020-07-10", "age": 86, "s": "M", "dep": "Cerro Largo", "icu": true, "source": "https://www.elobservador.com.uy/nota/nueva-muerte-por-coronavirus-en-el-pais-ya-son-30-los-fallecidos-202071021935" },
+        { "date": "2020-07-11", "age": 86, "s": "M", "dep": "Cerro Largo", "icu": true, "source": "https://www.elobservador.com.uy/nota/nueva-muerte-por-coronavirus-en-el-pais-ya-son-30-los-fallecidos-202071021935" },
         { "date": "2020-07-12", "age": 87, "s": "F", "dep": "Soriano", "source": "https://www.elobservador.com.uy/nota/fallecio-una-mujer-de-87-anos-por-coronavirus-en-soriano-es-la-victima-31-2020712184212" },
         { "date": "2020-07-16", "age": 58, "s": "F", "dep": "Montevideo", "meta": "falleció a causa de otras patologías pero tenía resultado positivo de Coronavirus", "source": "https://www.gub.uy/sistema-nacional-emergencias/comunicacion/comunicados/informe-situacion-sobre-coronavirus-covid-19-uruguay-16-07-2020" },
         { "date": "2020-07-18", "age": 74, "s": "F", "dep": "Canelones", "icu": true, "meta": "estaba internada en la Médica Uruguaya", "source": "https://www.elobservador.com.uy/nota/murio-una-persona-en-la-medica-uruguaya-por-coronavirus--202071813530" },
