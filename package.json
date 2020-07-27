@@ -15,6 +15,7 @@
         "gulp-replace": "^1.0.0",
         "gulp-sass": "^4.1.0",
         "js-cookie": "^2.2.1",
+        "mocha": "^8.0.1",
         "moment": "^2.25.3",
         "pixi.js": "^5.2.4",
         "terser-webpack-plugin": "^2.3.6",
@@ -24,7 +25,8 @@
     },
     "scripts": {
         "develop": "gulp develop",
-        "build": "gulp deploy"
+        "build": "gulp deploy",
+        "test": "mocha"
     },
     "dependencies": {
         "dotenv": "^8.2.0",
