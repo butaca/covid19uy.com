@@ -1,4 +1,4 @@
-var assert = require('assert');
+var assert = require('chai').assert;
 const fs = require('fs');
 const moment = require("moment");
 
@@ -28,6 +28,41 @@ describe('Test data', function () {
                 const todayDate = moment(today.date, DATE_FORMAT);
                 assert.equal(todayDate.diff(prevDate, 'days'), 1, "Date " + todayDate.format(DATE_FORMAT) + " isn't a day after the previous date.")
                 prevDate = todayDate;
+            }
+        }
+    });
+
+    it('Each row in uruguay.json should have incremental values equal or higher than the previous day', function () {
+        if (uruguay.data.length > 0) {
+            let prevDay = uruguay.data[0];
+            for (let i = 1; i < uruguay.data.length; ++i) {
+                const prevCases = prevDay.cases || 0;
+                const prevRecovered = prevDay.recovered || 0;
+                const prevDeaths = prevDay.deaths || 0;
+                const prevHCCases = prevDay.hc || 0;
+                const prevHCRecovered = prevDay.hcRecovered || 0;
+                const prevHCDeaths = prevDay.hcDeaths || 0;
+
+                const today = uruguay.data[i];
+                const cases = today.cases || 0;
+                const recovered = today.recovered || 0;
+                const deaths = today.deaths || 0;
+                const hcCases = today.hc || 0;
+                const hcRecovered = today.hcRecovered || 0;
+                const hcDeaths = today.hcDeaths || 0;
+
+                assert.isAtLeast(cases, prevCases, "Cases: " + today.date);
+                if (today.date != "2020-06-21") { // Allow SINAE report error
+                    assert.isAtLeast(recovered, prevRecovered, "Recovered: " + today.date);
+                }
+                assert.isAtLeast(deaths, prevDeaths, "Deaths: " + today.date);
+                assert.isAtLeast(hcCases, prevHCCases, "HC Cases: " + today.date);
+                if (today.date != "2020-05-20") { // Allow SINAE report error
+                    assert.isAtLeast(hcRecovered, prevHCRecovered, "HC Recovered: " + today.date);
+                }
+                assert.isAtLeast(hcDeaths, prevHCDeaths, "HC Deaths: " + today.date);
+
+                prevDay = today;
             }
         }
     });
