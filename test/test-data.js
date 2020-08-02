@@ -118,4 +118,12 @@ describe('Test data', function () {
             assert.equal(todayDeaths, deaths, "Death count in uruguay.json doesn't match the deatch in uruguayDeaths.json for date " + todayDate.format("YYYY-MM-DD"));
         }
     });
+
+    it('Uruguay deaths deparments name in uruguayDeaths.json should match the names in uruguayDepartments.json', function () {
+        for (let i = 0; i < uruguayDeaths.deaths.length; ++i) {
+            const death = uruguayDeaths.deaths[i];
+            console.log(JSON.stringify(death));
+            assert.isDefined(departmentsData.departments[death.dep], "Department " + death.dep + " doesn't exist in uruguayDepartments.json");
+        }
+    });
 });
