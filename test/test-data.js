@@ -119,11 +119,12 @@ describe('Test data', function () {
         }
     });
 
-    it('Uruguay deaths deparments name in uruguayDeaths.json should match the names in uruguayDepartments.json', function () {
+    it('Test uruguayDeaths.json data', function () {
         for (let i = 0; i < uruguayDeaths.deaths.length; ++i) {
             const death = uruguayDeaths.deaths[i];
-            console.log(JSON.stringify(death));
             assert.isDefined(departmentsData.departments[death.dep], "Department " + death.dep + " doesn't exist in uruguayDepartments.json");
+            assert.isNumber(death.age, "Death of " + death.date + " doesn't have a valid age: " + death.age);
+            assert.isTrue(death.s === "F" || death.s === "M", "Death of " + death.date + " doesn't have a valid sex (F or M): " + death.s);
         }
     });
 });
