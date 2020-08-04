@@ -3,7 +3,7 @@ title: "Coronavirus COVID-19 in Uruguay | #StayHome"
 subtitle: Stay home!
 description: Evolution of Coronavirus COVID-19 in Uruguay. Charts updated daily with official information. If you don't want to appear on this site, stay home.
 date: 2020-03-23T22:07:13-0300
-lastmod: 2020-04-04T20:21:12-0300
+lastmod: 2020-08-04T20:43:12-0300
 sitemap:
   changefreq: hourly
 ---

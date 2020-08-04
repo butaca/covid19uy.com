@@ -1,0 +1,293 @@
+{
+  "404message": {
+    "other": "We did not find this page. Please communicate if you think it is a mistake."
+  },
+  "404title": {
+    "other": "404 File not found"
+  },
+  "activeCases": {
+    "other": "Active Cases"
+  },
+  "activeCasesByDepartment": {
+    "other": "Active cases by department"
+  },
+  "and": {
+    "other": "and"
+  },
+  "archive": {
+    "other": "Archive"
+  },
+  "archiveDesc": {
+    "other": "The following graphs aren't updated anymore because the information needed is no longer provided."
+  },
+  "argentina": {
+    "other": "Argentina"
+  },
+  "avodianceProb": {
+    "other": "Social distancing probability (%)"
+  },
+  "avoidanceDistance": {
+    "other": "Social distancing"
+  },
+  "backTo": {
+    "other": "Back to"
+  },
+  "brazil": {
+    "other": "Brazil"
+  },
+  "chile": {
+    "other": "Chile"
+  },
+  "collaborate": {
+    "other": "Do you want to collaborate? (Design, code, ideas, suggestions, etc.)"
+  },
+  "contact": {
+    "other": "✉️ Contact"
+  },
+  "contactMe": {
+    "other": "Contact me!"
+  },
+  "contagionDistanceTitle": {
+    "other": "Contagion distance"
+  },
+  "contagionMinHours": {
+    "other": "Contagion minimum time (hours)"
+  },
+  "contagionProbTitle": {
+    "other": "Contagion probability (%)"
+  },
+  "csse": {
+    "other": "COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University"
+  },
+  "dailyCases": {
+    "other": "Daily Cases"
+  },
+  "dailyPositives": {
+    "other": "Daily Positive"
+  },
+  "dailyTests": {
+    "other": "Daily Tests"
+  },
+  "dataSource": {
+    "other": "Data source"
+  },
+  "deaths": {
+    "other": "Deaths"
+  },
+  "graphTitleActiveCases": {
+    "other": "Daily active cases"
+  },
+  "graphTitleActiveCasesDesc": {
+    "other": "Active cases per day. 👉 This is the curve we have to flatten. The active cases are the people that currently have the virus, calculated as the total cases minus the recovered and deaths."
+  },
+  "graphTitleDailyActiveCases": {
+    "other": "Daily new active cases"
+  },
+  "graphTitleDailyActiveCasesDesc": {
+    "other": "In each day, number of new active cases (people with the virus) compared to the previous day. A negative number means that the number of people with the virus decreased that day."
+  },
+  "graphTitleDailyCases": {
+    "other": "Daily new cases"
+  },
+  "graphTitleDailyCasesDesc": {
+    "other": "Number of new cases in each day"
+  },
+  "graphTitleDailyHospitalizations": {
+    "other": "Hospitalizations"
+  },
+  "graphTitleDailyHospitalizationsDesc": {
+    "other": "Number of people in intermediate care and intensive care each day."
+  },
+  "graphTitleDailyHospitalizationsPercent": {
+    "other": "Hospitalizations percentage of active cases"
+  },
+  "graphTitleDailyHospitalizationsPercentDesc": {
+    "other": "Percentage of hospitalizations of active cases on each day."
+  },
+  "graphTitleDailyPositives": {
+    "other": "Percentage of daily positive tests"
+  },
+  "graphTitleDailyPositivesDesc": {
+    "other": "Of all the tests performed each day, what percentage of tests where positive on that day."
+  },
+  "graphTitleDailyTests": {
+    "other": "Daily tests and positives"
+  },
+  "graphTitleDailyTestsDesc": {
+    "other": "Number of tests carried out each day and how many of them were positive."
+  },
+  "graphTitleDailyTestsNew": {
+    "other": "Daily tests"
+  },
+  "graphTitleDailyTestsNewDesc": {
+    "other": "Number of tests carried out each day."
+  },
+  "graphTitleHealthcareWorkers": {
+    "other": "Daily healthcare workers cases"
+  },
+  "graphTitleHealthcareWorkersDesc": {
+    "other": "Number of new cases in each day and how many of them correspond to healthcare workers."
+  },
+  "graphTitleHealthcareWorkersPercent": {
+    "other": "Percentage of healthcare workers cases"
+  },
+  "graphTitleHealthcareWorkersPercentDesc": {
+    "other": "Of the new cases of each day, what percentage correspond to healthcare workers on that day."
+  },
+  "graphTitleRegionActiveCases": {
+    "other": "Active cases per million inhabitants in the region"
+  },
+  "graphTitleRegionActiveCasesDesc": {
+    "other": "Comparison of active cases (people with the virus) per million inhabitants in the countries of the region."
+  },
+  "graphTitleRegionCases": {
+    "other": "Cumulative cases per million inhabitants in the region"
+  },
+  "graphTitleRegionCasesDesc": {
+    "other": "Comparison of cumulative cases per million inhabitants in the countries of the region."
+  },
+  "graphTitleRegionDeaths": {
+    "other": "Deaths per million inhabitants in the region"
+  },
+  "graphTitleRegionDeathsDesc": {
+    "other": "Comparison of deaths per million inhabitants in the countries of the region."
+  },
+  "graphTitleTotalCases": {
+    "other": "Cumulative cases, recovered and deaths"
+  },
+  "graphTitleTotalCasesDesc": {
+    "other": "On each day, the total sum of confirmed cases, recovered and deaths up to that day."
+  },
+  "graphTitleTotalTests": {
+    "other": "Total tests"
+  },
+  "graphTitleTotalTestsDesc": {
+    "other": "Comparison of all tests performed so far: percentage of positives and negatives."
+  },
+  "graphTitleTotals": {
+    "other": "Total Cases"
+  },
+  "graphTitleTotalsDesc": {
+    "other": "Comparison of the total cases registered so far: percentage of active cases, recovered and deaths."
+  },
+  "healthCareWorkerCases": {
+    "other": "Healthcare worker cases"
+  },
+  "healthSystemCapacity": {
+    "other": "Healthcare system capacity"
+  },
+  "icu": {
+    "other": "Intensive care"
+  },
+  "imcu": {
+    "other": "Intermediate care"
+  },
+  "infectionDuration": {
+    "other": "Infection duration (days)"
+  },
+  "kofi": {
+    "other": "Buy me a coffee"
+  },
+  "mortalityRate": {
+    "other": "Mortality rate (%)"
+  },
+  "msp": {
+    "other": "Ministry of Public Health"
+  },
+  "negatives": {
+    "other": "Negatives"
+  },
+  "new": {
+    "other": "New!"
+  },
+  "newActiveCases": {
+    "other": "New active cases"
+  },
+  "newCases": {
+    "other": "New cases"
+  },
+  "paraguay": {
+    "other": "Paraguay"
+  },
+  "positives": {
+    "other": "Positives"
+  },
+  "positivesAndCasesInfo": {
+    "other": "⚠️ Until 4/8 the number of cases (people with the virus) was not reported, but the number of positive tests. There are people with the virus that were tested positive more than once. Therefore until 4/8, cases (people with the virus) are assumed as the positive tests due to lack of information."
+  },
+  "publishedBy": {
+    "other": "published by"
+  },
+  "recovered": {
+    "other": "Recovered"
+  },
+  "region": {
+    "other": "Region"
+  },
+  "regionTitle": {
+    "other": "Comparison to the countries of the region"
+  },
+  "restart": {
+    "other": "Restart"
+  },
+  "shareMe": {
+    "other": "Share me!"
+  },
+  "simulation": {
+    "other": "Simulation"
+  },
+  "simulationTitle": {
+    "other": "Coronavirus simulation"
+  },
+  "sinae": {
+    "other": "National Emergency System"
+  },
+  "siteMadeBy": {
+    "other": "Made with ❤️ by"
+  },
+  "society": {
+    "other": "Society"
+  },
+  "sourceCode": {
+    "other": "Source Code"
+  },
+  "speed": {
+    "other": "Speed"
+  },
+  "supportedBy": {
+    "other": "Supported by"
+  },
+  "tests": {
+    "other": "Tests"
+  },
+  "todayNumbers": {
+    "other": "Today numbers"
+  },
+  "totalCases": {
+    "other": "Total Cases"
+  },
+  "totalTests": {
+    "other": "Total tests"
+  },
+  "unreportedPositiviesInfo": {
+    "other": "⚠️ As of 06/15 SINAE stopped reporting the daily and accumulated positive tests. Therefore, the tests graphs are updated until 06/14."
+  },
+  "updated": {
+    "other": "Updated"
+  },
+  "uruguay": {
+    "other": "Uruguay"
+  },
+  "uyTime": {
+    "other": "Uruguayan Time"
+  },
+  "virus": {
+    "other": "Virus"
+  },
+  "world": {
+    "other": "🌍 World"
+  },
+  "worldTitle": {
+    "other": "Numbers in the world 🌍"
+  }
+}

@@ -3,11 +3,9 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const exec = require('child_process').exec;
-const webpack = require('webpack-stream');
 const purgecss = require('gulp-purgecss');
 const replace = require('gulp-replace');
 const fs = require('fs');
-const TerserPlugin = require('terser-webpack-plugin');
 const axios = require("axios");
 const cheerio = require("cheerio");
 const moment = require("moment");
@@ -21,29 +19,11 @@ const writeFilePromise = promisify(fs.writeFile);
 const nodeModules = './node_modules';
 
 const paths = {
-    webpackEntry: './assets/js/home.js',
-    srcJS: ['./assets/js/**/*.js', './data/**/*.json', './i18n/**/*.yaml'],
-    destJS: './static/js',
-    destJSFilename: 'main.js',
     mainSCSS: './assets/sass/main.scss',
     srcSCSS: './assets/sass/**/*.scss',
     destCSS: './static/css',
     deploy: 'public'
 };
-
-const simulationPaths = {
-    webpackEntry: './assets/js/simulation/simulation.js',
-    srcJS: './assets/js/**/*.js',
-    destJS: './static/simulation/js',
-    destJSFilename: 'simulation.js',
-}
-
-const twitterPaths = {
-    webpackEntry: './assets/js/twitter/twitter.js',
-    srcJS: './assets/js/**/*.js',
-    destJS: './static/twitter/js',
-    destJSFilename: 'twitter.js',
-}
 
 function sassBuild() {
     return gulp.src(paths.mainSCSS)
@@ -56,46 +36,7 @@ function sassWatch() {
     return gulp.watch(paths.srcSCSS, sassBuild);
 };
 
-function webpackBuild(options) {
-    return gulp.src(options.webpackEntry)
-        .pipe(webpack({
-            output: {
-                filename: options.destJSFilename,
-            },
-            plugins: [
-                new TerserPlugin()
-            ],
-            mode: "production",
-            module: {
-                rules: [
-                    {
-                        test: /\.ya?ml$/,
-                        type: 'json',
-                        use: 'yaml-loader'
-                    }
-                ]
-            }
-        }))
-        .pipe(gulp.dest(options.destJS));
-}
-
-function webpackBuildMain() {
-    return webpackBuild(paths);
-};
-
-function webpackWatch() {
-    return gulp.watch(paths.srcJS, gulp.series(webpackBuildMain, simulationBuild, twitterBuild));
-};
-
-function simulationBuild() {
-    return webpackBuild(simulationPaths);
-};
-
-function twitterBuild() {
-    return webpackBuild(twitterPaths);
-}
-
-const build = gulp.series(gulp.parallel(sassBuild, webpackBuildMain), simulationBuild, twitterBuild);
+const build = sassBuild;
 
 function hugoBuild(cb) {
     const params = ["--gc", "--verbose", "--cleanDestinationDir"];
@@ -205,7 +146,7 @@ async function downloadPopulationData() {
     await writeFilePromise("./data/world-population.json", JSON.stringify(result));
 }
 
-const watch = gulp.parallel(sassWatch, webpackWatch);
+const watch = sassWatch;
 
 function updateLastMod() {
     return gulp.src('content/_index*.md')
@@ -288,7 +229,6 @@ async function downloadCountriesData() {
     return writeFilePromise("./data/region.json", JSON.stringify(regionObj));
 }
 
-exports.webpackBuild = webpackBuildMain;
 exports.develop = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData), build, gulp.parallel(watch, hugoServer));
 exports.deploy = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData), updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);
 exports.default = exports.develop;

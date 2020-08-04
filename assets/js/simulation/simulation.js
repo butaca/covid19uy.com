@@ -3,8 +3,8 @@ import nfCookies from '../nf-cookies'
 import '../icons'
 
 import * as PIXI from 'pixi.js'
-import langEs from "../../../i18n/es.yaml";
-import langEn from "../../../i18n/en.yaml";
+import langEs from "../../../i18n/es.json";
+import langEn from "../../../i18n/en.json";
 import { Disease, Society, Bindings, Simulation } from './params'
 import { Person, State } from './person'
 import { DiseaseChart } from './chart'

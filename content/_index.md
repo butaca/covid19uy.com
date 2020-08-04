@@ -3,7 +3,7 @@ title: "Coronavirus COVID-19 en Uruguay | #QuedateEnCasa"
 subtitle: ¡Quedate en casa!
 description: Evolución de Coronavirus COVID-19 en Uruguay. Gráficas actualizadas diariamente con información oficial. Si no querés aparecer en este sitio, quedate en casa.
 date: 2020-03-23T22:07:13-0300
-lastmod: 2020-04-04T20:21:12-0300
+lastmod: 2020-08-04T20:43:12-0300
 sitemap:
   changefreq: hourly
 ---

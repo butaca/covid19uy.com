@@ -1,6 +1,6 @@
 import data from "../../data/uruguay.json";
-import langEs from "../../i18n/es.yaml";
-import langEn from "../../i18n/en.yaml";
+import langEs from "../../i18n/es.json";
+import langEn from "../../i18n/en.json";
 import "./chartjs-elements";
 import nfCookies from './nf-cookies'
 import burger from './burger'

@@ -8,7 +8,9 @@
     {{ partial "seo.html" . }}
     <link href='/css/main.css' rel="stylesheet">
     {{ partial "analytics.html" . }}
-    <script defer src='{{ "/twitter/js/twitter.js" | absURL }}'></script>
+    {{- $opts := dict "targetPath" "twitter/js/twitter.js" "minify" "true" "target" "es2015" -}}
+    {{- $built := resources.Get "js/twitter/twitter.js" | js.Build $opts -}}
+    <script defer type="text/javascript" src="{{ $built.RelPermalink }}"></script>
 </head>
 
 <body>
