@@ -1,13 +1,13 @@
-import data from "../../data/uruguay.json";
+import data from "./data/uruguay.json";
 import langEs from "../../i18n/es.json";
 import langEn from "../../i18n/en.json";
 import "./chartjs-elements";
 import nfCookies from './nf-cookies'
 import burger from './burger'
 import './icons'
-import population from "../../data/world-population.json";
-import region from "../../data/region.json";
-import departmentsData from "../../data/uruguayDepartments.json"
+import population from "./data/world-population.json";
+import region from "./data/region.json";
+import departmentsData from "./data/uruguayDepartments.json"
 
 if (document.readyState === 'loading') {
     document.addEventListener("DOMContentLoaded", main);

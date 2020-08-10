@@ -21,13 +21,15 @@ Cuenta con el apoyo de Netlify en su [programa de ayuda a sitios sobre COVID-19]
 
 ### Datos
 
-Los datos de Uruguay se obtienen de los informes diarios del SINAE y se ingresan de manera manual en el archivo `data/uruguay.json`.
+DATA = assets/js/data/
 
-Los casos activos por departamento se obtienen del visualizador del SINAE también manualmente y se ingresan en en el archivo `data/uruguayDepartments.json`.
+Los datos de Uruguay se obtienen de los informes diarios del SINAE y se ingresan de manera manual en el archivo `[DATA]/uruguay.json`.
 
-En en archivo `data/uruguayDeaths.json` se van registrando los fallecimientos, pero actualmente no se utiliza.
+Los casos activos por departamento se obtienen del visualizador del SINAE también manualmente y se ingresan en en el archivo `[DATA]/uruguayDepartments.json`.
 
-Los datos del mundo y la región (`data/world.json`, `data/region.json` y `data/world-population.json`) se descargan automáticamente durante el build.
+En en archivo `[DATA]/uruguayDeaths.json` se van registrando los fallecimientos, pero actualmente no se utiliza.
+
+Los datos del mundo y la región (`[DATA]/world.json`, `[DATA]/region.json` y `[DATA]/world-population.json`) se descargan automáticamente durante el build.
 
 ### Cómo desarrollar
 

@@ -3,14 +3,14 @@ static/css/main.css
 static/js/main.js
 static/js/main.js.LICENSE.txt
 public
-world.json
+assets/js/world.json
 static/simulation/js/simulation.js
 static/simulation/js/simulation.js.LICENSE.txt
 bot/.env
 static/twitter/js/twitter.js
 static/twitter/js/twitter.js.LICENSE.txt
-data/world-population.json
-data/region.json
+assets/js/data/world-population.json
+assets/js/data/region.json
 trigger_build_master.sh
 trigger_build_develop.sh
 .vscode/launch.json

@@ -4,6 +4,8 @@ DefaultContentLanguage: es
 enableRobotsTXT: true
 googleAnalytics: UA-161714981-1
 
+dataDir: "assets/js/data"
+
 privacy:
   googleAnalytics:
     anonymizeIP: true

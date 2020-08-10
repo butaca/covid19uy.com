@@ -12,7 +12,8 @@ const moment = require("moment");
 const autoprefixer = require('gulp-autoprefixer');
 const { promisify } = require('util');
 const csv = require('csv-parser');
-const uruguay = require("./data/uruguay.json");
+const DATA_DIR = "./assets/js/data/"
+const uruguay = require(DATA_DIR + "uruguay.json");
 
 const writeFilePromise = promisify(fs.writeFile);
 
@@ -120,7 +121,7 @@ async function downloadData() {
         }
     });
     updatedDate = result.updated = Math.floor(Date.now() / 1000);
-    await writeFilePromise("./data/world.json", JSON.stringify(result));
+    await writeFilePromise(DATA_DIR + "world.json", JSON.stringify(result));
 }
 
 async function downloadPopulationData() {
@@ -143,7 +144,7 @@ async function downloadPopulationData() {
             result[country] = population;
         }
     });
-    await writeFilePromise("./data/world-population.json", JSON.stringify(result));
+    await writeFilePromise(DATA_DIR + "world-population.json", JSON.stringify(result));
 }
 
 const watch = sassWatch;
@@ -226,7 +227,7 @@ async function downloadCountriesData() {
         data: Countries
     }
 
-    return writeFilePromise("./data/region.json", JSON.stringify(regionObj));
+    return writeFilePromise(DATA_DIR + "region.json", JSON.stringify(regionObj));
 }
 
 exports.develop = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData), build, gulp.parallel(watch, hugoServer));

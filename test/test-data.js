@@ -1,7 +1,7 @@
 var assert = require('chai').assert;
 const fs = require('fs');
 const moment = require("moment");
-
+const DATA_DIR = "assets/js/data/"
 const DATE_FORMAT = "YYYY-MM-DD";
 
 describe('Test data', function () {
@@ -11,11 +11,11 @@ describe('Test data', function () {
     let uruguayDeaths = null;
 
     before(function (done) {
-        let rawData = fs.readFileSync("data/uruguay.json");
+        let rawData = fs.readFileSync(DATA_DIR + "uruguay.json");
         uruguay = JSON.parse(rawData);
-        rawData = fs.readFileSync("data/uruguayDepartments.json");
+        rawData = fs.readFileSync(DATA_DIR + "uruguayDepartments.json");
         departmentsData = JSON.parse(rawData);
-        rawData = fs.readFileSync("data/uruguayDeaths.json")
+        rawData = fs.readFileSync(DATA_DIR + "uruguayDeaths.json")
         uruguayDeaths = JSON.parse(rawData);
         done();
     });
