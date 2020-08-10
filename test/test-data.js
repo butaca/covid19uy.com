@@ -1,5 +1,6 @@
 var assert = require('chai').assert;
 const fs = require('fs');
+const { promisify } = require('util');
 const moment = require("moment");
 const DATA_DIR = "assets/js/data/"
 const DATE_FORMAT = "YYYY-MM-DD";
@@ -10,14 +11,20 @@ describe('Test data', function () {
     let departmentsData = null;
     let uruguayDeaths = null;
 
-    before(function (done) {
-        let rawData = fs.readFileSync(DATA_DIR + "uruguay.json");
-        uruguay = JSON.parse(rawData);
-        rawData = fs.readFileSync(DATA_DIR + "uruguayDepartments.json");
-        departmentsData = JSON.parse(rawData);
-        rawData = fs.readFileSync(DATA_DIR + "uruguayDeaths.json")
-        uruguayDeaths = JSON.parse(rawData);
-        done();
+    before(async function () {
+        const readFile = promisify(fs.readFile);
+
+        await Promise.all([
+            readFile(DATA_DIR + "uruguay.json").then(data => {
+                uruguay = JSON.parse(data.toString());
+            }).catch(assert.Throw),
+            readFile(DATA_DIR + "uruguayDepartments.json").then(data => {
+                departmentsData = JSON.parse(data.toString());
+            }).catch(assert.Throw),
+            readFile(DATA_DIR + "uruguayDeaths.json").then(data => {
+                uruguayDeaths = JSON.parse(data.toString());
+            }).catch(assert.Throw)
+        ]);
     });
 
     it('Each row in uruguay.json should have a date a day after the previous one', function () {
