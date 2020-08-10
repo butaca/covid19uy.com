@@ -3,7 +3,7 @@ static/css/main.css
 static/js/main.js
 static/js/main.js.LICENSE.txt
 public
-assets/js/world.json
+assets/js/data/world.json
 static/simulation/js/simulation.js
 static/simulation/js/simulation.js.LICENSE.txt
 bot/.env
