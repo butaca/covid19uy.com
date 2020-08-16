@@ -19,6 +19,53 @@ function getTotal(values) {
     return values.reduce(function (prev, cur) { return prev + cur });
 }
 
+function average(array, startIndex, length) {
+    var sum = 0;
+    for (var i = 0; i < length && (i + startIndex) < array.length; ++i) {
+        sum += array[i + startIndex];
+    }
+    var avg = sum / length;
+    return avg;
+}
+
+function movingAverage(array, length) {
+    var results = [];
+    for (var i = 0; i < length; ++i) {
+        results.push(null);
+    }
+    for (var i = 0; i < (array.length - length); ++i) {
+        results.push(average(array, i, length));
+    }
+    return results;
+}
+
+function createMovingAverageDataset(data, length, color) {
+    return {
+        type: "line",
+        fill: false,
+        borderWidth: 1,
+        pointRadius: 0,
+        borderColor: color,
+        data: movingAverage(data, length),
+        label: "AVG",
+    };
+}
+
+function createDefaultChartOptions() {
+    return {
+        animation: {
+            duration: 0
+        },
+        legend: {
+            labels: {
+                filter: function (item) {
+                    return !item.text.includes("AVG");
+                }
+            }
+        }
+    };
+}
+
 function main() {
     burger();
     nfCookies();
@@ -98,7 +145,7 @@ function main() {
         }
 
         var todayCases = totalTodayCases - prevDayTotalCases;
-        if(el.forcedNewCases != undefined) {
+        if (el.forcedNewCases != undefined) {
             todayCases = el.forcedNewCases;
         }
 
@@ -144,6 +191,14 @@ function main() {
     var pointRadius = 2;
     var pointHoverRadius = 3;
 
+    var options = createDefaultChartOptions();
+    options.scales = {
+        yAxes: [{
+            ticks: {
+                min: 1
+            }
+        }]
+    };
     var ctx = document.getElementById('chart-active-cases');
     new Chart(ctx, {
         type: 'line',
@@ -156,22 +211,14 @@ function main() {
                 data: activeCases,
                 pointRadius: pointRadius,
                 pointHoverRadius: pointHoverRadius
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        min: 1
-                    }
-                }]
             },
-            animation: {
-                duration: 0
-            }
-        }
+            createMovingAverageDataset(activeCases, 7, "#28b8d6ff")
+            ]
+        },
+        options: options
     });
 
+    options = createDefaultChartOptions();
     ctx = document.getElementById('chart-total-cases');
     new Chart(ctx, {
         type: 'line',
@@ -202,13 +249,15 @@ function main() {
                 pointHoverRadius: pointHoverRadius
             }]
         },
-        options: {
-            animation: {
-                duration: 0
-            }
-        }
+        options: options
     });
 
+    options = createDefaultChartOptions();
+    options.scales = {
+        xAxes: [{
+            stacked: true
+        }]
+    };
     ctx = document.getElementById('chart-daily-tests');
     new Chart(ctx, {
         type: 'bar',
@@ -225,18 +274,15 @@ function main() {
                 data: dailyTests.slice(firstDailyTestsValidIndex, positiveTestsChartsMaxIndex + 1),
             }]
         },
-        options: {
-            animation: {
-                duration: 0
-            },
-            scales: {
-                xAxes: [{
-                    stacked: true
-                }]
-            }
-        }
+        options: options
     });
 
+    options = createDefaultChartOptions();
+    options.scales = {
+        xAxes: [{
+            stacked: true
+        }]
+    };
     ctx = document.getElementById('chart-daily-tests-new');
     new Chart(ctx, {
         type: 'bar',
@@ -248,18 +294,10 @@ function main() {
                 data: dailyTests.slice(firstDailyTestsValidIndex),
             }]
         },
-        options: {
-            animation: {
-                duration: 0
-            },
-            scales: {
-                xAxes: [{
-                    stacked: true
-                }]
-            }
-        }
+        options: options
     });
 
+    options = createDefaultChartOptions();
     ctx = document.getElementById('chart-daily-hospitalizations');
     new Chart(ctx, {
         type: 'bar',
@@ -277,13 +315,10 @@ function main() {
             }
             ]
         },
-        options: {
-            animation: {
-                duration: 0
-            }
-        }
+        options: options
     });
 
+    options = createDefaultChartOptions();
     ctx = document.getElementById('chart-daily-cases');
     new Chart(ctx, {
         type: 'bar',
@@ -295,16 +330,7 @@ function main() {
                 data: dailyCases,
             }]
         },
-        options: {
-            animation: {
-                duration: 0
-            },
-            scales: {
-                xAxes: [{
-                    stacked: true
-                }]
-            }
-        }
+        options: options
     });
 
     var pieToolTips = {
@@ -323,6 +349,24 @@ function main() {
     var labelsChartTotal = [lang.activeCases.other, lang.recovered.other, lang.deaths.other];
     labelsChartTotal = labelsChartTotal.map(function (label, index) { return label + ': ' + (dataChartTotal[index] / totalChartTotal * 100).toFixed(2) + '%' });
 
+    options = createDefaultChartOptions();
+    options.scales = {
+        xAxes: [{
+            display: false
+        }],
+        yAxes: [{
+            display: false
+        }]
+    };
+    options.elements = {
+        center: {
+            text: lang.totalCases.other + ': ' + cases[cases.length - 1],
+            color: '#36A2EB',
+            fontStyle: 'Helvetica',
+            sidePadding: 15
+        }
+    };
+    options.tooltips = pieToolTips;
     ctx = document.getElementById('chart-total');
     new Chart(ctx, {
         type: 'doughnut',
@@ -333,28 +377,7 @@ function main() {
                 backgroundColor: ["#28b8d680", "#0000ff80", "#e54acfff"]
             }]
         },
-        options: {
-            animation: {
-                duration: 0
-            },
-            scales: {
-                xAxes: [{
-                    display: false
-                }],
-                yAxes: [{
-                    display: false
-                }]
-            },
-            elements: {
-                center: {
-                    text: lang.totalCases.other + ': ' + cases[cases.length - 1],
-                    color: '#36A2EB',
-                    fontStyle: 'Helvetica',
-                    sidePadding: 15
-                }
-            },
-            tooltips: pieToolTips
-        }
+        options: options
     });
 
     var totalTests = getTotal(dailyTests.slice(0, positiveTestsChartsMaxIndex + 1)) + data.unreportedDailyTests;
@@ -365,6 +388,24 @@ function main() {
     var chartTestsLabels = [lang.positives.other, lang.negatives.other];
     chartTestsLabels = chartTestsLabels.map(function (label, index) { return label + ': ' + (chartTestsData[index] / totalTests * 100).toFixed(2) + '%' });
 
+    options = createDefaultChartOptions();
+    options.scales = {
+        xAxes: [{
+            display: false
+        }],
+        yAxes: [{
+            display: false
+        }]
+    };
+    options.elements = {
+        center: {
+            text: lang.totalTests.other + ': ' + totalTests,
+            color: '#36A2EB',
+            fontStyle: 'Helvetica',
+            sidePadding: 15
+        }
+    };
+    options.tooltips = pieToolTips
     ctx = document.getElementById('chart-tests');
     new Chart(ctx, {
         type: 'doughnut',
@@ -375,30 +416,26 @@ function main() {
                 backgroundColor: ["#7732a880", "#83d02a80"]
             }]
         },
-        options: {
-            animation: {
-                duration: 0
-            },
-            scales: {
-                xAxes: [{
-                    display: false
-                }],
-                yAxes: [{
-                    display: false
-                }]
-            },
-            elements: {
-                center: {
-                    text: lang.totalTests.other + ': ' + totalTests,
-                    color: '#36A2EB',
-                    fontStyle: 'Helvetica',
-                    sidePadding: 15
-                }
-            },
-            tooltips: pieToolTips
-        }
+        options: options
     });
 
+    options = createDefaultChartOptions();
+    options.scales = {
+        yAxes: [{
+            ticks: {
+                callback: function (value) {
+                    return value + "%"
+                }
+            }
+        }]
+    };
+    options.tooltips = {
+        callbacks: {
+            label: function (tooltipItem, data) {
+                return data['datasets'][0]['data'][tooltipItem['index']] + " %";
+            }
+        }
+    };
     ctx = document.getElementById('chart-tests-dialy-positives');
     new Chart(ctx, {
         type: 'line',
@@ -413,29 +450,15 @@ function main() {
                 pointHoverRadius: pointHoverRadius
             }]
         },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        callback: function (value) {
-                            return value + "%"
-                        }
-                    }
-                }]
-            },
-            tooltips: {
-                callbacks: {
-                    label: function (tooltipItem, data) {
-                        return data['datasets'][0]['data'][tooltipItem['index']] + " %";
-                    }
-                }
-            },
-            animation: {
-                duration: 0
-            }
-        }
+        options: options
     });
 
+    options = createDefaultChartOptions();
+    options.scales = {
+        xAxes: [{
+            stacked: true
+        }]
+    };
     ctx = document.getElementById('chart-healthcare-workers');
     new Chart(ctx, {
         type: 'bar',
@@ -453,17 +476,26 @@ function main() {
                     data: dailyCases.slice(firstValidHealthcareWorkerIndex),
                 }]
         },
-        options: {
-            animation: {
-                duration: 0
-            },
-            scales: {
-                xAxes: [{
-                    stacked: true
-                }]
+        options: options
+    });
+
+    options = createDefaultChartOptions();
+    options.scales = {
+        yAxes: [{
+            ticks: {
+                callback: function (value) {
+                    return value + "%"
+                }
+            }
+        }]
+    }
+    options.tooltips = {
+        callbacks: {
+            label: function (tooltipItem, data) {
+                return data['datasets'][0]['data'][tooltipItem['index']] + " %";
             }
         }
-    });
+    };
 
     ctx = document.getElementById('chart-healthcare-workers-percent');
     new Chart(ctx, {
@@ -478,28 +510,42 @@ function main() {
                 pointHoverRadius: pointHoverRadius
             }]
         },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        callback: function (value) {
-                            return value + "%"
-                        }
-                    }
-                }]
-            },
-            tooltips: {
-                callbacks: {
-                    label: function (tooltipItem, data) {
-                        return data['datasets'][0]['data'][tooltipItem['index']] + " %";
-                    }
+        options: options
+    });
+
+    options = createDefaultChartOptions();
+    options.scales = {
+        yAxes: [{
+            ticks: {
+                callback: function (value) {
+                    return value + "%"
                 }
-            },
-            animation: {
-                duration: 0
+            }
+        }]
+    };
+    options.tooltips = {
+        callbacks: {
+            label: function (tooltipItem, data) {
+                return data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']] + " %";
             }
         }
-    });
+    };
+    options.scales = {
+        yAxes: [{
+            ticks: {
+                callback: function (value) {
+                    return value + "%"
+                }
+            }
+        }]
+    };
+    options.tooltips = {
+        callbacks: {
+            label: function (tooltipItem, data) {
+                return data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']] + " %";
+            }
+        }
+    };
 
     ctx = document.getElementById('chart-daily-hospitalizations-percent');
     new Chart(ctx, {
@@ -522,29 +568,10 @@ function main() {
             }*/
             ]
         },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        callback: function (value) {
-                            return value + "%"
-                        }
-                    }
-                }]
-            },
-            tooltips: {
-                callbacks: {
-                    label: function (tooltipItem, data) {
-                        return data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']] + " %";
-                    }
-                }
-            },
-            animation: {
-                duration: 0
-            }
-        }
+        options: options
     });
 
+    options = createDefaultChartOptions();
     ctx = document.getElementById('chart-daily-active-cases');
     new Chart(ctx, {
         type: 'bar',
@@ -555,14 +582,9 @@ function main() {
                 backgroundColor: "#28b8d680",
                 label: lang.newActiveCases.other,
                 data: dailyActiveCases,
-            }
-            ]
+            }]
         },
-        options: {
-            animation: {
-                duration: 0
-            }
-        }
+        options: options
     });
 
     var regionDays = Math.min(dates.length, region.data.argentina.cases.length);
@@ -623,6 +645,13 @@ function main() {
         });
     }
 
+    var regionChartsOptions = createDefaultChartOptions();
+    regionChartsOptions.legend = {
+        labels: {
+            usePointStyle: true
+        }
+    };
+
     ctx = document.getElementById('chart-region-active-cases');
     new Chart(ctx, {
         type: 'line',
@@ -630,16 +659,7 @@ function main() {
             labels: dates,
             datasets: activeCasesDatasets
         },
-        options: {
-            animation: {
-                duration: 0
-            },
-            legend: {
-                labels: {
-                    usePointStyle: true
-                }
-            }
-        }
+        options: regionChartsOptions
     });
 
     ctx = document.getElementById('chart-region-cases');
@@ -649,16 +669,7 @@ function main() {
             labels: dates,
             datasets: casesDatasets
         },
-        options: {
-            animation: {
-                duration: 0
-            },
-            legend: {
-                labels: {
-                    usePointStyle: true
-                }
-            }
-        }
+        options: regionChartsOptions
     });
 
     ctx = document.getElementById('chart-region-deaths');
@@ -668,16 +679,7 @@ function main() {
             labels: dates,
             datasets: deathsDatasets
         },
-        options: {
-            animation: {
-                duration: 0
-            },
-            legend: {
-                labels: {
-                    usePointStyle: true
-                }
-            }
-        }
+        options: regionChartsOptions
     });
 
     var departments = departmentsData.departments;
@@ -688,7 +690,7 @@ function main() {
     for (var key in departments) {
         if (departments.hasOwnProperty(key)) {
             var actives = departments[key];
-            minActives = Math.min(minActives, actives);           
+            minActives = Math.min(minActives, actives);
             maxActives = Math.max(maxActives, actives);
         }
     }
@@ -721,8 +723,7 @@ function main() {
 
                 path.setAttribute('style', 'fill: #40bfdb');
 
-                var n = 0.25 + 0.75 * (activeCases - minActives)/(maxActives - minActives);
-                console.log(n);
+                var n = 0.25 + 0.75 * (activeCases - minActives) / (maxActives - minActives);
                 path.setAttribute("fill-opacity", n);
             }
         })(paths[i])
