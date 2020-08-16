@@ -5,11 +5,23 @@ const moment = require("moment");
 const DATA_DIR = "assets/js/data/"
 const DATE_FORMAT = "YYYY-MM-DD";
 
+require('dotenv').config();
+
+const Twitter = require('twitter-lite');
+
+const T = new Twitter({
+    consumer_key: process.env.TWITTER_CONSUMER_KEY,
+    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+    access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+});
+
 describe('Test data', function () {
 
     let uruguay = null;
     let departmentsData = null;
     let uruguayDeaths = null;
+    let tweets = null;
 
     before(async function () {
         const readFile = promisify(fs.readFile);
@@ -23,6 +35,9 @@ describe('Test data', function () {
             }).catch(assert.Throw),
             readFile(DATA_DIR + "uruguayDeaths.json").then(data => {
                 uruguayDeaths = JSON.parse(data.toString());
+            }).catch(assert.Throw),
+            readFile(DATA_DIR + "twitter.json").then(data => {
+                tweets = JSON.parse(data.toString());
             }).catch(assert.Throw)
         ]);
     });
@@ -132,6 +147,42 @@ describe('Test data', function () {
             assert.isDefined(departmentsData.departments[death.dep], "Department " + death.dep + " doesn't exist in uruguayDepartments.json");
             assert.isNumber(death.age, "Death of " + death.date + " doesn't have a valid age: " + death.age);
             assert.isTrue(death.s === "F" || death.s === "M", "Death of " + death.date + " doesn't have a valid sex (F or M): " + death.s);
+        }
+    });
+
+    it('Twitter login', function () {
+        this.timeout(10000);
+        return T.get("account/verify_credentials").catch(assert.Throw);
+    });
+
+    it('All tweets should exists', async function () {
+        this.timeout(10000);
+        const maxTweets = 100;
+
+        var promises = [];
+
+        for (let i = 0; i < tweets.tweets.length; i += maxTweets) {
+            var tweetsChunk = tweets.tweets.slice(i, i + maxTweets);
+            promises.push(T.get("statuses/lookup", {
+                id: tweetsChunk.join(","),
+                include_entities: false,
+                map: true,
+                include_ext_alt_text: false,
+                include_card_uri: false,
+            }).catch(assert.Throw));
+        }
+
+        let allData = {};
+        const datas = await Promise.all(promises);
+        for (let i = 0; i < datas.length; ++i) {
+            const data = datas[i];
+            allData = Object.assign({}, allData, data.id);
+        }
+
+        for (let i = 0; i < tweets.tweets.length; ++i) {
+            var tweetId = tweets.tweets[i];
+            var tweet = allData[tweetId];
+            assert.isObject(tweet, "Tweet " + tweetId + " doesn't exist");
         }
     });
 });
