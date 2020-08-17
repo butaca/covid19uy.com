@@ -37,6 +37,8 @@
         { "date": "2020-07-27", "age": 68, "s": "M", "dep": "Montevideo" },
         { "date": "2020-08-02", "age": 79, "s": "M", "dep": "Rivera" },
         { "date": "2020-08-04", "age": 62, "s": "M", "dep": "Montevideo" },
-        { "date": "2020-08-14", "age": 73, "s": "M", "dep": "Montevideo" }
+        { "date": "2020-08-14", "age": 73, "s": "M", "dep": "Montevideo" },
+        { "date": "2020-08-17", "age": 81, "s": "F", "dep": "Montevideo" },
+        { "date": "2020-08-17", "age": 52, "s": "M", "dep": "Montevideo" }
     ]
 }
