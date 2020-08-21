@@ -90,7 +90,7 @@ function main() {
         var totalTodayCases = el.cases != undefined ? el.cases : todayTotalPositives;
         cases.push(totalTodayCases);
 
-        var todayHealthcareWorker = el.hc - prevHealthcareWorkers;
+        var todayHealthcareWorker = Math.max(0, el.hc - prevHealthcareWorkers);
         dailyHealthcareWorkers.push(todayHealthcareWorker);
         prevHealthcareWorkers = el.hc;
         if (firstValidHealthcareWorkerIndex < 0 && el.hc != undefined) {
