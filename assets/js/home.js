@@ -170,15 +170,15 @@ function main() {
         dailyICU.push(todayICU);
         dailyIMCU.push(todayIMCU);
 
-        dailyICUPercent.push((todayActiveCases > 0 ? (todayICU / todayActiveCases * 100) : 0).toFixed(2));
-        dailyIMCUPercent.push((todayActiveCases > 0 ? (todayIMCU / todayActiveCases * 100) : 0).toFixed(2));
+        dailyICUPercent.push((todayActiveCases > 0 ? (todayICU / todayActiveCases * 100) : 0));
+        dailyIMCUPercent.push((todayActiveCases > 0 ? (todayIMCU / todayActiveCases * 100) : 0));
 
         if (firstHopitalizationsValidIndex < 0 && (todayICU > 0 || todayIMCU > 0)) {
             firstHopitalizationsValidIndex = index;
         }
 
         var todayCasesHC = Math.max(todayHealthcareWorker, todayCases);
-        dailyHealthcareWorkersPercent.push((todayCasesHC > 0 ? (Math.min(1, Math.max(0, todayHealthcareWorker / todayCasesHC)) * 100) : 0).toFixed(2));
+        dailyHealthcareWorkersPercent.push((todayCasesHC > 0 ? (Math.min(1, Math.max(0, todayHealthcareWorker / todayCasesHC)) * 100) : 0));
 
         var todayTests = el.tests;
         if (firstDailyTestsValidIndex < 0 && todayTests != undefined) {
@@ -188,7 +188,7 @@ function main() {
 
         dailyTests.push(todayTests != undefined ? todayTests : todayPositives);
         if (todayPositives != undefined) {
-            dailyPositivesPercent.push(((todayTests > 0 ? (todayPositives / todayTests) : 0) * 100).toFixed(2));
+            dailyPositivesPercent.push(((todayTests > 0 ? (todayPositives / todayTests) : 0) * 100));
         }
     });
 
@@ -452,7 +452,7 @@ function main() {
     options.tooltips = {
         callbacks: {
             label: function (tooltipItem, data) {
-                return data['datasets'][0]['data'][tooltipItem['index']] + " %";
+                return data['datasets'][0]['data'][tooltipItem['index']].toFixed(2) + " %";
             }
         }
     };
@@ -483,16 +483,17 @@ function main() {
         onlyShowForDatasetIndex: [1, 2]
     }
     ctx = document.getElementById('chart-healthcare-workers');
+    var hcData = dailyHealthcareWorkers.slice(firstValidHealthcareWorkerIndex);
     new Chart(ctx, {
         type: 'bar',
         data: {
             labels: dates.slice(firstValidHealthcareWorkerIndex),
             datasets: [
-                createMovingAverageDataset(dailyHealthcareWorkers.slice(firstValidHealthcareWorkerIndex), 2, "#0033bb88"),
+                createMovingAverageDataset(hcData, 2, "#0033bb88"),
                 {
                     backgroundColor: "#01C6B2FF",
                     label: lang.healthCareWorkerCases.other,
-                    data: dailyHealthcareWorkers.slice(firstValidHealthcareWorkerIndex),
+                    data: hcData,
                 },
                 {
                     backgroundColor: "#97DBEAFF",
@@ -516,21 +517,23 @@ function main() {
     options.tooltips = {
         callbacks: {
             label: function (tooltipItem, data) {
-                return data['datasets'][0]['data'][tooltipItem['index']] + " %";
+                return data['datasets'][0]['data'][tooltipItem['index']].toFixed(2) + " %";
             }
         }
     };
 
     ctx = document.getElementById('chart-healthcare-workers-percent');
+    var hcPercentData = dailyHealthcareWorkersPercent.slice(firstValidHealthcareWorkerIndex); 
     new Chart(ctx, {
         type: 'bar',
         data: {
             labels: dates.slice(firstValidHealthcareWorkerIndex),
             datasets: [
+                createMovingAverageDataset(hcPercentData, 2, "#0033bb88"),
                 {
                     backgroundColor: "#01C6B2FF",
                     label: lang.graphTitleHealthcareWorkersPercent.other,
-                    data: dailyHealthcareWorkersPercent.slice(firstValidHealthcareWorkerIndex),
+                    data: hcPercentData,
                     pointRadius: pointRadius,
                     pointHoverRadius: pointHoverRadius
                 }]
@@ -567,7 +570,7 @@ function main() {
     options.tooltips = {
         callbacks: {
             label: function (tooltipItem, data) {
-                return data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']] + " %";
+                return data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']].toFixed(2) + " %";
             }
         }
     };
