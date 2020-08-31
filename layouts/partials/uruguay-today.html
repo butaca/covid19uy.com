@@ -8,7 +8,10 @@
 {{- end -}}
 {{- $deaths := sub $today.deaths $yesterday.deaths -}}
 {{- $recovered := sub $today.recovered $yesterday.recovered -}}
-{{- $healthWorkerCases := sub $today.hc $yesterday.hc -}}
+{{- $healthWorkerCases := 0 -}}
+{{- if gt $today.hc $yesterday.hc -}}
+{{- $healthWorkerCases = sub $today.hc $yesterday.hc -}}
+{{- end -}}
 {{- $healthWorkerPercent := 0 -}}
 {{- if gt $cases 0 -}}
 {{- $healthWorkerPercent = mul (div $healthWorkerCases $cases) 100 -}}

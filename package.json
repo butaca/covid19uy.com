@@ -25,7 +25,7 @@
     "scripts": {
         "develop": "gulp develop",
         "build": "gulp deploy",
-        "test": "mocha"
+        "test": "mocha --ignore \"**/*twitter*\""
     },
     "dependencies": {
         "dotenv": "^8.2.0",
