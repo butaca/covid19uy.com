@@ -2,6 +2,7 @@ import data from "./data/uruguay.json";
 import langEs from "../../i18n/es.json";
 import langEn from "../../i18n/en.json";
 import "./chartjs-elements";
+import "./chartjs-tooltipsutil";
 import nfCookies from './nf-cookies'
 import burger from './burger'
 import './icons'
@@ -28,13 +29,16 @@ function average(array, startIndex, length) {
     return avg;
 }
 
-function movingAverage(array, length) {
+function movingAverage(array, prev, next) {
     var results = [];
-    for (var i = 0; i < length; ++i) {
+    for (var i = 0; i < prev; ++i) {
         results.push(null);
     }
-    for (var i = 0; i < (array.length - length); ++i) {
-        results.push(average(array, i, length));
+    for (var i = prev; i < (array.length - next); ++i) {
+        results.push(average(array, i - prev, prev + next + 1));
+    }
+    for (var i = 0; i < next; ++i) {
+        results.push(null);
     }
     return results;
 }
@@ -46,7 +50,7 @@ function createMovingAverageDataset(data, length, color) {
         borderWidth: 1,
         pointRadius: 0,
         borderColor: color,
-        data: movingAverage(data, length),
+        data: movingAverage(data, length, length),
         label: "AVG",
     };
 }
@@ -199,20 +203,24 @@ function main() {
             }
         }]
     };
+    options.tooltips = {
+        onlyShowForDatasetIndex: [1]
+    }
     var ctx = document.getElementById('chart-active-cases');
     new Chart(ctx, {
         type: 'line',
         data: {
             labels: dates,
-            datasets: [{
-                pointBackgroundColor: "#28b8d6ff",
-                backgroundColor: "#28b8d680",
-                label: lang.activeCases.other,
-                data: activeCases,
-                pointRadius: pointRadius,
-                pointHoverRadius: pointHoverRadius
-            },
-            createMovingAverageDataset(activeCases, 7, "#28b8d6ff")
+            datasets: [
+                createMovingAverageDataset(activeCases, 2, "#0033bb88"),
+                {
+                    pointBackgroundColor: "#28b8d6ff",
+                    backgroundColor: "#28b8d680",
+                    label: lang.activeCases.other,
+                    data: activeCases,
+                    pointRadius: pointRadius,
+                    pointHoverRadius: pointHoverRadius
+                }
             ]
         },
         options: options
@@ -283,16 +291,21 @@ function main() {
             stacked: true
         }]
     };
+    options.tooltips = {
+        onlyShowForDatasetIndex: [1]
+    }
     ctx = document.getElementById('chart-daily-tests-new');
     new Chart(ctx, {
         type: 'bar',
         data: {
             labels: dates.slice(firstDailyTestsValidIndex),
-            datasets: [{
-                backgroundColor: "#ecdb3c80",
-                label: lang.dailyTests.other,
-                data: dailyTests.slice(firstDailyTestsValidIndex),
-            }]
+            datasets: [
+                createMovingAverageDataset(dailyTests, 2, "#0033bb88"),
+                {
+                    backgroundColor: "#ecdb3c80",
+                    label: lang.dailyTests.other,
+                    data: dailyTests.slice(firstDailyTestsValidIndex),
+                }]
         },
         options: options
     });
@@ -319,16 +332,21 @@ function main() {
     });
 
     options = createDefaultChartOptions();
+    options.tooltips = {
+        onlyShowForDatasetIndex: [1]
+    }
     ctx = document.getElementById('chart-daily-cases');
     new Chart(ctx, {
         type: 'bar',
         data: {
             labels: dates,
-            datasets: [{
-                backgroundColor: "#97DBEAFF",
-                label: lang.dailyCases.other,
-                data: dailyCases,
-            }]
+            datasets: [
+                createMovingAverageDataset(dailyCases, 2, "#0033bb88"),
+                {
+                    backgroundColor: "#97DBEAFF",
+                    label: lang.dailyCases.other,
+                    data: dailyCases,
+                }]
         },
         options: options
     });
@@ -459,12 +477,16 @@ function main() {
             stacked: true
         }]
     };
+    options.tooltips = {
+        onlyShowForDatasetIndex: [1,2]
+    }
     ctx = document.getElementById('chart-healthcare-workers');
     new Chart(ctx, {
         type: 'bar',
         data: {
             labels: dates.slice(firstValidHealthcareWorkerIndex),
             datasets: [
+                createMovingAverageDataset(dailyHealthcareWorkers.slice(firstValidHealthcareWorkerIndex), 2, "#0033bb88"),
                 {
                     backgroundColor: "#01C6B2FF",
                     label: lang.healthCareWorkerCases.other,
@@ -572,17 +594,22 @@ function main() {
     });
 
     options = createDefaultChartOptions();
+    options.tooltips = {
+        onlyShowForDatasetIndex: [1]
+    }
     ctx = document.getElementById('chart-daily-active-cases');
     new Chart(ctx, {
         type: 'bar',
         data: {
             labels: dates,
-            datasets: [{
-                pointBackgroundColor: "#28b8d6ff",
-                backgroundColor: "#28b8d680",
-                label: lang.newActiveCases.other,
-                data: dailyActiveCases,
-            }]
+            datasets: [
+                createMovingAverageDataset(dailyActiveCases, 2, "#0033bb88"),
+                {
+                    pointBackgroundColor: "#28b8d6ff",
+                    backgroundColor: "#28b8d680",
+                    label: lang.newActiveCases.other,
+                    data: dailyActiveCases,
+                }]
         },
         options: options
     });
