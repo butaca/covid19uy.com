@@ -313,19 +313,21 @@ function main() {
     options = createDefaultChartOptions();
     ctx = document.getElementById('chart-daily-hospitalizations');
     new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
             labels: dates.slice(firstHopitalizationsValidIndex),
             datasets: [{
                 backgroundColor: "#ff000080",
                 label: lang.icu.other,
                 data: dailyICU.slice(firstHopitalizationsValidIndex),
-            },
+                pointRadius: pointRadius,
+                pointHoverRadius: pointHoverRadius
+            }/*,
             {
                 backgroundColor: "#ecdb3c80",
                 label: lang.imcu.other,
                 data: dailyIMCU.slice(firstHopitalizationsValidIndex),
-            }
+            }*/
             ]
         },
         options: options
@@ -478,7 +480,7 @@ function main() {
         }]
     };
     options.tooltips = {
-        onlyShowForDatasetIndex: [1,2]
+        onlyShowForDatasetIndex: [1, 2]
     }
     ctx = document.getElementById('chart-healthcare-workers');
     new Chart(ctx, {
@@ -521,16 +523,17 @@ function main() {
 
     ctx = document.getElementById('chart-healthcare-workers-percent');
     new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
         data: {
             labels: dates.slice(firstValidHealthcareWorkerIndex),
-            datasets: [{
-                backgroundColor: "#01C6B2FF",
-                label: lang.graphTitleHealthcareWorkersPercent.other,
-                data: dailyHealthcareWorkersPercent.slice(firstValidHealthcareWorkerIndex),
-                pointRadius: pointRadius,
-                pointHoverRadius: pointHoverRadius
-            }]
+            datasets: [
+                {
+                    backgroundColor: "#01C6B2FF",
+                    label: lang.graphTitleHealthcareWorkersPercent.other,
+                    data: dailyHealthcareWorkersPercent.slice(firstValidHealthcareWorkerIndex),
+                    pointRadius: pointRadius,
+                    pointHoverRadius: pointHoverRadius
+                }]
         },
         options: options
     });
