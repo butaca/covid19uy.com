@@ -27,7 +27,7 @@ Los datos de Uruguay se obtienen de los informes diarios del SINAE y se ingresan
 
 Los casos activos por departamento se obtienen del visualizador del SINAE también manualmente y se ingresan en en el archivo `[DATA]/uruguayDepartments.json`.
 
-En en archivo `[DATA]/uruguayDeaths.json` se van registrando los fallecimientos, pero actualmente no se utiliza.
+En en archivo `[DATA]/uruguayDeaths.json` se van registrando los fallecimientos.
 
 Los datos del mundo y la región (`[DATA]/world.json`, `[DATA]/region.json` y `[DATA]/world-population.json`) se descargan automáticamente durante el build.
 

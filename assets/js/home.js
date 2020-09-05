@@ -9,6 +9,7 @@ import './icons'
 import population from "./data/world-population.json";
 import region from "./data/region.json";
 import departmentsData from "./data/uruguayDepartments.json"
+import deathsData from "./data/uruguayDeaths.json"
 
 if (document.readyState === 'loading') {
     document.addEventListener("DOMContentLoaded", main);
@@ -523,7 +524,7 @@ function main() {
     };
 
     ctx = document.getElementById('chart-healthcare-workers-percent');
-    var hcPercentData = dailyHealthcareWorkersPercent.slice(firstValidHealthcareWorkerIndex); 
+    var hcPercentData = dailyHealthcareWorkersPercent.slice(firstValidHealthcareWorkerIndex);
     new Chart(ctx, {
         type: 'bar',
         data: {
@@ -713,6 +714,98 @@ function main() {
             datasets: deathsDatasets
         },
         options: regionChartsOptions
+    });
+
+    var menDeaths = [0, 0, 0, 0, 0];
+    var womenDeaths = [0, 0, 0, 0, 0];
+    var deathLabels = ["0 - 17", "18 - 44", "45 - 64", "65 - 74", "75+"];
+
+    for (var i = 0; i < deathsData.deaths.length; ++i) {
+        var death = deathsData.deaths[i];
+
+        var age = death.age;
+        var sex = death.s;
+
+        var sexDeaths = sex === "F" ? womenDeaths : menDeaths;
+
+        var index = -1;
+
+        if (age <= 17) {
+            index = 0;
+        }
+        else if (age <= 44) {
+            index = 1;
+        }
+        else if (age <= 64) {
+            index = 2;
+        }
+        else if (age <= 74) {
+            index = 3;
+        }
+        else {
+            index = 4;
+        }
+
+        sexDeaths[index]++;
+    }
+
+    options = createDefaultChartOptions();
+    ctx = document.getElementById('chart-deaths');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: deathLabels,
+            datasets: [
+                {
+                    backgroundColor: "#B871FAff",
+                    label: lang.men.other,
+                    data: menDeaths,
+                },
+                {
+                    backgroundColor: "#FA7571ff",
+                    label: lang.women.other,
+                    data: womenDeaths,
+                }]
+        },
+        options: options
+    });
+
+    options = createDefaultChartOptions();
+    options.scales = {
+        xAxes: [{
+            display: false
+        }],
+        yAxes: [{
+            display: false
+        }]
+    };
+    options.elements = {
+        center: {
+            text: lang.totalDeaths.other + ': ' + deathsData.deaths.length,
+            color: '#36A2EB',
+            fontStyle: 'Helvetica',
+            sidePadding: 15
+        }
+    };
+    options.tooltips = pieToolTips;
+    ctx = document.getElementById('chart-deaths-sex');
+
+    var dataDeathsTotal = [menDeaths.reduce(function (acc, val) { return acc + val; }, 0), womenDeaths.reduce(function (acc, val) { return acc + val; }, 0)];
+    var totalDeahts = getTotal(dataDeathsTotal);
+    var deathLabels = [lang.men.other, lang.women.other];
+    deathLabels = deathLabels.map(function (label, index) { return label + ': ' + (dataDeathsTotal[index] / totalDeahts * 100).toFixed(2) + '%' });
+
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: deathLabels,
+            datasets: [{
+                data: dataDeathsTotal,
+                backgroundColor: ["#B871FAff", "#FA7571ff"]
+            }]
+        },
+        options: options
     });
 
     var departments = departmentsData.departments;

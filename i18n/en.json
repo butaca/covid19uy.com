@@ -170,6 +170,24 @@
   "graphTitleTotalsDesc": {
     "other": "Comparison of the total cases registered so far: percentage of active cases, recovered and deaths."
   },
+  "graphDeaths" : {
+    "other": "Deaths by age"
+  },
+  "graphDeathsDesc" : {
+    "other": "Deaths by age ranges."
+  },
+  "graphDeathsSex" : {
+    "other": "Deaths by sex"
+  },
+  "graphDeathsSexDesc" : {
+    "other": "Total deaths by sex."
+  },
+  "men" : {
+    "other": "Men"
+  },
+  "women" : {
+    "other": "Women"
+  },
   "healthCareWorkerCases": {
     "other": "Healthcare worker cases"
   },
@@ -268,6 +286,9 @@
   },
   "totalTests": {
     "other": "Total tests"
+  },
+  "totalDeaths": {
+    "other": "Total deaths"
   },
   "unreportedPositiviesInfo": {
     "other": "⚠️ As of 06/15 SINAE stopped reporting the daily and accumulated positive tests. Therefore, the tests graphs are updated until 06/14."

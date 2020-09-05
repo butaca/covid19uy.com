@@ -173,6 +173,24 @@
   "healthCareWorkerCases": {
     "other": "Trabajadores de la salud"
   },
+  "graphDeaths" : {
+    "other": "Fallecimientos por edad"
+  },
+  "graphDeathsDesc" : {
+    "other": "Fallecimientos por ranges de edades y sexo."
+  },
+  "graphDeathsSex" : {
+    "other": "Fallecimientos por sexo"
+  },
+  "graphDeathsSexDesc" : {
+    "other": "Total de fallecimientos por sexo."
+  },
+  "men" : {
+    "other": "Hombres"
+  },
+  "women" : {
+    "other": "Mujeres"
+  },
   "healthSystemCapacity": {
     "other": "Capacidad del sistema de salud"
   },
@@ -268,6 +286,9 @@
   },
   "totalTests": {
     "other": "Tests totales"
+  },
+  "totalDeaths": {
+    "other": "Fallecimientos totales"
   },
   "unreportedPositiviesInfo": {
     "other": "⚠️ A partir del 15/06 el SINAE dejó de informar los tests positivos diarios y acumulados. Por lo tanto, las gráficas de tests están actualizadas hasta el 14/06."
