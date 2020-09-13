@@ -849,8 +849,8 @@ function main() {
 
                 path.setAttribute('style', 'fill: #40bfdb');
 
-                var n = 0.25 + 0.75 * (activeCases - minActives) / (maxActives - minActives);
-                path.setAttribute("fill-opacity", n);
+                var n = (activeCases - minActives) / (maxActives - minActives);
+                path.setAttribute("fill-opacity", Math.pow(n, 1.0/3.0));
             }
         })(paths[i])
     }
