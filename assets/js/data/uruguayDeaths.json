@@ -44,6 +44,7 @@
         { "date": "2020-08-21", "age": 71, "s": "M", "dep": "Montevideo" },
         { "date": "2020-08-25", "age": 96, "s": "F", "dep": "Montevideo" },
         { "date": "2020-08-29", "age": 92, "s": "M", "dep": "Montevideo" },
-        { "date": "2020-09-04", "age": 69, "s": "M", "dep": "Montevideo" }
+        { "date": "2020-09-04", "age": 69, "s": "M", "dep": "Montevideo" },
+        { "date": "2020-09-17", "age": 77, "s": "M", "dep": "Montevideo" }
     ]
 }
