@@ -124,7 +124,7 @@ describe('Test data', function () {
                 }
             }
 
-            assert.equal(todayDeaths, deaths, "Death count in uruguay.json doesn't match the deatch in uruguayDeaths.json for date " + todayDate.format("YYYY-MM-DD"));
+            assert.equal(todayDeaths, deaths, "Death count in uruguay.json doesn't match the deaths in uruguayDeaths.json for date " + todayDate.format("YYYY-MM-DD"));
         }
     });
 
