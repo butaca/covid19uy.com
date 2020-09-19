@@ -1,8 +1,8 @@
 {
-    "date": "2020-09-18",
+    "date": "2020-09-19",
     "departments": {
         "Artigas": 1,
-        "Canelones": 25,
+        "Canelones": 26,
         "Cerro Largo": 0,
         "Colonia": 1,
         "Durazno": 0,
@@ -13,9 +13,9 @@
         "Montevideo": 155,
         "Paysandú": 0,
         "Río Negro": 0,
-        "Rivera": 49,
+        "Rivera": 52,
         "Rocha": 1,
-        "Salto": 0,
+        "Salto": 1,
         "San José": 3,
         "Soriano": 0,
         "Tacuarembó": 0,
