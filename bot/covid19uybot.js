@@ -112,7 +112,7 @@ const replyToTweet = (tweet) => {
 
 const notify = (tweet) => {
     const tweetURL = "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
-    let m = "Notification only: " + tweetURL;
+    let m = "Notification only: " + tweetURL + "\n\n" + tweet.text;
     push.send({ message: m });
     console.log(m);
 }
