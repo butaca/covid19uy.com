@@ -112,7 +112,7 @@ const replyToTweet = (tweet) => {
 
 const notify = (tweet) => {
     const tweetURL = "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
-    let m = "Notification only: " + tweetURL + "\n\n" + tweet.text;
+    let m = "Notification only: " + tweetURL + "\n\n" + tweet.full_text;
     push.send({ message: m });
     console.log(m);
 }
@@ -136,7 +136,7 @@ const onData = data => {
         const tweet = data;
         // filter out mentions by other users and retweets
         if (config.follow.indexOf(tweet.user.id_str) != -1 && tweet.retweeted_status == undefined) {
-            const lowerCaseText = tweet.text.toLowerCase();
+            const lowerCaseText = tweet.full_text.toLowerCase();
             if (hasWord(lowerCaseText, config.words) && hasWord(lowerCaseText, config.covidWords)) {
                 if (config.replayEnabled) {
                     replyToTweet(tweet);
