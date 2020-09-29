@@ -7,6 +7,7 @@ const Push = require('pushover-notifications');
 
 const CONFIG_FILENAME = './covid19uybot.yml';
 const CONFIG_ENCODING = 'utf-8';
+const SINAE_REPORT_BASE = "https://www.gub.uy/sistema-nacional-emergencias/comunicacion/comunicados/informe-situacion-sobre-coronavirus-covid-19-uruguay-";
 
 let config = null;
 
@@ -112,7 +113,8 @@ const replyToTweet = (tweet) => {
 
 const notify = (tweet) => {
     const tweetURL = "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
-    let m = "Notification only: " + tweetURL + "\n\n" + tweet.full_text;
+    const now = new Date();
+    let m = tweetURL + "\n\n" + SINAE_REPORT_BASE + now.getDate() + (now.getMonth() + 1) + now.getFullYear();
     push.send({ message: m });
     console.log(m);
 }
