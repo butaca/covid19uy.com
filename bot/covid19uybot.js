@@ -72,15 +72,15 @@ const getReplyMessage = () => {
     if (config.hashtagsEnabled) {
         const hashtags = config.replyHashtags;
 
-        if(hashtags.length > 0) {
+        if (hashtags.length > 0) {
             var newMessage = message + "\n\n" + hashtags[0];
             var parseResult = twitterText.parseTweet(newMessage);
-            if(parseResult.valid) {
+            if (parseResult.valid) {
                 message = newMessage;
-                for(let i = 1; i < hashtags.length; ++i) {
+                for (let i = 1; i < hashtags.length; ++i) {
                     newMessage = message + " " + hashtags[i];
                     parseResult = twitterText.parseTweet(newMessage)
-                    if(parseResult.valid) {
+                    if (parseResult.valid) {
                         message = newMessage;
                     }
                     else {
@@ -133,21 +133,26 @@ let lastPing = Date.now();
 
 const onData = data => {
     lastPing = Date.now();
-    // filter out non tweet data
-    if (data.user) {
-        const tweet = data;
-        // filter out mentions by other users and retweets
-        if (config.follow.indexOf(tweet.user.id_str) != -1 && tweet.retweeted_status == undefined) {
-            const lowerCaseText = tweet.full_text.toLowerCase();
-            if (hasWord(lowerCaseText, config.words) && hasWord(lowerCaseText, config.covidWords)) {
-                if (config.replayEnabled) {
-                    replyToTweet(tweet);
-                }
-                else {
-                    notify(tweet);
+    try {
+        // filter out non tweet data
+        if (data.user) {
+            const tweet = data;
+            // filter out mentions by other users and retweets
+            if (config.follow.indexOf(tweet.user.id_str) != -1 && tweet.retweeted_status == undefined) {
+                const lowerCaseText = tweet.extended_tweet.full_text.toLowerCase();
+                if (hasWord(lowerCaseText, config.words) && hasWord(lowerCaseText, config.covidWords)) {
+                    if (config.replayEnabled) {
+                        replyToTweet(tweet);
+                    }
+                    else {
+                        notify(tweet);
+                    }
                 }
             }
         }
+    }
+    catch (e) {
+        console.error("Error processing tweet: " + JSON.stringify(e));
     }
 };
 
