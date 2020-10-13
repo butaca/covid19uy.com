@@ -214,7 +214,8 @@
         { "date": "2020-10-09", "tests": 2995, "cases": 2251, "recovered": 1917, "deaths": 49, "icu": 2, "imcu": 0, "hc": 305, "hcRecovered": 281, "hcDeaths" : 1 },
         { "date": "2020-10-10", "tests": 2720, "cases": 2268, "recovered": 1930, "deaths": 50, "icu": 2, "imcu": 0, "hc": 307, "hcRecovered": 281, "hcDeaths" : 1 },
         { "date": "2020-10-11", "tests": 1595, "cases": 2294, "recovered": 1942, "deaths": 50, "icu": 2, "imcu": 0, "hc": 309, "hcRecovered": 281, "hcDeaths" : 1, "forcedNewCases": 27 },
-        { "date": "2020-10-12", "tests": 2340, "cases": 2313, "recovered": 1950, "deaths": 51, "icu": 1, "imcu": 0, "hc": 311, "hcRecovered": 282, "hcDeaths" : 1, "forcedNewCases": 20 }
+        { "date": "2020-10-12", "tests": 2340, "cases": 2313, "recovered": 1950, "deaths": 51, "icu": 1, "imcu": 0, "hc": 311, "hcRecovered": 282, "hcDeaths" : 1, "forcedNewCases": 20 },
+        { "date": "2020-10-13", "tests": 1813, "cases": 2337, "recovered": 1987, "deaths": 51, "icu": 1, "imcu": 0, "hc": 312, "hcRecovered": 284, "hcDeaths" : 1 }
     ]
 }
 
