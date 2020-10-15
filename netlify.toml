@@ -137,3 +137,10 @@ from = "/en/*"
 to = "/en/404.html"
 status = 404
 force = false
+
+#Temporary redirect Twitter page as it is down for the moment
+[[redirects]]
+from = "https://gruta.uy/twitter/"
+to = "https://gruta.uy/"
+status = 307
+force = true
