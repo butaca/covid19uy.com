@@ -140,7 +140,7 @@ force = false
 
 #Temporary redirect Twitter page as it is down for the moment
 [[redirects]]
-from = "https://gruta.uy/twitter/"
-to = "https://gruta.uy/"
+from = "https://covid19uy.com/twitter/"
+to = "https://covid19uy.com/"
 status = 307
 force = true
