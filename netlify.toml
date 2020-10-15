@@ -136,7 +136,7 @@ force = true
 [[redirects]]
 from = "https://covid19uy.com/twitter/"
 to = "https://covid19uy.com/"
-status = 307
+status = 302
 force = true
 
 [[redirects]]
