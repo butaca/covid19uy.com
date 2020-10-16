@@ -132,13 +132,6 @@ force = true
 
 #### Workaround end
 
-#Temporary redirect Twitter page as it is down for the moment
-[[redirects]]
-from = "https://covid19uy.com/twitter/"
-to = "https://covid19uy.com/"
-status = 302
-force = true
-
 [[redirects]]
 from = "/en/*"
 to = "/en/404.html"
