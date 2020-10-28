@@ -53,6 +53,7 @@
         { "date": "2020-10-12", "age": 93, "s": "M", "dep": "Montevideo" },
         { "date": "2020-10-20", "age": 69, "s": "M", "dep": "Montevideo" },
         { "date": "2020-10-21", "age": 65, "s": "M", "dep": "Rivera" },
-        { "date": "2020-10-26", "age": 88, "s": "F", "dep": "Montevideo" }
+        { "date": "2020-10-26", "age": 88, "s": "F", "dep": "Montevideo" },
+        { "date": "2020-10-28", "age": 77, "s": "M", "dep": "Montevideo" }
     ]
 }
