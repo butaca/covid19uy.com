@@ -57,6 +57,7 @@
         { "date": "2020-10-28", "age": 77, "s": "M", "dep": "Montevideo" },
         { "date": "2020-10-29", "age": 69, "s": "M", "dep": "Rivera" },
         { "date": "2020-10-29", "age": 87, "s": "F", "dep": "Montevideo" },
-        { "date": "2020-10-30", "age": 79, "s": "M", "dep": "Canelones" }
+        { "date": "2020-10-30", "age": 79, "s": "M", "dep": "Canelones" },
+        { "date": "2020-11-01", "age": 78, "s": "F", "dep": "Montevideo" }
     ]
 }
