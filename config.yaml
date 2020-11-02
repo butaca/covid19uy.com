@@ -6,6 +6,9 @@ googleAnalytics: UA-161714981-1
 
 dataDir: "assets/js/data"
 
+ignoreErrors:
+  - error-remote-getjson
+
 privacy:
   googleAnalytics:
     anonymizeIP: true
