@@ -182,27 +182,30 @@ async function downloadCountryData(file, property) {
     const res = await axios(req);
     const stream = res.data.pipe(csv());
     stream.on('data', data => {
-        const countryName = data['Country/Region'].toLowerCase();
-        const country = Countries[countryName];
-        if (country) {
-            const keys = Object.keys(data);
-            for (let i = 0; i < keys.length; ++i) {
-                const key = keys[i];
-                const dataDate = moment(key, "MM/DD/YY");
-                if (dataDate.isValid() && dataDate >= REFERENCE_DATE) {
-                    if (firstDate == null) {
-                        firstDate = dataDate;
-                    }
-                    if (i == keys.length - 1) {
-                        if (lastDate == null) {
-                            lastDate = dataDate;
+        const dataCountryName = data['Country/Region'];
+        const countryName = typeof dataCountryName == "string" ? dataCountryName.toLowerCase() : null;
+        if (countryName) {
+            const country = Countries[countryName];
+            if (country) {
+                const keys = Object.keys(data);
+                for (let i = 0; i < keys.length; ++i) {
+                    const key = keys[i];
+                    const dataDate = moment(key, "MM/DD/YY");
+                    if (dataDate.isValid() && dataDate >= REFERENCE_DATE) {
+                        if (firstDate == null) {
+                            firstDate = dataDate;
                         }
-                        else if (dataDate.unix() != lastDate.unix()) {
-                            throw new Error("Unexpected last date: " + dataDate + ", prev one: " + lastDate);
+                        if (i == keys.length - 1) {
+                            if (lastDate == null) {
+                                lastDate = dataDate;
+                            }
+                            else if (dataDate.unix() != lastDate.unix()) {
+                                throw new Error("Unexpected last date: " + dataDate + ", prev one: " + lastDate);
+                            }
                         }
+                        const value = parseInt(data[key]);
+                        country[property].push(value);
                     }
-                    const value = parseInt(data[key]);
-                    country[property].push(value);
                 }
             }
         }
