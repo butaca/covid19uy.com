@@ -1,24 +1,24 @@
 {
-    "date": "2020-11-04",
+    "date": "2020-11-05",
     "departments": {
         "Artigas": 4,
-        "Canelones": 53,
-        "Cerro Largo": 1,
+        "Canelones": 54,
+        "Cerro Largo": 2,
         "Colonia": 0,
         "Durazno": 0,
         "Flores": 2,
         "Florida": 0,
         "Lavalleja": 1,
         "Maldonado": 3,
-        "Montevideo": 282,
+        "Montevideo": 300,
         "Paysandú": 0,
         "Río Negro": 1,
         "Rivera": 57,
         "Rocha": 0,
         "Salto": 0,
-        "San José": 8,
+        "San José": 6,
         "Soriano": 0,
         "Tacuarembó": 2,
-        "Treinta y Tres": 0
+        "Treinta y Tres": 2
     }
 }
