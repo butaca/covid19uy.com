@@ -114,7 +114,15 @@ const replyToTweet = (tweet) => {
 const notify = (tweet) => {
     const tweetURL = "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
     const now = new Date();
-    let m = tweetURL + "\n\n" + SINAE_REPORT_BASE + now.getDate() + (now.getMonth() + 1) + now.getFullYear();
+    let date = now.getDate();
+    if(date < 10) {
+        date = "0" + date;
+    }
+    let month = (now.getMonth() + 1);
+    if(month < 10) {
+        month = "0" + month;
+    }
+    let m = tweetURL + "\n\n" + SINAE_REPORT_BASE + date.toString() + month.toString() + now.getFullYear().toString();
     push.send({ message: m });
     console.log(m);
 }
