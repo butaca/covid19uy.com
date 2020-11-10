@@ -150,8 +150,8 @@ function main() {
         }
 
         var todayCases = totalTodayCases - prevDayTotalCases;
-        if (el.forcedNewCases != undefined) {
-            todayCases = el.forcedNewCases;
+        if (el.newCases != undefined) {
+            todayCases = el.newCases;
         }
 
         todayCases = Math.max(0, todayCases);
