@@ -68,6 +68,8 @@
         { "date": "2020-11-16", "age": 82, "s": "M", "dep": "Montevideo" },
         { "date": "2020-11-16", "age": 89, "s": "M", "dep": "Montevideo" },
         { "date": "2020-11-17", "age": 91, "s": "M", "dep": "Montevideo" },
-        { "date": "2020-11-19", "age": 67, "s": "F", "dep": "Rivera" }
+        { "date": "2020-11-19", "age": 67, "s": "F", "dep": "Rivera" },
+        { "date": "2020-11-22", "age": 86, "s": "F", "dep": "Montevideo" },
+        { "date": "2020-11-22", "age": 63, "s": "M", "dep": "Rivera" }
     ]
 }
