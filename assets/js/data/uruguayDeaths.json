@@ -76,6 +76,7 @@
         { "date": "2020-11-26", "age": 73, "s": "F", "dep": "Salto" },
         { "date": "2020-11-28", "age": 66, "s": "M", "dep": "Cerro Largo" },
         { "date": "2020-11-29", "age": 66, "s": "M", "dep": "Canelones" },
-        { "date": "2020-11-30", "age": 98, "s": "M", "dep": "Montevideo" }
+        { "date": "2020-11-30", "age": 98, "s": "M", "dep": "Montevideo" },
+        { "date": "2020-12-01", "age": 82, "s": "M", "dep": "Rivera" }
     ]
 }
