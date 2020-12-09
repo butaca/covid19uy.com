@@ -1,11 +1,15 @@
 <h3 class="has-text-centered title is-6 has-margin-bottom-xs">
+    {{- if .new -}}
+    <span class="tag is-danger has-margin-right-sm">{{ i18n "new"}}</span>
+    {{- end -}}
     <span class="has-tooltip-multiline" data-tooltip="{{ .desc }}">
-        {{ .title }} <i class="far fa-question-circle"></i> {{ if .displayPositivesAndCasesInfo }}
+        {{ .title }} <i class="far fa-question-circle"></i>
     </span>
+    {{ if .displayPositivesAndCasesInfo }}
     <span class="has-tooltip-multiline" data-tooltip="{{ i18n "positivesAndCasesInfo"}}">⚠️</span>
-    {{ end }}
-    {{ if .displayUnreportedPositiviesInfo }}
+    {{- end -}}
+    {{- if .displayUnreportedPositiviesInfo -}}
     </span>
     <span class="has-tooltip-multiline" data-tooltip="{{ i18n "unreportedPositiviesInfo"}}">⚠️</span>
-    {{ end }}
+    {{- end -}}
 </h3>

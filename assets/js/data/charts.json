@@ -34,6 +34,7 @@
         "displayPositivesAndCasesInfo": true
     },
     {
+        "new": true,
         "id": "chart-daily-positivity-rate",
         "title": "graphPositivityRate",
         "desc": "graphPositivityRateDesc"
