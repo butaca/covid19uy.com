@@ -718,6 +718,7 @@ function main() {
 
     var menDeaths = [0, 0, 0, 0, 0];
     var womenDeaths = [0, 0, 0, 0, 0];
+    var unknownSexDeaths = [0, 0, 0, 0, 0];
     var deathLabels = ["0 - 17", "18 - 44", "45 - 64", "65 - 74", "75+"];
 
     for (var i = 0; i < deathsData.deaths.length; ++i) {
@@ -726,27 +727,38 @@ function main() {
         var age = death.age;
         var sex = death.s;
 
-        var sexDeaths = sex === "F" ? womenDeaths : menDeaths;
+        var sexDeaths = null;
 
-        var index = -1;
-
-        if (age <= 17) {
-            index = 0;
-        }
-        else if (age <= 44) {
-            index = 1;
-        }
-        else if (age <= 64) {
-            index = 2;
-        }
-        else if (age <= 74) {
-            index = 3;
+        if (sex === "F") {
+            sexDeaths = womenDeaths;
+        } else if (sex === "M") {
+            sexDeaths = menDeaths;
         }
         else {
-            index = 4;
+            sexDeaths = unknownSexDeaths;
         }
 
-        sexDeaths[index]++;
+        if (sexDeaths != null) {
+
+            var index = -1;
+
+            if (age <= 17) {
+                index = 0;
+            }
+            else if (age <= 44) {
+                index = 1;
+            }
+            else if (age <= 64) {
+                index = 2;
+            }
+            else if (age <= 74) {
+                index = 3;
+            }
+            else {
+                index = 4;
+            }
+            sexDeaths[index]++;
+        }
     }
 
     options = createDefaultChartOptions();
@@ -766,6 +778,10 @@ function main() {
                     backgroundColor: "#FA7571ff",
                     label: lang.women.other,
                     data: womenDeaths,
+                },
+                {
+                    label: lang.unknown.other,
+                    data: unknownSexDeaths,
                 }]
         },
         options: options
@@ -791,9 +807,9 @@ function main() {
     options.tooltips = pieToolTips;
     ctx = document.getElementById('chart-deaths-sex');
 
-    var dataDeathsTotal = [menDeaths.reduce(function (acc, val) { return acc + val; }, 0), womenDeaths.reduce(function (acc, val) { return acc + val; }, 0)];
+    var dataDeathsTotal = [menDeaths.reduce(function (acc, val) { return acc + val; }, 0), womenDeaths.reduce(function (acc, val) { return acc + val; }, 0), unknownSexDeaths.reduce(function (acc, val) { return acc + val; }, 0)];
     var totalDeahts = getTotal(dataDeathsTotal);
-    var deathLabels = [lang.men.other, lang.women.other];
+    var deathLabels = [lang.men.other, lang.women.other, lang.unknown.other];
     deathLabels = deathLabels.map(function (label, index) { return label + ': ' + (dataDeathsTotal[index] / totalDeahts * 100).toFixed(2) + '%' });
 
     new Chart(ctx, {
@@ -850,7 +866,7 @@ function main() {
                 path.setAttribute('style', 'fill: #40bfdb');
 
                 var n = (activeCases - minActives) / (maxActives - minActives);
-                path.setAttribute("fill-opacity", Math.pow(n, 1.0/3.0));
+                path.setAttribute("fill-opacity", Math.pow(n, 1.0 / 3.0));
             }
         })(paths[i])
     }

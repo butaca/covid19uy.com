@@ -188,6 +188,9 @@
   "women" : {
     "other": "Women"
   },
+  "unknown": {
+    "other": "Unknown"
+  },
   "healthCareWorkerCases": {
     "other": "Healthcare worker cases"
   },
