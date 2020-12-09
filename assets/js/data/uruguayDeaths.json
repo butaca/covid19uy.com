@@ -82,6 +82,9 @@
         { "date": "2020-12-02", "age": 85, "s": "F", "dep": "Montevideo" },
         { "date": "2020-12-05", "age": 60, "s": "F", "dep": "Soriano" },
         { "date": "2020-12-06", "age": 68, "s": "F", "dep": "Canelones" },
-        { "date": "2020-12-07", "age": 61, "s": "F", "dep": "Montevideo" }
+        { "date": "2020-12-07", "age": 61, "s": "F", "dep": "Montevideo" },
+        { "date": "2020-12-08", "age": 59, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-08", "age": 81, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-08", "age": 83, "s": "?", "dep": "Montevideo" }
     ]
 }
