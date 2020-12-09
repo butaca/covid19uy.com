@@ -133,7 +133,7 @@ describe('Test data', function () {
             const death = uruguayDeaths.deaths[i];
             assert.isDefined(departmentsData.departments[death.dep], "Department " + death.dep + " doesn't exist in uruguayDepartments.json");
             assert.isNumber(death.age, "Death of " + death.date + " doesn't have a valid age: " + death.age);
-            assert.isTrue(death.s === "F" || death.s === "M", "Death of " + death.date + " doesn't have a valid sex (F or M): " + death.s);
+            assert.isTrue(death.s === "F" || death.s === "M" || death.s === "?", "Death of " + death.date + " doesn't have a valid sex (F, M or ?): " + death.s);
         }
     });
 });
