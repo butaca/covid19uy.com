@@ -34,6 +34,11 @@
         "displayPositivesAndCasesInfo": true
     },
     {
+        "id": "chart-daily-positivity-rate",
+        "title": "graphPositivityRate",
+        "desc": "graphPositivityRateDesc"
+    },
+    {
         "id": "chart-healthcare-workers",
         "title": "graphTitleHealthcareWorkers",
         "desc": "graphTitleHealthcareWorkersDesc",

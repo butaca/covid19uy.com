@@ -50,6 +50,7 @@ function createMovingAverageDataset(data, length, color) {
         fill: false,
         borderWidth: 1,
         pointRadius: 0,
+        pointHoverRadius: 0,
         borderColor: color,
         data: movingAverage(data, length, length),
         label: "AVG",
@@ -114,6 +115,7 @@ function main() {
     var dailyCases = [];
     var prevDayTotalCases = 0;
     var positiveTestsChartsMaxIndex = -1;
+    var dailyPositivityRate = [];
 
     data.data.forEach(function (el, index) {
         var todayPositives = el.positives;
@@ -191,6 +193,8 @@ function main() {
         if (todayPositives != undefined) {
             dailyPositivesPercent.push(((todayTests > 0 ? (todayPositives / todayTests) : 0) * 100));
         }
+
+        dailyPositivityRate.push(todayCases / todayTests * 100);
     });
 
     var pointRadius = 2;
@@ -820,6 +824,41 @@ function main() {
                 data: dataDeathsTotal,
                 backgroundColor: ["#B871FAff", "#FA7571ff"]
             }]
+        },
+        options: options
+    });
+
+    options = createDefaultChartOptions();
+    options.scales = {
+        yAxes: [{
+            ticks: {
+                callback: function (value) {
+                    return value + "%"
+                }
+            }
+        }]
+    };
+    options.tooltips = {
+        callbacks: {
+            label: function (tooltipItem, data) {
+                return data['datasets'][0]['data'][tooltipItem['index']].toFixed(2) + " %";
+            }
+        }
+    };
+    
+    ctx = document.getElementById('chart-daily-positivity-rate');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: dates,
+            datasets: [
+                createMovingAverageDataset(dailyPositivityRate, 2, "#0033bb88"),
+                {
+                    backgroundColor: "#7732a880",
+                    label: lang.graphPositivityRate.other,
+                    data: dailyPositivityRate,
+                }
+            ]
         },
         options: options
     });

@@ -182,6 +182,12 @@
   "graphDeathsSexDesc" : {
     "other": "Total deaths by sex."
   },
+  "graphPositivityRate" : {
+    "other": "Positivity Rate"
+  },
+  "graphPositivityRateDesc" : {
+    "other": "On each day, percentage of positive tests done that day. For this calculation, it is assumed that the total of positive tests corresponds to the number of new cases that day due to lack of information."
+  },
   "men" : {
     "other": "Men"
   },
