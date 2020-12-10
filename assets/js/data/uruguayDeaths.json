@@ -85,6 +85,7 @@
         { "date": "2020-12-07", "age": 61, "s": "F", "dep": "Montevideo" },
         { "date": "2020-12-08", "age": 59, "s": "?", "dep": "Montevideo" },
         { "date": "2020-12-08", "age": 81, "s": "?", "dep": "Montevideo" },
-        { "date": "2020-12-08", "age": 83, "s": "?", "dep": "Montevideo" }
+        { "date": "2020-12-08", "age": 83, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-09", "age": 82, "s": "M", "dep": "Montevideo" }
     ]
 }
