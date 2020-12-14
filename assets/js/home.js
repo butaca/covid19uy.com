@@ -846,17 +846,18 @@ function main() {
         }
     };
     
+    var positivityRate = dailyPositivityRate.slice(firstDailyTestsValidIndex)
     ctx = document.getElementById('chart-daily-positivity-rate');
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: dates,
+            labels: dates.slice(firstDailyTestsValidIndex),
             datasets: [
-                createMovingAverageDataset(dailyPositivityRate, 2, "#0033bb88"),
+                createMovingAverageDataset(positivityRate, 2, "#0033bb88"),
                 {
                     backgroundColor: "#7732a880",
                     label: lang.graphPositivityRate.other,
-                    data: dailyPositivityRate,
+                    data: positivityRate,
                 }
             ]
         },
