@@ -13,42 +13,77 @@
 {{- if gt $cases 0 -}}
 {{- $healthWorkerPercent = mul (div $healthWorkerCases $cases) 100 -}}
 {{- end -}}
+
+{{- $last := last 2 .Site.Data.uruguay.data -}}
+{{- $today := index $last 1 -}}
+{{- $yesterday := index $last 0 -}}
+{{- $yesterdayCases := $yesterday.cases -}}
+{{- $yesterdayDeaths := cond (isset $yesterday "deaths") $yesterday.deaths 0  -}}
+{{- $yesterdayRecovered := cond (isset $yesterday "recovered") $yesterday.recovered 0  -}}
+{{- $yesterdayActiveCases := sub (sub $yesterdayCases $yesterdayDeaths) $yesterdayRecovered -}}
+{{- $activeCasesDiff := sub $activeCases $yesterdayActiveCases -}}
+{{- $activeCasesDiffSign := cond (lt $activeCasesDiff 0) "-" "+" -}}
+{{- $todayTests := $today.tests }}
+{{- $todayCases := sub $today.cases $yesterday.cases -}}
+{{- if isset $today "newCases" -}}
+{{- $todayCases = $today.newCases -}}
+{{- end -}}
+{{- $todayDeaths := sub $today.deaths $yesterday.deaths -}}
+{{- $todayRecovered := sub $today.recovered $yesterday.recovered -}}
+{{- $todayHealthWorkerCases := 0 -}}
+{{- if gt $today.hc $yesterday.hc -}}
+{{- $todayHealthWorkerCases = sub $today.hc $yesterday.hc -}}
+{{- end -}}
+{{- $todayHealthWorkerPercent := 0 -}}
+{{- if gt $cases 0 -}}
+{{- $todayHealthWorkerPercent = mul (div $todayHealthWorkerCases $todayCases) 100 -}}
+{{- if gt $todayHealthWorkerPercent 100 -}}
+{{- $todayHealthWorkerPercent = 100 -}}
+{{- end -}}
+{{- end -}}
+
 <div id="uruguay" class="box has-padding-sm">
     <nav class="level">
         <div class="level-item has-text-centered">
             <div>
                 <p class="subtitle">{{ i18n "totalCases" }} 😷</p>
-                <p class="title">{{ lang.NumFmt 0 $cases .Site.Params.numberFormat }}</p>
+                <p class="title has-margin-bottom-none">{{ lang.NumFmt 0 $cases .Site.Params.numberFormat }}</p>
+                <p class="has-margin-none is-size-7">+{{ lang.NumFmt 0 $todayCases .Site.Params.numberFormat }}</p>
             </div>
         </div>
         <div class="level-item has-text-centered">
             <div>
                 <p class="subtitle">{{ i18n "healthCareWorkerCases" }} 👩‍⚕️👨‍⚕️</p>
-                <p class="title">{{ lang.NumFmt 0 $healthWorkerCases .Site.Params.numberFormat }} ({{ lang.NumFmt 2 $healthWorkerPercent .Site.Params.numberFormat }}%)</p>
+                <p class="title has-margin-bottom-none">{{ lang.NumFmt 0 $healthWorkerCases .Site.Params.numberFormat }} ({{ lang.NumFmt 2 $healthWorkerPercent .Site.Params.numberFormat }}%)</p>
+                <p class="has-margin-none is-size-7">+{{ lang.NumFmt 0 $todayHealthWorkerCases .Site.Params.numberFormat }}</p>
             </div>
         </div>
         <div class="level-item has-text-centered">
             <div>
                 <p class="subtitle">{{ i18n "activeCases" }} 😷</p>
-                <p class="title">{{ lang.NumFmt 0 $activeCases .Site.Params.numberFormat }}</p>
+                <p class="title has-margin-bottom-none">{{ lang.NumFmt 0 $activeCases .Site.Params.numberFormat }}</p>
+                <p class="has-margin-none is-size-7">{{ $activeCasesDiffSign }}{{ lang.NumFmt 0 $activeCasesDiff .Site.Params.numberFormat }}</p>
             </div>
         </div>
         <div class="level-item has-text-centered">
             <div>
                 <p class="subtitle">{{ i18n "recovered" }} 🙏</p>
-                <p class="title">{{ lang.NumFmt 0 $recovered .Site.Params.numberFormat }}</p>
+                <p class="title has-margin-bottom-none">{{ lang.NumFmt 0 $recovered .Site.Params.numberFormat }}</p>
+                <p class="has-margin-none is-size-7">+{{ lang.NumFmt 0 $todayRecovered .Site.Params.numberFormat }}</p>
             </div>
         </div>
         <div class="level-item has-text-centered">
             <div>
                 <p class="subtitle">{{ i18n "deaths" }} 😞</p>
-                <p class="title">{{ lang.NumFmt 0 $deaths .Site.Params.numberFormat }}</p>
+                <p class="title has-margin-bottom-none">{{ lang.NumFmt 0 $deaths .Site.Params.numberFormat }}</p>
+                <p class="has-margin-none is-size-7">+{{ lang.NumFmt 0 $todayDeaths .Site.Params.numberFormat }}</p>
             </div>
         </div>
         <div class="level-item has-text-centered">
             <div>
                 <p class="subtitle">{{ i18n "tests" }} 🧪</p>
-                <p class="title">{{ lang.NumFmt 0 $tests .Site.Params.numberFormat }}</p>
+                <p class="title has-margin-bottom-none">{{ lang.NumFmt 0 $tests .Site.Params.numberFormat }}</p>
+                <p class="has-margin-none is-size-7">+{{ lang.NumFmt 0 $todayTests .Site.Params.numberFormat }}</p>
             </div>
         </div>
     </nav>
