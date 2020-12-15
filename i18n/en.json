@@ -319,5 +319,8 @@
   },
   "worldTitle": {
     "other": "Numbers in the world 🌍"
+  },
+  "icuInitials": {
+    "other": "ICU"
   }
 }
