@@ -23,10 +23,10 @@
 {{- $yesterdayRecovered := cond (isset $yesterday "recovered") $yesterday.recovered 0  -}}
 {{- $yesterdayActiveCases := sub (sub $yesterdayCases $yesterdayDeaths) $yesterdayRecovered -}}
 {{- $activeCasesDiff := sub $activeCases $yesterdayActiveCases -}}
-{{- $activeCasesDiffSign := cond (lt $activeCasesDiff 0) "-" "+" -}}
+{{- $activeCasesDiffSign := cond (lt $activeCasesDiff 0) "" "+" -}}
 {{- $yesterdayIcu := cond (isset $yesterday "icu") $yesterday.icu 0 -}}
 {{- $icuDiff := sub $icu $yesterdayIcu -}}
-{{- $icuDiffSign := cond (lt $icuDiff 0) "-" "+" -}}
+{{- $icuDiffSign := cond (lt $icuDiff 0) "" "+" -}}
 
 {{- $todayTests := $today.tests }}
 {{- $todayCases := sub $today.cases $yesterday.cases -}}
