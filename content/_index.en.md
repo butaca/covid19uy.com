@@ -31,9 +31,6 @@ If you _have_ to go out, **keep 2 meters (~6.5 feet) away from other people** an
 * 🏥 We help to **avoid overloading the health system** and therefore to **save lives**.
 * 🤩 [Celebrities want you to stay home](/en/celebrities)
 
-{{< tag class="is-danger" >}}
-New!
-{{< /tag >}}
 I invite you to try my [interactive coronavirus simulation][simulator] where you can visually see the impact of social distancing.
 
 {{< region >}}

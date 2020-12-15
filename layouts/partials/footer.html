@@ -5,8 +5,7 @@
             {{- $twitterPage := .GetPage "twitter" -}}
             <p class="has-margin-bottom-sm">
                 {{- $twitterPage := .GetPage "twitter" -}}
-                <a href="{{ $twitterPage.Permalink }}"><span
-                        class="tag is-danger has-margin-right-sm">{{ i18n "new"}}</span>{{ $twitterPage.Title }}</a>
+                <a href="{{ $twitterPage.Permalink }}">{{ $twitterPage.Title }}</a>
             </p>
             {{ partial "share.html" . }}
             <hr>

@@ -30,9 +30,6 @@ Si _tenés_ que salir, **mantené 2 metros de distancia** con otras personas y *
 * 🏥 Ayudamos a **no sobrecargar el sistema de salud** y entonces a **salvar vidas**.
 * 🤩 [Los famosos quieren que te quedes en casa](/celebrities)
 
-{{< tag class="is-danger" >}}
-NUEVO!
-{{< /tag >}}
 Te invito a probar mi [simulación de coronavirus interactiva][simulator] donde podrás ver de manera visual el impacto del distanciamiento social.
 
 {{< region >}}
