@@ -104,6 +104,10 @@
         { "date": "2020-12-16", "age": 96, "s": "?", "dep": "Montevideo" },
         { "date": "2020-12-17", "age": 77, "s": "M", "dep": "Artigas" },
         { "date": "2020-12-17", "age": 64, "s": "?", "dep": "Montevideo" },
-        { "date": "2020-12-17", "age": 77, "s": "?", "dep": "Montevideo" }
+        { "date": "2020-12-17", "age": 77, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-18", "age": 92, "s": "M", "dep": "Canelones" },
+        { "date": "2020-12-18", "age": 67, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-18", "age": 75, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-18", "age": 58, "s": "M", "dep": "Rivera" }
     ]
 }
