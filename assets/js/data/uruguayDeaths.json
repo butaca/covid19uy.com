@@ -118,6 +118,7 @@
         { "date": "2020-12-20", "age": 63, "s": "?", "dep": "Rivera" },
         { "date": "2020-12-20", "age": 60, "s": "?", "dep": "Montevideo" },
         { "date": "2020-12-20", "age": 73, "s": "?", "dep": "Montevideo" },
-        { "date": "2020-12-20", "age": 85, "s": "?", "dep": "Montevideo" }
+        { "date": "2020-12-20", "age": 85, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-22", "age": 75, "s": "M", "dep": "Montevideo" }
     ]
 }
