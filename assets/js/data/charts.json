@@ -62,13 +62,8 @@
         "desc": "graphTitleDailyHospitalizationsPercentDesc"
     },
     {
-        "id": "chart-deaths",
-        "title": "graphDeaths",
-        "desc": "graphDeathsDesc"
-    },
-    {
-        "id": "chart-deaths-sex",
-        "title": "graphDeathsSex",
-        "desc": "graphDeathsSexDesc"
+        "id": "chart-deaths-new",
+        "title": "graphDeathsNew",
+        "desc": "graphDeathsNewDesc"
     }
 ]

@@ -16,5 +16,15 @@
         "title": "graphTitleTotalTests",
         "desc": "graphTitleTotalTestsDesc",
         "displayUnreportedPositiviesInfo": true
+    },
+    {
+        "id": "chart-deaths",
+        "title": "graphDeaths",
+        "desc": "graphDeathsDesc"
+    },
+    {
+        "id": "chart-deaths-sex",
+        "title": "graphDeathsSex",
+        "desc": "graphDeathsSexDesc"
     }
 ]

@@ -177,7 +177,13 @@
     "other": "Fallecimientos por edad"
   },
   "graphDeathsDesc" : {
-    "other": "Fallecimientos por ranges de edades y sexo."
+    "other": "Fallecimientos por rangos de edad y sexo."
+  },
+  "graphDeathsNew" : {
+    "other": "Fallecimientos por edad"
+  },
+  "graphDeathsNewDesc" : {
+    "other": "Fallecimientos por rangos de edad."
   },
   "graphDeathsSex" : {
     "other": "Fallecimientos por sexo"

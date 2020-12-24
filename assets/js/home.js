@@ -723,7 +723,8 @@ function main() {
     var menDeaths = [0, 0, 0, 0, 0];
     var womenDeaths = [0, 0, 0, 0, 0];
     var unknownSexDeaths = [0, 0, 0, 0, 0];
-    var deathLabels = ["0 - 17", "18 - 44", "45 - 64", "65 - 74", "75+"];
+    var totalDeathsByAge = [0, 0, 0, 0, 0];
+    var deathAgeRangesLabels = ["0 - 17", "18 - 44", "45 - 64", "65 - 74", "75+"];
 
     for (var i = 0; i < deathsData.deaths.length; ++i) {
         var death = deathsData.deaths[i];
@@ -741,26 +742,27 @@ function main() {
         else {
             sexDeaths = unknownSexDeaths;
         }
+        var index = -1;
+
+        if (age <= 17) {
+            index = 0;
+        }
+        else if (age <= 44) {
+            index = 1;
+        }
+        else if (age <= 64) {
+            index = 2;
+        }
+        else if (age <= 74) {
+            index = 3;
+        }
+        else {
+            index = 4;
+        }
+
+        totalDeathsByAge[index]++;
 
         if (sexDeaths != null) {
-
-            var index = -1;
-
-            if (age <= 17) {
-                index = 0;
-            }
-            else if (age <= 44) {
-                index = 1;
-            }
-            else if (age <= 64) {
-                index = 2;
-            }
-            else if (age <= 74) {
-                index = 3;
-            }
-            else {
-                index = 4;
-            }
             sexDeaths[index]++;
         }
     }
@@ -771,7 +773,7 @@ function main() {
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: deathLabels,
+            labels: deathAgeRangesLabels,
             datasets: [
                 {
                     backgroundColor: "#B871FAff",
@@ -782,14 +784,14 @@ function main() {
                     backgroundColor: "#FA7571ff",
                     label: lang.women.other,
                     data: womenDeaths,
-                },
-                {
-                    label: lang.unknown.other,
-                    data: unknownSexDeaths,
-                }]
+                }
+            ]
         },
         options: options
     });
+
+    var dataDeathsTotal = [menDeaths.reduce(function (acc, val) { return acc + val; }, 0), womenDeaths.reduce(function (acc, val) { return acc + val; }, 0)];
+    var totalDeahts = getTotal(dataDeathsTotal);
 
     options = createDefaultChartOptions();
     options.scales = {
@@ -802,7 +804,7 @@ function main() {
     };
     options.elements = {
         center: {
-            text: lang.totalDeaths.other + ': ' + deathsData.deaths.length,
+            text: lang.totalDeaths.other + ': ' + totalDeahts,
             color: '#36A2EB',
             fontStyle: 'Helvetica',
             sidePadding: 15
@@ -810,16 +812,14 @@ function main() {
     };
     options.tooltips = pieToolTips;
     ctx = document.getElementById('chart-deaths-sex');
-
-    var dataDeathsTotal = [menDeaths.reduce(function (acc, val) { return acc + val; }, 0), womenDeaths.reduce(function (acc, val) { return acc + val; }, 0), unknownSexDeaths.reduce(function (acc, val) { return acc + val; }, 0)];
-    var totalDeahts = getTotal(dataDeathsTotal);
-    var deathLabels = [lang.men.other, lang.women.other, lang.unknown.other];
-    deathLabels = deathLabels.map(function (label, index) { return label + ': ' + (dataDeathsTotal[index] / totalDeahts * 100).toFixed(2) + '%' });
+    
+    var deathBySexLabels = [lang.men.other, lang.women.other];
+    deathBySexLabels = deathBySexLabels.map(function (label, index) { return label + ': ' + (dataDeathsTotal[index] / totalDeahts * 100).toFixed(2) + '%' });
 
     new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: deathLabels,
+            labels: deathBySexLabels,
             datasets: [{
                 data: dataDeathsTotal,
                 backgroundColor: ["#B871FAff", "#FA7571ff"]
@@ -845,7 +845,25 @@ function main() {
             }
         }
     };
-    
+
+    options = createDefaultChartOptions();
+    ctx = document.getElementById('chart-deaths-new');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: deathAgeRangesLabels,
+            datasets: [
+                {
+                    backgroundColor: "#e54acfff",
+                    label: lang.graphDeathsNew.other,
+                    data: totalDeathsByAge,
+                }
+            ]
+        },
+        options: options
+    });
+
     var positivityRate = dailyPositivityRate.slice(firstDailyTestsValidIndex)
     ctx = document.getElementById('chart-daily-positivity-rate');
     new Chart(ctx, {
