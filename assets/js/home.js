@@ -837,24 +837,6 @@ function main() {
     });
 
     options = createDefaultChartOptions();
-    options.scales = {
-        yAxes: [{
-            ticks: {
-                callback: function (value) {
-                    return value + "%"
-                }
-            }
-        }]
-    };
-    options.tooltips = {
-        callbacks: {
-            label: function (tooltipItem, data) {
-                return data['datasets'][0]['data'][tooltipItem['index']].toFixed(2) + " %";
-            }
-        }
-    };
-
-    options = createDefaultChartOptions();
     ctx = document.getElementById('chart-deaths-new');
 
     new Chart(ctx, {
@@ -872,7 +854,24 @@ function main() {
         options: options
     });
 
-    var positivityRate = dailyPositivityRate.slice(firstDailyTestsValidIndex)
+    var positivityRate = dailyPositivityRate.slice(firstDailyTestsValidIndex);
+    options = createDefaultChartOptions();
+    options.scales = {
+        yAxes: [{
+            ticks: {
+                callback: function (value) {
+                    return value + "%"
+                }
+            }
+        }]
+    };
+    options.tooltips = {
+        callbacks: {
+            label: function (tooltipItem, data) {
+                return data['datasets'][0]['data'][tooltipItem['index']].toFixed(2) + " %";
+            }
+        }
+    };
     ctx = document.getElementById('chart-daily-positivity-rate');
     new Chart(ctx, {
         type: 'bar',
