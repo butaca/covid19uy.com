@@ -146,6 +146,17 @@
         { "date": "2020-12-26", "age": 88, "s": "?", "dep": "Maldonado" },
         { "date": "2020-12-26", "age": 58, "s": "?", "dep": "Artigas" },
         { "date": "2020-12-26", "age": 83, "s": "?", "dep": "Montevideo" },
-        { "date": "2020-12-26", "age": 84, "s": "?", "dep": "Montevideo" }
+        { "date": "2020-12-26", "age": 84, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-27", "age": 77, "s": "?", "dep": "Cerro Largo" },
+        { "date": "2020-12-27", "age": 66, "s": "?", "dep": "Rivera" },
+        { "date": "2020-12-27", "age": 75, "s": "?", "dep": "Soriano" },
+        { "date": "2020-12-27", "age": 60, "s": "?", "dep": "Tacuarembó" },
+        { "date": "2020-12-27", "age": 60, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-27", "age": 62, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-27", "age": 69, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-27", "age": 80, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-27", "age": 90, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-27", "age": 91, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-27", "age": 96, "s": "?", "dep": "Montevideo" }
     ]
 }
