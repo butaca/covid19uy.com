@@ -29,7 +29,6 @@ If you _have_ to go out, **keep 2 meters (~6.5 feet) away from other people** an
 * 😷 We decrease the probability of infecting ourselves and infecting others.
 * ⚠️ About 60% of people with coronavirus show mild or no symptoms. [[source][asymptomatic_cases]]
 * 🏥 We help to **avoid overloading the health system** and therefore to **save lives**.
-* 🤩 [Celebrities want you to stay home](/en/celebrities)
 
 I invite you to try my [interactive coronavirus simulation][simulator] where you can visually see the impact of social distancing.
 
