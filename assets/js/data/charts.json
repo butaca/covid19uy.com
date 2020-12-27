@@ -67,6 +67,7 @@
         "desc": "graphDeathsNewDesc"
     },
     {
+        "new": true,
         "id": "chart-daily-deaths",
         "title": "graphDailyDeaths",
         "desc": "graphDailyDeathsDesc"
