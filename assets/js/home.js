@@ -116,6 +116,8 @@ function main() {
     var prevDayTotalCases = 0;
     var positiveTestsChartsMaxIndex = -1;
     var dailyPositivityRate = [];
+    var dailyDeaths = [];
+    var deathsFirstIndex = -1;
 
     data.data.forEach(function (el, index) {
         var todayPositives = el.positives;
@@ -129,8 +131,15 @@ function main() {
         var month = (date.getUTCMonth() + 1);
         dates.push(flipDate ? month + "/" + day : day + "/" + month);
 
+        yesterdayTotalDeaths = deaths.length > 0 ? deaths[deaths.length - 1] : 0;
+
         var todayTotalDeaths = el.deaths != undefined ? el.deaths : 0;
+        if(el.deaths != undefined && deathsFirstIndex == -1) {
+            deathsFirstIndex = index;
+        }
         deaths.push(todayTotalDeaths);
+
+        dailyDeaths.push(todayTotalDeaths - yesterdayTotalDeaths);
 
         var todayTotalRecovered = el.recovered != undefined ? el.recovered : 0;
         recovered.push(todayTotalRecovered);
@@ -187,7 +196,6 @@ function main() {
         if (firstDailyTestsValidIndex < 0 && todayTests != undefined) {
             firstDailyTestsValidIndex = index;
         }
-
 
         dailyTests.push(todayTests != undefined ? todayTests : todayPositives);
         if (todayPositives != undefined) {
@@ -876,6 +884,25 @@ function main() {
                     backgroundColor: "#7732a880",
                     label: lang.graphPositivityRate.other,
                     data: positivityRate,
+                }
+            ]
+        },
+        options: options
+    });
+
+    options = createDefaultChartOptions();
+    ctx = document.getElementById('chart-daily-deaths');
+    var dailyDeathsFiltered = dailyDeaths.slice(deathsFirstIndex);
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: dates.slice(deathsFirstIndex),
+            datasets: [
+                createMovingAverageDataset(dailyDeathsFiltered, 2,"#0033bb88"),
+                {
+                    backgroundColor: "#e54acfff",
+                    label: lang.graphDailyDeaths.other,
+                    data: dailyDeathsFiltered,
                 }
             ]
         },

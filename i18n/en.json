@@ -176,6 +176,12 @@
   "graphDeathsDesc" : {
     "other": "Deaths by age ranges and sex."
   },
+  "graphDailyDeaths" : {
+    "other": "Daily deaths"
+  },
+  "graphDailyDeathsDesc" : {
+    "other": "Deaths per day."
+  },
   "graphDeathsNew" : {
     "other": "Deaths by age"
   },
