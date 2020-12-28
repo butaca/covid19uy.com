@@ -157,6 +157,8 @@
         { "date": "2020-12-27", "age": 80, "s": "?", "dep": "Montevideo" },
         { "date": "2020-12-27", "age": 90, "s": "?", "dep": "Montevideo" },
         { "date": "2020-12-27", "age": 91, "s": "?", "dep": "Montevideo" },
-        { "date": "2020-12-27", "age": 96, "s": "?", "dep": "Montevideo" }
+        { "date": "2020-12-27", "age": 96, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-28", "age": 79, "s": "F", "dep": "Montevideo" },
+        { "date": "2020-12-28", "age": 89, "s": "F", "dep": "Rocha" }
     ]
 }
