@@ -160,7 +160,6 @@
         { "date": "2020-12-27", "age": 96, "s": "?", "dep": "Montevideo" },
         { "date": "2020-12-28", "age": 79, "s": "F", "dep": "Montevideo" },
         { "date": "2020-12-28", "age": 89, "s": "F", "dep": "Rocha" },
-
         { "date": "2020-12-29", "age": 84, "s": "?", "dep": "Rivera" },
         { "date": "2020-12-29", "age": 41, "s": "?", "dep": "Canelones" },
         { "date": "2020-12-29", "age": 70, "s": "?", "dep": "Canelones" },
@@ -168,6 +167,12 @@
         { "date": "2020-12-29", "age": 87, "s": "?", "dep": "Montevideo" },
         { "date": "2020-12-29", "age": 90, "s": "?", "dep": "Montevideo" },
         { "date": "2020-12-29", "age": 90, "s": "?", "dep": "Montevideo" },
-        { "date": "2020-12-29", "age": 95, "s": "?", "dep": "Montevideo" }
+        { "date": "2020-12-29", "age": 95, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-30", "age": 64, "s": "?", "dep": "Canelones" },
+        { "date": "2020-12-30", "age": 79, "s": "?", "dep": "Canelones" },
+        { "date": "2020-12-30", "age": 55, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-30", "age": 64, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-30", "age": 73, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-30", "age": 99, "s": "?", "dep": "Montevideo" }
     ]
 }
