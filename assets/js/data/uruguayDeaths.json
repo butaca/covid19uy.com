@@ -173,6 +173,13 @@
         { "date": "2020-12-30", "age": 55, "s": "?", "dep": "Montevideo" },
         { "date": "2020-12-30", "age": 64, "s": "?", "dep": "Montevideo" },
         { "date": "2020-12-30", "age": 73, "s": "?", "dep": "Montevideo" },
-        { "date": "2020-12-30", "age": 99, "s": "?", "dep": "Montevideo" }
+        { "date": "2020-12-30", "age": 99, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-31", "age": 74, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-31", "age": 76, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-31", "age": 79, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-31", "age": 91, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-31", "age": 100, "s": "?", "dep": "Montevideo" },
+        { "date": "2020-12-31", "age": 72, "s": "?", "dep": "Canelones" },
+        { "date": "2020-12-31", "age": 82, "s": "?", "dep": "Rivera" }
     ]
 }
