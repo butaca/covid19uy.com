@@ -180,6 +180,18 @@
         { "date": "2020-12-31", "age": 91, "s": "?", "dep": "Montevideo" },
         { "date": "2020-12-31", "age": 100, "s": "?", "dep": "Montevideo" },
         { "date": "2020-12-31", "age": 72, "s": "?", "dep": "Canelones" },
-        { "date": "2020-12-31", "age": 82, "s": "?", "dep": "Rivera" }
+        { "date": "2020-12-31", "age": 82, "s": "?", "dep": "Rivera" },
+        { "date": "2021-01-01", "age": 70, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-01", "age": 72, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-01", "age": 74, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-01", "age": 76, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-01", "age": 79, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-01", "age": 80, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-01", "age": 93, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-01", "age": 94, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-01", "age": 72, "s": "?", "dep": "Canelones" },
+        { "date": "2021-01-01", "age": 82, "s": "?", "dep": "Canelones" },
+        { "date": "2021-01-01", "age": 87, "s": "?", "dep": "Canelones" },
+        { "date": "2021-01-01", "age": 87, "s": "?", "dep": "Soriano" }
     ]
 }
