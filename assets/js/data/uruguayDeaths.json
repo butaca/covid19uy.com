@@ -200,6 +200,9 @@
         { "date": "2021-01-02", "age": 87, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-02", "age": 47, "s": "?", "dep": "Canelones" },
         { "date": "2021-01-02", "age": 90, "s": "?", "dep": "Maldonado" },
-        { "date": "2021-01-02", "age": 63, "s": "?", "dep": "Rivera" }
+        { "date": "2021-01-02", "age": 63, "s": "?", "dep": "Rivera" },
+        { "date": "2021-01-03", "age": 74, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-03", "age": 97, "s": "?", "dep": "Canelones" },
+        { "date": "2021-01-03", "age": 59, "s": "?", "dep": "San José" }
     ]
 }
