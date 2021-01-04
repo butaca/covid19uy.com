@@ -203,6 +203,13 @@
         { "date": "2021-01-02", "age": 63, "s": "?", "dep": "Rivera" },
         { "date": "2021-01-03", "age": 74, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-03", "age": 97, "s": "?", "dep": "Canelones" },
-        { "date": "2021-01-03", "age": 59, "s": "?", "dep": "San José" }
+        { "date": "2021-01-03", "age": 59, "s": "?", "dep": "San José" },
+        { "date": "2021-01-04", "age": 75 , "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-04", "age": 85, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-04", "age": 86, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-04", "age": 87, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-04", "age": 60, "s": "?", "dep": "Rivera" },
+        { "date": "2021-01-04", "age": 83, "s": "?", "dep": "Rivera" },
+        { "date": "2021-01-04", "age": 46, "s": "?", "dep": "Soriano" }
     ]
 }
