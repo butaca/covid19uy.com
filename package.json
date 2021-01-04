@@ -4,7 +4,7 @@
         "@fortawesome/free-brands-svg-icons": "^5.14.0",
         "@fortawesome/free-regular-svg-icons": "^5.14.0",
         "@fortawesome/free-solid-svg-icons": "^5.14.0",
-        "axios": "^0.19.2",
+        "axios": "^0.21.1",
         "bulma": "^0.8.2",
         "bulma-tooltip": "^3.0.2",
         "chai": "^4.2.0",
