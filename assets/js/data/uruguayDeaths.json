@@ -231,6 +231,16 @@
         { "date": "2021-01-07", "age": 83, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-07", "age": 89, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-07", "age": 96, "s": "?", "dep": "Montevideo" },
-        { "date": "2021-01-07", "age": 94, "s": "?", "dep": "Canelones" }
+        { "date": "2021-01-07", "age": 94, "s": "?", "dep": "Canelones" },
+
+        { "date": "2021-01-08", "age": 68, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-08", "age": 80, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-08", "age": 81, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-08", "age": 86, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-08", "age": 87, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-08", "age": 92, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-08", "age": 46, "s": "?", "dep": "Cerro Largo" },
+        { "date": "2021-01-08", "age": 69, "s": "?", "dep": "Cerro Largo" },
+        { "date": "2021-01-08", "age": 78, "s": "?", "dep": "Canelones" }
     ]
 }
