@@ -263,6 +263,13 @@
         { "date": "2021-01-11", "age": 90, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-11", "age": 94, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-11", "age": 88, "s": "?", "dep": "Cerro Largo" },
-        { "date": "2021-01-11", "age": 91, "s": "?", "dep": "Rivera" }
+        { "date": "2021-01-11", "age": 91, "s": "?", "dep": "Rivera" },
+        { "date": "2021-01-12", "age": 65, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-12", "age": 73, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-12", "age": 77, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-12", "age": 87, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-12", "age": 89, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-12", "age": 94, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-12", "age": 87, "s": "?", "dep": "Canelones" }
     ]
 }
