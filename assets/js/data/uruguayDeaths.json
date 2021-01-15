@@ -271,12 +271,16 @@
         { "date": "2021-01-12", "age": 89, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-12", "age": 94, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-12", "age": 87, "s": "?", "dep": "Canelones" },
-
         { "date": "2021-01-13", "age": 80, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-13", "age": 85, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-13", "age": 86, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-13", "age": 96, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-13", "age": 102, "s": "?", "dep": "Montevideo" },
-        { "date": "2021-01-13", "age": 84, "s": "?", "dep": "San José" }
+        { "date": "2021-01-13", "age": 84, "s": "?", "dep": "San José" },
+        { "date": "2021-01-14", "age": 71, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-14", "age": 72, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-14", "age": 83, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-14", "age": 87, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-14", "age": 66, "s": "?", "dep": "Lavalleja" }
     ]
 }
