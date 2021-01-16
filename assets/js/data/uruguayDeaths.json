@@ -281,6 +281,17 @@
         { "date": "2021-01-14", "age": 72, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-14", "age": 83, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-14", "age": 87, "s": "?", "dep": "Montevideo" },
-        { "date": "2021-01-14", "age": 66, "s": "?", "dep": "Lavalleja" }
+        { "date": "2021-01-14", "age": 66, "s": "?", "dep": "Lavalleja" },
+        { "date": "2021-01-15", "age": 51, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-15", "age": 68, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-15", "age": 75, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-15", "age": 77, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-15", "age": 84, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-15", "age": 85, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-15", "age": 94, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-15", "age": 76, "s": "?", "dep": "Soriano" },
+        { "date": "2021-01-15", "age": 75, "s": "?", "dep": "Tacuarembó" },
+        { "date": "2021-01-15", "age": 74, "s": "?", "dep": "Paysandú" },
+        { "date": "2021-01-15", "age": 55, "s": "?", "dep": "Canelones" }
     ]
 }
