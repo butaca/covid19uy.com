@@ -292,6 +292,13 @@
         { "date": "2021-01-15", "age": 76, "s": "?", "dep": "Soriano" },
         { "date": "2021-01-15", "age": 75, "s": "?", "dep": "Tacuarembó" },
         { "date": "2021-01-15", "age": 74, "s": "?", "dep": "Paysandú" },
-        { "date": "2021-01-15", "age": 55, "s": "?", "dep": "Canelones" }
+        { "date": "2021-01-15", "age": 55, "s": "?", "dep": "Canelones" },
+        { "date": "2021-01-16", "age": 81, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-16", "age": 89, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-16", "age": 91, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-16", "age": 87, "s": "?", "dep": "San José" },
+        { "date": "2021-01-16", "age": 82, "s": "?", "dep": "Canelones" },
+        { "date": "2021-01-16", "age": 64, "s": "?", "dep": "Maldonado" },
+        { "date": "2021-01-16", "age": 61, "s": "?", "dep": "Artigas" }
     ]
 }
