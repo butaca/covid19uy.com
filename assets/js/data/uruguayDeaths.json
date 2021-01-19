@@ -321,6 +321,17 @@
         { "date": "2021-01-18", "age": 83, "s": "?", "dep": "Rivera" },
         { "date": "2021-01-18", "age": 79, "s": "?", "dep": "Soriano" },
         { "date": "2021-01-18", "age": 75, "s": "?", "dep": "Cerro Largo" },
-        { "date": "2021-01-18", "age": 59, "s": "?", "dep": "Artigas" }
+        { "date": "2021-01-18", "age": 59, "s": "?", "dep": "Artigas" },
+        { "date": "2021-01-19", "age": 60, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-19", "age": 76, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-19", "age": 76, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-19", "age": 82, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-19", "age": 83, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-19", "age": 86, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-19", "age": 88, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-19", "age": 90, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-19", "age": 93, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-19", "age": 87, "s": "?", "dep": "Maldonado" },
+        { "date": "2021-01-19", "age": 49, "s": "?", "dep": "Cerro Largo" }
     ]
 }
