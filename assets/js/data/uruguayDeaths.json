@@ -332,6 +332,12 @@
         { "date": "2021-01-19", "age": 90, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-19", "age": 93, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-19", "age": 87, "s": "?", "dep": "Maldonado" },
-        { "date": "2021-01-19", "age": 49, "s": "?", "dep": "Cerro Largo" }
+        { "date": "2021-01-19", "age": 49, "s": "?", "dep": "Cerro Largo" },
+        { "date": "2021-01-20", "age": 77, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-20", "age": 85, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-20", "age": 95, "s": "?", "dep": "Artigas" },
+        { "date": "2021-01-20", "age": 76, "s": "?", "dep": "Tacuarembó" },
+        { "date": "2021-01-20", "age": 71, "s": "?", "dep": "San José" },
+        { "date": "2021-01-20", "age": 69, "s": "?", "dep": "Durazno" }
     ]
 }
