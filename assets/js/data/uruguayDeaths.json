@@ -338,6 +338,17 @@
         { "date": "2021-01-20", "age": 95, "s": "?", "dep": "Artigas" },
         { "date": "2021-01-20", "age": 76, "s": "?", "dep": "Tacuarembó" },
         { "date": "2021-01-20", "age": 71, "s": "?", "dep": "San José" },
-        { "date": "2021-01-20", "age": 69, "s": "?", "dep": "Durazno" }
+        { "date": "2021-01-20", "age": 69, "s": "?", "dep": "Durazno" },
+        { "date": "2021-01-21", "age": 65, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-21", "age": 69, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-21", "age": 70, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-21", "age": 71, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-21", "age": 71, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-21", "age": 75, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-21", "age": 80, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-21", "age": 84, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-21", "age": 86, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-21", "age": 72, "s": "?", "dep": "Canelones" },
+        { "date": "2021-01-21", "age": 85, "s": "?", "dep": "Canelones" }
     ]
 }
