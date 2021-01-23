@@ -349,6 +349,23 @@
         { "date": "2021-01-21", "age": 84, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-21", "age": 86, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-21", "age": 72, "s": "?", "dep": "Canelones" },
-        { "date": "2021-01-21", "age": 85, "s": "?", "dep": "Canelones" }
+        { "date": "2021-01-21", "age": 85, "s": "?", "dep": "Canelones" },
+        { "date": "2021-01-22", "age": 60, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-22", "age": 63, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-22", "age": 64, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-22", "age": 66, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-22", "age": 67, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-22", "age": 84, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-22", "age": 85, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-22", "age": 86, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-22", "age": 86, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-22", "age": 89, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-22", "age": 94, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-22", "age": 68, "s": "?", "dep": "Cerro Largo" },
+        { "date": "2021-01-22", "age": 80, "s": "?", "dep": "Cerro Largo" },
+        { "date": "2021-01-22", "age": 92, "s": "?", "dep": "Salto" },
+        { "date": "2021-01-22", "age": 84, "s": "?", "dep": "Soriano" },
+        { "date": "2021-01-22", "age": 67, "s": "?", "dep": "Artigas" },
+        { "date": "2021-01-22", "age": 62, "s": "?", "dep": "Maldonado" }
     ]
 }
