@@ -316,7 +316,8 @@
         { "date": "2021-01-19", "tests": 6396, "cases": 33446, "recovered": 25410, "deaths": 330, "icu": 104, "imcu": 0, "hc": 1861, "hcRecovered": 1486, "hcDeaths" : 3, "newCases": 590 },
         { "date": "2021-01-20", "tests": 7847, "cases": 34294, "recovered": 26118, "deaths": 336, "icu": 106, "imcu": 0, "hc": 1898, "hcRecovered": 1516, "hcDeaths" : 3, "newCases": 857 },
         { "date": "2021-01-21", "tests": 7330, "cases": 34992, "recovered": 26927, "deaths": 347, "icu": 98, "imcu": 0, "hc": 1952, "hcRecovered": 1562, "hcDeaths" : 3, "newCases": 709 },
-        { "date": "2021-01-22", "tests": 9533, "cases": 36170, "recovered": 27715, "deaths": 364, "icu": 94, "imcu": 0, "hc": 1998, "hcRecovered": 1607, "hcDeaths" : 3, "newCases": 1186 }
+        { "date": "2021-01-22", "tests": 9533, "cases": 36170, "recovered": 27715, "deaths": 364, "icu": 94, "imcu": 0, "hc": 1998, "hcRecovered": 1607, "hcDeaths" : 3, "newCases": 1186 },
+        { "date": "2021-01-23", "tests": 6512, "cases": 36967, "recovered": 28547, "deaths": 367, "icu": 96, "imcu": 0, "hc": 2043, "hcRecovered": 1647, "hcDeaths" : 3, "newCases": 801 }
     ]
 }
 
