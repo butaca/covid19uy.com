@@ -369,6 +369,15 @@
         { "date": "2021-01-22", "age": 62, "s": "?", "dep": "Maldonado" },
         { "date": "2021-01-23", "age": 72, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-23", "age": 89, "s": "?", "dep": "Montevideo" },
-        { "date": "2021-01-23", "age": 72, "s": "?", "dep": "Salto" }
+        { "date": "2021-01-23", "age": 72, "s": "?", "dep": "Salto" },
+        { "date": "2021-01-24", "age": 57, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-24", "age": 59, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-24", "age": 62, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-24", "age": 87, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-24", "age": 89, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-24", "age": 95, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-24", "age": 98, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-24", "age": 87, "s": "?", "dep": "Durazno" },
+        { "date": "2021-01-24", "age": 58, "s": "?", "dep": "Rocha" }
     ]
 }
