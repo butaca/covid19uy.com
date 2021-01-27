@@ -392,6 +392,17 @@
         { "date": "2021-01-25", "age": 79, "s": "?", "dep": "Paysandú" },
         { "date": "2021-01-25", "age": 77, "s": "?", "dep": "Canelones" },
         { "date": "2021-01-25", "age": 76, "s": "?", "dep": "Rivera" },
-        { "date": "2021-01-25", "age": 62, "s": "?", "dep": "Durazno" }
+        { "date": "2021-01-25", "age": 62, "s": "?", "dep": "Durazno" },
+        { "date": "2021-01-26", "age": 80, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-26", "age": 83, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-26", "age": 85, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-26", "age": 86, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-26", "age": 72, "s": "?", "dep": "Canelones" },
+        { "date": "2021-01-26", "age": 81, "s": "?", "dep": "Canelones" },
+        { "date": "2021-01-26", "age": 94, "s": "?", "dep": "Durazno" },
+        { "date": "2021-01-26", "age": 75, "s": "?", "dep": "Rivera" },
+        { "date": "2021-01-26", "age": 72, "s": "?", "dep": "Treinta y Tres" },
+        { "date": "2021-01-26", "age": 65, "s": "?", "dep": "Florida" },
+        { "date": "2021-01-26", "age": 63, "s": "?", "dep": "San José" }
     ]
 }
