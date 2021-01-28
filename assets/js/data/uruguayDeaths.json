@@ -403,6 +403,12 @@
         { "date": "2021-01-26", "age": 75, "s": "?", "dep": "Rivera" },
         { "date": "2021-01-26", "age": 72, "s": "?", "dep": "Treinta y Tres" },
         { "date": "2021-01-26", "age": 65, "s": "?", "dep": "Florida" },
-        { "date": "2021-01-26", "age": 63, "s": "?", "dep": "San José" }
+        { "date": "2021-01-26", "age": 63, "s": "?", "dep": "San José" },
+        { "date": "2021-01-27", "age": 51, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-27", "age": 57, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-27", "age": 91, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-01-27", "age": 85, "s": "?", "dep": "Soriano" },
+        { "date": "2021-01-27", "age": 68, "s": "?", "dep": "Treinta y Tres" },
+        { "date": "2021-01-27", "age": 60, "s": "?", "dep": "Canelones" }
     ]
 }
