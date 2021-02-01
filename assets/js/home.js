@@ -11,6 +11,8 @@ import region from "./data/region.json";
 import departmentsData from "./data/uruguayDepartments.json"
 import deathsData from "./data/uruguayDeaths.json"
 
+var MOVING_AVERAGE_DELTA = 2;
+
 if (document.readyState === 'loading') {
     document.addEventListener("DOMContentLoaded", main);
 } else {
@@ -21,13 +23,17 @@ function getTotal(values) {
     return values.reduce(function (prev, cur) { return prev + cur });
 }
 
-function average(array, startIndex, length) {
-    var sum = 0;
-    for (var i = 0; i < length && (i + startIndex) < array.length; ++i) {
-        sum += array[i + startIndex];
+function average(array, startIndex, length, prevAverage) {
+    if(prevAverage == null || prevAverage == undefined || (startIndex - 1) < 0 || startIndex + length - 1 >= array.length) {
+        var sum = 0;
+        for (var i = 0; i < length && (i + startIndex) < array.length; ++i) {
+            sum += array[i + startIndex];
+        }
+        return sum / length;
     }
-    var avg = sum / length;
-    return avg;
+    else {
+        return prevAverage + (-array[startIndex - 1] + array[startIndex + length - 1]) / length;
+    }
 }
 
 function movingAverage(array, prev, next) {
@@ -35,8 +41,11 @@ function movingAverage(array, prev, next) {
     for (var i = 0; i < prev; ++i) {
         results.push(null);
     }
+    var prevAverage = null;
     for (var i = prev; i < (array.length - next); ++i) {
-        results.push(average(array, i - prev, prev + next + 1));
+        var avg = average(array, i - prev, prev + next + 1, prevAverage);
+        results.push(avg);
+        prevAverage = avg;
     }
     for (var i = 0; i < next; ++i) {
         results.push(null);
@@ -225,7 +234,7 @@ function main() {
         data: {
             labels: dates,
             datasets: [
-                createMovingAverageDataset(activeCases, 2, "#0033bb88"),
+                createMovingAverageDataset(activeCases, MOVING_AVERAGE_DELTA, "#0033bb88"),
                 {
                     pointBackgroundColor: "#28b8d6ff",
                     backgroundColor: "#28b8d680",
@@ -313,7 +322,7 @@ function main() {
         data: {
             labels: dates.slice(firstDailyTestsValidIndex),
             datasets: [
-                createMovingAverageDataset(dailyTests, 2, "#0033bb88"),
+                createMovingAverageDataset(dailyTests, MOVING_AVERAGE_DELTA, "#0033bb88"),
                 {
                     backgroundColor: "#ecdb3c80",
                     label: lang.dailyTests.other,
@@ -356,7 +365,7 @@ function main() {
         data: {
             labels: dates,
             datasets: [
-                createMovingAverageDataset(dailyCases, 2, "#0033bb88"),
+                createMovingAverageDataset(dailyCases, MOVING_AVERAGE_DELTA, "#0033bb88"),
                 {
                     backgroundColor: "#97DBEAFF",
                     label: lang.dailyCases.other,
@@ -502,7 +511,7 @@ function main() {
         data: {
             labels: dates.slice(firstValidHealthcareWorkerIndex),
             datasets: [
-                createMovingAverageDataset(hcData, 2, "#0033bb88"),
+                createMovingAverageDataset(hcData, MOVING_AVERAGE_DELTA, "#0033bb88"),
                 {
                     backgroundColor: "#01C6B2FF",
                     label: lang.healthCareWorkerCases.other,
@@ -542,7 +551,7 @@ function main() {
         data: {
             labels: dates.slice(firstValidHealthcareWorkerIndex),
             datasets: [
-                createMovingAverageDataset(hcPercentData, 2, "#0033bb88"),
+                createMovingAverageDataset(hcPercentData, MOVING_AVERAGE_DELTA, "#0033bb88"),
                 {
                     backgroundColor: "#01C6B2FF",
                     label: lang.graphTitleHealthcareWorkersPercent.other,
@@ -622,7 +631,7 @@ function main() {
         data: {
             labels: dates,
             datasets: [
-                createMovingAverageDataset(dailyActiveCases, 2, "#0033bb88"),
+                createMovingAverageDataset(dailyActiveCases, MOVING_AVERAGE_DELTA, "#0033bb88"),
                 {
                     pointBackgroundColor: "#28b8d6ff",
                     backgroundColor: "#28b8d680",
@@ -878,7 +887,7 @@ function main() {
         data: {
             labels: dates.slice(firstDailyTestsValidIndex),
             datasets: [
-                createMovingAverageDataset(positivityRate, 2, "#0033bb88"),
+                createMovingAverageDataset(positivityRate, MOVING_AVERAGE_DELTA, "#0033bb88"),
                 {
                     backgroundColor: "#7732a880",
                     label: lang.graphPositivityRate.other,
@@ -897,7 +906,7 @@ function main() {
         data: {
             labels: dates.slice(deathsFirstIndex),
             datasets: [
-                createMovingAverageDataset(dailyDeathsFiltered, 2,"#0033bb88"),
+                createMovingAverageDataset(dailyDeathsFiltered, MOVING_AVERAGE_DELTA, "#0033bb88"),
                 {
                     backgroundColor: "#e54acfff",
                     label: lang.graphDailyDeaths.other,
