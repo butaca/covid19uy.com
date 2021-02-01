@@ -221,7 +221,6 @@
         { "date": "2021-01-06", "age": 67, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-06", "age": 88, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-06", "age": 89, "s": "?", "dep": "Montevideo" },
-
         { "date": "2021-01-07", "age": 64, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-07", "age": 75, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-07", "age": 76, "s": "?", "dep": "Montevideo" },
@@ -257,7 +256,6 @@
         { "date": "2021-01-10", "age": 87, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-10", "age": 91, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-10", "age": 75, "s": "?", "dep": "Canelones" },
-
         { "date": "2021-01-11", "age": 73, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-11", "age": 74, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-11", "age": 90, "s": "?", "dep": "Montevideo" },
@@ -300,7 +298,6 @@
         { "date": "2021-01-16", "age": 82, "s": "?", "dep": "Canelones" },
         { "date": "2021-01-16", "age": 64, "s": "?", "dep": "Maldonado" },
         { "date": "2021-01-16", "age": 61, "s": "?", "dep": "Artigas" },
-
         { "date": "2021-01-17", "age": 56, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-17", "age": 64, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-17", "age": 64, "s": "?", "dep": "Montevideo" },
@@ -438,6 +435,14 @@
         { "date": "2021-01-31", "age": 82, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-31", "age": 85, "s": "?", "dep": "Montevideo" },
         { "date": "2021-01-31", "age": 93, "s": "?", "dep": "Montevideo" },
-        { "date": "2021-01-31", "age": 96, "s": "?", "dep": "Canelones" }
+        { "date": "2021-01-31", "age": 96, "s": "?", "dep": "Canelones" },
+        { "date": "2021-02-01", "age": 62, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-01", "age": 83, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-01", "age": 87, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-01", "age": 90, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-01", "age": 91, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-01", "age": 103, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-01", "age": 92, "s": "?", "dep": "Canelones" },
+        { "date": "2021-02-01", "age": 66, "s": "?", "dep": "Rivera" }
     ]
 }
