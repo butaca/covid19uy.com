@@ -13,6 +13,11 @@ import deathsData from "./data/uruguayDeaths.json"
 
 var MOVING_AVERAGE_DELTA = 3;
 
+function round(number, decimalPlaces) {
+    const factorOfTen = Math.pow(10, decimalPlaces)
+    return Math.round(number * factorOfTen) / factorOfTen
+}
+
 if (document.readyState === 'loading') {
     document.addEventListener("DOMContentLoaded", main);
 } else {
@@ -24,7 +29,7 @@ function getTotal(values) {
 }
 
 function average(array, startIndex, length, prevAverage) {
-    if(prevAverage == null || prevAverage == undefined || (startIndex - 1) < 0 || startIndex + length - 1 >= array.length) {
+    if(prevAverage == null || prevAverage == undefined) {
         var sum = 0;
         for (var i = 0; i < length && (i + startIndex) < array.length; ++i) {
             sum += array[i + startIndex];
@@ -44,7 +49,7 @@ function movingAverage(array, prev, next) {
     var prevAverage = null;
     for (var i = prev; i < (array.length - next); ++i) {
         var avg = average(array, i - prev, prev + next + 1, prevAverage);
-        results.push(avg);
+        results.push(round(avg, 2));
         prevAverage = avg;
     }
     for (var i = 0; i < next; ++i) {
@@ -504,6 +509,9 @@ function main() {
     options.tooltips = {
         onlyShowForDatasetIndex: [1, 2]
     }
+
+    console.log('chart-healthcare-workers');
+
     ctx = document.getElementById('chart-healthcare-workers');
     var hcData = dailyHealthcareWorkers.slice(firstValidHealthcareWorkerIndex);
     new Chart(ctx, {
@@ -525,6 +533,8 @@ function main() {
         },
         options: options
     });
+
+    console.log('*******');
 
     options = createDefaultChartOptions();
     options.scales = {
