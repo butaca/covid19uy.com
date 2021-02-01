@@ -11,7 +11,7 @@ import region from "./data/region.json";
 import departmentsData from "./data/uruguayDepartments.json"
 import deathsData from "./data/uruguayDeaths.json"
 
-var MOVING_AVERAGE_DELTA = 2;
+var MOVING_AVERAGE_DELTA = 3;
 
 if (document.readyState === 'loading') {
     document.addEventListener("DOMContentLoaded", main);
