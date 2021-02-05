@@ -463,6 +463,18 @@
         { "date": "2021-02-03", "age": 88, "s": "?", "dep": "Canelones" },
         { "date": "2021-02-03", "age": 96, "s": "?", "dep": "Maldonado" },
         { "date": "2021-02-03", "age": 93, "s": "?", "dep": "Tacuarembó" },
-        { "date": "2021-02-03", "age": 80, "s": "?", "dep": "Rivera" }
+        { "date": "2021-02-03", "age": 80, "s": "?", "dep": "Rivera" },
+        { "date": "2021-02-04", "age": 61, "s": "?", "dep": "Artigas" },
+        { "date": "2021-02-04", "age": 57, "s": "?", "dep": "Canelones" },
+        { "date": "2021-02-04", "age": 75, "s": "?", "dep": "Colonia" },
+        { "date": "2021-02-04", "age": 54, "s": "?", "dep": "Rivera" },
+        { "date": "2021-02-04", "age": 84, "s": "?", "dep": "Rivera" },
+        { "date": "2021-02-04", "age": 45, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-04", "age": 64, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-04", "age": 79, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-04", "age": 81, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-04", "age": 82, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-04", "age": 82, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-04", "age": 96, "s": "?", "dep": "Montevideo" }
     ]
 }
