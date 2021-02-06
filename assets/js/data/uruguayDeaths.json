@@ -475,6 +475,8 @@
         { "date": "2021-02-04", "age": 81, "s": "?", "dep": "Montevideo" },
         { "date": "2021-02-04", "age": 82, "s": "?", "dep": "Montevideo" },
         { "date": "2021-02-04", "age": 82, "s": "?", "dep": "Montevideo" },
-        { "date": "2021-02-04", "age": 96, "s": "?", "dep": "Montevideo" }
+        { "date": "2021-02-04", "age": 96, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-05", "age": 72, "s": "?", "dep": "Canelones" },
+        { "date": "2021-02-05", "age": 69, "s": "?", "dep": "Montevideo" }
     ]
 }
