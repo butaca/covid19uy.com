@@ -480,6 +480,15 @@
         { "date": "2021-02-05", "age": 69, "s": "?", "dep": "Montevideo" },
         { "date": "2021-02-06", "age": 85, "s": "?", "dep": "Maldonado" },
         { "date": "2021-02-06", "age": 59, "s": "?", "dep": "Montevideo" },
-        { "date": "2021-02-06", "age": 62, "s": "?", "dep": "Montevideo" }
+        { "date": "2021-02-06", "age": 62, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-07", "age": 57, "s": "?", "dep": "Maldonado" },
+        { "date": "2021-02-07", "age": 60, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-07", "age": 63, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-07", "age": 63, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-07", "age": 64, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-07", "age": 77, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-07", "age": 78, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-07", "age": 91, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-07", "age": 95, "s": "?", "dep": "Montevideo" }
     ]
 }
