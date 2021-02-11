@@ -505,6 +505,16 @@
         { "date": "2021-02-09", "age": 67, "s": "?", "dep": "Montevideo" },
         { "date": "2021-02-09", "age": 79, "s": "?", "dep": "Montevideo" },
         { "date": "2021-02-09", "age": 79, "s": "?", "dep": "Montevideo" },
-        { "date": "2021-02-09", "age": 89, "s": "?", "dep": "Montevideo" }
+        { "date": "2021-02-09", "age": 89, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-10", "age": 70, "s": "?", "dep": "San José" },
+        { "date": "2021-02-10", "age": 86, "s": "?", "dep": "Paysandú" },
+        { "date": "2021-02-10", "age": 88, "s": "?", "dep": "Paysandú" },
+        { "date": "2021-02-10", "age": 25, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-10", "age": 57, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-10", "age": 60, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-10", "age": 73, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-10", "age": 83, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-10", "age": 91, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-10", "age": 94, "s": "?", "dep": "Montevideo" }
     ]
 }
