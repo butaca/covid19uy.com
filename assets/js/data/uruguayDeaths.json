@@ -516,7 +516,6 @@
         { "date": "2021-02-10", "age": 83, "s": "?", "dep": "Montevideo" },
         { "date": "2021-02-10", "age": 91, "s": "?", "dep": "Montevideo" },
         { "date": "2021-02-10", "age": 94, "s": "?", "dep": "Montevideo" },
-        
         { "date": "2021-02-11", "age": 94, "s": "?", "dep": "Canelones" },
         { "date": "2021-02-11", "age": 66, "s": "?", "dep": "Soriano" },
         { "date": "2021-02-11", "age": 83, "s": "?", "dep": "Tacuarembó" },
@@ -524,6 +523,9 @@
         { "date": "2021-02-11", "age": 64, "s": "?", "dep": "Montevideo" },
         { "date": "2021-02-11", "age": 66, "s": "?", "dep": "Montevideo" },
         { "date": "2021-02-11", "age": 72, "s": "?", "dep": "Montevideo" },
-        { "date": "2021-02-11", "age": 86, "s": "?", "dep": "Montevideo" }
+        { "date": "2021-02-11", "age": 86, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-12", "age": 78, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-12", "age": 78, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-12", "age": 83, "s": "?", "dep": "Montevideo" }
     ]
 }
