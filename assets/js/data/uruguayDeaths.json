@@ -534,6 +534,12 @@
         { "date": "2021-02-13", "age": 77, "s": "?", "dep": "Montevideo" },
         { "date": "2021-02-13", "age": 93, "s": "?", "dep": "Montevideo" },
         { "date": "2021-02-14", "age": 84, "s": "?", "dep": "Canelones" },
-        { "date": "2021-02-14", "age": 90, "s": "?", "dep": "Rivera" }
+        { "date": "2021-02-14", "age": 90, "s": "?", "dep": "Rivera" },
+        { "date": "2021-02-15", "age": 71, "s": "?", "dep": "Canelones" },
+        { "date": "2021-02-15", "age": 81, "s": "?", "dep": "Maldonado" },
+        { "date": "2021-02-15", "age": 59, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-15", "age": 68, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-15", "age": 84, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-15", "age": 85, "s": "?", "dep": "Montevideo" }
     ]
 }
