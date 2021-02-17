@@ -540,6 +540,11 @@
         { "date": "2021-02-15", "age": 59, "s": "?", "dep": "Montevideo" },
         { "date": "2021-02-15", "age": 68, "s": "?", "dep": "Montevideo" },
         { "date": "2021-02-15", "age": 84, "s": "?", "dep": "Montevideo" },
-        { "date": "2021-02-15", "age": 85, "s": "?", "dep": "Montevideo" }
+        { "date": "2021-02-15", "age": 85, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-16", "age": 61, "s": "?", "dep": "Colonia" },
+        { "date": "2021-02-16", "age": 61, "s": "?", "dep": "Paysandú" },
+        { "date": "2021-02-16", "age": 85, "s": "?", "dep": "Tacuarembó" },
+        { "date": "2021-02-16", "age": 70, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-16", "age": 88, "s": "?", "dep": "Montevideo" }
     ]
 }
