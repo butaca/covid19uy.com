@@ -545,6 +545,13 @@
         { "date": "2021-02-16", "age": 61, "s": "?", "dep": "Paysandú" },
         { "date": "2021-02-16", "age": 85, "s": "?", "dep": "Tacuarembó" },
         { "date": "2021-02-16", "age": 70, "s": "?", "dep": "Montevideo" },
-        { "date": "2021-02-16", "age": 88, "s": "?", "dep": "Montevideo" }
+        { "date": "2021-02-16", "age": 88, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-17", "age": 78, "s": "?", "dep": "Cerro Largo" },
+        { "date": "2021-02-17", "age": 95, "s": "?", "dep": "Paysandú" },
+        { "date": "2021-02-17", "age": 78, "s": "?", "dep": "Rivera" },
+        { "date": "2021-02-17", "age": 74, "s": "?", "dep": "Soriano" },
+        { "date": "2021-02-17", "age": 72, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-17", "age": 85, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-17", "age": 95, "s": "?", "dep": "Montevideo" }
     ]
 }
