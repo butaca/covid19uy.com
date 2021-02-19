@@ -552,6 +552,11 @@
         { "date": "2021-02-17", "age": 74, "s": "?", "dep": "Soriano" },
         { "date": "2021-02-17", "age": 72, "s": "?", "dep": "Montevideo" },
         { "date": "2021-02-17", "age": 85, "s": "?", "dep": "Montevideo" },
-        { "date": "2021-02-17", "age": 95, "s": "?", "dep": "Montevideo" }
+        { "date": "2021-02-17", "age": 95, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-18", "age": 87, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-18", "age": 84, "s": "?", "dep": "Soriano" },
+        { "date": "2021-02-18", "age": 85, "s": "?", "dep": "Treinta y Tres" },
+        { "date": "2021-02-18", "age": 84, "s": "?", "dep": "Colonia" },
+        { "date": "2021-02-18", "age": 84, "s": "?", "dep": "Colonia" }
     ]
 }
