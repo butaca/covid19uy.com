@@ -97,6 +97,7 @@ describe('Test data', function () {
         assert.equal(todayActiveCases, totalDepartmentsActiveCases, "Total departments active cases don't match Uruguay active cases");
     });
 
+    //TODO: optimize
     it('Uruguay deaths count for each day in uruguay.json should match the registered deaths in uruguayDeaths.json', function () {
 
         let totalDeaths = 0;
