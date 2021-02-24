@@ -106,7 +106,25 @@ describe('Test data', function () {
             var death = uruguayDeaths.deaths[i];
             var date = moment(death.date, DATE_FORMAT);
             totalDeaths++;
-            deathHistory.push({ date: date, deaths: totalDeaths });
+            
+            if(deathHistory.length == 0) {
+                deathHistory.push({ date: date, deaths: totalDeaths });
+            }
+            else {
+                var prev = deathHistory[deathHistory.length - 1];
+                if(prev.date == date) {
+                    prev.deaths = totalDeaths;
+                }
+                else {
+                    deathHistory.push({ date: date, deaths: totalDeaths });
+                }
+
+                // an extra death was reported on 2021-02-22, but it wasn't informed which one
+                if(date.isSame("2021-02-23") && prev.date.isSame("2021-02-22")) {
+                    prev.deaths--;
+                    totalDeaths--;
+                }
+            }
         }
 
         for (let i = 0; i < uruguay.data.length; ++i) {

@@ -9,7 +9,9 @@
     <span class="has-tooltip-multiline" data-tooltip="{{ i18n "positivesAndCasesInfo"}}">⚠️</span>
     {{- end -}}
     {{- if .displayUnreportedPositiviesInfo -}}
-    </span>
     <span class="has-tooltip-multiline" data-tooltip="{{ i18n "unreportedPositiviesInfo"}}">⚠️</span>
+    {{- end -}}
+    {{- if .displayDeathsInfo -}}
+    <span class="has-tooltip-multiline" data-tooltip="{{ i18n "deathsInfo"}}">⚠️</span>
     {{- end -}}
 </h3>

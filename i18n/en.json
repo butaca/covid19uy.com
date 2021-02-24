@@ -252,7 +252,10 @@
     "other": "Positives"
   },
   "positivesAndCasesInfo": {
-    "other": "⚠️ Until 4/8 the number of cases (people with the virus) was not reported, but the number of positive tests. There are people with the virus that were tested positive more than once. Therefore until 4/8, cases (people with the virus) are assumed as the positive tests due to lack of information."
+    "other": "⚠️ Until 04/08/2020 the number of cases (people with the virus) was not reported, but the number of positive tests. There are people with the virus that were tested positive more than once. Therefore until 4/8, cases (people with the virus) are assumed as the positive tests due to lack of information."
+  },
+  "displayDeathsInfo": {
+    "other": "⚠️ On 02/22/2021 the MSP through SINAE reported an incorrect death but did not indicate which one. For this reason, this chart shows one more death but it is not known which one due to lack of information."
   },
   "publishedBy": {
     "other": "published by"
