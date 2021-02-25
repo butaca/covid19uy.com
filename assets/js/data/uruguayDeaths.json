@@ -588,8 +588,9 @@
         { "date": "2021-02-23", "age": 69, "s": "?", "dep": "Montevideo" },
         { "date": "2021-02-23", "age": 98, "s": "?", "dep": "Montevideo" },
         { "date": "2021-02-23", "age": 79, "s": "?", "dep": "San José" },
-        { "date": "2021-02-23", "age": 64, "s": "?", "dep": "Rivera" }
-
-        
+        { "date": "2021-02-23", "age": 64, "s": "?", "dep": "Rivera" },
+        { "date": "2021-02-24", "age": 67, "s": "?", "dep": "Canelones" },
+        { "date": "2021-02-24", "age": 58, "s": "?", "dep": "San José" },
+        { "date": "2021-02-24", "age": 77, "s": "?", "dep": "Río Negro" }
     ]
 }
