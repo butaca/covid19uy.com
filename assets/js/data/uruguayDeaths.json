@@ -601,6 +601,8 @@
         { "date": "2021-02-26", "age": 36, "s": "?", "dep": "Florida" },
         { "date": "2021-02-26", "age": 58, "s": "?", "dep": "Maldonado" },
         { "date": "2021-02-26", "age": 80, "s": "?", "dep": "Montevideo" },
-        { "date": "2021-02-26", "age": 81, "s": "?", "dep": "Montevideo" }
+        { "date": "2021-02-26", "age": 81, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-27", "age": 83, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-27", "age": 86, "s": "?", "dep": "Montevideo" }
     ]
 }
