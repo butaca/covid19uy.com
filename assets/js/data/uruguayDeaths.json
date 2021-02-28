@@ -603,6 +603,11 @@
         { "date": "2021-02-26", "age": 80, "s": "?", "dep": "Montevideo" },
         { "date": "2021-02-26", "age": 81, "s": "?", "dep": "Montevideo" },
         { "date": "2021-02-27", "age": 83, "s": "?", "dep": "Montevideo" },
-        { "date": "2021-02-27", "age": 86, "s": "?", "dep": "Montevideo" }
+        { "date": "2021-02-27", "age": 86, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-28", "age": 61, "s": "?", "dep": "Canelones" },
+        { "date": "2021-02-28", "age": 72, "s": "?", "dep": "Florida" },
+        { "date": "2021-02-28", "age": 81, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-28", "age": 81, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-02-28", "age": 88, "s": "?", "dep": "Montevideo" }
     ]
 }
