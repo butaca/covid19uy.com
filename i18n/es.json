@@ -255,7 +255,7 @@
     "other": "⚠️ Hasta el 08/04/2020 no se informó los casos de personas con el virus, sino la cantidad de tests positivos. Hay personas con el virus que se realizaron el test y dieron positivo más de una vez. Entonces hasta el 8/4, se asumen como casos (personas con el virus) a los tests positivos por falta de información."
   },
   "deathsInfo": {
-    "other": "⚠️ El 22/02/2021 el MSP a través del SINAE informó un fallecimiento incorrecto pero no indicó cuál. Por este motivo la gráfica \"Fallecimientos por edad\" presenta un fallecimiento de más pero no se sabe cuál por falta de información."
+    "other": "⚠️ El 22/02/2021 y el 02/03/2021 el MSP a través del SINAE informó un fallecimiento incorrecto cada día pero no indicó cuáles. Por este motivo la gráfica \"Fallecimientos por edad\" presenta dos fallecimientos de más pero no se sabe cuáles por falta de información."
   },
   "publishedBy": {
     "other": "publicados por"

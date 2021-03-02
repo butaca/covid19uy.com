@@ -124,6 +124,12 @@ describe('Test data', function () {
                     prev.deaths--;
                     totalDeaths--;
                 }
+
+                // an extra death was reported on the 2021-03-02 report, but it wasn't informed which one
+                if(date.isSame("2021-03-03") && prev.date.isSame("2021-03-02")) {
+                    prev.deaths--;
+                    totalDeaths--;
+                }
             }
         }
 
