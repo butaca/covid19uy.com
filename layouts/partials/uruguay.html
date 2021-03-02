@@ -34,6 +34,9 @@
 {{- $todayCases = $today.newCases -}}
 {{- end -}}
 {{- $todayDeaths := sub $today.deaths $yesterday.deaths -}}
+{{- if isset $today "newDeaths" -}}
+{{- $todayDeaths = $today.newDeaths -}}
+{{- end -}}
 {{- $todayRecovered := sub $today.recovered $yesterday.recovered -}}
 {{- $todayHealthWorkerCases := 0 -}}
 {{- if gt $today.hc $yesterday.hc -}}
