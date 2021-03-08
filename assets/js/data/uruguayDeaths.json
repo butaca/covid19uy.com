@@ -651,6 +651,13 @@
         { "date": "2021-03-07", "age": 87, "s": "?", "dep": "Rivera" },
         { "date": "2021-03-07", "age": 71, "s": "?", "dep": "Montevideo" },
         { "date": "2021-03-07", "age": 90, "s": "?", "dep": "Montevideo" },
-        { "date": "2021-03-07", "age": 91, "s": "?", "dep": "Montevideo" }
+        { "date": "2021-03-07", "age": 91, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-08", "age": 99, "s": "?", "dep": "Durazno" },
+        { "date": "2021-03-08", "age": 69, "s": "?", "dep": "Paysandú" },
+        { "date": "2021-03-08", "age": 87, "s": "?", "dep": "Salto" },
+        { "date": "2021-03-08", "age": 67, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-08", "age": 75, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-08", "age": 82, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-08", "age": 83, "s": "?", "dep": "Montevideo" }
     ]
 }
