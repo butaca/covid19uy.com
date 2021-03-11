@@ -1,5 +1,5 @@
 {
-    "unreportedDailyTests": 789,
+    "unreportedDailyTests": 4212,
     "data": [
         { "date": "2020-03-13", "positives": 4 },
         { "date": "2020-03-14", "positives": 2 },
@@ -363,7 +363,8 @@
         { "date": "2021-03-07", "tests": 5403, "cases": 63837, "recovered": 54861, "deaths": 651, "icu": 87, "imcu": 0, "hc": 3442, "hcRecovered": 3116, "hcDeaths" : 7, "newCases": 833 },
         { "date": "2021-03-08", "tests": 6539, "cases": 64700, "recovered": 55638, "deaths": 658, "icu": 87, "imcu": 0, "hc": 3500, "hcRecovered": 3147, "hcDeaths" : 7, "newCases": 872 },
         { "date": "2021-03-09", "tests": 6951, "cases": 65527, "recovered": 56399, "deaths": 666, "icu": 88, "imcu": 0, "hc": 3546, "hcRecovered": 3174, "hcDeaths" : 7, "newCases": 831 },
-        { "date": "2021-03-10", "tests": 6999, "cases": 66484, "recovered": 57134, "deaths": 678, "icu": 91, "imcu": 0, "hc": 3583, "hcRecovered": 3202, "hcDeaths" : 7, "newCases": 957 }
+        { "date": "2021-03-10", "tests": 6999, "cases": 66484, "recovered": 57134, "deaths": 678, "icu": 91, "imcu": 0, "hc": 3583, "hcRecovered": 3202, "hcDeaths" : 7, "newCases": 957 },
+        {"date":"2021-03-11","tests":12438,"cases":67717,"recovered":57773,"deaths":683,"icu":102,"imcu":0,"hc":3644,"hcRecovered":3234,"hcDeaths":7,"newCases":1238}
         
     ]
 }
