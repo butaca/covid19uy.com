@@ -683,8 +683,12 @@
         { "date": "2021-03-11", "age": 68, "s": "?", "dep": "Maldonado" },
         { "date": "2021-03-11", "age": 66, "s": "?", "dep": "Montevideo" },
         { "date": "2021-03-11", "age": 67, "s": "?", "dep": "Colonia" },
-        { "date": "2021-03-11", "age": 98, "s": "?", "dep": "Colonia" }
-
-        
+        { "date": "2021-03-11", "age": 98, "s": "?", "dep": "Colonia" },
+        { "date": "2021-03-12", "age": 95, "s": "?", "dep": "Colonia" },
+        { "date": "2021-03-12", "age": 68, "s": "?", "dep": "Tacuarembó" },
+        { "date": "2021-03-12", "age": 63, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-12", "age": 75, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-12", "age": 84, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-12", "age": 85, "s": "?", "dep": "Montevideo" }
     ]
 }
