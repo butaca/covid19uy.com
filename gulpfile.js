@@ -12,8 +12,11 @@ const moment = require("moment");
 const autoprefixer = require('gulp-autoprefixer');
 const { promisify } = require('util');
 const csv = require('csv-parser');
+const querystring = require('querystring');
+const xml2json = require('xml2json');
 const DATA_DIR = "./assets/js/data/"
 const uruguay = require(DATA_DIR + "uruguay.json");
+const VAC_BASE_URL = "https://monitor.uruguaysevacuna.gub.uy/plugin/cda/api/doQuery";
 
 const writeFilePromise = promisify(fs.writeFile);
 
@@ -233,6 +236,150 @@ async function downloadCountriesData() {
     return writeFilePromise(DATA_DIR + "region.json", JSON.stringify(regionObj));
 }
 
-exports.develop = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData), build, gulp.parallel(watch, hugoServer));
-exports.deploy = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData), updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);
+async function request(url, params) {
+    url += "?" + querystring.encode(params);
+
+    try {
+        let response;
+        response = await axios.get(url)
+        if (response.status !== 200) {
+            throw new Error('Unexpected HTTP code when downloading data: ' + response.status);
+        }
+        return response.data;
+    } catch (e) {
+        throw e;
+    }
+}
+
+async function getVacHistoryData() {
+    const params = {
+        path: "/public/Epidemiologia/Vacunas Covid/Paneles/Vacunas Covid/VacunasCovid.cda",
+        dataAccessId: "sql_evolucion",
+        outputIndexId: "1",
+        pageSize: "0",
+        pageStart: "0",
+        sortBy: "",
+        paramsearchBox: "",
+        outputType: "XML"
+    }
+    return await request(VAC_BASE_URL, params);
+}
+
+const today = moment();
+
+async function getVacTotalData() {
+    const params = {
+        paramp_periodo_desde_sk: "20210227",
+        paramp_periodo_hasta_sk: today.format("YYYYMMDD"),
+        path: "/public/Epidemiologia/Vacunas Covid/Paneles/Vacunas Covid/VacunasCovid.cda",
+        dataAccessId: "sql_indicadores_generales",
+        outputIndexId: "1",
+        pageSize: "0",
+        pageStart: "0",
+        sortBy: "",
+        paramsearchBox: "",
+        outputType: "XML"
+    }
+    return await request(VAC_BASE_URL, params);
+}
+
+async function downloadUruguayVaccinationData() {
+    const [vacHistoryData, vacTotalData] = await Promise.all([getVacHistoryData(), getVacTotalData()]);
+
+    const vacHistoryDataObj = xml2json.toJson(vacHistoryData, { object: true });
+    const vacHistoryMetadata = vacHistoryDataObj.CdaExport.MetaData.ColumnMetaData;
+
+    let dateIndex = -1, totalIndex = -1, coronavacIndex = -1, pfizerIndex = -1;
+    for (let i = 0; i < vacHistoryMetadata.length; ++i) {
+        const metadataCol = vacHistoryMetadata[i];
+        const name = metadataCol.name.toLowerCase();
+
+        if (name.includes("fecha")) {
+            dateIndex = parseInt(metadataCol.index);
+        }
+        else if (name.includes("actos vacunales")) {
+            totalIndex = parseInt(metadataCol.index);
+        }
+        else if (name.includes("coronavac")) {
+            coronavacIndex = parseInt(metadataCol.index);
+        }
+        else if (name.includes("pfizer")) {
+            pfizerIndex = parseInt(metadataCol.index);
+        }
+    }
+
+    if (dateIndex == -1 || totalIndex == -1 || coronavacIndex == -1 || pfizerIndex == -1) {
+        throw new Error("Can't find vac data indexes");
+    }
+
+    const vacData = {
+        history: []
+    }
+
+    const rows = vacHistoryDataObj.CdaExport.ResultSet.Row;
+    for (let i = 0; i < rows.length; ++i) {
+        const data = rows[i].Col;
+
+        const date = data[dateIndex];
+        let total = data[totalIndex];
+        let coronavac = data[coronavacIndex];
+        if (coronavac == null || (typeof coronavac === "object" && coronavac.isNull === "true")) {
+            coronavac = 0;
+        }
+        let pfizer = data[pfizerIndex];
+        if (pfizer == null || (typeof pfizer === "object" && pfizer.isNull === "true")) {
+            pfizer = 0;
+        }
+
+        total = parseInt(total);
+        coronavac = parseInt(coronavac);
+        pfizer = parseInt(pfizer);
+
+        vacData.history.push([date, total, coronavac, pfizer]);
+    }
+
+    ///////////
+
+    const vacTotalsDataObj = xml2json.toJson(vacTotalData, { object: true });
+    const vacTotalsMetadata = vacTotalsDataObj.CdaExport.MetaData.ColumnMetaData;
+
+    let todayDateIndex = -1, totalVacIndex = -1, todayTotalIndex = -1;
+    for (let i = 0; i < vacTotalsMetadata.length; ++i) {
+        const metadataCol = vacTotalsMetadata[i];
+        const name = metadataCol.name.toLowerCase();
+
+        if (name.includes("hora")) {
+            todayDateIndex = parseInt(metadataCol.index);
+        }
+        else if (name.includes("vacunaciones")) {
+            totalVacIndex = parseInt(metadataCol.index);
+        }
+        else if (name.includes("actoshoy")) {
+            todayTotalIndex = parseInt(metadataCol.index);
+        }
+    }
+
+    if (todayDateIndex == -1 || totalVacIndex == -1 || todayTotalIndex == -1) {
+        throw new Error("Can't find vac total data indexes");
+    }
+
+    const totalRows = vacTotalsDataObj.CdaExport.ResultSet.Row;
+    const totalsData = totalRows.Col;
+
+    const todayDate = totalsData[todayDateIndex];
+    const todayTotal = totalsData[todayTotalIndex];
+    const totalVac = totalsData[totalVacIndex];
+
+    vacData.date = today.format("YYYY-MM-DD");
+    vacData.todayDate = todayDate;
+    vacData.todayTotal = parseInt(todayTotal);
+    vacData.total = parseInt(totalVac);
+
+    await writeFilePromise(DATA_DIR + "uruguayVaccination.json", JSON.stringify(vacData));
+
+}
+
+
+exports.develop = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData), build, gulp.parallel(watch, hugoServer));
+exports.deploy = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData), updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);
 exports.default = exports.develop;

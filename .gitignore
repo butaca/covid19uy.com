@@ -15,3 +15,4 @@ trigger_build_master.sh
 trigger_build_develop.sh
 .vscode/launch.json
 .env
+assets/js/data/uruguayVaccination.json

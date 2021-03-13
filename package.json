@@ -32,6 +32,7 @@
         "js-yaml": "^3.14.0",
         "pushover-notifications": "^1.2.2",
         "twitter-lite": "^0.14.0",
-        "twitter-text": "^3.1.0"
+        "twitter-text": "^3.1.0",
+        "xml2json": "^0.12.0"
     }
 }
