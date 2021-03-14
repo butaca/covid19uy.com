@@ -70,5 +70,11 @@
         "id": "chart-daily-deaths",
         "title": "graphDailyDeaths",
         "desc": "graphDailyDeathsDesc"
+    },
+    {
+        "id": "chart-daily-vacs",
+        "title": "graphDailyVacs",
+        "desc": "graphDailyVacsDesc",
+        "new": true
     }
 ]

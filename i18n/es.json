@@ -203,6 +203,21 @@
   "graphPositivityRateDesc" : {
     "other": "En cada día, porcentaje de tests positivos realizados ese día. Para este cálculo se asume que el total de tests positivos corresponde a la cantidad de casos nuevos ese día por falta de información."
   },
+  "graphDailyVacs": {
+    "other": "Vacunación diaria"
+  },
+  "graphDailyVacsDesc": {
+    "other": "Cantidad de vacunas administradas por día, discriminada por tipo de vacuna."
+  },
+  "vacTotal" : {
+    "other": "Total"
+  },
+  "vacCoronavac" : {
+    "other": "Coronavac"
+  },
+  "vacPfizer" : {
+    "other": "Pfizer"
+  },
   "men" : {
     "other": "Hombres"
   },

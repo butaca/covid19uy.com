@@ -10,6 +10,7 @@ import population from "./data/world-population.json";
 import region from "./data/region.json";
 import departmentsData from "./data/uruguayDepartments.json"
 import deathsData from "./data/uruguayDeaths.json"
+import vaccinationData from "./data/uruguayVaccination.json"
 
 var MOVING_AVERAGE_DELTA = 3;
 
@@ -29,7 +30,7 @@ function getTotal(values) {
 }
 
 function average(array, startIndex, length, prevAverage) {
-    if(prevAverage == null || prevAverage == undefined) {
+    if (prevAverage == null || prevAverage == undefined) {
         var sum = 0;
         for (var i = 0; i < length && (i + startIndex) < array.length; ++i) {
             sum += array[i + startIndex];
@@ -148,7 +149,7 @@ function main() {
         yesterdayTotalDeaths = deaths.length > 0 ? deaths[deaths.length - 1] : 0;
 
         var todayTotalDeaths = el.deaths != undefined ? el.deaths : 0;
-        if(el.deaths != undefined && deathsFirstIndex == -1) {
+        if (el.deaths != undefined && deathsFirstIndex == -1) {
             deathsFirstIndex = index;
         }
         deaths.push(todayTotalDeaths);
@@ -839,7 +840,7 @@ function main() {
     };
     options.tooltips = pieToolTips;
     ctx = document.getElementById('chart-deaths-sex');
-    
+
     var deathBySexLabels = [lang.men.other, lang.women.other];
     deathBySexLabels = deathBySexLabels.map(function (label, index) { return label + ': ' + (dataDeathsTotal[index] / totalDeahts * 100).toFixed(2) + '%' });
 
@@ -973,4 +974,45 @@ function main() {
             }
         })(paths[i])
     }
+
+    ////////////////////
+
+   var vacDates = vaccinationData.history.date.map(function (el) {
+        if (flipDate) {
+            var s = el.split("/");
+            return s[1] + "/" + s[0];
+        } else {
+            return el;
+        }
+    });
+
+    options = createDefaultChartOptions();
+    ctx = document.getElementById('chart-daily-vacs');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: vacDates,
+            datasets: [
+                {
+                    pointBackgroundColor: "#0000FFFF",
+                    backgroundColor: "#0000FF80",
+                    label: lang.vacTotal.other,
+                    data: vaccinationData.history.total,
+                },
+                {
+                    pointBackgroundColor: "#FF8C00ff",
+                    backgroundColor: "#FF8C0080",
+                    label: lang.vacCoronavac.other,
+                    data: vaccinationData.history.coronavac,
+                },
+                {
+                    pointBackgroundColor: "#00CC00FF",
+                    backgroundColor: "#00CC0080",
+                    label: lang.vacPfizer.other,
+                    data: vaccinationData.history.pfizer,
+                }
+            ]
+        },
+        options: options
+    });
 }

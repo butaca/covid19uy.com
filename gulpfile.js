@@ -313,14 +313,19 @@ async function downloadUruguayVaccinationData() {
     }
 
     const vacData = {
-        history: []
+        history: {
+            date : [],
+            total : [],
+            coronavac: [],
+            pfizer: []
+        }
     }
 
     const rows = vacHistoryDataObj.CdaExport.ResultSet.Row;
     for (let i = 0; i < rows.length; ++i) {
         const data = rows[i].Col;
 
-        const date = data[dateIndex];
+        const date = data[dateIndex].replace("-", "/");
         let total = data[totalIndex];
         let coronavac = data[coronavacIndex];
         if (coronavac == null || (typeof coronavac === "object" && coronavac.isNull === "true")) {
@@ -335,7 +340,10 @@ async function downloadUruguayVaccinationData() {
         coronavac = parseInt(coronavac);
         pfizer = parseInt(pfizer);
 
-        vacData.history.push([date, total, coronavac, pfizer]);
+        vacData.history.date.push(date);
+        vacData.history.total.push(total);
+        vacData.history.coronavac.push(coronavac);
+        vacData.history.pfizer.push(pfizer);
     }
 
     ///////////
