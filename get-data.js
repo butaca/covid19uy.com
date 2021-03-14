@@ -40,22 +40,6 @@ async function getUpdatedDate() {
     return moment(data.editingInfo.lastEditDate).format("YYYY-MM-DD");
 }
 
-async function getDepartmentsData() {
-    const params = {
-        f : "json",
-        where : "CasosActivos>=0",
-        returnGeometry : "false",
-        outFields: "*",
-        orderByFields: "CasosActivos desc",
-        resultOffset: "0",
-        resultRecordCount: "19",
-        resultType:"standard",
-        cacheHint: "false"
-    }
-
-    return await request(BASE_URL + "/0/query", params);
-}
-
 (async function () {
     const [date, tests, cases, recovered, deaths, icu, imcu, hc, hcRecovered, hcDeaths, newCases] = await Promise.all([
         getUpdatedDate(),
@@ -86,21 +70,6 @@ async function getDepartmentsData() {
     };
 
     console.log("\n" + JSON.stringify(data));
-
-    data = {
-        departments: {}
-    }; 
-
-    const respData = await getDepartmentsData();
-
-    data.date = date;
-    
-    for(let i = 0; i < respData.features.length; ++i) {
-        const attributes = respData.features[i].attributes;
-        data.departments[attributes.NOMBRE] = attributes.CasosActivos;
-    }
-
-    console.log("\n" + JSON.stringify(data) + "\n");
 
 })();
 

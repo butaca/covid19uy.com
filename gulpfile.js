@@ -17,6 +17,7 @@ const xml2json = require('xml2json');
 const DATA_DIR = "./assets/js/data/"
 const uruguay = require(DATA_DIR + "uruguay.json");
 const VAC_BASE_URL = "https://monitor.uruguaysevacuna.gub.uy/plugin/cda/api/doQuery";
+const VIS_BASE_URL = "https://services5.arcgis.com/Th0Tmkhiy5BQYoxP/arcgis/rest/services/Casos_DepartamentosROU_vista_2/FeatureServer/";
 
 const writeFilePromise = promisify(fs.writeFile);
 
@@ -403,8 +404,8 @@ async function downloadUruguayVaccinationData() {
 
     const vacTypeDataObj = xml2json.toJson(vacTypeData, { object: true });
     const vacTypeRows = vacTypeDataObj.CdaExport.ResultSet.Row;
-    let coronavacTotal = -1;
-    let pfizerTotal = -1;
+    let coronavacTotal = 0;
+    let pfizerTotal = 0;
     for (let i = 0; i < vacTypeRows.length; ++i) {
         const col = vacTypeRows[i].Col;
         if(col[0].toLowerCase().includes("coronavac")) {
@@ -415,10 +416,6 @@ async function downloadUruguayVaccinationData() {
         }
     }
 
-    if(coronavacTotal == -1 || pfizerTotal == -1) {
-        throw new Error("Can't find Coronavac or Pfizer totals");
-    }
-
     vacData.coronavacTotal = coronavacTotal;
     vacData.pfizerTotal = pfizerTotal;
 
@@ -426,7 +423,44 @@ async function downloadUruguayVaccinationData() {
 
 }
 
+async function getDepartmentsData() {
+    const params = {
+        f : "json",
+        where : "CasosActivos>=0",
+        returnGeometry : "false",
+        outFields: "*",
+        orderByFields: "CasosActivos desc",
+        resultOffset: "0",
+        resultRecordCount: "19",
+        resultType:"standard",
+        cacheHint: "false"
+    }
 
-exports.develop = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData), build, gulp.parallel(watch, hugoServer));
-exports.deploy = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData), updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);
+    return await request(VIS_BASE_URL + "/0/query", params);
+}
+
+async function getVisUpdatedDate() {
+    const data = await request(VIS_BASE_URL + '0/', {f: "json"});
+    return moment(data.editingInfo.lastEditDate).format("YYYY-MM-DD");
+}
+
+async function downloadDepartmentsData() {
+    const data = {
+        departments: {}
+    }; 
+
+    const [date, respData] = await Promise.all([ getVisUpdatedDate(), getDepartmentsData()]);
+
+    data.date = date;
+    
+    for(let i = 0; i < respData.features.length; ++i) {
+        const attributes = respData.features[i].attributes;
+        data.departments[attributes.NOMBRE] = attributes.CasosActivos;
+    }
+
+    await writeFilePromise(DATA_DIR + "uruguayDepartments.json", JSON.stringify(data));
+}
+
+exports.develop = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData), build, gulp.parallel(watch, hugoServer));
+exports.deploy = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData), updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);
 exports.default = exports.develop;
