@@ -1,5 +1,7 @@
 <ul>
 {{- range .Site.Data.charts  -}}
+    {{- if not .disabled -}}
     <li><strong>{{ i18n .title }}</strong>: {{ i18n .desc }}</li>
+    {{- end -}}
 {{- end -}}
 </ul>

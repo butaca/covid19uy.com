@@ -34,11 +34,13 @@
             <div class="columns is-centered is-multiline">
                 {{ $context := . }}
                 {{- range .Site.Data.charts -}}
+                {{- if not .disabled -}}
                 <div class="column is-4">
                     {{ partial "chart-title.html" (dict "title" (i18n .title) "desc" (i18n .desc) "displayPositivesAndCasesInfo" .displayPositivesAndCasesInfo "displayUnreportedPositiviesInfo" .displayUnreportedPositiviesInfo "new" .new "displayDeathsInfo" .displayDeathsInfo) }}
                     <canvas id="{{ .id }}" width="100%" height="100%"></canvas>
                     {{ partial "uruguay-updated-date.html" $context }}
                 </div>
+                {{- end -}}
                 {{- end -}}
             </div>
             <div class="content">
