@@ -1015,4 +1015,36 @@ function main() {
         },
         options: options
     });
+
+    const totalVacs = vaccinationData.coronavacTotal + vaccinationData.pfizerTotal;
+    options = createDefaultChartOptions();
+    options.scales = {
+        xAxes: [{
+            display: false
+        }],
+        yAxes: [{
+            display: false
+        }]
+    };
+    options.elements = {
+        center: {
+            text: lang.vacTotal.other + ': ' + totalVacs,
+            color: '#36A2EB',
+            fontStyle: 'Helvetica',
+            sidePadding: 15
+        }
+    };
+    options.tooltips = pieToolTips;
+    ctx = document.getElementById('chart-total-vacs');
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: [lang.vacCoronavac.other, lang.vacPfizer.other],
+            datasets: [{
+                data: [vaccinationData.coronavacTotal, vaccinationData.pfizerTotal],
+                backgroundColor: ["#FF8C0080", "#00CC0080"]
+            }]
+        },
+        options: options
+    });
 }

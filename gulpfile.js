@@ -283,8 +283,24 @@ async function getVacTotalData() {
     return await request(VAC_BASE_URL, params);
 }
 
+async function getVacTypeData() {
+    const params = {
+        paramp_periodo_desde_sk: "20210227",
+        paramp_periodo_hasta_sk: today.format("YYYYMMDD"),
+        path: "/public/Epidemiologia/Vacunas Covid/Paneles/Vacunas Covid/VacunasCovid.cda",
+        dataAccessId: "sql_vacunas_tipo_vacuna",
+        outputIndexId: "1",
+        pageSize: "0",
+        pageStart: "0",
+        sortBy: "",
+        paramsearchBox: "",
+        outputType: "XML"
+    }
+    return await request(VAC_BASE_URL, params);
+}
+
 async function downloadUruguayVaccinationData() {
-    const [vacHistoryData, vacTotalData] = await Promise.all([getVacHistoryData(), getVacTotalData()]);
+    const [vacHistoryData, vacTotalData, vacTypeData] = await Promise.all([getVacHistoryData(), getVacTotalData(), getVacTypeData()]);
 
     const vacHistoryDataObj = xml2json.toJson(vacHistoryData, { object: true });
     const vacHistoryMetadata = vacHistoryDataObj.CdaExport.MetaData.ColumnMetaData;
@@ -382,6 +398,29 @@ async function downloadUruguayVaccinationData() {
     vacData.todayDate = todayDate;
     vacData.todayTotal = parseInt(todayTotal);
     vacData.total = parseInt(totalVac);
+
+    ///////
+
+    const vacTypeDataObj = xml2json.toJson(vacTypeData, { object: true });
+    const vacTypeRows = vacTypeDataObj.CdaExport.ResultSet.Row;
+    let coronavacTotal = -1;
+    let pfizerTotal = -1;
+    for (let i = 0; i < vacTypeRows.length; ++i) {
+        const col = vacTypeRows[i].Col;
+        if(col[0].toLowerCase().includes("coronavac")) {
+            coronavacTotal = parseInt(col[1]);
+        }
+        else if(col[0].toLowerCase().includes("pfizer")) {
+            pfizerTotal = parseInt(col[1]);
+        }
+    }
+
+    if(coronavacTotal == -1 || pfizerTotal == -1) {
+        throw new Error("Can't find Coronavac or Pfizer totals");
+    }
+
+    vacData.coronavacTotal = coronavacTotal;
+    vacData.pfizerTotal = pfizerTotal;
 
     await writeFilePromise(DATA_DIR + "uruguayVaccination.json", JSON.stringify(vacData));
 

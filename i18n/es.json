@@ -209,6 +209,12 @@
   "graphDailyVacsDesc": {
     "other": "Cantidad de vacunas administradas por día, discriminada por tipo de vacuna."
   },
+  "graphTotalVacs": {
+    "other": "Total de vacunación"
+  },
+  "graphTotalVacsDesc": {
+    "other": "Total de vacunas administradas, discriminada por tipo de vacuna."
+  },
   "vacTotal" : {
     "other": "Total"
   },
