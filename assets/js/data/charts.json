@@ -75,14 +75,12 @@
         "id": "chart-total-vacs",
         "title": "graphTotalVacs",
         "desc": "graphTotalVacsDesc",
-        "new": true,
-        "disabled": true
+        "new": true
     },
     {
         "id": "chart-daily-vacs",
         "title": "graphDailyVacs",
         "desc": "graphDailyVacsDesc",
-        "new": true,
-        "disabled": true
+        "new": true
     }
 ]
