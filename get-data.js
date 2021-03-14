@@ -69,7 +69,7 @@ async function getUpdatedDate() {
         newCases: newCases
     };
 
-    console.log("\n" + JSON.stringify(data));
+    console.log("\n" + JSON.stringify(data) + "\n");
 
 })();
 
