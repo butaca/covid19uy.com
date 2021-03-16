@@ -712,6 +712,11 @@
         { "date": "2021-03-14", "age": 81, "s": "?", "dep": "Montevideo" },
         { "date": "2021-03-14", "age": 83, "s": "?", "dep": "Montevideo" },
         { "date": "2021-03-14", "age": 85, "s": "?", "dep": "Montevideo" },
-        { "date": "2021-03-14", "age": 92, "s": "?", "dep": "Montevideo" }
+        { "date": "2021-03-14", "age": 92, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-15", "age": 66, "s": "?", "dep": "San José" },
+        { "date": "2021-03-15", "age": 96, "s": "?", "dep": "Colonia" },
+        { "date": "2021-03-15", "age": 81, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-15", "age": 82, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-15", "age": 92, "s": "?", "dep": "Montevideo" }
     ]
 }
