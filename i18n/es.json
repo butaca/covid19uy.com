@@ -358,5 +358,8 @@
   },
   "icuInitials": {
     "other": "CTI"
+  },
+  "notAvailable": {
+    "other": "No disponible"
   }
 }

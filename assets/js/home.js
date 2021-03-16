@@ -986,6 +986,14 @@ function main() {
         }
     });
 
+    let totalVacs = vaccinationData.coronavacTotal + vaccinationData.pfizerTotal;
+    if(totalVacs == 0) {
+        vaccinationData.history.date = [];
+        vaccinationData.history.total = [];
+        vaccinationData.history.coronavac = [];
+        vaccinationData.history.pfizer = [];
+    }
+
     options = createDefaultChartOptions();
     ctx = document.getElementById('chart-daily-vacs');
     new Chart(ctx, {
@@ -1016,7 +1024,6 @@ function main() {
         options: options
     });
 
-    const totalVacs = vaccinationData.coronavacTotal + vaccinationData.pfizerTotal;
     options = createDefaultChartOptions();
     options.scales = {
         xAxes: [{
@@ -1028,7 +1035,7 @@ function main() {
     };
     options.elements = {
         center: {
-            text: lang.vacTotal.other + ': ' + totalVacs,
+            text: totalVacs > 0 ? (lang.vacTotal.other + ': ' + totalVacs) : lang.notAvailable.other,
             color: '#36A2EB',
             fontStyle: 'Helvetica',
             sidePadding: 15

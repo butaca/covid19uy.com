@@ -358,5 +358,8 @@
   },
   "icuInitials": {
     "other": "ICU"
+  },
+  "notAvailable": {
+    "other": "Not available"
   }
 }
