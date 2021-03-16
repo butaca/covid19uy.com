@@ -717,6 +717,14 @@
         { "date": "2021-03-15", "age": 96, "s": "?", "dep": "Colonia" },
         { "date": "2021-03-15", "age": 81, "s": "?", "dep": "Montevideo" },
         { "date": "2021-03-15", "age": 82, "s": "?", "dep": "Montevideo" },
-        { "date": "2021-03-15", "age": 92, "s": "?", "dep": "Montevideo" }
+        { "date": "2021-03-15", "age": 92, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-16", "age": 88, "s": "?", "dep": "Canelones" },
+        { "date": "2021-03-16", "age": 59, "s": "?", "dep": "Lavalleja" },
+        { "date": "2021-03-16", "age": 73, "s": "?", "dep": "Rocha" },
+        { "date": "2021-03-16", "age": 86, "s": "?", "dep": "San José" },
+        { "date": "2021-03-16", "age": 71, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-16", "age": 78, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-16", "age": 82, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-16", "age": 84, "s": "?", "dep": "Montevideo" }
     ]
 }
