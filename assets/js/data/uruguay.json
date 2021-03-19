@@ -370,7 +370,8 @@
         {"date":"2021-03-14","tests":10129,"cases":71691,"recovered":60517,"deaths":712,"icu":124,"imcu":0,"hc":3777,"hcRecovered":3351,"hcDeaths":7,"newCases":1587},
         {"date":"2021-03-15","tests":10257,"cases":72862,"recovered":61609,"deaths":717,"icu":131,"imcu":0,"hc":3826,"hcRecovered":3397,"hcDeaths":7,"newCases":1182},
         {"date":"2021-03-16","tests":9835,"cases":73770,"recovered":62584,"deaths":725,"icu":135,"imcu":0,"hc":3870,"hcRecovered":3449,"hcDeaths":7,"newCases":916},
-        {"date":"2021-03-17","tests":13078,"cases":75138,"recovered":63475,"deaths":740,"icu":143,"imcu":0,"hc":3905,"hcRecovered":3488,"hcDeaths":7,"newCases":1389}
+        {"date":"2021-03-17","tests":13078,"cases":75138,"recovered":63475,"deaths":740,"icu":143,"imcu":0,"hc":3905,"hcRecovered":3488,"hcDeaths":7,"newCases":1389},
+        {"date":"2021-03-18","tests":11462,"cases":76816,"recovered":64492,"deaths":749,"icu":151,"imcu":0,"hc":3952,"hcRecovered":3537,"hcDeaths":7,"newCases":1698}
     ]
 }
 

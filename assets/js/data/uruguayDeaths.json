@@ -740,6 +740,15 @@
         { "date": "2021-03-17", "age": 82, "s": "?", "dep": "Montevideo" },
         { "date": "2021-03-17", "age": 83, "s": "?", "dep": "Montevideo" },
         { "date": "2021-03-17", "age": 91, "s": "?", "dep": "Montevideo" },
-        { "date": "2021-03-17", "age": 95, "s": "?", "dep": "Montevideo" }
+        { "date": "2021-03-17", "age": 95, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-18", "age": 88, "s": "?", "dep": "Artigas" },
+        { "date": "2021-03-18", "age": 86, "s": "?", "dep": "Rivera" },
+        { "date": "2021-03-18", "age": 28, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-18", "age": 70, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-18", "age": 73, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-18", "age": 88, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-18", "age": 90, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-18", "age": 95, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-18", "age": 95, "s": "?", "dep": "Montevideo" }
     ]
 }
