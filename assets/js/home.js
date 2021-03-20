@@ -87,6 +87,16 @@ function createDefaultChartOptions() {
     };
 }
 
+function getSiblingWithClass(elem, clazz) {
+    const siblings = Array.prototype.filter.call(elem.parentNode.children, function (child) {
+        return child !== elem && child.classList.contains(clazz);
+    });
+    if (siblings.length > 0) {
+        return siblings[0];
+    }
+    return null;
+}
+
 function main() {
     burger();
     nfCookies();
@@ -511,8 +521,6 @@ function main() {
         onlyShowForDatasetIndex: [1, 2]
     }
 
-    console.log('chart-healthcare-workers');
-
     ctx = document.getElementById('chart-healthcare-workers');
     var hcData = dailyHealthcareWorkers.slice(firstValidHealthcareWorkerIndex);
     new Chart(ctx, {
@@ -534,8 +542,6 @@ function main() {
         },
         options: options
     });
-
-    console.log('*******');
 
     options = createDefaultChartOptions();
     options.scales = {
@@ -977,7 +983,14 @@ function main() {
 
     ////////////////////
 
-   var vacDates = vaccinationData.history.date.map(function (el) {
+    const vacDate = new Date(vaccinationData.date);
+    const vacDateTokens = vaccinationData.todayDate.split(':');
+    if (vacDateTokens.length >= 2) {
+        vacDate.setHours(vacDateTokens[0]);
+        vacDate.setMinutes(vacDateTokens[1]);
+    }
+
+    var vacDates = vaccinationData.history.date.map(function (el) {
         if (flipDate) {
             var s = el.split("/");
             return s[1] + "/" + s[0];
@@ -987,7 +1000,7 @@ function main() {
     });
 
     let totalVacs = vaccinationData.coronavacTotal + vaccinationData.pfizerTotal;
-    if(totalVacs == 0) {
+    if (totalVacs == 0) {
         vaccinationData.history.date = [];
         vaccinationData.history.total = [];
         vaccinationData.history.coronavac = [];
@@ -996,6 +1009,12 @@ function main() {
 
     options = createDefaultChartOptions();
     ctx = document.getElementById('chart-daily-vacs');
+
+    let dateElem = getSiblingWithClass(ctx, "date");
+    if(dateElem != null) {
+        dateElem.innerHTML = lang.updated.other + ": " + vacDate.toLocaleString(htmlLang);
+    }
+
     new Chart(ctx, {
         type: 'bar',
         data: {
@@ -1043,6 +1062,12 @@ function main() {
     };
     options.tooltips = pieToolTips;
     ctx = document.getElementById('chart-total-vacs');
+
+    dateElem = getSiblingWithClass(ctx, "date");
+    if(dateElem != null) {
+        dateElem.innerHTML = lang.updated.other + ": " + vacDate.toLocaleString(htmlLang);
+    }
+
     new Chart(ctx, {
         type: 'doughnut',
         data: {
