@@ -11,6 +11,7 @@ import region from "./data/region.json";
 import departmentsData from "./data/uruguayDepartments.json"
 import deathsData from "./data/uruguayDeaths.json"
 import vaccinationData from "./data/uruguayVaccination.json"
+import { faVrCardboard } from "@fortawesome/free-solid-svg-icons";
 
 var MOVING_AVERAGE_DELTA = 3;
 
@@ -982,9 +983,10 @@ function main() {
     }
 
     ////////////////////
-
-    const vacDate = new Date(vaccinationData.date);
+    const utcDate = new Date(vaccinationData.date)
+    const vacDate = new Date(utcDate.getTime() + utcDate.getTimezoneOffset() * 60000);
     const vacDateTokens = vaccinationData.todayDate.split(':');
+    console.log()
     if (vacDateTokens.length >= 2) {
         vacDate.setHours(vacDateTokens[0]);
         vacDate.setMinutes(vacDateTokens[1]);
