@@ -11,7 +11,6 @@ import region from "./data/region.json";
 import departmentsData from "./data/uruguayDepartments.json"
 import deathsData from "./data/uruguayDeaths.json"
 import vaccinationData from "./data/uruguayVaccination.json"
-import { faVrCardboard } from "@fortawesome/free-solid-svg-icons";
 
 var MOVING_AVERAGE_DELTA = 3;
 
@@ -419,7 +418,7 @@ function main() {
     };
     options.elements = {
         center: {
-            text: lang.totalCases.other + ': ' + cases[cases.length - 1],
+            text: lang.totalCases.other + ': ' + cases[cases.length - 1].toLocaleString(htmlLang),
             color: '#36A2EB',
             fontStyle: 'Helvetica',
             sidePadding: 15
@@ -1013,7 +1012,7 @@ function main() {
     ctx = document.getElementById('chart-daily-vacs');
 
     let dateElem = getSiblingWithClass(ctx, "date");
-    if(dateElem != null) {
+    if (dateElem != null) {
         dateElem.innerHTML = lang.updated.other + ": " + vacDate.toLocaleString(htmlLang);
     }
 
@@ -1056,7 +1055,7 @@ function main() {
     };
     options.elements = {
         center: {
-            text: totalVacs > 0 ? (lang.vacTotal.other + ': ' + totalVacs) : lang.notAvailable.other,
+            text: totalVacs > 0 ? (lang.vacTotal.other + ': ' + totalVacs.toLocaleString(htmlLang)) : lang.notAvailable.other,
             color: '#36A2EB',
             fontStyle: 'Helvetica',
             sidePadding: 15
@@ -1066,7 +1065,7 @@ function main() {
     ctx = document.getElementById('chart-total-vacs');
 
     dateElem = getSiblingWithClass(ctx, "date");
-    if(dateElem != null) {
+    if (dateElem != null) {
         dateElem.innerHTML = lang.updated.other + ": " + vacDate.toLocaleString(htmlLang);
     }
 
