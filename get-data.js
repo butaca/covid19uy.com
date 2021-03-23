@@ -1,8 +1,10 @@
 const axios = require('axios');
+const fs = require('fs');
 const moment = require("moment");
 const querystring = require('querystring');
 
 const BASE_URL = "https://services5.arcgis.com/Th0Tmkhiy5BQYoxP/arcgis/rest/services/Casos_DepartamentosROU_vista_2/FeatureServer/"
+const URUGUAY_DATE_FILE = "./assets/js/data/uruguay.json"
 
 async function request(url, params) {
     url += "?" + querystring.encode(params);
@@ -69,7 +71,18 @@ async function getUpdatedDate() {
         newCases: newCases
     };
 
-    console.log("\n" + JSON.stringify(data) + "\n");
+    const uruguayData = fs.readFileSync(URUGUAY_DATE_FILE);
+    const uruguay = JSON.parse(uruguayData);
+    const history = uruguay.data;
+    const todayHistoryIndex = history.findIndex(el => el.date == data.date);
+    const today = data;
+    if(todayHistoryIndex == -1) {
+        history.push(today);
+    }
+    else {
+        history[todayHistoryIndex] = today;
+    }
+    fs.writeFileSync(URUGUAY_DATE_FILE, JSON.stringify(uruguay));
 
 })();
 
