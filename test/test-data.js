@@ -4,6 +4,7 @@ const { promisify } = require('util');
 const moment = require("moment");
 const DATA_DIR = "assets/js/data/"
 const DATE_FORMAT = "YYYY-MM-DD";
+const DATE_DEFAULT_TIME = "T00:00:00";
 
 describe('Test data', function () {
 
@@ -63,7 +64,7 @@ describe('Test data', function () {
                     assert.isAtLeast(recovered, prevRecovered, "Recovered: " + today.date);
                 }
                 assert.isAtLeast(deaths, prevDeaths, "Deaths: " + today.date);
-                if(today.date != "2020-08-18") { // Allow SINAE report error
+                if (today.date != "2020-08-18") { // Allow SINAE report error
                     assert.isAtLeast(hcCases, prevHCCases, "HC Cases: " + today.date);
                 }
                 if (today.date != "2020-05-20") { // Allow SINAE report error
@@ -78,9 +79,9 @@ describe('Test data', function () {
 
     it('The date in uruguayDeparments.json should match the last date in uruguay.json', function () {
         const today = uruguay.data[uruguay.data.length - 1];
-        const todayDate = moment(today.date, DATE_FORMAT);
-        const deparmentsDate = moment(departmentsData.date, DATE_FORMAT);
-        assert.ok(todayDate.isSame(deparmentsDate), "The date in uruguayDeparments.json doen't match the last date in uruguay.json");
+        const todayDate = new Date(today.date + DATE_DEFAULT_TIME);
+        const deparmentsDate = new Date(departmentsData.date + DATE_DEFAULT_TIME);
+        assert.ok(todayDate.getTime() == deparmentsDate.getTime(), "The date in uruguayDeparments.json doen't match the last date in uruguay.json");
     });
 
     it('Total departments active cases in uruguayDepartments.json should match today active cases in uruguay.json', function () {
@@ -97,6 +98,19 @@ describe('Test data', function () {
         assert.equal(todayActiveCases, totalDepartmentsActiveCases, "Total departments active cases don't match Uruguay active cases");
     });
 
+    it('Test uruguayDeaths.json data', function () {
+        let prevDate = null;
+        for (let i = 0; i < uruguayDeaths.deaths.length; ++i) {
+            const death = uruguayDeaths.deaths[i];
+            assert.isDefined(departmentsData.departments[death.dep], "Department " + death.dep + " doesn't exist in uruguayDepartments.json");
+            assert.isNumber(death.age, "Death of " + death.date + " doesn't have a valid age: " + death.age);
+            assert.isTrue(death.s === "F" || death.s === "M" || death.s === "?", "Death of " + death.date + " doesn't have a valid sex (F, M or ?): " + death.s);
+            const date = new Date(death.date + DATE_DEFAULT_TIME);
+            assert(prevDate == null || date.getTime() >= prevDate.getTime(), "Death dates must be successive");
+            prevDate = date;
+        }
+    });
+
     //TODO: optimize
     it('Uruguay deaths count for each day in uruguay.json should match the registered deaths in uruguayDeaths.json', function () {
 
@@ -104,15 +118,15 @@ describe('Test data', function () {
         let deathHistory = [];
         for (let i = 0; i < uruguayDeaths.deaths.length; ++i) {
             var death = uruguayDeaths.deaths[i];
-            var date = moment(death.date, DATE_FORMAT);
+            var date = new Date(death.date + DATE_DEFAULT_TIME);
             totalDeaths++;
-            
-            if(deathHistory.length == 0) {
+
+            if (deathHistory.length == 0) {
                 deathHistory.push({ date: date, deaths: totalDeaths });
             }
             else {
                 var prev = deathHistory[deathHistory.length - 1];
-                if(prev.date == date) {
+                if (prev.date.getTime() == date.getTime()) {
                     prev.deaths = totalDeaths;
                 }
                 else {
@@ -120,23 +134,23 @@ describe('Test data', function () {
                 }
 
                 // an extra death was reported on 2021-02-22, but it wasn't informed which one
-                if(date.isSame("2021-02-23") && prev.date.isSame("2021-02-22")) {
+                if (date.getTime() == new Date("2021-02-23" + DATE_DEFAULT_TIME).getTime() && prev.date.getTime() == new Date("2021-02-22" + DATE_DEFAULT_TIME).getTime()) {
                     prev.deaths--;
                     totalDeaths--;
                 }
 
             }
         }
-
+        let j = 0;
+        let deaths = 0;
         for (let i = 0; i < uruguay.data.length; ++i) {
             const today = uruguay.data[i];
             const todayDeaths = today.deaths || 0;
-            const todayDate = moment(today.date, DATE_FORMAT);
+            const todayDate = new Date(today.date + DATE_DEFAULT_TIME);
 
-            let deaths = 0;
-            for (let j = 0; j < deathHistory.length; ++j) {
-                var death = deathHistory[j];
-                if (death.date.isAfter(todayDate)) {
+            for (; j < deathHistory.length; ++j) {
+                const death = deathHistory[j];
+                if (death.date.getTime() > todayDate.getTime()) {
                     break;
                 }
                 else {
@@ -144,16 +158,7 @@ describe('Test data', function () {
                 }
             }
 
-            assert.equal(todayDeaths, deaths, "Death count in uruguay.json doesn't match the deaths in uruguayDeaths.json for date " + todayDate.format("YYYY-MM-DD"));
-        }
-    });
-
-    it('Test uruguayDeaths.json data', function () {
-        for (let i = 0; i < uruguayDeaths.deaths.length; ++i) {
-            const death = uruguayDeaths.deaths[i];
-            assert.isDefined(departmentsData.departments[death.dep], "Department " + death.dep + " doesn't exist in uruguayDepartments.json");
-            assert.isNumber(death.age, "Death of " + death.date + " doesn't have a valid age: " + death.age);
-            assert.isTrue(death.s === "F" || death.s === "M" || death.s === "?", "Death of " + death.date + " doesn't have a valid sex (F, M or ?): " + death.s);
+            assert.equal(todayDeaths, deaths, "Death count in uruguay.json doesn't match the deaths in uruguayDeaths.json for date " + todayDate.toString());
         }
     });
 });
