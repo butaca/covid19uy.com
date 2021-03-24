@@ -43,9 +43,10 @@ async function getUpdatedDate() {
 }
 
 (async function () {
-    const [date, tests, cases, recovered, deaths, icu, imcu, hc, hcRecovered, hcDeaths, newCases] = await Promise.all([
+    const [date, tests, activeCases, cases, recovered, deaths, icu, imcu, hc, hcRecovered, hcDeaths, newCases] = await Promise.all([
         getUpdatedDate(),
         queryValue(1, "publicar_sino=1", '[{"statisticType":"sum","onStatisticField":"test_procesados","outStatisticFieldName":"value"}]'),
+        queryValue(0, "1=1", '[{"statisticType":"sum","onStatisticField":"CasosActivos","outStatisticFieldName":"value"}]'),
         queryValue(0, "1=1", '[{"statisticType":"sum","onStatisticField":"Casos_Positivos","outStatisticFieldName":"value"}]'),
         queryValue(0, "1=1", '[{"statisticType":"sum","onStatisticField":"Casos_Recuperados","outStatisticFieldName":"value"}]'),
         queryValue(0, "1=1", '[{"statisticType":"sum","onStatisticField":"Fallecidos","outStatisticFieldName":"value"}]'),
@@ -59,6 +60,7 @@ async function getUpdatedDate() {
 
     let data = {
         date: date,
+        activeCases: activeCases,
         tests: tests,
         cases: cases,
         recovered: recovered,
