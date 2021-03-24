@@ -195,7 +195,7 @@ function main() {
         prevDayTotalCases = totalTodayCases;
         dailyCases.push(todayCases);
 
-        var todayActiveCases = totalTodayCases - todayTotalDeaths - todayTotalRecovered;
+        var todayActiveCases = el.activeCases != undefined ? el.activeCases : (totalTodayCases - todayTotalDeaths - todayTotalRecovered);
         activeCases.push(todayActiveCases);
 
         dailyActiveCases.push(todayActiveCases - prevTodayActiveCases);

@@ -7,7 +7,7 @@
 {{- $cases := $last.cases -}}
 {{- $deaths := cond (isset $last "deaths") $last.deaths 0  -}}
 {{- $recovered := cond (isset $last "recovered") $last.recovered 0  -}}
-{{- $activeCases := sub (sub $cases $deaths) $recovered -}}
+{{- $activeCases := cond (isset $last "activeCases") $last.activeCases (sub (sub $cases $deaths) $recovered) -}}
 {{- $healthWorkerCases := cond (isset $last "hc") $last.hc 0  -}}
 {{- $healthWorkerPercent := 0 -}}
 {{- if gt $cases 0 -}}

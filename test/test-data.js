@@ -86,7 +86,7 @@ describe('Test data', function () {
 
     it('Total departments active cases in uruguayDepartments.json should match today active cases in uruguay.json', function () {
         var today = uruguay.data[uruguay.data.length - 1];
-        var todayActiveCases = today.cases - today.recovered - today.deaths;
+        var todayActiveCases = today.activeCases != undefined ? today.activeCases : (today.cases - today.recovered - today.deaths);
 
         var totalDepartmentsActiveCases = 0;
         for (var departmentKey in departmentsData.departments) {

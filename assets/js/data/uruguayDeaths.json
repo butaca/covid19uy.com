@@ -811,6 +811,22 @@
         { "date": "2021-03-22", "age": 68, "s": "?", "dep": "Maldonado" },
         { "date": "2021-03-22", "age": 79, "s": "?", "dep": "Río Negro" },
         { "date": "2021-03-22", "age": 32, "s": "?", "dep": "Rivera" },
-        { "date": "2021-03-22", "age": 67, "s": "?", "dep": "Treinta y Tres" }
+        { "date": "2021-03-22", "age": 67, "s": "?", "dep": "Treinta y Tres" },
+        { "date": "2021-03-23", "age": 72, "s": "?", "dep": "Río Negro" },
+        { "date": "2021-03-23", "age": 79, "s": "?", "dep": "Rivera" },
+        { "date": "2021-03-23", "age": 80, "s": "?", "dep": "Canelones" },
+        { "date": "2021-03-23", "age": 93, "s": "?", "dep": "Canelones" },
+        { "date": "2021-03-23", "age": 38, "s": "?", "dep": "San José" },
+        { "date": "2021-03-23", "age": 84, "s": "?", "dep": "San José" },
+        { "date": "2021-03-23", "age": 51, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-23", "age": 55, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-23", "age": 60, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-23", "age": 67, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-23", "age": 82, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-23", "age": 84, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-23", "age": 85, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-23", "age": 87, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-23", "age": 92, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-23", "age": 97, "s": "?", "dep": "Montevideo" }
     ]
 }
