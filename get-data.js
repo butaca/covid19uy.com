@@ -38,7 +38,7 @@ async function queryValue(num, where, outStatistics) {
 }
 
 async function getUpdatedDate() {
-    const data = await request(BASE_URL + '0/', {f: "json"});
+    const data = await request(BASE_URL + '0/', { f: "json" });
     return moment(data.editingInfo.lastEditDate).format("YYYY-MM-DD");
 }
 
@@ -60,7 +60,6 @@ async function getUpdatedDate() {
 
     let data = {
         date: date,
-        activeCases: activeCases,
         tests: tests,
         cases: cases,
         recovered: recovered,
@@ -69,16 +68,20 @@ async function getUpdatedDate() {
         imcu: imcu,
         hc: hc,
         hcRecovered: hcRecovered,
-        hcDeaths : hcDeaths,
+        hcDeaths: hcDeaths,
         newCases: newCases
     };
+
+    if (activeCases != (cases - recovered - deaths)) {
+        data.activeCases = activeCases;
+    }
 
     const uruguayData = fs.readFileSync(URUGUAY_DATE_FILE);
     const uruguay = JSON.parse(uruguayData);
     const history = uruguay.data;
     const todayHistoryIndex = history.findIndex(el => el.date == data.date);
     const today = data;
-    if(todayHistoryIndex == -1) {
+    if (todayHistoryIndex == -1) {
         history.push(today);
     }
     else {
@@ -88,4 +91,4 @@ async function getUpdatedDate() {
 
 })();
 
-    
+
