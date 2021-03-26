@@ -844,6 +844,18 @@
         { "date": "2021-03-24", "age": 77, "s": "?", "dep": "Montevideo" },
         { "date": "2021-03-24", "age": 80, "s": "?", "dep": "Montevideo" },
         { "date": "2021-03-24", "age": 80, "s": "?", "dep": "Montevideo" },
-        { "date": "2021-03-24", "age": 86, "s": "?", "dep": "Montevideo" }
+        { "date": "2021-03-24", "age": 86, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-25", "age": 85, "s": "?", "dep": "Canelones" },
+        { "date": "2021-03-25", "age": 96, "s": "?", "dep": "Rivera" },
+        { "date": "2021-03-25", "age": 60, "s": "?", "dep": "Tacuarembó" },
+        { "date": "2021-03-25", "age": 59, "s": "?", "dep": "Soriano" },
+        { "date": "2021-03-25", "age": 79, "s": "?", "dep": "Soriano" },
+        { "date": "2021-03-25", "age": 50, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-25", "age": 58, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-25", "age": 61, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-25", "age": 75, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-25", "age": 85, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-25", "age": 89, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-25", "age": 93, "s": "?", "dep": "Montevideo" }
     ]
 }

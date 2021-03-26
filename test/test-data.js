@@ -111,7 +111,6 @@ describe('Test data', function () {
         }
     });
 
-    //TODO: optimize
     it('Uruguay deaths count for each day in uruguay.json should match the registered deaths in uruguayDeaths.json', function () {
 
         let totalDeaths = 0;
@@ -130,15 +129,17 @@ describe('Test data', function () {
                     prev.deaths = totalDeaths;
                 }
                 else {
+                    // an extra death was reported on 2021-02-22, but it wasn't informed which one
+                    if (date.getTime() == new Date("2021-02-22" + DATE_DEFAULT_TIME).getTime()) {
+                        totalDeaths--;
+                    }
+                    // a death wasn't reported on 2021-03-25
+                    if (date.getTime() == new Date("2021-03-25" + DATE_DEFAULT_TIME).getTime()) {
+                        totalDeaths++;
+                    }
+
                     deathHistory.push({ date: date, deaths: totalDeaths });
                 }
-
-                // an extra death was reported on 2021-02-22, but it wasn't informed which one
-                if (date.getTime() == new Date("2021-02-23" + DATE_DEFAULT_TIME).getTime() && prev.date.getTime() == new Date("2021-02-22" + DATE_DEFAULT_TIME).getTime()) {
-                    prev.deaths--;
-                    totalDeaths--;
-                }
-
             }
         }
         let j = 0;
