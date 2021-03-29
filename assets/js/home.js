@@ -189,6 +189,9 @@ function main() {
         if (el.newCases != undefined) {
             todayCases = el.newCases;
         }
+        if(el.lateNewCases != undefined) {
+            todayCases += el.lateNewCases;
+        }
 
         todayCases = Math.max(0, todayCases);
 

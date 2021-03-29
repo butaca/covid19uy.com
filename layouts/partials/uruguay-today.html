@@ -6,6 +6,9 @@
 {{- if isset $today "newCases" -}}
 {{- $cases = $today.newCases -}}
 {{- end -}}
+{{- if isset $today "lateNewCases" -}}
+{{- $cases = add $cases $today.lateNewCases -}}
+{{- end -}}
 {{- $deaths := sub $today.deaths $yesterday.deaths -}}
 {{- if isset $today "newDeaths" -}}
 {{- $deaths = $today.newDeaths -}}
