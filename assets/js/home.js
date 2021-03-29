@@ -189,7 +189,7 @@ function main() {
         if (el.newCases != undefined) {
             todayCases = el.newCases;
         }
-        if(el.lateNewCases != undefined) {
+        if (el.lateNewCases != undefined) {
             todayCases += el.lateNewCases;
         }
 
@@ -1085,11 +1085,16 @@ function main() {
     });
 
     const vacElem = document.getElementById("vaccination");
-    const vacProgressElem = vacElem.querySelector(".vaccinationProgress");
-    const progress = vacProgressElem.querySelector("progress");
-    const vacProgress = vaccinationData.total / vaccinationData.goal;
-    progress.value = vacProgress;
-    const vacProgressPercent = vacProgressElem.querySelector(".progressPercent");
-    vacProgressPercent.textContent = round(vacProgress * 100, 2) + "%";
+    if (totalVacs > 0) {
+        const vacProgressElem = vacElem.querySelector(".vaccinationProgress");
+        const progress = vacProgressElem.querySelector("progress");
+        const vacProgress = vaccinationData.total / vaccinationData.goal;
+        progress.value = vacProgress;
+        const vacProgressPercent = vacProgressElem.querySelector(".progressPercent");
+        vacProgressPercent.textContent = round(vacProgress * 100, 2) + "%";
+    }
+    else {
+        vacElem.style.display = "none";
+    }
 
 }
