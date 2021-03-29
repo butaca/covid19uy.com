@@ -26,11 +26,6 @@
             <div class="content">
                 {{ partial "uruguay.html" . }}
             </div>
-            {{- if .Site.Params.kofi -}}
-            <div class="has-margin-bottom-md has-text-centered-mobile">
-                {{ partial "ko-fi.html" . }}
-            </div>
-            {{- end -}}
             <div class="columns is-centered is-multiline">
                 {{ $context := . }}
                 {{- range .Site.Data.charts -}}
