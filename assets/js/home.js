@@ -1083,4 +1083,13 @@ function main() {
         },
         options: options
     });
+
+    const vacElem = document.getElementById("vaccination");
+    const vacProgressElem = vacElem.querySelector(".vaccinationProgress");
+    const progress = vacProgressElem.querySelector("progress");
+    const vacProgress = vaccinationData.total / vaccinationData.goal;
+    progress.value = vacProgress;
+    const vacProgressPercent = vacProgressElem.querySelector(".progressPercent");
+    vacProgressPercent.textContent = round(vacProgress * 100, 2) + "%";
+
 }

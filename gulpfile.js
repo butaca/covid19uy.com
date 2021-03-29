@@ -314,8 +314,8 @@ async function downloadUruguayVaccinationData() {
         todayTotal: 0,
         total: 0,
         coronavacTotal: 0,
-        pfizerTotal: 0
-
+        pfizerTotal: 0,
+        goal: 5600000
     }
 
     try {

@@ -17,6 +17,18 @@
         "desc": "graphTitleTotalsDesc"
     },
     {
+        "id": "chart-total-vacs",
+        "title": "graphTotalVacs",
+        "desc": "graphTotalVacsDesc",
+        "new": true
+    },
+    {
+        "id": "chart-daily-vacs",
+        "title": "graphDailyVacs",
+        "desc": "graphDailyVacsDesc",
+        "new": true
+    },
+    {
         "id": "chart-daily-tests-new",
         "title": "graphTitleDailyTestsNew",
         "desc": "graphTitleDailyTestsNewDesc"
@@ -70,17 +82,5 @@
         "id": "chart-daily-deaths",
         "title": "graphDailyDeaths",
         "desc": "graphDailyDeathsDesc"
-    },
-    {
-        "id": "chart-total-vacs",
-        "title": "graphTotalVacs",
-        "desc": "graphTotalVacsDesc",
-        "new": true
-    },
-    {
-        "id": "chart-daily-vacs",
-        "title": "graphDailyVacs",
-        "desc": "graphDailyVacsDesc",
-        "new": true
     }
 ]
