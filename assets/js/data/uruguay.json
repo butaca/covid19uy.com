@@ -1,5 +1,6 @@
 {
     "unreportedDailyTests": 4212,
+    "lateNewCasesEnabled": false,
     "data": [
         {
             "date": "2020-03-13",

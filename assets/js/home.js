@@ -189,7 +189,7 @@ function main() {
         if (el.newCases != undefined) {
             todayCases = el.newCases;
         }
-        if (el.lateNewCases != undefined) {
+        if (data.lateNewCasesEnabled && el.lateNewCases != undefined) {
             todayCases += getTotal(el.lateNewCases);
         }
 
