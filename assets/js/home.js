@@ -191,16 +191,16 @@ function main() {
             todayCases = el.newCases;
         }
 
+        todayCases = Math.max(0, todayCases);
+
+        prevDayTotalCases = totalTodayCases;
+        dailyCases.push(todayCases);
+
         var todayCasesWithLateData = todayCases;
         if (el.lateNewCases != undefined) {
             todayCasesWithLateData += getTotal(el.lateNewCases);
         }
         dailyCasesWithLateData.push(todayCasesWithLateData);
-
-        todayCases = Math.max(0, todayCases);
-
-        prevDayTotalCases = totalTodayCases;
-        dailyCases.push(todayCases);
 
         var todayActiveCases = el.activeCases != undefined ? el.activeCases : (totalTodayCases - todayTotalDeaths - todayTotalRecovered);
         activeCases.push(todayActiveCases);
