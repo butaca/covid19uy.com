@@ -190,8 +190,9 @@ function main() {
             todayCases = el.newCases;
         }
         if (el.lateNewCases != undefined) {
-            todayCases += el.lateNewCases;
+            todayCases += getTotal(el.lateNewCases);
         }
+        console.log(el.date + ": " + todayCases);
 
         todayCases = Math.max(0, todayCases);
 
