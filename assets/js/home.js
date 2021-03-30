@@ -143,6 +143,7 @@ function main() {
     var dailyPositivityRate = [];
     var dailyDeaths = [];
     var deathsFirstIndex = -1;
+    var dailyCasesWithLateData = [];
 
     data.data.forEach(function (el, index) {
         var todayPositives = el.positives;
@@ -189,9 +190,12 @@ function main() {
         if (el.newCases != undefined) {
             todayCases = el.newCases;
         }
-        if (data.lateNewCasesEnabled && el.lateNewCases != undefined) {
-            todayCases += getTotal(el.lateNewCases);
+
+        var todayCasesWithLateData = todayCases;
+        if (el.lateNewCases != undefined) {
+            todayCasesWithLateData += getTotal(el.lateNewCases);
         }
+        dailyCasesWithLateData.push(todayCasesWithLateData);
 
         todayCases = Math.max(0, todayCases);
 
@@ -374,6 +378,8 @@ function main() {
         options: options
     });
 
+    var dailyCasesData = data.lateNewCasesEnabled ? dailyCasesWithLateData : dailyCases;
+
     options = createDefaultChartOptions();
     options.tooltips = {
         onlyShowForDatasetIndex: [1]
@@ -384,11 +390,11 @@ function main() {
         data: {
             labels: dates,
             datasets: [
-                createMovingAverageDataset(dailyCases, MOVING_AVERAGE_DELTA, "#0033bb88"),
+                createMovingAverageDataset(dailyCasesData, MOVING_AVERAGE_DELTA, "#0033bb88"),
                 {
                     backgroundColor: "#97DBEAFF",
                     label: lang.dailyCases.other,
-                    data: dailyCases,
+                    data: dailyCasesData,
                 }]
         },
         options: options

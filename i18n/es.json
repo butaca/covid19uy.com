@@ -90,7 +90,7 @@
     "other": "Casos nuevos diarios"
   },
   "graphTitleDailyCasesDesc": {
-    "other": "Cantidad de nuevos casos en cada día"
+    "other": "Cantidad de nuevos casos en cada día. Incluye los casos reportados posteriormente a al informe del MSP."
   },
   "graphTitleDailyHospitalizations": {
     "other": "Hospitalizaciones"
@@ -126,13 +126,13 @@
     "other": "Casos diarios de trabajadores de la salud"
   },
   "graphTitleHealthcareWorkersDesc": {
-    "other": "Cantidad de casos nuevos en cada día y cuántos de ellos corresponden a trabajadores de la salud."
+    "other": "Cantidad de casos nuevos en cada día y cuántos de ellos corresponden a trabajadores de la salud. Se descartan los casos nuevos reportados fuera de fecha por falta de información."
   },
   "graphTitleHealthcareWorkersPercent": {
     "other": "Porcentaje de casos de trabajadores de la salud"
   },
   "graphTitleHealthcareWorkersPercentDesc": {
-    "other": "De los nuevos casos de cada día, qué porcentaje correspondiente a trabajadores de la salud en ese día."
+    "other": "De los nuevos casos de cada día, qué porcentaje correspondiente a trabajadores de la salud en ese día. Se descartan los casos nuevos reportados fuera de fecha por falta de información."
   },
   "graphTitleRegionActiveCases": {
     "other": "Casos activos por cada millón de habitantes en la región"
@@ -201,7 +201,7 @@
     "other": "Tasa de positividad"
   },
   "graphPositivityRateDesc" : {
-    "other": "En cada día, porcentaje de tests positivos realizados ese día. Para este cálculo se asume que el total de tests positivos corresponde a la cantidad de casos nuevos ese día por falta de información."
+    "other": "En cada día, porcentaje de tests positivos realizados ese día. Para este cálculo se asume que el total de tests positivos corresponde a la cantidad de casos nuevos ese día por falta de información. Se descartan los casos nuevos reportados fuera de fecha por falta de información."
   },
   "graphDailyVacs": {
     "other": "Vacunación diaria"

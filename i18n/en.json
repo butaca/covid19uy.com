@@ -90,7 +90,7 @@
     "other": "Daily new cases"
   },
   "graphTitleDailyCasesDesc": {
-    "other": "Number of new cases in each day"
+    "other": "Number of new cases in each day. Includes cases reported after the MSP report."
   },
   "graphTitleDailyHospitalizations": {
     "other": "Hospitalizations"
@@ -126,13 +126,13 @@
     "other": "Daily healthcare workers cases"
   },
   "graphTitleHealthcareWorkersDesc": {
-    "other": "Number of new cases in each day and how many of them correspond to healthcare workers."
+    "other": "Number of new cases in each day and how many of them correspond to healthcare workers. New cases reported out of date are discarded due to lack of information."
   },
   "graphTitleHealthcareWorkersPercent": {
     "other": "Percentage of healthcare workers cases"
   },
   "graphTitleHealthcareWorkersPercentDesc": {
-    "other": "Of the new cases of each day, what percentage correspond to healthcare workers on that day."
+    "other": "Of the new cases of each day, what percentage correspond to healthcare workers on that day. New cases reported out of date are discarded due to lack of information."
   },
   "graphTitleRegionActiveCases": {
     "other": "Active cases per million inhabitants in the region"
@@ -198,7 +198,7 @@
     "other": "Positivity Rate"
   },
   "graphPositivityRateDesc" : {
-    "other": "On each day, percentage of positive tests done that day. For this calculation, it is assumed that the total of positive tests corresponds to the number of new cases that day due to lack of information."
+    "other": "On each day, percentage of positive tests done that day. For this calculation, it is assumed that the total of positive tests corresponds to the number of new cases that day due to lack of information. New cases reported out of date are discarded due to lack of information."
   },
   "graphDailyVacs": {
     "other": "Daily vaccination"
