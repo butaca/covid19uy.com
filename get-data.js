@@ -76,18 +76,7 @@ async function getUpdatedDate() {
         data.activeCases = activeCases;
     }
 
-    const uruguayData = fs.readFileSync(URUGUAY_DATE_FILE);
-    const uruguay = JSON.parse(uruguayData);
-    const history = uruguay.data;
-    const todayHistoryIndex = history.findIndex(el => el.date == data.date);
-    const today = data;
-    if (todayHistoryIndex == -1) {
-        history.push(today);
-    }
-    else {
-        history[todayHistoryIndex] = today;
-    }
-    fs.writeFileSync(URUGUAY_DATE_FILE, JSON.stringify(uruguay));
+    console.log(JSON.stringify(data));
 
 })();
 
