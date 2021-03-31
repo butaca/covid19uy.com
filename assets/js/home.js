@@ -1083,14 +1083,28 @@ function main() {
         options: options
     });
 
+    function setVacProgress(elem, value) {
+        if (elem) {
+            const progress = elem.querySelector("progress");
+            progress.value = value;
+            const vacProgressPercent = elem.querySelector(".progressPercent");
+            vacProgressPercent.textContent = round(value * 100, 2) + "%";
+        }
+    }
+
     const vacElem = document.getElementById("vaccination");
     if (vaccinationData.total > 0) {
-        const vacProgressElem = vacElem.querySelector(".vaccinationProgress");
-        const progress = vacProgressElem.querySelector("progress");
-        const vacProgress = vaccinationData.total / vaccinationData.goal;
-        progress.value = vacProgress;
-        const vacProgressPercent = vacProgressElem.querySelector(".progressPercent");
-        vacProgressPercent.textContent = round(vacProgress * 100, 2) + "%";
+        let vacProgress = vaccinationData.total / (vaccinationData.goal * 2);
+        let vacProgressElem = vacElem.querySelector(".vaccinationProgress");
+        setVacProgress(vacProgressElem, vacProgress);
+
+        vacProgress = vaccinationData.firstDoseTotal / vaccinationData.goal;
+        vacProgressElem = vacElem.querySelector(".vaccinationProgressFirstDose");
+        setVacProgress(vacProgressElem, vacProgress);
+
+        vacProgress = vaccinationData.secondDoseTotal / vaccinationData.goal;
+        vacProgressElem = vacElem.querySelector(".vaccinationProgressSecondDose");
+        setVacProgress(vacProgressElem, vacProgress);
     }
     else {
         vacElem.parentElement.style.display = "none";

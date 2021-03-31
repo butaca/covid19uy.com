@@ -368,6 +368,18 @@
   "vaccinationProgressDesc": {
       "other": "The government indicated that the target population is 2,800,000 people, therefore the total doses to be administered is 5,600,000"
   },
+  "vaccinationProgressFirstDose": {
+      "other": "At least one dose"
+  },
+  "vaccinationProgressFirstDoseDesc": {
+      "other": "Percentage of the target population that received at least one dose. The government indicated that the target population is 2,800,000 people."
+  },
+  "vaccinationProgressSecondDose": {
+      "other": "Two doses"
+  },
+  "vaccinationProgressSecondDoseDesc": {
+      "other": "Percentage of the target population that received the two doses. The government indicated that the target population is 2,800,000 people."
+  },
   "harvardIndex": {
       "other": "Harvard Index"
   },

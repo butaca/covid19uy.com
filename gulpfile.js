@@ -315,7 +315,7 @@ async function downloadUruguayVaccinationData() {
         total: 0,
         coronavacTotal: 0,
         pfizerTotal: 0,
-        goal: 5600000
+        goal: 2800000
     }
 
     try {
@@ -383,7 +383,7 @@ async function downloadUruguayVaccinationData() {
             const vacTotalsDataObj = xml2json.toJson(vacTotalData.value, { object: true });
             const vacTotalsMetadata = vacTotalsDataObj.CdaExport.MetaData.ColumnMetaData;
 
-            let todayDateIndex = -1, totalVacIndex = -1, todayTotalIndex = -1;
+            let todayDateIndex = -1, totalVacIndex = -1, todayTotalIndex = -1, firstDoseIndex = -1, secondDoseIndex = -1;
             for (let i = 0; i < vacTotalsMetadata.length; ++i) {
                 const metadataCol = vacTotalsMetadata[i];
                 const name = metadataCol.name.toLowerCase();
@@ -397,9 +397,15 @@ async function downloadUruguayVaccinationData() {
                 else if (name.includes("actoshoy")) {
                     todayTotalIndex = parseInt(metadataCol.index);
                 }
+                else if (name.includes("per1")) {
+                    firstDoseIndex = parseInt(metadataCol.index);
+                }
+                else if (name.includes("per2")) {
+                    secondDoseIndex = parseInt(metadataCol.index);
+                }
             }
 
-            if (todayDateIndex == -1 || totalVacIndex == -1 || todayTotalIndex == -1) {
+            if (todayDateIndex == -1 || totalVacIndex == -1 || todayTotalIndex == -1  || firstDoseIndex == -1  || secondDoseIndex == -1) {
                 throw new Error("Can't find vac total data indexes");
             }
 
@@ -409,11 +415,15 @@ async function downloadUruguayVaccinationData() {
             const todayDate = totalsData[todayDateIndex];
             const todayTotal = totalsData[todayTotalIndex];
             const totalVac = totalsData[totalVacIndex];
+            const firstDoseTotal = totalsData[firstDoseIndex];
+            const secondDoseTotal = totalsData[secondDoseIndex];
 
             vacData.date = today.format("YYYY-MM-DD");
             vacData.todayDate = todayDate;
             vacData.todayTotal = parseInt(todayTotal);
-            vacData.total = parseInt(totalVac);
+            vacData.firstDoseTotal = parseInt(firstDoseTotal);
+            vacData.secondDoseTotal = parseInt(secondDoseTotal);
+            vacData.total = Math.max(parseInt(totalVac), vacData.firstDoseTotal + vacData.secondDoseTotal);
         }
         else {
             console.log("Error getting vac total: " + vacTotalData.reason);

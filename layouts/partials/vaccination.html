@@ -1,7 +1,26 @@
 <div id="vaccination">
+    <!--
     <div class="vaccinationProgress">
         <div class="has-tooltip-multiline" data-tooltip='{{ i18n "vaccinationProgressDesc"}}'>
             <span class="is-pulled-left">{{ i18n "vaccinationProgress" }}</span>
+            <span class="is-pulled-right"><span class="progressPercent has-margin-right-sm"></span><i
+                    class="far fa-question-circle"></i></span>
+        </div>
+        <progress class="progress is-success" value="0" max="1"></progress>
+    </div>
+    -->
+    <h2 class="title">{{ i18n "vaccinationProgress" }}</h2>
+    <div class="vaccinationProgressFirstDose">
+        <div class="has-tooltip-multiline" data-tooltip='{{ i18n "vaccinationProgressFirstDoseDesc"}}'>
+            <span class="is-pulled-left">{{ i18n "vaccinationProgressFirstDose" }}</span>
+            <span class="is-pulled-right"><span class="progressPercent has-margin-right-sm"></span><i
+                    class="far fa-question-circle"></i></span>
+        </div>
+        <progress class="progress is-success" value="0" max="1"></progress>
+    </div>
+    <div class="vaccinationProgressSecondDose">
+        <div class="has-tooltip-multiline" data-tooltip='{{ i18n "vaccinationProgressSecondDoseDesc"}}'>
+            <span class="is-pulled-left">{{ i18n "vaccinationProgressSecondDose" }}</span>
             <span class="is-pulled-right"><span class="progressPercent has-margin-right-sm"></span><i
                     class="far fa-question-circle"></i></span>
         </div>

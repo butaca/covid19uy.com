@@ -368,6 +368,18 @@
   "vaccinationProgressDesc": {
       "other": "El gobierno indicó que la población objetivo es de 2.800.000 personas, por lo tanto el total de dosis a administrar es de 5.600.000"
   },
+  "vaccinationProgressFirstDose": {
+      "other": "Al menos una dosis"
+  },
+  "vaccinationProgressFirstDoseDesc": {
+      "other": "Porcentaje de la población objetivo que recibió al menos una dosis. El gobierno indicó que la población objetivo es de 2.800.000 personas."
+  },
+  "vaccinationProgressSecondDose": {
+      "other": "Dos dosis"
+  },
+  "vaccinationProgressSecondDoseDesc": {
+      "other": "Porcentaje de la población objetivo que recibió las dos dosis. El gobierno indicó que la población objetivo es de 2.800.000 personas."
+  },
   "harvardIndex": {
       "other": "Índice de Harvard"
   },
