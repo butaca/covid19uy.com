@@ -4215,7 +4215,9 @@
             "hcRecovered": 3174,
             "hcDeaths": 7,
             "newCases": 831,
-            "lateNewCases": [1]
+            "lateNewCases": [
+                1
+            ]
         },
         {
             "date": "2021-03-10",
@@ -4229,7 +4231,9 @@
             "hcRecovered": 3202,
             "hcDeaths": 7,
             "newCases": 957,
-            "lateNewCases": [2]
+            "lateNewCases": [
+                2
+            ]
         },
         {
             "date": "2021-03-11",
@@ -4256,7 +4260,9 @@
             "hcRecovered": 3281,
             "hcDeaths": 7,
             "newCases": 1366,
-            "lateNewCases": [1]
+            "lateNewCases": [
+                1
+            ]
         },
         {
             "date": "2021-03-13",
@@ -4270,7 +4276,9 @@
             "hcRecovered": 3316,
             "hcDeaths": 7,
             "newCases": 1062,
-            "lateNewCases": [2]
+            "lateNewCases": [
+                2
+            ]
         },
         {
             "date": "2021-03-14",
@@ -4284,7 +4292,9 @@
             "hcRecovered": 3351,
             "hcDeaths": 7,
             "newCases": 1587,
-            "lateNewCases": [2]
+            "lateNewCases": [
+                2
+            ]
         },
         {
             "date": "2021-03-15",
@@ -4298,7 +4308,9 @@
             "hcRecovered": 3397,
             "hcDeaths": 7,
             "newCases": 1182,
-            "lateNewCases": [5]
+            "lateNewCases": [
+                5
+            ]
         },
         {
             "date": "2021-03-16",
@@ -4312,7 +4324,10 @@
             "hcRecovered": 3449,
             "hcDeaths": 7,
             "newCases": 916,
-            "lateNewCases": [5,2]
+            "lateNewCases": [
+                5,
+                2
+            ]
         },
         {
             "date": "2021-03-17",
@@ -4326,7 +4341,10 @@
             "hcRecovered": 3488,
             "hcDeaths": 7,
             "newCases": 1389,
-            "lateNewCases": [4,1]
+            "lateNewCases": [
+                4,
+                1
+            ]
         },
         {
             "date": "2021-03-18",
@@ -4340,7 +4358,10 @@
             "hcRecovered": 3537,
             "hcDeaths": 7,
             "newCases": 1698,
-            "lateNewCases": [15,3]
+            "lateNewCases": [
+                15,
+                3
+            ]
         },
         {
             "date": "2021-03-19",
@@ -4354,7 +4375,9 @@
             "hcRecovered": 3581,
             "hcDeaths": 7,
             "newCases": 1616,
-            "lateNewCases": [17]
+            "lateNewCases": [
+                17
+            ]
         },
         {
             "date": "2021-03-20",
@@ -4368,7 +4391,12 @@
             "hcRecovered": 3634,
             "hcDeaths": 7,
             "newCases": 1528,
-            "lateNewCases": [135,5,3,3]
+            "lateNewCases": [
+                135,
+                5,
+                3,
+                3
+            ]
         },
         {
             "date": "2021-03-21",
@@ -4382,7 +4410,12 @@
             "hcRecovered": 3687,
             "hcDeaths": 7,
             "newCases": 1625,
-            "lateNewCases": [6,15,3,6]
+            "lateNewCases": [
+                6,
+                15,
+                3,
+                6
+            ]
         },
         {
             "date": "2021-03-22",
@@ -4396,7 +4429,12 @@
             "hcRecovered": 3736,
             "hcDeaths": 7,
             "newCases": 2682,
-            "lateNewCases": [34,29,4,1]
+            "lateNewCases": [
+                34,
+                29,
+                4,
+                1
+            ]
         },
         {
             "date": "2021-03-23",
@@ -4411,7 +4449,12 @@
             "hcRecovered": 3781,
             "hcDeaths": 7,
             "newCases": 1801,
-            "lateNewCases": [258,24,11,6]
+            "lateNewCases": [
+                258,
+                24,
+                11,
+                6
+            ]
         },
         {
             "date": "2021-03-24",
@@ -4425,7 +4468,13 @@
             "hcRecovered": 3830,
             "hcDeaths": 7,
             "newCases": 1796,
-            "lateNewCases": [605,183,106,7]
+            "lateNewCases": [
+                605,
+                183,
+                106,
+                7,
+                19
+            ]
         },
         {
             "date": "2021-03-25",
@@ -4439,7 +4488,12 @@
             "hcRecovered": 3877,
             "hcDeaths": 7,
             "newCases": 1693,
-            "lateNewCases": [616,107,18]
+            "lateNewCases": [
+                616,
+                107,
+                18,
+                22
+            ]
         },
         {
             "date": "2021-03-26",
@@ -4453,7 +4507,11 @@
             "hcRecovered": 3933,
             "hcDeaths": 7,
             "newCases": 1805,
-            "lateNewCases": [376,165]
+            "lateNewCases": [
+                376,
+                165,
+                150
+            ]
         },
         {
             "date": "2021-03-27",
@@ -4466,7 +4524,10 @@
             "hc": 4460,
             "hcRecovered": 3997,
             "hcDeaths": 7,
-            "newCases": 2044
+            "newCases": 2044,
+            "lateNewCases": [
+                673
+            ]
         },
         {
             "date": "2021-03-28",
@@ -4479,7 +4540,10 @@
             "hc": 4542,
             "hcRecovered": 4048,
             "hcDeaths": 7,
-            "newCases": 1530
+            "newCases": 1530,
+            "lateNewCases": [
+                330
+            ]
         },
         {
             "date": "2021-03-29",
@@ -4493,6 +4557,19 @@
             "hcRecovered": 4098,
             "hcDeaths": 7,
             "newCases": 1450
+        },
+        {
+            "date": "2021-03-30",
+            "tests": 17864,
+            "cases": 102461,
+            "recovered": 81438,
+            "deaths": 953,
+            "icu": 331,
+            "imcu": 0,
+            "hc": 4774,
+            "hcRecovered": 4146,
+            "hcDeaths": 7,
+            "newCases": 1664
         }
     ]
 }

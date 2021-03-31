@@ -929,7 +929,31 @@
         { "date": "2021-03-29", "age": 84, "s": "?", "dep": "Montevideo" },
         { "date": "2021-03-29", "age": 87, "s": "?", "dep": "Montevideo" },
         { "date": "2021-03-29", "age": 88, "s": "?", "dep": "Montevideo" },
-        { "date": "2021-03-29", "age": 90, "s": "?", "dep": "Montevideo" }
-    
+        { "date": "2021-03-29", "age": 90, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-30", "age": 91, "s": "?", "dep": "Salto" },
+        { "date": "2021-03-30", "age": 77, "s": "?", "dep": "Paysandú" },
+        { "date": "2021-03-30", "age": 77, "s": "?", "dep": "Cerro Largo" },
+        { "date": "2021-03-30", "age": 53, "s": "?", "dep": "Río Negro" },
+        { "date": "2021-03-30", "age": 73, "s": "?", "dep": "Tacuarembó" },
+        { "date": "2021-03-30", "age": 22, "s": "?", "dep": "Treinta y Tres" },
+        { "date": "2021-03-30", "age": 88, "s": "?", "dep": "Soriano" },
+        { "date": "2021-03-30", "age": 82, "s": "?", "dep": "Rivera" },
+        { "date": "2021-03-30", "age": 89, "s": "?", "dep": "Rivera" },
+        { "date": "2021-03-30", "age": 49, "s": "?", "dep": "Canelones" },
+        { "date": "2021-03-30", "age": 60, "s": "?", "dep": "Canelones" },
+        { "date": "2021-03-30", "age": 75, "s": "?", "dep": "Canelones" },
+        { "date": "2021-03-30", "age": 81, "s": "?", "dep": "Canelones" },
+        { "date": "2021-03-30", "age": 27, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-30", "age": 35, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-30", "age": 51, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-30", "age": 57, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-30", "age": 61, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-30", "age": 62, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-30", "age": 77, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-30", "age": 78, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-30", "age": 81, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-30", "age": 82, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-30", "age": 83, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-30", "age": 95, "s": "?", "dep": "Montevideo" }
     ]
 }
