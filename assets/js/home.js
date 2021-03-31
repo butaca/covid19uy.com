@@ -6,7 +6,7 @@ import "./chartjs-tooltipsutil";
 import nfCookies from './nf-cookies'
 import burger from './burger'
 import './icons'
-import population from "./data/world-population.json";
+import population from "./data/worldPopulation.json";
 import region from "./data/region.json";
 import departmentsData from "./data/uruguayDepartments.json"
 import deathsData from "./data/uruguayDeaths.json"

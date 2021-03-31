@@ -367,5 +367,8 @@
   },
   "vaccinationProgressDesc": {
       "other": "El gobierno indicó que la población objetivo es de 2.800.000 personas, por lo tanto el total de dosis a administrar es de 5.600.000"
-  } 
+  },
+  "harvardIndex": {
+      "other": "Índice de Harvard"
+  }
 }

@@ -1,0 +1,45 @@
+{{- $newCasesAverage := 0 -}}
+{{- $newCasesAverageSamples := 0 -}}
+{{- $yesterday := index site.Data.uruguay.data (sub (len site.Data.uruguay.data) 8) -}}
+{{- range $index, $today := last 7 site.Data.uruguay.data -}}
+{{- $todayCases := sub $today.cases $yesterday.cases -}}
+{{- if isset $today "newCases" -}}
+{{- $todayCases = $today.newCases -}}
+{{- end -}}
+{{- if and site.Data.uruguay.lateNewCasesEnabled (isset $today "lateNewCases") -}}
+{{- $lateNewCases := 0 -}}
+{{- range $today.lateNewCases -}}
+{{- $lateNewCases = add $lateNewCases . -}}
+{{- end -}}
+{{- $todayCases = add $todayCases $lateNewCases -}}
+{{- end -}}
+{{- $newCasesAverage = add $newCasesAverage $todayCases -}}
+{{- $newCasesAverageSamples = add $newCasesAverageSamples 1 -}}
+{{- $yesterday = $today -}}
+{{- end -}}
+{{- $newCasesAverage = div $newCasesAverage $newCasesAverageSamples -}}
+<div>
+    {{- $harvardIndex := mul $newCasesAverage (div 100000 site.Data.worldPopulation.uruguay) -}}
+    {{- i18n "harvardIndex" }}: {{ lang.NumFmt 2 $harvardIndex .Site.Params.numberFormat -}}
+    {{- $stroke0 := "none" -}}
+    {{- $stroke1 := "none" -}}
+    {{- $stroke2 := "none" -}}
+    {{- $stroke3 := "none" -}}
+    {{- if le $harvardIndex 1 -}}
+    {{- $stroke0 = "black" -}}
+    {{- else if le $harvardIndex 10 -}}
+    {{- $stroke1 = "black" -}}
+    {{- else if le $harvardIndex 25 -}}
+    {{- $stroke2 = "black" -}}
+    {{- else }}
+    {{- $stroke3 = "black" -}}
+    {{- end -}}
+    <div>
+        <svg width="68" height="12">
+            <rect x="2" y="2" width="16" height="8" style="fill:green;" stroke="{{ $stroke0 }}" stroke-width="2" />
+            <rect x="18" y="2" width="16" height="8" style="fill:yellow;" stroke="{{ $stroke1 }}" stroke-width="2" />
+            <rect x="34" y="2" width="16" height="8" style="fill:orange;" stroke="{{ $stroke2 }}" stroke-width="2" />
+            <rect x="50" y="2" width="16" height="8" style="fill:red;" stroke="{{ $stroke3 }}" stroke-width="2" />
+        </svg>
+    </div>
+</div>

@@ -29,7 +29,7 @@ Los casos activos por departamento se obtienen del visualizador del SINAE tambi�
 
 En en archivo `[DATA]/uruguayDeaths.json` se van registrando los fallecimientos.
 
-Los datos del mundo y la región (`[DATA]/world.json`, `[DATA]/region.json` y `[DATA]/world-population.json`) se descargan automáticamente durante el build.
+Los datos del mundo y la región (`[DATA]/world.json`, `[DATA]/region.json` y `[DATA]/worldPopulation.json`) se descargan automáticamente durante el build.
 
 ### Cómo desarrollar
 

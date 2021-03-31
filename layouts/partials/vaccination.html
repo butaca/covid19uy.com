@@ -1,12 +1,10 @@
 <div id="vaccination">
-    <div class="columns">
-        <div class="vaccinationProgress column is-3 is-8-mobile">
-            <div class="has-tooltip-multiline" data-tooltip='{{ i18n "vaccinationProgressDesc"}}'>
-                <span class="is-pulled-left">{{ i18n "vaccinationProgress" }}</span>
-                <span class="is-pulled-right"><span class="progressPercent has-margin-right-sm"></span><i class="far fa-question-circle"></i></span>
-            </div>
-            <progress class="progress is-success" value="0" max="1"></progress>
-
+    <div class="vaccinationProgress">
+        <div class="has-tooltip-multiline" data-tooltip='{{ i18n "vaccinationProgressDesc"}}'>
+            <span class="is-pulled-left">{{ i18n "vaccinationProgress" }}</span>
+            <span class="is-pulled-right"><span class="progressPercent has-margin-right-sm"></span><i
+                    class="far fa-question-circle"></i></span>
         </div>
+        <progress class="progress is-success" value="0" max="1"></progress>
     </div>
 </div>
