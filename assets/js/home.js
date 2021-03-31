@@ -1082,32 +1082,5 @@ function main() {
         },
         options: options
     });
-
-    function setVacProgress(elem, value) {
-        if (elem) {
-            const progress = elem.querySelector("progress");
-            progress.value = value;
-            const vacProgressPercent = elem.querySelector(".progressPercent");
-            vacProgressPercent.textContent = round(value * 100, 2) + "%";
-        }
-    }
-
-    const vacElem = document.getElementById("vaccination");
-    if (vaccinationData.total > 0) {
-        let vacProgress = vaccinationData.total / (vaccinationData.goal * 2);
-        let vacProgressElem = vacElem.querySelector(".vaccinationProgress");
-        setVacProgress(vacProgressElem, vacProgress);
-
-        vacProgress = vaccinationData.firstDoseTotal / vaccinationData.goal;
-        vacProgressElem = vacElem.querySelector(".vaccinationProgressFirstDose");
-        setVacProgress(vacProgressElem, vacProgress);
-
-        vacProgress = vaccinationData.secondDoseTotal / vaccinationData.goal;
-        vacProgressElem = vacElem.querySelector(".vaccinationProgressSecondDose");
-        setVacProgress(vacProgressElem, vacProgress);
-    }
-    else {
-        vacElem.parentElement.style.display = "none";
-    }
-
+    
 }
