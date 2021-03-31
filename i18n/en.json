@@ -372,6 +372,6 @@
       "other": "Harvard Index"
   },
   "harvardIndexDesc": {
-      "other": "Risk areas according to the average of new cases per 100,000 inhabitants in the last 7 days. Late-reported cases are included."
+      "other": "Risk level according to the average of new cases per 100,000 inhabitants in the last 7 days. Late-reported cases are included."
   }
 }
