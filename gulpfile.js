@@ -149,7 +149,7 @@ async function downloadPopulationData() {
             result[country] = population;
         }
     });
-    await writeFilePromise(DATA_DIR + "world-population.json", JSON.stringify(result));
+    await writeFilePromise(DATA_DIR + "worldPopulation.json", JSON.stringify(result));
 }
 
 const watch = sassWatch;
@@ -335,7 +335,7 @@ async function downloadUruguayVaccinationData() {
             else if (name.includes("actos vacunales")) {
                 totalIndex = parseInt(metadataCol.index);
             }
-            else if (name.includes("coronavac")) {
+            else if (name.includes("sinovac")) {
                 coronavacIndex = parseInt(metadataCol.index);
             }
             else if (name.includes("pfizer")) {
