@@ -20,7 +20,10 @@
 {{- $newCasesAverage = div $newCasesAverage $newCasesAverageSamples -}}
 <div>
     {{- $harvardIndex := mul $newCasesAverage (div 100000 site.Data.worldPopulation.uruguay) -}}
-    {{- i18n "harvardIndex" }}: {{ lang.NumFmt 2 $harvardIndex .Site.Params.numberFormat -}}
+    <span class="has-tooltip-multiline" data-tooltip='{{ i18n "harvardIndexDesc" }}'>
+        {{- i18n "harvardIndex" }}: {{ lang.NumFmt 2 $harvardIndex .Site.Params.numberFormat -}}
+        <i class="far fa-question-circle has-margin-left-sm"></i>
+    </span>
     {{- $stroke0 := "none" -}}
     {{- $stroke1 := "none" -}}
     {{- $stroke2 := "none" -}}
