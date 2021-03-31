@@ -994,7 +994,6 @@ function main() {
     const utcDate = new Date(vaccinationData.date)
     const vacDate = new Date(utcDate.getTime() + utcDate.getTimezoneOffset() * 60000);
     const vacDateTokens = vaccinationData.todayDate.split(':');
-    console.log()
     if (vacDateTokens.length >= 2) {
         vacDate.setHours(vacDateTokens[0]);
         vacDate.setMinutes(vacDateTokens[1]);
@@ -1010,12 +1009,6 @@ function main() {
     });
 
     let totalVacs = vaccinationData.coronavacTotal + vaccinationData.pfizerTotal;
-    if (totalVacs == 0) {
-        vaccinationData.history.date = [];
-        vaccinationData.history.total = [];
-        vaccinationData.history.coronavac = [];
-        vaccinationData.history.pfizer = [];
-    }
 
     options = createDefaultChartOptions();
     ctx = document.getElementById('chart-daily-vacs');
@@ -1064,7 +1057,7 @@ function main() {
     };
     options.elements = {
         center: {
-            text: totalVacs > 0 ? (lang.vacTotal.other + ': ' + totalVacs.toLocaleString(htmlLang)) : lang.notAvailable.other,
+            text: (totalVacs > 0) ? (lang.vacTotal.other + ': ' + totalVacs.toLocaleString(htmlLang)) : lang.notAvailable.other,
             color: '#36A2EB',
             fontStyle: 'Helvetica',
             sidePadding: 15
@@ -1091,7 +1084,7 @@ function main() {
     });
 
     const vacElem = document.getElementById("vaccination");
-    if (totalVacs > 0) {
+    if (vaccinationData.total > 0) {
         const vacProgressElem = vacElem.querySelector(".vaccinationProgress");
         const progress = vacProgressElem.querySelector("progress");
         const vacProgress = vaccinationData.total / vaccinationData.goal;
@@ -1100,7 +1093,7 @@ function main() {
         vacProgressPercent.textContent = round(vacProgress * 100, 2) + "%";
     }
     else {
-        vacElem.style.display = "none";
+        vacElem.parentElement.style.display = "none";
     }
 
 }

@@ -310,7 +310,7 @@ async function downloadUruguayVaccinationData() {
             pfizer: []
         },
         date: today.format("YYYY-MM-DD"),
-        todayDate: "00:00",
+        todayDate: "",
         todayTotal: 0,
         total: 0,
         coronavacTotal: 0,
@@ -319,114 +319,132 @@ async function downloadUruguayVaccinationData() {
     }
 
     try {
-        const [vacHistoryData, vacTotalData, vacTypeData] = await Promise.all([getVacHistoryData(), getVacTotalData(), getVacTypeData()]);
+        const [vacHistoryData, vacTotalData, vacTypeData] = await Promise.allSettled([getVacHistoryData(), getVacTotalData(), getVacTypeData()]);
 
-        const vacHistoryDataObj = xml2json.toJson(vacHistoryData, { object: true });
-        const vacHistoryMetadata = vacHistoryDataObj.CdaExport.MetaData.ColumnMetaData;
+        if (vacHistoryData.status === "fulfilled") {
+            const vacHistoryDataObj = xml2json.toJson(vacHistoryData.value, { object: true });
+            const vacHistoryMetadata = vacHistoryDataObj.CdaExport.MetaData.ColumnMetaData;
 
-        let dateIndex = -1, totalIndex = -1, coronavacIndex = -1, pfizerIndex = -1;
-        for (let i = 0; i < vacHistoryMetadata.length; ++i) {
-            const metadataCol = vacHistoryMetadata[i];
-            const name = metadataCol.name.toLowerCase();
+            let dateIndex = -1, totalIndex = -1, coronavacIndex = -1, pfizerIndex = -1;
+            for (let i = 0; i < vacHistoryMetadata.length; ++i) {
+                const metadataCol = vacHistoryMetadata[i];
+                const name = metadataCol.name.toLowerCase();
 
-            if (name.includes("fecha")) {
-                dateIndex = parseInt(metadataCol.index);
+                if (name.includes("fecha")) {
+                    dateIndex = parseInt(metadataCol.index);
+                }
+                else if (name.includes("actos vacunales")) {
+                    totalIndex = parseInt(metadataCol.index);
+                }
+                else if (name.includes("sinovac")) {
+                    coronavacIndex = parseInt(metadataCol.index);
+                }
+                else if (name.includes("pfizer")) {
+                    pfizerIndex = parseInt(metadataCol.index);
+                }
             }
-            else if (name.includes("actos vacunales")) {
-                totalIndex = parseInt(metadataCol.index);
+
+            if (dateIndex == -1 || totalIndex == -1 || coronavacIndex == -1 || pfizerIndex == -1) {
+                throw new Error("Can't find vac data indexes");
             }
-            else if (name.includes("sinovac")) {
-                coronavacIndex = parseInt(metadataCol.index);
-            }
-            else if (name.includes("pfizer")) {
-                pfizerIndex = parseInt(metadataCol.index);
+
+            const rows = vacHistoryDataObj.CdaExport.ResultSet.Row;
+            for (let i = 0; i < rows.length; ++i) {
+                const data = rows[i].Col;
+
+                const date = data[dateIndex].replace("-", "/");
+                let total = data[totalIndex];
+                let coronavac = data[coronavacIndex];
+                if (coronavac == null || (typeof coronavac === "object" && coronavac.isNull === "true")) {
+                    coronavac = 0;
+                }
+                let pfizer = data[pfizerIndex];
+                if (pfizer == null || (typeof pfizer === "object" && pfizer.isNull === "true")) {
+                    pfizer = 0;
+                }
+
+                total = parseInt(total);
+                coronavac = parseInt(coronavac);
+                pfizer = parseInt(pfizer);
+
+                vacData.history.date.push(date);
+                vacData.history.total.push(total);
+                vacData.history.coronavac.push(coronavac);
+                vacData.history.pfizer.push(pfizer);
             }
         }
-
-        if (dateIndex == -1 || totalIndex == -1 || coronavacIndex == -1 || pfizerIndex == -1) {
-            throw new Error("Can't find vac data indexes");
-        }
-
-        const rows = vacHistoryDataObj.CdaExport.ResultSet.Row;
-        for (let i = 0; i < rows.length; ++i) {
-            const data = rows[i].Col;
-
-            const date = data[dateIndex].replace("-", "/");
-            let total = data[totalIndex];
-            let coronavac = data[coronavacIndex];
-            if (coronavac == null || (typeof coronavac === "object" && coronavac.isNull === "true")) {
-                coronavac = 0;
-            }
-            let pfizer = data[pfizerIndex];
-            if (pfizer == null || (typeof pfizer === "object" && pfizer.isNull === "true")) {
-                pfizer = 0;
-            }
-
-            total = parseInt(total);
-            coronavac = parseInt(coronavac);
-            pfizer = parseInt(pfizer);
-
-            vacData.history.date.push(date);
-            vacData.history.total.push(total);
-            vacData.history.coronavac.push(coronavac);
-            vacData.history.pfizer.push(pfizer);
+        else {
+            console.log("Error getting vac history: " + vacHistoryData.reason);
         }
 
         ///////////
 
-        const vacTotalsDataObj = xml2json.toJson(vacTotalData, { object: true });
-        const vacTotalsMetadata = vacTotalsDataObj.CdaExport.MetaData.ColumnMetaData;
+        if (vacTotalData.status === "fulfilled") {
+            const vacTotalsDataObj = xml2json.toJson(vacTotalData.value, { object: true });
+            const vacTotalsMetadata = vacTotalsDataObj.CdaExport.MetaData.ColumnMetaData;
 
-        let todayDateIndex = -1, totalVacIndex = -1, todayTotalIndex = -1;
-        for (let i = 0; i < vacTotalsMetadata.length; ++i) {
-            const metadataCol = vacTotalsMetadata[i];
-            const name = metadataCol.name.toLowerCase();
+            let todayDateIndex = -1, totalVacIndex = -1, todayTotalIndex = -1;
+            for (let i = 0; i < vacTotalsMetadata.length; ++i) {
+                const metadataCol = vacTotalsMetadata[i];
+                const name = metadataCol.name.toLowerCase();
 
-            if (name.includes("hora")) {
-                todayDateIndex = parseInt(metadataCol.index);
+                if (name.includes("hora")) {
+                    todayDateIndex = parseInt(metadataCol.index);
+                }
+                else if (name.includes("vacunaciones")) {
+                    totalVacIndex = parseInt(metadataCol.index);
+                }
+                else if (name.includes("actoshoy")) {
+                    todayTotalIndex = parseInt(metadataCol.index);
+                }
             }
-            else if (name.includes("vacunaciones")) {
-                totalVacIndex = parseInt(metadataCol.index);
+
+            if (todayDateIndex == -1 || totalVacIndex == -1 || todayTotalIndex == -1) {
+                throw new Error("Can't find vac total data indexes");
             }
-            else if (name.includes("actoshoy")) {
-                todayTotalIndex = parseInt(metadataCol.index);
-            }
+
+            const totalRows = vacTotalsDataObj.CdaExport.ResultSet.Row;
+            const totalsData = totalRows.Col;
+
+            const todayDate = totalsData[todayDateIndex];
+            const todayTotal = totalsData[todayTotalIndex];
+            const totalVac = totalsData[totalVacIndex];
+
+            vacData.date = today.format("YYYY-MM-DD");
+            vacData.todayDate = todayDate;
+            vacData.todayTotal = parseInt(todayTotal);
+            vacData.total = parseInt(totalVac);
         }
-
-        if (todayDateIndex == -1 || totalVacIndex == -1 || todayTotalIndex == -1) {
-            throw new Error("Can't find vac total data indexes");
+        else {
+            console.log("Error getting vac total: " + vacTotalData.reason);
         }
-
-        const totalRows = vacTotalsDataObj.CdaExport.ResultSet.Row;
-        const totalsData = totalRows.Col;
-
-        const todayDate = totalsData[todayDateIndex];
-        const todayTotal = totalsData[todayTotalIndex];
-        const totalVac = totalsData[totalVacIndex];
-
-        vacData.date = today.format("YYYY-MM-DD");
-        vacData.todayDate = todayDate;
-        vacData.todayTotal = parseInt(todayTotal);
-        vacData.total = parseInt(totalVac);
 
         ///////
 
-        const vacTypeDataObj = xml2json.toJson(vacTypeData, { object: true });
-        const vacTypeRows = vacTypeDataObj.CdaExport.ResultSet.Row;
-        let coronavacTotal = 0;
-        let pfizerTotal = 0;
-        for (let i = 0; i < vacTypeRows.length; ++i) {
-            const col = vacTypeRows[i].Col;
-            if (col[0].toLowerCase().includes("coronavac")) {
-                coronavacTotal = parseInt(col[1]);
+        if (vacTypeData.status === "fulfilled") {
+            const vacTypeDataObj = xml2json.toJson(vacTypeData.value, { object: true });
+            const vacTypeRows = vacTypeDataObj.CdaExport.ResultSet.Row;
+            let coronavacTotal = 0;
+            let pfizerTotal = 0;
+            for (let i = 0; i < vacTypeRows.length; ++i) {
+                const col = vacTypeRows[i].Col;
+                if (col[0].toLowerCase().includes("coronavac")) {
+                    coronavacTotal = parseInt(col[1]);
+                }
+                else if (col[0].toLowerCase().includes("pfizer")) {
+                    pfizerTotal = parseInt(col[1]);
+                }
             }
-            else if (col[0].toLowerCase().includes("pfizer")) {
-                pfizerTotal = parseInt(col[1]);
+
+            vacData.coronavacTotal = coronavacTotal;
+            vacData.pfizerTotal = pfizerTotal;
+            if(vacData.total == 0) {
+                vacData.total = coronavacTotal + pfizerTotal;
             }
         }
-
-        vacData.coronavacTotal = coronavacTotal;
-        vacData.pfizerTotal = pfizerTotal;
+        else {
+            console.log("Error getting vac type: " + vacTypeData.reason);
+        }
 
     } catch (e) {
         console.log("Error getting vaccination data. " + e.name + ": " + e.message);
@@ -473,6 +491,7 @@ async function downloadDepartmentsData() {
     await writeFilePromise(DATA_DIR + "uruguayDepartments.json", JSON.stringify(data));
 }
 
+exports.downloadVacData = downloadUruguayVaccinationData;
 exports.develop = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData), build, gulp.parallel(watch, hugoServer));
 exports.deploy = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData), updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);
 exports.default = exports.develop;
