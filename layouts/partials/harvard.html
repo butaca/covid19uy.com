@@ -24,25 +24,43 @@
         {{- i18n "harvardIndex" }}: {{ lang.NumFmt 2 $harvardIndex .Site.Params.numberFormat -}}
         <i class="far fa-question-circle has-margin-left-sm"></i>
     </span>
-    {{- $stroke0 := "none" -}}
-    {{- $stroke1 := "none" -}}
-    {{- $stroke2 := "none" -}}
-    {{- $stroke3 := "none" -}}
+    {{- $areaColor := "black" -}}
     {{- if le $harvardIndex 1 -}}
-    {{- $stroke0 = "black" -}}
+    {{- $areaColor = "green" -}}
     {{- else if le $harvardIndex 10 -}}
-    {{- $stroke1 = "black" -}}
+    {{- $areaColor = "yellow" -}}
     {{- else if le $harvardIndex 25 -}}
-    {{- $stroke2 = "black" -}}
+    {{- $areaColor = "orange" -}}
     {{- else }}
-    {{- $stroke3 = "black" -}}
+    {{- $areaColor = "red" -}}
+    {{- end -}}
+    {{- $linePos := mul (div $harvardIndex 25.0) 128 -}}
+    {{- if gt $linePos 128 -}}
+    {{- $linePos = 128 -}}
     {{- end -}}
     <div>
-        <svg width="68" height="12">
-            <rect x="2" y="2" width="16" height="8" style="fill:green;" stroke="{{ $stroke0 }}" stroke-width="2" />
-            <rect x="18" y="2" width="16" height="8" style="fill:yellow;" stroke="{{ $stroke1 }}" stroke-width="2" />
-            <rect x="34" y="2" width="16" height="8" style="fill:orange;" stroke="{{ $stroke2 }}" stroke-width="2" />
-            <rect x="50" y="2" width="16" height="8" style="fill:red;" stroke="{{ $stroke3 }}" stroke-width="2" />
+        <svg width="160" height="40">
+            <style>
+                .small { font: 14px sans-serif; fill: black;}
+            </style>
+            <defs>
+                <linearGradient id="harvardGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:green;stop-opacity:1" />
+                    <stop offset="4%" style="stop-color:yellow;stop-opacity:1" />
+                    <stop offset="40%" style="stop-color: orange;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:red;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            
+            <rect x="0" y="8" width="128" height="8" fill="url(#harvardGradient)"/>
+            
+            <line x1="{{ $linePos }}" y1="0" x2="{{ $linePos }}" y2="16" stroke="black" stroke-width="2"/>
+            
+            <text x="0" y="28" class="small" text-anchor="start">1</text>
+            <text x="51" y="28" class="small" text-anchor="middle">10</text>
+            <text x="128" y="28" class="small" text-anchor="end">25</text>
+
+            <rect x="136" y="4" width="16" height="16" style="fill:{{ $areaColor }};" stroke="black" stroke-width="2"/>
         </svg>
     </div>
 </div>
