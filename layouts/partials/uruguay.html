@@ -122,11 +122,11 @@
 <div>
     <div class="columns">
         {{- if gt site.Data.uruguayVaccination.firstDoseTotal 0 -}}
-        <div class="column is-3 is-8-mobile">
+        <div class="column is-3 is-12-mobile">
             {{ partial "vaccination.html" . }}
         </div>
         {{- end -}}
-        <div class="column is-3 is-8-mobile">
+        <div class="column is-3 is-12-mobile">
             {{ partial "harvard.html" . }}
         </div>
     </div>
