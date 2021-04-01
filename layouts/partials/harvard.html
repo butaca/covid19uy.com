@@ -20,7 +20,7 @@
 {{- $newCasesAverage = div $newCasesAverage $newCasesAverageSamples -}}
 <div>
     <h2 class="title">{{ i18n "harvardIndex" }}</h2>
-    {{- $harvardIndex := mul $newCasesAverage (div 100000 site.Data.worldPopulation.uruguay) -}}
+    {{- $harvardIndex := mul $newCasesAverage (div 100000.0 site.Data.uruguay.population) -}}
     <span class="has-tooltip-multiline has-tooltip-right" data-tooltip='{{ i18n "harvardIndexDesc" }}'>
         <span class="title">
             {{ lang.NumFmt 2 $harvardIndex .Site.Params.numberFormat -}}
