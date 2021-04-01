@@ -954,6 +954,28 @@
         { "date": "2021-03-30", "age": 81, "s": "?", "dep": "Montevideo" },
         { "date": "2021-03-30", "age": 82, "s": "?", "dep": "Montevideo" },
         { "date": "2021-03-30", "age": 83, "s": "?", "dep": "Montevideo" },
-        { "date": "2021-03-30", "age": 95, "s": "?", "dep": "Montevideo" }
+        { "date": "2021-03-30", "age": 95, "s": "?", "dep": "Montevideo" },
+
+        { "date": "2021-03-31", "age": 49, "s": "?", "dep": "Paysandú" },
+        { "date": "2021-03-31", "age": 65, "s": "?", "dep": "Cerro Largo" },
+        { "date": "2021-03-31", "age": 84, "s": "?", "dep": "Tacuarembó" },
+        { "date": "2021-03-31", "age": 75, "s": "?", "dep": "Rivera" },
+        { "date": "2021-03-31", "age": 79, "s": "?", "dep": "Rivera" },
+        { "date": "2021-03-31", "age": 50, "s": "?", "dep": "Canelones" },
+        { "date": "2021-03-31", "age": 88, "s": "?", "dep": "Canelones" },
+        { "date": "2021-03-31", "age": 90, "s": "?", "dep": "Canelones" },
+        { "date": "2021-03-31", "age": 76, "s": "?", "dep": "Durazno" },
+        { "date": "2021-03-31", "age": 84, "s": "?", "dep": "Durazno" },
+        { "date": "2021-03-31", "age": 87, "s": "?", "dep": "Durazno" },
+        { "date": "2021-03-31", "age": 90, "s": "?", "dep": "Durazno" },
+        { "date": "2021-03-31", "age": 56, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-31", "age": 59, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-31", "age": 65, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-31", "age": 72, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-31", "age": 75, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-31", "age": 75, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-31", "age": 80, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-31", "age": 89, "s": "?", "dep": "Montevideo" },
+        { "date": "2021-03-31", "age": 97, "s": "?", "dep": "Montevideo" }
     ]
 }

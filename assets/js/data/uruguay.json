@@ -4495,10 +4495,12 @@
                 616,
                 107,
                 18,
-                22
+                22,
+                8
             ],
             "lateTests": [
-                288
+                288,
+                439
             ]
         },
         {
@@ -4516,10 +4518,12 @@
             "lateNewCases": [
                 376,
                 165,
-                150
+                150,
+                42
             ],
             "lateTests": [
-                256
+                256,
+                360
             ]
         },
         {
@@ -4535,10 +4539,12 @@
             "hcDeaths": 7,
             "newCases": 2044,
             "lateNewCases": [
-                673
+                673,
+                11
             ],
             "lateTests": [
-                174
+                174,
+                85
             ]
         },
         {
@@ -4554,10 +4560,12 @@
             "hcDeaths": 7,
             "newCases": 1530,
             "lateNewCases": [
-                330
+                330,
+                632
             ],
             "lateTests": [
-                3921
+                3921,
+                117
             ]
         },
         {
@@ -4571,7 +4579,13 @@
             "hc": 4659,
             "hcRecovered": 4098,
             "hcDeaths": 7,
-            "newCases": 1450
+            "newCases": 1450,
+            "lateNewCases": [
+                344
+            ],
+            "lateTests": [
+                360
+            ]
         },
         {
             "date": "2021-03-30",
@@ -4585,6 +4599,19 @@
             "hcRecovered": 4146,
             "hcDeaths": 7,
             "newCases": 1664
+        },
+        {
+            "date": "2021-03-31",
+            "tests": 19414,
+            "cases": 105549,
+            "recovered": 83380,
+            "deaths": 974,
+            "icu": 339,
+            "imcu": 0,
+            "hc": 4862,
+            "hcRecovered": 4210,
+            "hcDeaths": 7,
+            "newCases": 2002
         }
     ]
 }
