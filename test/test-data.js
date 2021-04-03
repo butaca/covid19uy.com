@@ -11,6 +11,7 @@ describe('Test data', function () {
     let uruguay = null;
     let departmentsData = null;
     let uruguayDeaths = null;
+    let icu = null;
 
     before(async function () {
         const readFile = promisify(fs.readFile);
@@ -24,6 +25,9 @@ describe('Test data', function () {
             }).catch(assert.Throw),
             readFile(DATA_DIR + "uruguayDeaths.json").then(data => {
                 uruguayDeaths = JSON.parse(data.toString());
+            }).catch(assert.Throw),
+            readFile(DATA_DIR + "icu.json").then(data => {
+                icu = JSON.parse(data.toString());
             }).catch(assert.Throw)
         ]);
     });
@@ -161,5 +165,25 @@ describe('Test data', function () {
 
             assert.equal(todayDeaths, deaths, "Death count in uruguay.json doesn't match the deaths in uruguayDeaths.json for date " + todayDate.toString());
         }
+    });
+
+    it('Test icu.json data', function () {
+        let prevDate = null;
+        for (let i = 0; i < icu.data.length; ++i) {
+            const today = icu.data[i];
+            const date = new Date(today.date + DATE_DEFAULT_TIME);
+            assert(prevDate == null || date.getTime() >= prevDate.getTime(), "ICU dates must be successive");
+            prevDate = date;
+            assert(today.covid19 <= today.available, "COVID-19 occupation should be less or equal to the available beds.");
+            assert(today.total <= today.available, "Total ICU occupation should be less or equal to the available beds.");
+        }
+    });
+
+    it('The last date in icu.json should match the last date in uruguay.json', function () {
+        const today = uruguay.data[uruguay.data.length - 1];
+        const todayDate = new Date(today.date + DATE_DEFAULT_TIME);
+        const icuToday = icu.data[icu.data.length - 1];
+        const icuDate = new Date(icuToday.date + DATE_DEFAULT_TIME);
+        assert.ok(todayDate.getTime() == icuDate.getTime(), "The last date in icu.json doen't match the last date in uruguay.json");
     });
 });
