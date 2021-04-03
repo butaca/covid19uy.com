@@ -394,5 +394,12 @@
   },
   "sumi": {
     "other": "Sociedad Uruguaya de Medicina Intensiva"
+  },
+  "covid19": {
+    "other": "COVID-19"
+  },
+  "total": {
+      "other": "Total"
   }
+  
 }

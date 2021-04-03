@@ -3,7 +3,7 @@
 <div class="level">
     <div class="level-item has-text-centered">
         <div>
-            <p class="subtitle">COVID-19</p>
+            <p class="subtitle">{{ i18n "covid19" }}</p>
             <p class="title">{{ lang.NumFmt 2 (mul 100 (div $today.covid19 $today.available))
                 .Site.Params.numberFormat
                 }}%</p>
@@ -11,7 +11,7 @@
     </div>
     <div class="level-item has-text-centered">
         <div>
-            <p class="subtitle">Total</p>
+            <p class="subtitle">{{ i18n "total" }}</p>
             <p class="title">{{ lang.NumFmt 2 (mul 100 (div $today.total $today.available))
                 .Site.Params.numberFormat
                 }}%
