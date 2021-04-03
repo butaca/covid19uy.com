@@ -388,5 +388,11 @@
   },
   "icuOccupation": {
       "other": "ICU Occupation"
+  },
+  "vacMonitor": {
+      "other": "COVID-19 Vaccination Data Monitor"
+  },
+  "sumi": {
+    "other": "Uruguayan Society of Intensive Medicine"
   }
 }

@@ -388,5 +388,11 @@
   },
   "icuOccupation": {
       "other": "Ocupación CTI"
+  },
+  "vacMonitor": {
+      "other": "Monitor de datos de vacunación COVID-19"
+  },
+  "sumi": {
+    "other": "Sociedad Uruguaya de Medicina Intensiva"
   }
 }
