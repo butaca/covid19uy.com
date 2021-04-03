@@ -1,0 +1,40 @@
+{
+    "data": [
+        {
+            "date": "2021-03-30",
+            "covid19": 331,
+            "other": 584,
+            "available": 858,
+            "admissions": 44,
+            "discharges": 6,
+            "deaths": 13
+        },
+        {
+            "date": "2021-03-31",
+            "covid19": 339,
+            "other": 604,
+            "available": 860,
+            "admissions": 29,
+            "discharges": 12,
+            "deaths": 9
+        },
+        {
+            "date": "2021-04-01",
+            "covid19": 360,
+            "other": 606,
+            "available": 865,
+            "admissions": 38,
+            "discharges": 7,
+            "deaths": 9
+        },
+        {
+            "date": "2021-04-02",
+            "covid19": 368,
+            "other": 594,
+            "available": 862,
+            "admissions": 32,
+            "discharges": 11,
+            "deaths": 13
+        }
+    ]
+}
