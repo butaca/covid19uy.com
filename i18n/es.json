@@ -385,5 +385,8 @@
   },
   "harvardIndexDesc": {
       "other": "Nivel de riesgo de acuerdo al promedio de nuevos casos cada 100.000 habitantes de los últimos 7 días. Se incluyen los casos reportados tardíamente."
+  },
+  "icuOccupation": {
+      "other": "Ocupación CTI"
   }
 }

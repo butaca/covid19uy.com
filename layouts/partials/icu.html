@@ -1,0 +1,21 @@
+{{- $today := index site.Data.icu.data (sub (len site.Data.icu.data) 1) -}}
+<h2 class="title">{{ i18n "icuOccupation" }}</h2>
+<div class="level">
+    <div class="level-item has-text-centered">
+        <div>
+            <p class="subtitle">COVID-19</p>
+            <p class="title">{{ lang.NumFmt 2 (mul 100 (div $today.covid19 $today.available))
+                .Site.Params.numberFormat
+                }}%</p>
+        </div>
+    </div>
+    <div class="level-item has-text-centered">
+        <div>
+            <p class="subtitle">Total</p>
+            <p class="title">{{ lang.NumFmt 2 (mul 100 (div $today.total $today.available))
+                .Site.Params.numberFormat
+                }}%
+            </p>
+        </div>
+    </div>
+</div>
