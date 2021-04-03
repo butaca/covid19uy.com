@@ -177,6 +177,12 @@ describe('Test data', function () {
             assert(today.covid19 <= today.available, "COVID-19 occupation should be less or equal to the available beds.");
             assert(today.total <= today.available, "Total ICU occupation should be less or equal to the available beds.");
         }
+
+        if (icu.data.length > 0 && uruguay.data.length > 0) {
+            const icuLast = icu.data[icu.data.length - 1];
+            const uruguayLast = uruguay.data[uruguay.data.length - 1];
+            assert(icuLast.covid19 == uruguayLast.icu, "La cantidad de camas ocupadas con COVID-19 en icu.json debería ser igual al valor de icu en uruguay.json");
+        }
     });
 
     it('The last date in icu.json should match the last date in uruguay.json', function () {
