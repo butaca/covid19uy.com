@@ -4452,6 +4452,9 @@
             "hcRecovered": 3781,
             "hcDeaths": 7,
             "newCases": 1801,
+            "lateTests": [
+                116
+            ],
             "lateNewCases": [
                 258,
                 24,
@@ -4474,7 +4477,8 @@
             "hcDeaths": 7,
             "newCases": 1796,
             "lateTests": [
-                160
+                160,
+                133
             ],
             "lateNewCases": [
                 605,
