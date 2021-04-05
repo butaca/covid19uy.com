@@ -78,13 +78,13 @@
     "other": "Casos activos diarios"
   },
   "graphTitleActiveCasesDesc": {
-    "other": "Casos activos por día. 👉 Esta es la curva que tenemos que achatar (\"flatten the curve\"). Los casos activos son los personas que en éste momento tienen el virus, calculados como el total de casos menos los recuperados y los fallecidos."
+    "other": "Casos activos por día. 👉 Esta es la curva que tenemos que achatar (\"flatten the curve\"). Los casos activos son los personas que en éste momento tienen el virus, calculados como el total de casos menos los recuperados y los fallecidos. Se incluyen los casos reportados tardíamente."
   },
   "graphTitleDailyActiveCases": {
     "other": "Nuevos casos activos diarios"
   },
   "graphTitleDailyActiveCasesDesc": {
-    "other": "En cada día, cantidad de nuevos casos activos (personas con el virus) con respecto al día anterior. Un número negativo significa que ese día disminuyó la cantidad de personas con el virus."
+    "other": "En cada día, cantidad de nuevos casos activos (personas con el virus) con respecto al día anterior. Un número negativo significa que ese día disminuyó la cantidad de personas con el virus. Se incluyen los casos reportados tardíamente."
   },
   "graphTitleDailyCases": {
     "other": "Casos nuevos diarios"
@@ -120,19 +120,19 @@
     "other": "Tests diarios"
   },
   "graphTitleDailyTestsNewDesc": {
-    "other": "Cantidad de tests realizados en cada día."
+    "other": "Cantidad de tests realizados en cada día. No se consideran los casos nuevos reportados fuera de fecha por falta de información."
   },
   "graphTitleHealthcareWorkers": {
     "other": "Casos diarios de trabajadores de la salud"
   },
   "graphTitleHealthcareWorkersDesc": {
-    "other": "Cantidad de casos nuevos en cada día y cuántos de ellos corresponden a trabajadores de la salud. Se descartan los casos nuevos reportados fuera de fecha por falta de información."
+    "other": "Cantidad de casos nuevos en cada día y cuántos de ellos corresponden a trabajadores de la salud. No se consideran los casos nuevos reportados fuera de fecha por falta de información."
   },
   "graphTitleHealthcareWorkersPercent": {
     "other": "Porcentaje de casos de trabajadores de la salud"
   },
   "graphTitleHealthcareWorkersPercentDesc": {
-    "other": "De los nuevos casos de cada día, qué porcentaje correspondiente a trabajadores de la salud en ese día. Se descartan los casos nuevos reportados fuera de fecha por falta de información."
+    "other": "De los nuevos casos de cada día, qué porcentaje correspondiente a trabajadores de la salud en ese día. No se consideran los casos nuevos reportados fuera de fecha por falta de información."
   },
   "graphTitleRegionActiveCases": {
     "other": "Casos activos por cada millón de habitantes en la región"
@@ -156,7 +156,7 @@
     "other": "Casos acumulados, recuperados y fallecidos"
   },
   "graphTitleTotalCasesDesc": {
-    "other": "En cada día, suma total de casos confirmados, recuperados y fallecidos hasta ese día."
+    "other": "En cada día, suma total de casos confirmados, recuperados y fallecidos hasta ese día. Se incluyen los casos reportados tardíamente."
   },
   "graphTitleTotalTests": {
     "other": "Tests totales"
@@ -201,7 +201,7 @@
     "other": "Tasa de positividad"
   },
   "graphPositivityRateDesc" : {
-    "other": "En cada día, porcentaje de tests positivos realizados ese día. Para este cálculo se asume que el total de tests positivos corresponde a la cantidad de casos nuevos ese día por falta de información. Se descartan los casos nuevos reportados fuera de fecha por falta de información."
+    "other": "En cada día, porcentaje de tests positivos realizados ese día. Para este cálculo se asume que el total de tests positivos corresponde a la cantidad de casos nuevos ese día por falta de información. No se consideran los casos nuevos y tests reportados fuera de fecha por falta de información."
   },
   "graphDailyVacs": {
     "other": "Vacunación diaria"

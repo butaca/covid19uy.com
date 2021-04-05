@@ -78,13 +78,13 @@
     "other": "Daily active cases"
   },
   "graphTitleActiveCasesDesc": {
-    "other": "Active cases per day. 👉 This is the curve we have to flatten. The active cases are the people that currently have the virus, calculated as the total cases minus the recovered and deaths."
+    "other": "Active cases per day. 👉 This is the curve we have to flatten. The active cases are the people that currently have the virus, calculated as the total cases minus the recovered and deaths. Late-reported cases are included."
   },
   "graphTitleDailyActiveCases": {
     "other": "Daily new active cases"
   },
   "graphTitleDailyActiveCasesDesc": {
-    "other": "In each day, number of new active cases (people with the virus) compared to the previous day. A negative number means that the number of people with the virus decreased that day."
+    "other": "In each day, number of new active cases (people with the virus) compared to the previous day. A negative number means that the number of people with the virus decreased that day. Late-reported cases are included."
   },
   "graphTitleDailyCases": {
     "other": "Daily new cases"
@@ -120,19 +120,19 @@
     "other": "Daily tests"
   },
   "graphTitleDailyTestsNewDesc": {
-    "other": "Number of tests carried out each day."
+    "other": "Number of tests carried out each day. New tests reported out of date are not considered due to lack of information."
   },
   "graphTitleHealthcareWorkers": {
     "other": "Daily healthcare workers cases"
   },
   "graphTitleHealthcareWorkersDesc": {
-    "other": "Number of new cases in each day and how many of them correspond to healthcare workers. New cases reported out of date are discarded due to lack of information."
+    "other": "Number of new cases in each day and how many of them correspond to healthcare workers. New cases reported out of date are not considered due to lack of information."
   },
   "graphTitleHealthcareWorkersPercent": {
     "other": "Percentage of healthcare workers cases"
   },
   "graphTitleHealthcareWorkersPercentDesc": {
-    "other": "Of the new cases of each day, what percentage correspond to healthcare workers on that day. New cases reported out of date are discarded due to lack of information."
+    "other": "Of the new cases of each day, what percentage correspond to healthcare workers on that day. New cases reported out of date are not considered due to lack of information."
   },
   "graphTitleRegionActiveCases": {
     "other": "Active cases per million inhabitants in the region"
@@ -156,7 +156,7 @@
     "other": "Cumulative cases, recovered and deaths"
   },
   "graphTitleTotalCasesDesc": {
-    "other": "On each day, the total sum of confirmed cases, recovered and deaths up to that day."
+    "other": "On each day, the total sum of confirmed cases, recovered and deaths up to that day. Late-reported cases are included."
   },
   "graphTitleTotalTests": {
     "other": "Total tests"
@@ -198,7 +198,7 @@
     "other": "Positivity Rate"
   },
   "graphPositivityRateDesc" : {
-    "other": "On each day, percentage of positive tests done that day. For this calculation, it is assumed that the total of positive tests corresponds to the number of new cases that day due to lack of information. New cases reported out of date are discarded due to lack of information."
+    "other": "On each day, percentage of positive tests done that day. For this calculation, it is assumed that the total of positive tests corresponds to the number of new cases that day due to lack of information. New cases and tests reported out of date are not considered due to lack of information."
   },
   "graphDailyVacs": {
     "other": "Daily vaccination"

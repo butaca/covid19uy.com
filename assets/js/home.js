@@ -144,6 +144,11 @@ function main() {
     var dailyDeaths = [];
     var deathsFirstIndex = -1;
     var dailyCasesWithLateData = [];
+    var yesterdayTotalCasesWithLateData = 0;
+    var totalCasesWithLateData = [];
+    var activeCasesWithLateData = [];
+    var dailyActiveCasesWithLateData = []
+    var yesterdayActiveCasesWithLateData = 0;
 
     data.data.forEach(function (el, index) {
         var todayPositives = el.positives;
@@ -196,11 +201,15 @@ function main() {
         prevDayTotalCases = totalTodayCases;
         dailyCases.push(todayCases);
 
-        var todayCasesWithLateData = todayCases;
+        var todayNewCasesWithLateData = todayCases;
         if (el.lateNewCases != undefined) {
-            todayCasesWithLateData += getTotal(el.lateNewCases);
+            todayNewCasesWithLateData += getTotal(el.lateNewCases);
         }
-        dailyCasesWithLateData.push(todayCasesWithLateData);
+        dailyCasesWithLateData.push(todayNewCasesWithLateData);
+
+        const todayTotalCasesWithLateData = yesterdayTotalCasesWithLateData + todayNewCasesWithLateData - (el.lateDeletedCases != undefined ? el.lateDeletedCases.reduce( (prev,cur) => prev + cur ) : 0);
+        totalCasesWithLateData.push(todayTotalCasesWithLateData);
+        yesterdayTotalCasesWithLateData = todayTotalCasesWithLateData;
 
         var todayActiveCases = el.activeCases != undefined ? el.activeCases : (totalTodayCases - todayTotalDeaths - todayTotalRecovered);
         activeCases.push(todayActiveCases);
@@ -208,6 +217,12 @@ function main() {
         dailyActiveCases.push(todayActiveCases - prevTodayActiveCases);
         prevTodayActiveCases = todayActiveCases;
 
+        var todayActiveCasesWithLateData = (todayTotalCasesWithLateData - todayTotalDeaths - todayTotalRecovered);
+        activeCasesWithLateData.push(todayActiveCasesWithLateData);
+        
+        dailyActiveCasesWithLateData.push(todayActiveCasesWithLateData - yesterdayActiveCasesWithLateData)
+        yesterdayActiveCasesWithLateData = todayActiveCasesWithLateData;
+        
         var todayICU = el.icu != undefined ? el.icu : 0;
         var todayIMCU = el.imcu != undefined ? el.imcu : 0;
 
@@ -240,6 +255,8 @@ function main() {
     var pointRadius = 2;
     var pointHoverRadius = 3;
 
+    var activeCasesData = data.lateDataEnabled ? activeCasesWithLateData : activeCases;
+
     var options = createDefaultChartOptions();
     options.scales = {
         yAxes: [{
@@ -257,12 +274,12 @@ function main() {
         data: {
             labels: dates,
             datasets: [
-                createMovingAverageDataset(activeCases, MOVING_AVERAGE_DELTA, "#0033bb88"),
+                createMovingAverageDataset(activeCasesData, MOVING_AVERAGE_DELTA, "#0033bb88"),
                 {
                     pointBackgroundColor: "#28b8d6ff",
                     backgroundColor: "#28b8d680",
                     label: lang.activeCases.other,
-                    data: activeCases,
+                    data: activeCasesData,
                     pointRadius: pointRadius,
                     pointHoverRadius: pointHoverRadius
                 }
@@ -281,7 +298,7 @@ function main() {
                 pointBackgroundColor: "#28b8d6ff",
                 backgroundColor: "#28b8d680",
                 label: lang.totalCases.other,
-                data: cases,
+                data: data.lateDataEnabled ? totalCasesWithLateData : cases,
                 pointRadius: pointRadius,
                 pointHoverRadius: pointHoverRadius
             },
@@ -378,7 +395,7 @@ function main() {
         options: options
     });
 
-    var dailyCasesData = data.lateNewCasesEnabled ? dailyCasesWithLateData : dailyCases;
+    var dailyCasesData = data.lateDataEnabled ? dailyCasesWithLateData : dailyCases;
 
     options = createDefaultChartOptions();
     options.tooltips = {
@@ -647,6 +664,7 @@ function main() {
         options: options
     });
 
+    var activeCasesData = data.lateDataEnabled ? dailyActiveCasesWithLateData : dailyActiveCases;
     options = createDefaultChartOptions();
     options.tooltips = {
         onlyShowForDatasetIndex: [1]
@@ -657,12 +675,12 @@ function main() {
         data: {
             labels: dates,
             datasets: [
-                createMovingAverageDataset(dailyActiveCases, MOVING_AVERAGE_DELTA, "#0033bb88"),
+                createMovingAverageDataset(activeCasesData, MOVING_AVERAGE_DELTA, "#0033bb88"),
                 {
                     pointBackgroundColor: "#28b8d6ff",
                     backgroundColor: "#28b8d680",
                     label: lang.newActiveCases.other,
-                    data: dailyActiveCases,
+                    data: activeCasesData,
                 }]
         },
         options: options
@@ -1082,5 +1100,13 @@ function main() {
         },
         options: options
     });
+
+    if(data.lateDataEnabled && activeCasesWithLateData.length > 1) {
+        const totalActiveCases = activeCasesWithLateData.length;
+        const activeCasesDiffElem = document.getElementById("active-cases-diff");
+        const diff = activeCasesWithLateData[totalActiveCases - 1] - activeCasesWithLateData[totalActiveCases - 2];
+        activeCasesDiffElem.innerText = (diff < 0 ? "-" : "+") + diff;
+        activeCasesDiffElem.style.visibility = "visible";
+    }
     
 }

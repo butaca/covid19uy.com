@@ -6,7 +6,7 @@
 {{- if isset $today "newCases" -}}
 {{- $cases = $today.newCases -}}
 {{- end -}}
-{{- if and .Site.Data.uruguay.lateNewCasesEnabled (isset $today "lateNewCases") -}}
+{{- if and .Site.Data.uruguay.lateDataEnabled (isset $today "lateNewCases") -}}
 {{- $lateNewCases := 0 -}}
 {{- range $today.lateNewCases -}}
 {{- $lateNewCases = add $lateNewCases . -}}
