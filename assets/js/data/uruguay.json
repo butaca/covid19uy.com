@@ -4492,10 +4492,9 @@
         },
         {
             "date": "2021-03-23",
-            "activeCases": 14826,
             "tests": 11097,
             "cases": 86007,
-            "recovered": 70372,
+            "recovered": 70354,
             "deaths": 827,
             "icu": 202,
             "imcu": 0,
@@ -4541,10 +4540,8 @@
                 7,
                 19,
                 56,
-                31
-            ],
-            "lateDeletedCases": [
-                -9
+                31,
+                9
             ]
         },
         {
