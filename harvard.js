@@ -30,7 +30,7 @@ for (let i = startIndex; i < uruguay.data.length; ++i) {
     if (dayIndex >= HARVARD_INDEX_DAYS) {
         sumNewCases -= newCases[dayIndex - HARVARD_INDEX_DAYS];
         const harvardIndex = (sumNewCases / HARVARD_INDEX_DAYS) * (100000.0 / uruguay.population);
-        console.log(today.date + "    " + round(harvardIndex));
+        console.log(today.date + "    " + todayNewCases +  "    " + round(harvardIndex));
     }
 
     yesterday = today;
