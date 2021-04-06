@@ -41,7 +41,7 @@ params:
   repo:
     url: https://github.com/butaca/covid19uy.com
     icon: fab fa-github
-  kofi: true
+  kofi: false
   share:
     - name: Facebook
       icon: fab fa-facebook
