@@ -20,10 +20,18 @@
     {{ partial "navbar.html" . }}
     <section class="section">
         <div class="container">
-            <h1 class="title has-margin-bottom-sm"> 
+            <h1 class="title has-margin-bottom-sm">
                 {{ .Title }}
             </h1>
             <div class="content">
+                <article class="message is-warning">
+                    <div class="message-header">
+                        <p>Warning</p>
+                    </div>
+                    <div class="message-body">
+                        {{ i18n "unreliableData" }}
+                    </div>
+                </article>
                 {{ partial "uruguay.html" . }}
             </div>
             <div class="columns is-centered is-multiline">
@@ -31,7 +39,9 @@
                 {{- range .Site.Data.charts -}}
                 {{- if not .disabled -}}
                 <div class="column is-4">
-                    {{ partial "chart-title.html" (dict "title" (i18n .title) "desc" (i18n .desc) "displayPositivesAndCasesInfo" .displayPositivesAndCasesInfo "displayUnreportedPositiviesInfo" .displayUnreportedPositiviesInfo "new" .new "displayDeathsInfo" .displayDeathsInfo) }}
+                    {{ partial "chart-title.html" (dict "title" (i18n .title) "desc" (i18n .desc)
+                    "displayPositivesAndCasesInfo" .displayPositivesAndCasesInfo "displayUnreportedPositiviesInfo"
+                    .displayUnreportedPositiviesInfo "new" .new "displayDeathsInfo" .displayDeathsInfo) }}
                     <canvas id="{{ .id }}" width="100%" height="100%"></canvas>
                     {{ partial "uruguay-updated-date.html" $context }}
                 </div>
@@ -54,10 +64,9 @@
                         rel="noopener noreferrer">{{ i18n "msp" }}</a> ({{ i18n "publishedBy" }}
                     <a href="https://www.gub.uy/sistema-nacional-emergencias/" target="_blank"
                         rel="noopener noreferrer">{{ i18n "sinae" }}</a>),
-                    <a href="https://monitor.uruguaysevacuna.gub.uy" target="_blank"
-                        rel="noopener noreferrer">{{ i18n "vacMonitor" }}</a>,
-                    <a href="https://sumi.uy" target="_blank"
-                        rel="noopener noreferrer">{{ i18n "sumi" }}</a>.
+                    <a href="https://monitor.uruguaysevacuna.gub.uy" target="_blank" rel="noopener noreferrer">{{ i18n
+                        "vacMonitor" }}</a>,
+                    <a href="https://sumi.uy" target="_blank" rel="noopener noreferrer">{{ i18n "sumi" }}</a>.
                 </p>
             </div>
             <div class="content">
@@ -70,7 +79,9 @@
                         {{ $context := . }}
                         {{- range .Site.Data.chartsArchive -}}
                         <div class="column is-4">
-                            {{ partial "chart-title.html" (dict "title" (i18n .title) "desc" (i18n .desc) "displayPositivesAndCasesInfo" .displayPositivesAndCasesInfo "displayUnreportedPositiviesInfo" .displayUnreportedPositiviesInfo) }}
+                            {{ partial "chart-title.html" (dict "title" (i18n .title) "desc" (i18n .desc)
+                            "displayPositivesAndCasesInfo" .displayPositivesAndCasesInfo
+                            "displayUnreportedPositiviesInfo" .displayUnreportedPositiviesInfo) }}
                             <canvas id="{{ .id }}" width="100%" height="100%"></canvas>
                         </div>
                         {{- end -}}

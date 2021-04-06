@@ -400,6 +400,9 @@
   },
   "total": {
       "other": "Total"
+  },
+  "unreliableData": {
+      "other": "El día 05/04/2021, el informe del MSP presentó una inconsistencia que afecta la correctitud de los datos en diversas gráficas. Por éste motivo, dichas gráficas han sido ocultadas hasta que se aclare el problema."
   }
   
 }

@@ -400,5 +400,10 @@
   },
   "total": {
       "other": "Total"
+  },
+  "unreliableData": {
+      "other": "On 04/05/2021, the MSP report presented an inconsistency that affects the correctness of the data in various charts. For this reason, these graphs have been hidden until the problem is clarified."
   }
+
+
 }
