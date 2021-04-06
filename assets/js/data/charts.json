@@ -3,13 +3,15 @@
         "id": "chart-active-cases",
         "title": "graphTitleActiveCases",
         "desc": "graphTitleActiveCasesDesc",
-        "displayPositivesAndCasesInfo": true
+        "displayPositivesAndCasesInfo": true,
+        "disabled": true
     },
     {
         "id": "chart-total-cases",
         "title": "graphTitleTotalCases",
         "desc": "graphTitleTotalCasesDesc",
-        "displayPositivesAndCasesInfo": true
+        "displayPositivesAndCasesInfo": true,
+        "disabled": true
     },
     {
         "id": "chart-total",
@@ -37,13 +39,15 @@
         "id": "chart-daily-cases",
         "title": "graphTitleDailyCases",
         "desc": "graphTitleDailyCasesDesc",
-        "displayPositivesAndCasesInfo": true
+        "displayPositivesAndCasesInfo": true,
+        "disabled": true
     },
     {
         "id": "chart-daily-active-cases",
         "title": "graphTitleDailyActiveCases",
         "desc": "graphTitleDailyActiveCasesDesc",
-        "displayPositivesAndCasesInfo": true
+        "displayPositivesAndCasesInfo": true,
+        "disabled": true
     },
     {
         "id": "chart-daily-positivity-rate",
