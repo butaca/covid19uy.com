@@ -1,6 +1,6 @@
 {
     "unreportedDailyTests": 4212,
-    "lateDataEnabled": false,
+    "lateDataEnabled": true,
     "population": 3505950,
     "data": [
         {
@@ -4657,8 +4657,7 @@
                 154,
                 143,
                 132,
-                27,
-                97
+                27
             ],
             "lateNewCases": [
                 330,
@@ -4666,7 +4665,8 @@
                 85,
                 4,
                 2,
-                32
+                32,
+                97
             ],
             "lateDeletedCases": [
                 20
@@ -4690,7 +4690,7 @@
                 70,
                 120,
                 253,
-                79
+                38
             ],
             "lateNewCases": [
                 344,
@@ -4698,7 +4698,7 @@
                 412,
                 66,
                 30,
-                38
+                79
             ]
         },
         {
@@ -4718,14 +4718,14 @@
                 29,
                 16,
                 42,
-                103
+                238
             ],
             "lateNewCases": [
                 416,
                 440,
                 157,
                 234,
-                238
+                103
             ],
             "lateDeletedCases": [
                 21
@@ -4747,13 +4747,13 @@
                 140,
                 23,
                 13,
-                174
+                316
             ],
             "lateNewCases": [
                 363,
                 209,
                 372,
-                316
+                174
             ],
             "lateDeletedCases": [
                 7
@@ -4774,12 +4774,12 @@
             "lateTests": [
                 145,
                 36,
-                140
+                143
             ],
             "lateNewCases": [
                 626,
                 285,
-                143
+                140
             ],
             "lateDeletedCases": [
                 2
@@ -4799,11 +4799,11 @@
             "newCases": 2069,
             "lateNewCases": [
                 652,
-                175
+                267
             ],
             "lateTests": [
                 780,
-                267
+                175
             ]
         },
         {
@@ -4819,10 +4819,10 @@
             "hcDeaths": 7,
             "newCases": 1262,
             "lateTests": [
-                702
+                340
             ],
             "lateNewCases": [
-                340
+                702
             ],
             "lateDeletedCases": [
                 3
