@@ -1105,7 +1105,7 @@ function main() {
         const totalActiveCases = activeCasesWithLateData.length;
         const activeCasesDiffElem = document.getElementById("active-cases-diff");
         const diff = activeCasesWithLateData[totalActiveCases - 1] - activeCasesWithLateData[totalActiveCases - 2];
-        activeCasesDiffElem.innerText = (diff < 0 ? "-" : "+") + diff;
+        activeCasesDiffElem.innerText = (diff >= 0 ? "+" : "") + diff;
         activeCasesDiffElem.style.visibility = "visible";
     }
     
