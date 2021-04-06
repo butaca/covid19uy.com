@@ -1,7 +1,7 @@
 {
     "unreportedDailyTests": 4212,
     "lateDataEnabled": true,
-    "population": 3505950,
+    "population": 3505980,
     "data": [
         {
             "date": "2020-03-13",
@@ -4542,6 +4542,9 @@
                 56,
                 31,
                 0
+            ],
+            "lateDeletedCases":[
+                -9
             ]
         },
         {
