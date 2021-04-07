@@ -4543,7 +4543,7 @@
                 31,
                 0
             ],
-            "lateDeletedCases":[
+            "lateDeletedCases": [
                 -9
             ]
         },
@@ -4701,7 +4701,8 @@
                 412,
                 66,
                 30,
-                79
+                79,
+                62
             ]
         },
         {
@@ -4721,14 +4722,16 @@
                 29,
                 16,
                 42,
-                238
+                238,
+                318
             ],
             "lateNewCases": [
                 416,
                 440,
                 157,
                 234,
-                103
+                103,
+                8
             ],
             "lateDeletedCases": [
                 21
@@ -4750,13 +4753,15 @@
                 140,
                 23,
                 13,
-                316
+                316,
+                101
             ],
             "lateNewCases": [
                 363,
                 209,
                 372,
-                174
+                174,
+                223
             ],
             "lateDeletedCases": [
                 7
@@ -4777,12 +4782,14 @@
             "lateTests": [
                 145,
                 36,
-                143
+                143,
+                21
             ],
             "lateNewCases": [
                 626,
                 285,
-                140
+                140,
+                22
             ],
             "lateDeletedCases": [
                 2
@@ -4800,13 +4807,15 @@
             "hcRecovered": 4343,
             "hcDeaths": 7,
             "newCases": 2069,
-            "lateNewCases": [
-                652,
-                267
-            ],
             "lateTests": [
                 780,
-                175
+                175,
+                21
+            ],
+            "lateNewCases": [
+                652,
+                267,
+                53
             ]
         },
         {
@@ -4822,10 +4831,12 @@
             "hcDeaths": 7,
             "newCases": 1262,
             "lateTests": [
-                340
+                340,
+                43
             ],
             "lateNewCases": [
-                702
+                702,
+                320
             ],
             "lateDeletedCases": [
                 3
@@ -4843,6 +4854,12 @@
             "hcRecovered": 4475,
             "hcDeaths": 7,
             "newCases": 2237,
+            "lateNewTests": [
+                93
+            ],
+            "lateNewCases": [
+                811
+            ],
             "lateDeletedCases": [
                 2
             ]
@@ -4859,6 +4876,22 @@
             "hcRecovered": 4564,
             "hcDeaths": 7,
             "newCases": 647,
+            "lateDeletedCases": [
+                8
+            ]
+        },
+        {
+            "date": "2021-04-06",
+            "tests": 13955,
+            "cases": 123063,
+            "recovered": 96563,
+            "deaths": 1191,
+            "icu": 432,
+            "imcu": 0,
+            "hc": 5333,
+            "hcRecovered": 4654,
+            "hcDeaths": 7,
+            "newCases": 1614,
             "lateDeletedCases": [
                 8
             ]
