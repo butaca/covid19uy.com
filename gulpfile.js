@@ -393,7 +393,7 @@ async function downloadUruguayVaccinationData() {
                 if (name.includes("hora")) {
                     todayDateIndex = parseInt(metadataCol.index);
                 }
-                else if (name.includes("vacunaciones")) {
+                else if (name.includes("dosis pais")) {
                     totalVacIndex = parseInt(metadataCol.index);
                 }
                 else if (name.includes("actoshoy")) {
