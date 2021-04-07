@@ -81,6 +81,47 @@ describe('Test data', function () {
         }
     });
 
+    it('The last date cases in uruguay.json should match the computed total cases using late data', function () {
+        if (uruguay.data.length > 0) {
+            let yesterdayTotalCases = 0;
+            let yesterdayTotalCasesWithLateData = 0;
+            let yesterdayTotalPositives = 0;
+
+            for (let i = 0; i < uruguay.data.length; ++i) {
+                const today = uruguay.data[i];
+
+                const todayPositives = today.positives;
+                let todayTotalPositives = yesterdayTotalPositives;
+
+                if (todayPositives != undefined) {
+                    todayTotalPositives = yesterdayTotalPositives + todayPositives;
+                    yesterdayTotalPositives += todayPositives;
+                }
+
+                const totalTodayCases = today.cases != undefined ? today.cases : todayTotalPositives;
+
+                let todayCases = totalTodayCases - yesterdayTotalCases;
+                if (today.newCases != undefined) {
+                    todayCases = today.newCases;
+                }
+
+                todayCases = Math.max(0, todayCases);
+
+                yesterdayTotalCases = totalTodayCases;
+
+                let todayNewCasesWithLateData = todayCases;
+                if (today.lateNewCases != undefined) {
+                    todayNewCasesWithLateData += today.lateNewCases.reduce((prev, cur) => prev + cur);
+                }
+
+                const todayTotalCasesWithLateData = yesterdayTotalCasesWithLateData + todayNewCasesWithLateData - (today.lateDeletedCases != undefined ? today.lateDeletedCases.reduce((prev, cur) => prev + cur) : 0);
+                yesterdayTotalCasesWithLateData = todayTotalCasesWithLateData;
+            }
+
+            assert.equal(yesterdayTotalCasesWithLateData, uruguay.data[uruguay.data.length - 1].cases, "The last date cases in uruguay.json should match the computed total cases using late data");
+        }
+    });
+
     it('The date in uruguayDeparments.json should match the last date in uruguay.json', function () {
         const today = uruguay.data[uruguay.data.length - 1];
         const todayDate = new Date(today.date + DATE_DEFAULT_TIME);
