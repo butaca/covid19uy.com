@@ -384,7 +384,7 @@
       "other": "Índice de Harvard"
   },
   "harvardIndexDesc": {
-      "other": "Nivel de riesgo de acuerdo al promedio de nuevos casos cada 100.000 habitantes de los últimos 7 días. Se incluyen los casos reportados tardíamente."
+      "other": "Nivel de riesgo de acuerdo al promedio de nuevos casos cada 100.000 habitantes de los últimos 7 días. NO se incluyen los casos reportados tardíamente, para igualar el cálculo de la app CoronavirusUY."
   },
   "icuOccupation": {
       "other": "Ocupación CTI"

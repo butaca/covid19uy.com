@@ -7,11 +7,13 @@ function round(num) {
 }
 
 let sumNewCases = 0;
-let yesterday = null;
 let newCases = [];
 let dayIndex = 0;
+let sumNewCasesWithoutLateData = 0;
+let newCasesWithoutLateData = [];
 
 const startIndex = Math.max(0, uruguay.data.length - TOTAL_DAYS - HARVARD_INDEX_DAYS);
+let yesterday = uruguay.data[startIndex - 1];
 for (let i = startIndex; i < uruguay.data.length; ++i) {
     const today = uruguay.data[i];
 
@@ -24,13 +26,20 @@ for (let i = startIndex; i < uruguay.data.length; ++i) {
     }
 
     newCases.push(todayNewCases);
-
     sumNewCases += todayNewCases;
+
+    const todayNewCasesWithoutLateData = today.cases - yesterday.cases;
+    newCasesWithoutLateData.push(todayNewCasesWithoutLateData);
+    sumNewCasesWithoutLateData += todayNewCasesWithoutLateData;
 
     if (dayIndex >= HARVARD_INDEX_DAYS) {
         sumNewCases -= newCases[dayIndex - HARVARD_INDEX_DAYS];
         const harvardIndex = (sumNewCases / HARVARD_INDEX_DAYS) * (100000.0 / uruguay.population);
-        console.log(today.date + "    " + todayNewCases +  "    " + round(harvardIndex));
+
+        sumNewCasesWithoutLateData -= newCasesWithoutLateData[dayIndex - HARVARD_INDEX_DAYS];
+        const harvardIndexWithoutLateData = (sumNewCasesWithoutLateData / HARVARD_INDEX_DAYS) * (100000.0 / uruguay.population);
+
+        console.log(today.date + "    " + todayNewCases +  "    " + round(harvardIndex) + "    " + round(harvardIndexWithoutLateData));
     }
 
     yesterday = today;
