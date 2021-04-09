@@ -19,6 +19,7 @@ const DATA_DIR = "./assets/js/data/"
 const uruguay = require(DATA_DIR + "uruguay.json");
 const VAC_BASE_URL = "https://monitor.uruguaysevacuna.gub.uy/plugin/cda/api/doQuery";
 const VIS_BASE_URL = "https://services5.arcgis.com/Th0Tmkhiy5BQYoxP/arcgis/rest/services/Casos_DepartamentosROU_vista_2/FeatureServer/";
+const { buildChartData, watchChartData } = require('./gulp/buildChartData');
 
 const writeFilePromise = promisify(fs.writeFile);
 
@@ -152,7 +153,7 @@ async function downloadPopulationData() {
     await writeFilePromise(DATA_DIR + "worldPopulation.json", JSON.stringify(result));
 }
 
-const watch = sassWatch;
+const watch = gulp.parallel(sassWatch, watchChartData);
 
 function updateLastMod() {
     return gulp.src('content/_index*.md')
@@ -407,7 +408,7 @@ async function downloadUruguayVaccinationData() {
                 }
             }
 
-            if (todayDateIndex == -1 || totalVacIndex == -1 || todayTotalIndex == -1  || firstDoseIndex == -1  || secondDoseIndex == -1) {
+            if (todayDateIndex == -1 || totalVacIndex == -1 || todayTotalIndex == -1 || firstDoseIndex == -1 || secondDoseIndex == -1) {
                 throw new Error("Can't find vac total data indexes");
             }
 
@@ -450,7 +451,7 @@ async function downloadUruguayVaccinationData() {
 
             vacData.coronavacTotal = coronavacTotal;
             vacData.pfizerTotal = pfizerTotal;
-            if(vacData.total == 0) {
+            if (vacData.total == 0) {
                 vacData.total = coronavacTotal + pfizerTotal;
             }
         }
@@ -503,9 +504,6 @@ async function downloadDepartmentsData() {
     await writeFilePromise(DATA_DIR + "uruguayDepartments.json", JSON.stringify(data));
 }
 
-const buildChartData = require('./gulp/buildChartData');
-
-exports.buildChartData = buildChartData;
 exports.downloadVacData = downloadUruguayVaccinationData;
 exports.develop = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData, buildChartData), build, gulp.parallel(watch, hugoServer));
 exports.deploy = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData, buildChartData), updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);

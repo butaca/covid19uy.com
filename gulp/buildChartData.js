@@ -2,9 +2,15 @@ const DATA_DIR = "assets/js/data/"
 const uruguay = require("../" + DATA_DIR + "uruguay.json");
 const fs = require('fs');
 const { promisify } = require('util');
+const readFilePromise = promisify(fs.readFile);
 const writeFilePromise = promisify(fs.writeFile);
+const gulp = require('gulp');
+
 
 async function buildChartData() {
+    const uruguayData = await readFilePromise("./" + DATA_DIR + "uruguay.json");
+    const uruguay = JSON.parse(uruguayData);
+
     var positives = [];
     var dialyPositives = [];
     var dates = [];
@@ -179,4 +185,11 @@ async function buildChartData() {
     await writeFilePromise("./" + DATA_DIR + "chartData.json", JSON.stringify(data));
 }
 
-module.exports = buildChartData;
+function watchChartData() {
+    return gulp.watch("./" + DATA_DIR + "uruguay.json", buildChartData);
+};
+
+module.exports = {
+    buildChartData: buildChartData,
+    watchChartData: watchChartData
+};
