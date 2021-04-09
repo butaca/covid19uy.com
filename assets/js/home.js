@@ -1,4 +1,3 @@
-import data from "./data/uruguay.json";
 import langEs from "es.json";
 import langEn from "en.json";
 import "./chartjs-elements";
@@ -11,6 +10,7 @@ import region from "./data/region.json";
 import departmentsData from "./data/uruguayDepartments.json"
 import deathsData from "./data/uruguayDeaths.json"
 import vaccinationData from "./data/uruguayVaccination.json"
+import chartData from "./data/chartData.json"
 
 var MOVING_AVERAGE_DELTA = 3;
 
@@ -115,147 +115,18 @@ function main() {
 
     var flipDate = htmlLang == "en";
 
-    var positives = [];
-    var dialyPositives = [];
-    var dates = [];
-    var deaths = [];
-    var recovered = [];
-    var activeCases = [];
-    var dailyActiveCases = [];
-    var prevTodayActiveCases = 0;
-    var dailyICU = [];
-    var dailyIMCU = [];
-    var dailyICUPercent = [];
-    var dailyIMCUPercent = [];
-    var firstHopitalizationsValidIndex = -1;
-    var prevDayTotalPositives = 0;
-    var firstValidHealthcareWorkerIndex = -1;
-    var prevHealthcareWorkers = 0;
-    var dailyHealthcareWorkers = [];
-    var dailyHealthcareWorkersPercent = [];
-    var dailyTests = [];
-    var firstDailyTestsValidIndex = -1;
-    var dailyPositivesPercent = [];
-    var cases = [];
-    var dailyCases = [];
-    var prevDayTotalCases = 0;
-    var positiveTestsChartsMaxIndex = -1;
-    var dailyPositivityRate = [];
-    var dailyDeaths = [];
-    var deathsFirstIndex = -1;
-    var dailyCasesWithLateData = [];
-    var yesterdayTotalCasesWithLateData = 0;
-    var totalCasesWithLateData = [];
-    var activeCasesWithLateData = [];
-    var dailyActiveCasesWithLateData = []
-    var yesterdayActiveCasesWithLateData = 0;
-
-    data.data.forEach(function (el, index) {
-        var todayPositives = el.positives;
-        if (todayPositives != undefined) {
-            positiveTestsChartsMaxIndex = index;
-            dialyPositives.push(todayPositives);
+    if (flipDate) {
+        for (let i = 0; i < chartData.dates.length; ++i) {
+            const date = chartData.dates[i];
+            const tokens = date.split("/")
+            chartData.date = tokens[1] + "/" + tokens[0];
         }
-
-        var date = new Date(el.date);
-        var day = date.getUTCDate();
-        var month = (date.getUTCMonth() + 1);
-        dates.push(flipDate ? month + "/" + day : day + "/" + month);
-
-        yesterdayTotalDeaths = deaths.length > 0 ? deaths[deaths.length - 1] : 0;
-
-        var todayTotalDeaths = el.deaths != undefined ? el.deaths : 0;
-        if (el.deaths != undefined && deathsFirstIndex == -1) {
-            deathsFirstIndex = index;
-        }
-        deaths.push(todayTotalDeaths);
-
-        dailyDeaths.push(todayTotalDeaths - yesterdayTotalDeaths);
-
-        var todayTotalRecovered = el.recovered != undefined ? el.recovered : 0;
-        recovered.push(todayTotalRecovered);
-
-        if (todayPositives != undefined) {
-            var todayTotalPositives = prevDayTotalPositives + todayPositives;
-            positives.push(todayTotalPositives);
-            prevDayTotalPositives += todayPositives;
-        }
-
-        var totalTodayCases = el.cases != undefined ? el.cases : todayTotalPositives;
-        cases.push(totalTodayCases);
-
-        var todayHealthcareWorker = Math.max(0, el.hc - prevHealthcareWorkers);
-        dailyHealthcareWorkers.push(todayHealthcareWorker);
-        prevHealthcareWorkers = el.hc;
-        if (firstValidHealthcareWorkerIndex < 0 && el.hc != undefined) {
-            firstValidHealthcareWorkerIndex = index + 1;
-        }
-
-        var todayCases = totalTodayCases - prevDayTotalCases;
-        if (el.newCases != undefined) {
-            todayCases = el.newCases;
-        }
-
-        todayCases = Math.max(0, todayCases);
-
-        prevDayTotalCases = totalTodayCases;
-        dailyCases.push(todayCases);
-
-        var todayNewCasesWithLateData = todayCases;
-        if (el.lateNewCases != undefined) {
-            todayNewCasesWithLateData += getTotal(el.lateNewCases);
-        }
-        dailyCasesWithLateData.push(todayNewCasesWithLateData);
-
-        const todayTotalCasesWithLateData = yesterdayTotalCasesWithLateData + todayNewCasesWithLateData - (el.lateDeletedCases != undefined ? el.lateDeletedCases.reduce((prev, cur) => prev + cur) : 0);
-        totalCasesWithLateData.push(todayTotalCasesWithLateData);
-        yesterdayTotalCasesWithLateData = todayTotalCasesWithLateData;
-
-        var todayActiveCases = el.activeCases != undefined ? el.activeCases : (totalTodayCases - todayTotalDeaths - todayTotalRecovered);
-        activeCases.push(todayActiveCases);
-
-        dailyActiveCases.push(todayActiveCases - prevTodayActiveCases);
-        prevTodayActiveCases = todayActiveCases;
-
-        var todayActiveCasesWithLateData = (todayTotalCasesWithLateData - todayTotalDeaths - todayTotalRecovered);
-        activeCasesWithLateData.push(todayActiveCasesWithLateData);
-
-        dailyActiveCasesWithLateData.push(todayActiveCasesWithLateData - yesterdayActiveCasesWithLateData)
-        yesterdayActiveCasesWithLateData = todayActiveCasesWithLateData;
-
-        var todayICU = el.icu != undefined ? el.icu : 0;
-        var todayIMCU = el.imcu != undefined ? el.imcu : 0;
-
-        dailyICU.push(todayICU);
-        dailyIMCU.push(todayIMCU);
-
-        dailyICUPercent.push((todayActiveCases > 0 ? (todayICU / todayActiveCases * 100) : 0));
-        dailyIMCUPercent.push((todayActiveCases > 0 ? (todayIMCU / todayActiveCases * 100) : 0));
-
-        if (firstHopitalizationsValidIndex < 0 && (todayICU > 0 || todayIMCU > 0)) {
-            firstHopitalizationsValidIndex = index;
-        }
-
-        var todayCasesHC = Math.max(todayHealthcareWorker, todayCases);
-        dailyHealthcareWorkersPercent.push((todayCasesHC > 0 ? (Math.min(1, Math.max(0, todayHealthcareWorker / todayCasesHC)) * 100) : 0));
-
-        var todayTests = el.tests;
-        if (firstDailyTestsValidIndex < 0 && todayTests != undefined) {
-            firstDailyTestsValidIndex = index;
-        }
-
-        dailyTests.push(todayTests != undefined ? todayTests : todayPositives);
-        if (todayPositives != undefined) {
-            dailyPositivesPercent.push(((todayTests > 0 ? (todayPositives / todayTests) : 0) * 100));
-        }
-
-        dailyPositivityRate.push(todayCases / todayTests * 100);
-    });
+    }
 
     var pointRadius = 2;
     var pointHoverRadius = 3;
 
-    var activeCasesData = data.lateDataEnabled ? activeCasesWithLateData : activeCases;
+    var activeCasesData = chartData.lateDataEnabled ? chartData.activeCasesWithLateData : chartData.activeCases;
 
     var options = createDefaultChartOptions();
     options.scales = {
@@ -273,7 +144,7 @@ function main() {
         new Chart(ctx, {
             type: 'line',
             data: {
-                labels: dates,
+                labels: chartData.dates,
                 datasets: [
                     createMovingAverageDataset(activeCasesData, MOVING_AVERAGE_DELTA, "#0033bb88"),
                     {
@@ -296,12 +167,12 @@ function main() {
         new Chart(ctx, {
             type: 'line',
             data: {
-                labels: dates,
+                labels: chartData.dates,
                 datasets: [{
                     pointBackgroundColor: "#28b8d6ff",
                     backgroundColor: "#28b8d680",
                     label: lang.totalCases.other,
-                    data: data.lateDataEnabled ? totalCasesWithLateData : cases,
+                    data: chartData.lateDataEnabled ? chartData.totalCasesWithLateData : chartData.cases,
                     pointRadius: pointRadius,
                     pointHoverRadius: pointHoverRadius
                 },
@@ -309,7 +180,7 @@ function main() {
                     pointBackgroundColor: "#0000ffff",
                     backgroundColor: "#0000ff80",
                     label: lang.recovered.other,
-                    data: recovered,
+                    data: chartData.recovered,
                     pointRadius: pointRadius,
                     pointHoverRadius: pointHoverRadius
                 },
@@ -317,7 +188,7 @@ function main() {
                     pointBackgroundColor: "#e54acfff",
                     backgroundColor: "#e54acfff",
                     label: lang.deaths.other,
-                    data: deaths,
+                    data: chartData.deaths,
                     pointRadius: pointRadius,
                     pointHoverRadius: pointHoverRadius
                 }]
@@ -336,16 +207,16 @@ function main() {
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: dates.slice(firstDailyTestsValidIndex, positiveTestsChartsMaxIndex + 1),
+            labels: chartData.dates.slice(chartData.firstDailyTestsValidIndex, chartData.positiveTestsChartsMaxIndex + 1),
             datasets: [{
                 backgroundColor: "#7732a880",
                 label: lang.dailyPositives.other,
-                data: dialyPositives.slice(firstDailyTestsValidIndex, positiveTestsChartsMaxIndex + 1),
+                data: chartData.dialyPositives.slice(chartData.firstDailyTestsValidIndex, chartData.positiveTestsChartsMaxIndex + 1),
             },
             {
                 backgroundColor: "#ecdb3c80",
                 label: lang.dailyTests.other,
-                data: dailyTests.slice(firstDailyTestsValidIndex, positiveTestsChartsMaxIndex + 1),
+                data: chartData.dailyTests.slice(chartData.firstDailyTestsValidIndex, chartData.positiveTestsChartsMaxIndex + 1),
             }]
         },
         options: options
@@ -365,13 +236,13 @@ function main() {
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: dates.slice(firstDailyTestsValidIndex),
+                labels: chartData.dates.slice(chartData.firstDailyTestsValidIndex),
                 datasets: [
-                    createMovingAverageDataset(dailyTests, MOVING_AVERAGE_DELTA, "#0033bb88"),
+                    createMovingAverageDataset(chartData.dailyTests, MOVING_AVERAGE_DELTA, "#0033bb88"),
                     {
                         backgroundColor: "#ecdb3c80",
                         label: lang.dailyTests.other,
-                        data: dailyTests.slice(firstDailyTestsValidIndex),
+                        data: chartData.dailyTests.slice(chartData.firstDailyTestsValidIndex),
                     }]
             },
             options: options
@@ -383,11 +254,11 @@ function main() {
     new Chart(ctx, {
         type: 'line',
         data: {
-            labels: dates.slice(firstHopitalizationsValidIndex),
+            labels: chartData.dates.slice(chartData.firstHopitalizationsValidIndex),
             datasets: [{
                 backgroundColor: "#ff000080",
                 label: lang.icu.other,
-                data: dailyICU.slice(firstHopitalizationsValidIndex),
+                data: chartData.dailyICU.slice(chartData.firstHopitalizationsValidIndex),
                 pointRadius: pointRadius,
                 pointHoverRadius: pointHoverRadius
             }/*,
@@ -401,7 +272,7 @@ function main() {
         options: options
     });
 
-    var dailyCasesData = data.lateDataEnabled ? dailyCasesWithLateData : dailyCases;
+    var dailyCasesData = chartData.lateDataEnabled ? chartData.dailyCasesWithLateData : chartData.dailyCases;
 
     options = createDefaultChartOptions();
     options.tooltips = {
@@ -412,7 +283,7 @@ function main() {
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: dates,
+                labels: chartData.dates,
                 datasets: [
                     createMovingAverageDataset(dailyCasesData, MOVING_AVERAGE_DELTA, "#0033bb88"),
                     {
@@ -436,7 +307,7 @@ function main() {
         }
     };
 
-    var dataChartTotal = [activeCases[activeCases.length - 1], recovered[recovered.length - 1], deaths[deaths.length - 1]];
+    var dataChartTotal = [chartData.activeCases[chartData.activeCases.length - 1], chartData.recovered[chartData.recovered.length - 1], chartData.deaths[chartData.deaths.length - 1]];
     var totalChartTotal = getTotal(dataChartTotal);
     var labelsChartTotal = [lang.activeCases.other, lang.recovered.other, lang.deaths.other];
     labelsChartTotal = labelsChartTotal.map(function (label, index) { return label + ': ' + (dataChartTotal[index] / totalChartTotal * 100).toFixed(2) + '%' });
@@ -452,7 +323,7 @@ function main() {
     };
     options.elements = {
         center: {
-            text: lang.totalCases.other + ': ' + cases[cases.length - 1].toLocaleString(htmlLang),
+            text: lang.totalCases.other + ': ' + chartData.cases[chartData.cases.length - 1].toLocaleString(htmlLang),
             color: '#36A2EB',
             fontStyle: 'Helvetica',
             sidePadding: 15
@@ -472,8 +343,8 @@ function main() {
         options: options
     });
 
-    var totalTests = getTotal(dailyTests.slice(0, positiveTestsChartsMaxIndex + 1)) + data.unreportedDailyTests;
-    var totalPositives = positives.slice(0, positiveTestsChartsMaxIndex + 1)[positives.length - 1];
+    var totalTests = getTotal(chartData.dailyTests.slice(0, chartData.positiveTestsChartsMaxIndex + 1)) + chartData.unreportedDailyTests;
+    var totalPositives = chartData.positives.slice(0, chartData.positiveTestsChartsMaxIndex + 1)[chartData.positives.length - 1];
     var totalNegatives = totalTests - totalPositives;
 
     var chartTestsData = [totalPositives, totalNegatives];
@@ -532,12 +403,12 @@ function main() {
     new Chart(ctx, {
         type: 'line',
         data: {
-            labels: dates.slice(firstDailyTestsValidIndex, positiveTestsChartsMaxIndex + 1),
+            labels: chartData.dates.slice(chartData.firstDailyTestsValidIndex, chartData.positiveTestsChartsMaxIndex + 1),
             datasets: [{
                 pointBackgroundColor: "#7732a8ff",
                 backgroundColor: "#7732a880",
                 label: lang.graphTitleDailyPositives.other,
-                data: dailyPositivesPercent.slice(firstDailyTestsValidIndex, positiveTestsChartsMaxIndex + 1),
+                data: chartData.dailyPositivesPercent.slice(chartData.firstDailyTestsValidIndex, chartData.positiveTestsChartsMaxIndex + 1),
                 pointRadius: pointRadius,
                 pointHoverRadius: pointHoverRadius
             }]
@@ -556,11 +427,11 @@ function main() {
     }
 
     ctx = document.getElementById('chart-healthcare-workers');
-    var hcData = dailyHealthcareWorkers.slice(firstValidHealthcareWorkerIndex);
+    var hcData = chartData.dailyHealthcareWorkers.slice(chartData.firstValidHealthcareWorkerIndex);
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: dates.slice(firstValidHealthcareWorkerIndex),
+            labels: chartData.dates.slice(chartData.firstValidHealthcareWorkerIndex),
             datasets: [
                 createMovingAverageDataset(hcData, MOVING_AVERAGE_DELTA, "#0033bb88"),
                 {
@@ -571,7 +442,7 @@ function main() {
                 {
                     backgroundColor: "#97DBEAFF",
                     label: lang.dailyCases.other,
-                    data: dailyCases.slice(firstValidHealthcareWorkerIndex),
+                    data: chartData.dailyCases.slice(chartData.firstValidHealthcareWorkerIndex),
                 }]
         },
         options: options
@@ -596,11 +467,11 @@ function main() {
     };
 
     ctx = document.getElementById('chart-healthcare-workers-percent');
-    var hcPercentData = dailyHealthcareWorkersPercent.slice(firstValidHealthcareWorkerIndex);
+    var hcPercentData = chartData.dailyHealthcareWorkersPercent.slice(chartData.firstValidHealthcareWorkerIndex);
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: dates.slice(firstValidHealthcareWorkerIndex),
+            labels: chartData.dates.slice(chartData.firstValidHealthcareWorkerIndex),
             datasets: [
                 createMovingAverageDataset(hcPercentData, MOVING_AVERAGE_DELTA, "#0033bb88"),
                 {
@@ -652,12 +523,12 @@ function main() {
     new Chart(ctx, {
         type: 'line',
         data: {
-            labels: dates.slice(firstHopitalizationsValidIndex),
+            labels: chartData.dates.slice(chartData.firstHopitalizationsValidIndex),
             datasets: [{
                 pointBackgroundColor: "#d9554cff",
                 backgroundColor: "#d9554c80",
                 label: lang.icu.other,
-                data: dailyICUPercent.slice(firstHopitalizationsValidIndex),
+                data: chartData.dailyICUPercent.slice(chartData.firstHopitalizationsValidIndex),
                 pointRadius: pointRadius,
                 pointHoverRadius: pointHoverRadius
             }/*,
@@ -672,7 +543,7 @@ function main() {
         options: options
     });
 
-    var activeCasesData = data.lateDataEnabled ? dailyActiveCasesWithLateData : dailyActiveCases;
+    var activeCasesData = chartData.lateDataEnabled ? chartData.dailyActiveCasesWithLateData : chartData.dailyActiveCases;
     options = createDefaultChartOptions();
     options.tooltips = {
         onlyShowForDatasetIndex: [1]
@@ -682,7 +553,7 @@ function main() {
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: dates,
+                labels: chartData.dates,
                 datasets: [
                     createMovingAverageDataset(activeCasesData, MOVING_AVERAGE_DELTA, "#0033bb88"),
                     {
@@ -696,13 +567,13 @@ function main() {
         });
     }
 
-    var regionDays = Math.min(dates.length, region.data.argentina.cases.length);
+    var regionDays = Math.min(chartData.dates.length, region.data.argentina.cases.length);
 
     region.data.uruguay = {
-        dates: dates,
-        cases: cases,
-        recovered: recovered,
-        deaths: deaths
+        dates: chartData.dates,
+        cases: chartData.cases,
+        recovered: chartData.recovered,
+        deaths: chartData.deaths
     };
 
     region.data.uruguay.color = "#72a5d5";
@@ -765,7 +636,7 @@ function main() {
     new Chart(ctx, {
         type: 'line',
         data: {
-            labels: dates,
+            labels: chartData.dates,
             datasets: activeCasesDatasets
         },
         options: regionChartsOptions
@@ -775,7 +646,7 @@ function main() {
     new Chart(ctx, {
         type: 'line',
         data: {
-            labels: dates,
+            labels: chartData.dates,
             datasets: casesDatasets
         },
         options: regionChartsOptions
@@ -785,7 +656,7 @@ function main() {
     new Chart(ctx, {
         type: 'line',
         data: {
-            labels: dates,
+            labels: chartData.dates,
             datasets: deathsDatasets
         },
         options: regionChartsOptions
@@ -917,7 +788,7 @@ function main() {
         options: options
     });
 
-    var positivityRate = dailyPositivityRate.slice(firstDailyTestsValidIndex);
+    var positivityRate = chartData.dailyPositivityRate.slice(chartData.firstDailyTestsValidIndex);
     options = createDefaultChartOptions();
     options.scales = {
         yAxes: [{
@@ -939,7 +810,7 @@ function main() {
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: dates.slice(firstDailyTestsValidIndex),
+            labels: chartData.dates.slice(chartData.firstDailyTestsValidIndex),
             datasets: [
                 createMovingAverageDataset(positivityRate, MOVING_AVERAGE_DELTA, "#0033bb88"),
                 {
@@ -954,11 +825,11 @@ function main() {
 
     options = createDefaultChartOptions();
     ctx = document.getElementById('chart-daily-deaths');
-    var dailyDeathsFiltered = dailyDeaths.slice(deathsFirstIndex);
+    var dailyDeathsFiltered = chartData.dailyDeaths.slice(chartData.deathsFirstIndex);
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: dates.slice(deathsFirstIndex),
+            labels: chartData.dates.slice(chartData.deathsFirstIndex),
             datasets: [
                 createMovingAverageDataset(dailyDeathsFiltered, MOVING_AVERAGE_DELTA, "#0033bb88"),
                 {
@@ -1111,10 +982,10 @@ function main() {
         options: options
     });
 
-    if (data.lateDataEnabled && activeCasesWithLateData.length > 1) {
-        const totalActiveCases = activeCasesWithLateData.length;
+    if (chartData.lateDataEnabled && chartData.activeCasesWithLateData.length > 1) {
+        const totalActiveCases = chartData.activeCasesWithLateData.length;
         const activeCasesDiffElem = document.getElementById("active-cases-diff");
-        const diff = activeCasesWithLateData[totalActiveCases - 1] - activeCasesWithLateData[totalActiveCases - 2];
+        const diff = chartData.activeCasesWithLateData[totalActiveCases - 1] - chartData.activeCasesWithLateData[totalActiveCases - 2];
         activeCasesDiffElem.innerText = (diff >= 0 ? "+" : "") + diff;
         activeCasesDiffElem.style.visibility = "visible";
     }

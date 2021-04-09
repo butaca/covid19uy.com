@@ -503,7 +503,11 @@ async function downloadDepartmentsData() {
     await writeFilePromise(DATA_DIR + "uruguayDepartments.json", JSON.stringify(data));
 }
 
+const buildChartData = require('./gulp/buildChartData');
+
+exports.buildChartData = buildChartData;
 exports.downloadVacData = downloadUruguayVaccinationData;
-exports.develop = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData), build, gulp.parallel(watch, hugoServer));
-exports.deploy = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData), updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);
+exports.develop = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData, buildChartData), build, gulp.parallel(watch, hugoServer));
+exports.deploy = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData, buildChartData), updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);
 exports.default = exports.develop;
+
