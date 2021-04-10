@@ -26,6 +26,16 @@
             <div class="content">
                 {{ partial "uruguay.html" . }}
             </div>
+            <div class="content">
+                <article class="message is-warning">
+                    <div class="message-header">
+                        <p>{{- i18n "unreliableDataTitle" -}}</p>
+                    </div>
+                    <div class="message-body">
+                        {{- i18n "unreliableData" | safeHTML -}}
+                    </div>
+                </article>
+            </div>
             <div class="columns is-centered is-multiline">
                 {{ $context := . }}
                 {{- range .Site.Data.charts -}}

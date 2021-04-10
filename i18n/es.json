@@ -401,8 +401,11 @@
   "total": {
       "other": "Total"
   },
+  "unreliableDataTitle": {
+      "other": "❗ Importante"
+  },
   "unreliableData": {
-      "other": "El día 05/04/2021, el informe del MSP presentó una inconsistencia que afecta la correctitud de los datos en diversas gráficas. Por éste motivo, dichas gráficas han sido ocultadas hasta que se aclare el problema."
+      "other": "El día 09/04/2021, <a href='https://twitter.com/MSPUruguay/status/1380695241401974789' target='blank'>el MSP publicó un informe</a> actualizando los datos desde el 01/03/2021 hasta el 08/04/2021 el cual presenta inconsistencias con el resto de los datos conocidos. Por tal motivo, los datos históricos de este sitio sólo se basan en los informes diarios originales hasta que se aclaren las diferencias. Esto significa que casi todas las gráficas que utilicen datos históricos, no sean correctas en el período indicado por falta de información."
   }
   
 }
