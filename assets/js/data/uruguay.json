@@ -1,6 +1,6 @@
 {
     "unreportedDailyTests": 4212,
-    "lateDataEnabled": false,
+    "lateDataEnabled": true,
     "population": 3505980,
     "data": [
         {
@@ -4940,7 +4940,10 @@
             "hcRecovered": 4908,
             "hcDeaths": 7,
             "newCases": 3786,
-            "todayDeaths": 52
+            "todayDeaths": 52,
+            "lateNewCases": [
+                3503
+            ]
         },
         {
             "date": "2021-04-10",
