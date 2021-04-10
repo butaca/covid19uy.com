@@ -3,59 +3,44 @@
 {{- $todayTests := cond (isset . "tests") .tests .positives -}}
 {{- $tests = add $tests $todayTests -}}
 {{- end -}}
-{{- $last := index (last 1 .Site.Data.uruguay.data) 0 -}}
-{{- $cases := $last.cases -}}
-{{- $deaths := cond (isset $last "deaths") $last.deaths 0 -}}
-{{- $recovered := cond (isset $last "recovered") $last.recovered 0 -}}
-{{- $activeCases := cond (isset $last "activeCases") $last.activeCases (sub (sub $cases $deaths) $recovered) -}}
-{{- $healthWorkerCases := cond (isset $last "hc") $last.hc 0 -}}
-{{- $healthWorkerPercent := 0 -}}
-{{- if gt $cases 0 -}}
-{{- $healthWorkerPercent = mul (div $healthWorkerCases $cases) 100 -}}
-{{- end -}}
-{{- $icu := cond (isset $last "icu") $last.icu 0 -}}
 
 {{- $last := last 2 .Site.Data.uruguay.data -}}
 {{- $today := index $last 1 -}}
 {{- $yesterday := index $last 0 -}}
-{{- $yesterdayCases := $yesterday.cases -}}
-{{- $yesterdayDeaths := cond (isset $yesterday "deaths") $yesterday.deaths 0 -}}
-{{- $yesterdayRecovered := cond (isset $yesterday "recovered") $yesterday.recovered 0 -}}
-{{- $yesterdayActiveCases := sub (sub $yesterdayCases $yesterdayDeaths) $yesterdayRecovered -}}
+
+{{- $data := site.Data.chartData -}}
+{{- $casesData := cond $data.lateDataEnabled $data.totalCasesWithLateData $data.cases -}}
+{{- $activeCasesData := cond $data.lateDataEnabled $data.activeCasesWithLateData $data.activeCases -}}
+{{- $dailyCasesData := cond $data.lateDataEnabled $data.dailyCasesWithLateData $data.dailyCases }}
+
+{{- $cases := index (last 1 $data.cases) 0 -}}
+{{- $deaths := index (last 1 $data.deaths) 0 -}}
+{{- $recovered := index (last 1 $data.recovered) 0 -}}
+{{- $activeCases := index (last 1 $activeCasesData) 0 -}}
+
+{{- $healthWorkerCases := cond (isset $today "hc") $today.hc 0 -}}
+{{- $healthWorkerPercent := 0 -}}
+{{- if gt $cases 0 -}}
+{{- $healthWorkerPercent = mul (div $healthWorkerCases $cases) 100 -}}
+{{- end -}}
+
+{{- $yesterdayActiveCases := index (last 2 $activeCasesData) 0 -}}
 {{- $activeCasesDiff := sub $activeCases $yesterdayActiveCases -}}
 {{- $activeCasesDiffSign := cond (lt $activeCasesDiff 0) "" "+" -}}
+
+{{- $icu := cond (isset $today "icu") $today.icu 0 -}}
 {{- $yesterdayIcu := cond (isset $yesterday "icu") $yesterday.icu 0 -}}
 {{- $icuDiff := sub $icu $yesterdayIcu -}}
 {{- $icuDiffSign := cond (lt $icuDiff 0) "" "+" -}}
 
 {{- $todayTests := $today.tests }}
-{{- $todayCases := sub $today.cases $yesterday.cases -}}
-{{- if isset $today "newCases" -}}
-{{- $todayCases = $today.newCases -}}
-{{- end -}}
-{{- if and .Site.Data.uruguay.lateNewCasesEnabled (isset $today "lateNewCases") -}}
-{{- $lateNewCases := 0 -}}
-{{- range $today.lateNewCases -}}
-{{- $lateNewCases = add $lateNewCases . -}}
-{{- end -}}
-{{- $todayCases = add $todayCases $lateNewCases -}}
-{{- end -}}
-{{- $todayDeaths := sub $today.deaths $yesterday.deaths -}}
-{{- if isset $today "newDeaths" -}}
-{{- $todayDeaths = $today.newDeaths -}}
-{{- end -}}
+
+{{- $todayCases := index (last 1 $dailyCasesData) 0 -}}
+{{- $todayDeaths := index (last 1 $data.dailyDeaths) 0 -}}
 {{- $todayRecovered := sub $today.recovered $yesterday.recovered -}}
-{{- $todayHealthWorkerCases := 0 -}}
-{{- if gt $today.hc $yesterday.hc -}}
-{{- $todayHealthWorkerCases = sub $today.hc $yesterday.hc -}}
-{{- end -}}
-{{- $todayHealthWorkerPercent := 0 -}}
-{{- if gt $cases 0 -}}
-{{- $todayHealthWorkerPercent = mul (div $todayHealthWorkerCases $todayCases) 100 -}}
-{{- if gt $todayHealthWorkerPercent 100 -}}
-{{- $todayHealthWorkerPercent = 100 -}}
-{{- end -}}
-{{- end -}}
+
+{{- $todayHealthWorkerCases := index (last 1 $data.dailyHealthcareWorkers) 0 -}}
+{{- $todayHealthWorkerPercent := index (last 1 $data.dailyHealthcareWorkersPercent) 0 -}}
 
 <span class="tag is-warning">{{ dateFormat .Site.Params.dateFormatCompact $today.date }}</span>
 <div id="uruguay" class="box has-padding-sm">
@@ -81,7 +66,7 @@
             <div>
                 <p class="subtitle">{{ i18n "activeCases" }} 😷</p>
                 <p class="title has-margin-bottom-none">{{ lang.NumFmt 0 $activeCases .Site.Params.numberFormat }}</p>
-                <p id="active-cases-diff" style="visibility: hidden;" class="has-margin-none is-size-7 has-text-grey">{{ $activeCasesDiffSign }}{{ lang.NumFmt 0
+                <p id="active-cases-diff" class="has-margin-none is-size-7 has-text-grey">{{ $activeCasesDiffSign }}{{ lang.NumFmt 0
                     $activeCasesDiff .Site.Params.numberFormat }}</p>
             </div>
         </div>

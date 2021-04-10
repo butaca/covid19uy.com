@@ -1,34 +1,15 @@
 {{- $last := last 2 .Site.Data.uruguay.data -}}
 {{- $today := index $last 1 -}}
-{{- $yesterday := index $last 0 -}}
-{{- $tests := $today.tests }}
-{{- $cases := sub $today.cases $yesterday.cases -}}
-{{- if isset $today "newCases" -}}
-{{- $cases = $today.newCases -}}
-{{- end -}}
-{{- if and .Site.Data.uruguay.lateDataEnabled (isset $today "lateNewCases") -}}
-{{- $lateNewCases := 0 -}}
-{{- range $today.lateNewCases -}}
-{{- $lateNewCases = add $lateNewCases . -}}
-{{- end -}}
-{{- $cases = add $cases $lateNewCases -}}
-{{- end -}}
-{{- $deaths := sub $today.deaths $yesterday.deaths -}}
-{{- if isset $today "newDeaths" -}}
-{{- $deaths = $today.newDeaths -}}
-{{- end -}}
-{{- $recovered := sub $today.recovered $yesterday.recovered -}}
-{{- $healthWorkerCases := 0 -}}
-{{- if gt $today.hc $yesterday.hc -}}
-{{- $healthWorkerCases = sub $today.hc $yesterday.hc -}}
-{{- end -}}
-{{- $healthWorkerPercent := 0 -}}
-{{- if gt $cases 0 -}}
-{{- $healthWorkerPercent = mul (div $healthWorkerCases $cases) 100 -}}
-{{- if gt $healthWorkerPercent 100 -}}
-{{- $healthWorkerPercent = 100 -}}
-{{- end -}}
-{{- end -}}
+
+{{- $data := site.Data.chartData -}}
+{{- $tests := index (last 1 $data.dailyTests) 0 }}
+{{- $dailyCases := cond $data.lateDataEnabled $data.dailyCasesWithLateData $data.dailyCases }}
+{{- $cases := index (last 1 $dailyCases) 0 -}}
+{{- $deaths := index (last 1 $data.dailyDeaths) 0 -}}
+{{- $recovered := sub (index (last 1 $data.recovered) 0) (index (last 2 $data.recovered) 0) -}}
+{{- $healthWorkerCases := index (last 1 $data.dailyHealthcareWorkers) 0  -}}
+{{- $healthWorkerPercent := index (last 1 $data.dailyHealthcareWorkersPercent) 0  -}}
+
 <div id="uruguay-today">
     <span class="tag is-warning">{{ i18n "todayNumbers" }}: {{ dateFormat .Site.Params.dateFormatCompact $today.date }}</span>
     <nav class="level box has-padding-sm">

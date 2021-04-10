@@ -981,13 +981,4 @@ function main() {
         },
         options: options
     });
-
-    if (chartData.lateDataEnabled && chartData.activeCasesWithLateData.length > 1) {
-        const totalActiveCases = chartData.activeCasesWithLateData.length;
-        const activeCasesDiffElem = document.getElementById("active-cases-diff");
-        const diff = chartData.activeCasesWithLateData[totalActiveCases - 1] - chartData.activeCasesWithLateData[totalActiveCases - 2];
-        activeCasesDiffElem.innerText = (diff >= 0 ? "+" : "") + diff;
-        activeCasesDiffElem.style.visibility = "visible";
-    }
-
 }
