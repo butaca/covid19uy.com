@@ -4941,8 +4941,8 @@
             "hcDeaths": 7,
             "newCases": 3786,
             "todayDeaths": 52,
-            "lateNewCases": [
-                3503
+            "lateDeletedCases": [
+                -3503
             ]
         },
         {
