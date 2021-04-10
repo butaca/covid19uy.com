@@ -37,6 +37,9 @@
 
 {{- $todayCases := index (last 1 $dailyCasesData) 0 -}}
 {{- $todayDeaths := index (last 1 $data.dailyDeaths) 0 -}}
+{{- if isset $today "todayDeaths" -}}
+{{- $todayDeaths = $today.todayDeaths -}}
+{{- end -}}
 {{- $todayRecovered := sub $today.recovered $yesterday.recovered -}}
 
 {{- $todayHealthWorkerCases := index (last 1 $data.dailyHealthcareWorkers) 0 -}}
@@ -111,9 +114,11 @@
             {{ partial "vaccination.html" . }}
         </div>
         {{- end -}}
+        <!--
         <div class="column is-2 is-12-mobile">
             {{ partial "harvard.html" . }}
         </div>
+        -->
         <div class="column is-2 is-12-mobile">
             {{ partial "icu.html" . }}
         </div>

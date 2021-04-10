@@ -78,13 +78,13 @@
     "other": "Casos activos diarios"
   },
   "graphTitleActiveCasesDesc": {
-    "other": "Casos activos por día. 👉 Esta es la curva que tenemos que achatar (\"flatten the curve\"). Los casos activos son los personas que en éste momento tienen el virus, calculados como el total de casos menos los recuperados y los fallecidos. Se incluyen los casos reportados tardíamente."
+    "other": "Casos activos por día. 👉 Esta es la curva que tenemos que achatar (\"flatten the curve\"). Los casos activos son los personas que en éste momento tienen el virus, calculados como el total de casos menos los recuperados y los fallecidos. NO se incluyen los casos reportados tardíamente."
   },
   "graphTitleDailyActiveCases": {
     "other": "Nuevos casos activos diarios"
   },
   "graphTitleDailyActiveCasesDesc": {
-    "other": "En cada día, cantidad de nuevos casos activos (personas con el virus) con respecto al día anterior. Un número negativo significa que ese día disminuyó la cantidad de personas con el virus. Se incluyen los casos reportados tardíamente."
+    "other": "En cada día, cantidad de nuevos casos activos (personas con el virus) con respecto al día anterior. Un número negativo significa que ese día disminuyó la cantidad de personas con el virus. NO se incluyen los casos reportados tardíamente."
   },
   "graphTitleDailyCases": {
     "other": "Casos nuevos diarios"
@@ -156,7 +156,7 @@
     "other": "Casos acumulados, recuperados y fallecidos"
   },
   "graphTitleTotalCasesDesc": {
-    "other": "En cada día, suma total de casos confirmados, recuperados y fallecidos hasta ese día. Se incluyen los casos reportados tardíamente."
+    "other": "En cada día, suma total de casos confirmados, recuperados y fallecidos hasta ese día. NO se incluyen los casos reportados tardíamente."
   },
   "graphTitleTotalTests": {
     "other": "Tests totales"

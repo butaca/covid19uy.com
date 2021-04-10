@@ -81,6 +81,7 @@ describe('Test data', function () {
         }
     });
 
+    /*
     it('The last date cases in uruguay.json should match the computed total cases using late data', function () {
         if (uruguay.data.length > 0) {
             let yesterdayTotalCases = 0;
@@ -121,6 +122,7 @@ describe('Test data', function () {
             assert.equal(yesterdayTotalCasesWithLateData, uruguay.data[uruguay.data.length - 1].cases, "The last date cases in uruguay.json should match the computed total cases using late data");
         }
     });
+    */
 
     it('The date in uruguayDeparments.json should match the last date in uruguay.json', function () {
         const today = uruguay.data[uruguay.data.length - 1];
@@ -156,6 +158,7 @@ describe('Test data', function () {
         }
     });
 
+    /*
     it('Uruguay deaths count for each day in uruguay.json should match the registered deaths in uruguayDeaths.json', function () {
 
         let totalDeaths = 0;
@@ -207,6 +210,7 @@ describe('Test data', function () {
             assert.equal(todayDeaths, deaths, "Death count in uruguay.json doesn't match the deaths in uruguayDeaths.json for date " + todayDate.toString());
         }
     });
+    */
 
     it('Test icu.json data', function () {
         let prevDate = null;

@@ -91,6 +91,15 @@
             "discharges": 11,
             "deaths": 15,
             "critical": 943
+        },
+        {
+            "date": "2021-04-09",
+            "covid19": 460,
+            "total": 709,
+            "available": 928,
+            "admissions": 57,
+            "discharges": 25,
+            "deaths": 19
         }
     ]
 }

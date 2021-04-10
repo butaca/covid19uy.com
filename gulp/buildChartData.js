@@ -66,7 +66,12 @@ async function buildChartData() {
         }
         deaths.push(todayTotalDeaths);
 
-        dailyDeaths.push(todayTotalDeaths - yesterdayTotalDeaths);
+        let todayDeaths = todayTotalDeaths - yesterdayTotalDeaths;
+        if(el.todayDeaths != undefined) {
+            todayDeaths = el.todayDeaths;
+        }
+
+        dailyDeaths.push(todayDeaths);
 
         var todayTotalRecovered = el.recovered != undefined ? el.recovered : 0;
         recovered.push(todayTotalRecovered);
