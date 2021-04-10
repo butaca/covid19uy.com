@@ -78,13 +78,13 @@
     "other": "Daily active cases"
   },
   "graphTitleActiveCasesDesc": {
-    "other": "Active cases per day. 👉 This is the curve we have to flatten. The active cases are the people that currently have the virus, calculated as the total cases minus the recovered and deaths. Late-reported cases are NOT included."
+    "other": "Active cases per day. 👉 This is the curve we have to flatten. The active cases are the people that currently have the virus, calculated as the total cases minus the recovered and deaths."
   },
   "graphTitleDailyActiveCases": {
     "other": "Daily new active cases"
   },
   "graphTitleDailyActiveCasesDesc": {
-    "other": "In each day, number of new active cases (people with the virus) compared to the previous day. A negative number means that the number of people with the virus decreased that day. Late-reported cases are NOT included."
+    "other": "In each day, number of new active cases (people with the virus) compared to the previous day. A negative number means that the number of people with the virus decreased that day."
   },
   "graphTitleDailyCases": {
     "other": "Daily new cases"
@@ -156,7 +156,7 @@
     "other": "Cumulative cases, recovered and deaths"
   },
   "graphTitleTotalCasesDesc": {
-    "other": "On each day, the total sum of confirmed cases, recovered and deaths up to that day. Late-reported cases are NOT included."
+    "other": "On each day, the total sum of confirmed cases, recovered and deaths up to that day."
   },
   "graphTitleTotalTests": {
     "other": "Total tests"
@@ -384,7 +384,7 @@
       "other": "Harvard Index"
   },
   "harvardIndexDesc": {
-      "other": "Risk level according to the average of new cases per 100,000 inhabitants in the last 7 days. Late-reported cases are NOT included, to match CoronavirusUY app calculation."
+      "other": "Risk level according to the average of new cases per 100,000 inhabitants in the last 7 days."
   },
   "icuOccupation": {
       "other": "ICU Occupation"
