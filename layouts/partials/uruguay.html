@@ -109,7 +109,7 @@
 </div>
 <div>
     <div class="columns">
-        {{- if gt site.Data.uruguayVaccination.firstDoseTotal 0 -}}
+        {{- if and (gt site.Data.uruguayVaccination.firstDoseTotal 0) (gt site.Data.uruguayVaccination.secondDoseTotal 0)  -}}
         <div class="column is-3 is-12-mobile">
             {{ partial "vaccination.html" . }}
         </div>
