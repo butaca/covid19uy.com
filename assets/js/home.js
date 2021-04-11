@@ -204,23 +204,25 @@ function main() {
         }]
     };
     ctx = document.getElementById('chart-daily-tests');
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: chartData.dates.slice(chartData.firstDailyTestsValidIndex, chartData.positiveTestsChartsMaxIndex + 1),
-            datasets: [{
-                backgroundColor: "#7732a880",
-                label: lang.dailyPositives.other,
-                data: chartData.dialyPositives.slice(chartData.firstDailyTestsValidIndex, chartData.positiveTestsChartsMaxIndex + 1),
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: chartData.dates.slice(chartData.firstDailyTestsValidIndex, chartData.positiveTestsChartsMaxIndex + 1),
+                datasets: [{
+                    backgroundColor: "#7732a880",
+                    label: lang.dailyPositives.other,
+                    data: chartData.dialyPositives.slice(chartData.firstDailyTestsValidIndex, chartData.positiveTestsChartsMaxIndex + 1),
+                },
+                {
+                    backgroundColor: "#ecdb3c80",
+                    label: lang.dailyTests.other,
+                    data: chartData.dailyTests.slice(chartData.firstDailyTestsValidIndex, chartData.positiveTestsChartsMaxIndex + 1),
+                }]
             },
-            {
-                backgroundColor: "#ecdb3c80",
-                label: lang.dailyTests.other,
-                data: chartData.dailyTests.slice(chartData.firstDailyTestsValidIndex, chartData.positiveTestsChartsMaxIndex + 1),
-            }]
-        },
-        options: options
-    });
+            options: options
+        });
+    }
 
     options = createDefaultChartOptions();
     options.scales = {
@@ -251,26 +253,28 @@ function main() {
 
     options = createDefaultChartOptions();
     ctx = document.getElementById('chart-daily-hospitalizations');
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: chartData.dates.slice(chartData.firstHopitalizationsValidIndex),
-            datasets: [{
-                backgroundColor: "#ff000080",
-                label: lang.icu.other,
-                data: chartData.dailyICU.slice(chartData.firstHopitalizationsValidIndex),
-                pointRadius: pointRadius,
-                pointHoverRadius: pointHoverRadius
-            }/*,
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: chartData.dates.slice(chartData.firstHopitalizationsValidIndex),
+                datasets: [{
+                    backgroundColor: "#ff000080",
+                    label: lang.icu.other,
+                    data: chartData.dailyICU.slice(chartData.firstHopitalizationsValidIndex),
+                    pointRadius: pointRadius,
+                    pointHoverRadius: pointHoverRadius
+                }/*,
             {
                 backgroundColor: "#ecdb3c80",
                 label: lang.imcu.other,
                 data: dailyIMCU.slice(firstHopitalizationsValidIndex),
             }*/
-            ]
-        },
-        options: options
-    });
+                ]
+            },
+            options: options
+        });
+    }
 
     var dailyCasesData = chartData.lateDataEnabled ? chartData.dailyCasesWithLateData : chartData.dailyCases;
 
@@ -331,17 +335,19 @@ function main() {
     };
     options.tooltips = pieToolTips;
     ctx = document.getElementById('chart-total');
-    new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: labelsChartTotal,
-            datasets: [{
-                data: dataChartTotal,
-                backgroundColor: ["#28b8d680", "#0000ff80", "#e54acfff"]
-            }]
-        },
-        options: options
-    });
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: labelsChartTotal,
+                datasets: [{
+                    data: dataChartTotal,
+                    backgroundColor: ["#28b8d680", "#0000ff80", "#e54acfff"]
+                }]
+            },
+            options: options
+        });
+    }
 
     var totalTests = getTotal(chartData.dailyTests.slice(0, chartData.positiveTestsChartsMaxIndex + 1)) + chartData.unreportedDailyTests;
     var totalPositives = chartData.positives.slice(0, chartData.positiveTestsChartsMaxIndex + 1)[chartData.positives.length - 1];
@@ -370,51 +376,56 @@ function main() {
     };
     options.tooltips = pieToolTips
     ctx = document.getElementById('chart-tests');
-    new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: chartTestsLabels,
-            datasets: [{
-                data: chartTestsData,
-                backgroundColor: ["#7732a880", "#83d02a80"]
-            }]
-        },
-        options: options
-    });
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: chartTestsLabels,
+                datasets: [{
+                    data: chartTestsData,
+                    backgroundColor: ["#7732a880", "#83d02a80"]
+                }]
+            },
+            options: options
+        });
 
-    options = createDefaultChartOptions();
-    options.scales = {
-        yAxes: [{
-            ticks: {
-                callback: function (value) {
-                    return value + "%"
+        options = createDefaultChartOptions();
+        options.scales = {
+            yAxes: [{
+                ticks: {
+                    callback: function (value) {
+                        return value + "%"
+                    }
+                }
+            }]
+        };
+        options.tooltips = {
+            callbacks: {
+                label: function (tooltipItem, data) {
+                    return data['datasets'][0]['data'][tooltipItem['index']].toFixed(2) + " %";
                 }
             }
-        }]
-    };
-    options.tooltips = {
-        callbacks: {
-            label: function (tooltipItem, data) {
-                return data['datasets'][0]['data'][tooltipItem['index']].toFixed(2) + " %";
-            }
-        }
-    };
+        };
+    }
+
     ctx = document.getElementById('chart-tests-dialy-positives');
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: chartData.dates.slice(chartData.firstDailyTestsValidIndex, chartData.positiveTestsChartsMaxIndex + 1),
-            datasets: [{
-                pointBackgroundColor: "#7732a8ff",
-                backgroundColor: "#7732a880",
-                label: lang.graphTitleDailyPositives.other,
-                data: chartData.dailyPositivesPercent.slice(chartData.firstDailyTestsValidIndex, chartData.positiveTestsChartsMaxIndex + 1),
-                pointRadius: pointRadius,
-                pointHoverRadius: pointHoverRadius
-            }]
-        },
-        options: options
-    });
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: chartData.dates.slice(chartData.firstDailyTestsValidIndex, chartData.positiveTestsChartsMaxIndex + 1),
+                datasets: [{
+                    pointBackgroundColor: "#7732a8ff",
+                    backgroundColor: "#7732a880",
+                    label: lang.graphTitleDailyPositives.other,
+                    data: chartData.dailyPositivesPercent.slice(chartData.firstDailyTestsValidIndex, chartData.positiveTestsChartsMaxIndex + 1),
+                    pointRadius: pointRadius,
+                    pointHoverRadius: pointHoverRadius
+                }]
+            },
+            options: options
+        });
+    }
 
     options = createDefaultChartOptions();
     options.scales = {
@@ -427,26 +438,28 @@ function main() {
     }
 
     ctx = document.getElementById('chart-healthcare-workers');
-    var hcData = chartData.dailyHealthcareWorkers.slice(chartData.firstValidHealthcareWorkerIndex);
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: chartData.dates.slice(chartData.firstValidHealthcareWorkerIndex),
-            datasets: [
-                createMovingAverageDataset(hcData, MOVING_AVERAGE_DELTA, "#0033bb88"),
-                {
-                    backgroundColor: "#01C6B2FF",
-                    label: lang.healthCareWorkerCases.other,
-                    data: hcData,
-                },
-                {
-                    backgroundColor: "#97DBEAFF",
-                    label: lang.dailyCases.other,
-                    data: chartData.dailyCases.slice(chartData.firstValidHealthcareWorkerIndex),
-                }]
-        },
-        options: options
-    });
+    if (ctx) {
+        var hcData = chartData.dailyHealthcareWorkers.slice(chartData.firstValidHealthcareWorkerIndex);
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: chartData.dates.slice(chartData.firstValidHealthcareWorkerIndex),
+                datasets: [
+                    createMovingAverageDataset(hcData, MOVING_AVERAGE_DELTA, "#0033bb88"),
+                    {
+                        backgroundColor: "#01C6B2FF",
+                        label: lang.healthCareWorkerCases.other,
+                        data: hcData,
+                    },
+                    {
+                        backgroundColor: "#97DBEAFF",
+                        label: lang.dailyCases.other,
+                        data: chartData.dailyCases.slice(chartData.firstValidHealthcareWorkerIndex),
+                    }]
+            },
+            options: options
+        });
+    }
 
     options = createDefaultChartOptions();
     options.scales = {
@@ -467,23 +480,25 @@ function main() {
     };
 
     ctx = document.getElementById('chart-healthcare-workers-percent');
-    var hcPercentData = chartData.dailyHealthcareWorkersPercent.slice(chartData.firstValidHealthcareWorkerIndex);
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: chartData.dates.slice(chartData.firstValidHealthcareWorkerIndex),
-            datasets: [
-                createMovingAverageDataset(hcPercentData, MOVING_AVERAGE_DELTA, "#0033bb88"),
-                {
-                    backgroundColor: "#01C6B2FF",
-                    label: lang.graphTitleHealthcareWorkersPercent.other,
-                    data: hcPercentData,
-                    pointRadius: pointRadius,
-                    pointHoverRadius: pointHoverRadius
-                }]
-        },
-        options: options
-    });
+    if (ctx) {
+        var hcPercentData = chartData.dailyHealthcareWorkersPercent.slice(chartData.firstValidHealthcareWorkerIndex);
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: chartData.dates.slice(chartData.firstValidHealthcareWorkerIndex),
+                datasets: [
+                    createMovingAverageDataset(hcPercentData, MOVING_AVERAGE_DELTA, "#0033bb88"),
+                    {
+                        backgroundColor: "#01C6B2FF",
+                        label: lang.graphTitleHealthcareWorkersPercent.other,
+                        data: hcPercentData,
+                        pointRadius: pointRadius,
+                        pointHoverRadius: pointHoverRadius
+                    }]
+            },
+            options: options
+        });
+    }
 
     options = createDefaultChartOptions();
     options.scales = {
@@ -520,28 +535,30 @@ function main() {
     };
 
     ctx = document.getElementById('chart-daily-hospitalizations-percent');
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: chartData.dates.slice(chartData.firstHopitalizationsValidIndex),
-            datasets: [{
-                pointBackgroundColor: "#d9554cff",
-                backgroundColor: "#d9554c80",
-                label: lang.icu.other,
-                data: chartData.dailyICUPercent.slice(chartData.firstHopitalizationsValidIndex),
-                pointRadius: pointRadius,
-                pointHoverRadius: pointHoverRadius
-            }/*,
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: chartData.dates.slice(chartData.firstHopitalizationsValidIndex),
+                datasets: [{
+                    pointBackgroundColor: "#d9554cff",
+                    backgroundColor: "#d9554c80",
+                    label: lang.icu.other,
+                    data: chartData.dailyICUPercent.slice(chartData.firstHopitalizationsValidIndex),
+                    pointRadius: pointRadius,
+                    pointHoverRadius: pointHoverRadius
+                }/*,
             {
                 pointBackgroundColor: "#d9554cff",
                 backgroundColor: "#ecdb3c80",
                 label: lang.imcu.other,
                 data: dailyIMCUPercent.slice(firstHopitalizationsValidIndex),
             }*/
-            ]
-        },
-        options: options
-    });
+                ]
+            },
+            options: options
+        });
+    }
 
     var activeCasesData = chartData.lateDataEnabled ? chartData.dailyActiveCasesWithLateData : chartData.dailyActiveCases;
     options = createDefaultChartOptions();
@@ -633,34 +650,40 @@ function main() {
     };
 
     ctx = document.getElementById('chart-region-active-cases');
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: chartData.dates,
-            datasets: activeCasesDatasets
-        },
-        options: regionChartsOptions
-    });
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: chartData.dates,
+                datasets: activeCasesDatasets
+            },
+            options: regionChartsOptions
+        });
+    }
 
     ctx = document.getElementById('chart-region-cases');
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: chartData.dates,
-            datasets: casesDatasets
-        },
-        options: regionChartsOptions
-    });
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: chartData.dates,
+                datasets: casesDatasets
+            },
+            options: regionChartsOptions
+        });
+    }
 
     ctx = document.getElementById('chart-region-deaths');
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: chartData.dates,
-            datasets: deathsDatasets
-        },
-        options: regionChartsOptions
-    });
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: chartData.dates,
+                datasets: deathsDatasets
+            },
+            options: regionChartsOptions
+        });
+    }
 
     var menDeaths = [0, 0, 0, 0, 0];
     var womenDeaths = [0, 0, 0, 0, 0];
@@ -711,26 +734,27 @@ function main() {
 
     options = createDefaultChartOptions();
     ctx = document.getElementById('chart-deaths');
-
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: deathAgeRangesLabels,
-            datasets: [
-                {
-                    backgroundColor: "#B871FAff",
-                    label: lang.men.other,
-                    data: menDeaths,
-                },
-                {
-                    backgroundColor: "#FA7571ff",
-                    label: lang.women.other,
-                    data: womenDeaths,
-                }
-            ]
-        },
-        options: options
-    });
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: deathAgeRangesLabels,
+                datasets: [
+                    {
+                        backgroundColor: "#B871FAff",
+                        label: lang.men.other,
+                        data: menDeaths,
+                    },
+                    {
+                        backgroundColor: "#FA7571ff",
+                        label: lang.women.other,
+                        data: womenDeaths,
+                    }
+                ]
+            },
+            options: options
+        });
+    }
 
     var dataDeathsTotal = [menDeaths.reduce(function (acc, val) { return acc + val; }, 0), womenDeaths.reduce(function (acc, val) { return acc + val; }, 0)];
     var totalDeahts = getTotal(dataDeathsTotal);
@@ -758,35 +782,38 @@ function main() {
     var deathBySexLabels = [lang.men.other, lang.women.other];
     deathBySexLabels = deathBySexLabels.map(function (label, index) { return label + ': ' + (dataDeathsTotal[index] / totalDeahts * 100).toFixed(2) + '%' });
 
-    new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: deathBySexLabels,
-            datasets: [{
-                data: dataDeathsTotal,
-                backgroundColor: ["#B871FAff", "#FA7571ff"]
-            }]
-        },
-        options: options
-    });
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: deathBySexLabels,
+                datasets: [{
+                    data: dataDeathsTotal,
+                    backgroundColor: ["#B871FAff", "#FA7571ff"]
+                }]
+            },
+            options: options
+        });
+    }
 
     options = createDefaultChartOptions();
     ctx = document.getElementById('chart-deaths-new');
-
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: deathAgeRangesLabels,
-            datasets: [
-                {
-                    backgroundColor: "#e54acfff",
-                    label: lang.graphDeathsNew.other,
-                    data: totalDeathsByAge,
-                }
-            ]
-        },
-        options: options
-    });
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: deathAgeRangesLabels,
+                datasets: [
+                    {
+                        backgroundColor: "#e54acfff",
+                        label: lang.graphDeathsNew.other,
+                        data: totalDeathsByAge,
+                    }
+                ]
+            },
+            options: options
+        });
+    }
 
     var positivityRate = chartData.dailyPositivityRate.slice(chartData.firstDailyTestsValidIndex);
     options = createDefaultChartOptions();
@@ -807,40 +834,44 @@ function main() {
         }
     };
     ctx = document.getElementById('chart-daily-positivity-rate');
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: chartData.dates.slice(chartData.firstDailyTestsValidIndex),
-            datasets: [
-                createMovingAverageDataset(positivityRate, MOVING_AVERAGE_DELTA, "#0033bb88"),
-                {
-                    backgroundColor: "#7732a880",
-                    label: lang.graphPositivityRate.other,
-                    data: positivityRate,
-                }
-            ]
-        },
-        options: options
-    });
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: chartData.dates.slice(chartData.firstDailyTestsValidIndex),
+                datasets: [
+                    createMovingAverageDataset(positivityRate, MOVING_AVERAGE_DELTA, "#0033bb88"),
+                    {
+                        backgroundColor: "#7732a880",
+                        label: lang.graphPositivityRate.other,
+                        data: positivityRate,
+                    }
+                ]
+            },
+            options: options
+        });
+    }
 
     options = createDefaultChartOptions();
     ctx = document.getElementById('chart-daily-deaths');
-    var dailyDeathsFiltered = chartData.dailyDeaths.slice(chartData.deathsFirstIndex);
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: chartData.dates.slice(chartData.deathsFirstIndex),
-            datasets: [
-                createMovingAverageDataset(dailyDeathsFiltered, MOVING_AVERAGE_DELTA, "#0033bb88"),
-                {
-                    backgroundColor: "#e54acfff",
-                    label: lang.graphDailyDeaths.other,
-                    data: dailyDeathsFiltered,
-                }
-            ]
-        },
-        options: options
-    });
+    if (ctx) {
+        var dailyDeathsFiltered = chartData.dailyDeaths.slice(chartData.deathsFirstIndex);
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: chartData.dates.slice(chartData.deathsFirstIndex),
+                datasets: [
+                    createMovingAverageDataset(dailyDeathsFiltered, MOVING_AVERAGE_DELTA, "#0033bb88"),
+                    {
+                        backgroundColor: "#e54acfff",
+                        label: lang.graphDailyDeaths.other,
+                        data: dailyDeathsFiltered,
+                    }
+                ]
+            },
+            options: options
+        });
+    }
 
     var departments = departmentsData.departments;
     var uruguayMap = document.getElementById("uruguay-map");
@@ -917,33 +948,35 @@ function main() {
         dateElem.innerHTML = lang.updated.other + ": " + vacDate.toLocaleString(htmlLang);
     }
 
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: vacDates,
-            datasets: [
-                {
-                    pointBackgroundColor: "#0000FFFF",
-                    backgroundColor: "#0000FF80",
-                    label: lang.vacTotal.other,
-                    data: vaccinationData.history.total,
-                },
-                {
-                    pointBackgroundColor: "#FF8C00ff",
-                    backgroundColor: "#FF8C0080",
-                    label: lang.vacCoronavac.other,
-                    data: vaccinationData.history.coronavac,
-                },
-                {
-                    pointBackgroundColor: "#00CC00FF",
-                    backgroundColor: "#00CC0080",
-                    label: lang.vacPfizer.other,
-                    data: vaccinationData.history.pfizer,
-                }
-            ]
-        },
-        options: options
-    });
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: vacDates,
+                datasets: [
+                    {
+                        pointBackgroundColor: "#0000FFFF",
+                        backgroundColor: "#0000FF80",
+                        label: lang.vacTotal.other,
+                        data: vaccinationData.history.total,
+                    },
+                    {
+                        pointBackgroundColor: "#FF8C00ff",
+                        backgroundColor: "#FF8C0080",
+                        label: lang.vacCoronavac.other,
+                        data: vaccinationData.history.coronavac,
+                    },
+                    {
+                        pointBackgroundColor: "#00CC00FF",
+                        backgroundColor: "#00CC0080",
+                        label: lang.vacPfizer.other,
+                        data: vaccinationData.history.pfizer,
+                    }
+                ]
+            },
+            options: options
+        });
+    }
 
     options = createDefaultChartOptions();
     options.scales = {
@@ -969,16 +1002,17 @@ function main() {
     if (dateElem != null) {
         dateElem.innerHTML = lang.updated.other + ": " + vacDate.toLocaleString(htmlLang);
     }
-
-    new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: [lang.vacCoronavac.other, lang.vacPfizer.other],
-            datasets: [{
-                data: [vaccinationData.coronavacTotal, vaccinationData.pfizerTotal],
-                backgroundColor: ["#FF8C0080", "#00CC0080"]
-            }]
-        },
-        options: options
-    });
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [lang.vacCoronavac.other, lang.vacPfizer.other],
+                datasets: [{
+                    data: [vaccinationData.coronavacTotal, vaccinationData.pfizerTotal],
+                    backgroundColor: ["#FF8C0080", "#00CC0080"]
+                }]
+            },
+            options: options
+        });
+    }
 }

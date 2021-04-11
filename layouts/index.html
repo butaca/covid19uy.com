@@ -73,6 +73,7 @@
             <div class="content">
                 <br>
                 {{ .Content }}
+                {{- if site.Params.archiveEnabled -}}
                 <div id="archive">
                     <h2>{{ i18n "archive" }}</h2>
                     <p>{{ i18n "archiveDesc" }}</p>
@@ -91,6 +92,7 @@
                         {{ i18n "unreportedPositiviesInfo" }}
                     </p>
                 </div>
+                {{- end -}}
             </div>
         </div>
     </section>
