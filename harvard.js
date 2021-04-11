@@ -28,7 +28,12 @@ for (let i = startIndex; i < uruguay.data.length; ++i) {
     newCases.push(todayNewCases);
     sumNewCases += todayNewCases;
 
-    const todayNewCasesWithoutLateData = today.cases - yesterday.cases;
+    let todayNewCasesWithoutLateData = today.cases - yesterday.cases;
+
+    if(new Date(today.date).getTime() >= new Date("2021-04-09").getTime()) {
+        todayNewCasesWithoutLateData = today.newCases;
+    }
+    
     newCasesWithoutLateData.push(todayNewCasesWithoutLateData);
     sumNewCasesWithoutLateData += todayNewCasesWithoutLateData;
 

@@ -16,6 +16,11 @@
 {{- end -}}
 {{- $newCasesAverage = add $newCasesAverage $todayCases -}}
 {{- $todayCasesWithoutLateData := sub $today.cases $yesterday.cases -}}
+{{- $todayDate := time $today.date -}}
+{{- $refDate := time "2021-04-09" -}}
+{{- if or ($todayDate.After $refDate) ($todayDate.Equal $refDate) -}}
+{{- $todayCasesWithoutLateData = $today.newCases -}}
+{{- end -}}
 {{- $newCasesWithoutLateDataAverage = add $newCasesWithoutLateDataAverage $todayCasesWithoutLateData -}}
 {{- $newCasesAverageSamples = add $newCasesAverageSamples 1 -}}
 {{- $yesterday = $today -}}
