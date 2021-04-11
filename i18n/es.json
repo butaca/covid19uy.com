@@ -120,7 +120,7 @@
     "other": "Tests diarios"
   },
   "graphTitleDailyTestsNewDesc": {
-    "other": "Cantidad de tests realizados en cada día. No se consideran los casos nuevos reportados fuera de fecha por falta de información."
+    "other": "Cantidad de tests realizados en cada día. No se consideran los tests reportados fuera de fecha por falta de información."
   },
   "graphTitleHealthcareWorkers": {
     "other": "Casos diarios de trabajadores de la salud"
