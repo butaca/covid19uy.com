@@ -158,9 +158,7 @@ describe('Test data', function () {
         }
     });
 
-    /*
     it('Uruguay deaths count for each day in uruguay.json should match the registered deaths in uruguayDeaths.json', function () {
-
         let totalDeaths = 0;
         let deathHistory = [];
         for (let i = 0; i < uruguayDeaths.deaths.length; ++i) {
@@ -185,6 +183,14 @@ describe('Test data', function () {
                     if (date.getTime() == new Date("2021-03-25" + DATE_DEFAULT_TIME).getTime()) {
                         totalDeaths++;
                     }
+                    // 36 deaths weren't reported on 2021-04-29
+                    if (date.getTime() == new Date("2021-04-09" + DATE_DEFAULT_TIME).getTime()) {
+                        totalDeaths += 36;
+                    }
+                    // an extra death was reported on 2021-04-10, but it wasn't informed which one
+                    if (date.getTime() == new Date("2021-04-10" + DATE_DEFAULT_TIME).getTime()) {
+                        totalDeaths--;
+                    }
 
                     deathHistory.push({ date: date, deaths: totalDeaths });
                 }
@@ -194,7 +200,7 @@ describe('Test data', function () {
         let deaths = 0;
         for (let i = 0; i < uruguay.data.length; ++i) {
             const today = uruguay.data[i];
-            const todayDeaths = today.deaths || 0;
+            const todayTotalDeaths = today.deaths || 0;
             const todayDate = new Date(today.date + DATE_DEFAULT_TIME);
 
             for (; j < deathHistory.length; ++j) {
@@ -207,10 +213,9 @@ describe('Test data', function () {
                 }
             }
 
-            assert.equal(todayDeaths, deaths, "Death count in uruguay.json doesn't match the deaths in uruguayDeaths.json for date " + todayDate.toString());
+            assert.equal(todayTotalDeaths, deaths, "Death count in uruguay.json doesn't match the deaths in uruguayDeaths.json for date " + todayDate.toString());
         }
     });
-    */
 
     it('Test icu.json data', function () {
         let prevDate = null;

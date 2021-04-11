@@ -26,10 +26,5 @@
         "id": "chart-deaths-sex",
         "title": "graphDeathsSex",
         "desc": "graphDeathsSexDesc"
-    },
-    {
-        "id": "chart-deaths-new",
-        "title": "graphDeathsNew",
-        "desc": "graphDeathsNewDesc"
     }
 ]
