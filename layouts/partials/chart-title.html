@@ -6,12 +6,18 @@
         {{ .title }} <i class="far fa-question-circle"></i>
     </span>
     {{ if .displayPositivesAndCasesInfo }}
-    <span class="has-tooltip-multiline" data-tooltip="{{ i18n "positivesAndCasesInfo"}}">⚠️</span>
+    <span class="has-tooltip-multiline" data-tooltip="{{ i18n " positivesAndCasesInfo"}}">⚠️</span>
     {{- end -}}
     {{- if .displayUnreportedPositiviesInfo -}}
-    <span class="has-tooltip-multiline" data-tooltip="{{ i18n "unreportedPositiviesInfo"}}">⚠️</span>
+    <span class="has-tooltip-multiline" data-tooltip='{{ i18n "unreportedPositiviesInfo"}}'>⚠️</span>
     {{- end -}}
     {{- if .displayDeathsInfo -}}
-    <span class="has-tooltip-multiline" data-tooltip="{{ i18n "deathsInfo"}}">⚠️</span>
+    <span class="has-tooltip-multiline" data-tooltip='{{ i18n "deathsInfo"}}'>⚠️</span>
+    {{- end -}}
+    {{- if .displayUnreliableDataMessage -}}
+    <a href='https://www.gub.uy/ministerio-salud-publica/sites/ministerio-salud-publica/files/documentos/noticias/Actualización%20de%20casos%20y%20test%209%20de%20abril.pdf'
+        target='blank'>
+        <span class="has-tooltip-multiline" data-tooltip='{{ i18n "unreliableData"}}'>❗</span>
+    </a>
     {{- end -}}
 </h3>

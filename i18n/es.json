@@ -405,7 +405,7 @@
         "other": "❗ Importante"
     },
     "unreliableData": {
-        "other": "El día 09/04/2021, <a href='https://www.gub.uy/ministerio-salud-publica/sites/ministerio-salud-publica/files/documentos/noticias/Actualización%20de%20casos%20y%20test%209%20de%20abril.pdf' target='blank'>el MSP publicó un informe</a> actualizando los datos desde el 01/03/2021 hasta el 08/04/2021 el cual presenta inconsistencias con el resto de los datos conocidos. Por tal motivo, los datos históricos de este sitio sólo se basan en los informes diarios originales hasta que se aclaren las diferencias. Esto significa que casi todas las gráficas que utilicen datos históricos, no sean correctas en el período indicado por falta de información."
+        "other": "❗ El día 09/04/2021, el MSP publicó un informe actualizando los datos desde el 01/03/2021 hasta el 08/04/2021 el cual presenta inconsistencias con el resto de los datos conocidos. Por tal motivo, los datos históricos de este sitio sólo se basan en los informes diarios originales hasta que se aclaren las diferencias. Esto significa que casi todas las gráficas que utilicen datos históricos, no sean correctas en el período indicado por falta de información."
     },
     "icuMonitor": {
         "other": "ICU (adults) bed occupancy viewer"
