@@ -4,7 +4,8 @@
     {{- $firstDoseVacProgressPercent := lang.NumFmt 2 (mul 100 $firstDoseVacProgress) .Site.Params.numberFormat -}}
     {{- $secondDoseVacProgress := div $vacData.secondDoseTotal $vacData.goal -}}
     {{- $secondDoseVacProgressPercent := lang.NumFmt 2 (mul 100 $secondDoseVacProgress) .Site.Params.numberFormat -}}
-    
+    {{- $dateStr := printf "%sT%s:00" $vacData.date $vacData.todayDate }}
+    {{- $date := time $dateStr -}}
     <h2 class="title">{{ i18n "vaccinationProgress" }}</h2>
     <div>
         <div class="has-tooltip-multiline" data-tooltip='{{ i18n "vaccinationProgressFirstDoseDesc"}}'>
@@ -21,5 +22,8 @@
                     class="far fa-question-circle"></i></span>
         </div>
         <progress class="progress is-success" value="{{ $secondDoseVacProgress }}" max="1">{{ $secondDoseVacProgressPercent }}%</progress>
+    </div>
+    <div class="has-text-centered is-size-7 date">
+        {{- i18n "updated" }}: {{ dateFormat .Site.Params.dateFormat $date -}}
     </div>
 </div>
