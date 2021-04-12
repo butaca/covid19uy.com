@@ -1,412 +1,413 @@
 {
-  "404message": {
-    "other": "We did not find this page. Please communicate if you think it is a mistake."
-  },
-  "404title": {
-    "other": "404 File not found"
-  },
-  "activeCases": {
-    "other": "Active Cases"
-  },
-  "activeCasesByDepartment": {
-    "other": "Active cases by department"
-  },
-  "and": {
-    "other": "and"
-  },
-  "archive": {
-    "other": "Archive"
-  },
-  "archiveDesc": {
-    "other": "The following graphs aren't updated anymore because the information needed is no longer provided."
-  },
-  "argentina": {
-    "other": "Argentina"
-  },
-  "avodianceProb": {
-    "other": "Social distancing probability (%)"
-  },
-  "avoidanceDistance": {
-    "other": "Social distancing"
-  },
-  "backTo": {
-    "other": "Back to"
-  },
-  "brazil": {
-    "other": "Brazil"
-  },
-  "chile": {
-    "other": "Chile"
-  },
-  "collaborate": {
-    "other": "Do you want to collaborate? (Design, code, ideas, suggestions, etc.)"
-  },
-  "contact": {
-    "other": "✉️ Contact"
-  },
-  "contactMe": {
-    "other": "Contact me!"
-  },
-  "contagionDistanceTitle": {
-    "other": "Contagion distance"
-  },
-  "contagionMinHours": {
-    "other": "Contagion minimum time (hours)"
-  },
-  "contagionProbTitle": {
-    "other": "Contagion probability (%)"
-  },
-  "csse": {
-    "other": "COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University"
-  },
-  "dailyCases": {
-    "other": "Daily Cases"
-  },
-  "dailyPositives": {
-    "other": "Daily Positive"
-  },
-  "dailyTests": {
-    "other": "Daily Tests"
-  },
-  "dataSource": {
-    "other": "Data source"
-  },
-  "deaths": {
-    "other": "Deaths"
-  },
-  "graphTitleActiveCases": {
-    "other": "Daily active cases"
-  },
-  "graphTitleActiveCasesDesc": {
-    "other": "Active cases per day. 👉 This is the curve we have to flatten. The active cases are the people that currently have the virus, calculated as the total cases minus the recovered and deaths."
-  },
-  "graphTitleDailyActiveCases": {
-    "other": "Daily new active cases"
-  },
-  "graphTitleDailyActiveCasesDesc": {
-    "other": "In each day, number of new active cases (people with the virus) compared to the previous day. A negative number means that the number of people with the virus decreased that day."
-  },
-  "graphTitleDailyCases": {
-    "other": "Daily new cases"
-  },
-  "graphTitleDailyCasesDesc": {
-    "other": "Number of new cases in each day. Includes cases reported after the MSP report."
-  },
-  "graphTitleDailyHospitalizations": {
-    "other": "Hospitalizations"
-  },
-  "graphTitleDailyHospitalizationsDesc": {
-    "other": "Number of people in intermediate care and intensive care each day."
-  },
-  "graphTitleDailyHospitalizationsPercent": {
-    "other": "Hospitalizations percentage of active cases"
-  },
-  "graphTitleDailyHospitalizationsPercentDesc": {
-    "other": "Percentage of hospitalizations of active cases on each day."
-  },
-  "graphTitleDailyPositives": {
-    "other": "Percentage of daily positive tests"
-  },
-  "graphTitleDailyPositivesDesc": {
-    "other": "Of all the tests performed each day, what percentage of tests where positive on that day."
-  },
-  "graphTitleDailyTests": {
-    "other": "Daily tests and positives"
-  },
-  "graphTitleDailyTestsDesc": {
-    "other": "Number of tests carried out each day and how many of them were positive."
-  },
-  "graphTitleDailyTestsNew": {
-    "other": "Daily tests"
-  },
-  "graphTitleDailyTestsNewDesc": {
-    "other": "Number of tests carried out each day. New tests reported out of date are not considered due to lack of information."
-  },
-  "graphTitleHealthcareWorkers": {
-    "other": "Daily healthcare workers cases"
-  },
-  "graphTitleHealthcareWorkersDesc": {
-    "other": "Number of new cases in each day and how many of them correspond to healthcare workers. New cases reported out of date are not considered due to lack of information."
-  },
-  "graphTitleHealthcareWorkersPercent": {
-    "other": "Percentage of healthcare workers cases"
-  },
-  "graphTitleHealthcareWorkersPercentDesc": {
-    "other": "Of the new cases of each day, what percentage correspond to healthcare workers on that day. New cases reported out of date are not considered due to lack of information."
-  },
-  "graphTitleRegionActiveCases": {
-    "other": "Active cases per million inhabitants in the region"
-  },
-  "graphTitleRegionActiveCasesDesc": {
-    "other": "Comparison of active cases (people with the virus) per million inhabitants in the countries of the region."
-  },
-  "graphTitleRegionCases": {
-    "other": "Cumulative cases per million inhabitants in the region"
-  },
-  "graphTitleRegionCasesDesc": {
-    "other": "Comparison of cumulative cases per million inhabitants in the countries of the region."
-  },
-  "graphTitleRegionDeaths": {
-    "other": "Deaths per million inhabitants in the region"
-  },
-  "graphTitleRegionDeathsDesc": {
-    "other": "Comparison of deaths per million inhabitants in the countries of the region."
-  },
-  "graphTitleTotalCases": {
-    "other": "Cumulative cases, recovered and deaths"
-  },
-  "graphTitleTotalCasesDesc": {
-    "other": "On each day, the total sum of confirmed cases, recovered and deaths up to that day."
-  },
-  "graphTitleTotalTests": {
-    "other": "Total tests"
-  },
-  "graphTitleTotalTestsDesc": {
-    "other": "Comparison of all tests performed so far: percentage of positives and negatives."
-  },
-  "graphTitleTotals": {
-    "other": "Total Cases"
-  },
-  "graphTitleTotalsDesc": {
-    "other": "Comparison of the total cases registered so far: percentage of active cases, recovered and deaths."
-  },
-  "graphDeaths" : {
-    "other": "Deaths by age"
-  },
-  "graphDeathsDesc" : {
-    "other": "Deaths by age ranges and sex."
-  },
-  "graphDailyDeaths" : {
-    "other": "Daily deaths"
-  },
-  "graphDailyDeathsDesc" : {
-    "other": "Deaths per day."
-  },
-  "graphDeathsNew" : {
-    "other": "Deaths by age"
-  },
-  "graphDeathsNewDesc" : {
-    "other": "Deaths by age ranges."
-  },
-  "graphDeathsSex" : {
-    "other": "Deaths by sex"
-  },
-  "graphDeathsSexDesc" : {
-    "other": "Total deaths by sex."
-  },
-  "graphPositivityRate" : {
-    "other": "Positivity Rate"
-  },
-  "graphPositivityRateDesc" : {
-    "other": "On each day, percentage of positive tests done that day. For this calculation, it is assumed that the total of positive tests corresponds to the number of new cases that day due to lack of information. New cases and tests reported out of date are not considered due to lack of information."
-  },
-  "graphDailyVacs": {
-    "other": "Daily vaccination"
-  },
-  "graphDailyVacsDesc": {
-    "other": "Number of administered vaccines per day, discriminated by vaccine type."
-  },
-  "graphTotalVacs": {
-    "other": "Vaccination total"
-  },
-  "graphTotalVacsDesc": {
-    "other": "Total of administered vaccines, discriminated by vaccine type."
-  },
-  "vacTotal" : {
-    "other": "Total"
-  },
-  "vacCoronavac" : {
-    "other": "Sinovac"
-  },
-  "vacPfizer" : {
-    "other": "Pfizer"
-  },
-  "men" : {
-    "other": "Men"
-  },
-  "women" : {
-    "other": "Women"
-  },
-  "unknown": {
-    "other": "Unknown"
-  },
-  "healthCareWorkerCases": {
-    "other": "Healthcare worker cases"
-  },
-  "healthSystemCapacity": {
-    "other": "Healthcare system capacity"
-  },
-  "icu": {
-    "other": "Intensive care"
-  },
-  "imcu": {
-    "other": "Intermediate care"
-  },
-  "infectionDuration": {
-    "other": "Infection duration (days)"
-  },
-  "kofi": {
-    "other": "Support me on Ko-fi"
-  },
-  "mortalityRate": {
-    "other": "Mortality rate (%)"
-  },
-  "msp": {
-    "other": "Ministry of Public Health"
-  },
-  "negatives": {
-    "other": "Negatives"
-  },
-  "new": {
-    "other": "New!"
-  },
-  "newActiveCases": {
-    "other": "New active cases"
-  },
-  "newCases": {
-    "other": "New cases"
-  },
-  "paraguay": {
-    "other": "Paraguay"
-  },
-  "positives": {
-    "other": "Positives"
-  },
-  "positivesAndCasesInfo": {
-    "other": "⚠️ Until 04/08/2020 the number of cases (people with the virus) was not reported, but the number of positive tests. There are people with the virus that were tested positive more than once. Therefore until 4/8, cases (people with the virus) are assumed as the positive tests due to lack of information."
-  },
-  "deathsInfo": {
-    "other": "⚠️ On 02/22/2021 the MSP through the SINAE reported an incorrect death but did not indicate which one. On the other hand, on 03/25/2021 it reported 13 deaths, but only listed 12. Furthermore, on 04/09/2021 it reported 36 deaths from the past, but did not list them. Finally on 04/10/2021 an incorrect death was removed. For these reasons, the death chart \"Deaths by age \" does not add up the total number of deaths."
-  },
-  "publishedBy": {
-    "other": "published by"
-  },
-  "recovered": {
-    "other": "Recovered"
-  },
-  "region": {
-    "other": "Region"
-  },
-  "regionTitle": {
-    "other": "Comparison to the countries of the region"
-  },
-  "restart": {
-    "other": "Restart"
-  },
-  "shareMe": {
-    "other": "Share me!"
-  },
-  "simulation": {
-    "other": "Simulation"
-  },
-  "simulationTitle": {
-    "other": "Coronavirus simulation"
-  },
-  "sinae": {
-    "other": "National Emergency System"
-  },
-  "siteMadeBy": {
-    "other": "Made with ❤️ by"
-  },
-  "society": {
-    "other": "Society"
-  },
-  "sourceCode": {
-    "other": "Source Code"
-  },
-  "speed": {
-    "other": "Speed"
-  },
-  "supportedBy": {
-    "other": "Supported by"
-  },
-  "tests": {
-    "other": "Tests"
-  },
-  "todayNumbers": {
-    "other": "Today numbers"
-  },
-  "totalCases": {
-    "other": "Total Cases"
-  },
-  "totalTests": {
-    "other": "Total tests"
-  },
-  "totalDeaths": {
-    "other": "Total deaths"
-  },
-  "unreportedPositiviesInfo": {
-    "other": "⚠️ As of 06/15 SINAE stopped reporting the daily and accumulated positive tests. Therefore, the tests graphs are updated until 06/14."
-  },
-  "updated": {
-    "other": "Updated"
-  },
-  "uruguay": {
-    "other": "Uruguay"
-  },
-  "uyTime": {
-    "other": "Uruguayan Time"
-  },
-  "virus": {
-    "other": "Virus"
-  },
-  "world": {
-    "other": "🌍 World"
-  },
-  "worldTitle": {
-    "other": "Numbers in the world 🌍"
-  },
-  "icuInitials": {
-    "other": "ICU"
-  },
-  "notAvailable": {
-    "other": "Not available"
-  },
-  "vaccinationProgress": {
-      "other": "Vaccination progress"
-  },
-  "vaccinationProgressDesc": {
-      "other": "The government indicated that the target population is 2,800,000 people, therefore the total doses to be administered is 5,600,000"
-  },
-  "vaccinationProgressFirstDose": {
-      "other": "At least one dose"
-  },
-  "vaccinationProgressFirstDoseDesc": {
-      "other": "Percentage of the target population that received at least one dose. The government indicated that the target population is 2,800,000 people."
-  },
-  "vaccinationProgressSecondDose": {
-      "other": "Two doses"
-  },
-  "vaccinationProgressSecondDoseDesc": {
-      "other": "Percentage of the target population that received the two doses. The government indicated that the target population is 2,800,000 people."
-  },
-  "harvardIndex": {
-      "other": "Harvard Index"
-  },
-  "harvardIndexDesc": {
-      "other": "Risk level according to the average of new cases per 100,000 inhabitants in the last 7 days. It is calculated following the criteria of CoronavirusUY: daily cases until 4/8/2021 are the accumulated of the report minus the accumulated of the previous day. As of 4/9/2021, the daily cases are those of the report."
-  },
-  "icuOccupation": {
-      "other": "ICU Occupation"
-  },
-  "vacMonitor": {
-      "other": "COVID-19 Vaccination Data Monitor"
-  },
-  "sumi": {
-    "other": "Uruguayan Society of Intensive Medicine"
-  },
-  "covid19": {
-    "other": "COVID-19"
-  },
-  "total": {
-      "other": "Total"
-  },
-  "unreliableDataTitle": {
-      "other": "❗ Important"
-  },
-  "unreliableData": {
-      "other": "On 04/09/2021, <a href='https://www.gub.uy/ministerio-salud-publica/sites/ministerio-salud-publica/files/documentos/noticias/Actualización%20de%20casos%20y%20test%209%20de%20abril.pdf' target='blank'>the MSP published a report</a> updating the data from 03/01/2021 to 04/08/2021, which shows inconsistencies with the rest of the known data. For this reason, the historical data on this site is only based on the original daily reports until the differences are clarified. This means that almost all the graphs that use historical data are not correct in the indicated period due to lack of information."
-  }
-
-
+    "404message": {
+        "other": "We did not find this page. Please communicate if you think it is a mistake."
+    },
+    "404title": {
+        "other": "404 File not found"
+    },
+    "activeCases": {
+        "other": "Active Cases"
+    },
+    "activeCasesByDepartment": {
+        "other": "Active cases by department"
+    },
+    "and": {
+        "other": "and"
+    },
+    "archive": {
+        "other": "Archive"
+    },
+    "archiveDesc": {
+        "other": "The following graphs aren't updated anymore because the information needed is no longer provided."
+    },
+    "argentina": {
+        "other": "Argentina"
+    },
+    "avodianceProb": {
+        "other": "Social distancing probability (%)"
+    },
+    "avoidanceDistance": {
+        "other": "Social distancing"
+    },
+    "backTo": {
+        "other": "Back to"
+    },
+    "brazil": {
+        "other": "Brazil"
+    },
+    "chile": {
+        "other": "Chile"
+    },
+    "collaborate": {
+        "other": "Do you want to collaborate? (Design, code, ideas, suggestions, etc.)"
+    },
+    "contact": {
+        "other": "✉️ Contact"
+    },
+    "contactMe": {
+        "other": "Contact me!"
+    },
+    "contagionDistanceTitle": {
+        "other": "Contagion distance"
+    },
+    "contagionMinHours": {
+        "other": "Contagion minimum time (hours)"
+    },
+    "contagionProbTitle": {
+        "other": "Contagion probability (%)"
+    },
+    "csse": {
+        "other": "COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University"
+    },
+    "dailyCases": {
+        "other": "Daily Cases"
+    },
+    "dailyPositives": {
+        "other": "Daily Positive"
+    },
+    "dailyTests": {
+        "other": "Daily Tests"
+    },
+    "dataSource": {
+        "other": "Data source"
+    },
+    "deaths": {
+        "other": "Deaths"
+    },
+    "graphTitleActiveCases": {
+        "other": "Daily active cases"
+    },
+    "graphTitleActiveCasesDesc": {
+        "other": "Active cases per day. 👉 This is the curve we have to flatten. The active cases are the people that currently have the virus, calculated as the total cases minus the recovered and deaths."
+    },
+    "graphTitleDailyActiveCases": {
+        "other": "Daily new active cases"
+    },
+    "graphTitleDailyActiveCasesDesc": {
+        "other": "In each day, number of new active cases (people with the virus) compared to the previous day. A negative number means that the number of people with the virus decreased that day."
+    },
+    "graphTitleDailyCases": {
+        "other": "Daily new cases"
+    },
+    "graphTitleDailyCasesDesc": {
+        "other": "Number of new cases in each day. Includes cases reported after the MSP report."
+    },
+    "graphTitleDailyHospitalizations": {
+        "other": "Hospitalizations"
+    },
+    "graphTitleDailyHospitalizationsDesc": {
+        "other": "Number of people in intermediate care and intensive care each day."
+    },
+    "graphTitleDailyHospitalizationsPercent": {
+        "other": "Hospitalizations percentage of active cases"
+    },
+    "graphTitleDailyHospitalizationsPercentDesc": {
+        "other": "Percentage of hospitalizations of active cases on each day."
+    },
+    "graphTitleDailyPositives": {
+        "other": "Percentage of daily positive tests"
+    },
+    "graphTitleDailyPositivesDesc": {
+        "other": "Of all the tests performed each day, what percentage of tests where positive on that day."
+    },
+    "graphTitleDailyTests": {
+        "other": "Daily tests and positives"
+    },
+    "graphTitleDailyTestsDesc": {
+        "other": "Number of tests carried out each day and how many of them were positive."
+    },
+    "graphTitleDailyTestsNew": {
+        "other": "Daily tests"
+    },
+    "graphTitleDailyTestsNewDesc": {
+        "other": "Number of tests carried out each day. New tests reported out of date are not considered due to lack of information."
+    },
+    "graphTitleHealthcareWorkers": {
+        "other": "Daily healthcare workers cases"
+    },
+    "graphTitleHealthcareWorkersDesc": {
+        "other": "Number of new cases in each day and how many of them correspond to healthcare workers. New cases reported out of date are not considered due to lack of information."
+    },
+    "graphTitleHealthcareWorkersPercent": {
+        "other": "Percentage of healthcare workers cases"
+    },
+    "graphTitleHealthcareWorkersPercentDesc": {
+        "other": "Of the new cases of each day, what percentage correspond to healthcare workers on that day. New cases reported out of date are not considered due to lack of information."
+    },
+    "graphTitleRegionActiveCases": {
+        "other": "Active cases per million inhabitants in the region"
+    },
+    "graphTitleRegionActiveCasesDesc": {
+        "other": "Comparison of active cases (people with the virus) per million inhabitants in the countries of the region."
+    },
+    "graphTitleRegionCases": {
+        "other": "Cumulative cases per million inhabitants in the region"
+    },
+    "graphTitleRegionCasesDesc": {
+        "other": "Comparison of cumulative cases per million inhabitants in the countries of the region."
+    },
+    "graphTitleRegionDeaths": {
+        "other": "Deaths per million inhabitants in the region"
+    },
+    "graphTitleRegionDeathsDesc": {
+        "other": "Comparison of deaths per million inhabitants in the countries of the region."
+    },
+    "graphTitleTotalCases": {
+        "other": "Cumulative cases, recovered and deaths"
+    },
+    "graphTitleTotalCasesDesc": {
+        "other": "On each day, the total sum of confirmed cases, recovered and deaths up to that day."
+    },
+    "graphTitleTotalTests": {
+        "other": "Total tests"
+    },
+    "graphTitleTotalTestsDesc": {
+        "other": "Comparison of all tests performed so far: percentage of positives and negatives."
+    },
+    "graphTitleTotals": {
+        "other": "Total Cases"
+    },
+    "graphTitleTotalsDesc": {
+        "other": "Comparison of the total cases registered so far: percentage of active cases, recovered and deaths."
+    },
+    "graphDeaths": {
+        "other": "Deaths by age"
+    },
+    "graphDeathsDesc": {
+        "other": "Deaths by age ranges and sex."
+    },
+    "graphDailyDeaths": {
+        "other": "Daily deaths"
+    },
+    "graphDailyDeathsDesc": {
+        "other": "Deaths per day."
+    },
+    "graphDeathsNew": {
+        "other": "Deaths by age"
+    },
+    "graphDeathsNewDesc": {
+        "other": "Deaths by age ranges."
+    },
+    "graphDeathsSex": {
+        "other": "Deaths by sex"
+    },
+    "graphDeathsSexDesc": {
+        "other": "Total deaths by sex."
+    },
+    "graphPositivityRate": {
+        "other": "Positivity Rate"
+    },
+    "graphPositivityRateDesc": {
+        "other": "On each day, percentage of positive tests done that day. For this calculation, it is assumed that the total of positive tests corresponds to the number of new cases that day due to lack of information. New cases and tests reported out of date are not considered due to lack of information."
+    },
+    "graphDailyVacs": {
+        "other": "Daily vaccination"
+    },
+    "graphDailyVacsDesc": {
+        "other": "Number of administered vaccines per day, discriminated by vaccine type."
+    },
+    "graphTotalVacs": {
+        "other": "Vaccination total"
+    },
+    "graphTotalVacsDesc": {
+        "other": "Total of administered vaccines, discriminated by vaccine type."
+    },
+    "vacTotal": {
+        "other": "Total"
+    },
+    "vacCoronavac": {
+        "other": "Sinovac"
+    },
+    "vacPfizer": {
+        "other": "Pfizer"
+    },
+    "men": {
+        "other": "Men"
+    },
+    "women": {
+        "other": "Women"
+    },
+    "unknown": {
+        "other": "Unknown"
+    },
+    "healthCareWorkerCases": {
+        "other": "Healthcare worker cases"
+    },
+    "healthSystemCapacity": {
+        "other": "Healthcare system capacity"
+    },
+    "icu": {
+        "other": "Intensive care"
+    },
+    "imcu": {
+        "other": "Intermediate care"
+    },
+    "infectionDuration": {
+        "other": "Infection duration (days)"
+    },
+    "kofi": {
+        "other": "Support me on Ko-fi"
+    },
+    "mortalityRate": {
+        "other": "Mortality rate (%)"
+    },
+    "msp": {
+        "other": "Ministry of Public Health"
+    },
+    "negatives": {
+        "other": "Negatives"
+    },
+    "new": {
+        "other": "New!"
+    },
+    "newActiveCases": {
+        "other": "New active cases"
+    },
+    "newCases": {
+        "other": "New cases"
+    },
+    "paraguay": {
+        "other": "Paraguay"
+    },
+    "positives": {
+        "other": "Positives"
+    },
+    "positivesAndCasesInfo": {
+        "other": "⚠️ Until 04/08/2020 the number of cases (people with the virus) was not reported, but the number of positive tests. There are people with the virus that were tested positive more than once. Therefore until 4/8, cases (people with the virus) are assumed as the positive tests due to lack of information."
+    },
+    "deathsInfo": {
+        "other": "⚠️ On 02/22/2021 the MSP through the SINAE reported an incorrect death but did not indicate which one. On the other hand, on 03/25/2021 it reported 13 deaths, but only listed 12. Furthermore, on 04/09/2021 it reported 36 deaths from the past, but did not list them. Finally on 04/10/2021 an incorrect death was removed. For these reasons, the death chart \"Deaths by age \" does not add up the total number of deaths."
+    },
+    "publishedBy": {
+        "other": "published by"
+    },
+    "recovered": {
+        "other": "Recovered"
+    },
+    "region": {
+        "other": "Region"
+    },
+    "regionTitle": {
+        "other": "Comparison to the countries of the region"
+    },
+    "restart": {
+        "other": "Restart"
+    },
+    "shareMe": {
+        "other": "Share me!"
+    },
+    "simulation": {
+        "other": "Simulation"
+    },
+    "simulationTitle": {
+        "other": "Coronavirus simulation"
+    },
+    "sinae": {
+        "other": "National Emergency System"
+    },
+    "siteMadeBy": {
+        "other": "Made with ❤️ by"
+    },
+    "society": {
+        "other": "Society"
+    },
+    "sourceCode": {
+        "other": "Source Code"
+    },
+    "speed": {
+        "other": "Speed"
+    },
+    "supportedBy": {
+        "other": "Supported by"
+    },
+    "tests": {
+        "other": "Tests"
+    },
+    "todayNumbers": {
+        "other": "Today numbers"
+    },
+    "totalCases": {
+        "other": "Total Cases"
+    },
+    "totalTests": {
+        "other": "Total tests"
+    },
+    "totalDeaths": {
+        "other": "Total deaths"
+    },
+    "unreportedPositiviesInfo": {
+        "other": "⚠️ As of 06/15 SINAE stopped reporting the daily and accumulated positive tests. Therefore, the tests graphs are updated until 06/14."
+    },
+    "updated": {
+        "other": "Updated"
+    },
+    "uruguay": {
+        "other": "Uruguay"
+    },
+    "uyTime": {
+        "other": "Uruguayan Time"
+    },
+    "virus": {
+        "other": "Virus"
+    },
+    "world": {
+        "other": "🌍 World"
+    },
+    "worldTitle": {
+        "other": "Numbers in the world 🌍"
+    },
+    "icuInitials": {
+        "other": "ICU"
+    },
+    "notAvailable": {
+        "other": "Not available"
+    },
+    "vaccinationProgress": {
+        "other": "Vaccination progress"
+    },
+    "vaccinationProgressDesc": {
+        "other": "The government indicated that the target population is 2,800,000 people, therefore the total doses to be administered is 5,600,000"
+    },
+    "vaccinationProgressFirstDose": {
+        "other": "At least one dose"
+    },
+    "vaccinationProgressFirstDoseDesc": {
+        "other": "Percentage of the target population that received at least one dose. The government indicated that the target population is 2,800,000 people."
+    },
+    "vaccinationProgressSecondDose": {
+        "other": "Two doses"
+    },
+    "vaccinationProgressSecondDoseDesc": {
+        "other": "Percentage of the target population that received the two doses. The government indicated that the target population is 2,800,000 people."
+    },
+    "harvardIndex": {
+        "other": "Harvard Index"
+    },
+    "harvardIndexDesc": {
+        "other": "Risk level according to the average of new cases per 100,000 inhabitants in the last 7 days. It is calculated following the criteria of CoronavirusUY: daily cases until 4/8/2021 are the accumulated of the report minus the accumulated of the previous day. As of 4/9/2021, the daily cases are those of the report."
+    },
+    "icuOccupation": {
+        "other": "ICU Occupation"
+    },
+    "vacMonitor": {
+        "other": "COVID-19 Vaccination Data Monitor"
+    },
+    "sumi": {
+        "other": "Uruguayan Society of Intensive Medicine"
+    },
+    "covid19": {
+        "other": "COVID-19"
+    },
+    "total": {
+        "other": "Total"
+    },
+    "unreliableDataTitle": {
+        "other": "❗ Important"
+    },
+    "unreliableData": {
+        "other": "On 04/09/2021, <a href='https://www.gub.uy/ministerio-salud-publica/sites/ministerio-salud-publica/files/documentos/noticias/Actualización%20de%20casos%20y%20test%209%20de%20abril.pdf' target='blank'>the MSP published a report</a> updating the data from 03/01/2021 to 04/08/2021, which shows inconsistencies with the rest of the known data. For this reason, the historical data on this site is only based on the original daily reports until the differences are clarified. This means that almost all the graphs that use historical data are not correct in the indicated period due to lack of information."
+    },
+    "icuMonitor": {
+        "other": "Visualizador de ocupación de camas de CTI de personas adultas"
+    }
 }
