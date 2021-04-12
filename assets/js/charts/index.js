@@ -11,6 +11,8 @@ import chartDailyHospitalizationsPercent from './chart-daily-hospitalizations-pe
 import chartDailyHospitalizations from './chart-daily-hospitalizations'
 import chartDailyActiveCases from './chart-daily-active-cases'
 import chartDailyPositivityRate from './chart-daily-positivity-rate'
+import chartHarvardIndex from './chart-harvard-index'
+
 import chartsRegion from './charts-region'
 import chartsDeaths from './charts-deaths'
 import chartsVac from './charts-vac'
@@ -30,6 +32,8 @@ function init(chartData, lang) {
     charts.push(chartDailyHospitalizations);
     charts.push(chartDailyActiveCases);
     charts.push(chartDailyPositivityRate);
+    charts.push(chartHarvardIndex);
+
     charts.push(chartsRegion);
     charts.push(chartsDeaths);
     charts.push(chartsVac);
