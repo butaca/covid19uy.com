@@ -23,13 +23,17 @@ Cuenta con el apoyo de Netlify en su [programa de ayuda a sitios sobre COVID-19]
 
 DATA = assets/js/data/
 
-Los datos de Uruguay se obtienen de los informes diarios del SINAE y se ingresan de manera manual en el archivo `[DATA]/uruguay.json`.
+#### Datos ingresados manualmente
 
-Los casos activos por departamento se obtienen del visualizador del SINAE también manualmente y se ingresan en en el archivo `[DATA]/uruguayDepartments.json`.
+* Los datos de Uruguay se obtienen de los informes diarios del [MSP](https://www.gub.uy/ministerio-salud-publica/coronavirus) [reportados por SINAE](https://www.gub.uy/sistema-nacional-emergencias/comunicacion/comunicados/) y se ingresan de manera manual en el archivo `[DATA]/uruguay.json`.
+* En en archivo `[DATA]/uruguayDeaths.json` se van registrando los fallecimientos.
+* Los datos sobre ocupación de camas de CTI, se ingresan manualmente, usando los informes diarios del [SUMI](https://sumi.uy) y se guardan en `[DATA]/icu.json`.
 
-En en archivo `[DATA]/uruguayDeaths.json` se van registrando los fallecimientos.
+#### Datos descargados automáticamente durante el build
 
-Los datos del mundo y la región (`[DATA]/world.json`, `[DATA]/region.json` y `[DATA]/worldPopulation.json`) se descargan automáticamente durante el build.
+* Los datos los departamentos de Uruguay (`[DATA]/uruguayDepartments.json`) se descargan del [visualizador del SINAE](https://www.gub.uy/sistema-nacional-emergencias/pagina-embebida/visualizador-casos-coronavirus-covid-19-uruguay) 
+* Los datos de vacunación de Uruguay (`[DATA]/uruguayVaccination.json`) se descargan del [monitor de vacunación del MSP](https://monitor.uruguaysevacuna.gub.uy)
+* Los datos del mundo y la región (`[DATA]/world.json`, `[DATA]/region.json` y `[DATA]/worldPopulation.json`) se descargan automáticamente durante el build de diversas fuentes.
 
 ### Cómo desarrollar
 
