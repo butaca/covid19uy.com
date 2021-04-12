@@ -1,11 +1,10 @@
 const DATA_DIR = "assets/js/data/"
-const uruguay = require("../" + DATA_DIR + "uruguay.json");
 const fs = require('fs');
 const { promisify } = require('util');
 const readFilePromise = promisify(fs.readFile);
 const writeFilePromise = promisify(fs.writeFile);
 const gulp = require('gulp');
-
+const HARVARD_INDEX_DAYS = 7;
 
 async function buildChartData() {
     const uruguayData = await readFilePromise("./" + DATA_DIR + "uruguay.json");
@@ -45,6 +44,9 @@ async function buildChartData() {
     var activeCasesWithLateData = [];
     var dailyActiveCasesWithLateData = []
     var yesterdayActiveCasesWithLateData = 0;
+    var harvardIndexDaily = [];
+    var harvardIndexNewCases = [];
+    var harvardIndexSum = 0;
 
     uruguay.data.forEach(function (el, index) {
         var todayPositives = el.positives;
@@ -67,7 +69,7 @@ async function buildChartData() {
         deaths.push(todayTotalDeaths);
 
         let todayDeaths = todayTotalDeaths - yesterdayTotalDeaths;
-        if(el.todayDeaths != undefined) {
+        if (el.todayDeaths != undefined) {
             todayDeaths = el.todayDeaths;
         }
 
@@ -151,6 +153,24 @@ async function buildChartData() {
         }
 
         dailyPositivityRate.push(todayCases / todayTests * 100);
+
+        let todayNewCasesHI = cases[cases.length - 1];
+        if (cases.length > 1) {
+            todayNewCasesHI -= cases[cases.length - 2];
+        }
+        if (el.newCases != undefined && new Date(el.date).getTime() >= new Date("2021-04-09").getTime()) {
+            todayNewCasesHI = el.newCases;
+        }
+        harvardIndexNewCases.push(todayNewCasesHI);
+        harvardIndexSum += todayNewCasesHI;
+
+        if (index >= HARVARD_INDEX_DAYS) {
+            if (index - HARVARD_INDEX_DAYS >= 0) {
+                harvardIndexSum -= harvardIndexNewCases[index - HARVARD_INDEX_DAYS];
+            }
+            const harvardIndex = (harvardIndexSum / HARVARD_INDEX_DAYS) * (100000.0 / uruguay.population);
+            harvardIndexDaily.push(harvardIndex);
+        }
     });
 
     const data = {
@@ -183,6 +203,7 @@ async function buildChartData() {
         totalCasesWithLateData: totalCasesWithLateData,
         activeCasesWithLateData: activeCasesWithLateData,
         dailyActiveCasesWithLateData: dailyActiveCasesWithLateData,
+        harvardIndexDaily: harvardIndexDaily,
 
         lateDataEnabled: uruguay.lateDataEnabled,
         unreportedDailyTests: uruguay.unreportedDailyTests

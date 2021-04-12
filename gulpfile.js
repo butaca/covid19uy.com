@@ -505,6 +505,7 @@ async function downloadDepartmentsData() {
 }
 
 exports.downloadVacData = downloadUruguayVaccinationData;
+exports.buildChartData = buildChartData;
 exports.develop = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData, buildChartData), build, gulp.parallel(watch, hugoServer));
 exports.deploy = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData, buildChartData), updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);
 exports.default = exports.develop;

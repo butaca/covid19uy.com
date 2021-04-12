@@ -1,36 +1,7 @@
-{{- $newCasesAverage := 0 -}}
-{{- $newCasesWithoutLateDataAverage := 0 -}}
-{{- $newCasesAverageSamples := 0 -}}
-{{- $yesterday := index site.Data.uruguay.data (sub (len site.Data.uruguay.data) 8) -}}
-{{- range $index, $today := last 7 site.Data.uruguay.data -}}
-{{- $todayCases := sub $today.cases $yesterday.cases -}}
-{{- if isset $today "newCases" -}}
-{{- $todayCases = $today.newCases -}}
-{{- end -}}
-{{- if and site.Data.uruguay.lateDataEnabled (isset $today "lateNewCases") -}}
-{{- $lateNewCases := 0 -}}
-{{- range $today.lateNewCases -}}
-{{- $lateNewCases = add $lateNewCases . -}}
-{{- end -}}
-{{- $todayCases = add $todayCases $lateNewCases -}}
-{{- end -}}
-{{- $newCasesAverage = add $newCasesAverage $todayCases -}}
-{{- $todayCasesWithoutLateData := sub $today.cases $yesterday.cases -}}
-{{- $todayDate := time $today.date -}}
-{{- $refDate := time "2021-04-09" -}}
-{{- if or ($todayDate.After $refDate) ($todayDate.Equal $refDate) -}}
-{{- $todayCasesWithoutLateData = $today.newCases -}}
-{{- end -}}
-{{- $newCasesWithoutLateDataAverage = add $newCasesWithoutLateDataAverage $todayCasesWithoutLateData -}}
-{{- $newCasesAverageSamples = add $newCasesAverageSamples 1 -}}
-{{- $yesterday = $today -}}
-{{- end -}}
-{{- $newCasesAverage = div $newCasesAverage $newCasesAverageSamples -}}
-{{- $newCasesWithoutLateDataAverage = div $newCasesWithoutLateDataAverage $newCasesAverageSamples -}}
+{{- $yesterdayHarvardIndex := index (last 2 site.Data.chartData.harvardIndexDaily) 0 -}}
+{{- $todayHarvardIndex := index (last 1 site.Data.chartData.harvardIndexDaily) 0 -}}
+{{- $diff := sub $todayHarvardIndex $yesterdayHarvardIndex -}}
 <div>
     <h2 class="title">{{ i18n "harvardIndex" }}</h2>
-    {{- $harvardIndex := mul $newCasesAverage (div 100000.0 site.Data.uruguay.population) -}}
-    {{- $harvardIndexWithoutLateData := mul $newCasesWithoutLateDataAverage (div 100000.0 site.Data.uruguay.population) -}}
-    <!-- {{- partial "harvard-index.html" $harvardIndex -}} -->
-    {{- partial "harvard-index.html" $harvardIndexWithoutLateData -}}
+    {{- partial "harvard-index.html" (dict "index" $todayHarvardIndex "diff" $diff) -}}
 </div>
