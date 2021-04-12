@@ -1,3 +1,5 @@
+import { createDefaultChartOptions } from './util'
+
 function chart(chartData, lang) {
     const colors = [];
     for (let i = 0; i < chartData.harvardIndexDaily.length; ++i) {
@@ -20,10 +22,9 @@ function chart(chartData, lang) {
 
     var ctx = document.getElementById('chart-harvard-index');
     if (ctx) {
-        var options = {
-            legend: {
-                display: false
-            }
+        var options = createDefaultChartOptions()
+        options.legend = {
+            display: false
         };
         new Chart(ctx, {
             type: 'bar',
