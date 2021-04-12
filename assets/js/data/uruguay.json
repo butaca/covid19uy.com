@@ -4961,6 +4961,22 @@
                 36
             ],
             "todayDeaths": 52
+        },
+        {
+            "date": "2021-04-11",
+            "tests": 12990,
+            "cases": 144642,
+            "recovered": 110277,
+            "deaths": 1462,
+            "icu": 485,
+            "imcu": 0,
+            "hc": 5761,
+            "hcRecovered": 5049,
+            "hcDeaths": 8,
+            "newCases": 3274,
+            "lateDeletedCases": [
+                12
+            ]
         }
     ]
 }
