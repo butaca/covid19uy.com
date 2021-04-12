@@ -45,7 +45,9 @@
                     "displayPositivesAndCasesInfo" .displayPositivesAndCasesInfo "displayUnreportedPositiviesInfo"
                     .displayUnreportedPositiviesInfo "new" .new "displayDeathsInfo" .displayDeathsInfo) }}
                     <canvas id="{{ .id }}" width="100%" height="100%"></canvas>
-                    {{ partial "uruguay-updated-date.html" $context }}
+                    <div class="has-text-centered">
+                        {{ partial "uruguay-updated-date.html" $context }}
+                    </div>
                 </div>
                 {{- end -}}
                 {{- end -}}
