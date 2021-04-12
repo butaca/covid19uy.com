@@ -1,21 +1,25 @@
-{{- $today := index site.Data.icuHistory.data (sub (len site.Data.icuHistory.data) 1) -}}
+{{- $today := site.Data.icu -}}
 <h2 class="title">{{ i18n "icuOccupation" }}</h2>
-<div class="level is-mobile">
-    <div class="level-item has-text-centered">
-        <div>
-            <p class="subtitle">{{ i18n "covid19" }}</p>
-            <p class="title">{{ lang.NumFmt 2 (mul 100 (div $today.covid19 $today.available))
-                .Site.Params.numberFormat
-                }}%</p>
-        </div>
-    </div>
+{{- $date := time (div (int $today.lastEditedDate) 1000) -}}
+<div class="level is-mobile has-margin-bottom-sm">
     <div class="level-item has-text-centered">
         <div>
             <p class="subtitle">{{ i18n "total" }}</p>
-            <p class="title">{{ lang.NumFmt 2 (mul 100 (div $today.total $today.available))
+            <p class="title">{{ lang.NumFmt 1 (mul 100 (div $today.occupation.total $today.beds.available))
                 .Site.Params.numberFormat
                 }}%
             </p>
         </div>
     </div>
+    <div class="level-item has-text-centered">
+        <div>
+            <p class="subtitle">{{ i18n "covid19" }}</p>
+            <p class="title">{{ lang.NumFmt 1 (mul 100 (div $today.occupation.covid19 $today.beds.available))
+                .Site.Params.numberFormat
+                }}%</p>
+        </div>
+    </div>
+</div>
+<div class="has-text-centered is-size-7 date">
+    {{- i18n "updated" }}: {{ dateFormat .Site.Params.dateFormat $date -}}
 </div>

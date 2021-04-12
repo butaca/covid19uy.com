@@ -19,6 +19,7 @@ const DATA_DIR = "./assets/js/data/"
 const uruguay = require(DATA_DIR + "uruguay.json");
 const VAC_BASE_URL = "https://monitor.uruguaysevacuna.gub.uy/plugin/cda/api/doQuery";
 const VIS_BASE_URL = "https://services5.arcgis.com/Th0Tmkhiy5BQYoxP/arcgis/rest/services/Casos_DepartamentosROU_vista_2/FeatureServer/";
+const VIS_ICU_BASE_URL = "https://services5.arcgis.com/Th0Tmkhiy5BQYoxP/arcgis/rest/services/OcupacionUY_vista/FeatureServer/";
 const { buildChartData, watchChartData } = require('./gulp/buildChartData');
 
 const writeFilePromise = promisify(fs.writeFile);
@@ -471,8 +472,8 @@ async function downloadUruguayVaccinationData() {
 
     const vacDataFile = DATA_DIR + "uruguayVaccination.json";
 
-    if(!vacDataFailed || !fs.existsSync(vacDataFile)) {
-        await writeFilePromise(vacDataFile, JSON.stringify(vacData));    
+    if (!vacDataFailed || !fs.existsSync(vacDataFile)) {
+        await writeFilePromise(vacDataFile, JSON.stringify(vacData));
     }
 }
 
@@ -514,9 +515,48 @@ async function downloadDepartmentsData() {
     await writeFilePromise(DATA_DIR + "uruguayDepartments.json", JSON.stringify(data));
 }
 
+async function getICUData() {
+    const params = {
+        f: "json",
+        where: "1=1",
+        returnGeometry: "false",
+        outFields: "*",
+        resultOffset: "0",
+        resultRecordCount: "1",
+        resultType: "standard",
+        cacheHint: "false"
+    }
+
+    return await request(VIS_ICU_BASE_URL + "/0/query", params);
+}
+
+async function downloadICUData() {
+    const icuData = await getICUData();
+    const icu = icuData.features[0].attributes;
+    const data = {
+        beds: {
+            total: icu.cam_dotacion,
+            blocked: icu.cam_bloq,
+            available: icu.cam_hab,
+            free: icu.cam_libres,
+            expansionPotential: icu.cam_amp,
+            freeRespiratoryIsolation: icu.cam_libres_ais_resp,
+        },
+        occupation: {
+            total: icu.cam_ocu_tot,
+            covid19: icu.cam_ocu_covid19,
+            irag: icu.cam_ocu_rag,
+            other: icu.cam_ocu_otro,
+        },
+        lastEditedDate: icu.last_edited_date
+    };
+
+    await writeFilePromise(DATA_DIR + "icu.json", JSON.stringify(data));
+}
+
 exports.downloadVacData = downloadUruguayVaccinationData;
 exports.buildChartData = buildChartData;
-exports.develop = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData, buildChartData), build, gulp.parallel(watch, hugoServer));
-exports.deploy = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData, buildChartData), updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);
+exports.develop = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData, downloadICUData, buildChartData), build, gulp.parallel(watch, hugoServer));
+exports.deploy = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData, downloadICUData, buildChartData), updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);
 exports.default = exports.develop;
 
