@@ -26,7 +26,7 @@ describe('Test data', function () {
             readFile(DATA_DIR + "uruguayDeaths.json").then(data => {
                 uruguayDeaths = JSON.parse(data.toString());
             }).catch(assert.Throw),
-            readFile(DATA_DIR + "icu.json").then(data => {
+            readFile(DATA_DIR + "icuHistory.json").then(data => {
                 icu = JSON.parse(data.toString());
             }).catch(assert.Throw)
         ]);
@@ -215,7 +215,7 @@ describe('Test data', function () {
         }
     });
 
-    it('Test icu.json data', function () {
+    it('Test icuHistory.json data', function () {
         let prevDate = null;
         for (let i = 0; i < icu.data.length; ++i) {
             const today = icu.data[i];
@@ -230,16 +230,16 @@ describe('Test data', function () {
         if (icu.data.length > 0 && uruguay.data.length > 0) {
             const icuLast = icu.data[icu.data.length - 1];
             const uruguayLast = uruguay.data[uruguay.data.length - 1];
-            assert(icuLast.covid19 == uruguayLast.icu, "The number of beds occupied with COVID-19 in icu.json should be equal to the value of icu in uruguay.json");
+            assert(icuLast.covid19 == uruguayLast.icu, "The number of beds occupied with COVID-19 in icuHistory.json should be equal to the value of icu in uruguay.json");
         }
         */
     });
 
-    it('The last date in icu.json should match the last date in uruguay.json', function () {
+    it('The last date in icuHistory.json should match the last date in uruguay.json', function () {
         const today = uruguay.data[uruguay.data.length - 1];
         const todayDate = new Date(today.date + DATE_DEFAULT_TIME);
         const icuToday = icu.data[icu.data.length - 1];
         const icuDate = new Date(icuToday.date + DATE_DEFAULT_TIME);
-        assert.ok(todayDate.getTime() == icuDate.getTime(), "The last date in icu.json doen't match the last date in uruguay.json");
+        assert.ok(todayDate.getTime() == icuDate.getTime(), "The last date in icuHistory.json doen't match the last date in uruguay.json");
     });
 });
