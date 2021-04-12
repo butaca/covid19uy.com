@@ -20,10 +20,10 @@ function chart(_chartData, lang) {
         vacDate.setMinutes(vacDateTokens[1]);
     }
 
-    var htmlLang = document.documentElement.getAttribute("lang");
-    var flipDate = htmlLang == "en";
+    const htmlLang = document.documentElement.getAttribute("lang");
+    const flipDate = htmlLang == "en";
 
-    var vacDates = vaccinationData.history.date.map(function (el) {
+    const vacDates = vaccinationData.history.date.map(function (el) {
         if (flipDate) {
             var s = el.split("/");
             return s[1] + "/" + s[0];
@@ -32,12 +32,12 @@ function chart(_chartData, lang) {
         }
     });
 
-    let totalVacs = vaccinationData.coronavacTotal + vaccinationData.pfizerTotal;
+    const totalVacs = vaccinationData.coronavacTotal + vaccinationData.pfizerTotal;
 
-    var ctx = document.getElementById('chart-daily-vacs');
+    let ctx = document.getElementById('chart-daily-vacs');
 
     if (ctx) {
-        var options = createDefaultChartOptions();
+        const options = createDefaultChartOptions();
         let dateElem = getSiblingWithClass(ctx, "date");
         if (dateElem != null) {
             dateElem.innerHTML = lang.updated.other + ": " + vacDate.toLocaleString(htmlLang);
@@ -97,12 +97,17 @@ function chart(_chartData, lang) {
             dateElem.innerHTML = lang.updated.other + ": " + vacDate.toLocaleString(htmlLang);
         }
 
+
+        const vacTotalData = [vaccinationData.coronavacTotal, vaccinationData.pfizerTotal];
+        let vacTotalLabels = [lang.vacCoronavac.other, lang.vacPfizer.other];
+        vacTotalLabels = vacTotalLabels.map(function (label, index) { return label + ': ' + (vacTotalData[index] / totalVacs * 100).toFixed(2) + '%' });
+
         new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: [lang.vacCoronavac.other, lang.vacPfizer.other],
+                labels: vacTotalLabels,
                 datasets: [{
-                    data: [vaccinationData.coronavacTotal, vaccinationData.pfizerTotal],
+                    data: vacTotalData,
                     backgroundColor: ["#FF8C0080", "#00CC0080"]
                 }]
             },
