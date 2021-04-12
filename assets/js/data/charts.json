@@ -6,6 +6,18 @@
         "new": true
     },
     {
+        "id": "chart-total-vacs",
+        "title": "graphTotalVacs",
+        "desc": "graphTotalVacsDesc",
+        "new": true
+    },
+    {
+        "id": "chart-daily-vacs",
+        "title": "graphDailyVacs",
+        "desc": "graphDailyVacsDesc",
+        "new": true
+    },
+    {
         "id": "chart-active-cases",
         "title": "graphTitleActiveCases",
         "desc": "graphTitleActiveCasesDesc",
@@ -21,18 +33,6 @@
         "id": "chart-total",
         "title": "graphTitleTotals",
         "desc": "graphTitleTotalsDesc"
-    },
-    {
-        "id": "chart-total-vacs",
-        "title": "graphTotalVacs",
-        "desc": "graphTotalVacsDesc",
-        "new": true
-    },
-    {
-        "id": "chart-daily-vacs",
-        "title": "graphDailyVacs",
-        "desc": "graphDailyVacsDesc",
-        "new": true
     },
     {
         "id": "chart-daily-tests-new",
