@@ -303,6 +303,8 @@ async function getVacTypeData() {
 }
 
 async function downloadUruguayVaccinationData() {
+    let vacDataFailed = false;
+
     const vacData = {
         history: {
             date: [],
@@ -378,6 +380,7 @@ async function downloadUruguayVaccinationData() {
         }
         else {
             console.log("Error getting vac history: " + vacHistoryData.reason);
+            vacDataFailed = true;
         }
 
         ///////////
@@ -430,6 +433,7 @@ async function downloadUruguayVaccinationData() {
         }
         else {
             console.log("Error getting vac total: " + vacTotalData.reason);
+            vacDataFailed = true;
         }
 
         ///////
@@ -457,13 +461,19 @@ async function downloadUruguayVaccinationData() {
         }
         else {
             console.log("Error getting vac type: " + vacTypeData.reason);
+            vacDataFailed = true;
         }
 
     } catch (e) {
         console.log("Error getting vaccination data. " + e.name + ": " + e.message);
+        vacDataFailed = true;
     }
 
-    await writeFilePromise(DATA_DIR + "uruguayVaccination.json", JSON.stringify(vacData));
+    const vacDataFile = DATA_DIR + "uruguayVaccination.json";
+
+    if(!vacDataFailed || !fs.existsSync(vacDataFile)) {
+        await writeFilePromise(vacDataFile, JSON.stringify(vacData));    
+    }
 }
 
 async function getDepartmentsData() {
