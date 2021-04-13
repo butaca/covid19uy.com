@@ -11,6 +11,10 @@ $button-padding-horizontal: 0.5em;
 @import "bulma-tooltip/src/sass/index";
 @import 'spacing';
 
+.columns {
+    overflow-x: hidden !important;
+}
+
 h2 {
     font-size: $subtitle-size !important;
 }
