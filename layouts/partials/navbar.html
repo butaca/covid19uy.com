@@ -27,9 +27,11 @@
                 {{ i18n "world" }}
             </a>
 
+            {{- if site.Params.archiveEnabled -}}
             <a class="navbar-item" href="#archive">
                 {{ i18n "archive" }}
             </a>
+            {{- end -}}
 
             <a class="navbar-item" href="#footer">
                 {{ i18n "contact" }}
