@@ -355,6 +355,7 @@ async function downloadUruguayVaccinationData() {
             }
 
             const rows = vacHistoryDataObj.CdaExport.ResultSet.Row;
+            let lastDate = null;
             for (let i = 0; i < rows.length; ++i) {
                 const data = rows[i].Col;
 
@@ -377,7 +378,23 @@ async function downloadUruguayVaccinationData() {
                 vacData.history.total.push(total);
                 vacData.history.coronavac.push(coronavac);
                 vacData.history.pfizer.push(pfizer);
+
+                lastDate = date;
             }
+
+            if (lastDate == null) {
+                vacDataFailed = true;
+                console.log("Vac history inconsistent: empty");
+            }
+            else {
+                let minRegisters = 32;
+
+                if (vacData.history.date.length < minRegisters) {
+                    vacDataFailed = true;
+                    console.log("Vac history inconsistent: got " + vacData.history.date.length + " registers, at least " + minRegisters + " required");
+                }
+            }
+
         }
         else {
             console.log("Error getting vac history: " + vacHistoryData.reason);
@@ -430,7 +447,13 @@ async function downloadUruguayVaccinationData() {
             vacData.todayTotal = parseInt(todayTotal);
             vacData.firstDoseTotal = parseInt(firstDoseTotal);
             vacData.secondDoseTotal = parseInt(secondDoseTotal);
-            vacData.total = Math.max(parseInt(totalVac), vacData.firstDoseTotal + vacData.secondDoseTotal);
+            const dataTotalVac = parseInt(totalVac);
+            vacData.total = Math.max(dataTotalVac, vacData.firstDoseTotal + vacData.secondDoseTotal);
+
+            if (dataTotalVac <= 0) {
+                console.log("Vac total inconsistent: <= 0");
+                vacDataFailed = true;
+            }
         }
         else {
             console.log("Error getting vac total: " + vacTotalData.reason);
@@ -458,6 +481,11 @@ async function downloadUruguayVaccinationData() {
             vacData.pfizerTotal = pfizerTotal;
             if (vacData.total == 0) {
                 vacData.total = coronavacTotal + pfizerTotal;
+            }
+
+            if (coronavacTotal == 0 || pfizerTotal == 0) {
+                console.log("Vac type inconsistent: Sinovac or Pfizer == 0");
+                vacDataFailed = true;
             }
         }
         else {
