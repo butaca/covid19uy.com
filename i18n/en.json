@@ -221,6 +221,9 @@
     "vacPfizer": {
         "other": "Pfizer"
     },
+    "vacAstrazeneca": {
+        "other": "AstraZeneca"
+    },
     "men": {
         "other": "Men"
     },

@@ -311,7 +311,8 @@ async function downloadUruguayVaccinationData() {
             date: [],
             total: [],
             coronavac: [],
-            pfizer: []
+            pfizer: [],
+            astrazeneca: []
         },
         date: today.format("YYYY-MM-DD"),
         todayDate: "",
@@ -320,6 +321,7 @@ async function downloadUruguayVaccinationData() {
         firstDoseTotal: 0,
         secondDoseTotal: 0,
         coronavacTotal: 0,
+        astrazenecaTotal: 0,
         pfizerTotal: 0,
         goal: 2800000
     }
@@ -331,7 +333,7 @@ async function downloadUruguayVaccinationData() {
             const vacHistoryDataObj = xml2json.toJson(vacHistoryData.value, { object: true });
             const vacHistoryMetadata = vacHistoryDataObj.CdaExport.MetaData.ColumnMetaData;
 
-            let dateIndex = -1, totalIndex = -1, coronavacIndex = -1, pfizerIndex = -1;
+            let dateIndex = -1, totalIndex = -1, coronavacIndex = -1, pfizerIndex = -1, astrazenecaIndex = -1;
             for (let i = 0; i < vacHistoryMetadata.length; ++i) {
                 const metadataCol = vacHistoryMetadata[i];
                 const name = metadataCol.name.toLowerCase();
@@ -348,8 +350,12 @@ async function downloadUruguayVaccinationData() {
                 else if (name.includes("pfizer")) {
                     pfizerIndex = parseInt(metadataCol.index);
                 }
+                else if(name.includes("astrazeneca")) {
+                    astrazenecaIndex = parseInt(metadataCol.index);
+                }
             }
 
+            //TODO: add astrazeneca when available
             if (dateIndex == -1 || totalIndex == -1 || coronavacIndex == -1 || pfizerIndex == -1) {
                 throw new Error("Can't find vac data indexes");
             }
@@ -370,14 +376,24 @@ async function downloadUruguayVaccinationData() {
                     pfizer = 0;
                 }
 
+                let astrazeneca = 0;
+                if(astrazenecaIndex != -1) {
+                    let astrazeneca = data[astrazenecaIndex];
+                    if (astrazeneca == null || (typeof astrazeneca === "object" && astrazeneca.isNull === "true")) {
+                        astrazeneca = 0;
+                    }
+                } 
+
                 total = parseInt(total);
                 coronavac = parseInt(coronavac);
                 pfizer = parseInt(pfizer);
+                astrazeneca = parseInt(astrazeneca);
 
                 vacData.history.date.push(date);
                 vacData.history.total.push(total);
                 vacData.history.coronavac.push(coronavac);
                 vacData.history.pfizer.push(pfizer);
+                vacData.history.astrazeneca.push(astrazeneca);
 
                 lastDate = date;
             }
@@ -467,22 +483,30 @@ async function downloadUruguayVaccinationData() {
             const vacTypeRows = vacTypeDataObj.CdaExport.ResultSet.Row;
             let coronavacTotal = 0;
             let pfizerTotal = 0;
+            let astrazenecaTotal = 0;
             for (let i = 0; i < vacTypeRows.length; ++i) {
                 const col = vacTypeRows[i].Col;
-                if (col[0].toLowerCase().includes("coronavac")) {
-                    coronavacTotal = parseInt(col[1]);
+                const name = col[0];
+                const value = col[1];
+                if (name.toLowerCase().includes("coronavac")) {
+                    coronavacTotal = parseInt(value);
                 }
-                else if (col[0].toLowerCase().includes("pfizer")) {
-                    pfizerTotal = parseInt(col[1]);
+                else if (name.toLowerCase().includes("pfizer")) {
+                    pfizerTotal = parseInt(value);
+                }
+                else if(name.toLowerCase().includes("astrazeneca")) {
+                    astrazenecaTotal = parseInt(value);
                 }
             }
 
             vacData.coronavacTotal = coronavacTotal;
             vacData.pfizerTotal = pfizerTotal;
+            vacData.astrazenecaTotal = astrazenecaTotal;
             if (vacData.total == 0) {
-                vacData.total = coronavacTotal + pfizerTotal;
+                vacData.total = coronavacTotal + pfizerTotal + astrazenecaTotal;
             }
 
+            //TODO: add AstraZeneca vac when available
             if (coronavacTotal == 0 || pfizerTotal == 0) {
                 console.log("Vac type inconsistent: Sinovac or Pfizer == 0");
                 vacDataFailed = true;
