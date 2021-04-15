@@ -2,19 +2,22 @@
     {{- if .new -}}
     <span class="tag is-danger has-margin-right-sm">{{ i18n "new"}}</span>
     {{- end -}}
-    <span class="has-tooltip-multiline has-tooltip-bottom" data-tooltip="{{ .desc }}">
-        {{ .title }} <i class="far fa-question-circle"></i>
+    <span>{{ .title }}</span>
+    <div>
+    <span class="has-tooltip-multiline" data-tooltip="{{ .desc }}">
+        <i class="far fa-question-circle"></i>
     </span>
     {{ if .displayPositivesAndCasesInfo }}
-    <span class="has-tooltip-multiline has-tooltip-bottom" data-tooltip="{{ i18n "positivesAndCasesInfo"}}">⚠️</span>
+    <span class="has-tooltip-multiline" data-tooltip="{{ i18n "positivesAndCasesInfo"}}">⚠️</span>
     {{- end -}}
     {{- if .displayUnreportedPositiviesInfo -}}
-    <span class="has-tooltip-multiline has-tooltip-bottom" data-tooltip='{{ i18n "unreportedPositiviesInfo"}}'>⚠️</span>
+    <span class="has-tooltip-multiline" data-tooltip='{{ i18n "unreportedPositiviesInfo"}}'>⚠️</span>
     {{- end -}}
     {{- if .displayDeathsInfo -}}
-    <span class="has-tooltip-multiline has-tooltip-bottom" data-tooltip='{{ i18n "deathsInfo"}}'>⚠️</span>
+    <span class="has-tooltip-multiline" data-tooltip='{{ i18n "deathsInfo"}}'>⚠️</span>
     {{- end -}}
     {{- if .displayUnreliableDataMessage -}}
-    <span class="has-tooltip-multiline has-tooltip-bottom" data-tooltip='{{ i18n "unreliableData"}}'>❗</span>
+    <span class="has-tooltip-multiline" data-tooltip='{{ i18n "unreliableData"}}'>❗</span>
     {{- end -}}
+    </div>
 </h3>
