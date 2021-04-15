@@ -1,4 +1,5 @@
-const DATA_DIR = "assets/js/data/"
+const { BASE_DATA_DIR } = require('./util');
+const DATA_DIR = BASE_DATA_DIR;
 const fs = require('fs');
 const { promisify } = require('util');
 const readFilePromise = promisify(fs.readFile);
