@@ -13,7 +13,7 @@
     {{- $todayVacs := index (last 1 $vacData.history.total) 0 -}}
     <h2 class="title">{{ i18n "vaccinationProgress" }}</h2>
     <div class="columns">
-        <div class="column pb-0 pr-0 pt-0 is-7">
+        <div class="column is-7">
             <div>
                 <div class="has-tooltip-multiline" data-tooltip='{{ i18n "vaccinationProgressFirstDoseDesc"}}'>
                     <span class="is-pulled-left">{{ i18n "vaccinationProgressFirstDose" }}</span>
@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <div class="column is-paddingless is-5 has-text-centered">
+        <div class="column is-5 has-text-centered">
             <div class="subtitle is-marginless">💉 {{ i18n "dosesTotal" }}</div>
             <div class="title is-marginless">
                 {{- lang.NumFmt 0 $totalVacs site.Params.numberFormat -}}

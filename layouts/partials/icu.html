@@ -1,7 +1,7 @@
 {{- $today := site.Data.icu -}}
 <h2 class="title">{{ i18n "icuOccupation" }}</h2>
 {{- $date := time (div (int $today.lastEditedDate) 1000) -}}
-<div class="level-left is-mobile has-margin-bottom-sm">
+<div class="level is-mobile has-margin-bottom-sm">
     <div class="level-item">
         <div>
             <p class="subtitle">{{ i18n "total" }}</p>
@@ -11,7 +11,7 @@
             </p>
         </div>
     </div>
-    <div class="level-item ">
+    <div class="level-item">
         <div>
             <p class="subtitle">{{ i18n "covid19" }}</p>
             <p class="title">{{ lang.NumFmt 1 (mul 100 (div $today.occupation.covid19 $today.beds.available))
@@ -20,6 +20,6 @@
         </div>
     </div>
 </div>
-<div class="has-text-grey is-size-7 date">
+<div class="has-text-grey has-text-centered is-size-7 date">
     {{- i18n "updated" }}: {{ dateFormat .Site.Params.dateFormat $date -}}
 </div>
