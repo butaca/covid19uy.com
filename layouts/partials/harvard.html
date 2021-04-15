@@ -1,7 +1,10 @@
 {{- $yesterdayHarvardIndex := index (last 2 site.Data.chartData.harvardIndexDaily) 0 -}}
+{{- $yesterdayHarvardIndex = div (math.Floor (math.Round (mul $yesterdayHarvardIndex 100))) 100 -}}
 {{- $todayHarvardIndex := index (last 1 site.Data.chartData.harvardIndexDaily) 0 -}}
+{{- $todayHarvardIndex = div (math.Floor (math.Round (mul $todayHarvardIndex 100))) 100 -}}
 {{- $diff := sub $todayHarvardIndex $yesterdayHarvardIndex -}}
 <div>
+    {{ $yesterdayHarvardIndex }}
     <h2 class="title">{{ i18n "harvardIndex" }}</h2>
     {{- partial "harvard-index.html" (dict "index" $todayHarvardIndex "diff" $diff) -}}
     <div class="has-text-grey">
