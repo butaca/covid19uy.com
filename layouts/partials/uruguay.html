@@ -112,14 +112,14 @@
         <div class="column is-2 is-12-mobile">
             {{ partial "harvard.html" . }}
         </div>
-        {{- if and (gt site.Data.uruguayVaccination.firstDoseTotal 0) (gt site.Data.uruguayVaccination.secondDoseTotal 0)  -}}
-        <div class="column is-3 is-12-mobile">
-            {{ partial "vaccination.html" . }}
-        </div>
-        {{- end -}}
         <div class="column is-2 is-12-mobile">
             {{ partial "icu.html" . }}
         </div>
+        {{- if and (gt site.Data.uruguayVaccination.firstDoseTotal 0) (gt site.Data.uruguayVaccination.secondDoseTotal 0)  -}}
+        <div class="column is-4 is-12-mobile">
+            {{ partial "vaccination.html" . }}
+        </div>
+        {{- end -}}
     </div>
 
 </div>

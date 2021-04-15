@@ -412,5 +412,8 @@
     },
     "icuMonitor": {
         "other": "Visualizador de ocupación de camas de CTI de personas adultas"
+    },
+    "dosesTotal": {
+        "other": "Doses Total"
     }
 }

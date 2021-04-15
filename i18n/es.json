@@ -412,5 +412,8 @@
     },
     "icuMonitor": {
         "other": "ICU (adults) bed occupancy viewer"
+    },
+    "dosesTotal": {
+        "other": "Total de Dosis"
     }
 }

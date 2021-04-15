@@ -6,24 +6,45 @@
     {{- $secondDoseVacProgressPercent := lang.NumFmt 2 (mul 100 $secondDoseVacProgress) .Site.Params.numberFormat -}}
     {{- $dateStr := printf "%sT%s:00" $vacData.date $vacData.todayDate }}
     {{- $date := time $dateStr -}}
+    {{- $totalVacs := 0 -}}
+    {{- range $vacData.history.total -}}
+    {{- $totalVacs = add $totalVacs . -}}
+    {{- end }}
+    {{- $todayVacs := index (last 1 $vacData.history.total) 0 -}}
     <h2 class="title">{{ i18n "vaccinationProgress" }}</h2>
-    <div>
-        <div class="has-tooltip-multiline" data-tooltip='{{ i18n "vaccinationProgressFirstDoseDesc"}}'>
-            <span class="is-pulled-left">{{ i18n "vaccinationProgressFirstDose" }}</span>
-            <span class="is-pulled-right"><span class="has-margin-right-sm">{{ $firstDoseVacProgressPercent }}%</span><i
-                    class="far fa-question-circle"></i></span>
+    <div class="columns">
+        <div class="column pb-0 pr-0 pt-0 is-7">
+            <div>
+                <div class="has-tooltip-multiline" data-tooltip='{{ i18n "vaccinationProgressFirstDoseDesc"}}'>
+                    <span class="is-pulled-left">{{ i18n "vaccinationProgressFirstDose" }}</span>
+                    <span class="is-pulled-right"><span class="has-margin-right-sm">{{ $firstDoseVacProgressPercent
+                            }}%</span><i class="far fa-question-circle"></i></span>
+                </div>
+                <progress class="progress is-success" value="{{ $firstDoseVacProgress }}" max="1">{{
+                    $firstDoseVacProgressPercent }}%</progress>
+            </div>
+            <div>
+                <div class="has-tooltip-multiline" data-tooltip='{{ i18n "vaccinationProgressSecondDoseDesc"}}'>
+                    <span class="is-pulled-left">{{ i18n "vaccinationProgressSecondDose" }}</span>
+                    <span class="is-pulled-right"><span class="has-margin-right-sm">{{ $secondDoseVacProgressPercent
+                            }}%</span><i class="far fa-question-circle"></i></span>
+                </div>
+                <progress class="progress is-success" value="{{ $secondDoseVacProgress }}" max="1">{{
+                    $secondDoseVacProgressPercent }}%</progress>
+            </div>
         </div>
-        <progress class="progress is-success" value="{{ $firstDoseVacProgress }}" max="1">{{ $firstDoseVacProgressPercent }}%</progress>
-    </div>
-    <div>
-        <div class="has-tooltip-multiline" data-tooltip='{{ i18n "vaccinationProgressSecondDoseDesc"}}'>
-            <span class="is-pulled-left">{{ i18n "vaccinationProgressSecondDose" }}</span>
-            <span class="is-pulled-right"><span class="has-margin-right-sm">{{ $secondDoseVacProgressPercent }}%</span><i
-                    class="far fa-question-circle"></i></span>
+
+        <div class="column is-paddingless is-5 has-text-centered">
+            <div class="subtitle is-marginless">💉 {{ i18n "dosesTotal" }}</div>
+            <div class="title is-marginless">
+                {{- lang.NumFmt 0 $totalVacs site.Params.numberFormat -}}
+            </div>
+            <span class="is-size-7 has-text-grey"> (+{{ lang.NumFmt 0 $todayVacs site.Params.numberFormat
+                -}})</span>
         </div>
-        <progress class="progress is-success" value="{{ $secondDoseVacProgress }}" max="1">{{ $secondDoseVacProgressPercent }}%</progress>
     </div>
     <div class="has-text-grey has-text-centered is-size-7 date">
         {{- i18n "updated" }}: {{ dateFormat .Site.Params.dateFormat $date -}}
     </div>
+
 </div>
