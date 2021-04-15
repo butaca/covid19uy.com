@@ -4,7 +4,6 @@
 {{- $todayHarvardIndex = div (math.Floor (math.Round (mul $todayHarvardIndex 100))) 100 -}}
 {{- $diff := sub $todayHarvardIndex $yesterdayHarvardIndex -}}
 <div>
-    {{ $yesterdayHarvardIndex }}
     <h2 class="title">{{ i18n "harvardIndex" }}</h2>
     {{- partial "harvard-index.html" (dict "index" $todayHarvardIndex "diff" $diff) -}}
     <div class="has-text-grey">
