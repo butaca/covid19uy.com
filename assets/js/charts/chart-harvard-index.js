@@ -1,5 +1,10 @@
 import { createDefaultChartOptions } from './util'
 
+function round(number, decimalPlaces) {
+    const factorOfTen = Math.pow(10, decimalPlaces)
+    return Math.round(number * factorOfTen) / factorOfTen
+}
+
 function chart(chartData, lang) {
     const colors = [];
     for (let i = 0; i < chartData.harvardIndexDaily.length; ++i) {
@@ -35,7 +40,7 @@ function chart(chartData, lang) {
                         pointBackgroundColor: "#28b8d6ff",
                         backgroundColor: colors,
                         label: lang.activeCases.other,
-                        data: chartData.harvardIndexDaily,
+                        data: chartData.harvardIndexDaily.map(hi => round(hi, 2))
                     }
                 ]
             },
