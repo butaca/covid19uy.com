@@ -3,20 +3,17 @@
         "id": "chart-harvard-index",
         "title": "harvardIndex",
         "desc": "harvardIndexDesc",
-        "new": true,
         "displayUnreliableDataMessage": true
     },
     {
         "id": "chart-total-vacs",
         "title": "graphTotalVacs",
-        "desc": "graphTotalVacsDesc",
-        "new": true
+        "desc": "graphTotalVacsDesc"
     },
     {
         "id": "chart-daily-vacs",
         "title": "graphDailyVacs",
-        "desc": "graphDailyVacsDesc",
-        "new": true
+        "desc": "graphDailyVacsDesc"
     },
     {
         "id": "chart-active-cases",
