@@ -159,7 +159,7 @@ async function buildChartData() {
         if (cases.length > 1) {
             todayNewCasesHI -= cases[cases.length - 2];
         }
-        if (el.newCases != undefined && new Date(el.date).getTime() >= new Date("2021-04-09").getTime()) {
+        if (el.newCases != undefined && new Date(el.date).getTime() >= new Date("2021-04-09").getTime() && new Date(el.date).getTime() != new Date("2021-04-15").getTime()) {
             todayNewCasesHI = el.newCases;
         }
         harvardIndexNewCases.push(todayNewCasesHI);

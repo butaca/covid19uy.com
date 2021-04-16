@@ -30,7 +30,7 @@ for (let i = startIndex; i < uruguay.data.length; ++i) {
 
     let todayNewCasesWithoutLateData = today.cases - yesterday.cases;
 
-    if(new Date(today.date).getTime() >= new Date("2021-04-09").getTime()) {
+    if(new Date(today.date).getTime() >= new Date("2021-04-09").getTime() && new Date(today.date).getTime() != new Date("2021-04-15").getTime()) {
         todayNewCasesWithoutLateData = today.newCases;
     }
     
