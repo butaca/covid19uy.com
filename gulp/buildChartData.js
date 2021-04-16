@@ -6,6 +6,13 @@ const readFilePromise = promisify(fs.readFile);
 const writeFilePromise = promisify(fs.writeFile);
 const gulp = require('gulp');
 const HARVARD_INDEX_DAYS = 7;
+const HarvardIndexMode = {
+    NEW_CASES : "newcases",
+    LATE_DATA : "latedata",
+    CORONAVIRUS_UY : "coronavirusuy"
+}
+
+const hiMode = HarvardIndexMode.CORONAVIRUS_UY;
 
 async function buildChartData() {
     const uruguayData = await readFilePromise("./" + DATA_DIR + "uruguay.json");
@@ -155,13 +162,24 @@ async function buildChartData() {
 
         dailyPositivityRate.push(todayCases / todayTests * 100);
 
-        let todayNewCasesHI = cases[cases.length - 1];
-        if (cases.length > 1) {
-            todayNewCasesHI -= cases[cases.length - 2];
+        let todayNewCasesHI = 0;
+
+        if (hiMode === HarvardIndexMode.CORONAVIRUS_UY) {
+            todayNewCasesHI = cases[cases.length - 1];
+            if (cases.length > 1) {
+                todayNewCasesHI -= cases[cases.length - 2];
+            }
+            if (el.newCases != undefined && new Date(el.date).getTime() >= new Date("2021-04-09").getTime() && new Date(el.date).getTime() != new Date("2021-04-15").getTime()) {
+                todayNewCasesHI = el.newCases;
+            }
         }
-        if (el.newCases != undefined && new Date(el.date).getTime() >= new Date("2021-04-09").getTime() && new Date(el.date).getTime() != new Date("2021-04-15").getTime()) {
-            todayNewCasesHI = el.newCases;
+        else if(hiMode === HarvardIndexMode.LATE_DATA) { 
+            todayNewCasesHI = todayNewCasesWithLateData;
         }
+        else { // HarvardIndexMode.NEW_CASES
+            todayNewCasesHI = todayCases;
+        }
+
         harvardIndexNewCases.push(todayNewCasesHI);
         harvardIndexSum += todayNewCasesHI;
 

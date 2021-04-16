@@ -30,6 +30,7 @@ for (let i = startIndex; i < uruguay.data.length; ++i) {
 
     let todayNewCasesWithoutLateData = today.cases - yesterday.cases;
 
+    // Following CoronavirusUY criterion
     if(new Date(today.date).getTime() >= new Date("2021-04-09").getTime() && new Date(today.date).getTime() != new Date("2021-04-15").getTime()) {
         todayNewCasesWithoutLateData = today.newCases;
     }
@@ -44,7 +45,7 @@ for (let i = startIndex; i < uruguay.data.length; ++i) {
         sumNewCasesWithoutLateData -= newCasesWithoutLateData[dayIndex - HARVARD_INDEX_DAYS];
         const harvardIndexWithoutLateData = (sumNewCasesWithoutLateData / HARVARD_INDEX_DAYS) * (100000.0 / uruguay.population);
 
-        console.log(today.date + "    " + todayNewCases +  "    " + round(harvardIndex) + "    " + round(harvardIndexWithoutLateData));
+        console.log(today.date + "    " + todayNewCases +  "    " + round(harvardIndex) + "    " + todayNewCasesWithoutLateData + "    " + round(harvardIndexWithoutLateData));
     }
 
     yesterday = today;
