@@ -96,12 +96,14 @@ function chart(_chartData, lang) {
             }]
         };
         options.elements = {
+            /*
             center: {
                 text: (totalVacs > 0) ? (lang.vacTotal.other + ': ' + totalVacs.toLocaleString(htmlLang)) : lang.notAvailable.other,
                 color: '#36A2EB',
                 fontStyle: 'Helvetica',
                 sidePadding: 15
             }
+            */
         };
         options.tooltips = pieToolTips;
 

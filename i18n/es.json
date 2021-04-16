@@ -415,5 +415,11 @@
     },
     "dosesTotal": {
         "other": "Total de Dosis"
+    },
+    "today": {
+        "other": "hoy"
+    },
+    "vacErrorsInfo": {
+        "other": "Los totales de las gráficas \"Total de vacunación\" y \"Vacunación diaria\" difieren con los de \"Progreso de vacunación\", porque así lo hace la fuente oficial."
     }
 }

@@ -34,7 +34,8 @@
                     {{ partial "chart-title.html" (dict "title" (i18n .title) "desc" (i18n .desc)
                     "displayPositivesAndCasesInfo" .displayPositivesAndCasesInfo "displayUnreportedPositiviesInfo"
                     .displayUnreportedPositiviesInfo "new" .new "displayDeathsInfo" .displayDeathsInfo
-                    "displayUnreliableDataMessage" .displayUnreliableDataMessage) }}
+                    "displayUnreliableDataMessage" .displayUnreliableDataMessage "displayVacErrorsInfo"
+                    .displayVacErrorsInfo) }}
                     <canvas id="{{ .id }}" width="100%" height="100%"></canvas>
                     <div class="has-text-centered">
                         {{ partial "uruguay-updated-date.html" $context }}
@@ -84,7 +85,8 @@
                             {{ partial "chart-title.html" (dict "title" (i18n .title) "desc" (i18n .desc)
                             "displayPositivesAndCasesInfo" .displayPositivesAndCasesInfo
                             "displayUnreportedPositiviesInfo" .displayUnreportedPositiviesInfo
-                            "displayUnreliableDataMessage" .displayUnreliableDataMessage) }}
+                            "displayUnreliableDataMessage" .displayUnreliableDataMessage "displayVacErrorsInfo"
+                            .displayVacErrorsInfo) }}
                             <canvas id="{{ .id }}" width="100%" height="100%"></canvas>
                         </div>
                         {{- end -}}

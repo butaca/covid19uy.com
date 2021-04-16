@@ -6,10 +6,7 @@
     {{- $secondDoseVacProgressPercent := lang.NumFmt 2 (mul 100 $secondDoseVacProgress) .Site.Params.numberFormat -}}
     {{- $dateStr := printf "%sT%s:00" $vacData.date $vacData.todayDate }}
     {{- $date := time $dateStr -}}
-    {{- $totalVacs := 0 -}}
-    {{- range $vacData.history.total -}}
-    {{- $totalVacs = add $totalVacs . -}}
-    {{- end }}
+    {{- $totalVacs := $vacData.total -}}
     {{- $todayVacs := index (last 1 $vacData.history.total) 0 -}}
     <h2 class="title">{{ i18n "vaccinationProgress" }}</h2>
     <div class="columns">
@@ -39,8 +36,8 @@
             <div class="title is-marginless">
                 {{- lang.NumFmt 0 $totalVacs site.Params.numberFormat -}}
             </div>
-            <span class="is-size-7 has-text-grey"> (+{{ lang.NumFmt 0 $todayVacs site.Params.numberFormat
-                -}})</span>
+            <span class="is-size-7 has-text-grey">{{ i18n "today" }}: {{ lang.NumFmt 0 $todayVacs site.Params.numberFormat
+                -}}</span>
         </div>
     </div>
     <div class="has-text-grey has-text-centered is-size-7 date">

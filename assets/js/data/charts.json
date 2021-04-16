@@ -8,12 +8,14 @@
     {
         "id": "chart-total-vacs",
         "title": "graphTotalVacs",
-        "desc": "graphTotalVacsDesc"
+        "desc": "graphTotalVacsDesc",
+        "displayVacErrorsInfo": true
     },
     {
         "id": "chart-daily-vacs",
         "title": "graphDailyVacs",
-        "desc": "graphDailyVacsDesc"
+        "desc": "graphDailyVacsDesc",
+        "displayVacErrorsInfo": true
     },
     {
         "id": "chart-active-cases",

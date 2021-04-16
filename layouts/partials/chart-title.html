@@ -19,5 +19,8 @@
     {{- if .displayUnreliableDataMessage -}}
     <span class="has-tooltip-multiline" data-tooltip='{{ i18n "unreliableData"}}'>❗</span>
     {{- end -}}
+    {{- if .displayVacErrorsInfo -}}
+    <span class="has-tooltip-multiline" data-tooltip='{{ i18n "vacErrorsInfo"}}'>⚠️</span>
+    {{- end -}}
     </div>
 </h3>
