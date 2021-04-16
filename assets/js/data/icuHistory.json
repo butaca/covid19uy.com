@@ -145,6 +145,15 @@
             "admissions": 61,
             "deaths": 31,
             "discharges": 17
+        },
+        {
+            "date": "2021-04-15",
+            "covid19": 523,
+            "total": 713,
+            "available": 975,
+            "admissions": 52,
+            "deaths": 26,
+            "discharges": 18
         }
     ]
 }

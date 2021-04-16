@@ -193,10 +193,6 @@ describe('Test data', function () {
                     if (date.getTime() == new Date("2021-04-13" + DATE_DEFAULT_TIME).getTime()) {
                         totalDeaths--;
                     }
-                    // an extra death was reported on 2021-04-14, but it wasn't informed which one
-                    if (date.getTime() == new Date("2021-04-14" + DATE_DEFAULT_TIME).getTime()) {
-                        totalDeaths--;
-                    }
 
                     deathHistory.push({ date: date, deaths: totalDeaths });
                 }
