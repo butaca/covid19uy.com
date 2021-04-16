@@ -149,7 +149,7 @@ describe('Test data', function () {
             const death = uruguayDeaths.deaths[i];
             assert.isDefined(departmentsData.departments[death.dep], "Department " + death.dep + " doesn't exist in uruguayDepartments.json");
             assert.isNumber(death.age, "Death of " + death.date + " doesn't have a valid age: " + death.age);
-            assert.isTrue(death.s === "F" || death.s === "M" || death.s === "?", "Death of " + death.date + " doesn't have a valid sex (F, M or ?): " + death.s);
+            assert.isTrue(death.s === "F" || death.s === "M" || death.s === "?" || death.s === undefined, "Death of " + death.date + " doesn't have a valid sex (F, M or ?): " + death.s);
             const date = new Date(death.date + DATE_DEFAULT_TIME);
             assert(prevDate == null || date.getTime() >= prevDate.getTime(), "Death dates must be successive");
             prevDate = date;
