@@ -2,11 +2,15 @@ const axios = require('axios');
 const fs = require('fs');
 const moment = require("moment");
 const querystring = require('querystring');
+const cheerio = require("cheerio");
 
-const BASE_URL = "https://services5.arcgis.com/Th0Tmkhiy5BQYoxP/arcgis/rest/services/Casos_DepartamentosROU_vista_2/FeatureServer/"
+const BASE_URL = "https://services5.arcgis.com/Th0Tmkhiy5BQYoxP/arcgis/rest/services/Casos_DepartamentosROU_vista_2/FeatureServer/";
+const REPORT_BASE_URL = "https://www.gub.uy/sistema-nacional-emergencias/comunicacion/comunicados/informe-situacion-sobre-coronavirus-covid-19-uruguay-";
 
 async function request(url, params) {
-    url += "?" + querystring.encode(params);
+    if (params) {
+        url += "?" + querystring.encode(params);
+    }
 
     try {
         let response;
@@ -35,7 +39,7 @@ async function queryValue(num, where, outStatistics) {
     const data = await request(url, params);
     let value = data.features[0].attributes.value;
 
-    if(value == null) {
+    if (value == null) {
         value = 0;
     }
 
@@ -83,6 +87,42 @@ async function getUpdatedDate() {
 
     console.log(JSON.stringify(data));
 
+    const todayDate = moment();
+    const todayDatStr = todayDate.format("YYYY-MM-DD");
+
+    const reportURL = REPORT_BASE_URL + todayDate.format("DDMMYYYY");
+    const reportData = await request(reportURL);
+
+    const deathsObj = [];
+
+    const html = cheerio.load(reportData.replace(/[\n]/g, ''));
+    const rows = html('tbody tr');
+    let lastDep = null
+    for (let i = 1; i < rows.length; ++i) {
+        const row = rows[i];
+        const tdValue = row.children[0];
+        const tdDep = row.children[1];
+        const value = tdValue.children[0].children[0].children[0].data;
+        let dep;
+        if (tdDep != undefined) {
+            const depData = tdDep.children[0].children[0].children[0].data;
+            const words = depData.split(" ");
+            dep = words.map((word) => {
+                return word[0].toUpperCase() + word.substring(1).toLowerCase();
+            }).join(" ");
+            lastDep = dep;
+        }
+        else {
+            dep = lastDep;
+        }
+
+        deathsObj.push({
+            date: todayDatStr,
+            age: parseInt(value.trim()),
+            dep: dep
+        });
+    }
+    console.log("\n" + JSON.stringify(deathsObj));
 })();
 
 
