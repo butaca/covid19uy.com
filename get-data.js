@@ -4,7 +4,6 @@ const moment = require("moment");
 const querystring = require('querystring');
 
 const BASE_URL = "https://services5.arcgis.com/Th0Tmkhiy5BQYoxP/arcgis/rest/services/Casos_DepartamentosROU_vista_2/FeatureServer/"
-const URUGUAY_DATE_FILE = "./assets/js/data/uruguay.json"
 
 async function request(url, params) {
     url += "?" + querystring.encode(params);
@@ -34,7 +33,13 @@ async function queryValue(num, where, outStatistics) {
     };
 
     const data = await request(url, params);
-    return data.features[0].attributes.value;
+    let value = data.features[0].attributes.value;
+
+    if(value == null) {
+        value = 0;
+    }
+
+    return value;
 }
 
 async function getUpdatedDate() {
