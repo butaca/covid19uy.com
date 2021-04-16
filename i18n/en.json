@@ -387,7 +387,7 @@
         "other": "Harvard Index"
     },
     "harvardIndexDesc": {
-        "other": "Risk level according to the average of new cases per 100,000 inhabitants in the last 7 days. It is calculated following the criteria of CoronavirusUY: daily cases until 4/8/2021 are the accumulated of the report minus the accumulated of the previous day. As of 4/9/2021, the daily cases are those of the report."
+        "other": "Risk level according to the average of new cases per 100,000 inhabitants in the last 7 days. It is calculated following the criteria of CoronavirusUY: daily cases until 4/8/2021 are the accumulated of the report minus the accumulated of the previous day. As of 4/9/2021, the daily cases are those of the report (except 04/15/2021)."
     },
     "icuOccupation": {
         "other": "ICU Occupation"
