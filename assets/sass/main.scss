@@ -65,7 +65,7 @@ h2 {
     white-space: nowrap !important;
 }
 
-$custom-progress-colors: ("green": green, $success: $warning, "orange": orange, "red": $danger);
+$custom-progress-colors: ("green": $success, "yellow": $warning, "orange": orange, "red": $danger);
 
 @each $name, $color in $custom-progress-colors {
     &.is-#{$name} {
