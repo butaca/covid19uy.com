@@ -1,22 +1,45 @@
 {{- $today := site.Data.icu -}}
 <h2 class="title">{{ i18n "icuOccupation" }}</h2>
 {{- $date := time (div (int $today.lastEditedDate) 1000) -}}
-<div class="level is-mobile has-margin-bottom-sm">
-    <div class="level-item">
+{{- $occupationTotal := div $today.occupation.total $today.beds.available -}}
+{{- $occupationTotalPercent := lang.NumFmt 1 (mul 100 $occupationTotal) -}}
+{{- $occupationCovid := div $today.occupation.covid19 $today.beds.available -}}
+{{- $occupationCovidPercent := lang.NumFmt 1 (mul 100 $occupationCovid) -}}
+
+{{ define "partials/get-occupation-progress-class" }}
+{{ $value := . }}
+{{ $class := "is-red" }}
+{{- if lt $value 25 -}}
+{{- $class = "is-green" -}}
+{{- else if lt $value 50 -}}
+{{- $class = "is-yellow" -}}
+{{- else if lt $value 75 -}}
+{{- $class = "is-orange" -}}
+{{- end -}}
+{{- return $class -}}
+{{- end -}}
+
+<div class="columns">
+    <div class="column is-12">
         <div>
-            <p class="subtitle">{{ i18n "total" }}</p>
-            <p class="title">{{ lang.NumFmt 1 (mul 100 (div $today.occupation.total $today.beds.available))
-                .Site.Params.numberFormat
-                }}%
-            </p>
+            <div>
+                <span class="is-pulled-left">{{ i18n "total" }}</span>
+                <span class="is-pulled-right"><span class="has-margin-right-sm">{{ $occupationTotalPercent
+                        }}%</span></span>
+            </div>
+            {{- $progressClass := partial "get-occupation-progress-class" $occupationTotalPercent -}}
+            <progress class="progress {{ $progressClass }}" value="{{ $occupationTotal }}" max="1">{{
+                $occupationTotalPercent }}%</progress>
         </div>
-    </div>
-    <div class="level-item">
         <div>
-            <p class="subtitle">{{ i18n "covid19" }}</p>
-            <p class="title">{{ lang.NumFmt 1 (mul 100 (div $today.occupation.covid19 $today.beds.available))
-                .Site.Params.numberFormat
-                }}%</p>
+            <div>
+                <span class="is-pulled-left">{{ i18n "covid19" }}</span>
+                <span class="is-pulled-right"><span class="has-margin-right-sm">{{ $occupationCovidPercent
+                        }}%</span></span>
+            </div>
+            {{- $progressClass := partial "get-occupation-progress-class" $occupationCovidPercent -}}
+            <progress class="progress {{ $progressClass }}" value="{{ $occupationCovid }}" max="1">{{
+                $occupationCovidPercent }}%</progress>
         </div>
     </div>
 </div>
