@@ -39,7 +39,7 @@ function chart(chartData, lang) {
                     {
                         pointBackgroundColor: "#28b8d6ff",
                         backgroundColor: colors,
-                        label: lang.activeCases.other,
+                        label: lang.harvardIndex.other,
                         data: chartData.harvardIndexDaily.map(hi => round(hi, 2))
                     }
                 ]
