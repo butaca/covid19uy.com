@@ -1,16 +1,6 @@
 import { createDefaultChartOptions, pieToolTips } from './util'
 import vaccinationData from "../data/uruguayVaccination.json"
 
-function getSiblingWithClass(elem, clazz) {
-    const siblings = Array.prototype.filter.call(elem.parentNode.children, function (child) {
-        return child !== elem && child.classList.contains(clazz);
-    });
-    if (siblings.length > 0) {
-        return siblings[0];
-    }
-    return null;
-}
-
 function chart(_chartData, lang) {
     const utcDate = new Date(vaccinationData.date)
     const vacDate = new Date(utcDate.getTime() + utcDate.getTimezoneOffset() * 60000);
@@ -21,6 +11,8 @@ function chart(_chartData, lang) {
     }
 
     const htmlLang = document.documentElement.getAttribute("lang");
+    const vacDateStr = vacDate.toLocaleString(htmlLang).replace(/\:00(?=[^:00]*$)/, '');
+
     const flipDate = htmlLang == "en";
 
     const vacDates = vaccinationData.history.date.map(function (el) {
@@ -38,9 +30,9 @@ function chart(_chartData, lang) {
 
     if (ctx) {
         const options = createDefaultChartOptions();
-        let dateElem = getSiblingWithClass(ctx, "date");
+        let dateElem = ctx.parentElement.querySelector(".date");
         if (dateElem != null) {
-            dateElem.innerHTML = lang.updated.other + ": " + vacDate.toLocaleString(htmlLang);
+            dateElem.innerHTML = lang.updated.other + ": " + vacDateStr;
         }
         const historyDatasets = [
             {
@@ -107,9 +99,9 @@ function chart(_chartData, lang) {
         };
         options.tooltips = pieToolTips;
 
-        dateElem = getSiblingWithClass(ctx, "date");
+        dateElem = ctx.parentElement.querySelector(".date");
         if (dateElem != null) {
-            dateElem.innerHTML = lang.updated.other + ": " + vacDate.toLocaleString(htmlLang);
+            dateElem.innerHTML = lang.updated.other + ": " + vacDateStr;
         }
 
         const vacTotalData = [vaccinationData.coronavacTotal, vaccinationData.pfizerTotal];
