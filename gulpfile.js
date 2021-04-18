@@ -324,7 +324,7 @@ exports.downloadVacData = downloadUruguayVaccinationData;
 exports.buildChartData = buildChartData;
 exports.develop = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData, downloadICUData, buildChartData), build, gulp.parallel(watch, hugoServer));
 // screenshots are taken last deploy before this one, beacause of a Netlify limitation
-exports.deploy = gulp.series(gulp.parallel(screenshots, downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData, downloadICUData, buildChartData), updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);
+exports.deploy = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData, downloadICUData, buildChartData), updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS, screenshots);
 exports.default = exports.develop;
 exports.screenshots = screenshots;
 
