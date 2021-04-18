@@ -58,6 +58,23 @@
         </div>
         <div class="level-item has-text-centered">
             <div>
+                <p class="subtitle">{{ i18n "recovered" }} 🙏</p>
+                <p class="title has-margin-bottom-none">{{ lang.NumFmt 0 $recovered .Site.Params.numberFormat }}</p>
+                <p class="has-margin-none is-size-7 has-text-grey">+{{ lang.NumFmt 0 $todayRecovered
+                    .Site.Params.numberFormat }}</p>
+            </div>
+        </div>
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="subtitle">{{ i18n "deaths" }} 😞</p>
+                <p class="title has-margin-bottom-none">{{ lang.NumFmt 0 $deaths .Site.Params.numberFormat }}</p>
+                <p class="has-margin-none is-size-7 has-text-grey">+{{ lang.NumFmt 0 $todayDeaths
+                    .Site.Params.numberFormat }}</p>
+            </div>
+        </div>
+        <!--
+        <div class="level-item has-text-centered">
+            <div>
                 <p class="subtitle">{{ i18n "healthCareWorkerCases" }} 👩‍⚕️👨‍⚕️</p>
                 <p class="title has-margin-bottom-none">{{ lang.NumFmt 0 $healthWorkerCases .Site.Params.numberFormat }}
                     ({{ lang.NumFmt 2 $healthWorkerPercent .Site.Params.numberFormat }}%)</p>
@@ -65,6 +82,7 @@
                     .Site.Params.numberFormat }}</p>
             </div>
         </div>
+        -->
         <div class="level-item has-text-centered">
             <div>
                 <p class="subtitle">{{ i18n "activeCases" }} 😷</p>
@@ -78,22 +96,6 @@
                 <p class="subtitle">{{ i18n "icuInitials" }} 🏥</p>
                 <p class="title has-margin-bottom-none">{{ lang.NumFmt 0 $icu .Site.Params.numberFormat }}</p>
                 <p class="has-margin-none is-size-7 has-text-grey">{{ $icuDiffSign }}{{ lang.NumFmt 0 $icuDiff
-                    .Site.Params.numberFormat }}</p>
-            </div>
-        </div>
-        <div class="level-item has-text-centered">
-            <div>
-                <p class="subtitle">{{ i18n "recovered" }} 🙏</p>
-                <p class="title has-margin-bottom-none">{{ lang.NumFmt 0 $recovered .Site.Params.numberFormat }}</p>
-                <p class="has-margin-none is-size-7 has-text-grey">+{{ lang.NumFmt 0 $todayRecovered
-                    .Site.Params.numberFormat }}</p>
-            </div>
-        </div>
-        <div class="level-item has-text-centered">
-            <div>
-                <p class="subtitle">{{ i18n "deaths" }} 😞</p>
-                <p class="title has-margin-bottom-none">{{ lang.NumFmt 0 $deaths .Site.Params.numberFormat }}</p>
-                <p class="has-margin-none is-size-7 has-text-grey">+{{ lang.NumFmt 0 $todayDeaths
                     .Site.Params.numberFormat }}</p>
             </div>
         </div>
