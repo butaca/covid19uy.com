@@ -15,6 +15,7 @@ async function takeScreenshot(page, w, h, path) {
         deviceScaleFactor: 1,
     });
     await page.goto(URL);
+    await page.evaluateHandle('document.fonts.ready');
     await page.screenshot({ path: path, clip: { x: 0, y: 52, width: w, height: h } });
 }
 
