@@ -28,7 +28,10 @@ async function resize(path, w, h, output) {
 }
 
 async function takeScreenshots(outputDir) {
-    const browser = await puppeteer.launch({args: ['--lang=es-UY']});
+    const browser = await puppeteer.launch({
+        args: ['--lang=es-UY', '--no-sandbox', '--disable-web-security', '--disable-gpu', '--hide-scrollbars', '--disable-setuid-sandbox'],
+        headless: true
+    });
     const page = await browser.newPage();
     await takeScreenshot(page, 1216, 630, tmpFile);
     await resize(tmpFile, 1200, 630, outputDir + '/images/seo/opengraph.jpg');
