@@ -411,7 +411,7 @@
         "other": "❗ El día 09/04/2021, el MSP publicó un informe actualizando los datos desde el 01/03/2021 hasta el 08/04/2021 el cual presenta inconsistencias con el resto de los datos conocidos. Por tal motivo, los datos históricos de este sitio sólo se basan en los informes diarios originales hasta que se aclaren las diferencias. Esto significa que casi todas las gráficas que utilicen datos históricos, no sean correctas en el período indicado por falta de información."
     },
     "icuMonitor": {
-        "other": "ICU (adults) bed occupancy viewer"
+        "other": "Visualizador de ocupación de camas de CTI de personas adultas"
     },
     "dosesTotal": {
         "other": "Total de Dosis"
