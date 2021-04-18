@@ -40,7 +40,6 @@ async function takeScreenshots(outputDir) {
         await browser.close();
     await deleteFile(tmpFile);
 }
-
-module.exports = {
-    takeScreenshots: takeScreenshots
-}
+(async () => {
+    takeScreenshots('./static');
+})();
