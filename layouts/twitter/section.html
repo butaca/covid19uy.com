@@ -7,6 +7,7 @@
     <title>{{ .Title }}</title>
     {{ partial "seo.html" . }}
     <link href='/css/main.css' rel="stylesheet">
+    {{ partial "fonts.html" . }}
     {{ partial "analytics.html" . }}
     {{- $opts := dict "targetPath" "twitter/js/twitter.js" "minify" "true" "target" "es2015" -}}
     {{- $built := resources.Get "js/twitter/twitter.js" | js.Build $opts -}}
