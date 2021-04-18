@@ -194,6 +194,11 @@ describe('Test data', function () {
                         totalDeaths--;
                     }
 
+                    // 2 deaths weren't reported on 2021-04-18
+                    if (date.getTime() == new Date("2021-04-18" + DATE_DEFAULT_TIME).getTime()) {
+                        totalDeaths += 2;
+                    }
+
                     deathHistory.push({ date: date, deaths: totalDeaths });
                 }
             }

@@ -116,11 +116,13 @@ async function getUpdatedDate() {
             dep = lastDep;
         }
 
-        deathsObj.push({
-            date: todayDatStr,
-            age: parseInt(value.trim()),
-            dep: dep
-        });
+        if(value != null && value.trim().length > 0) {
+            deathsObj.push({
+                date: todayDatStr,
+                age: parseInt(value.trim()),
+                dep: dep
+            });
+        }
     }
     console.log("\n" + JSON.stringify(deathsObj));
 })();
