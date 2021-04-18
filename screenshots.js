@@ -4,7 +4,7 @@ const fs = require('fs');
 const { promisify } = require('util');
 const deleteFile = promisify(fs.unlink);
 
-const URL = 'https://covid19uy.com';
+const URL = 'http://localhost:1313';
 const tmpFile = 'screenshot.png'
 
 async function takeScreenshot(page, w, h, path) {
