@@ -18,7 +18,8 @@ const uruguay = require("./" + DATA_DIR + "uruguay.json");
 const VIS_BASE_URL = "https://services5.arcgis.com/Th0Tmkhiy5BQYoxP/arcgis/rest/services/Casos_DepartamentosROU_vista_2/FeatureServer/";
 const VIS_ICU_BASE_URL = "https://services5.arcgis.com/Th0Tmkhiy5BQYoxP/arcgis/rest/services/OcupacionUY_vista/FeatureServer/";
 const { buildChartData, watchChartData } = require('./gulp/buildChartData');
-const { downloadUruguayVaccinationData } = require('./gulp/downloadVacData')
+const { downloadUruguayVaccinationData } = require('./gulp/downloadVacData');
+const { takeScreenshots } = require('./gulp/screenshots');
 
 const writeFilePromise = promisify(fs.writeFile);
 
@@ -315,9 +316,15 @@ async function downloadICUData() {
     await writeFilePromise(DATA_DIR + "icu.json", JSON.stringify(data));
 }
 
+async function screenshots() {
+    await takeScreenshots(paths.deploy);
+}
+
 exports.downloadVacData = downloadUruguayVaccinationData;
 exports.buildChartData = buildChartData;
 exports.develop = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData, downloadICUData, buildChartData), build, gulp.parallel(watch, hugoServer));
-exports.deploy = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData, downloadICUData, buildChartData), updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);
+// screenshots are taken last deploy before this one, beacause of a Netlify limitation
+exports.deploy = gulp.series(gulp.parallel(screenshots, downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData, downloadICUData, buildChartData), updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);
 exports.default = exports.develop;
+exports.screenshots = screenshots;
 

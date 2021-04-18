@@ -4,7 +4,7 @@ const fs = require('fs');
 const { promisify } = require('util');
 const deleteFile = promisify(fs.unlink);
 
-const URL = 'http://localhost:1313';
+const URL = 'https://covid19uy.com';
 const tmpFile = 'screenshot.png'
 
 async function takeScreenshot(page, w, h, path) {
@@ -26,13 +26,17 @@ async function resize(path, w, h, output) {
     await s.toFile(output);
 }
 
-(async () => {
-    const browser = await puppeteer.launch();
+async function takeScreenshots(outputDir) {
+    const browser = await puppeteer.launch({args: ['--lang=es-UY']});
     const page = await browser.newPage();
     await takeScreenshot(page, 1216, 630, tmpFile);
-    await resize(tmpFile, 1200, 630, './static/images/seo/opengraph.jpg');
+    await resize(tmpFile, 1200, 630, outputDir + '/images/seo/opengraph.jpg');
     await takeScreenshot(page, 2048, 1024, tmpFile);
-    await resize(tmpFile, 1024, 512, './static/images/seo/twitter_card.jpg'),
-    await browser.close();
+    await resize(tmpFile, 1024, 512, outputDir + '/images/seo/twitter_card.jpg'),
+        await browser.close();
     await deleteFile(tmpFile);
-})();
+}
+
+module.exports = {
+    takeScreenshots: takeScreenshots
+}
