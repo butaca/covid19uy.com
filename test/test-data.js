@@ -145,12 +145,18 @@ describe('Test data', function () {
 
     it('Test uruguayDeaths.json data', function () {
         let prevDate = null;
-        for (let i = 0; i < uruguayDeaths.deaths.length; ++i) {
-            const death = uruguayDeaths.deaths[i];
-            assert.isDefined(departmentsData.departments[death.dep], "Department " + death.dep + " doesn't exist in uruguayDepartments.json");
-            assert.isNumber(death.age, "Death of " + death.date + " doesn't have a valid age: " + death.age);
-            assert.isTrue(death.s === "F" || death.s === "M" || death.s === "?" || death.s === undefined, "Death of " + death.date + " doesn't have a valid sex (F, M or ?): " + death.s);
-            const date = new Date(death.date + DATE_DEFAULT_TIME);
+        for (let i = 0; i < uruguayDeaths.days.length; ++i) {
+            const day = uruguayDeaths.days[i];
+            const dayDate = day.date;
+            for (const [depName, dep] of Object.entries(day.deps)) {
+                for (let j = 0; j < dep.length; ++j) {
+                    const death = dep[j];
+                    assert.isDefined(departmentsData.departments[depName], "Department " + depName + " doesn't exist in uruguayDepartments.json");
+                    assert.isNumber(death.age, "Death of " + dayDate + " doesn't have a valid age: " + death.age);
+                    assert.isTrue(death.s === "F" || death.s === "M" || death.s === "?" || death.s === undefined, "Death of " + dayDate + " doesn't have a valid sex (F, M or ?): " + death.s);
+                }
+            }
+            const date = new Date(dayDate + DATE_DEFAULT_TIME);
             assert(prevDate == null || date.getTime() >= prevDate.getTime(), "Death dates must be successive");
             prevDate = date;
         }
@@ -159,47 +165,54 @@ describe('Test data', function () {
     it('Uruguay deaths count for each day in uruguay.json should match the registered deaths in uruguayDeaths.json', function () {
         let totalDeaths = 0;
         let deathHistory = [];
-        for (let i = 0; i < uruguayDeaths.deaths.length; ++i) {
-            var death = uruguayDeaths.deaths[i];
-            var date = new Date(death.date + DATE_DEFAULT_TIME);
-            totalDeaths++;
+        for (let i = 0; i < uruguayDeaths.days.length; ++i) {
+            var day = uruguayDeaths.days[i];
+            var date = new Date(day.date + DATE_DEFAULT_TIME);
 
-            if (deathHistory.length == 0) {
-                deathHistory.push({ date: date, deaths: totalDeaths });
-            }
-            else {
-                var prev = deathHistory[deathHistory.length - 1];
-                if (prev.date.getTime() == date.getTime()) {
-                    prev.deaths = totalDeaths;
-                }
-                else {
-                    // an extra death was reported on 2021-02-22, but it wasn't informed which one
-                    if (date.getTime() == new Date("2021-02-22" + DATE_DEFAULT_TIME).getTime()) {
-                        totalDeaths--;
-                    }
-                    // a death wasn't reported on 2021-03-25
-                    if (date.getTime() == new Date("2021-03-25" + DATE_DEFAULT_TIME).getTime()) {
-                        totalDeaths++;
-                    }
-                    // 36 deaths weren't reported on 2021-04-29
-                    if (date.getTime() == new Date("2021-04-09" + DATE_DEFAULT_TIME).getTime()) {
-                        totalDeaths += 36;
-                    }
-                    // an extra death was reported on 2021-04-10, but it wasn't informed which one
-                    if (date.getTime() == new Date("2021-04-10" + DATE_DEFAULT_TIME).getTime()) {
-                        totalDeaths--;
-                    }
-                    // an extra death was reported on 2021-04-13, but it wasn't informed which one
-                    if (date.getTime() == new Date("2021-04-13" + DATE_DEFAULT_TIME).getTime()) {
-                        totalDeaths--;
-                    }
+            const deps = Object.values(day.deps);
+            for (let d = 0; d < deps.length; ++d) {
+                const dep = deps[d];
+                for (let j = 0; j < dep.length; ++j) {
+                    totalDeaths++;
 
-                    // 2 deaths weren't reported on 2021-04-18
-                    if (date.getTime() == new Date("2021-04-18" + DATE_DEFAULT_TIME).getTime()) {
-                        totalDeaths += 2;
+                    if (deathHistory.length == 0) {
+                        deathHistory.push({ date: date, deaths: totalDeaths });
                     }
+                    else {
+                        var prev = deathHistory[deathHistory.length - 1];
+                        if (prev.date.getTime() == date.getTime()) {
+                            prev.deaths = totalDeaths;
+                        }
+                        else {
+                            // an extra death was reported on 2021-02-22, but it wasn't informed which one
+                            if (date.getTime() == new Date("2021-02-22" + DATE_DEFAULT_TIME).getTime()) {
+                                totalDeaths--;
+                            }
+                            // a death wasn't reported on 2021-03-25
+                            if (date.getTime() == new Date("2021-03-25" + DATE_DEFAULT_TIME).getTime()) {
+                                totalDeaths++;
+                            }
+                            // 36 deaths weren't reported on 2021-04-29
+                            if (date.getTime() == new Date("2021-04-09" + DATE_DEFAULT_TIME).getTime()) {
+                                totalDeaths += 36;
+                            }
+                            // an extra death was reported on 2021-04-10, but it wasn't informed which one
+                            if (date.getTime() == new Date("2021-04-10" + DATE_DEFAULT_TIME).getTime()) {
+                                totalDeaths--;
+                            }
+                            // an extra death was reported on 2021-04-13, but it wasn't informed which one
+                            if (date.getTime() == new Date("2021-04-13" + DATE_DEFAULT_TIME).getTime()) {
+                                totalDeaths--;
+                            }
 
-                    deathHistory.push({ date: date, deaths: totalDeaths });
+                            // 2 deaths weren't reported on 2021-04-18
+                            if (date.getTime() == new Date("2021-04-18" + DATE_DEFAULT_TIME).getTime()) {
+                                totalDeaths += 2;
+                            }
+
+                            deathHistory.push({ date: date, deaths: totalDeaths });
+                        }
+                    }
                 }
             }
         }

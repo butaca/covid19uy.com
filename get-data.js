@@ -93,10 +93,14 @@ async function getUpdatedDate() {
     const reportURL = REPORT_BASE_URL + todayDate.format("DDMMYYYY");
     const reportData = await request(reportURL);
 
-    const deathsObj = [];
+    const day = {
+        date: todayDatStr,
+        deps: {}
+    };
 
     const html = cheerio.load(reportData.replace(/[\n]/g, ''));
     const rows = html('tbody tr');
+
     let lastDep = null
     for (let i = 1; i < rows.length; ++i) {
         const row = rows[i];
@@ -122,14 +126,16 @@ async function getUpdatedDate() {
         }
 
         if(value != null && value.trim().length > 0) {
-            deathsObj.push({
-                date: todayDatStr,
-                age: parseInt(value.trim()),
-                dep: dep
+            if(!day.deps[dep]) {
+                day.deps[dep] = [];
+            }
+
+            day.deps[dep].push({
+                age: parseInt(value.trim())
             });
         }
     }
-    console.log("\n" + JSON.stringify(deathsObj));
+    console.log("\n" + JSON.stringify(day));
 })();
 
 

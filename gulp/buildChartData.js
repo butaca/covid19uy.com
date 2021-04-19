@@ -7,9 +7,9 @@ const writeFilePromise = promisify(fs.writeFile);
 const gulp = require('gulp');
 const HARVARD_INDEX_DAYS = 7;
 const HarvardIndexMode = {
-    NEW_CASES : "newcases",
-    LATE_DATA : "latedata",
-    CORONAVIRUS_UY : "coronavirusuy"
+    NEW_CASES: "newcases",
+    LATE_DATA: "latedata",
+    CORONAVIRUS_UY: "coronavirusuy"
 }
 
 const hiMode = HarvardIndexMode.CORONAVIRUS_UY;
@@ -173,7 +173,7 @@ async function buildChartData() {
                 todayNewCasesHI = el.newCases;
             }
         }
-        else if(hiMode === HarvardIndexMode.LATE_DATA) { 
+        else if (hiMode === HarvardIndexMode.LATE_DATA) {
             todayNewCasesHI = todayNewCasesWithLateData;
         }
         else { // HarvardIndexMode.NEW_CASES
@@ -191,6 +191,63 @@ async function buildChartData() {
             harvardIndexDaily.push(harvardIndex);
         }
     });
+
+    const uruguayDeathsData = await readFilePromise("./" + DATA_DIR + "uruguayDeaths.json");
+    const uruguayDeaths = JSON.parse(uruguayDeathsData);
+
+    var menDeaths = [0, 0, 0, 0, 0];
+    var womenDeaths = [0, 0, 0, 0, 0];
+    var unknownSexDeaths = [0, 0, 0, 0, 0];
+    var totalDeathsByAge = [0, 0, 0, 0, 0];
+    var deathAgeRangesLabels = ["0 - 17", "18 - 44", "45 - 64", "65 - 74", "75+"];
+
+    for (let i = 0; i < uruguayDeaths.days.length; ++i) {
+        const day = uruguayDeaths.days[i];
+
+        const deps = Object.values(day.deps);
+        for (let d = 0; d < deps.length; ++d) {
+            const dep = deps[d];
+            for (let j = 0; j < dep.length; ++j) {
+                const death = dep[j];
+                var age = death.age;
+                var sex = death.s;
+
+                var sexDeaths = null;
+
+                if (sex === "F") {
+                    sexDeaths = womenDeaths;
+                } else if (sex === "M") {
+                    sexDeaths = menDeaths;
+                }
+                else {
+                    sexDeaths = unknownSexDeaths;
+                }
+                var index = -1;
+
+                if (age <= 17) {
+                    index = 0;
+                }
+                else if (age <= 44) {
+                    index = 1;
+                }
+                else if (age <= 64) {
+                    index = 2;
+                }
+                else if (age <= 74) {
+                    index = 3;
+                }
+                else {
+                    index = 4;
+                }
+
+                totalDeathsByAge[index]++;
+
+                if (sexDeaths != null) {
+                    sexDeaths[index]++;
+                }
+            }
+        }
+    }
 
     const data = {
         positives: positives,
@@ -225,7 +282,13 @@ async function buildChartData() {
         harvardIndexDaily: harvardIndexDaily,
 
         lateDataEnabled: uruguay.lateDataEnabled,
-        unreportedDailyTests: uruguay.unreportedDailyTests
+        unreportedDailyTests: uruguay.unreportedDailyTests,
+
+        menDeaths: menDeaths,
+        womenDeaths: womenDeaths,
+        unknownSexDeaths: unknownSexDeaths,
+        totalDeathsByAge: totalDeathsByAge,
+        deathAgeRangesLabels: deathAgeRangesLabels
     }
     await writeFilePromise("./" + DATA_DIR + "chartData.json", JSON.stringify(data));
 }
