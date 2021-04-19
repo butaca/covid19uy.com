@@ -108,7 +108,12 @@ async function getUpdatedDate() {
             const depData = tdDep.children[0].children[0].children[0].data;
             const words = depData.split(" ");
             dep = words.map((word) => {
-                return word[0].toUpperCase() + word.substring(1).toLowerCase();
+                if(word.length > 1) {
+                    return word[0].toUpperCase() + word.substring(1).toLowerCase();
+                }
+                else {
+                    return word.toLowerCase();
+                }
             }).join(" ");
             lastDep = dep;
         }
