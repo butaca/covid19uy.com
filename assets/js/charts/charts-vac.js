@@ -1,7 +1,13 @@
 import { createDefaultChartOptions, pieToolTips } from './util'
 import vaccinationData from "../data/uruguayVaccination.json"
 
+const COLOR_SINOVAC = "#0000ff80";
+const COLOR_PFIZER = "#ffa500";
+const COLOR_ASTRAZENECA = "#48c774";
+const COLOR_TOTAL = "#28b8d680";
+
 function chart(_chartData, lang) {
+
     const utcDate = new Date(vaccinationData.date)
     const vacDate = new Date(utcDate.getTime() + utcDate.getTimezoneOffset() * 60000);
     const vacDateTokens = vaccinationData.todayDate.split(':');
@@ -36,35 +42,33 @@ function chart(_chartData, lang) {
         }
         const historyDatasets = [
             {
-                pointBackgroundColor: "#0000FFFF",
-                backgroundColor: "#0000FF80",
+                pointBackgroundColor: COLOR_TOTAL,
+                backgroundColor: COLOR_TOTAL,
                 label: lang.vacTotal.other,
                 data: vaccinationData.history.total,
             },
             {
-                pointBackgroundColor: "#FF8C00ff",
-                backgroundColor: "#FF8C0080",
+                pointBackgroundColor: COLOR_SINOVAC,
+                backgroundColor: COLOR_SINOVAC,
                 label: lang.vacCoronavac.other,
                 data: vaccinationData.history.coronavac,
             },
             {
-                pointBackgroundColor: "#00CC00FF",
-                backgroundColor: "#00CC0080",
+                pointBackgroundColor: COLOR_PFIZER,
+                backgroundColor: COLOR_PFIZER,
                 label: lang.vacPfizer.other,
                 data: vaccinationData.history.pfizer,
             }
         ];
 
-        if (vaccinationData.astrazenecaTotal > 0) {
-            historyDatasets.push(
-                {
-                    pointBackgroundColor: "#FF0000FF",
-                    backgroundColor: "#FF000080",
-                    label: lang.vacAstrazeneca.other,
-                    data: vaccinationData.history.astrazeneca,
-                }
-            );
-        }
+        historyDatasets.push(
+            {
+                pointBackgroundColor: COLOR_ASTRAZENECA,
+                backgroundColor: COLOR_ASTRAZENECA,
+                label: lang.vacAstrazeneca.other,
+                data: vaccinationData.history.astrazeneca,
+            }
+        );
 
         new Chart(ctx, {
             type: 'bar',
@@ -104,12 +108,8 @@ function chart(_chartData, lang) {
             dateElem.innerHTML = lang.updated.other + ": " + vacDateStr;
         }
 
-        const vacTotalData = [vaccinationData.coronavacTotal, vaccinationData.pfizerTotal];
-        let vacTotalLabels = [lang.vacCoronavac.other, lang.vacPfizer.other];
-        if (vaccinationData.astrazenecaTotal > 0) {
-            vacTotalData.push(vaccinationData.astrazenecaTotal);
-            vacTotalLabels.push(lang.vacAstrazeneca.other);
-        }
+        const vacTotalData = [vaccinationData.coronavacTotal, vaccinationData.pfizerTotal, vaccinationData.astrazenecaTotal];
+        let vacTotalLabels = [lang.vacCoronavac.other, lang.vacPfizer.other, lang.vacAstrazeneca.other];
         vacTotalLabels = vacTotalLabels.map(function (label, index) { return label + ': ' + (vacTotalData[index] / totalVacs * 100).toFixed(2) + '%' });
 
         new Chart(ctx, {
@@ -118,7 +118,7 @@ function chart(_chartData, lang) {
                 labels: vacTotalLabels,
                 datasets: [{
                     data: vacTotalData,
-                    backgroundColor: ["#FF8C0080", "#00CC0080", "#FF000080"]
+                    backgroundColor: [COLOR_SINOVAC, COLOR_PFIZER, COLOR_ASTRAZENECA]
                 }]
             },
             options: options
