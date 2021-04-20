@@ -52,23 +52,23 @@ function chart(_chartData, lang) {
                 backgroundColor: COLOR_SINOVAC,
                 label: lang.vacCoronavac.other,
                 data: vaccinationData.history.coronavac,
+                hidden: true,
             },
             {
                 pointBackgroundColor: COLOR_PFIZER,
                 backgroundColor: COLOR_PFIZER,
                 label: lang.vacPfizer.other,
                 data: vaccinationData.history.pfizer,
-            }
-        ];
-
-        historyDatasets.push(
+                hidden: true,
+            },
             {
                 pointBackgroundColor: COLOR_ASTRAZENECA,
                 backgroundColor: COLOR_ASTRAZENECA,
                 label: lang.vacAstrazeneca.other,
                 data: vaccinationData.history.astrazeneca,
+                hidden: true,
             }
-        );
+        ];
 
         new Chart(ctx, {
             type: 'bar',
