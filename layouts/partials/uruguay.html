@@ -118,7 +118,7 @@
             {{ partial "icu.html" . }}
         </div>
         {{- if and (gt site.Data.uruguayVaccination.firstDoseTotal 0) (gt site.Data.uruguayVaccination.secondDoseTotal 0)  -}}
-        <div class="column is-4 is-12-mobile">
+        <div class="column is-8 is-12-mobile">
             {{ partial "vaccination.html" . }}
         </div>
         {{- end -}}

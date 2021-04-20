@@ -1,16 +1,18 @@
 <div>
     {{- $vacData := site.Data.uruguayVaccination -}}
-    {{- $firstDoseVacProgress := div $vacData.firstDoseTotal $vacData.goal -}}
+    {{- $firstDoseTotal := $vacData.firstDoseTotal -}}
+    {{- $secondDoseTotal := $vacData.secondDoseTotal -}}
+    {{- $firstDoseVacProgress := div $firstDoseTotal $vacData.goal -}}
     {{- $firstDoseVacProgressPercent := lang.NumFmt 2 (mul 100 $firstDoseVacProgress) .Site.Params.numberFormat -}}
-    {{- $secondDoseVacProgress := div $vacData.secondDoseTotal $vacData.goal -}}
+    {{- $secondDoseVacProgress := div $secondDoseTotal $vacData.goal -}}
     {{- $secondDoseVacProgressPercent := lang.NumFmt 2 (mul 100 $secondDoseVacProgress) .Site.Params.numberFormat -}}
     {{- $dateStr := printf "%sT%s:00" $vacData.date $vacData.todayDate }}
     {{- $date := time $dateStr -}}
     {{- $totalVacs := $vacData.total -}}
-    {{- $todayVacs := index (last 1 $vacData.history.total) 0 -}}
+    {{- $todayVacs := $vacData.todayTotal -}}
     <h2 class="title">{{ i18n "vaccinationProgress" }}</h2>
     <div class="columns">
-        <div class="column is-7">
+        <div class="column is-two-fifths">
             <div>
                 <div class="has-tooltip-multiline" data-tooltip='{{ i18n "vaccinationProgressFirstDoseDesc"}}'>
                     <span class="is-pulled-left">{{ i18n "vaccinationProgressFirstDose" }}</span>
@@ -31,14 +33,31 @@
             </div>
         </div>
 
-        <div class="column is-5 has-text-centered">
-            <div class="subtitle is-marginless">💉 {{ i18n "dosesTotal" }}</div>
+        <div class="column is-one-fifth has-text-centered">
+            <div class="subtitle is-marginless">{{ i18n "firstDose" }}</div>
+            <div class="title is-marginless">
+                {{- lang.NumFmt 0 $firstDoseTotal site.Params.numberFormat -}}
+            </div>
+            <!--<span class="is-size-7 has-text-grey">{{ i18n "today" }}: {{ lang.NumFmt 0 $todayVacs site.Params.numberFormat
+                -}}</span>-->
+        </div>
+        <div class="column is-one-fifth has-text-centered">
+            <div class="subtitle is-marginless">{{ i18n "secondDose" }}</div>
+            <div class="title is-marginless">
+                {{- lang.NumFmt 0 $secondDoseTotal site.Params.numberFormat -}}
+            </div>
+            <!--<span class="is-size-7 has-text-grey">{{ i18n "today" }}: {{ lang.NumFmt 0 $todayVacs site.Params.numberFormat
+                -}}</span>-->
+        </div>
+        <div class="column is-one-fifth has-text-centered">
+            <div class="subtitle is-marginless">{{ i18n "dosesTotal" }}</div>
             <div class="title is-marginless">
                 {{- lang.NumFmt 0 $totalVacs site.Params.numberFormat -}}
             </div>
             <span class="is-size-7 has-text-grey">{{ i18n "today" }}: {{ lang.NumFmt 0 $todayVacs site.Params.numberFormat
                 -}}</span>
         </div>
+        
     </div>
     <div class="has-text-grey has-text-centered is-size-7 date">
         {{- i18n "updated" }}: {{ dateFormat .Site.Params.dateFormat $date -}}

@@ -421,5 +421,11 @@
     },
     "vacErrorsInfo": {
         "other": "The totals of the charts \"Vaccination total\" and \"Daily vaccination\" differ with those of \"Vaccination progress\", following the official source."
+    },
+    "firstDose": {
+        "other": "First Dose"
+    },
+    "secondDose": {
+        "other": "Second Dose"
     }
 }
