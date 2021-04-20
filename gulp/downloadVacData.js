@@ -244,7 +244,7 @@ async function downloadUruguayVaccinationData() {
                 vacData.total = coronavacTotal + pfizerTotal + astrazenecaTotal;
             }
 
-            if (coronavacTotal == 0 || pfizerTotal == 0 || astrazenecaTotal) {
+            if (coronavacTotal == 0 || pfizerTotal == 0 || astrazenecaTotal == 0) {
                 console.log("Vac type inconsistent: Sinovac or Pfizer == 0");
                 vacDataFailed = true;
             }
