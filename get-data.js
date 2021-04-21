@@ -105,8 +105,10 @@ async function getUpdatedDate() {
     for (let i = 1; i < rows.length; ++i) {
         const row = rows[i];
         const tdValue = row.children[0];
-        const tdDep = row.children[1];
+        const tdSex = row.children[1];
+        const tdDep = row.children[2];
         const value = tdValue.children[0].children[0].children[0].data;
+        const sex = tdSex.children[0].children[0].children[0].data;
         let dep;
         if (tdDep != undefined) {
             const depData = tdDep.children[0].children[0].children[0].data;
@@ -131,7 +133,8 @@ async function getUpdatedDate() {
             }
 
             day.deps[dep].push({
-                age: parseInt(value.trim())
+                age: parseInt(value.trim()),
+                s: sex.trim()
             });
         }
     }
