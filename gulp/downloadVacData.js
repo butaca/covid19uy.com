@@ -11,39 +11,51 @@ const DATA_DIR = BASE_DATA_DIR;
 
 const VAC_BASE_URL = "https://monitor.uruguaysevacuna.gub.uy/plugin/cda/api/doQuery";
 
-function createDefaultParams() {
-    return {
+function createDefaultParams(minDate, maxDate) {
+    const params = {
         outputIndexId: "1",
         pageSize: "0",
         pageStart: "0",
         sortBy: "",
         paramsearchBox: "",
         outputType: "XML"
+    };
+
+    if (minDate) {
+        params.paramp_periodo_desde_sk = minDate;
     }
+    if (maxDate) {
+        params.paramp_periodo_hasta_sk = maxDate;
+    }
+
+    return params;
 }
 
-async function getVacHistoryData() {
+async function getValidDatesData() {
     const params = createDefaultParams();
+    params.path = "/public/Epidemiologia/Vacunas Covid/Paneles/Vacunas Covid/VacunasCovid.cda";
+    params.dataAccessId = "sql_fechas_validas";
+    return await request(VAC_BASE_URL, params);
+}
+
+async function getVacHistoryData(minDate, maxDate) {
+    const params = createDefaultParams(minDate, maxDate);
     params.path = "/public/Epidemiologia/Vacunas Covid/Paneles/Vacunas Covid/VacunasCovid.cda";
     params.dataAccessId = "sql_evolucion";
     return await request(VAC_BASE_URL, params);
 }
 
-const today = moment();
-
-async function getVacTotalData() {
-    const params = createDefaultParams();
-    params.paramp_periodo_desde_sk = "20210227";
-    params.paramp_periodo_hasta_sk = today.format("YYYYMMDD");
+async function getVacTotalData(minDate, maxDate) {
+    const params = createDefaultParams(minDate, maxDate);
     params.path = "/public/Epidemiologia/Vacunas Covid/Paneles/Vacunas Covid/VacunasCovid.cda";
     params.dataAccessId = "sql_indicadores_generales";
     return await request(VAC_BASE_URL, params);
 }
 
-async function getVacTypeData() {
-    const params = createDefaultParams();
-    params.paramp_periodo_desde_sk = "20210227";
-    params.paramp_periodo_hasta_sk = today.format("YYYYMMDD");
+async function getVacTypeData(minDate, maxDate) {
+    const params = createDefaultParams(minDate, maxDate);
+    params.paramp_periodo_desde_sk = minDate;
+    params.paramp_periodo_hasta_sk = maxDate;
     params.path = "/public/Epidemiologia/Vacunas Covid/Paneles/Vacunas Covid/VacunasCovid.cda";
     params.dataAccessId = "sql_vacunas_tipo_vacuna";
     return await request(VAC_BASE_URL, params);
@@ -60,7 +72,7 @@ async function downloadUruguayVaccinationData() {
             pfizer: [],
             astrazeneca: []
         },
-        date: today.format("YYYY-MM-DD"),
+        date: "",
         todayDate: "",
         todayTotal: 0,
         total: 0,
@@ -73,7 +85,35 @@ async function downloadUruguayVaccinationData() {
     }
 
     try {
-        const [vacHistoryData, vacTotalData, vacTypeData] = await Promise.allSettled([getVacHistoryData(), getVacTotalData(), getVacTypeData()]);
+        const validDatesData = await getValidDatesData();
+        const validDatesDataObj = xml2json.toJson(validDatesData, { object: true });
+        const validDatesMetadata = validDatesDataObj.CdaExport.MetaData.ColumnMetaData;
+        let minDateIndex = -1, maxDateIndex = -1;
+        for (let i = 0; i < validDatesMetadata.length; ++i) {
+            const metadataCol = validDatesMetadata[i];
+            const name = metadataCol.name.toLowerCase();
+            if (name.includes("fecha_minima")) {
+                minDateIndex = parseInt(metadataCol.index);
+            }
+            else if (name.includes("fecha_maxima")) {
+                maxDateIndex = parseInt(metadataCol.index);
+            }
+        }
+
+        if (minDateIndex == -1 || maxDateIndex == -1) {
+            throw new Error("Can't find valid dates indexes");
+        }
+
+        const validDatesCol = validDatesDataObj.CdaExport.ResultSet.Row.Col;
+
+        const minDate = moment(validDatesCol[minDateIndex], "DD-MM-YYYY");
+        const maxDate = moment(validDatesCol[maxDateIndex], "DD-MM-YYYY");
+        const minDateStr = minDate.format("YYYYMMDD");
+        const maxDateStr = maxDate.format("YYYYMMDD");
+
+        vacData.date = maxDate.format("YYYY-MM-DD")
+
+        const [vacHistoryData, vacTotalData, vacTypeData] = await Promise.allSettled([getVacHistoryData(minDateStr, maxDateStr), getVacTotalData(minDateStr, maxDateStr), getVacTypeData(minDateStr, maxDateStr)]);
 
         if (vacHistoryData.status === "fulfilled") {
             const vacHistoryDataObj = xml2json.toJson(vacHistoryData.value, { object: true });
@@ -196,7 +236,6 @@ async function downloadUruguayVaccinationData() {
             const firstDoseTotal = totalsData[firstDoseIndex];
             const secondDoseTotal = totalsData[secondDoseIndex];
 
-            vacData.date = today.format("YYYY-MM-DD");
             vacData.todayDate = todayDate;
             vacData.todayTotal = parseInt(todayTotal);
             vacData.firstDoseTotal = parseInt(firstDoseTotal);
