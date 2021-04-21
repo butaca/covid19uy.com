@@ -1,5 +1,5 @@
 
-import { createDefaultChartOptions, createMovingAverageDataset, MOVING_AVERAGE_DELTA, pieToolTips } from './util'
+import { createDefaultChartOptions, createMovingAverageDataset, MOVING_AVERAGE_DELTA, pieToolTips, getTotal } from './util'
 
 function chart(chartData, lang) {
     var ctx = document.getElementById('chart-deaths');
@@ -28,8 +28,8 @@ function chart(chartData, lang) {
 
     ctx = document.getElementById('chart-deaths-sex');
     if (ctx) {
-        var dataDeathsTotal = [chartData.menDeaths.reduce(function (acc, val) { return acc + val; }, 0), chartData.womenDeaths.reduce(function (acc, val) { return acc + val; }, 0)];
-        var totalDeahts = getTotal(chartData.dataDeathsTotal);
+        const dataDeathsTotal = [chartData.menDeaths.reduce(function (acc, val) { return acc + val; }, 0), chartData.womenDeaths.reduce(function (acc, val) { return acc + val; }, 0)];
+        const totalDeaths = getTotal(dataDeathsTotal);
         options = createDefaultChartOptions();
         options.scales = {
             xAxes: [{
@@ -41,7 +41,7 @@ function chart(chartData, lang) {
         };
         options.elements = {
             center: {
-                text: lang.totalDeaths.other + ': ' + totalDeahts,
+                text: lang.totalDeaths.other + ': ' + totalDeaths,
                 color: '#36A2EB',
                 fontStyle: 'Helvetica',
                 sidePadding: 15
@@ -49,8 +49,8 @@ function chart(chartData, lang) {
         };
         options.tooltips = pieToolTips;
 
-        var deathBySexLabels = [lang.men.other, lang.women.other];
-        deathBySexLabels = chartData.deathBySexLabels.map(function (label, index) { return label + ': ' + (chartData.dataDeathsTotal[index] / totalDeahts * 100).toFixed(2) + '%' });
+        let deathBySexLabels = [lang.men.other, lang.women.other];
+        deathBySexLabels = deathBySexLabels.map(function (label, index) { return label + ': ' + (dataDeathsTotal[index] / totalDeaths * 100).toFixed(2) + '%' });
 
         new Chart(ctx, {
             type: 'doughnut',
