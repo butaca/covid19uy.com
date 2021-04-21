@@ -1,11 +1,15 @@
 <div>
     {{- $harvardIndex := .index -}}
     {{- $diff := .diff -}}
+    {{- $diffSign := ""}}
+    {{- if ge $diff 0 -}}
+    {{- $diffSign = "+"}}
+    {{- end -}}
     <span class="has-tooltip-multiline has-tooltip-right" data-tooltip='{{ i18n "harvardIndexDesc" }}'>
         <span class="title">
             {{ lang.NumFmt 2 $harvardIndex site.Params.numberFormat -}}
         </span>
-        <span class="is-size-7 has-text-grey">({{ lang.NumFmt 2 $diff site.Params.numberFormat -}})</span>
+        <span class="is-size-7 has-text-grey">({{ $diffSign }}{{ lang.NumFmt 2 $diff site.Params.numberFormat -}})</span>
         <i class="far fa-question-circle has-margin-left-xs"></i>
     </span>
     {{- $areaColor := "black" -}}
