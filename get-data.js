@@ -104,10 +104,10 @@ async function getUpdatedDate() {
     let lastDep = null
     for (let i = 1; i < rows.length; ++i) {
         const row = rows[i];
-        const tdValue = row.children[0];
-        const tdSex = row.children[1];
+        const tdSex = row.children[0];
+        const tdAge = row.children[1];
         const tdDep = row.children[2];
-        const value = tdValue.children[0].children[0].children[0].data;
+        const value = tdAge.children[0].children[0].children[0].data;
         const sex = tdSex.children[0].children[0].children[0].data;
         let dep;
         if (tdDep != undefined) {
