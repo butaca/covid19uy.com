@@ -5,8 +5,10 @@
 {{- $diff := sub $todayHarvardIndex $yesterdayHarvardIndex -}}
 <div>
     <h2 class="title">{{ i18n "harvardIndex" }}</h2>
-    {{- partial "harvard-index.html" (dict "index" $todayHarvardIndex "diff" $diff) -}}
-    <div class="has-text-grey">
-        {{ partial "uruguay-updated-date.html" . }}
+    <div class="has-text-centered">
+        {{- partial "harvard-index.html" (dict "index" $todayHarvardIndex "diff" $diff) -}}
+        <div class="has-text-grey">
+            {{ partial "uruguay-updated-date.html" . }}
+        </div>
     </div>
 </div>

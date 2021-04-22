@@ -5,7 +5,7 @@
     {{- if ge $diff 0 -}}
     {{- $diffSign = "+"}}
     {{- end -}}
-    <span class="has-tooltip-multiline has-tooltip-right" data-tooltip='{{ i18n "harvardIndexDesc" }}'>
+    <span class="has-tooltip-multiline" data-tooltip='{{ i18n "harvardIndexDesc" }}'>
         <span class="title">
             {{ lang.NumFmt 2 $harvardIndex site.Params.numberFormat -}}
         </span>
