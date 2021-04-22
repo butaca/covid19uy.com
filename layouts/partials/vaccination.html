@@ -32,7 +32,7 @@
                     $secondDoseVacProgressPercent }}%</progress>
             </div>
             {{- with $vacData.eta -}}
-            <div class="has-tooltip-multiline pt-2" data-tooltip='{{ i18n "vacetaDesc"}}'>{{ i18n "vaceta"}}: <strong>{{ dateFormat .Site.Params.dateFormatCompact . }}</strong><span class="pl-1"><i class="far fa-question-circle"></i></span></div>    
+            <div class="has-tooltip-multiline pt-2" data-tooltip='{{ i18n "vacetaDesc"}}'>{{ i18n "vaceta"}}: <strong>{{ dateFormat site.Params.dateFormatCompact . }}</strong><span class="pl-1"><i class="far fa-question-circle"></i></span></div>    
             {{- end -}}
         </div>
         <div class="column is-three-fifths">
