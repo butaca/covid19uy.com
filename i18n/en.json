@@ -427,5 +427,11 @@
     },
     "secondDose": {
         "other": "Second Dose"
+    },
+    "vaceta": {
+        "other": "Estimated date of completion"
+    },
+    "vacetaDesc": {
+        "other": "Estimated date by which delivery of the second dose to the target population will be completed, based on data from the last 28 days."
     }
 }

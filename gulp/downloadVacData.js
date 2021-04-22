@@ -6,6 +6,7 @@ const xml2json = require('xml2json');
 const fs = require('fs');
 const { promisify } = require('util');
 const writeFilePromise = promisify(fs.writeFile);
+const regression = require("regression");
 const { BASE_DATA_DIR, request } = require('./util');
 const DATA_DIR = BASE_DATA_DIR;
 
@@ -81,7 +82,8 @@ async function downloadUruguayVaccinationData() {
         coronavacTotal: 0,
         astrazenecaTotal: 0,
         pfizerTotal: 0,
-        goal: 2800000
+        goal: 2800000,
+        eta: null
     }
 
     try {
@@ -292,6 +294,20 @@ async function downloadUruguayVaccinationData() {
             console.log("Error getting vac type: " + vacTypeData.reason);
             vacDataFailed = true;
         }
+
+        const totalPoints = [];
+        let curTotal = 0;
+        for (let i = vacData.history.total.length - 28; i < vacData.history.total.length; ++i) {
+            curTotal += vacData.history.total[i];
+            totalPoints.push([i, curTotal]);
+        }
+
+        const result = regression.linear(totalPoints);
+        const m = result.equation[0];
+        const c = result.equation[1];
+        const x = (2 * vacData.goal - c) / m;
+        const eta = minDate.add(x, 'days');
+        vacData.eta = eta.format("YYYY-MM-DD");
 
     } catch (e) {
         console.log("Error getting vaccination data. " + e.name + ": " + e.message);

@@ -427,5 +427,11 @@
     },
     "secondDose": {
         "other": "Segunda Dosis"
+    },
+    "vaceta": {
+        "other": "Fecha estimada de finalización"
+    },
+    "vacetaDesc": {
+        "other": "Fecha estimada en la que se finalizará de dar la segunda dosis a la población objetivo, en base los datos de los últimos 28 días."
     }
 }
