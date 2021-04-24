@@ -387,7 +387,7 @@
         "other": "Índice de Harvard"
     },
     "harvardIndexDesc": {
-        "other": "Nivel de riesgo de acuerdo al promedio de nuevos casos cada 100.000 habitantes de los últimos 7 días. Se calcula siguiendo el criterio de CoronavirusUY: los casos diarios hasta el 8/4/2021 son el acumulado del informe menos el acumulado del día anterior. A partir del 9/4/2021 los casos diarios son los del informe (menos el 15/04/2021)."
+        "other": "Nivel de riesgo de acuerdo al promedio de nuevos casos cada 100.000 habitantes de los últimos 7 días."
     },
     "icuOccupation": {
         "other": "Ocupación CTI"

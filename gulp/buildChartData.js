@@ -8,11 +8,11 @@ const gulp = require('gulp');
 const HARVARD_INDEX_DAYS = 7;
 const HarvardIndexMode = {
     NEW_CASES: "newcases",
-    LATE_DATA: "latedata",
+    NEW_CASES_WITH_LATE_DATA: "newcases_latedata",
     CORONAVIRUS_UY: "coronavirusuy"
 }
 
-const hiMode = HarvardIndexMode.CORONAVIRUS_UY;
+const hiMode = HarvardIndexMode.NEW_CASES_WITH_LATE_DATA;
 
 async function buildChartData() {
     const uruguayData = await readFilePromise("./" + DATA_DIR + "uruguay.json");
@@ -169,11 +169,12 @@ async function buildChartData() {
             if (cases.length > 1) {
                 todayNewCasesHI -= cases[cases.length - 2];
             }
+            // hack to match CoronavirusUY app behaviour
             if (el.newCases != undefined && new Date(el.date).getTime() >= new Date("2021-04-09").getTime() && new Date(el.date).getTime() != new Date("2021-04-15").getTime()) {
                 todayNewCasesHI = el.newCases;
             }
         }
-        else if (hiMode === HarvardIndexMode.LATE_DATA) {
+        else if (hiMode === HarvardIndexMode.NEW_CASES_WITH_LATE_DATA) {
             todayNewCasesHI = todayNewCasesWithLateData;
         }
         else { // HarvardIndexMode.NEW_CASES
