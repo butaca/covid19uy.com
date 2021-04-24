@@ -6,8 +6,9 @@ const xml2json = require('xml2json');
 const fs = require('fs');
 const { promisify } = require('util');
 const writeFilePromise = promisify(fs.writeFile);
+const copyFilePromise = promisify(fs.copyFile);
 const regression = require("regression");
-const { BASE_DATA_DIR, request } = require('./util');
+const { BASE_DATA_DIR, CACHE_DIR, request } = require('./util');
 const DATA_DIR = BASE_DATA_DIR;
 
 const VAC_BASE_URL = "https://monitor.uruguaysevacuna.gub.uy/plugin/cda/api/doQuery";
@@ -118,7 +119,7 @@ function parseRows(data, indexesNames) {
             }
         }
     } catch (e) {
-       console.log("Error parsing rows: " + e.message);
+        console.log("Error parsing rows: " + e.message);
     }
     return rows;
 }
@@ -309,10 +310,24 @@ async function downloadUruguayVaccinationData() {
         vacDataFailed = true;
     }
 
-    const vacDataFile = DATA_DIR + "uruguayVaccination.json";
+    const vacFileName = "uruguayVaccination.json";
+    const vacDataFile = DATA_DIR + vacFileName;
+    const cacheVacDataFile = CACHE_DIR + vacFileName;
 
-    if (!vacDataFailed || !fs.existsSync(vacDataFile)) {
+    if (!vacDataFailed) {
         await writeFilePromise(vacDataFile, JSON.stringify(vacData));
+        if (!fs.existsSync(CACHE_DIR)) {
+            fs.mkdirSync(CACHE_DIR);
+        }
+        await copyFilePromise(vacDataFile, cacheVacDataFile);
+    }
+    else {
+        if (fs.existsSync(cacheVacDataFile)) {
+            await copyFilePromise(cacheVacDataFile, vacDataFile);
+        }
+        else {
+            await writeFilePromise(vacDataFile, JSON.stringify(vacData));
+        }
     }
 }
 

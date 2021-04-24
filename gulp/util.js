@@ -1,5 +1,6 @@
 const querystring = require('querystring');
 const BASE_DATA_DIR = "assets/js/data/";
+const CACHE_DIR = "cache/";
 const axios = require("axios");
 
 async function request(url, params) {
@@ -19,5 +20,6 @@ async function request(url, params) {
 
 module.exports = {
     request: request,
-    BASE_DATA_DIR: BASE_DATA_DIR
+    BASE_DATA_DIR: BASE_DATA_DIR,
+    CACHE_DIR: CACHE_DIR
 };

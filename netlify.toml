@@ -14,6 +14,11 @@ command = "gulp deploy"
 [build.environment]
   TZ = "America/Montevideo"
 
+[[plugins]]
+package = "netlify-plugin-cache"
+  [plugins.inputs]
+  paths = ["cache"]
+
 [[redirects]]
 from = "https://coronavirusuy.netlify.com/*"
 to = "https://covid19uy.com/:splat"
