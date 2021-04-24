@@ -32,34 +32,95 @@ function createDefaultParams(minDate, maxDate) {
     return params;
 }
 
-async function getValidDatesData() {
+async function fetchValidDatesData() {
     const params = createDefaultParams();
     params.path = "/public/Epidemiologia/Vacunas Covid/Paneles/Vacunas Covid/VacunasCovid.cda";
     params.dataAccessId = "sql_fechas_validas";
     return await request(VAC_BASE_URL, params);
 }
 
-async function getVacHistoryData(minDate, maxDate) {
+async function fetchVacHistoryData(minDate, maxDate) {
     const params = createDefaultParams(minDate, maxDate);
     params.path = "/public/Epidemiologia/Vacunas Covid/Paneles/Vacunas Covid/VacunasCovid.cda";
     params.dataAccessId = "sql_evolucion";
     return await request(VAC_BASE_URL, params);
 }
 
-async function getVacTotalData(minDate, maxDate) {
+async function fetchVacTotalData(minDate, maxDate) {
     const params = createDefaultParams(minDate, maxDate);
     params.path = "/public/Epidemiologia/Vacunas Covid/Paneles/Vacunas Covid/VacunasCovid.cda";
     params.dataAccessId = "sql_indicadores_generales";
     return await request(VAC_BASE_URL, params);
 }
 
-async function getVacTypeData(minDate, maxDate) {
+async function fetchVacTypeData(minDate, maxDate) {
     const params = createDefaultParams(minDate, maxDate);
     params.paramp_periodo_desde_sk = minDate;
     params.paramp_periodo_hasta_sk = maxDate;
     params.path = "/public/Epidemiologia/Vacunas Covid/Paneles/Vacunas Covid/VacunasCovid.cda";
     params.dataAccessId = "sql_vacunas_tipo_vacuna";
     return await request(VAC_BASE_URL, params);
+}
+
+function parseRows(data, indexesNames) {
+    const rows = [];
+    try {
+        const pendingIndexes = indexesNames.slice();
+        const indexes = {};
+        const dataObj = xml2json.toJson(data, { object: true });
+        const metadata = dataObj.CdaExport.MetaData.ColumnMetaData
+
+        for (let i = 0; i < metadata.length; ++i) {
+            const metadataCol = metadata[i];
+            const name = metadataCol.name.toLowerCase();
+
+            for (let j = 0; j < pendingIndexes.length; ++j) {
+                let indexName = pendingIndexes[j];
+                if (name.includes(indexName)) {
+                    const index = parseInt(metadataCol.index);
+                    if (isNaN(index)) {
+                        throw new Error("Error parsing index: " + indexName);
+                    }
+                    indexes[indexName] = index;
+                    pendingIndexes.splice(j, 1)
+                    break;
+                }
+            }
+        }
+
+        if (pendingIndexes.length > 0) {
+            throw new Error("Can't find indexes in metadata: " + pendingIndexes.join(", "));
+        }
+
+        const dataRows = dataObj.CdaExport.ResultSet.Row;
+        const dataCol = dataRows.Col;
+
+        function getRow(dataCol) {
+            const values = {};
+            for (let i = 0; i < indexesNames.length; ++i) {
+                const indexName = indexesNames[i];
+                let value = dataCol[indexes[indexName]];
+                if (typeof value === "object" && value.isNull === "true") {
+                    value = null;
+                }
+                values[indexName] = value;
+            }
+            return values;
+        }
+
+        if (dataCol != undefined) {
+            rows.push(getRow(dataCol));
+        }
+        else {
+            for (let r = 0; r < dataRows.length; ++r) {
+                const col = dataRows[r].Col;
+                rows.push(getRow(col));
+            }
+        }
+    } catch (e) {
+       console.log("Error parsing rows: " + e.message);
+    }
+    return rows;
 }
 
 async function downloadUruguayVaccinationData() {
@@ -87,82 +148,37 @@ async function downloadUruguayVaccinationData() {
     }
 
     try {
-        const validDatesData = await getValidDatesData();
-        const validDatesDataObj = xml2json.toJson(validDatesData, { object: true });
-        const validDatesMetadata = validDatesDataObj.CdaExport.MetaData.ColumnMetaData;
-        let minDateIndex = -1, maxDateIndex = -1;
-        for (let i = 0; i < validDatesMetadata.length; ++i) {
-            const metadataCol = validDatesMetadata[i];
-            const name = metadataCol.name.toLowerCase();
-            if (name.includes("fecha_minima")) {
-                minDateIndex = parseInt(metadataCol.index);
-            }
-            else if (name.includes("fecha_maxima")) {
-                maxDateIndex = parseInt(metadataCol.index);
-            }
+        let minDateStr = null;
+        let maxDateStr = null;
+        let minDate = null;
+        let maxDate = null;
+
+        const validDatesData = await fetchValidDatesData();
+        let rows = parseRows(validDatesData, ["fecha_minima", "fecha_maxima"]);
+        if (rows.length > 0) {
+            let firstRow = rows[0];
+            minDate = moment(firstRow["fecha_minima"], "DD-MM-YYYY");
+            maxDate = moment(firstRow["fecha_maxima"], "DD-MM-YYYY");
+            minDateStr = minDate.format("YYYYMMDD");
+            maxDateStr = maxDate.format("YYYYMMDD");
+            vacData.date = maxDate.format("YYYY-MM-DD");
+        } else {
+            throw new Error("Unexpected row count = 0");
         }
 
-        if (minDateIndex == -1 || maxDateIndex == -1) {
-            throw new Error("Can't find valid dates indexes");
-        }
-
-        const validDatesCol = validDatesDataObj.CdaExport.ResultSet.Row.Col;
-
-        const minDate = moment(validDatesCol[minDateIndex], "DD-MM-YYYY");
-        const maxDate = moment(validDatesCol[maxDateIndex], "DD-MM-YYYY");
-        const minDateStr = minDate.format("YYYYMMDD");
-        const maxDateStr = maxDate.format("YYYYMMDD");
-
-        vacData.date = maxDate.format("YYYY-MM-DD")
-
-        const [vacHistoryData, vacTotalData, vacTypeData] = await Promise.allSettled([getVacHistoryData(minDateStr, maxDateStr), getVacTotalData(minDateStr, maxDateStr), getVacTypeData(minDateStr, maxDateStr)]);
+        const [vacHistoryData, vacTotalData, vacTypeData] = await Promise.allSettled([fetchVacHistoryData(minDateStr, maxDateStr), fetchVacTotalData(minDateStr, maxDateStr), fetchVacTypeData(minDateStr, maxDateStr)]);
 
         if (vacHistoryData.status === "fulfilled") {
-            const vacHistoryDataObj = xml2json.toJson(vacHistoryData.value, { object: true });
-            const vacHistoryMetadata = vacHistoryDataObj.CdaExport.MetaData.ColumnMetaData;
+            rows = parseRows(vacHistoryData.value, ["fecha", "sinovac", "pfizer", "astrazeneca"])
 
-            let dateIndex = -1, coronavacIndex = -1, pfizerIndex = -1, astrazenecaIndex = -1;
-            for (let i = 0; i < vacHistoryMetadata.length; ++i) {
-                const metadataCol = vacHistoryMetadata[i];
-                const name = metadataCol.name.toLowerCase();
-
-                if (name.includes("fecha")) {
-                    dateIndex = parseInt(metadataCol.index);
-                }
-                else if (name.includes("sinovac")) {
-                    coronavacIndex = parseInt(metadataCol.index);
-                }
-                else if (name.includes("pfizer")) {
-                    pfizerIndex = parseInt(metadataCol.index);
-                }
-                else if (name.includes("astrazeneca")) {
-                    astrazenecaIndex = parseInt(metadataCol.index);
-                }
-            }
-
-            if (dateIndex == -1 || coronavacIndex == -1 || pfizerIndex == -1 || astrazenecaIndex == -1) {
-                throw new Error("Can't find vac data indexes");
-            }
-
-            const rows = vacHistoryDataObj.CdaExport.ResultSet.Row;
             let lastDate = null;
+
             for (let i = 0; i < rows.length; ++i) {
-                const data = rows[i].Col;
-
-                const date = data[dateIndex].replace("-", "/");
-                let coronavac = data[coronavacIndex];
-                if (coronavac == null || (typeof coronavac === "object" && coronavac.isNull === "true")) {
-                    coronavac = 0;
-                }
-                let pfizer = data[pfizerIndex];
-                if (pfizer == null || (typeof pfizer === "object" && pfizer.isNull === "true")) {
-                    pfizer = 0;
-                }
-
-                let astrazeneca = data[astrazenecaIndex];
-                if (astrazeneca == null || (typeof astrazeneca === "object" && astrazeneca.isNull === "true")) {
-                    astrazeneca = 0;
-                }
+                const row = rows[i];
+                const date = row["fecha"].replace("-", "/");
+                let coronavac = row["sinovac"] || 0;
+                let pfizer = row["pfizer"] || 0;
+                let astrazeneca = row["astrazeneca"] || 0;
 
                 coronavac = parseInt(coronavac);
                 pfizer = parseInt(pfizer);
@@ -200,54 +216,31 @@ async function downloadUruguayVaccinationData() {
         ///////////
 
         if (vacTotalData.status === "fulfilled") {
-            const vacTotalsDataObj = xml2json.toJson(vacTotalData.value, { object: true });
-            const vacTotalsMetadata = vacTotalsDataObj.CdaExport.MetaData.ColumnMetaData;
+            rows = parseRows(vacTotalData.value, ["hora", "dosis pais", "actoshoy", "per1", "per2"])
+            if (rows.length > 0) {
+                firstRow = rows[0];
 
-            let todayDateIndex = -1, totalVacIndex = -1, todayTotalIndex = -1, firstDoseIndex = -1, secondDoseIndex = -1;
-            for (let i = 0; i < vacTotalsMetadata.length; ++i) {
-                const metadataCol = vacTotalsMetadata[i];
-                const name = metadataCol.name.toLowerCase();
+                const todayDate = firstRow["hora"];
+                const todayTotal = firstRow["actoshoy"];
+                const totalVac = firstRow["dosis pais"];
+                const firstDoseTotal = firstRow["per1"];
+                const secondDoseTotal = firstRow["per2"];
 
-                if (name.includes("hora")) {
-                    todayDateIndex = parseInt(metadataCol.index);
-                }
-                else if (name.includes("dosis pais")) {
-                    totalVacIndex = parseInt(metadataCol.index);
-                }
-                else if (name.includes("actoshoy")) {
-                    todayTotalIndex = parseInt(metadataCol.index);
-                }
-                else if (name.includes("per1")) {
-                    firstDoseIndex = parseInt(metadataCol.index);
-                }
-                else if (name.includes("per2")) {
-                    secondDoseIndex = parseInt(metadataCol.index);
+                vacData.todayDate = todayDate;
+                vacData.todayTotal = parseInt(todayTotal);
+                vacData.firstDoseTotal = parseInt(firstDoseTotal);
+                vacData.secondDoseTotal = parseInt(secondDoseTotal);
+                const dataTotalVac = parseInt(totalVac);
+                vacData.total = Math.max(dataTotalVac, vacData.firstDoseTotal + vacData.secondDoseTotal);
+
+                if (dataTotalVac <= 0) {
+                    console.log("Vac total inconsistent: <= 0");
+                    vacDataFailed = true;
                 }
             }
-
-            if (todayDateIndex == -1 || totalVacIndex == -1 || todayTotalIndex == -1 || firstDoseIndex == -1 || secondDoseIndex == -1) {
-                throw new Error("Can't find vac total data indexes");
-            }
-
-            const totalRows = vacTotalsDataObj.CdaExport.ResultSet.Row;
-            const totalsData = totalRows.Col;
-
-            const todayDate = totalsData[todayDateIndex];
-            const todayTotal = totalsData[todayTotalIndex];
-            const totalVac = totalsData[totalVacIndex];
-            const firstDoseTotal = totalsData[firstDoseIndex];
-            const secondDoseTotal = totalsData[secondDoseIndex];
-
-            vacData.todayDate = todayDate;
-            vacData.todayTotal = parseInt(todayTotal);
-            vacData.firstDoseTotal = parseInt(firstDoseTotal);
-            vacData.secondDoseTotal = parseInt(secondDoseTotal);
-            const dataTotalVac = parseInt(totalVac);
-            vacData.total = Math.max(dataTotalVac, vacData.firstDoseTotal + vacData.secondDoseTotal);
-
-            if (dataTotalVac <= 0) {
-                console.log("Vac total inconsistent: <= 0");
+            else {
                 vacDataFailed = true;
+                console.log("Unexpected row count = 0");
             }
         }
         else {
@@ -258,23 +251,25 @@ async function downloadUruguayVaccinationData() {
         ///////
 
         if (vacTypeData.status === "fulfilled") {
-            const vacTypeDataObj = xml2json.toJson(vacTypeData.value, { object: true });
-            const vacTypeRows = vacTypeDataObj.CdaExport.ResultSet.Row;
+            rows = parseRows(vacTypeData.value, ["tipo de vacuna", "cantidad"]);
+
             let coronavacTotal = 0;
             let pfizerTotal = 0;
             let astrazenecaTotal = 0;
-            for (let i = 0; i < vacTypeRows.length; ++i) {
-                const col = vacTypeRows[i].Col;
-                const name = col[0];
-                const value = col[1];
+
+            for (let i = 0; i < rows.length; ++i) {
+                const row = rows[i];
+                const name = row["tipo de vacuna"];
+                const total = row["cantidad"];
+
                 if (name.toLowerCase().includes("coronavac")) {
-                    coronavacTotal = parseInt(value);
+                    coronavacTotal = parseInt(total);
                 }
                 else if (name.toLowerCase().includes("pfizer")) {
-                    pfizerTotal = parseInt(value);
+                    pfizerTotal = parseInt(total);
                 }
                 else if (name.toLowerCase().includes("astrazeneca")) {
-                    astrazenecaTotal = parseInt(value);
+                    astrazenecaTotal = parseInt(total);
                 }
             }
 
@@ -286,7 +281,7 @@ async function downloadUruguayVaccinationData() {
             }
 
             if (coronavacTotal == 0 || pfizerTotal == 0 || astrazenecaTotal == 0) {
-                console.log("Vac type inconsistent: Sinovac or Pfizer == 0");
+                console.log("Vac type inconsistent: Sinovac, Pfizer or AstraZeneca == 0");
                 vacDataFailed = true;
             }
         }
