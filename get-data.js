@@ -102,7 +102,7 @@ async function getUpdatedDate() {
     const rows = html('tbody tr');
 
     let lastDep = null
-    for (let i = 1; i < rows.length; ++i) {
+    for (let i = 2; i < rows.length; ++i) {
         const row = rows[i];
         const tdSex = row.children[0];
         const tdAge = row.children[1];
