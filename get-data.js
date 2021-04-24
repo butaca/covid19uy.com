@@ -1,5 +1,4 @@
 const axios = require('axios');
-const fs = require('fs');
 const moment = require("moment");
 const querystring = require('querystring');
 const cheerio = require("cheerio");
@@ -24,22 +23,41 @@ async function request(url, params) {
     }
 }
 
-async function queryValue(num, where, outStatistics) {
-    const url = BASE_URL + num + "/query"
+async function queryIntValue(type, onStatisticField) {
+    const url = BASE_URL + type + "/query"
+
+    const where = (type == 1 ? "publicar_sino=1" : "1=1");
+
+    const outStatistics = [
+        {
+            statisticType: "sum",
+            onStatisticField: onStatisticField,
+            outStatisticFieldName: "value"
+        }
+    ]
 
     const params = {
         f: "json",
         where: where,
         returnGeometry: false,
-        outStatistics: outStatistics,
+        outStatistics: JSON.stringify(outStatistics),
         resultType: "standard",
         cacheHint: "false"
     };
 
     const data = await request(url, params);
-    let value = data.features[0].attributes.value;
+    let value = 0;
+    try {
+        value = data.features[0].attributes.value;
+    }
+    catch (e) {
+        console.error("Error in queryIntValue when getting " + onStatisticField + ": " + e.message);
+    }
 
-    if (value == null) {
+    const parsedValue = parseInt(value)
+
+    if (isNaN(parsedValue)) {
+        console.error("NaN value when getting " + onStatisticField);
         value = 0;
     }
 
@@ -48,23 +66,31 @@ async function queryValue(num, where, outStatistics) {
 
 async function getUpdatedDate() {
     const data = await request(BASE_URL + '0/', { f: "json" });
-    return moment(data.editingInfo.lastEditDate).format("YYYY-MM-DD");
+    let date = null;
+    try {
+        date = moment(data.editingInfo.lastEditDate);
+    }
+    catch (e) {
+        date = moment();
+        console.error("Error getting updated date: " + e.message);
+    }
+    return date.format("YYYY-MM-DD")
 }
 
-(async function () {
+async function fetchMonitorData() {
     const [date, tests, activeCases, cases, recovered, deaths, icu, imcu, hc, hcRecovered, hcDeaths, newCases] = await Promise.all([
         getUpdatedDate(),
-        queryValue(1, "publicar_sino=1", '[{"statisticType":"sum","onStatisticField":"test_procesados","outStatisticFieldName":"value"}]'),
-        queryValue(0, "1=1", '[{"statisticType":"sum","onStatisticField":"CasosActivos","outStatisticFieldName":"value"}]'),
-        queryValue(0, "1=1", '[{"statisticType":"sum","onStatisticField":"Casos_Positivos","outStatisticFieldName":"value"}]'),
-        queryValue(0, "1=1", '[{"statisticType":"sum","onStatisticField":"Casos_Recuperados","outStatisticFieldName":"value"}]'),
-        queryValue(0, "1=1", '[{"statisticType":"sum","onStatisticField":"Fallecidos","outStatisticFieldName":"value"}]'),
-        queryValue(1, "publicar_sino=1", '[{"statisticType":"sum","onStatisticField":"casos_cuidados_intensivos","outStatisticFieldName":"value"}]'),
-        queryValue(1, "publicar_sino=1", '[{"statisticType":"sum","onStatisticField":"casos_cuidados_intermedios","outStatisticFieldName":"value"}]'),
-        queryValue(1, "publicar_sino=1", '[{"statisticType":"sum","onStatisticField":"positivos_personal_salud","outStatisticFieldName":"value"}]'),
-        queryValue(1, "publicar_sino=1", '[{"statisticType":"sum","onStatisticField":"Pacientes_Recuperados","outStatisticFieldName":"value"}]'),
-        queryValue(1, "publicar_sino=1", '[{"statisticType":"sum","onStatisticField":"Fallecidos","outStatisticFieldName":"value"}]'),
-        queryValue(1, "publicar_sino=1", '[{"statisticType":"sum","onStatisticField":"Casos_Sospechosos","outStatisticFieldName":"value"}]')
+        queryIntValue(1, "test_procesados"),
+        queryIntValue(0, "CasosActivos"),
+        queryIntValue(0, "Casos_Positivos"),
+        queryIntValue(0, "Casos_Recuperados"),
+        queryIntValue(0, "Fallecidos"),
+        queryIntValue(1, "casos_cuidados_intensivos"),
+        queryIntValue(1, "casos_cuidados_intermedios"),
+        queryIntValue(1, "positivos_personal_salud"),
+        queryIntValue(1, "Pacientes_Recuperados"),
+        queryIntValue(1, "Fallecidos"),
+        queryIntValue(1, "Casos_Sospechosos")
     ]);
 
     let data = {
@@ -85,8 +111,20 @@ async function getUpdatedDate() {
         data.activeCases = activeCases;
     }
 
-    console.log(JSON.stringify(data));
+    return data;
+}
 
+function getTDValue(td) {
+    try {
+        return td.children[0].children[0].children[0].data;
+    }
+    catch (e) {
+        console.error("Error getting td value: " + e.message);
+        return 0;
+    }
+}
+
+async function fetchDeathsData() {
     const todayDate = moment();
     const todayDatStr = todayDate.format("YYYY-MM-DD");
 
@@ -102,43 +140,55 @@ async function getUpdatedDate() {
     const rows = html('tbody tr');
 
     let lastDep = null
+    // skip the first two rows since they are headers and not data
     for (let i = 2; i < rows.length; ++i) {
         const row = rows[i];
-        const tdSex = row.children[0];
-        const tdAge = row.children[1];
-        const tdDep = row.children[2];
-        const value = tdAge.children[0].children[0].children[0].data;
-        const sex = tdSex.children[0].children[0].children[0].data;
-        let dep;
-        if (tdDep != undefined) {
-            const depData = tdDep.children[0].children[0].children[0].data;
-            const words = depData.split(" ");
-            dep = words.map((word) => {
-                if(word.length > 1) {
-                    return word[0].toUpperCase() + word.substring(1).toLowerCase();
-                }
-                else {
-                    return word.toLowerCase();
-                }
-            }).join(" ");
-            lastDep = dep;
-        }
-        else {
-            dep = lastDep;
-        }
+        if (row.children.length > 1) {
+            const tdSex = row.children[0];
+            const tdAge = row.children[1];
+            const tdDep = row.children[2];
 
-        if(value != null && value.trim().length > 0) {
-            if(!day.deps[dep]) {
-                day.deps[dep] = [];
+            const age = getTDValue(tdAge);
+            const sex = getTDValue(tdSex);
+
+            let dep = lastDep;
+            if (tdDep != undefined) {
+                const depData = getTDValue(tdDep);
+                const words = depData.split(" ");
+                dep = words.map((word) => {
+                    if (word.length > 1) {
+                        return word[0].toUpperCase() + word.substring(1).toLowerCase();
+                    }
+                    else {
+                        return word.toLowerCase();
+                    }
+                }).join(" ");
+                lastDep = dep;
             }
 
-            day.deps[dep].push({
-                age: parseInt(value.trim()),
-                s: sex.trim()
-            });
+            if (age != null && age.trim().length > 0) {
+                if (!day.deps[dep]) {
+                    day.deps[dep] = [];
+                }
+
+                day.deps[dep].push({
+                    age: parseInt(age.trim()),
+                    s: sex.trim()
+                });
+            }
+        }
+        else {
+            console.error("Unexpected row length of " + row.length);
         }
     }
-    console.log("\n" + JSON.stringify(day));
+    return day;
+}
+
+(async function () {
+    const data = await fetchMonitorData();
+    console.log(JSON.stringify(data));
+    const deathsData = await fetchDeathsData();
+    console.log("\n" + JSON.stringify(deathsData));
 })();
 
 
