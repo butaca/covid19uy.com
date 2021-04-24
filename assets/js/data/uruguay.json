@@ -5174,6 +5174,22 @@
             "lateDeletedCases": [
                 12
             ]
+        },
+        {
+            "date": "2021-04-24",
+            "tests": 13107,
+            "cases": 182326,
+            "recovered": 151669,
+            "deaths": 2283,
+            "icu": 519,
+            "imcu": 0,
+            "hc": 6431,
+            "hcRecovered": 5994,
+            "hcDeaths": 14,
+            "newCases": 2794,
+            "lateDeletedCases": [
+                5
+            ]
         }
     ]
 }
