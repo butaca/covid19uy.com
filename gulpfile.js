@@ -1,6 +1,6 @@
 'use strict';
 
-const { BASE_DATA_DIR, request } = require('./gulp/util');
+const { BASE_DATA_DIR, request, writeFileAndCache, copyFromCache } = require('./gulp/util');
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const exec = require('child_process').exec;
@@ -108,25 +108,26 @@ async function downloadData() {
         if (response.status !== 200) {
             throw new Error('Unexpected HTTP code when downloading world data: ' + response.status);
         }
+        const result = {};
+        const html = cheerio.load(response.data);
+        html(".maincounter-number").filter((i, el) => {
+            let count = el.children[0].next.children[0].data || "0";
+            count = parseInt(count.replace(/,/g, "") || "0", 10);
+            if (i === 0) {
+                result.cases = count;
+            } else if (i === 1) {
+                result.deaths = count;
+            } else {
+                result.recovered = count;
+            }
+        });
+        updatedDate = result.updated = Math.floor(Date.now() / 1000);
+        await writeFileAndCache(DATA_DIR, "world.json", JSON.stringify(result));
     }
-    catch (err) {
-        throw err;
+    catch (e) {
+        console.log("Error getting world data, getting it from the cache");
+        await copyFromCache(DATA_DIR, "world.json", null);
     }
-    const result = {};
-    const html = cheerio.load(response.data);
-    html(".maincounter-number").filter((i, el) => {
-        let count = el.children[0].next.children[0].data || "0";
-        count = parseInt(count.replace(/,/g, "") || "0", 10);
-        if (i === 0) {
-            result.cases = count;
-        } else if (i === 1) {
-            result.deaths = count;
-        } else {
-            result.recovered = count;
-        }
-    });
-    updatedDate = result.updated = Math.floor(Date.now() / 1000);
-    await writeFilePromise(DATA_DIR + "world.json", JSON.stringify(result));
 }
 
 async function downloadPopulationData() {
@@ -136,20 +137,20 @@ async function downloadPopulationData() {
         if (response.status !== 200) {
             throw new Error('Unexpected HTTP code when downloading world data: ' + response.status);
         }
+        const result = {};
+        const html = cheerio.load(response.data);
+        html("table tbody tr").each((i, el) => {
+            const country = el.children[3].children[0].children[0].data.toLowerCase();
+            if (country === 'uruguay' || Object.keys(Countries).indexOf(country) != -1) {
+                const population = parseInt(el.children[5].children[0].data.replace(/,/g, ""));
+                result[country] = population;
+            }
+        });
+        await writeFileAndCache(DATA_DIR, "worldPopulation.json", JSON.stringify(result));
+    } catch (e) {
+        console.log("Error getting world population data, getting it from the cache");
+        await copyFromCache(DATA_DIR, "worldPopulation.json", null);
     }
-    catch (err) {
-        throw err;
-    }
-    const result = {};
-    const html = cheerio.load(response.data);
-    html("table tbody tr").each((i, el) => {
-        const country = el.children[3].children[0].children[0].data.toLowerCase();
-        if (country === 'uruguay' || Object.keys(Countries).indexOf(country) != -1) {
-            const population = parseInt(el.children[5].children[0].data.replace(/,/g, ""));
-            result[country] = population;
-        }
-    });
-    await writeFilePromise(DATA_DIR + "worldPopulation.json", JSON.stringify(result));
 }
 
 const watch = gulp.parallel(sassWatch, watchChartData);
@@ -223,19 +224,24 @@ async function downloadCountryData(file, property) {
 }
 
 async function downloadCountriesData() {
-    await Promise.all([
-        downloadCountryData('time_series_covid19_confirmed_global.csv', 'cases'),
-        downloadCountryData('time_series_covid19_recovered_global.csv', 'recovered'),
-        downloadCountryData('time_series_covid19_deaths_global.csv', 'deaths')
-    ]);
+    try {
+        await Promise.all([
+            downloadCountryData('time_series_covid19_confirmed_global.csv', 'cases'),
+            downloadCountryData('time_series_covid19_recovered_global.csv', 'recovered'),
+            downloadCountryData('time_series_covid19_deaths_global.csv', 'deaths')
+        ]);
 
-    var regionObj = {
-        firstDate: firstDate.format("YYYY-MM-DD"),
-        lastDate: lastDate.format("YYYY-MM-DD"),
-        data: Countries
+        var regionObj = {
+            firstDate: firstDate.format("YYYY-MM-DD"),
+            lastDate: lastDate.format("YYYY-MM-DD"),
+            data: Countries
+        }
+
+        await writeFileAndCache(DATA_DIR, "region.json", JSON.stringify(regionObj));
+    } catch (e) {
+        console.log("Error getting region data, getting it from the cache");
+        await copyFromCache(DATA_DIR, "region.json", null);
     }
-
-    return writeFilePromise(DATA_DIR + "region.json", JSON.stringify(regionObj));
 }
 
 async function getDepartmentsData() {
@@ -260,20 +266,26 @@ async function getVisUpdatedDate() {
 }
 
 async function downloadDepartmentsData() {
-    const data = {
-        departments: {}
-    };
+    try {
+        const data = {
+            departments: {}
+        };
 
-    const [date, respData] = await Promise.all([getVisUpdatedDate(), getDepartmentsData()]);
+        const [date, respData] = await Promise.all([getVisUpdatedDate(), getDepartmentsData()]);
 
-    data.date = date;
+        data.date = date;
 
-    for (let i = 0; i < respData.features.length; ++i) {
-        const attributes = respData.features[i].attributes;
-        data.departments[attributes.NOMBRE] = attributes.CasosActivos;
+        for (let i = 0; i < respData.features.length; ++i) {
+            const attributes = respData.features[i].attributes;
+            data.departments[attributes.NOMBRE] = attributes.CasosActivos;
+        }
+
+        await writeFileAndCache(DATA_DIR, "uruguayDepartments.json", JSON.stringify(data));
     }
-
-    await writeFilePromise(DATA_DIR + "uruguayDepartments.json", JSON.stringify(data));
+    catch (e) {
+        console.log("Error getting Uruguay departments data, getting it from the cache");
+        await copyFromCache(DATA_DIR, "uruguayDepartments.json", null);
+    }
 }
 
 async function getICUData() {
@@ -292,27 +304,32 @@ async function getICUData() {
 }
 
 async function downloadICUData() {
-    const icuData = await getICUData();
-    const icu = icuData.features[0].attributes;
-    const data = {
-        beds: {
-            total: icu.cam_dotacion,
-            blocked: icu.cam_bloq,
-            available: icu.cam_hab,
-            free: icu.cam_libres,
-            expansionPotential: icu.cam_amp,
-            freeRespiratoryIsolation: icu.cam_libres_ais_resp,
-        },
-        occupation: {
-            total: icu.cam_ocu_tot,
-            covid19: icu.cam_ocu_covid19,
-            irag: icu.cam_ocu_rag,
-            other: icu.cam_ocu_otro,
-        },
-        lastEditedDate: icu.last_edited_date
-    };
+    try {
+        const icuData = await getICUData();
+        const icu = icuData.features[0].attributes;
+        const data = {
+            beds: {
+                total: icu.cam_dotacion,
+                blocked: icu.cam_bloq,
+                available: icu.cam_hab,
+                free: icu.cam_libres,
+                expansionPotential: icu.cam_amp,
+                freeRespiratoryIsolation: icu.cam_libres_ais_resp,
+            },
+            occupation: {
+                total: icu.cam_ocu_tot,
+                covid19: icu.cam_ocu_covid19,
+                irag: icu.cam_ocu_rag,
+                other: icu.cam_ocu_otro,
+            },
+            lastEditedDate: icu.last_edited_date
+        };
 
-    await writeFilePromise(DATA_DIR + "icu.json", JSON.stringify(data));
+        await writeFileAndCache(DATA_DIR, "icu.json", JSON.stringify(data));
+    } catch (e) {
+        console.log("Error getting ICU data, getting it from the cache");
+        await copyFromCache(DATA_DIR, "icu.json", null);
+    }
 }
 
 async function screenshots() {

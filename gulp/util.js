@@ -2,6 +2,10 @@ const querystring = require('querystring');
 const BASE_DATA_DIR = "assets/js/data/";
 const CACHE_DIR = "cache/";
 const axios = require("axios");
+const fs = require('fs');
+const { promisify } = require('util');
+const writeFilePromise = promisify(fs.writeFile);
+const copyFilePromise = promisify(fs.copyFile);
 
 async function request(url, params) {
     url += "?" + querystring.encode(params);
@@ -18,8 +22,30 @@ async function request(url, params) {
     }
 }
 
+async function writeFileAndCache(dir, filename, data) {
+    const path = dir + filename;
+    const pathCache = CACHE_DIR + filename;
+    await writeFilePromise(path, data);
+    if (!fs.existsSync(CACHE_DIR)) {
+        fs.mkdirSync(CACHE_DIR);
+    }
+    await copyFilePromise(path, pathCache);
+}
+
+async function copyFromCache(dir, filename, defaultData) {
+    const path = dir + filename;
+    const pathCache = CACHE_DIR + filename;
+    if (fs.existsSync(pathCache)) {
+        await copyFilePromise(pathCache, path);
+    }
+    else if (defaultData) {
+        await writeFilePromise(path, defaultData);
+    }
+}
+
 module.exports = {
     request: request,
     BASE_DATA_DIR: BASE_DATA_DIR,
-    CACHE_DIR: CACHE_DIR
+    writeFileAndCache: writeFileAndCache,
+    copyFromCache: copyFromCache
 };

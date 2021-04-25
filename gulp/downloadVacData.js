@@ -3,12 +3,8 @@ const axios = require("axios");
 axios.default.defaults.timeout = 60000;
 const moment = require("moment");
 const xml2json = require('xml2json');
-const fs = require('fs');
-const { promisify } = require('util');
-const writeFilePromise = promisify(fs.writeFile);
-const copyFilePromise = promisify(fs.copyFile);
 const regression = require("regression");
-const { BASE_DATA_DIR, CACHE_DIR, request } = require('./util');
+const { BASE_DATA_DIR, request, writeFileAndCache, copyFromCache } = require('./util');
 const DATA_DIR = BASE_DATA_DIR;
 
 const VAC_BASE_URL = "https://monitor.uruguaysevacuna.gub.uy/plugin/cda/api/doQuery";
@@ -311,23 +307,12 @@ async function downloadUruguayVaccinationData() {
     }
 
     const vacFileName = "uruguayVaccination.json";
-    const vacDataFile = DATA_DIR + vacFileName;
-    const cacheVacDataFile = CACHE_DIR + vacFileName;
 
     if (!vacDataFailed) {
-        await writeFilePromise(vacDataFile, JSON.stringify(vacData));
-        if (!fs.existsSync(CACHE_DIR)) {
-            fs.mkdirSync(CACHE_DIR);
-        }
-        await copyFilePromise(vacDataFile, cacheVacDataFile);
+        await writeFileAndCache(DATA_DIR, vacFileName, JSON.stringify(vacData));
     }
     else {
-        if (fs.existsSync(cacheVacDataFile)) {
-            await copyFilePromise(cacheVacDataFile, vacDataFile);
-        }
-        else {
-            await writeFilePromise(vacDataFile, JSON.stringify(vacData));
-        }
+        await copyFromCache(DATA_DIR, vacFileName, JSON.stringify(vacData));
     }
 }
 
