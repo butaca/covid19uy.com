@@ -116,7 +116,7 @@ async function fetchMonitorData() {
 
 function getTDValue(td) {
     try {
-        return td.children[0].children[0].children[0].data;
+        return td.children[0].children[0].children[0].children[0].children[0].children[0].data;
     }
     catch (e) {
         console.error("Error getting td value: " + e.message);
@@ -163,6 +163,12 @@ async function fetchDeathsData() {
                         return word.toLowerCase();
                     }
                 }).join(" ");
+
+                dep = dep.replace("Paysandu", "Paysandú");
+                dep = dep.replace("Rio Negro", "Río Negro");
+                dep = dep.replace("San Jose", "San José");
+                dep = dep.replace("Tacuarembo", "Tacuarembó");
+
                 lastDep = dep;
             }
 
