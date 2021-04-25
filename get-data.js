@@ -116,7 +116,15 @@ async function fetchMonitorData() {
 
 function getTDValue(td) {
     try {
-        return td.children[0].children[0].children[0].children[0].children[0].children[0].data;
+        let elem = td;
+        while(elem.children && elem.children.length > 0) {
+            elem = elem.children[0];
+        }
+        let value = elem.data;
+        if(!value) {
+            value = "";
+        }
+        return value;
     }
     catch (e) {
         console.error("Error getting td value: " + e.message);
@@ -153,7 +161,7 @@ async function fetchDeathsData() {
 
             let dep = lastDep;
             if (tdDep != undefined) {
-                const depData = getTDValue(tdDep);
+                const depData = getTDValue(tdDep).trim();
                 const words = depData.split(" ");
                 dep = words.map((word) => {
                     if (word.length > 1) {
