@@ -210,6 +210,11 @@ describe('Test data', function () {
                                 totalDeaths += 2;
                             }
 
+                            // an extra death was reported on 2021-04-26, but it wasn't informed which one
+                            if (date.getTime() == new Date("2021-04-26" + DATE_DEFAULT_TIME).getTime()) {
+                                totalDeaths--;
+                            }
+
                             deathHistory.push({ date: date, deaths: totalDeaths });
                         }
                     }
