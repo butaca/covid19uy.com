@@ -5228,7 +5228,7 @@
             "tests": 14368,
             "cases": 190096,
             "recovered": 160362,
-            "deaths": 2452,
+            "deaths": 2451,
             "icu": 534,
             "imcu": 0,
             "hc": 6530,
@@ -5238,6 +5238,22 @@
             "todayDeaths": 62,
             "lateDeletedCases": [
                 22
+            ]
+        },
+        {
+            "date": "2021-04-28",
+            "tests": 15171,
+            "cases": 193027,
+            "recovered": 162407,
+            "deaths": 2497,
+            "icu": 535,
+            "imcu": 0,
+            "hc": 6582,
+            "hcRecovered": 6193,
+            "hcDeaths": 15,
+            "newCases": 2939,
+            "lateDeletedCases": [
+                8
             ]
         }
     ]

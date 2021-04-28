@@ -91,7 +91,8 @@
         "id": "chart-deaths-new",
         "title": "graphDeathsNew",
         "desc": "graphDeathsNewDesc",
-        "displayDeathsInfo": true
+        "displayDeathsInfo": true,
+        "disabled": true
     },
     {
         "id": "chart-daily-deaths",

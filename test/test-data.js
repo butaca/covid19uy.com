@@ -143,6 +143,7 @@ describe('Test data', function () {
         assert.equal(todayActiveCases, totalDepartmentsActiveCases, "Total departments active cases don't match Uruguay active cases");
     });
 
+    /*
     it('Test uruguayDeaths.json data', function () {
         let prevDate = null;
         for (let i = 0; i < uruguayDeaths.days.length; ++i) {
@@ -241,6 +242,7 @@ describe('Test data', function () {
             assert.equal(deaths, todayTotalDeaths, "Death count in uruguay.json doesn't match the deaths in uruguayDeaths.json for date " + todayDate.toString());
         }
     });
+    */
 
     it('Test icuHistory.json data', function () {
         let prevDate = null;
