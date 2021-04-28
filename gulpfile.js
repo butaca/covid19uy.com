@@ -1,6 +1,6 @@
 'use strict';
 
-const { BASE_DATA_DIR, request, writeFileAndCache, copyFromCache } = require('./gulp/util');
+const { BASE_DATA_DIR, request, writeFileAndCache, copyFromCache, notify } = require('./gulp/util');
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const exec = require('child_process').exec;
@@ -11,7 +11,6 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const moment = require("moment");
 const autoprefixer = require('gulp-autoprefixer');
-const { promisify } = require('util');
 const csv = require('csv-parser');
 const DATA_DIR = BASE_DATA_DIR;
 const uruguay = require("./" + DATA_DIR + "uruguay.json");
@@ -19,8 +18,6 @@ const VIS_BASE_URL = "https://services5.arcgis.com/Th0Tmkhiy5BQYoxP/arcgis/rest/
 const VIS_ICU_BASE_URL = "https://services5.arcgis.com/Th0Tmkhiy5BQYoxP/arcgis/rest/services/OcupacionUY_vista/FeatureServer/";
 const { buildChartData, watchChartData } = require('./gulp/buildChartData');
 const { downloadUruguayVaccinationData } = require('./gulp/downloadVacData');
-
-const writeFilePromise = promisify(fs.writeFile);
 
 const nodeModules = './node_modules';
 
@@ -125,7 +122,7 @@ async function downloadData() {
         await writeFileAndCache(DATA_DIR, "world.json", JSON.stringify(result));
     }
     catch (e) {
-        console.log("Error getting world data, getting it from the cache");
+        notify("Error getting world data, getting it from the cache: " + e.message)
         await copyFromCache(DATA_DIR, "world.json", null);
     }
 }
@@ -148,7 +145,7 @@ async function downloadPopulationData() {
         });
         await writeFileAndCache(DATA_DIR, "worldPopulation.json", JSON.stringify(result));
     } catch (e) {
-        console.log("Error getting world population data, getting it from the cache");
+        notify("Error getting world population data, getting it from the cache: " + e.message);
         await copyFromCache(DATA_DIR, "worldPopulation.json", null);
     }
 }
@@ -239,7 +236,7 @@ async function downloadCountriesData() {
 
         await writeFileAndCache(DATA_DIR, "region.json", JSON.stringify(regionObj));
     } catch (e) {
-        console.log("Error getting region data, getting it from the cache");
+        notify("Error getting region data, getting it from the cache: " + e.message);
         await copyFromCache(DATA_DIR, "region.json", null);
     }
 }
@@ -283,7 +280,7 @@ async function downloadDepartmentsData() {
         await writeFileAndCache(DATA_DIR, "uruguayDepartments.json", JSON.stringify(data));
     }
     catch (e) {
-        console.log("Error getting Uruguay departments data, getting it from the cache");
+        notify("Error getting Uruguay departments data, getting it from the cache: " + e.message);
         await copyFromCache(DATA_DIR, "uruguayDepartments.json", null);
     }
 }
@@ -327,7 +324,7 @@ async function downloadICUData() {
 
         await writeFileAndCache(DATA_DIR, "icu.json", JSON.stringify(data));
     } catch (e) {
-        console.log("Error getting ICU data, getting it from the cache");
+        notify("Error getting ICU data, getting it from the cache: " + e.message);
         await copyFromCache(DATA_DIR, "icu.json", null);
     }
 }
@@ -342,4 +339,5 @@ exports.develop = gulp.series(gulp.parallel(downloadData, downloadCountriesData,
 exports.deploy = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData, downloadICUData, buildChartData), updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);
 exports.default = exports.develop;
 exports.screenshots = screenshots;
+
 

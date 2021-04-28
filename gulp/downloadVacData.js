@@ -4,7 +4,7 @@ axios.default.defaults.timeout = 60000;
 const moment = require("moment");
 const xml2json = require('xml2json');
 const regression = require("regression");
-const { BASE_DATA_DIR, request, writeFileAndCache, copyFromCache } = require('./util');
+const { BASE_DATA_DIR, request, writeFileAndCache, copyFromCache, notify } = require('./util');
 const DATA_DIR = BASE_DATA_DIR;
 
 const VAC_BASE_URL = "https://monitor.uruguaysevacuna.gub.uy/plugin/cda/api/doQuery";
@@ -302,7 +302,7 @@ async function downloadUruguayVaccinationData() {
         vacData.eta = eta.format("YYYY-MM-DD");
 
     } catch (e) {
-        console.log("Error getting vaccination data. " + e.name + ": " + e.message);
+        notify("Error getting vaccination data. " + e.name + ": " + e.message);
         vacDataFailed = true;
     }
 

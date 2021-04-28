@@ -6,6 +6,18 @@ const fs = require('fs');
 const { promisify } = require('util');
 const writeFilePromise = promisify(fs.writeFile);
 const copyFilePromise = promisify(fs.copyFile);
+const Pushover = require('pushover-notifications');
+
+let push = null;
+if (process.env.PUSHOVER_USER && process.env.PUSHOVER_TOKEN) {
+    push = new Pushover({
+        user: process.env.PUSHOVER_USER,
+        token: process.env.PUSHOVER_TOKEN,
+        onerror: function (message) {
+            console.log("Error sending Pushover notification: " + message);
+        }
+    });
+}
 
 async function request(url, params) {
     url += "?" + querystring.encode(params);
@@ -43,9 +55,17 @@ async function copyFromCache(dir, filename, defaultData) {
     }
 }
 
+function notify(message) { 
+    if (push) {
+        push.send({ message: message });
+    }
+    console.log(message);
+}
+
 module.exports = {
     request: request,
     BASE_DATA_DIR: BASE_DATA_DIR,
     writeFileAndCache: writeFileAndCache,
-    copyFromCache: copyFromCache
+    copyFromCache: copyFromCache,
+    notify: notify
 };
