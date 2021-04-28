@@ -15,12 +15,14 @@ function chart(chartData, lang) {
                         backgroundColor: "#01C6B2FF",
                         label: lang.healthCareWorkerCases.other,
                         data: hcData,
-                    },
+                    }
+                    /*,
                     {
                         backgroundColor: "#97DBEAFF",
                         label: lang.dailyCases.other,
                         data: chartData.dailyCases.slice(chartData.firstValidHealthcareWorkerIndex),
-                    }]
+                    }*/
+                ]
             },
             options: options
         });

@@ -126,7 +126,7 @@
         "other": "Casos diarios de trabajadores de la salud"
     },
     "graphTitleHealthcareWorkersDesc": {
-        "other": "Cantidad de casos nuevos en cada día y cuántos de ellos corresponden a trabajadores de la salud. No se consideran los casos nuevos reportados fuera de fecha por falta de información."
+        "other": "Cantidad de casos nuevos en cada día correspondientes a trabajadores de la salud. No se consideran los casos nuevos reportados fuera de fecha por falta de información."
     },
     "graphTitleHealthcareWorkersPercent": {
         "other": "Porcentaje de casos de trabajadores de la salud"

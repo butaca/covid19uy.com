@@ -126,7 +126,7 @@
         "other": "Daily healthcare workers cases"
     },
     "graphTitleHealthcareWorkersDesc": {
-        "other": "Number of new cases in each day and how many of them correspond to healthcare workers. New cases reported out of date are not considered due to lack of information."
+        "other": "Number of new cases in each day that correspond to healthcare workers. New cases reported out of date are not considered due to lack of information."
     },
     "graphTitleHealthcareWorkersPercent": {
         "other": "Percentage of healthcare workers cases"
