@@ -143,7 +143,6 @@ describe('Test data', function () {
         assert.equal(todayActiveCases, totalDepartmentsActiveCases, "Total departments active cases don't match Uruguay active cases");
     });
 
-    /*
     it('Test uruguayDeaths.json data', function () {
         let prevDate = null;
         for (let i = 0; i < uruguayDeaths.days.length; ++i) {
@@ -216,6 +215,11 @@ describe('Test data', function () {
                                 totalDeaths--;
                             }
 
+                            // an extra death was reported on 2021-04-27, but it wasn't informed which one
+                            if (date.getTime() == new Date("2021-04-27" + DATE_DEFAULT_TIME).getTime()) {
+                                totalDeaths--;
+                            }
+
                             deathHistory.push({ date: date, deaths: totalDeaths });
                         }
                     }
@@ -242,7 +246,6 @@ describe('Test data', function () {
             assert.equal(deaths, todayTotalDeaths, "Death count in uruguay.json doesn't match the deaths in uruguayDeaths.json for date " + todayDate.toString());
         }
     });
-    */
 
     it('Test icuHistory.json data', function () {
         let prevDate = null;
