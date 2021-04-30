@@ -149,7 +149,7 @@ async function fetchDeathsData() {
 
     let lastDep = null
     // skip the first row since it is a header and not data
-    for (let i = 1; i < rows.length; ++i) {
+    for (let i = 2; i < rows.length; ++i) {
         const row = rows[i];
         if (row.children.length > 1) {
             const tdSex = row.children[0];
