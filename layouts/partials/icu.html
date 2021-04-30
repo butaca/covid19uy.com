@@ -9,11 +9,11 @@
 {{ define "partials/get-occupation-progress-class" }}
 {{ $value := . }}
 {{ $class := "is-red" }}
-{{- if lt $value 25 -}}
+{{- if lt $value 50 -}}
 {{- $class = "is-green" -}}
-{{- else if lt $value 50 -}}
+{{- else if lt $value 70 -}}
 {{- $class = "is-yellow" -}}
-{{- else if lt $value 75 -}}
+{{- else if lt $value 85 -}}
 {{- $class = "is-orange" -}}
 {{- end -}}
 {{- return $class -}}
