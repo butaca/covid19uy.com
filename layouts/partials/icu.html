@@ -6,14 +6,27 @@
 {{- $occupationCovid := div $today.occupation.covid19 $today.beds.available -}}
 {{- $occupationCovidPercent := lang.NumFmt 1 (mul 100 $occupationCovid) -}}
 
-{{ define "partials/get-occupation-progress-class" }}
+{{ define "partials/get-occupation-progress-total-class" }}
 {{ $value := . }}
 {{ $class := "is-red" }}
-{{- if lt $value 50 -}}
+{{- if lt $value 51 -}}
 {{- $class = "is-green" -}}
-{{- else if lt $value 70 -}}
+{{- else if lt $value 71 -}}
 {{- $class = "is-yellow" -}}
-{{- else if lt $value 85 -}}
+{{- else if le $value 85 -}}
+{{- $class = "is-orange" -}}
+{{- end -}}
+{{- return $class -}}
+{{- end -}}
+
+{{ define "partials/get-occupation-progress-covid-class" }}
+{{ $value := . }}
+{{ $class := "is-red" }}
+{{- if lt $value 11 -}}
+{{- $class = "is-green" -}}
+{{- else if lt $value 21 -}}
+{{- $class = "is-yellow" -}}
+{{- else if le $value 35 -}}
 {{- $class = "is-orange" -}}
 {{- end -}}
 {{- return $class -}}
@@ -27,7 +40,7 @@
                 <span class="is-pulled-right"><span class="has-margin-right-sm">{{ $occupationTotalPercent
                         }}%</span></span>
             </div>
-            {{- $progressClass := partial "get-occupation-progress-class" $occupationTotalPercent -}}
+            {{- $progressClass := partial "get-occupation-progress-total-class" $occupationTotalPercent -}}
             <progress class="progress {{ $progressClass }}" value="{{ $occupationTotal }}" max="1">{{
                 $occupationTotalPercent }}%</progress>
         </div>
@@ -37,7 +50,7 @@
                 <span class="is-pulled-right"><span class="has-margin-right-sm">{{ $occupationCovidPercent
                         }}%</span></span>
             </div>
-            {{- $progressClass := partial "get-occupation-progress-class" $occupationCovidPercent -}}
+            {{- $progressClass := partial "get-occupation-progress-covid-class" $occupationCovidPercent -}}
             <progress class="progress {{ $progressClass }}" value="{{ $occupationCovid }}" max="1">{{
                 $occupationCovidPercent }}%</progress>
         </div>
