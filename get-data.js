@@ -116,15 +116,18 @@ async function fetchMonitorData() {
 
 function getTDValue(td) {
     try {
-        let elem = td;
-        while(elem.children && elem.children.length > 0) {
-            elem = elem.children[0];
+        let value = null;
+        if (td) {
+            let elem = td;
+            while (elem.children && elem.children.length > 0) {
+                elem = elem.children[0];
+            }
+            value = elem.data;
         }
-        let value = elem.data;
-        if(!value) {
+        if (!value) {
             value = "";
         }
-        return value;
+        return value.trim();
     }
     catch (e) {
         console.error("Error getting td value: " + e.message);
@@ -148,51 +151,57 @@ async function fetchDeathsData() {
     const rows = html('tbody tr');
 
     let lastDep = null
-    // skip the first row since it is a header and not data
-    for (let i = 2; i < rows.length; ++i) {
+    let headersSkipped = false;
+
+    for (let i = 0; i < rows.length; ++i) {
         const row = rows[i];
-        if (row.children.length > 1) {
-            const tdSex = row.children[0];
-            const tdAge = row.children[1];
-            const tdDep = row.children[2];
+        const tdSex = row.children[0];
+        const tdAge = row.children[1];
+        const tdDep = row.children[2];
 
-            const age = getTDValue(tdAge);
-            const sex = getTDValue(tdSex);
+        const age = getTDValue(tdAge);
+        const sex = getTDValue(tdSex);
+        const depData = getTDValue(tdDep);
 
-            let dep = lastDep;
-            if (tdDep != undefined) {
-                const depData = getTDValue(tdDep).trim();
-                const words = depData.split(" ");
-                dep = words.map((word) => {
-                    if (word.length > 1) {
-                        return word[0].toUpperCase() + word.substring(1).toLowerCase();
-                    }
-                    else {
-                        return word.toLowerCase();
-                    }
-                }).join(" ");
+        if (!headersSkipped && row.children.length == 3 && sex.length == 1 && !isNaN(parseInt(age)) && depData.length > 4) {
+            headersSkipped = true;
+        }
+        if (headersSkipped) {
+            if (row.children.length > 1) {
+                let dep = lastDep;
+                if (tdDep != undefined) {
+                    const words = depData.split(" ");
+                    dep = words.map((word) => {
+                        if (word.length > 1) {
+                            return word[0].toUpperCase() + word.substring(1).toLowerCase();
+                        }
+                        else {
+                            return word.toLowerCase();
+                        }
+                    }).join(" ");
 
-                dep = dep.replace("Paysandu", "Paysandú");
-                dep = dep.replace("Rio Negro", "Río Negro");
-                dep = dep.replace("San Jose", "San José");
-                dep = dep.replace("Tacuarembo", "Tacuarembó");
+                    dep = dep.replace("Paysandu", "Paysandú");
+                    dep = dep.replace("Rio Negro", "Río Negro");
+                    dep = dep.replace("San Jose", "San José");
+                    dep = dep.replace("Tacuarembo", "Tacuarembó");
 
-                lastDep = dep;
-            }
-
-            if (age != null && age.trim().length > 0) {
-                if (!day.deps[dep]) {
-                    day.deps[dep] = [];
+                    lastDep = dep;
                 }
 
-                day.deps[dep].push({
-                    age: parseInt(age.trim()),
-                    s: sex.trim()
-                });
+                if (age != null && age.length > 0) {
+                    if (!day.deps[dep]) {
+                        day.deps[dep] = [];
+                    }
+
+                    day.deps[dep].push({
+                        age: parseInt(age),
+                        s: sex
+                    });
+                }
             }
-        }
-        else {
-            console.error("Unexpected row length of " + row.length);
+            else {
+                console.error("Unexpected row length of " + row.length);
+            }
         }
     }
     return day;
