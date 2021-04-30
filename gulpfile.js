@@ -329,15 +329,9 @@ async function downloadICUData() {
     }
 }
 
-async function screenshots() {
-    await takeScreenshots(paths.deploy);
-}
-
 exports.downloadVacData = downloadUruguayVaccinationData;
 exports.buildChartData = buildChartData;
 exports.develop = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData, downloadICUData, buildChartData), build, gulp.parallel(watch, hugoServer));
 exports.deploy = gulp.series(gulp.parallel(downloadData, downloadCountriesData, downloadPopulationData, downloadUruguayVaccinationData, downloadDepartmentsData, downloadICUData, buildChartData), updateLastMod, build, hugoBuild, purgeCSS, embedCritialCSS);
 exports.default = exports.develop;
-exports.screenshots = screenshots;
-
 
