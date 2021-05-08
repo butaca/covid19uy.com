@@ -5399,6 +5399,23 @@
             "lateDeletedCases": [
                 4
             ]
+        },
+        {
+            "date": "2021-05-08",
+            "tests": 11439,
+            "cases": 218800,
+            "recovered": 189739,
+            "deaths": 3082,
+            "icu": 526,
+            "imcu": 0,
+            "hc": 6905,
+            "hcRecovered": 6573,
+            "hcDeaths": 18,
+            "newCases": 2657,
+            "todayDeaths": 51,
+            "lateDeletedCases": [
+                3
+            ]
         }
     ]
 }
