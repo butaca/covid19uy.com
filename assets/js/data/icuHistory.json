@@ -370,6 +370,15 @@
             "admissions": 32,
             "deaths": 24,
             "discharges": 16
+        },
+        {
+            "date": "2021-05-10",
+            "covid19": 553,
+            "total": 790,
+            "available": 1016,
+            "admissions": 45,
+            "deaths": 27,
+            "discharges": 18
         }
     ]
 }
