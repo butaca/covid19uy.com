@@ -1,7 +1,7 @@
 const fs = require('fs');
 const yaml = require('js-yaml');
 const file = fs.readFileSync('./covid19uybot.yml', 'utf-8');
-const config = yaml.safeLoad(file);
+const config = yaml.load(file);
 
 require('dotenv').config();
 

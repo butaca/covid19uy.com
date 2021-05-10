@@ -16,7 +16,7 @@ const loadConfig = () => {
     if (file.length == 0) {
         return;
     }
-    config = yaml.safeLoad(file);
+    config = yaml.load(file);
 };
 
 loadConfig();
