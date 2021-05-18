@@ -5548,6 +5548,7 @@
         {
             "date": "2021-05-17",
             "tests": 11184,
+            "testsFix": -36,
             "cases": 242906,
             "recovered": 212051,
             "deaths": 3521,
@@ -5559,6 +5560,22 @@
             "newCases": 2399,
             "lateDeletedCases": [
                 5
+            ]
+        },
+        {
+            "date": "2021-05-18",
+            "tests": 14201,
+            "cases": 246026,
+            "recovered": 214578,
+            "deaths": 3578,
+            "icu": 498,
+            "imcu": 0,
+            "hc": 7246,
+            "hcRecovered": 6896,
+            "hcDeaths": 19,
+            "newCases": 3128,
+            "lateDeletedCases": [
+                8
             ]
         }
     ]

@@ -2,6 +2,9 @@
 {{- range .Site.Data.uruguay.data -}}
 {{- $todayTests := cond (isset . "tests") .tests .positives -}}
 {{- $tests = add $tests $todayTests -}}
+{{- if isset . "testsFix" -}}
+{{- $tests = add $tests .testsFix -}}
+{{- end -}}
 {{- end -}}
 
 {{- $last := last 2 .Site.Data.uruguay.data -}}

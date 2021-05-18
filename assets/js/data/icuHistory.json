@@ -442,6 +442,15 @@
             "admissions": 43,
             "discharges": 18,
             "deaths": 45
+        },
+        {
+            "date": "2021-05-18",
+            "covid19": 529,
+            "total": 797,
+            "available": 1016,
+            "admissions": 53,
+            "deaths": 29,
+            "discharges": 11
         }
     ]
 }
