@@ -57,4 +57,4 @@ Cuando un feature lleva mucho tiempo de desarrollo, se crea un branch dedicado p
 
 ### Deploy
 
-El sitio está hosteado en [Netlify](http://netlify.com/) y cada vez que se hace un push en master se dispara un build en forma automática. También se realiza un build cada 1 hora para actualizar los datos del mundo y la región.
+El sitio está hosteado en [Netlify](http://netlify.com/) y cada vez que se hace un push en master se dispara un build en forma automática. También se dispara un build cada 15 minutos con GitHub Actions.
