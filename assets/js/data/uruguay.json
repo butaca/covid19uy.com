@@ -5654,6 +5654,22 @@
             "hcDeaths": 19,
             "todayDeaths": 61,
             "newCases": 3089
+        },
+        {
+            "date": "2021-05-24",
+            "tests": 11723,
+            "cases": 267888,
+            "recovered": 230641,
+            "deaths": 3922,
+            "icu": 504,
+            "imcu": 0,
+            "hc": 7488,
+            "hcRecovered": 7087,
+            "hcDeaths": 19,
+            "newCases": 2799,
+            "lateDeletedCases": [
+                9
+            ]
         }
     ]
 }
