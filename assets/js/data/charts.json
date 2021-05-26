@@ -20,6 +20,12 @@
         "disabled": true
     },
     {
+        "id": "chart-daily-dose",
+        "title": "graphDailyDose",
+        "desc": "graphDailyDoseDesc",
+        "displayVacErrorsInfo": true
+    },
+    {
         "id": "chart-active-cases",
         "title": "graphTitleActiveCases",
         "desc": "graphTitleActiveCasesDesc",

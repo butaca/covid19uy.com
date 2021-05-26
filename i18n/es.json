@@ -209,6 +209,12 @@
     "graphDailyVacsDesc": {
         "other": "Cantidad de vacunas administradas por día, discriminada por tipo de vacuna."
     },
+    "graphDailyDose": {
+        "other": "Total de dosis"
+    },
+    "graphDailyDoseDesc": {
+        "other": "Total de primeras y segundas dosis por día."
+    },
     "graphTotalVacs": {
         "other": "Total de vacunación"
     },
@@ -420,7 +426,7 @@
         "other": "hoy"
     },
     "vacErrorsInfo": {
-        "other": "Los totales de las gráficas \"Total de vacunación\" y \"Vacunación diaria\" difieren con los de \"Progreso de vacunación\", porque así lo hace la fuente oficial."
+        "other": "Los totales de las gráficas de vacunación pueden diferer entre sí, porque así lo hace la fuente oficial."
     },
     "firstDose": {
         "other": "Primera Dosis"

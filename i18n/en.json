@@ -206,6 +206,12 @@
     "graphDailyVacsDesc": {
         "other": "Number of administered vaccines per day, discriminated by vaccine type."
     },
+    "graphDailyDose": {
+        "other": "Total dose"
+    },
+    "graphDailyDoseDesc": {
+        "other": "Total first and second dose per day"
+    },
     "graphTotalVacs": {
         "other": "Vaccination total"
     },
@@ -420,7 +426,7 @@
         "other": "today"
     },
     "vacErrorsInfo": {
-        "other": "The totals of the charts \"Vaccination total\" and \"Daily vaccination\" differ with those of \"Vaccination progress\", following the official source."
+        "other": "The totals of the vaccination charts may differ with between them, following the official source."
     },
     "firstDose": {
         "other": "First Dose"

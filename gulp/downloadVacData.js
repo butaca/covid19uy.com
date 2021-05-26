@@ -50,6 +50,15 @@ async function fetchVacTotalData(minDate, maxDate) {
     return await request(VAC_BASE_URL, params);
 }
 
+async function fetchVacDoseHistoryData(minDate, maxDate) {
+    const params = createDefaultParams(minDate, maxDate);
+    params.paramp_periodo_desde_sk = minDate;
+    params.paramp_periodo_hasta_sk = maxDate;
+    params.path = "/public/Epidemiologia/Vacunas Covid/Paneles/Vacunas Covid/VacunasCovid.cda";
+    params.dataAccessId = "sql_evolucion_dosis";
+    return await request(VAC_BASE_URL, params);
+}
+
 async function fetchVacTypeData(minDate, maxDate) {
     const params = createDefaultParams(minDate, maxDate);
     params.paramp_periodo_desde_sk = minDate;
@@ -129,7 +138,9 @@ async function downloadUruguayVaccinationData() {
             total: [],
             coronavac: [],
             pfizer: [],
-            astrazeneca: []
+            astrazeneca: [],
+            firstDose: [],
+            secondDose: []
         },
         date: "",
         todayDate: "",
@@ -163,7 +174,7 @@ async function downloadUruguayVaccinationData() {
             throw new Error("Unexpected row count = 0");
         }
 
-        const [vacHistoryData, vacTotalData, vacTypeData] = await Promise.allSettled([fetchVacHistoryData(minDateStr, maxDateStr), fetchVacTotalData(minDateStr, maxDateStr), fetchVacTypeData(minDateStr, maxDateStr)]);
+        const [vacHistoryData, vacTotalData, vacTypeData, vacDoseHistoryData] = await Promise.allSettled([fetchVacHistoryData(minDateStr, maxDateStr), fetchVacTotalData(minDateStr, maxDateStr), fetchVacTypeData(minDateStr, maxDateStr), fetchVacDoseHistoryData(minDate, maxDateStr)]);
 
         if (vacHistoryData.status === "fulfilled") {
             rows = parseRows(vacHistoryData.value, ["fecha", "sinovac", "pfizer", "astrazeneca"])
@@ -288,6 +299,46 @@ async function downloadUruguayVaccinationData() {
             //TODO: This is a temp workaround. Allow each request to fail independently 
             //vacDataFailed = true;
         }
+
+        if (vacDoseHistoryData.status === "fulfilled") {
+            rows = parseRows(vacDoseHistoryData.value, ["fecha", "dosis 1", "dosis 2"]);
+
+            const pushDates = vacData.history.date.length == 0;
+            const pushTotal = vacData.history.total.length == 0;
+
+            let prevDailyTotal = 0;
+
+            for (let i = 0; i < rows.length; ++i) {
+                const row = rows[i];
+                let date = moment(row["fecha"], "YYYY-MM-DDTHH:mm:ss[Z]");
+                date = date.date() + "/" + (date.month() + 1);
+
+                let firstDose = row["dosis 1"] || 0;
+                let secondDose = row["dosis 2"] || 0;
+
+                firstDose = parseInt(firstDose);
+                secondDose = parseInt(secondDose);
+
+                if(pushDates) {
+                    vacData.history.date.push(date);
+                }
+                if(pushTotal) {
+                    const dailyTotal = (firstDose + secondDose) - prevDailyTotal;
+                    prevDailyTotal = (firstDose + secondDose);
+                    vacData.history.total.push(dailyTotal);
+                    
+                }
+                vacData.history.firstDose.push(firstDose);
+                vacData.history.secondDose.push(secondDose);
+            }
+            //TODO: check consistenty if !pushDates
+        }
+        else {
+            console.log("Error getting dose vac history: " + vacDoseHistoryData.reason);
+            vacDataFailed = true;
+        }
+
+        ///////////
 
         const totalPoints = [];
         let curTotal = 0;

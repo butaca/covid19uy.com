@@ -124,6 +124,40 @@ function chart(_chartData, lang) {
             options: options
         });
     }
+
+    ctx = document.getElementById('chart-daily-dose');
+
+    if (ctx) {
+        const options = createDefaultChartOptions();
+        let dateElem = ctx.parentElement.querySelector(".date");
+        if (dateElem != null) {
+            dateElem.innerHTML = lang.updated.other + ": " + vacDateStr;
+        }
+
+        const doseHistoryDatasets = [
+            {
+                pointBackgroundColor: "#77ed77ff",
+                backgroundColor: "#77ed77ff",
+                label: lang.secondDose.other,
+                data: vaccinationData.history.secondDose,
+            },
+            {
+                pointBackgroundColor: "#d0eed0ff",
+                backgroundColor: "#d0eed0ff",
+                label: lang.firstDose.other,
+                data: vaccinationData.history.firstDose,
+            }
+        ];
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: vacDates,
+                datasets: doseHistoryDatasets
+            },
+            options: options
+        });
+    }
 }
 
 export default chart;
