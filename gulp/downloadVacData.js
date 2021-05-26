@@ -207,7 +207,8 @@ async function downloadUruguayVaccinationData() {
         }
         else {
             console.log("Error getting vac history: " + vacHistoryData.reason);
-            vacDataFailed = true;
+            //TODO: This is a temp workaround. Allow each request to fail independently 
+            //vacDataFailed = true;
         }
 
         ///////////
@@ -284,7 +285,8 @@ async function downloadUruguayVaccinationData() {
         }
         else {
             console.log("Error getting vac type: " + vacTypeData.reason);
-            vacDataFailed = true;
+            //TODO: This is a temp workaround. Allow each request to fail independently 
+            //vacDataFailed = true;
         }
 
         const totalPoints = [];
