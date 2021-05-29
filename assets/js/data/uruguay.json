@@ -5718,6 +5718,22 @@
             "lateDeletedCases": [
                 5
             ]
+        },
+        {
+            "date": "2021-05-28",
+            "tests": 10658,
+            "cases": 282198,
+            "recovered": 242661,
+            "deaths": 4118,
+            "icu": 542,
+            "imcu": 0,
+            "hc": 7668,
+            "hcRecovered": 7232,
+            "hcDeaths": 19,
+            "newCases": 1847,
+            "lateDeletedCases": [
+                21
+            ]
         }
     ]
 }
