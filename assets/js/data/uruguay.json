@@ -5721,18 +5721,34 @@
         },
         {
             "date": "2021-05-28",
-            "tests": 10658,
-            "cases": 282198,
-            "recovered": 242661,
-            "deaths": 4118,
+            "tests": 24544,
+            "cases": 284579,
+            "recovered": 246294,
+            "deaths": 4127,
             "icu": 542,
             "imcu": 0,
-            "hc": 7668,
-            "hcRecovered": 7232,
+            "hc": 7693,
+            "hcRecovered": 7271,
             "hcDeaths": 19,
-            "newCases": 1847,
+            "newCases": 4247,
             "lateDeletedCases": [
-                21
+                40
+            ]
+        },
+        {
+            "date": "2021-05-29",
+            "tests": 21909,
+            "cases": 288172,
+            "recovered": 246321,
+            "deaths": 4176,
+            "icu": 539,
+            "imcu": 0,
+            "hc": 7721,
+            "hcRecovered": 7273,
+            "hcDeaths": 19,
+            "newCases": 3594,
+            "lateDeletedCases": [
+                1
             ]
         }
     ]
