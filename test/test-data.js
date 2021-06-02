@@ -235,6 +235,11 @@ describe('Test data', function () {
                                 totalDeaths--;
                             }
 
+                            // two deaths were removed on 2021-06-01, but it wasn't informed which ones
+                            if (date.getTime() == new Date("2021-06-01" + DATE_DEFAULT_TIME).getTime()) {
+                                totalDeaths -= 2;
+                            }
+
                             deathHistory.push({ date: date, deaths: totalDeaths });
                         }
                     }
