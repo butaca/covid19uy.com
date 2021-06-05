@@ -381,13 +381,13 @@
         "other": "Al menos una dosis"
     },
     "vaccinationProgressFirstDoseDesc": {
-        "other": "Porcentaje de la población objetivo que recibió al menos una dosis. El gobierno indicó que la población objetivo es de 2.800.000 personas."
+        "other": "Porcentaje de la población recibió al menos una dosis."
     },
     "vaccinationProgressSecondDose": {
         "other": "Dos dosis"
     },
     "vaccinationProgressSecondDoseDesc": {
-        "other": "Porcentaje de la población objetivo que recibió las dos dosis. El gobierno indicó que la población objetivo es de 2.800.000 personas."
+        "other": "Porcentaje de la población recibió dos dosis."
     },
     "harvardIndex": {
         "other": "Índice de Harvard"
@@ -435,9 +435,12 @@
         "other": "Segunda Dosis"
     },
     "vaceta": {
-        "other": "Fecha estimada de finalización"
+        "other": "Estimación 80% segunda dosis"
     },
     "vacetaDesc": {
-        "other": "Fecha estimada en la que se finalizará de dar la segunda dosis a la población objetivo, en base los datos de los últimos 28 días."
+        "other": "Fecha estimada en la que se finalizará de dar la segunda dosis a un 80% de la población, en base los datos de los últimos 28 días."
+    },
+    "moreVacInfo": {
+        "other": "Por más información sobre vacunación"
     }
 }

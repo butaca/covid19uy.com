@@ -381,13 +381,13 @@
         "other": "At least one dose"
     },
     "vaccinationProgressFirstDoseDesc": {
-        "other": "Percentage of the target population that received at least one dose. The government indicated that the target population is 2,800,000 people."
+        "other": "Percentage of the population that received at least one dose."
     },
     "vaccinationProgressSecondDose": {
         "other": "Two doses"
     },
     "vaccinationProgressSecondDoseDesc": {
-        "other": "Percentage of the target population that received the two doses. The government indicated that the target population is 2,800,000 people."
+        "other": "Percentage of the population that received two doses."
     },
     "harvardIndex": {
         "other": "Harvard Index"
@@ -435,9 +435,12 @@
         "other": "Second Dose"
     },
     "vaceta": {
-        "other": "Estimated date of completion"
+        "other": "Estimated 80% second dose"
     },
     "vacetaDesc": {
-        "other": "Estimated date by which delivery of the second dose to the target population will be completed, based on data from the last 28 days."
+        "other": "Estimated date when the second dose will be given to 80% of the population, based on data from the last 28 days."
+    },
+    "moreVacInfo": {
+        "other": "For more information about vaccination"
     }
 }

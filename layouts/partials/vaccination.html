@@ -2,9 +2,9 @@
     {{- $vacData := site.Data.uruguayVaccination -}}
     {{- $firstDoseTotal := $vacData.firstDoseTotal -}}
     {{- $secondDoseTotal := $vacData.secondDoseTotal -}}
-    {{- $firstDoseVacProgress := div $firstDoseTotal $vacData.goal -}}
+    {{- $firstDoseVacProgress := div $firstDoseTotal $vacData.population -}}
     {{- $firstDoseVacProgressPercent := lang.NumFmt 2 (mul 100 $firstDoseVacProgress) .Site.Params.numberFormat -}}
-    {{- $secondDoseVacProgress := div $secondDoseTotal $vacData.goal -}}
+    {{- $secondDoseVacProgress := div $secondDoseTotal $vacData.population -}}
     {{- $secondDoseVacProgressPercent := lang.NumFmt 2 (mul 100 $secondDoseVacProgress) .Site.Params.numberFormat -}}
     {{- $dateStr := printf "%sT%s:00" $vacData.date $vacData.todayDate }}
     {{- $date := time $dateStr -}}
@@ -62,6 +62,9 @@
                         site.Params.numberFormat
                         -}}</span>
                 </div>
+            </div>
+            <div class="column is-12 has-text-centered">
+                {{i18n "moreVacInfo"}}: <a href="https://vacuna.uy" target="_blank" rel="noopener noreferrer">https://vacuna.uy</a>
             </div>
         </div>
     </div>

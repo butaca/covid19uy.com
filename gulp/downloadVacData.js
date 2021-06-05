@@ -151,7 +151,7 @@ async function downloadUruguayVaccinationData() {
         coronavacTotal: 0,
         astrazenecaTotal: 0,
         pfizerTotal: 0,
-        goal: 2800000,
+        population: 3543025,
         eta: null
     }
 
@@ -340,17 +340,20 @@ async function downloadUruguayVaccinationData() {
 
         ///////////
 
+        const lastVacDays = 28;
         const totalPoints = [];
         let curTotal = 0;
-        for (let i = vacData.history.total.length - 28; i < vacData.history.total.length; ++i) {
+        for (let i = vacData.history.total.length - lastVacDays; i < vacData.history.total.length; ++i) {
             curTotal += vacData.history.total[i];
             totalPoints.push([i, curTotal]);
         }
 
+        const goal = vacData.population * 0.8;
+
         const result = regression.linear(totalPoints);
         const m = result.equation[0];
         const c = result.equation[1];
-        const x = (2 * vacData.goal - c) / m;
+        const x = (2 * goal - c) / m;
         const eta = minDate.add(x, 'days');
         vacData.eta = eta.format("YYYY-MM-DD");
 
