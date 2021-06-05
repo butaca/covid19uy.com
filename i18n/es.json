@@ -174,10 +174,10 @@
         "other": "Trabajadores de la salud"
     },
     "graphDeaths": {
-        "other": "Fallecimientos por edad"
+        "other": "Fallecimientos acumulados por edad"
     },
     "graphDeathsDesc": {
-        "other": "Fallecimientos por rangos de edad y sexo."
+        "other": "Fallecimientos acumulados por rangos de edad y sexo."
     },
     "graphDailyDeaths": {
         "other": "Fallecimientos diarios"

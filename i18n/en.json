@@ -171,10 +171,10 @@
         "other": "Comparison of the total cases registered so far: percentage of active cases, recovered and deaths."
     },
     "graphDeaths": {
-        "other": "Deaths by age"
+        "other": "Total deaths by age"
     },
     "graphDeathsDesc": {
-        "other": "Deaths by age ranges and sex."
+        "other": "Total deaths by age ranges and sex."
     },
     "graphDailyDeaths": {
         "other": "Daily deaths"
