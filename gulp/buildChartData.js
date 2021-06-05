@@ -200,7 +200,7 @@ async function buildChartData() {
     var womenDeaths = [0, 0, 0, 0, 0];
     var unknownSexDeaths = [0, 0, 0, 0, 0];
     var totalDeathsByAge = [0, 0, 0, 0, 0];
-    var deathAgeRangesLabels = ["0 - 17", "18 - 44", "45 - 64", "65 - 74", "75+"];
+    var deathAgeRangesLabels = ["0 - 49", "50 - 59", "60 - 69", "70 - 79", "80+"];
 
     for (let i = 0; i < uruguayDeaths.days.length; ++i) {
         const day = uruguayDeaths.days[i];
@@ -225,16 +225,16 @@ async function buildChartData() {
                 }
                 var index = -1;
 
-                if (age <= 17) {
+                if (age <= 49) {
                     index = 0;
                 }
-                else if (age <= 44) {
+                else if (age <= 59) {
                     index = 1;
                 }
-                else if (age <= 64) {
+                else if (age <= 69) {
                     index = 2;
                 }
-                else if (age <= 74) {
+                else if (age <= 79) {
                     index = 3;
                 }
                 else {
