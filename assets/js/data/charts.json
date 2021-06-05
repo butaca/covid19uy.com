@@ -51,6 +51,12 @@
         "displayUnreliableDataMessage": true
     },
     {
+        "id": "chart-daily-positivity-rate",
+        "title": "graphPositivityRate",
+        "desc": "graphPositivityRateDesc",
+        "displayUnreliableDataMessage": true
+    },
+    {
         "id": "chart-daily-cases",
         "title": "graphTitleDailyCases",
         "desc": "graphTitleDailyCasesDesc",
@@ -62,12 +68,6 @@
         "title": "graphTitleDailyActiveCases",
         "desc": "graphTitleDailyActiveCasesDesc",
         "displayPositivesAndCasesInfo": true,
-        "displayUnreliableDataMessage": true
-    },
-    {
-        "id": "chart-daily-positivity-rate",
-        "title": "graphPositivityRate",
-        "desc": "graphPositivityRateDesc",
         "displayUnreliableDataMessage": true
     },
     {
