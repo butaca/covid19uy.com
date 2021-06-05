@@ -183,10 +183,10 @@
         "other": "Deaths per day."
     },
     "graphDeathsNew": {
-        "other": "Deaths by age"
+        "other": "Total deaths by age"
     },
     "graphDeathsNewDesc": {
-        "other": "Deaths by age ranges."
+        "other": "Total deaths by age ranges."
     },
     "graphDeathsSex": {
         "other": "Deaths by sex"

@@ -186,10 +186,10 @@
         "other": "Cantidad de fallecimientos por día."
     },
     "graphDeathsNew": {
-        "other": "Fallecimientos por edad"
+        "other": "Fallecimientos acumulados por edad"
     },
     "graphDeathsNewDesc": {
-        "other": "Fallecimientos por rangos de edad."
+        "other": "Fallecimientos acumulados por rangos de edad."
     },
     "graphDeathsSex": {
         "other": "Fallecimientos por sexo"
