@@ -10,7 +10,7 @@ const DATA_DIR = BASE_DATA_DIR;
 const DOSE_URL = "https://catalogodatos.gub.uy/dataset/e766fbf7-0cc5-4b9a-a093-b56e91e88133/resource/5c549ba0-126b-45e0-b43f-b0eea72cf2cf/download/actos_vacunales.csv";
 
 async function downloadUruguayVaccinationData() {
-    const vacDataFailed = false;
+    let vacDataFailed = false;
 
     const vacData = {
         history: {
