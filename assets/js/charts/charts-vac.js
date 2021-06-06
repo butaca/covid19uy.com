@@ -8,13 +8,7 @@ const COLOR_TOTAL = "#28b8d680";
 
 function chart(_chartData, lang) {
 
-    const utcDate = new Date(vaccinationData.date)
-    const vacDate = new Date(utcDate.getTime() + utcDate.getTimezoneOffset() * 60000);
-    const vacDateTokens = vaccinationData.todayDate.split(':');
-    if (vacDateTokens.length >= 2) {
-        vacDate.setHours(vacDateTokens[0]);
-        vacDate.setMinutes(vacDateTokens[1]);
-    }
+    const vacDate = new Date(vaccinationData.date);
 
     const htmlLang = document.documentElement.getAttribute("lang");
     const vacDateStr = vacDate.toLocaleString(htmlLang).replace(/\:00(?=[^:00]*$)/, '');
@@ -22,11 +16,11 @@ function chart(_chartData, lang) {
     const flipDate = htmlLang == "en";
 
     const vacDates = vaccinationData.history.date.map(function (el) {
+        const s = el.split("-");
         if (flipDate) {
-            var s = el.split("/");
-            return s[1] + "/" + s[0];
+            return s[1] + "/" + s[2];
         } else {
-            return el;
+            return s[2] + "/" + s[1];
         }
     });
 
@@ -127,6 +121,19 @@ function chart(_chartData, lang) {
 
     ctx = document.getElementById('chart-daily-dose');
 
+    function getDailyTotals(dailyValues) {
+        const dailyTotals = [];
+        let total = 0;
+        for(let i = 0; i < dailyValues.length; ++i) {
+            total += dailyValues[i];
+            dailyTotals.push(total);
+        }
+        return dailyTotals;
+    }
+
+    const firstDoseTotal = getDailyTotals(vaccinationData.history.firstDose);
+    const secondDoseTotal = getDailyTotals(vaccinationData.history.secondDose);
+
     if (ctx) {
         const options = createDefaultChartOptions();
         let dateElem = ctx.parentElement.querySelector(".date");
@@ -139,13 +146,13 @@ function chart(_chartData, lang) {
                 pointBackgroundColor: "#77ed77ff",
                 backgroundColor: "#77ed77ff",
                 label: lang.secondDose.other,
-                data: vaccinationData.history.secondDose,
+                data: secondDoseTotal,
             },
             {
                 pointBackgroundColor: "#d0eed0ff",
                 backgroundColor: "#d0eed0ff",
                 label: lang.firstDose.other,
-                data: vaccinationData.history.firstDose,
+                data: firstDoseTotal,
             }
         ];
 

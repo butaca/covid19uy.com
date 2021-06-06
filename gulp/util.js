@@ -20,7 +20,9 @@ if (process.env.PUSHOVER_USER && process.env.PUSHOVER_TOKEN) {
 }
 
 async function request(url, params) {
-    url += "?" + querystring.encode(params);
+    if(params) { 
+        url += "?" + querystring.encode(params);
+    }
 
     try {
         let response;

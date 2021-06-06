@@ -6,8 +6,7 @@
     {{- $firstDoseVacProgressPercent := lang.NumFmt 2 (mul 100 $firstDoseVacProgress) .Site.Params.numberFormat -}}
     {{- $secondDoseVacProgress := div $secondDoseTotal $vacData.population -}}
     {{- $secondDoseVacProgressPercent := lang.NumFmt 2 (mul 100 $secondDoseVacProgress) .Site.Params.numberFormat -}}
-    {{- $dateStr := printf "%sT%s:00" $vacData.date $vacData.todayDate }}
-    {{- $date := time $dateStr -}}
+    {{- $date := time $vacData.date -}}
     {{- $totalVacs := $vacData.total -}}
     {{- $todayVacs := $vacData.todayTotal -}}
     <h2 class="title">{{ i18n "vaccinationProgress" }}</h2>

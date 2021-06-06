@@ -442,5 +442,17 @@
     },
     "moreVacInfo": {
         "other": "For more information about vaccination"
+    },
+    "vacDataName": {
+        "other": "Vacunación por Covid-19"
+    },
+    "vacDataLicense": {
+        "other": "Licencia de Datos Abiertos – Uruguay"
+    },
+    "providedBy": {
+        "other": "provided by"
+    },
+    "licenseUnder": {
+        "other": "under"
     }
 }
