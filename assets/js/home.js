@@ -9,11 +9,6 @@ import chartData from "./data/chartData.json"
 import charts from "./charts";
 import uruguayMap from "./uruguay-map";
 
-function round(number, decimalPlaces) {
-    const factorOfTen = Math.pow(10, decimalPlaces)
-    return Math.round(number * factorOfTen) / factorOfTen
-}
-
 if (document.readyState === 'loading') {
     document.addEventListener("DOMContentLoaded", main);
 } else {
