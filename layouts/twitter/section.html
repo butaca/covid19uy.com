@@ -28,12 +28,13 @@
                 <div class="columns is-multiline">
                     {{ $context := . }}
                     {{ $preloadCount := 12 }}
+                    {{ $max := 60 }}
                     {{ range first $preloadCount .Site.Data.twitter.tweets }}
                     <div class="column is-4">
                         {{ partial "twitter" (dict "context" $context "id" .) }}
                     </div>
                     {{ end }}
-                    {{ range after $preloadCount .Site.Data.twitter.tweets }}
+                    {{ range first (sub $max $preloadCount) (after $preloadCount .Site.Data.twitter.tweets) }}
                     <div class="tweet column is-4" data-tweet="{{.}}">
                     </div>
                     {{ end }}
