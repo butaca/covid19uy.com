@@ -32,7 +32,7 @@ DATA = assets/js/data/
 
 #### Datos descargados automáticamente durante el build
 
-* Los datos los departamentos de Uruguay (`[DATA]/uruguayDepartments.json`) se descargan del [visualizador del SINAE](https://www.gub.uy/sistema-nacional-emergencias/pagina-embebida/visualizador-casos-coronavirus-covid-19-uruguay) 
+* Los datos los departamentos de Uruguay (`[DATA]/uruguayDepartments.json`) se descargan del [visualizador del SINAE](https://www.gub.uy/sistema-nacional-emergencias/pagina-embebida/visualizador-casos-coronavirus-covid-19-uruguay)
 * Los datos de vacunación de Uruguay (`[DATA]/uruguayVaccination.json`) se descargan del conjunto de datos abiertos [Vacunación por Covid-19](https://catalogodatos.gub.uy/dataset/vacunacion-por-covid-19) provistos por el [Ministerio de Salud Pública](https://www.gub.uy/ministerio-salud-publica) bajo la [Licencia de Datos Abiertos – Uruguay](https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf).
 * Los datos actuales de ocupación de CTI (`[DATA]/icu.json`) se descargan del [Visualizador de ocupación de camas de CTI de personas adultas](https://www.gub.uy/sistema-nacional-emergencias/pagina-embebida/visualizador-ocupacion-camas-cti-personas-adultas) de SINAE.
 * Los datos del mundo y la región (`[DATA]/world.json`, `[DATA]/region.json` y `[DATA]/worldPopulation.json`) se descargan automáticamente durante el build de diversas fuentes.
