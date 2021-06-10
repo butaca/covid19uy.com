@@ -245,6 +245,11 @@ describe('Test data', function () {
                                 totalDeaths -= 2;
                             }
 
+                            // An extra death was listed on 2021-06-10 (or the reported total number is not correct).
+                            if (date.getTime() == new Date("2021-06-10" + DATE_DEFAULT_TIME).getTime()) {
+                                totalDeaths -= 1;
+                            }
+
                             deathHistory.push({ date: date, deaths: totalDeaths });
                         }
                     }
