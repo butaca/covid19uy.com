@@ -1,7 +1,7 @@
 ---
 title: "Coronavirus COVID-19 in Uruguay | #StayHome"
 subtitle: Stay home!
-description: Evolution of Coronavirus COVID-19 in Uruguay. Charts updated daily with official information. If you don't want to appear on this site, stay home.
+description: Evolution of Coronavirus COVID-19 in Uruguay. Charts updated daily with official information. If you can, stay home.
 date: 2020-03-23T22:07:13-0300
 lastmod: 2020-08-04T20:43:12-0300
 sitemap:
@@ -16,7 +16,7 @@ With these graphs updated daily with **public official information** I show you:
 
 {{< charts-desc >}}
 
-If you don't want to appear in these charts, **stay home**. If you don't want your loved ones to appear in these charts, **stay home**. If you don't want innocent people to appear in these charts, **stay home**.
+If you can, **stay home**.
 
 👉 **Stay home _when possible_**. Obviously some of us have to go out to work because we cannot do it remotely and all of us at some point need to go out, due to a need of force majeure. Everything else can wait.
 

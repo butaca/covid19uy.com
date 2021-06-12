@@ -1,7 +1,7 @@
 ---
 title: "Coronavirus COVID-19 en Uruguay | #QuedateEnCasa"
 subtitle: ¡Quedate en casa!
-description: Evolución de Coronavirus COVID-19 en Uruguay. Gráficas actualizadas diariamente con información oficial. Si no querés aparecer en este sitio, quedate en casa.
+description: Evolución de Coronavirus COVID-19 en Uruguay. Gráficas actualizadas diariamente con información oficial. Si podés, quedate en casa.
 date: 2020-03-23T22:07:13-0300
 lastmod: 2020-08-04T20:43:12-0300
 sitemap:
@@ -15,7 +15,7 @@ Te muestro en estas gráficas actualizadas diariamente con **información públi
 
 {{< charts-desc >}}
 
-Si no querés aparecer en éstas gráficas, **quedate en casa**. Si no querés que tus seres queridos aparezcan en estas gráficas, **quedate en casa**. Si no querés que gente inocente aparezca en estas gráficas, **quedate en casa**.
+Si podés, **quedate en casa**.
 
 👉 **Quedarse en casa _dentro de lo posible_**. Obviamente algunos de nosotros tenemos que salir a trabajar porque no lo podemos hacer en forma remota y todos en algún momento tenemos que salir sí o sí, por alguna necesidad de fuerza mayor. Todo lo demás puede esperar.
 
