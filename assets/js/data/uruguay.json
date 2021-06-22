@@ -6123,6 +6123,22 @@
             "lateDeletedCases": [
                 22
             ]
+        },
+        {
+            "date": "2021-06-22",
+            "tests": 17502,
+            "cases": 358461,
+            "recovered": 329662,
+            "deaths": 5350,
+            "icu": 364,
+            "imcu": 0,
+            "hc": 8441,
+            "hcRecovered": 8152,
+            "hcDeaths": 28,
+            "newCases": 2098,
+            "lateDeletedCases": [
+                19
+            ]
         }
     ]
 }
