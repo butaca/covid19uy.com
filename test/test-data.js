@@ -257,6 +257,10 @@ describe('Test data', function () {
                                 totalDeaths -= 2;
                             }
 
+                            if (date.getTime() == new Date("2021-06-23" + DATE_DEFAULT_TIME).getTime()) {
+                                totalDeaths -= 1;
+                            }
+
                             deathHistory.push({ date: date, deaths: totalDeaths });
                         }
                     }
