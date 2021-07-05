@@ -874,6 +874,15 @@
             "admissions": 14,
             "deaths": 22,
             "discharges": 12
+        },
+        {
+            "date": "2021-07-05",
+            "covid19": 224,
+            "total": 594,
+            "available": 979,
+            "admissions": 12,
+            "deaths": 13,
+            "discharges": 10
         }
     ]
 }
