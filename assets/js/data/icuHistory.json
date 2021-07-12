@@ -928,6 +928,15 @@
             "admissions": 11,
             "deaths": 8,
             "discharges": 8
+        },
+        {
+            "date": "2021-07-11",
+            "covid19": 177,
+            "total": 570,
+            "available": 965,
+            "admissions": 12,
+            "deaths": 10,
+            "discharges": 7
         }
     ]
 }
