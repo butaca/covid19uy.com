@@ -155,8 +155,8 @@ async function fetchDeathsData() {
 
     for (let i = 0; i < rows.length; ++i) {
         const row = rows[i];
-        const tdSex = row.children[0];
-        const tdAge = row.children[1];
+        const tdSex = row.children[1];
+        const tdAge = row.children[0];
         const tdDep = row.children[2];
 
         const age = getTDValue(tdAge);
