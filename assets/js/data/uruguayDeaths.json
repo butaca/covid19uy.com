@@ -8697,6 +8697,7 @@
         {"date":"2021-07-15","deps":{"Artigas":[{"age":85,"s":"F"}],"Canelones":[{"age":81,"s":"M"}],"Cerro Largo":[{"age":51,"s":"F"}],"Maldonado":[{"age":81,"s":"F"}],"Montevideo":[{"age":23,"s":"F"},{"age":49,"s":"M"},{"age":68,"s":"M"},{"age":71,"s":"M"}],"Rocha":[{"age":91,"s":"M"}],"Treinta y Tres":[{"age":72,"s":"F"},{"age":78,"s":"F"}]}},
         {"date":"2021-07-16","deps":{"Maldonado":[{"age":41,"s":"M"}],"Montevideo":[{"age":64,"s":"M"},{"age":90,"s":"F"}],"Rivera":[{"age":69,"s":"F"}],"Rocha":[{"age":54,"s":"M"}],"Salto":[{"age":41,"s":"F"}]}},
         {"date":"2021-07-17","deps":{"Cerro Largo":[{"age":86,"s":"M"}],"Colonia":[{"age":77,"s":"F"}],"Maldonado":[{"age":76,"s":"F"}],"Montevideo":[{"age":46,"s":"F"},{"age":64,"s":"F"},{"age":73,"s":"F"},{"age":73,"s":"F"},{"age":70,"s":"M"}]}},
-        {"date":"2021-07-18","deps":{"Cerro Largo":[{"age":89,"s":"F"}],"Rocha":[{"age":65,"s":"M"}],"Tacuarembó":[{"age":42,"s":"F"},{"age":66,"s":"F"}]}}
+        {"date":"2021-07-18","deps":{"Cerro Largo":[{"age":89,"s":"F"}],"Rocha":[{"age":65,"s":"M"}],"Tacuarembó":[{"age":42,"s":"F"},{"age":66,"s":"F"}]}},
+        {"date":"2021-07-19","deps":{"Artigas":[{"age":74,"s":"M"}],"Canelones":[{"age":74,"s":"F"}],"Cerro Largo":[{"age":85,"s":"M"}],"Montevideo":[{"age":75,"s":"F"},{"age":81,"s":"F"},{"age":91,"s":"F"},{"age":95,"s":"M"}]}}
     ]
 }
