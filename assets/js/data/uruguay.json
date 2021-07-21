@@ -6577,6 +6577,22 @@
             "lateDeletedCases": [
                 20
             ]
+        },
+        {
+            "date": "2021-07-20",
+            "tests": 9113,
+            "cases": 379376,
+            "recovered": 369652,
+            "deaths": 5896,
+            "icu": 107,
+            "imcu": 0,
+            "hc": 8813,
+            "hcRecovered": 8722,
+            "hcDeaths": 28,
+            "newCases": 305,
+            "lateDeletedCases": [
+                1
+            ]
         }
     ]
 }
