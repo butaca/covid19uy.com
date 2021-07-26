@@ -374,9 +374,6 @@
     "vaccinationProgress": {
         "other": "Vaccination progress"
     },
-    "vaccinationProgressDesc": {
-        "other": "The government indicated that the target population is 2,800,000 people, therefore the total doses to be administered is 5,600,000"
-    },
     "vaccinationProgressFirstDose": {
         "other": "At least one dose"
     },
@@ -435,10 +432,10 @@
         "other": "Second Dose"
     },
     "vaceta": {
-        "other": "Estimated 80% second dose"
+        "other": "Estimated 75% second dose"
     },
     "vacetaDesc": {
-        "other": "Estimated date when the second dose will be given to 80% of the population, based on data from the last 28 days."
+        "other": "Estimated date when the second dose will be given to 75% of the population, based on data from the last 28 days."
     },
     "moreVacInfo": {
         "other": "For more information about vaccination"

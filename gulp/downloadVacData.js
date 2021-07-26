@@ -6,6 +6,7 @@ const regression = require("regression");
 const csv = require('csv-parser');
 const { BASE_DATA_DIR, writeFileAndCache, copyFromCache } = require('./util');
 const DATA_DIR = BASE_DATA_DIR;
+const VAC_GOAL = 0.75;
 
 const DOSE_URL = "https://catalogodatos.gub.uy/dataset/e766fbf7-0cc5-4b9a-a093-b56e91e88133/resource/5c549ba0-126b-45e0-b43f-b0eea72cf2cf/download/actos_vacunales.csv";
 
@@ -102,7 +103,7 @@ async function downloadUruguayVaccinationData() {
             totalPoints.push([i, curTotal]);
         }
 
-        const goal = vacData.population * 0.8;
+        const goal = vacData.population * VAC_GOAL;
 
         const result = regression.linear(totalPoints);
         const m = result.equation[0];

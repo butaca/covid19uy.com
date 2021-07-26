@@ -374,9 +374,6 @@
     "vaccinationProgress": {
         "other": "Progreso de vacunación"
     },
-    "vaccinationProgressDesc": {
-        "other": "El gobierno indicó que la población objetivo es de 2.800.000 personas, por lo tanto el total de dosis a administrar es de 5.600.000"
-    },
     "vaccinationProgressFirstDose": {
         "other": "Al menos una dosis"
     },
@@ -435,10 +432,10 @@
         "other": "Segunda Dosis"
     },
     "vaceta": {
-        "other": "Estimación 80% segunda dosis"
+        "other": "Estimación 75% segunda dosis"
     },
     "vacetaDesc": {
-        "other": "Fecha estimada en la que se finalizará de dar la segunda dosis a un 80% de la población, en base los datos de los últimos 28 días."
+        "other": "Fecha estimada en la que se finalizará de dar la segunda dosis a un 75% de la población, en base los datos de los últimos 28 días."
     },
     "moreVacInfo": {
         "other": "Por más información sobre vacunación"
