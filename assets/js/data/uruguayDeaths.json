@@ -8704,6 +8704,7 @@
         {"date":"2021-07-22","deps":{"Canelones":[{"age":90,"s":"M"}],"Maldonado":[{"age":74,"s":"M"}],"Montevideo":[{"age":49,"s":"F"},{"age":72,"s":"F"},{"age":73,"s":"F"},{"age":85,"s":"M"},{"age":91,"s":"F"}],"Río Negro":[{"age":86,"s":"F"}]}},
         {"date":"2021-07-23","deps":{"Canelones":[{"age":84,"s":"M"}],"Montevideo":[{"age":53,"s":"M"},{"age":66,"s":"F"},{"age":69,"s":"F"}],"Salto":[{"age":75,"s":"M"}],"Soriano":[{"age":69,"s":"M"}]}},
         {"date":"2021-07-24","deps":{"Canelones":[{"age":67,"s":"M"}],"Montevideo":[{"age":28,"s":"F"},{"age":43,"s":"M"},{"age":58,"s":"F"},{"age":63,"s":"M"},{"age":69,"s":"M"}],"San José":[{"age":42,"s":"F"}],"Soriano":[{"age":46,"s":"M"}]}},
-        {"date":"2021-07-25","deps":{"Canelones":[{"age":78,"s":"F"}],"Montevideo":[{"age":59,"s":"F"}],"Rivera":[{"age":90,"s":"F"}],"Tacuarembó":[{"age":80,"s":"F"}]}}
+        {"date":"2021-07-25","deps":{"Canelones":[{"age":78,"s":"F"}],"Montevideo":[{"age":59,"s":"F"}],"Rivera":[{"age":90,"s":"F"}],"Tacuarembó":[{"age":80,"s":"F"}]}},
+        {"date":"2021-07-26","deps":{"Montevideo":[{"age":66,"s":"F"},{"age":81,"s":"M"},{"age":85,"s":"F"}],"Salto":[{"age":78,"s":"M"}],"Treinta y Tres":[{"age":93,"s":"F"}]}}
     ]
 }
