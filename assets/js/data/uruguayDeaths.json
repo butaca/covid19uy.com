@@ -8707,6 +8707,7 @@
         {"date":"2021-07-25","deps":{"Canelones":[{"age":78,"s":"F"}],"Montevideo":[{"age":59,"s":"F"}],"Rivera":[{"age":90,"s":"F"}],"Tacuarembó":[{"age":80,"s":"F"}]}},
         {"date":"2021-07-26","deps":{"Montevideo":[{"age":66,"s":"F"},{"age":81,"s":"M"},{"age":85,"s":"F"}],"Salto":[{"age":78,"s":"M"}],"Treinta y Tres":[{"age":93,"s":"F"}]}},
         {"date":"2021-07-27","deps":{"Montevideo":[{"age":92,"s":"F"},{"age":81,"s":"F"},{"age":63,"s":"F"},{"age":49,"s":"M"}],"Canelones":[{"age":82,"s":"M"}]}},
-        {"date":"2021-07-28","deps":{"Florida":[{"age":43,"s":"M"}],"Maldonado":[{"age":82,"s":"F"}],"Montevideo":[{"age":45,"s":"M"},{"age":61,"s":"F"},{"age":61,"s":"M"},{"age":69,"s":"M"},{"age":74,"s":"F"},{"age":87,"s":"F"}],"Treinta y Tres":[{"age":65,"s":"F"}]}}
+        {"date":"2021-07-28","deps":{"Florida":[{"age":43,"s":"M"}],"Maldonado":[{"age":82,"s":"F"}],"Montevideo":[{"age":45,"s":"M"},{"age":61,"s":"F"},{"age":61,"s":"M"},{"age":69,"s":"M"},{"age":74,"s":"F"},{"age":87,"s":"F"}],"Treinta y Tres":[{"age":65,"s":"F"}]}},
+        {"date":"2021-07-29","deps":{"Montevideo":[{"age":31,"s":"F"}],"Colonia":[{"age":58,"s":"M"}],"Paysandú":[{"age":70,"s":"M"}]}}
     ]
 }
