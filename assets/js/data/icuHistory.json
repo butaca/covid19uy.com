@@ -1117,8 +1117,7 @@
             "admissions": 1,
             "deaths": 4,
             "discharges": 4
-        }
-        ,
+        },
         {
             "date": "2021-08-01",
             "covid19": 65,
@@ -1127,6 +1126,15 @@
             "admissions": 1,
             "deaths": 4,
             "discharges": 3
+        },
+        {
+            "date": "2021-08-02",
+            "covid19": 66,
+            "total": 513,
+            "available": 876,
+            "admissions": 6,
+            "deaths": 4,
+            "discharges": 1
         }
     ]
 }
