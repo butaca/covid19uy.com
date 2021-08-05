@@ -8713,6 +8713,7 @@
         {"date":"2021-07-31","deps":{"Montevideo":[{"age":54,"s":"M"},{"age":55,"s":"F"},{"age":64,"s":"M"}],"Salto":[{"age":62,"s":"F"}],"Treinta y Tres":[{"age":88,"s":"F"}],"Río Negro":[{"age":90,"s":"F"}]}},
         {"date":"2021-08-01","deps":{"Canelones":[{"age":18,"s":"F"}],"Montevideo":[{"age":71,"s":"M"}]}},
         {"date":"2021-08-02","deps":{"Canelones":[{"age":46,"s":"M"}],"Montevideo":[{"age":47,"s":"M"},{"age":68,"s":"M"},{"age":89,"s":"F"}],"Paysandú":[{"age":55,"s":"F"}],"Treinta y Tres":[{"age":92,"s":"M"}]}},
-        {"date":"2021-08-03","deps":{"Montevideo":[{"age":84,"s":"M"},{"age":73,"s":"M"},{"age":74,"s":"F"},{"age":85,"s":"F"}]}}
+        {"date":"2021-08-03","deps":{"Montevideo":[{"age":84,"s":"M"},{"age":73,"s":"M"},{"age":74,"s":"F"},{"age":85,"s":"F"}]}},
+        {"date":"2021-08-04","deps":{"Artigas":[{"age":77,"s":"F"}],"Montevideo":[{"age":70,"s":"M"}],"Río Negro":[{"age":90,"s":"M"}]}}
     ]
 }
