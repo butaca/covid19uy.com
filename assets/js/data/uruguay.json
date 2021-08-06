@@ -6851,6 +6851,22 @@
             "lateDeletedCases": [
                 17
             ]
+        },
+        {
+            "date": "2021-08-06",
+            "tests": 13778,
+            "cases": 382295,
+            "recovered": 374567,
+            "deaths": 5986,
+            "icu": 32,
+            "imcu": 0,
+            "hc": 8956,
+            "hcRecovered": 8891,
+            "hcDeaths": 28,
+            "newCases": 153,
+            "lateDeletedCases": [
+                13
+            ]
         }
     ]
 }
