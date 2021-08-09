@@ -188,7 +188,8 @@ async function buildChartData() {
             if (index - HARVARD_INDEX_DAYS >= 0) {
                 harvardIndexSum -= harvardIndexNewCases[index - HARVARD_INDEX_DAYS];
             }
-            const harvardIndex = (harvardIndexSum / HARVARD_INDEX_DAYS) * (100000.0 / uruguay.population);
+            const population = new Date(el.date).getTime() >= new Date("2021-08-07").getTime() ? uruguay.population2021 : uruguay.population;
+            const harvardIndex = (harvardIndexSum / HARVARD_INDEX_DAYS) * (100000.0 / population);
             harvardIndexDaily.push(harvardIndex);
         }
     });

@@ -39,11 +39,13 @@ for (let i = startIndex; i < uruguay.data.length; ++i) {
     sumNewCasesWithoutLateData += todayNewCasesWithoutLateData;
 
     if (dayIndex >= HARVARD_INDEX_DAYS) {
+        const population = new Date(today.date).getTime() >= new Date("2021-08-07").getTime() ? uruguay.population2021 : uruguay.population;
+
         sumNewCases -= newCases[dayIndex - HARVARD_INDEX_DAYS];
-        const harvardIndex = (sumNewCases / HARVARD_INDEX_DAYS) * (100000.0 / uruguay.population);
+        const harvardIndex = (sumNewCases / HARVARD_INDEX_DAYS) * (100000.0 / population);
 
         sumNewCasesWithoutLateData -= newCasesWithoutLateData[dayIndex - HARVARD_INDEX_DAYS];
-        const harvardIndexWithoutLateData = (sumNewCasesWithoutLateData / HARVARD_INDEX_DAYS) * (100000.0 / uruguay.population);
+        const harvardIndexWithoutLateData = (sumNewCasesWithoutLateData / HARVARD_INDEX_DAYS) * (100000.0 / population);
 
         console.log(today.date + "    " + todayNewCases +  "    " + round(harvardIndex) + "    " + todayNewCasesWithoutLateData + "    " + round(harvardIndexWithoutLateData));
     }
