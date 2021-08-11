@@ -1198,6 +1198,15 @@
             "admissions": 3,
             "deaths": 0,
             "discharges": 2
+        },
+        {
+            "date": "2021-08-10",
+            "covid19": 50,
+            "total": 505,
+            "available": 857,
+            "admissions": 2,
+            "deaths": 1,
+            "discharges": 4
         }
     ]
 }
