@@ -8719,6 +8719,7 @@
         {"date":"2021-08-06","deps":{"Montevideo":[{"age":75,"s":"M"},{"age":76,"s":"M"}],"Salto":[{"age":69,"s":"M"}],"Soriano":[{"age":82,"s":"M"}]}},
         {"date":"2021-08-09","deps":{"Montevideo":[{"age":56,"s":"F"},{"age":71,"s":"F"},{"age":87,"s":"M"}]}},
         {"date":"2021-08-10","deps":{"Montevideo":[{"age":57,"s":"M"}]}},
-        {"date":"2021-08-11","deps":{"Montevideo":[{"age":92,"s":"M"}]}}
+        {"date":"2021-08-11","deps":{"Montevideo":[{"age":92,"s":"M"}]}},
+        {"date":"2021-08-12","deps":{"Canelones":[{"age":50,"s":"M"}],"Colonia":[{"age":82,"s":"F"},{"age":84,"s":"M"},{"age":86,"s":"F"}],"Montevideo":[{"age":57,"s":"M"}]}}
     ]
 }
