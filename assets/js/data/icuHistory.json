@@ -1243,6 +1243,15 @@
             "admissions": 1,
             "deaths": 5,
             "discharges": 2
+        },
+        {
+            "date": "2021-08-15",
+            "covid19": 40,
+            "total": 496,
+            "available": 844,
+            "admissions": 2,
+            "deaths": 2,
+            "discharges": 0
         }
     ]
 }

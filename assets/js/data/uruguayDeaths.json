@@ -8722,6 +8722,7 @@
         {"date":"2021-08-11","deps":{"Montevideo":[{"age":92,"s":"M"}]}},
         {"date":"2021-08-12","deps":{"Canelones":[{"age":50,"s":"M"}],"Colonia":[{"age":82,"s":"F"},{"age":84,"s":"M"},{"age":86,"s":"F"}],"Montevideo":[{"age":57,"s":"M"}]}},
         {"date":"2021-08-13","deps":{"Artigas":[{"age":67,"s":"F"}],"Montevideo":[{"age":86,"s":"M"}]}},
-        {"date":"2021-08-14","deps":{"Canelones":[{"age":69,"s":"M"}],"Colonia":[{"age":69,"s":"M"}],"Artigas":[{"age":72,"s":"M"}]}}
+        {"date":"2021-08-14","deps":{"Canelones":[{"age":69,"s":"M"}],"Colonia":[{"age":69,"s":"M"}],"Artigas":[{"age":72,"s":"M"}]}},
+        {"date":"2021-08-15","deps":{"Montevideo":[{"age":50,"s":"F"}],"Florida":[{"age":81,"s":"F"}]}}
     ]
 }
