@@ -67,11 +67,13 @@ describe('Test data', function () {
                 if (today.date != "2020-06-21") { // Allow SINAE report error
                     assert.isAtLeast(recovered, prevRecovered, "Recovered: " + today.date);
                 }
-                assert.isAtLeast(deaths, prevDeaths, "Deaths: " + today.date);
-                if (today.date != "2020-08-18") { // Allow SINAE report error
+                if(today.date != "2021-08-23") {
+                    assert.isAtLeast(deaths, prevDeaths, "Deaths: " + today.date);
+                }
+                if (today.date != "2020-08-18" && today.date != "2021-08-23") { // Allow SINAE report error
                     assert.isAtLeast(hcCases, prevHCCases, "HC Cases: " + today.date);
                 }
-                if (today.date != "2020-05-20") { // Allow SINAE report error
+                if (today.date != "2020-05-20" && today.date != "2021-08-23") { // Allow SINAE report error
                     assert.isAtLeast(hcRecovered, prevHCRecovered, "HC Recovered: " + today.date);
                 }
                 assert.isAtLeast(hcDeaths, prevHCDeaths, "HC Deaths: " + today.date);
@@ -174,127 +176,123 @@ describe('Test data', function () {
                 const dep = deps[d];
                 for (let j = 0; j < dep.length; ++j) {
                     totalDeaths++;
-
-                    if (deathHistory.length == 0) {
-                        deathHistory.push({ date: date, deaths: totalDeaths });
-                    }
-                    else {
-                        var prev = deathHistory[deathHistory.length - 1];
-                        if (prev.date.getTime() == date.getTime()) {
-                            prev.deaths = totalDeaths;
-                        }
-                        else {
-                            // an extra death was reported on 2021-02-22, but it wasn't informed which one
-                            if (date.getTime() == new Date("2021-02-22" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths--;
-                            }
-                            // a death wasn't reported on 2021-03-25
-                            if (date.getTime() == new Date("2021-03-25" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths++;
-                            }
-                            // 36 deaths weren't reported on 2021-04-29
-                            if (date.getTime() == new Date("2021-04-09" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths += 36;
-                            }
-                            // an extra death was reported on 2021-04-10, but it wasn't informed which one
-                            if (date.getTime() == new Date("2021-04-10" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths--;
-                            }
-                            // an extra death was reported on 2021-04-13, but it wasn't informed which one
-                            if (date.getTime() == new Date("2021-04-13" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths--;
-                            }
-
-                            // 2 deaths weren't reported on 2021-04-18
-                            if (date.getTime() == new Date("2021-04-18" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths += 2;
-                            }
-
-                            // an extra death was reported on 2021-04-26, but it wasn't informed which one
-                            if (date.getTime() == new Date("2021-04-26" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths--;
-                            }
-
-                            // an extra death was reported on 2021-04-27, but it wasn't informed which one
-                            if (date.getTime() == new Date("2021-04-27" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths--;
-                            }
-
-                            // an extra death was reported on 2021-05-02, but it wasn't informed which one
-                            if (date.getTime() == new Date("2021-05-02" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths--;
-                            }
-
-                            // an extra death was reported on 2021-05-08, but it wasn't informed which one
-                            if (date.getTime() == new Date("2021-05-08" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths--;
-                            }
-
-                            // an extra death was reported on 2021-05-23, but it wasn't informed which one
-                            if (date.getTime() == new Date("2021-05-23" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths--;
-                            }
-
-                            // two deaths were removed on 2021-06-01, but it wasn't informed which ones
-                            if (date.getTime() == new Date("2021-06-01" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths -= 2;
-                            }
-
-                            // two deaths were removed on 2021-06-01, but it wasn't informed which ones
-                            if (date.getTime() == new Date("2021-06-03" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths -= 2;
-                            }
-
-                            if (date.getTime() == new Date("2021-06-10" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths -= 1;
-                            }
-
-                            if (date.getTime() == new Date("2021-06-11" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths -= 1;
-                            }
-
-                            if (date.getTime() == new Date("2021-06-14" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths -= 2;
-                            }
-
-                            if (date.getTime() == new Date("2021-06-23" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths -= 1;
-                            }
-
-                            if (date.getTime() == new Date("2021-06-30" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths -= 1;
-                            }
-
-                            if (date.getTime() == new Date("2021-07-01" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths -= 1;
-                            }
-
-                            if (date.getTime() == new Date("2021-07-06" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths -= 1;
-                            }
-
-                            if (date.getTime() == new Date("2021-07-07" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths -= 1;
-                            }
-
-                            if (date.getTime() == new Date("2021-07-19" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths -= 1;
-                            }
-
-                            if (date.getTime() == new Date("2021-07-30" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths -= 1;
-                            }
-
-                            if (date.getTime() == new Date("2021-07-31" + DATE_DEFAULT_TIME).getTime()) {
-                                totalDeaths -= 1;
-                            }
-
-                            deathHistory.push({ date: date, deaths: totalDeaths });
-                        }
-                    }
                 }
             }
+
+            // an extra death was reported on 2021-02-22, but it wasn't informed which one
+            if (date.getTime() == new Date("2021-02-22" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths--;
+            }
+            // a death wasn't reported on 2021-03-25
+            if (date.getTime() == new Date("2021-03-25" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths++;
+            }
+            // 36 deaths weren't reported on 2021-04-29
+            if (date.getTime() == new Date("2021-04-09" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths += 36;
+            }
+            // an extra death was reported on 2021-04-10, but it wasn't informed which one
+            if (date.getTime() == new Date("2021-04-10" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths--;
+            }
+            // an extra death was reported on 2021-04-13, but it wasn't informed which one
+            if (date.getTime() == new Date("2021-04-13" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths--;
+            }
+
+            // 2 deaths weren't reported on 2021-04-18
+            if (date.getTime() == new Date("2021-04-18" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths += 2;
+            }
+
+            // an extra death was reported on 2021-04-26, but it wasn't informed which one
+            if (date.getTime() == new Date("2021-04-26" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths--;
+            }
+
+            // an extra death was reported on 2021-04-27, but it wasn't informed which one
+            if (date.getTime() == new Date("2021-04-27" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths--;
+            }
+
+            // an extra death was reported on 2021-05-02, but it wasn't informed which one
+            if (date.getTime() == new Date("2021-05-02" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths--;
+            }
+
+            // an extra death was reported on 2021-05-08, but it wasn't informed which one
+            if (date.getTime() == new Date("2021-05-08" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths--;
+            }
+
+            // an extra death was reported on 2021-05-23, but it wasn't informed which one
+            if (date.getTime() == new Date("2021-05-23" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths--;
+            }
+
+            // two deaths were removed on 2021-06-01, but it wasn't informed which ones
+            if (date.getTime() == new Date("2021-06-01" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths -= 2;
+            }
+
+            // two deaths were removed on 2021-06-01, but it wasn't informed which ones
+            if (date.getTime() == new Date("2021-06-03" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths -= 2;
+            }
+
+            if (date.getTime() == new Date("2021-06-10" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths -= 1;
+            }
+
+            if (date.getTime() == new Date("2021-06-11" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths -= 1;
+            }
+
+            if (date.getTime() == new Date("2021-06-14" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths -= 2;
+            }
+
+            if (date.getTime() == new Date("2021-06-23" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths -= 1;
+            }
+
+            if (date.getTime() == new Date("2021-06-30" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths -= 1;
+            }
+
+            if (date.getTime() == new Date("2021-07-01" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths -= 1;
+            }
+
+            if (date.getTime() == new Date("2021-07-06" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths -= 1;
+            }
+
+            if (date.getTime() == new Date("2021-07-07" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths -= 1;
+            }
+
+            if (date.getTime() == new Date("2021-07-19" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths -= 1;
+            }
+
+            if (date.getTime() == new Date("2021-07-30" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths -= 1;
+            }
+
+            if (date.getTime() == new Date("2021-07-31" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths -= 1;
+            }
+
+            deathHistory.push({ date: date, deaths: totalDeaths });
+
+            // a death was removed on 2021-08-23.
+            if (date.getTime() == new Date("2021-08-21" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths -= 1;
+                deathHistory.push({ date: new Date("2021-08-23" + DATE_DEFAULT_TIME), deaths: totalDeaths });
+            }
         }
+
         let j = 0;
         let deaths = 0;
         for (let i = 0; i < uruguay.data.length; ++i) {
