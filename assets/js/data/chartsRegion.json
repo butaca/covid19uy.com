@@ -2,7 +2,8 @@
     {
         "id": "chart-region-active-cases",
         "title": "graphTitleRegionActiveCases",
-        "desc": "graphTitleRegionActiveCasesDesc"
+        "desc": "graphTitleRegionActiveCasesDesc",
+        "disabled": true
     },
     {
         "id": "chart-region-cases",
