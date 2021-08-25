@@ -8730,6 +8730,7 @@
         {"date":"2021-08-19","deps":{"Montevideo":[{"age":67,"s":"M"}]}},
         {"date":"2021-08-20","deps":{"San José":[{"age":57,"s":"F"},{"age":69,"s":"F"}]}},
         {"date":"2021-08-21","deps":{"Rivera":[{"age":65,"s":"M"}]}},
-        {"date":"2021-08-24","deps":{"Canelones":[{"age":72,"s":"F"}],"Montevideo":[{"age":58,"s":"F"},{"age":61,"s":"F"},{"age":68,"s":"F"}],"Treinta y Tres":[{"age":75,"s":"F"}]}}
+        {"date":"2021-08-24","deps":{"Canelones":[{"age":72,"s":"F"}],"Montevideo":[{"age":58,"s":"F"},{"age":61,"s":"F"},{"age":68,"s":"F"}],"Treinta y Tres":[{"age":75,"s":"F"}]}},
+        {"date":"2021-08-25","deps":{"Artigas":[{"age":79,"s":"M"}],"Río Negro":[{"age":83,"s":"M"}]}}
     ]
 }
