@@ -70,10 +70,10 @@ describe('Test data', function () {
                 if(today.date != "2021-08-23") {
                     assert.isAtLeast(deaths, prevDeaths, "Deaths: " + today.date);
                 }
-                if (today.date != "2020-08-18" && today.date != "2021-08-23") { // Allow SINAE report error
+                if (today.date != "2020-08-18" && today.date != "2021-08-23" && today.date != "2021-08-24") { // Allow SINAE report error
                     assert.isAtLeast(hcCases, prevHCCases, "HC Cases: " + today.date);
                 }
-                if (today.date != "2020-05-20" && today.date != "2021-08-23") { // Allow SINAE report error
+                if (today.date != "2020-05-20" && today.date != "2021-08-23" && today.date != "2021-08-24") { // Allow SINAE report error
                     assert.isAtLeast(hcRecovered, prevHCRecovered, "HC Recovered: " + today.date);
                 }
                 assert.isAtLeast(hcDeaths, prevHCDeaths, "HC Deaths: " + today.date);
