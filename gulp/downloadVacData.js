@@ -8,6 +8,11 @@ const { BASE_DATA_DIR, writeFileAndCache, copyFromCache } = require('./util');
 const DATA_DIR = BASE_DATA_DIR;
 const VAC_GOAL = 0.75;
 
+const ETA_MODE_SPEED_AVERAGE = 0;
+const ETA_MODE_SPEED_TENDENCY = 1;
+const ETA_MODE = ETA_MODE_SPEED_AVERAGE;
+const ETA_LAST_DAYS = 28;
+
 const DOSE_URL = "https://catalogodatos.gub.uy/dataset/e766fbf7-0cc5-4b9a-a093-b56e91e88133/resource/5c549ba0-126b-45e0-b43f-b0eea72cf2cf/download/actos_vacunales.csv";
 
 async function downloadUruguayVaccinationData() {
@@ -41,9 +46,9 @@ async function downloadUruguayVaccinationData() {
             url: DOSE_URL,
             responseType: 'stream'
         }
-    
+
         const res = await axios(req);
-        const stream = res.data.pipe(csv({separator:';'}));
+        const stream = res.data.pipe(csv({ separator: ';' }));
         const history = vacData.history;
         stream.on('data', data => {
             const date = moment(data['Fecha'], 'DD/MM/YYYY').format('YYYY-MM-DD');
@@ -91,26 +96,36 @@ async function downloadUruguayVaccinationData() {
         history.astrazeneca.reverse();
 
         vacData.todayTotal = vacData.history.total[vacData.history.total.length - 1];
-        vacData.date = moment().toISOString(true);
+        const today = moment();
+        vacData.date = today.toISOString(true);
 
-        const minDate = moment(vacData.history.date[0]);
-
-        const lastVacDays = 28;
+        let eta = null;
+        const goal = vacData.population * VAC_GOAL;
         const totalPoints = [];
         let curTotal = 0;
-        for (let i = vacData.history.total.length - lastVacDays; i < vacData.history.total.length; ++i) {
+        for (let i = vacData.history.total.length - ETA_LAST_DAYS; i < vacData.history.total.length; ++i) {
             curTotal += vacData.history.total[i];
             totalPoints.push([i, curTotal]);
         }
 
-        const goal = vacData.population * VAC_GOAL;
+        if (ETA_MODE == ETA_MODE_SPEED_TENDENCY) {
+            const result = regression.linear(totalPoints);
+            const m = result.equation[0];
+            const c = result.equation[1];
+            const x = (2 * goal - c) / m;
+            const minDate = moment(vacData.history.date[0]);
+            eta = minDate.add(x, 'days');
+        }
+        else if (ETA_MODE == ETA_MODE_SPEED_AVERAGE) {
+            const speed = Math.floor(curTotal / ETA_LAST_DAYS);
+            const remaining = Math.max(0, goal * 2 - vacData.total);
+            const x = remaining / speed;
+            eta = today.add(x, 'days');
+        }
 
-        const result = regression.linear(totalPoints);
-        const m = result.equation[0];
-        const c = result.equation[1];
-        const x = (2 * goal - c) / m;
-        const eta = minDate.add(x, 'days');
-        vacData.eta = eta.format("YYYY-MM-DD");
+        if (eta != null) {
+            vacData.eta = eta.format("YYYY-MM-DD");
+        }
 
     } catch (e) {
         console.log("Error getting vaccination data. " + e.name + ": " + e.message);
