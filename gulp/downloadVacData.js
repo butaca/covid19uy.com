@@ -26,13 +26,15 @@ async function downloadUruguayVaccinationData() {
             pfizer: [],
             astrazeneca: [],
             firstDose: [],
-            secondDose: []
+            secondDose: [],
+            boosterDose: []
         },
         date: 0,
         todayTotal: 0,
         total: 0,
         firstDoseTotal: 0,
         secondDoseTotal: 0,
+        boosterDoseTotal: 0,
         coronavacTotal: 0,
         astrazenecaTotal: 0,
         pfizerTotal: 0,
@@ -54,28 +56,34 @@ async function downloadUruguayVaccinationData() {
             const date = moment(data['Fecha'], 'DD/MM/YYYY').format('YYYY-MM-DD');
             const firstDose = parseInt(data['Total Dosis 1']);
             const secondDose = parseInt(data['Total Dosis 2']);
+            const boosterDose = parseInt(data['Total Dosis R']);
             const sinovacFirstDose = parseInt(data['1era Dosis Sinovac']);
             const sinovacSecondDose = parseInt(data['2da Dosis Sinovac']);
+            const sinovacBoosterDose = parseInt(data['Refuerzo Dosis Sinovac']);
             const pfizerFirstDose = parseInt(data['1era Dosis Pfizer']);
             const pfizerSecondDose = parseInt(data['2da Dosis Pfizer']);
+            const pfizerBoosterDose = parseInt(data['Refuerzo Dosis Pfizer']);
             const astrazenecaFirstDose = parseInt(data['1era Dosis Astrazeneca']);
             const astrazenecaSecondDose = parseInt(data['2da Dosis Astrazeneca']);
+            const astrazenecaBoosterDose = parseInt(data['Refuerzo Dosis Astrazeneca']);
 
-            const total = firstDose + secondDose;
-            const sinovacTotal = sinovacFirstDose + sinovacSecondDose;
-            const pfizerTotal = pfizerFirstDose + pfizerSecondDose;
-            const astrazenecaTotal = astrazenecaFirstDose + astrazenecaSecondDose;
+            const total = firstDose + secondDose + boosterDose;
+            const sinovacTotal = sinovacFirstDose + sinovacSecondDose + sinovacBoosterDose;
+            const pfizerTotal = pfizerFirstDose + pfizerSecondDose + pfizerBoosterDose;
+            const astrazenecaTotal = astrazenecaFirstDose + astrazenecaSecondDose + astrazenecaBoosterDose;
 
             history.date.push(date);
             history.firstDose.push(firstDose);
             history.secondDose.push(secondDose);
-            history.total.push(firstDose + secondDose);
+            history.boosterDose.push(boosterDose);
+            history.total.push(total);
             history.coronavac.push(sinovacTotal);
             history.pfizer.push(pfizerTotal);
             history.astrazeneca.push(astrazenecaTotal);
 
             vacData.firstDoseTotal += firstDose;
             vacData.secondDoseTotal += secondDose;
+            vacData.boosterDoseTotal += boosterDose;
             vacData.total += total;
             vacData.coronavacTotal += sinovacTotal;
             vacData.pfizerTotal += pfizerTotal;
@@ -90,6 +98,7 @@ async function downloadUruguayVaccinationData() {
         history.date.reverse();
         history.firstDose.reverse();
         history.secondDose.reverse();
+        history.boosterDose.reverse();
         history.total.reverse();
         history.coronavac.reverse();
         history.pfizer.reverse();
@@ -104,7 +113,8 @@ async function downloadUruguayVaccinationData() {
         const totalPoints = [];
         let curTotal = 0;
         for (let i = vacData.history.total.length - ETA_LAST_DAYS; i < vacData.history.total.length; ++i) {
-            curTotal += vacData.history.total[i];
+            // use first and second dose only
+            curTotal += vacData.history.firstDose[i] + vacData.history.secondDose[i];
             totalPoints.push([i, curTotal]);
         }
 
@@ -118,7 +128,8 @@ async function downloadUruguayVaccinationData() {
         }
         else if (ETA_MODE == ETA_MODE_SPEED_AVERAGE) {
             const speed = Math.floor(curTotal / ETA_LAST_DAYS);
-            const remaining = Math.max(0, goal * 2 - vacData.total);
+            // use first and second dose only
+            const remaining = Math.max(0, goal * 2 - (vacData.firstDoseTotal + vacData.secondDoseTotal));
             const x = remaining / speed;
             eta = today.add(x, 'days');
         }

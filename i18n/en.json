@@ -386,6 +386,12 @@
     "vaccinationProgressSecondDoseDesc": {
         "other": "Percentage of the population that received two doses."
     },
+    "vaccinationProgressBoosterDose": {
+        "other": "Booster Dose"
+    },
+    "vaccinationProgressBoosterDoseDesc": {
+        "other": "Percentage of the population that received a booster dose (third dose)."
+    },
     "harvardIndex": {
         "other": "Harvard Index"
     },
@@ -430,6 +436,9 @@
     },
     "secondDose": {
         "other": "Second Dose"
+    },
+    "boosterDose": {
+        "other": "Booster Dose"
     },
     "vaceta": {
         "other": "Estimated 75% second dose"
