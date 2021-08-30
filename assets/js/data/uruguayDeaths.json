@@ -8734,6 +8734,7 @@
         {"date":"2021-08-25","deps":{"Artigas":[{"age":79,"s":"M"}],"Río Negro":[{"age":83,"s":"M"}]}},
         {"date":"2021-08-26","deps":{"Canelones":[{"age":67,"s":"F"},{"age":85,"s":"M"}],"Montevideo":[{"age":71,"s":"M"}]}},
         {"date":"2021-08-27","deps":{"Rocha":[{"age":47,"s":"F"}]}},
-        {"date":"2021-08-28","deps":{"Artigas":[{"age":76,"s":"M"}]}}
+        {"date":"2021-08-28","deps":{"Artigas":[{"age":76,"s":"M"}]}},
+        {"date":"2021-08-29","deps":{"Montevideo":[{"age":83,"s":"F"},{"age":85,"s":"F"}]}}
     ]
 }
