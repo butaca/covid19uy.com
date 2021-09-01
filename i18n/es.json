@@ -387,10 +387,10 @@
         "other": "Porcentaje de la población recibió dos dosis."
     },
     "vaccinationProgressBoosterDose": {
-        "other": "Resfuerzo"
+        "other": "Refuerzo"
     },
     "vaccinationProgressBoosterDoseDesc": {
-        "other": "Porcentaje de la población recibió una tarcera dosis de resfuerzo."
+        "other": "Porcentaje de la población recibió una tarcera dosis de refuerzo."
     },
     "harvardIndex": {
         "other": "Índice de Harvard"
