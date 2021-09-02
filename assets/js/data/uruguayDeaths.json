@@ -8736,6 +8736,7 @@
         {"date":"2021-08-27","deps":{"Rocha":[{"age":47,"s":"F"}]}},
         {"date":"2021-08-28","deps":{"Artigas":[{"age":76,"s":"M"}]}},
         {"date":"2021-08-29","deps":{"Montevideo":[{"age":83,"s":"F"},{"age":85,"s":"F"}]}},
-        {"date":"2021-08-31","deps":{"Artigas":[{"age":72,"s":"M"},{"age":78,"s":"M"}],"Montevideo":[{"age":67,"s":"M"}]}}
+        {"date":"2021-08-31","deps":{"Artigas":[{"age":72,"s":"M"},{"age":78,"s":"M"}],"Montevideo":[{"age":67,"s":"M"}]}},
+        {"date":"2021-09-01","deps":{"Salto":[{"age":70,"s":"F"},{"age":85,"s":"F"}]}}
     ]
 }
