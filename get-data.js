@@ -78,7 +78,7 @@ async function getUpdatedDate() {
 }
 
 async function fetchMonitorData() {
-    const [date, tests, activeCases, cases, recovered, deaths, icu, imcu, hc, hcRecovered, hcDeaths, newCases] = await Promise.all([
+    const [date, tests, activeCases, cases, recovered, deaths, icu, hc, hcRecovered, hcDeaths, newCases] = await Promise.all([
         getUpdatedDate(),
         queryIntValue(1, "test_procesados"),
         queryIntValue(0, "CasosActivos"),
@@ -86,7 +86,6 @@ async function fetchMonitorData() {
         queryIntValue(0, "Casos_Recuperados"),
         queryIntValue(0, "Fallecidos"),
         queryIntValue(1, "casos_cuidados_intensivos"),
-        queryIntValue(1, "casos_cuidados_intermedios"),
         queryIntValue(1, "positivos_personal_salud"),
         queryIntValue(1, "Pacientes_Recuperados"),
         queryIntValue(1, "Fallecidos"),
@@ -100,7 +99,6 @@ async function fetchMonitorData() {
         recovered: recovered,
         deaths: deaths,
         icu: icu,
-        imcu: imcu,
         hc: hc,
         hcRecovered: hcRecovered,
         hcDeaths: hcDeaths,
