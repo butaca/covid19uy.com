@@ -8740,7 +8740,7 @@
         {"date":"2021-09-01","deps":{"Salto":[{"age":70,"s":"F"},{"age":85,"s":"F"}]}},
         {"date":"2021-09-07","deps":{"Canelones":[{"age":86,"s":"M"},{"age":36,"s":"M"}],"Montevideo":[{"age":54,"s":"F"}]}},
         {"date":"2021-09-11","deps":{"Montevideo":[{"age":63,"s":"F"},{"age":83,"s":"M"}]}},
-        {"date":"2021-09-12","deps":{"Canelones":[{"age":89,"s":"F"}]}}
-
+        {"date":"2021-09-12","deps":{"Canelones":[{"age":89,"s":"F"}]}},
+        {"date":"2021-09-13","deps":{"Soriano":[{"age":72,"s":"F"}]}}
     ]
 }
