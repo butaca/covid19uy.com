@@ -7480,6 +7480,21 @@
             "lateDeletedCases": [
                 13
             ]
+        },
+        {
+            "date": "2021-09-15",
+            "tests": 10352,
+            "cases": 387156,
+            "recovered": 379418,
+            "deaths": 6045,
+            "icu": 15,
+            "hc": 9202,
+            "hcRecovered": 9112,
+            "hcDeaths": 28,
+            "newCases": 162,
+            "lateDeletedCases": [
+                34
+            ]
         }
     ]
 }
