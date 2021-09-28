@@ -19,6 +19,10 @@ async function takeScreenshot(page, w, h, path) {
     await page.screenshot({ path: path, clip: { x: 0, y: 52, width: w, height: h } });
 }
 
+function wait(milliseconds) {
+    return new Promise(resolve => setTimeout(resolve, milliseconds));
+}
+
 async function resize(path, w, h, output) {
     let s = sharp(path).resize(w, h)
     if (output.endsWith(".jpg") || output.endsWith(".jpeg")) {
@@ -35,6 +39,8 @@ async function takeScreenshots(outputDir) {
     const page = await browser.newPage();
     await takeScreenshot(page, 1216, 630, tmpFile);
     await resize(tmpFile, 1200, 630, outputDir + '/images/seo/opengraph.jpg');
+    // workaround for net::ERR_ABORTED thown sometimes
+    await wait(500);
     await takeScreenshot(page, 2048, 1024, tmpFile);
     await resize(tmpFile, 1024, 512, outputDir + '/images/seo/twitter_card.jpg'),
         await browser.close();
