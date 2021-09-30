@@ -119,8 +119,8 @@ async function downloadUruguayVaccinationData() {
         const totalPoints = [];
         let curTotal = 0;
         for (let i = vacData.history.total.length - ETA_LAST_DAYS; i < vacData.history.total.length; ++i) {
-            // use first and second dose only
-            curTotal += vacData.history.firstDose[i] + vacData.history.secondDose[i];
+            // use second dose only
+            curTotal += vacData.history.secondDose[i];
             totalPoints.push([i, curTotal]);
         }
 
@@ -128,14 +128,15 @@ async function downloadUruguayVaccinationData() {
             const result = regression.linear(totalPoints);
             const m = result.equation[0];
             const c = result.equation[1];
-            const x = (2 * goal - c) / m;
+            // use second dose only
+            const x = (goal - c) / m;
             const minDate = moment(vacData.history.date[0]);
             eta = minDate.add(x, 'days');
         }
         else if (ETA_MODE == ETA_MODE_SPEED_AVERAGE) {
             const speed = Math.floor(curTotal / ETA_LAST_DAYS);
-            // use first and second dose only
-            const remaining = Math.max(0, goal * 2 - (vacData.firstDoseTotal + vacData.secondDoseTotal));
+            // use second dose only
+            const remaining = Math.max(0, goal - vacData.secondDoseTotal);
             const x = remaining / speed;
             eta = today.add(x, 'days');
         }
