@@ -1,5 +1,6 @@
 
 const axios = require("axios");
+const https = require('https');
 axios.default.defaults.timeout = 60000;
 const moment = require("moment");
 const regression = require("regression");
@@ -43,10 +44,15 @@ async function downloadUruguayVaccinationData() {
     }
 
     try {
+        const agent = new https.Agent({
+            rejectUnauthorized: false
+        });
+
         var req = {
             method: 'get',
             url: DOSE_URL,
-            responseType: 'stream'
+            responseType: 'stream',
+            httpsAgent: agent
         }
 
         const res = await axios(req);
