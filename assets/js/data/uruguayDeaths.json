@@ -8750,6 +8750,7 @@
         {"date":"2021-09-24","deps":{"Montevideo":[{"age":75,"s":"F"},{"age":78,"s":"F"}]}},
         {"date":"2021-09-25","deps":{"Canelones":[{"age":87,"s":"F"}]}},
         {"date":"2021-09-27","deps":{"Montevideo":[{"age":94,"s":"F"}]}},
-        {"date":"2021-09-29","deps":{"Montevideo":[{"age":55,"s":"F"}]}}
+        {"date":"2021-09-29","deps":{"Montevideo":[{"age":55,"s":"F"}]}},
+        {"date":"2021-09-30","deps":{"Cerro Largo":[{"age":70,"s":"F"}]}}
     ]
 }
