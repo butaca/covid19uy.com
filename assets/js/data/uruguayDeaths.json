@@ -8752,6 +8752,7 @@
         {"date":"2021-09-27","deps":{"Montevideo":[{"age":94,"s":"F"}]}},
         {"date":"2021-09-29","deps":{"Montevideo":[{"age":55,"s":"F"}]}},
         {"date":"2021-09-30","deps":{"Cerro Largo":[{"age":70,"s":"F"}]}},
-        {"date":"2021-10-01","deps":{"Montevideo":[{"age":76,"s":"F"}]}}
+        {"date":"2021-10-01","deps":{"Montevideo":[{"age":76,"s":"F"}]}},
+        {"date":"2021-10-02","deps":{"Cerro Largo":[{"age":84,"s":"M"}]}}
     ]
 }
