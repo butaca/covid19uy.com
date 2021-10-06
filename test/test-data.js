@@ -116,7 +116,11 @@ describe('Test data', function () {
                     todayNewCasesWithLateData += today.lateNewCases.reduce((prev, cur) => prev + cur);
                 }
 
-                const todayTotalCasesWithLateData = yesterdayTotalCasesWithLateData + todayNewCasesWithLateData - (today.lateDeletedCases != undefined ? today.lateDeletedCases.reduce((prev, cur) => prev + cur) : 0);
+                let todayDeletedCases = 0;
+                if(today.lateDeletedCases != undefined) {
+                    todayDeletedCases = isNaN(today.lateDeletedCases) ? today.lateDeletedCases.reduce((prev, cur) => prev + cur) : today.lateDeletedCases;
+                }
+                const todayTotalCasesWithLateData = yesterdayTotalCasesWithLateData + todayNewCasesWithLateData - todayDeletedCases;
                 yesterdayTotalCasesWithLateData = todayTotalCasesWithLateData;
             }
 

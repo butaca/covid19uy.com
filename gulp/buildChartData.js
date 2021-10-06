@@ -118,7 +118,12 @@ async function buildChartData() {
         }
         dailyCasesWithLateData.push(todayNewCasesWithLateData);
 
-        const todayTotalCasesWithLateData = yesterdayTotalCasesWithLateData + todayNewCasesWithLateData - (el.lateDeletedCases != undefined ? el.lateDeletedCases.reduce((prev, cur) => prev + cur) : 0);
+        let todayDeletedCases = 0;
+        if(el.lateDeletedCases != undefined) {
+            todayDeletedCases = isNaN(el.lateDeletedCases) ? el.lateDeletedCases.reduce((prev, cur) => prev + cur) : el.lateDeletedCases;
+        }
+
+        const todayTotalCasesWithLateData = yesterdayTotalCasesWithLateData + todayNewCasesWithLateData - todayDeletedCases;
         totalCasesWithLateData.push(todayTotalCasesWithLateData);
         yesterdayTotalCasesWithLateData = todayTotalCasesWithLateData;
 
