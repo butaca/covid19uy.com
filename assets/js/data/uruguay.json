@@ -7780,6 +7780,21 @@
             "lateDeletedCases": [
                 10
             ]
+        },
+        {
+            "date": "2021-10-05",
+            "tests": 8168,
+            "cases": 389363,
+            "recovered": 382150,
+            "deaths": 6059,
+            "icu": 7,
+            "hc": 9351,
+            "hcRecovered": 9276,
+            "hcDeaths": 28,
+            "newCases": 117,
+            "lateDeletedCases": [
+                14
+            ]
         }
     ]
 }
