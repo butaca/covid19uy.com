@@ -8758,6 +8758,7 @@
         {"date":"2021-10-05","deps":{"Rocha":[{"age":71,"s":"F"}]}},
         {"date":"2021-10-06","deps":{"Canelones":[{"age":74,"s":"M"}],"Montevideo":[{"age":71,"s":"F"}],"Río Negro":[{"age":42,"s":"F"}]}},
         {"date":"2021-10-09","deps":{"Canelones":[{"age":80,"s":"M"}]}},
-        {"date":"2021-10-10","deps":{"Montevideo":[{"age":76,"s":"M"}]}}
+        {"date":"2021-10-10","deps":{"Montevideo":[{"age":76,"s":"M"}]}},
+        {"date":"2021-10-13","deps":{"Montevideo":[{"age":91,"s":"F"}]}}
     ]
 }
