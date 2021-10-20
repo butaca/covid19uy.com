@@ -7556,9 +7556,7 @@
             "hcRecovered": 9348,
             "hcDeaths": 28,
             "newCases": 180,
-            "lateNewCases": [
-                11
-            ]
+            "lateDeletedCases": -11
         }
     ]
 }
