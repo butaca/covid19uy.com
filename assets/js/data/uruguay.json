@@ -7586,7 +7586,7 @@
         },
         {
             "date": "2021-10-22",
-            "tests":  9302,
+            "tests": 9302,
             "cases": 391890,
             "recovered": 384081,
             "deaths": 6070,
@@ -7596,6 +7596,18 @@
             "hcDeaths": 28,
             "newCases": 192,
             "lateDeletedCases": 2
+        },
+        {
+            "date": "2021-10-23",
+            "tests": 8105,
+            "cases": 392029,
+            "recovered": 384211,
+            "deaths": 6071,
+            "icu": 20,
+            "hc": 9489,
+            "hcRecovered": 9377,
+            "hcDeaths": 28,
+            "newCases": 139
         }
     ]
 }
