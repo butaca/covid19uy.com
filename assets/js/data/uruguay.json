@@ -7621,6 +7621,19 @@
             "hcDeaths": 28,
             "newCases": 119,
             "todayDeaths": 1
+        },
+        {
+            "date": "2021-10-25",
+            "tests": 6575,
+            "cases": 392319,
+            "recovered": 384537,
+            "deaths": 6073,
+            "icu": 23,
+            "hc": 9505,
+            "hcRecovered": 9391,
+            "hcDeaths": 28,
+            "newCases": 176,
+            "lateDeletedCases": 5
         }
     ]
 }
