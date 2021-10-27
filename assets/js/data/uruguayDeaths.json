@@ -8767,6 +8767,7 @@
         {"date":"2021-10-22","deps":{"Montevideo":[{"age":81,"s":"F"}]}},
         {"date":"2021-10-23","deps":{"Montevideo":[{"age":86,"s":"F"}]}},
         {"date":"2021-10-24","deps":{"Colonia":[{"age":73,"s":"M"}]}},
-        {"date":"2021-10-25","deps":{"Montevideo":[{"age":89,"s":"F"}],"Canelones":[{"age":93,"s":"M"}]}}
+        {"date":"2021-10-25","deps":{"Montevideo":[{"age":89,"s":"F"}],"Canelones":[{"age":93,"s":"M"}]}},
+        {"date":"2021-10-26","deps":{"Montevideo":[{"age":90,"s":"M"}]}}
     ]
 }
