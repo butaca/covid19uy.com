@@ -8770,6 +8770,7 @@
         {"date":"2021-10-25","deps":{"Montevideo":[{"age":89,"s":"F"}],"Canelones":[{"age":93,"s":"M"}]}},
         {"date":"2021-10-26","deps":{"Montevideo":[{"age":90,"s":"M"}]}},
         {"date":"2021-10-27","deps":{"Canelones":[{"age":88,"s":"M"}],"Tacuarembó":[{"age":87,"s":"M"}]}},
-        {"date":"2021-10-29","deps":{"Cerro Largo":[{"age":79,"s":"F"}]}}
+        {"date":"2021-10-29","deps":{"Cerro Largo":[{"age":79,"s":"F"}]}},
+        {"date":"2021-10-31","deps":{"Salto":[{"age":80,"s":"M"}]}}
     ]
 }
