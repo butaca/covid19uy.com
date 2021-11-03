@@ -7732,6 +7732,18 @@
             "hcRecovered": 9451,
             "hcDeaths": 28,
             "newCases": 195
+        },
+        {
+            "date": "2021-11-03",
+            "tests": 9039,
+            "cases": 394443,
+            "recovered": 386013,
+            "deaths": 6080,
+            "icu": 25,
+            "hc": 9601,
+            "hcRecovered": 9463,
+            "hcDeaths": 28,
+            "newCases": 195
         }
     ]
 }
