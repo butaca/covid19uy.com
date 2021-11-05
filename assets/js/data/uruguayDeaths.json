@@ -8773,6 +8773,7 @@
         {"date":"2021-10-29","deps":{"Cerro Largo":[{"age":79,"s":"F"}]}},
         {"date":"2021-10-31","deps":{"Salto":[{"age":80,"s":"M"}]}},
         {"date":"2021-11-01","deps":{"Cerro Largo":[{"age":80,"s":"F"}],"Tacuarembó":[{"age":70,"s":"M"}]}},
-        {"date":"2021-11-04","deps":{"Canelones":[{"age":52,"s":"M"},{"age":89,"s":"F"}]}}
+        {"date":"2021-11-04","deps":{"Canelones":[{"age":52,"s":"M"},{"age":89,"s":"F"}]}},
+        {"date":"2021-11-05","deps":{"Artigas":[{"age":77,"s":"F"}],"Tacuarembó":[{"age":61,"s":"M"}]}}
     ]
 }
