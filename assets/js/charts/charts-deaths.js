@@ -68,6 +68,13 @@ function chart(chartData, lang) {
     ctx = document.getElementById('chart-deaths-new');
     if (ctx) {
         options = createDefaultChartOptions();
+        options.scales = {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                }
+            }]
+        }
         new Chart(ctx, {
             type: 'bar',
             data: {
