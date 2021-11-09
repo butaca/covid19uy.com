@@ -8776,6 +8776,7 @@
         {"date":"2021-11-04","deps":{"Canelones":[{"age":52,"s":"M"},{"age":89,"s":"F"}]}},
         {"date":"2021-11-05","deps":{"Artigas":[{"age":77,"s":"F"}],"Tacuarembó":[{"age":61,"s":"M"}]}},
         {"date":"2021-11-06","deps":{"San José":[{"age":87,"s":"F"}]}},
-        {"date":"2021-11-07","deps":{"Canelones":[{"age":61,"s":"F"}]}}
+        {"date":"2021-11-07","deps":{"Canelones":[{"age":61,"s":"F"}]}},
+        {"date":"2021-11-08","deps":{"Canelones":[{"age":95,"s":"M"}],"Montevideo":[{"age":92,"s":"M"}]}}
     ]
 }
