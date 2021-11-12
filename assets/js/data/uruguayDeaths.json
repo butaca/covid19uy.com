@@ -8778,6 +8778,7 @@
         {"date":"2021-11-06","deps":{"San José":[{"age":87,"s":"F"}]}},
         {"date":"2021-11-07","deps":{"Canelones":[{"age":61,"s":"F"}]}},
         {"date":"2021-11-08","deps":{"Canelones":[{"age":95,"s":"M"}],"Montevideo":[{"age":92,"s":"M"}]}},
-        {"date":"2021-11-09","deps":{"Montevideo":[{"age":85,"s":"F"},{"age":39,"s":"F"}],"Canelones":[{"age":72,"s":"M"}],"Maldonado":[{"age":71,"s":"M"}],"Soriano":[{"age":65,"s":"M"}]}}
+        {"date":"2021-11-09","deps":{"Montevideo":[{"age":85,"s":"F"},{"age":39,"s":"F"}],"Canelones":[{"age":72,"s":"M"}],"Maldonado":[{"age":71,"s":"M"}],"Soriano":[{"age":65,"s":"M"}]}},
+        {"date":"2021-11-11","deps":{"Montevideo":[{"age":64,"s":"M"}],"Florida":[{"age":63,"s":"F"},{"age":48,"s":"F"}],"Cerro Largo":[{"age":55,"s":"F"}]}}
     ]
 }
