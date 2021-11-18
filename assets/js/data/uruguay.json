@@ -7911,6 +7911,19 @@
             "hcDeaths": 28,
             "newCases": 219,
             "lateDeletedCases": 8
+        },
+        {
+            "date": "2021-11-17",
+            "tests": 11173,
+            "cases": 397143,
+            "recovered": 389046,
+            "deaths": 6105,
+            "icu": 19,
+            "hc": 9709,
+            "hcRecovered": 9619,
+            "hcDeaths": 28,
+            "newCases": 260,
+            "lateDeletedCases": 5
         }
     ]
 }
