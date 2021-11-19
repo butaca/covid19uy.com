@@ -8785,6 +8785,7 @@
         {"date":"2021-11-15","deps":{"Colonia":[{"age":91,"s":"M"}]}},
         {"date":"2021-11-16","deps":{"Canelones":[{"age":77,"s":"F"},{"age":74,"s":"F"}]}},
         {"date":"2021-11-17","deps":{"Montevideo":[{"age":65,"s":"F"}]}},
-        {"date":"2021-11-18","deps":{"Treinta y Tres":[{"age":89,"s":"M"}],"Montevideo":[{"age":86,"s":"F"},{"age":80,"s":"M"},{"age":74,"s":"F"},{"age":72,"s":"F"}]}}
+        {"date":"2021-11-18","deps":{"Treinta y Tres":[{"age":89,"s":"M"}],"Montevideo":[{"age":86,"s":"F"},{"age":80,"s":"M"},{"age":74,"s":"F"},{"age":72,"s":"F"}]}},
+        {"date":"2021-11-19","deps":{"Montevideo":[{"age":84,"s":"F"}]}}
     ]
 }
