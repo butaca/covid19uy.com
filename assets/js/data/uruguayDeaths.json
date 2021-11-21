@@ -8787,6 +8787,7 @@
         {"date":"2021-11-17","deps":{"Montevideo":[{"age":65,"s":"F"}]}},
         {"date":"2021-11-18","deps":{"Treinta y Tres":[{"age":89,"s":"M"}],"Montevideo":[{"age":86,"s":"F"},{"age":80,"s":"M"},{"age":74,"s":"F"},{"age":72,"s":"F"}]}},
         {"date":"2021-11-19","deps":{"Montevideo":[{"age":84,"s":"F"}]}},
-        {"date":"2021-11-20","deps":{"Montevideo":[{"age":62,"s":"M"}],"Treinta y Tres":[{"age":69,"s":"F"}]}}
+        {"date":"2021-11-20","deps":{"Montevideo":[{"age":62,"s":"M"}],"Treinta y Tres":[{"age":69,"s":"F"}]}},
+        {"date":"2021-11-21","deps":{"Treinta y Tres":[{"age":75,"s":"M"}],"Lavalleja":[{"age":67,"s":"M"}],"Canelones":[{"age":66,"s":"M"}]}}
     ]
 }
