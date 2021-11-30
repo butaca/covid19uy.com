@@ -8794,6 +8794,7 @@
         {"date":"2021-11-25","deps":{"Canelones":[{"age":76,"s":"F"}],"Rivera":[{"age":70,"s":"F"}],"Rocha":[{"age":70,"s":"F"}],"Tacuarembó":[{"age":37,"s":"M"}]}},
         {"date":"2021-11-26","deps":{"Montevideo":[{"age":64,"s":"M"}]}},
         {"date":"2021-11-27","deps":{"Paysandú":[{"age":92,"s":"F"}]}},
-        {"date":"2021-11-28","deps":{"Canelones":[{"age":82,"s":"F"}],"Montevideo":[{"age":42,"s":"M"},{"age":87,"s":"M"}],"Tacuarembó":[{"age":39,"s":"F"}]}}
+        {"date":"2021-11-28","deps":{"Canelones":[{"age":82,"s":"F"}],"Montevideo":[{"age":42,"s":"M"},{"age":87,"s":"M"}],"Tacuarembó":[{"age":39,"s":"F"}]}},
+        {"date":"2021-11-29","deps":{"Montevideo":[{"age":78,"s":"M"}]}}
     ]
 }
