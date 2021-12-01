@@ -8088,6 +8088,19 @@
             "hcDeaths": 28,
             "newCases": 200,
             "lateDeletedCases": 9
+        },
+        {
+            "date": "2021-12-01",
+            "tests": 9763,
+            "cases": 399966,
+            "recovered": 391664,
+            "deaths": 6131,
+            "icu": 15,
+            "hc": 9796,
+            "hcRecovered": 9716,
+            "hcDeaths": 28,
+            "newCases": 272,
+            "lateDeletedCases": 1
         }
     ]
 }
