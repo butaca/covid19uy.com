@@ -42,8 +42,10 @@
                 <progress class="progress is-success" value="{{ $boosterDoseVacProgress }}" max="1">{{
                     $boosterDoseVacProgressPercent }}%</progress>
             </div>
+            {{- if site.Params.eta -}}
             {{- with $vacData.eta -}}
             <div class="has-tooltip-multiline pt-2" data-tooltip='{{ i18n "vacetaDesc"}}'>{{ i18n "vaceta"}}: <strong>{{ dateFormat site.Params.dateFormatCompact . }}</strong><span class="pl-1"><i class="far fa-question-circle"></i></span></div>    
+            {{- end -}}
             {{- end -}}
         </div>
         <div class="column is-three-fifths">
