@@ -300,6 +300,11 @@ describe('Test data', function () {
                 totalDeaths -= 1;
             }
 
+            // a death non reported death was added on 2021-12-05
+            if (date.getTime() == new Date("2021-12-05" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths += 1;
+            }
+
             deathHistory.push({ date: date, deaths: totalDeaths });
 
             // a death was removed on 2021-08-23.
