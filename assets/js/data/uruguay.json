@@ -8154,6 +8154,19 @@
             "newCases": 109,
             "lateDeletedCases": 5,
             "todayDeaths": 1
+        },
+        {
+            "date": "2021-12-06",
+            "tests": 6561,
+            "cases": 401103,
+            "recovered": 392880,
+            "deaths": 6136,
+            "icu": 19,
+            "hc": 9828,
+            "hcRecovered": 9757,
+            "hcDeaths": 28,
+            "newCases": 192,
+            "lateDeletedCases": 14
         }
     ]
 }
