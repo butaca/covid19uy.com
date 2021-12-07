@@ -8799,6 +8799,7 @@
         {"date":"2021-11-30","deps":{"Montevideo":[{"age":62,"s":"M"}]}},
         {"date":"2021-12-02","deps":{"Tacuarembó":[{"age":67,"s":"M"}]}},
         {"date":"2021-12-05","deps":{"Maldonado":[{"age":95,"s":"F"}]}},
-        {"date":"2021-12-06","deps":{"Maldonado":[{"age":79,"s":"F"}],"Montevideo":[{"age":82,"s":"F"}]}}
+        {"date":"2021-12-06","deps":{"Maldonado":[{"age":79,"s":"F"}],"Montevideo":[{"age":82,"s":"F"}]}},
+        {"date":"2021-12-07","deps":{"Canelones":[{"age":90,"s":"F"}]}}
     ]
 }
