@@ -8800,6 +8800,8 @@
         {"date":"2021-12-02","deps":{"Tacuarembó":[{"age":67,"s":"M"}]}},
         {"date":"2021-12-05","deps":{"Maldonado":[{"age":95,"s":"F"}]}},
         {"date":"2021-12-06","deps":{"Maldonado":[{"age":79,"s":"F"}],"Montevideo":[{"age":82,"s":"F"}]}},
-        {"date":"2021-12-07","deps":{"Canelones":[{"age":90,"s":"F"}]}}
+        {"date":"2021-12-07","deps":{"Canelones":[{"age":90,"s":"F"}]}},
+        {"date":"2021-12-08","deps":{"Lavalleja":[{"age":52,"s":"F"}]}},
+        {"date":"2021-12-09","deps":{"Montevideo":[{"age":85,"s":"F"}],"Canelones":[{"age":81,"s":"M"}]}}
     ]
 }

@@ -8179,6 +8179,32 @@
             "hcRecovered": 9765,
             "hcDeaths": 28,
             "newCases": 237
+        },
+        {
+            "date": "2021-12-08",
+            "tests": 8990,
+            "cases": 401640,
+            "recovered": 393258,
+            "deaths": 6138,
+            "icu": 17,
+            "hc": 9837,
+            "hcRecovered": 9771,
+            "hcDeaths": 28,
+            "newCases": 311,
+            "lateDeletedCases": 11
+        },
+        {
+            "date": "2021-12-09",
+            "tests": 8501,
+            "cases": 401897,
+            "recovered": 393446,
+            "deaths": 6140,
+            "icu": 15,
+            "hc": 9838,
+            "hcRecovered": 9775,
+            "hcDeaths": 28,
+            "newCases": 269,
+            "lateDeletedCases": 12
         }
     ]
 }
