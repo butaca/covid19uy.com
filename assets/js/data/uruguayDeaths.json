@@ -8807,6 +8807,7 @@
         {"date":"2021-12-11","deps":{"Cerro Largo":[{"age":79,"s":"M"}]}},
         {"date":"2021-12-12","deps":{"Montevideo":[{"age":96,"s":"M"}],"Lavalleja":[{"age":75,"s":"M"}],"Colonia":[{"age":61,"s":"M"}]}},
         {"date":"2021-12-14","deps":{"Maldonado":[{"age":77,"s":"M"}]}},
-        {"date":"2021-12-15","deps":{"Montevideo":[{"age":74,"s":"M"}]}}
+        {"date":"2021-12-15","deps":{"Montevideo":[{"age":74,"s":"M"}]}},
+        {"date":"2021-12-16","deps":{"Montevideo":[{"age":60,"s":"M"}],"Rocha":[{"age":82,"s":"M"}]}}
     ]
 }
