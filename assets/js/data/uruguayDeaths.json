@@ -8809,6 +8809,7 @@
         {"date":"2021-12-14","deps":{"Maldonado":[{"age":77,"s":"M"}]}},
         {"date":"2021-12-15","deps":{"Montevideo":[{"age":74,"s":"M"}]}},
         {"date":"2021-12-16","deps":{"Montevideo":[{"age":60,"s":"M"}],"Rocha":[{"age":82,"s":"M"}]}},
-        {"date":"2021-12-17","deps":{"Montevideo":[{"age":64,"s":"M"}]}}
+        {"date":"2021-12-17","deps":{"Montevideo":[{"age":64,"s":"M"}]}},
+        {"date":"2021-12-18","deps":{"Canelones":[{"age":59,"s":"M"}],"Florida":[{"age":67,"s":"F"}],"Maldonado":[{"age":74,"s":"F"}]}}
     ]
 }
