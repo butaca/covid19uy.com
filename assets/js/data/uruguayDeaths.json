@@ -8812,6 +8812,7 @@
         {"date":"2021-12-17","deps":{"Montevideo":[{"age":64,"s":"M"}]}},
         {"date":"2021-12-18","deps":{"Canelones":[{"age":59,"s":"M"}],"Florida":[{"age":67,"s":"F"}],"Maldonado":[{"age":74,"s":"F"}]}},
         {"date":"2021-12-19","deps":{"Canelones":[{"age":90,"s":"F"}],"Florida":[{"age":86,"s":"F"}]}},
-        {"date":"2021-12-20","deps":{"Maldonado":[{"age":64,"s":"M"}]}}
+        {"date":"2021-12-20","deps":{"Maldonado":[{"age":64,"s":"M"}]}},
+        {"date":"2021-12-21","deps":{"Lavalleja":[{"age":76,"s":"F"}]}}
     ]
 }
