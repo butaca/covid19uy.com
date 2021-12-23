@@ -8355,6 +8355,18 @@
             "hcRecovered": 9840,
             "hcDeaths": 28,
             "newCases": 415
+        },
+        {
+            "date": "2021-12-22",
+            "tests": 11396,
+            "cases": 405681,
+            "recovered": 396293,
+            "deaths": 6159,
+            "icu": 20,
+            "hc": 9941,
+            "hcRecovered": 9847,
+            "hcDeaths": 28,
+            "newCases": 445
         }
     ]
 }
