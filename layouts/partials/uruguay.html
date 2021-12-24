@@ -51,6 +51,8 @@
 {{- $todayHealthWorkerCases := index (last 1 $data.dailyHealthcareWorkers) 0 -}}
 {{- $todayHealthWorkerPercent := index (last 1 $data.dailyHealthcareWorkersPercent) 0 -}}
 
+{{- $todayPositivityRate := index (last 1 $data.dailyPositivityRate) 0 -}}
+
 <span class="tag is-warning">{{ dateFormat .Site.Params.dateFormatCompact $today.date }}</span>
 <div id="uruguay" class="box has-padding-sm">
     <nav class="level">
@@ -110,7 +112,7 @@
                 <p class="subtitle">{{ i18n "tests" }} 🧪</p>
                 <p class="title has-margin-bottom-none">{{ lang.NumFmt 0 $tests .Site.Params.numberFormat }}</p>
                 <p class="has-margin-none is-size-7 has-text-grey">+{{ lang.NumFmt 0 $todayTests
-                    .Site.Params.numberFormat }}</p>
+                    .Site.Params.numberFormat }} ({{ lang.NumFmt 2 $todayPositivityRate .Site.Params.numberFormat }}%)</p>
             </div>
         </div>
     </nav>
