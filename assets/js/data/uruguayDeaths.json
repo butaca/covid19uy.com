@@ -8815,6 +8815,7 @@
         {"date":"2021-12-20","deps":{"Maldonado":[{"age":64,"s":"M"}]}},
         {"date":"2021-12-21","deps":{"Lavalleja":[{"age":76,"s":"F"}]}},
         {"date":"2021-12-22","deps":{"Montevideo":[{"age":93,"s":"F"}],"Rocha":[{"age":39,"s":"F"}]}},
-        {"date":"2021-12-24","deps":{"Montevideo":[{"age":78,"s":"M"}],"Cerro Largo":[{"age":69,"s":"F"}],"Florida":[{"age":65,"s":"F"}]}}
+        {"date":"2021-12-24","deps":{"Montevideo":[{"age":78,"s":"M"}],"Cerro Largo":[{"age":69,"s":"F"}],"Florida":[{"age":65,"s":"F"}]}},
+        {"date":"2021-12-25","deps":{"Montevideo":[{"age":84,"s":"F"}]}}
     ]
 }
