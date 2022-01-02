@@ -8821,6 +8821,7 @@
         {"date":"2021-12-28","deps":{"Montevideo":[{"age":77,"s":"M"},{"age":78,"s":"F"}]}},
         {"date":"2021-12-29","deps":{"Montevideo":[{"age":70,"s":"M"}]}},
         {"date":"2021-12-30","deps":{"Montevideo":[{"age":62,"s":"F"}]}},
-        {"date":"2021-12-31","deps":{"Colonia":[{"age":63,"s":"M"}]}}
+        {"date":"2021-12-31","deps":{"Colonia":[{"age":63,"s":"M"}]}},
+        {"date":"2022-01-01","deps":{"Maldonado":[{"age":86,"s":"F"}],"Río Negro":[{"age":74,"s":"F"}]}}
     ]
 }
