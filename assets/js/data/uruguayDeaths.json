@@ -8825,6 +8825,7 @@
         {"date":"2022-01-01","deps":{"Maldonado":[{"age":86,"s":"F"}],"Río Negro":[{"age":74,"s":"F"}]}},
         {"date":"2022-01-02","deps":{"Montevideo":[{"age":72,"s":"F"}],"Maldonado":[{"age":64,"s":"M"},{"age":61,"s":"M"}]}},
         {"date":"2022-01-03","deps":{"Salto":[{"age":83,"s":"F"}],"Montevideo":[{"age":50,"s":"F"}]}},
-        {"date":"2022-01-04","deps":{"San José":[{"age":82,"s":"M"}],"Montevideo":[{"age":61,"s":"F"},{"age":51,"s":"F"}]}}
+        {"date":"2022-01-04","deps":{"San José":[{"age":82,"s":"M"}],"Montevideo":[{"age":61,"s":"F"},{"age":51,"s":"F"}]}},
+        {"date":"2022-01-05","deps":{"Rocha":[{"age":68,"s":"F"}]}}
     ]
 }
