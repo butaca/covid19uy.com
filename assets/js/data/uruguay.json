@@ -8564,6 +8564,19 @@
             "hcRecovered": 10002,
             "hcDeaths": 28,
             "newCases": 6104
+        },
+        {
+            "date": "2022-01-08",
+            "tests": 27499,
+            "cases": 443436,
+            "recovered": 403924,
+            "deaths": 6189,
+            "icu": 33,
+            "hc": 10953,
+            "hcRecovered": 10028,
+            "hcDeaths": 28,
+            "newCases": 6578,
+            "lateDeletedCases": 204
         }
     ]
 }
