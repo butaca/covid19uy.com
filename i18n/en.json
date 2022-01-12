@@ -396,7 +396,7 @@
         "other": "Harvard Index"
     },
     "harvardIndexDesc": {
-        "other": "Risk level according to the average of new cases per 100,000 inhabitants in the last 7 days."
+        "other": "Risk level according to the average of new cases per 100,000 inhabitants in the last 7 days. As of 11/4/2022 the color scheme was changed according to the GUIAD criteria."
     },
     "icuOccupation": {
         "other": "ICU Occupation"

@@ -396,7 +396,7 @@
         "other": "Índice de Harvard"
     },
     "harvardIndexDesc": {
-        "other": "Nivel de riesgo de acuerdo al promedio de nuevos casos cada 100.000 habitantes de los últimos 7 días."
+        "other": "Nivel de riesgo de acuerdo al promedio de nuevos casos cada 100.000 habitantes de los últimos 7 días. A partir del 4/11/2022 se cambió el esquema de colores según el criterio del GUIAD."
     },
     "icuOccupation": {
         "other": "Ocupación CTI"

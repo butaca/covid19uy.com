@@ -55,6 +55,7 @@ async function buildChartData() {
     var harvardIndexDaily = [];
     var harvardIndexNewCases = [];
     var harvardIndexSum = 0;
+    var fullDates = [];
 
     uruguay.data.forEach(function (el, index) {
         var todayPositives = el.positives;
@@ -67,6 +68,7 @@ async function buildChartData() {
         var day = date.getUTCDate();
         var month = (date.getUTCMonth() + 1);
         dates.push(day + "/" + month);
+        fullDates.push(date.toISOString());
 
         yesterdayTotalDeaths = deaths.length > 0 ? deaths[deaths.length - 1] : 0;
 
@@ -260,6 +262,7 @@ async function buildChartData() {
         positives: positives,
         dialyPositives: dialyPositives,
         dates: dates,
+        fullDates: fullDates,
         deaths: deaths,
         recovered: recovered,
         activeCases: activeCases,

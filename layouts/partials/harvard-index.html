@@ -12,16 +12,6 @@
         <span class="is-size-7 has-text-grey">({{ $diffSign }}{{ lang.NumFmt 2 $diff site.Params.numberFormat -}})</span>
         <i class="far fa-question-circle has-margin-left-xs"></i>
     </span>
-    {{- $areaColor := "black" -}}
-    {{- if le $harvardIndex 1 -}}
-    {{- $areaColor = "green" -}}
-    {{- else if le $harvardIndex 10 -}}
-    {{- $areaColor = "yellow" -}}
-    {{- else if le $harvardIndex 25 -}}
-    {{- $areaColor = "orange" -}}
-    {{- else }}
-    {{- $areaColor = "red" -}}
-    {{- end -}}
     {{- $linePos := mul (div $harvardIndex 25.0) 128 -}}
     {{- if gt $linePos 128 -}}
     {{- $linePos = 128 -}}
@@ -36,10 +26,8 @@
             </style>
             <defs>
                 <linearGradient id="harvardGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" style="stop-color:green;stop-opacity:1" />
-                    <stop offset="4%" style="stop-color:yellow;stop-opacity:1" />
-                    <stop offset="40%" style="stop-color: orange;stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:red;stop-opacity:1" />
+                    <stop offset="0%" style="stop-color:aliceblue;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:darkblue;stop-opacity:1" />
                 </linearGradient>
             </defs>
 
@@ -51,7 +39,6 @@
             <text x="51" y="28" class="small" text-anchor="middle">10</text>
             <text x="128" y="28" class="small" text-anchor="end">25</text>
 
-            <rect x="136" y="4" width="16" height="16" style="fill:{{ $areaColor }};" stroke="black" stroke-width="2" />
         </svg>
     </div>
 </div>
