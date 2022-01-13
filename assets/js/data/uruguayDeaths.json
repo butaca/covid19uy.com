@@ -8833,6 +8833,7 @@
         {"date":"2022-01-09","deps":{"Montevideo":[{"age":90,"s":"F"},{"age":87,"s":"M"},{"age":67,"s":"M"}]}},
         {"date":"2022-01-10","deps":{"Montevideo":[{"age":86,"s":"M"},{"age":85,"s":"M"}],"Soriano":[{"age":79,"s":"M"}],"Maldonado":[{"age":76,"s":"M"}],"Lavalleja":[{"age":67,"s":"M"}],"Río Negro":[{"age":54,"s":"M"}],"Canelones":[{"age":48,"s":"F"}]}},
         {"date":"2022-01-11","deps":{"Montevideo":[{"age":88,"s":"F"},{"age":83,"s":"M"}],"Florida":[{"age":84,"s":"F"}]}},
-        {"date":"2022-01-12","deps":{"Salto":[{"age":82,"s":"F"}],"Montevideo":[{"age":81,"s":"M"}],"Canelones":[{"age":72,"s":"F"}]}}
+        {"date":"2022-01-12","deps":{"Salto":[{"age":82,"s":"F"}],"Montevideo":[{"age":81,"s":"M"}],"Canelones":[{"age":72,"s":"F"}]}},
+        {"date":"2022-01-13","deps":{"Montevideo":[{"age":93,"s":"F"},{"age":66,"s":"M"},{"age":31,"s":"F"}],"Canelones":[{"age":91,"s":"M"}],"Salto":[{"age":75,"s":"F"}],"Maldonado":[{"age":59,"s":"F"}]}}
     ]
 }
