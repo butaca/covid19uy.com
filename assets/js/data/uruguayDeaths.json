@@ -8835,6 +8835,7 @@
         {"date":"2022-01-11","deps":{"Montevideo":[{"age":88,"s":"F"},{"age":83,"s":"M"}],"Florida":[{"age":84,"s":"F"}]}},
         {"date":"2022-01-12","deps":{"Salto":[{"age":82,"s":"F"}],"Montevideo":[{"age":81,"s":"M"}],"Canelones":[{"age":72,"s":"F"}]}},
         {"date":"2022-01-13","deps":{"Montevideo":[{"age":93,"s":"F"},{"age":66,"s":"M"},{"age":31,"s":"F"}],"Canelones":[{"age":91,"s":"M"}],"Salto":[{"age":75,"s":"F"}],"Maldonado":[{"age":59,"s":"F"}]}},
-        {"date":"2022-01-14","deps":{"Montevideo":[{"age":92,"s":"F"},{"age":57,"s":"M"}],"Treinta y Tres":[{"age":79,"s":"F"}]}}
+        {"date":"2022-01-14","deps":{"Montevideo":[{"age":92,"s":"F"},{"age":57,"s":"M"}],"Treinta y Tres":[{"age":79,"s":"F"}]}},
+        {"date":"2022-01-15","deps":{"Canelones":[{"age":55,"s":"M"},{"age":64,"s":"M"}],"Lavalleja":[{"age":80,"s":"M"}],"Montevideo":[{"age":71,"s":"F"},{"age":86,"s":"M"},{"age":87,"s":"M"},{"age":88,"s":"F"},{"age":91,"s":"M"}],"Rivera":[{"age":94,"s":"F"}],"Treinta y Tres":[{"age":51,"s":"M"},{"age":85,"s":"F"}]}}
     ]
 }
