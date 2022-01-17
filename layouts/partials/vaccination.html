@@ -13,7 +13,7 @@
     {{- $totalVacs := $vacData.total -}}
     {{- $todayVacs := $vacData.todayTotal -}}
     <h2 class="title">{{ i18n "vaccinationProgress" }}</h2>
-    <div class="columns">
+    <div class="columns is-marginless is-paddingless">
         <div class="column is-two-fifths">
             <div>
                 <div class="has-tooltip-multiline" data-tooltip='{{ i18n "vaccinationProgressFirstDoseDesc"}}'>
@@ -84,13 +84,14 @@
                         -}}</span>
                 </div>
             </div>
-            <div class="column is-12 has-text-centered">
-                {{i18n "moreVacInfo"}}: <a href="https://vacuna.uy" target="_blank" rel="noopener noreferrer">https://vacuna.uy</a>
-            </div>
         </div>
     </div>
-    <div class="has-text-grey has-text-centered is-size-7 date">
-        {{- i18n "updated" }}: {{ dateFormat .Site.Params.dateFormat $date -}}
+    <div class="columns is-marginless is-paddingless">
+        <div class="column is-marginless is-paddingless is-size-7 is-12 has-text-centered has-text-grey">
+            {{- i18n "updated" }}: {{ dateFormat .Site.Params.dateFormat $date -}}.
+            {{i18n "moreVacInfo"}}: <a href="https://vacuna.uy" target="_blank" rel="noopener noreferrer">https://vacuna.uy</a>.
+        </div>
     </div>
+    
 
 </div>
