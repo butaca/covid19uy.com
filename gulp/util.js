@@ -1,4 +1,3 @@
-const querystring = require('querystring');
 const BASE_DATA_DIR = "assets/js/data/";
 const CACHE_DIR = "cache/";
 const axios = require("axios");
@@ -21,7 +20,7 @@ if (process.env.PUSHOVER_USER && process.env.PUSHOVER_TOKEN) {
 
 async function request(url, params) {
     if(params) { 
-        url += "?" + querystring.encode(params);
+        url += "?" + new URLSearchParams(params).toString();
     }
 
     try {

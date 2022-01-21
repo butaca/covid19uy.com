@@ -2,7 +2,7 @@
 
 const { BASE_DATA_DIR, request, writeFileAndCache, copyFromCache, notify } = require('./gulp/util');
 const gulp = require('gulp');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 const exec = require('child_process').exec;
 const purgecss = require('gulp-purgecss');
 const replace = require('gulp-replace');

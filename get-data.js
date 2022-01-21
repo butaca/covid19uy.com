@@ -1,6 +1,5 @@
 const axios = require('axios');
 const moment = require("moment");
-const querystring = require('querystring');
 const cheerio = require("cheerio");
 
 const BASE_URL = "https://services5.arcgis.com/Th0Tmkhiy5BQYoxP/arcgis/rest/services/Casos_DepartamentosROU_vista_2/FeatureServer/";
@@ -8,7 +7,7 @@ const REPORT_BASE_URL = "https://www.gub.uy/sistema-nacional-emergencias/comunic
 
 async function request(url, params) {
     if (params) {
-        url += "?" + querystring.encode(params);
+        url += "?" + new URLSearchParams(params).toString();
     }
 
     try {
