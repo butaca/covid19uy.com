@@ -68,18 +68,18 @@ h2 {
 $custom-progress-colors: ("green": $success, "yellow": $warning, "orange": orange, "red": $danger);
 
 @each $name, $color in $custom-progress-colors {
-    &.is-#{$name} {
-      &::-webkit-progress-value {
-        background-color: $color;
-      }
-      &::-moz-progress-bar {
-        background-color: $color;
-      }
-      &::-ms-fill {
-        background-color: $color;
-      }
-      &:indeterminate {
-        background-image: linear-gradient(to right, $color 30%, $progress-bar-background-color 30%);
-      }
+    .is-#{$name} {
+        &::-webkit-progress-value {
+            background-color: $color;
+        }
+        &::-moz-progress-bar {
+            background-color: $color;
+        }
+        &::-ms-fill {
+            background-color: $color;
+        }
+        &:indeterminate {
+            background-image: linear-gradient(to right, $color 30%, $progress-bar-background-color 30%);
+        }
     }
-  }
+}
