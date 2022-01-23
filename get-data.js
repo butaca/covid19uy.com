@@ -132,7 +132,7 @@ function getTDValue(td) {
     }
 }
 
-async function fetchDeathsData() {
+async function fetchReportData() {
     const todayDate = moment();
     const todayDatStr = todayDate.format("YYYY-MM-DD");
 
@@ -201,13 +201,31 @@ async function fetchDeathsData() {
             }
         }
     }
-    return day;
+
+    let deleted = 0;
+
+    const text = html('.Page-document p').text();
+    const deletedRegExp = /(?<deleted>\d+)(\scasos fueron eliminados)/;
+    const res = text.match(deletedRegExp);
+    
+    if(res != null) {
+        deleted = parseInt(res.groups.deleted);
+    }
+
+    return {
+        deaths: day,
+        deleted: deleted
+    };
 }
 
 (async function () {
     const data = await fetchMonitorData();
+    const reportData = await fetchReportData();
+    if(reportData.deleted > 0) {
+        data.lateDeletedCases = reportData.deleted;
+    }
+    const deathsData = reportData.deaths;
     console.log(JSON.stringify(data));
-    const deathsData = await fetchDeathsData();
     console.log("\n" + JSON.stringify(deathsData));
 })();
 
