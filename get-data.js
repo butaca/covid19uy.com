@@ -256,7 +256,7 @@ async function updateUruguayDeathsData(deathsData) {
     console.log(JSON.stringify(data));
     console.log("\n" + JSON.stringify(deathsData));
 
-    Promise.all([updateUruguayData(data), updateUruguayDeathsData(deathsData)]);
+    await Promise.all([updateUruguayData(data), updateUruguayDeathsData(deathsData)]);
 
 })();
 
