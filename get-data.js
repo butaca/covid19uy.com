@@ -1,7 +1,7 @@
 const axios = require('axios');
 const moment = require("moment");
 const cheerio = require("cheerio");
-const fs = require('fs');
+const fs = require('fs').promises;
 const prettyCompactStringify = require("json-stringify-pretty-compact");
 
 const BASE_URL = "https://services5.arcgis.com/Th0Tmkhiy5BQYoxP/arcgis/rest/services/Casos_DepartamentosROU_vista_2/FeatureServer/";
@@ -223,9 +223,32 @@ async function fetchReportData() {
 const URUGUAY_FILE = 'assets/js/data/uruguay.json';
 const DEATHS_FILE = 'assets/js/data/uruguayDeaths.json';
 
+async function updateUruguayData(data) {
+    const uruguayFileData = await fs.readFile(URUGUAY_FILE);
+    const uruguayData = JSON.parse(uruguayFileData);
+    let lastIndex = uruguayData.data.length - 1;
+    if (lastIndex >= 0 && uruguayData.data[lastIndex].date == data.date) {
+        uruguayData.data.pop();
+    }
+    uruguayData.data.push(data);
+    await fs.writeFile(URUGUAY_FILE, JSON.stringify(uruguayData, null, 4));
+}
+
+async function updateUruguayDeathsData(deathsData) {
+    const deathsFileData = await fs.readFile(DEATHS_FILE);
+    const uruguayDeathsData = JSON.parse(deathsFileData);
+    lastIndex = uruguayDeathsData.days.length - 1;
+    if (lastIndex >= 0 && uruguayDeathsData.days[lastIndex].date == deathsData.date) {
+        uruguayDeathsData.days.pop();
+    }
+    uruguayDeathsData.days.push(deathsData);
+    await fs.writeFile(DEATHS_FILE, prettyCompactStringify(uruguayDeathsData, { indent: 4, maxLength: 4096 }));
+}
+
 (async function () {
-    const data = await fetchMonitorData();
-    const reportData = await fetchReportData();
+    const fetchRes = await Promise.all([fetchMonitorData(), fetchReportData()]);
+    const data = fetchRes[0];
+    const reportData = fetchRes[1];
     if (reportData.deleted > 0) {
         data.lateDeletedCases = reportData.deleted;
     }
@@ -233,23 +256,7 @@ const DEATHS_FILE = 'assets/js/data/uruguayDeaths.json';
     console.log(JSON.stringify(data));
     console.log("\n" + JSON.stringify(deathsData));
 
-    const uruguayFileData = fs.readFileSync(URUGUAY_FILE);
-    const uruguayData = JSON.parse(uruguayFileData);
-    let lastIndex = uruguayData.data.length - 1;
-    if (lastIndex >= 0 && uruguayData.data[lastIndex].date == data.date) {
-        uruguayData.data.pop();
-    }
-    uruguayData.data.push(data);
-    fs.writeFileSync(URUGUAY_FILE, JSON.stringify(uruguayData, null, 4));
-
-    const deathsFileData = fs.readFileSync(DEATHS_FILE);
-    const uruguayDeathsData = JSON.parse(deathsFileData);
-    lastIndex = uruguayDeathsData.days.length - 1;
-    if (lastIndex >= 0 && uruguayDeathsData.days[lastIndex].date == deathsData.date) {
-        uruguayDeathsData.days.pop();
-    }
-    uruguayDeathsData.days.push(deathsData);
-    fs.writeFileSync(DEATHS_FILE, prettyCompactStringify(uruguayDeathsData, { indent: 4, maxLength: 4096 }));
+    Promise.all([updateUruguayData(data), updateUruguayDeathsData(deathsData)]);
 
 })();
 
