@@ -1,6 +1,8 @@
 const axios = require('axios');
 const moment = require("moment");
 const cheerio = require("cheerio");
+const fs = require('fs');
+const prettyCompactStringify = require("json-stringify-pretty-compact");
 
 const BASE_URL = "https://services5.arcgis.com/Th0Tmkhiy5BQYoxP/arcgis/rest/services/Casos_DepartamentosROU_vista_2/FeatureServer/";
 const REPORT_BASE_URL = "https://www.gub.uy/sistema-nacional-emergencias/comunicacion/comunicados/informe-situacion-sobre-coronavirus-covid-19-uruguay-";
@@ -207,8 +209,8 @@ async function fetchReportData() {
     const text = html('.Page-document p').text();
     const deletedRegExp = /(?<deleted>\d+)(\scasos fueron eliminados)/;
     const res = text.match(deletedRegExp);
-    
-    if(res != null) {
+
+    if (res != null) {
         deleted = parseInt(res.groups.deleted);
     }
 
@@ -218,15 +220,37 @@ async function fetchReportData() {
     };
 }
 
+const URUGUAY_FILE = 'assets/js/data/uruguay.json';
+const DEATHS_FILE = 'assets/js/data/uruguayDeaths.json';
+
 (async function () {
     const data = await fetchMonitorData();
     const reportData = await fetchReportData();
-    if(reportData.deleted > 0) {
+    if (reportData.deleted > 0) {
         data.lateDeletedCases = reportData.deleted;
     }
     const deathsData = reportData.deaths;
     console.log(JSON.stringify(data));
     console.log("\n" + JSON.stringify(deathsData));
+
+    const uruguayFileData = fs.readFileSync(URUGUAY_FILE);
+    const uruguayData = JSON.parse(uruguayFileData);
+    let lastIndex = uruguayData.data.length - 1;
+    if (lastIndex >= 0 && uruguayData.data[lastIndex].date == data.date) {
+        uruguayData.data.pop();
+    }
+    uruguayData.data.push(data);
+    fs.writeFileSync(URUGUAY_FILE, JSON.stringify(uruguayData, null, 4));
+
+    const deathsFileData = fs.readFileSync(DEATHS_FILE);
+    const uruguayDeathsData = JSON.parse(deathsFileData);
+    lastIndex = uruguayDeathsData.days.length - 1;
+    if (lastIndex >= 0 && uruguayDeathsData.days[lastIndex].date == deathsData.date) {
+        uruguayDeathsData.days.pop();
+    }
+    uruguayDeathsData.days.push(deathsData);
+    fs.writeFileSync(DEATHS_FILE, prettyCompactStringify(uruguayDeathsData, { indent: 4, maxLength: 4096 }));
+
 })();
 
 
