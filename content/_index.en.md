@@ -20,7 +20,7 @@ If you can, **stay home**.
 
 👉 **Stay home _when possible_**. Obviously some of us have to go out to work because we cannot do it remotely and all of us at some point need to go out, due to a need of force majeure. Everything else can wait.
 
-If you _have_ to go out, **keep 2 meters (~6.5 feet) away from other people** and **use a face mask** to protect yourself and others. You don't need to wear special face masks reserved for highly exposed people like healthcare workers. A strong, washable homemade fabric face mask is enough to cover your entire nose and mouth. Avoid touching your face without washing your hands first. When you return home, **wash your hands** and disinfect everything you bring home and what you have touched before washing your hands.
+If you _have_ to go out, **keep 2 meters (~6.5 feet) away from other people** and **use a face mask** to protect yourself and others. According to new recommendations due to the new Omicron variant, ideally wear an N95 mask or similar, or a surgical mask under a cloth one. Avoid touching your face without washing your hands first. When you return home, **wash your hands** and disinfect everything you bring home and what you have touched before washing your hands.
 
 **We are at war** against an invisible enemy. The only way to defeat it is by **working together**. Take care of yourself and others by informing yourself and following the official guidelines (in Uruguay): [Coronavirus National Plan][MSP_coronavirus].
 
@@ -48,16 +48,10 @@ You can also collaborate with charitable foundations that are doing an outstandi
 
 * [CanastasUY](https://www.instagram.com/canastasuy/)
 * [TECHO Uruguay](https://www.instagram.com/techo_uy/)
-* [#NosCuidamosEntreTodos](https://bit.ly/2U1hjnu)
 
 {{< /div >}}
-
-Or you can collaborate with government institutions:
-
-* [Donations for the National Coronavirus COVID-19 Plan][donacionesPN]
 
 [MSP_coronavirus]: https://www.gub.uy/ministerio-salud-publica/comunicacion/publicaciones/informacion-para-poblacion
 [coronaviruswikipedia]: https://es.wikipedia.org/wiki/Pandemia_de_enfermedad_por_coronavirus_de_2020_en_Uruguay
 [asymptomatic_cases]: https://www.medrxiv.org/content/10.1101/2020.03.03.20030593v1
-[donacionesPN]: https://www.gub.uy/sistema-nacional-emergencias/comunicacion/comunicados/donaciones-para-plan-nacional-coronavirus-covid-19
-[simulator]: /en/simulation
+[simulator]: /simulation
