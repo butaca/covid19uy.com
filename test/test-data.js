@@ -305,6 +305,11 @@ describe('Test data', function () {
                 totalDeaths += 1;
             }
 
+            // 2022-02-02
+            if (date.getTime() == new Date("2022-02-02" + DATE_DEFAULT_TIME).getTime()) {
+                totalDeaths += 1;
+            }
+
             deathHistory.push({ date: date, deaths: totalDeaths });
 
             // a death was removed on 2021-08-23.
