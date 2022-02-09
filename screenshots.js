@@ -46,6 +46,8 @@ async function takeScreenshots(outputDir) {
         await browser.close();
     await deleteFile(tmpFile);
 }
-(async () => {
-    takeScreenshots('./static');
-})();
+return (async () => {
+    await takeScreenshots('./static');
+})().catch(e => {
+    process.exit(1)
+});
