@@ -2,9 +2,29 @@ var assert = require('chai').assert;
 const fs = require('fs');
 const { promisify } = require('util');
 const moment = require("moment");
+const axios = require('axios');
+const cheerio = require("cheerio");
 const DATA_DIR = "assets/js/data/"
 const DATE_FORMAT = "YYYY-MM-DD";
 const DATE_DEFAULT_TIME = "T00:00:00";
+const REPORT_BASE_URL = "https://www.gub.uy/sistema-nacional-emergencias/comunicacion/comunicados/informe-situacion-sobre-coronavirus-covid-19-uruguay-";
+
+async function request(url, params) {
+    if (params) {
+        url += "?" + new URLSearchParams(params).toString();
+    }
+
+    try {
+        let response;
+        response = await axios.get(url)
+        if (response.status !== 200) {
+            throw new Error('Unexpected HTTP code when downloading data: ' + response.status);
+        }
+        return response.data;
+    } catch (e) {
+        throw e;
+    }
+}
 
 describe('Test data', function () {
 
@@ -67,7 +87,7 @@ describe('Test data', function () {
                 if (today.date != "2020-06-21") { // Allow SINAE report error
                     assert.isAtLeast(recovered, prevRecovered, "Recovered: " + today.date);
                 }
-                if(today.date != "2021-08-23") {
+                if (today.date != "2021-08-23") {
                     assert.isAtLeast(deaths, prevDeaths, "Deaths: " + today.date);
                 }
                 if (today.date != "2020-08-18" && today.date != "2021-08-23" && today.date != "2021-08-24") { // Allow SINAE report error
@@ -117,7 +137,7 @@ describe('Test data', function () {
                 }
 
                 let todayDeletedCases = 0;
-                if(today.lateDeletedCases != undefined) {
+                if (today.lateDeletedCases != undefined) {
                     todayDeletedCases = isNaN(today.lateDeletedCases) ? today.lateDeletedCases.reduce((prev, cur) => prev + cur) : today.lateDeletedCases;
                 }
                 const todayTotalCasesWithLateData = yesterdayTotalCasesWithLateData + todayNewCasesWithLateData - todayDeletedCases;
@@ -369,4 +389,88 @@ describe('Test data', function () {
         assert.ok(todayDate.getTime() == icuDate.getTime(), "The last date in icuHistory.json doen't match the last date in uruguay.json");
     });
     */
+
+    it('Compare uruguay.json with report data', function () {
+        const today = uruguay.data[uruguay.data.length - 1];
+        const todayDate = moment(today.date, DATE_FORMAT);
+        const reportURL = REPORT_BASE_URL + todayDate.format("DDMMYYYY");
+        const dataTodayDeaths = uruguayDeaths.days[uruguayDeaths.days.length - 1];
+
+        let dataTodayTotalDeaths = 0;
+        for (const [_, dep] of Object.entries(dataTodayDeaths.deps)) {
+            dataTodayTotalDeaths += dep.length;
+        }
+
+        let dataTotalTests = uruguay.unreportedDailyTests;
+        for (let i = 0; i < uruguay.data.length; ++i) {
+            const todayData = uruguay.data[i];
+            dataTotalTests += (todayData.tests || todayData.positives);
+        }
+
+        return request(reportURL).then(reportData => {
+
+            const html = cheerio.load(reportData.replace(/[\n]/g, ''));
+
+            const text = html('.Page-document p').text();
+
+            function parseReportNumber(text, regExp) {
+                const res = text.match(regExp);
+                if (res) {
+                    return parseInt(text.match(regExp).groups.result.replace(/\./g, ''));
+                }
+                else {
+                    return 0;
+                }
+            }
+
+            const totalCasesRegExp = /(se han registrado )(?<result>[\d\.]+)( casos positivos)/;
+            const totalCases = parseReportNumber(text, totalCasesRegExp);
+
+            const newCasesRegExp = /(se detectaron )(?<result>[\d\.]+)( nuevos casos)/;
+            const newCases = parseReportNumber(text, newCasesRegExp);
+
+            const recoveredRegExp = /(De ese total )(?<result>[\d\.]+)( ya se recuperaron)/;
+            const recovered = parseReportNumber(text, recoveredRegExp);
+
+            const todayDeathsRegExp = /(Hoy se registraron )(?<result>[\d\.]+)( fallecimientos)/;
+            const todayDeaths = parseReportNumber(text, todayDeathsRegExp);
+
+            const totalDeathsRegExp = /(Hasta el momento son )(?<result>[\d\.]+)( las defunciones)/;
+            const totalDeaths = parseReportNumber(text, totalDeathsRegExp);
+
+            const activeCasesRegExp = /(Actualmente hay )(?<result>[\d\.]+)( casos activos)/;
+            const activeCases = parseReportNumber(text, activeCasesRegExp);
+
+            const icuRegExp = /(?<result>[\d\.]+)( de ellas se encuentran en centros de cuidados críticos)/;
+            const icu = parseReportNumber(text, icuRegExp);
+
+            const totalTestsRegExp = /(se han procesado )(?<result>[\d\.]+)( test)/;
+            const totalTests = parseReportNumber(text, totalTestsRegExp);
+
+            const todayTestsRegExp = /(hoy se llevaron a cabo )(?<result>[\d\.]+)( análisis)/;
+            const todayTests = parseReportNumber(text, todayTestsRegExp);
+            
+            const hcRegExp = /(Del total de casos positivos confirmados, )(?<result>[\d\.]+)( corresponden a personal de la salud)/;
+            const hc = parseReportNumber(text, hcRegExp);
+
+            const hcRecoveredRegExp = /(?<result>[\d\.]+)( de ellos ya se recuperaron)/;
+            const hcRecovered = parseReportNumber(text, hcRecoveredRegExp);
+
+            const hcDeathsRegExp = /(y )(?<result>[\d\.]+)( fallecieron)/;
+            const hcDeaths = parseReportNumber(text, hcDeathsRegExp);
+
+            assert.equal(totalCases, today.cases, "total cases values don't match");
+            assert.equal(newCases, today.newCases, "new cases values don't match");
+            assert.equal(recovered, today.recovered, "recovered values don't match");
+            assert.equal(todayDeaths, today.todayDeaths || dataTodayTotalDeaths, "today deaths values don't match");
+            assert.equal(totalDeaths, today.deaths, "total deaths values don't match");
+            assert.equal(activeCases, today.activeCases || today.cases - today.deaths - today.recovered, "active cases values don't match");
+            assert.equal(icu, today.icu, "icu values don't match");
+            assert.equal(totalTests, dataTotalTests, "total tests values don't match");
+            assert.equal(todayTests, today.tests, "today tests values don't match");
+            assert.equal(hc, today.hc, "hc values don't match");
+            assert.equal(hcRecovered, today.hcRecovered, "hcRecovered values don't match");
+            assert.equal(hcDeaths, today.hcDeaths, "hcDeaths values don't match");
+        });
+    });
 });
