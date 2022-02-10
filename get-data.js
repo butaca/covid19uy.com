@@ -258,6 +258,10 @@ async function updateUruguayDeathsData(deathsData) {
 
     await Promise.all([updateUruguayData(data), updateUruguayDeathsData(deathsData)]);
 
-})();
+})().catch(e => {
+    console.error(e.stack);
+    process.exit(1);
+});
+
 
 
