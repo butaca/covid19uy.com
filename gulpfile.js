@@ -170,15 +170,16 @@ const Countries = {
     paraguay: { cases: [], recovered: [], deaths: [] }
 };
 
-const COUNTRIES_DATA_BASE_URL = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/';
+const COUNTRIES_DATA_REPO_URL = "https://api.github.com/repos/CSSEGISandData/COVID-19/branches/master";
+const COUNTRIES_DATA_BASE_URL = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/{hash}/csse_covid_19_data/csse_covid_19_time_series/';
 const REFERENCE_DATE = moment(uruguay.data[0].date, "YYYY-MM-DD");
 let lastDate = null;
 let firstDate = null;
 
-async function downloadCountryData(file, property) {
+async function downloadCountryData(file, hash, property) {
     var req = {
         method: 'get',
-        url: COUNTRIES_DATA_BASE_URL + file,
+        url: COUNTRIES_DATA_BASE_URL.replace("{hash}", hash) + file,
         responseType: 'stream'
     }
 
@@ -220,12 +221,16 @@ async function downloadCountryData(file, property) {
     });
 }
 
+
 async function downloadCountriesData() {
     try {
+        const repoData = await request(COUNTRIES_DATA_REPO_URL);
+        const hash = repoData.commit.sha;
+
         await Promise.all([
-            downloadCountryData('time_series_covid19_confirmed_global.csv', 'cases'),
-            downloadCountryData('time_series_covid19_recovered_global.csv', 'recovered'),
-            downloadCountryData('time_series_covid19_deaths_global.csv', 'deaths')
+            downloadCountryData('time_series_covid19_confirmed_global.csv', hash, 'cases'),
+            downloadCountryData('time_series_covid19_recovered_global.csv', hash, 'recovered'),
+            downloadCountryData('time_series_covid19_deaths_global.csv', hash, 'deaths')
         ]);
 
         var regionObj = {
