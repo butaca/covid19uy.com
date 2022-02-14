@@ -423,40 +423,40 @@ describe('Test data', function () {
                 }
             }
 
-            const totalCasesRegExp = /(se han registrado )(?<result>[\d\.]+)( casos positivos)/;
+            const totalCasesRegExp = /(se han registrado\s*)(?<result>[\d\.]+)(\s*casos positivos)/;
             const totalCases = parseReportNumber(text, totalCasesRegExp);
 
-            const newCasesRegExp = /(se detectaron )(?<result>[\d\.]+)( nuevos casos)/;
+            const newCasesRegExp = /(se detectaron\s*)(?<result>[\d\.]+)(\s*nuevos casos)/;
             const newCases = parseReportNumber(text, newCasesRegExp);
 
-            const recoveredRegExp = /(De ese total )(?<result>[\d\.]+)( ya se recuperaron)/;
+            const recoveredRegExp = /(De ese total\s*)(?<result>[\d\.]+)(\s*ya se recuperaron)/;
             const recovered = parseReportNumber(text, recoveredRegExp);
 
-            const todayDeathsRegExp = /(Hoy se registraron )(?<result>[\d\.]+)( fallecimientos)/;
+            const todayDeathsRegExp = /(Hoy se registraron\s*)(?<result>[\d\.]+)(\s*fallecimientos)/;
             const todayDeaths = parseReportNumber(text, todayDeathsRegExp);
 
-            const totalDeathsRegExp = /(Hasta el momento son )(?<result>[\d\.]+)( las defunciones)/;
+            const totalDeathsRegExp = /(Hasta el momento son\s*)(?<result>[\d\.]+)(\s*las defunciones)/;
             const totalDeaths = parseReportNumber(text, totalDeathsRegExp);
 
-            const activeCasesRegExp = /(Actualmente hay )(?<result>[\d\.]+)( casos activos)/;
+            const activeCasesRegExp = /(Actualmente hay\s*)(?<result>[\d\.]+)(\s*casos activos)/;
             const activeCases = parseReportNumber(text, activeCasesRegExp);
 
-            const icuRegExp = /(?<result>[\d\.]+)( de ellas se encuentran en centros de cuidados críticos)/;
+            const icuRegExp = /(?<result>[\d\.]+)(\s*de ellas se encuentran en centros de cuidados críticos)/;
             const icu = parseReportNumber(text, icuRegExp);
 
-            const totalTestsRegExp = /(se han procesado )(?<result>[\d\.]+)( test)/;
+            const totalTestsRegExp = /(se han procesado\s*)(?<result>[\d\.]+)(\s*test)/;
             const totalTests = parseReportNumber(text, totalTestsRegExp);
 
-            const todayTestsRegExp = /(hoy se llevaron a cabo )(?<result>[\d\.]+)( análisis)/;
+            const todayTestsRegExp = /(hoy se llevaron a cabo\s*)(?<result>[\d\.]+)(\s*análisis)/;
             const todayTests = parseReportNumber(text, todayTestsRegExp);
             
-            const hcRegExp = /(Del total de casos positivos confirmados, )(?<result>[\d\.]+)( corresponden a personal de la salud)/;
+            const hcRegExp = /(Del total de casos positivos confirmados,\s*)(?<result>[\d\.]+)(\s*corresponden a personal de la salud)/;
             const hc = parseReportNumber(text, hcRegExp);
 
-            const hcRecoveredRegExp = /(?<result>[\d\.]+)( de ellos ya se recuperaron)/;
+            const hcRecoveredRegExp = /(?<result>[\d\.]+)(\s*de ellos ya se recuperaron)/;
             const hcRecovered = parseReportNumber(text, hcRecoveredRegExp);
 
-            const hcDeathsRegExp = /(y )(?<result>[\d\.]+)( fallecieron)/;
+            const hcDeathsRegExp = /(y\s*)(?<result>[\d\.]+)(\s*fallecieron)/;
             const hcDeaths = parseReportNumber(text, hcDeathsRegExp);
 
             assert.equal(totalCases, today.cases, "total cases values don't match");
