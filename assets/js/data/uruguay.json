@@ -9280,6 +9280,18 @@
             "hcRecovered": 18288,
             "hcDeaths": 29,
             "newCases": 2191
+        },
+        {
+            "date": "2022-03-05",
+            "tests": 10129,
+            "cases": 853170,
+            "recovered": 831524,
+            "deaths": 7040,
+            "icu": 117,
+            "hc": 18637,
+            "hcRecovered": 18344,
+            "hcDeaths": 29,
+            "newCases": 1929
         }
     ]
 }
