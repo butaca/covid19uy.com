@@ -484,6 +484,7 @@
         {"date": "2022-03-05", "deps": {"Canelones": [{"age": 39, "s": "F"}, {"age": 91, "s": "M"}], "Lavalleja": [{"age": 67, "s": "F"}], "Montevideo": [{"age": 90, "s": "M"}, {"age": 75, "s": "F"}, {"age": 94, "s": "M"}, {"age": 90, "s": "F"}, {"age": 80, "s": "F"}], "Río Negro": [{"age": 82, "s": "M"}]}},
         {"date": "2022-03-06", "deps": {"Canelones": [{"age": 60, "s": "M"}], "Montevideo": [{"age": 96, "s": "F"}, {"age": 91, "s": "M"}, {"age": 67, "s": "F"}, {"age": 78, "s": "M"}], "San José": [{"age": 76, "s": "M"}]}},
         {"date": "2022-03-07", "deps": {"Cerro Largo": [{"age": 72, "s": "F"}], "Montevideo": [{"age": 71, "s": "M"}, {"age": 92, "s": "M"}], "San José": [{"age": 72, "s": "M"}], "Soriano": [{"age": 79, "s": "F"}]}},
-        {"date": "2022-03-08", "deps": {"Artigas": [{"age": 48, "s": "F"}, {"age": 61, "s": "M"}, {"age": 66, "s": "F"}], "Colonia": [{"age": 54, "s": "F"}], "Montevideo": [{"age": 70, "s": "M"}, {"age": 71, "s": "M"}, {"age": 81, "s": "M"}], "Rocha": [{"age": 86, "s": "F"}]}}
+        {"date": "2022-03-08", "deps": {"Artigas": [{"age": 48, "s": "F"}, {"age": 61, "s": "M"}, {"age": 66, "s": "F"}], "Colonia": [{"age": 54, "s": "F"}], "Montevideo": [{"age": 70, "s": "M"}, {"age": 71, "s": "M"}, {"age": 81, "s": "M"}], "Rocha": [{"age": 86, "s": "F"}]}},
+        {"date": "2022-03-09", "deps": {"Canelones": [{"age": 84, "s": "F"}, {"age": 87, "s": "M"}], "Cerro Largo": [{"age": 81, "s": "F"}], "Colonia": [{"age": 89, "s": "F"}], "Florida": [{"age": 84, "s": "F"}], "Montevideo": [{"age": 56, "s": "M"}, {"age": 69, "s": "F"}, {"age": 70, "s": "F"}, {"age": 90, "s": "F"}], "Treinta y Tres": [{"age": 83, "s": "M"}]}}
     ]
 }
