@@ -213,7 +213,7 @@
         "other": "Total de dosis"
     },
     "graphDailyDoseDesc": {
-        "other": "Total de primeras y segundas dosis por día."
+        "other": "Total de primeras y segundas dosis, y dosis de resfuerzo por día."
     },
     "graphTotalVacs": {
         "other": "Total de vacunación"

@@ -210,7 +210,7 @@
         "other": "Total dose"
     },
     "graphDailyDoseDesc": {
-        "other": "Total first and second dose per day"
+        "other": "Total first, second and booster dose per day"
     },
     "graphTotalVacs": {
         "other": "Vaccination total"

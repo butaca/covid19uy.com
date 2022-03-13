@@ -40,6 +40,7 @@ build:
 params:
   eta: false
   archiveEnabled: false
+  showBoosterDoseProgress: false
   repo:
     url: https://github.com/butaca/covid19uy.com
     icon: fab fa-github

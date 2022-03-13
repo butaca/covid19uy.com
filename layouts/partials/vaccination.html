@@ -33,6 +33,7 @@
                 <progress class="progress is-success" value="{{ $secondDoseVacProgress }}" max="1">{{
                     $secondDoseVacProgressPercent }}%</progress>
             </div>
+            {{- if site.Params.showBoosterDoseProgress -}} 
             <div>
                 <div class="has-tooltip-multiline" data-tooltip='{{ i18n "vaccinationProgressBoosterDoseDesc"}}'>
                     <span class="is-pulled-left">{{ i18n "vaccinationProgressBoosterDose" }}</span>
@@ -42,6 +43,7 @@
                 <progress class="progress is-success" value="{{ $boosterDoseVacProgress }}" max="1">{{
                     $boosterDoseVacProgressPercent }}%</progress>
             </div>
+            {{- end -}} 
             {{- if site.Params.eta -}}
             {{- with $vacData.eta -}}
             <div class="has-tooltip-multiline pt-2" data-tooltip='{{ i18n "vacetaDesc"}}'>{{ i18n "vaceta"}}: <strong>{{ dateFormat site.Params.dateFormatCompact . }}</strong><span class="pl-1"><i class="far fa-question-circle"></i></span></div>    
