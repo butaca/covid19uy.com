@@ -9378,6 +9378,19 @@
             "hcDeaths": 29,
             "newCases": 1213,
             "lateDeletedCases": 1
+        },
+        {
+            "date": "2022-03-13",
+            "tests": 6633,
+            "cases": 864376,
+            "recovered": 847793,
+            "deaths": 7095,
+            "icu": 72,
+            "hc": 19024,
+            "hcRecovered": 18763,
+            "hcDeaths": 29,
+            "newCases": 1020,
+            "lateDeletedCases": 9
         }
     ]
 }
