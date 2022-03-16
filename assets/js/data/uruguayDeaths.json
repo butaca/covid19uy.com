@@ -491,6 +491,7 @@
         {"date": "2022-03-12", "deps": {"Artigas": [{"age": 84, "s": "M"}], "Canelones": [{"age": 78, "s": "M"}], "Cerro Largo": [{"age": 81, "s": "F"}], "Montevideo": [{"age": 77, "s": "F"}, {"age": 83, "s": "M"}], "Paysandú": [{"age": 83, "s": "M"}], "Tacuarembó": [{"age": 70, "s": "F"}]}},
         {"date": "2022-03-13", "deps": {"Canelones": [{"age": 47, "s": "M"}], "Lavalleja": [{"age": 87, "s": "F"}], "Montevideo": [{"age": 84, "s": "F"}], "Rocha": [{"age": 76, "s": "M"}], "San José": [{"age": 81, "s": "M"}]}},
         {"date": "2022-03-14", "deps": {"Canelones": [{"age": 91, "s": "F"}, {"age": 92, "s": "F"}], "Colonia": [{"age": 82, "s": "F"}, {"age": 92, "s": "F"}], "Lavalleja": [{"age": 88, "s": "M"}], "Montevideo": [{"age": 75, "s": "F"}, {"age": 84, "s": "F"}], "Tacuarembó": [{"age": 94, "s": "M"}]}},
-        {"date": "2022-03-15", "deps": {"Colonia": [{"age": 95, "s": "F"}], "Maldonado": [{"age": 89, "s": "F"}, {"age": 92, "s": "F"}, {"age": 101, "s": "F"}], "Rocha": [{"age": 85, "s": "F"}, {"age": 89, "s": "M"}], "San José": [{"age": 81, "s": "F"}]}}
+        {"date": "2022-03-15", "deps": {"Colonia": [{"age": 95, "s": "F"}], "Maldonado": [{"age": 89, "s": "F"}, {"age": 92, "s": "F"}, {"age": 101, "s": "F"}], "Rocha": [{"age": 85, "s": "F"}, {"age": 89, "s": "M"}], "San José": [{"age": 81, "s": "F"}]}},
+        {"date": "2022-03-16", "deps": {"Artigas": [{"age": 83, "s": "M"}], "Canelones": [{"age": 79, "s": "M"}], "Flores": [{"age": 63, "s": "M"}], "Montevideo": [{"age": 92, "s": "F"}, {"age": 64, "s": "M"}], "Río Negro": [{"age": 65, "s": "M"}]}}
     ]
 }
