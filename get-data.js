@@ -235,14 +235,16 @@ async function updateUruguayData(data) {
 }
 
 async function updateUruguayDeathsData(deathsData) {
-    const deathsFileData = await fs.readFile(DEATHS_FILE);
-    const uruguayDeathsData = JSON.parse(deathsFileData);
-    lastIndex = uruguayDeathsData.days.length - 1;
-    if (lastIndex >= 0 && uruguayDeathsData.days[lastIndex].date == deathsData.date) {
-        uruguayDeathsData.days.pop();
+    if (Object.keys(deathsData.deps).length > 0) {
+        const deathsFileData = await fs.readFile(DEATHS_FILE);
+        const uruguayDeathsData = JSON.parse(deathsFileData);
+        lastIndex = uruguayDeathsData.days.length - 1;
+        if (lastIndex >= 0 && uruguayDeathsData.days[lastIndex].date == deathsData.date) {
+            uruguayDeathsData.days.pop();
+        }
+        uruguayDeathsData.days.push(deathsData);
+        await fs.writeFile(DEATHS_FILE, prettyCompactStringify(uruguayDeathsData, { indent: 4, maxLength: 4096 }));
     }
-    uruguayDeathsData.days.push(deathsData);
-    await fs.writeFile(DEATHS_FILE, prettyCompactStringify(uruguayDeathsData, { indent: 4, maxLength: 4096 }));
 }
 
 (async function () {
