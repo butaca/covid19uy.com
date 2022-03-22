@@ -433,7 +433,12 @@ describe('Test data', function () {
             const recovered = parseReportNumber(text, recoveredRegExp);
 
             const todayDeathsRegExp = /(Hoy se registraron\s*)(?<result>[\d\.]+)(\s*fallecimientos)/;
-            const todayDeaths = parseReportNumber(text, todayDeathsRegExp);
+            let todayDeaths = parseReportNumber(text, todayDeathsRegExp);
+            if(todayDeaths == 0) {
+                if(text.match(/Hoy se registró un fallecimiento/)) {
+                    todayDeaths = 1;
+                }
+            } 
 
             const totalDeathsRegExp = /(Hasta el momento son\s*)(?<result>[\d\.]+)(\s*las defunciones)/;
             const totalDeaths = parseReportNumber(text, totalDeathsRegExp);
