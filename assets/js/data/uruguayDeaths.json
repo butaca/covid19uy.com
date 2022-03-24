@@ -498,6 +498,7 @@
         {"date": "2022-03-19", "deps": {"Canelones": [{"age": 73, "s": "F"}], "Cerro Largo": [{"age": 85, "s": "M"}], "Durazno": [{"age": 65, "s": "F"}], "Montevideo": [{"age": 65, "s": "M"}, {"age": 81, "s": "F"}, {"age": 79, "s": "M"}, {"age": 75, "s": "M"}]}},
         {"date": "2022-03-20", "deps": {"Canelones": [{"age": 88, "s": "M"}], "San José": [{"age": 59, "s": "M"}, {"age": 81, "s": "F"}], "Soriano": [{"age": 91, "s": "F"}]}},
         {"date": "2022-03-21", "deps": {"Montevideo": [{"age": 81, "s": "F"}], "Soriano": [{"age": 88, "s": "F"}], "Treinta y Tres": [{"age": 84, "s": "F"}]}},
-        {"date": "2022-03-22", "deps": {"Río Negro": [{"age": 88, "s": "M"}]}}
+        {"date": "2022-03-22", "deps": {"Río Negro": [{"age": 88, "s": "M"}]}},
+        {"date": "2022-03-23", "deps": {"Soriano": [{"age": 85, "s": "F"}], "Treinta y Tres": [{"age": 69, "s": "F"}]}}
     ]
 }
