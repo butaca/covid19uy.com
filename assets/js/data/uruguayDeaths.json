@@ -503,6 +503,7 @@
         {"date": "2022-03-24", "deps": {"Canelones": [{"age": 77, "s": "F"}], "Cerro Largo": [{"age": 87, "s": "F"}], "Rocha": [{"age": 93, "s": "F"}]}},
         {"date": "2022-03-25", "deps": {"Colonia": [{"age": 79, "s": "M"}], "Montevideo": [{"age": 94, "s": "F"}]}},
         {"date": "2022-03-26", "deps": {"Montevideo": [{"age": 95, "s": "F"}]}},
-        {"date": "2022-03-27", "deps": {"San José": [{"age": 80, "s": "M"}]}}
+        {"date": "2022-03-27", "deps": {"San José": [{"age": 80, "s": "M"}]}},
+        {"date": "2022-03-28", "deps": {"Montevideo": [{"age": 93, "s": "F"}], "Canelones": [{"age": 91, "s": "M"}], "Lavalleja": [{"age": 81, "s": "F"}]}}
     ]
 }
