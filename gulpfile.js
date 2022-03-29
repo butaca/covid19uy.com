@@ -223,10 +223,19 @@ async function downloadCountryData(file, hash, property) {
 
 
 async function downloadCountriesData() {
+    let hash = null;
     try {
         const repoData = await request(COUNTRIES_DATA_REPO_URL);
-        const hash = repoData.commit.sha;
+        hash = repoData.commit.sha;
+    }
+    catch(e) {
+        // Github API is failing frequently with a 403 error when getting the current commit hash
+        // If that's the case, try master instead
+        hash = "master";
+        console.log("Failed to get repo data, using master instead of current commit: " + e.message);
+    }
 
+    try {
         await Promise.all([
             downloadCountryData('time_series_covid19_confirmed_global.csv', hash, 'cases'),
             downloadCountryData('time_series_covid19_recovered_global.csv', hash, 'recovered'),
