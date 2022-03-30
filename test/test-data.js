@@ -397,8 +397,10 @@ describe('Test data', function () {
         const dataTodayDeaths = uruguayDeaths.days[uruguayDeaths.days.length - 1];
 
         let dataTodayTotalDeaths = 0;
-        for (const [_, dep] of Object.entries(dataTodayDeaths.deps)) {
-            dataTodayTotalDeaths += dep.length;
+        if(today.date == dataTodayDeaths.date) {
+            for (const [_, dep] of Object.entries(dataTodayDeaths.deps)) {
+                dataTodayTotalDeaths += dep.length;
+            }
         }
 
         let dataTotalTests = uruguay.unreportedDailyTests;
