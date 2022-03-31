@@ -505,6 +505,7 @@
         {"date": "2022-03-26", "deps": {"Montevideo": [{"age": 95, "s": "F"}]}},
         {"date": "2022-03-27", "deps": {"San José": [{"age": 80, "s": "M"}]}},
         {"date": "2022-03-28", "deps": {"Montevideo": [{"age": 93, "s": "F"}], "Canelones": [{"age": 91, "s": "M"}], "Lavalleja": [{"age": 81, "s": "F"}]}},
-        {"date": "2022-03-29", "deps": {"Tacuarembó": [{"age": 93, "s": "M"}, {"age": 83, "s": "M"}]}}
+        {"date": "2022-03-29", "deps": {"Tacuarembó": [{"age": 93, "s": "M"}, {"age": 83, "s": "M"}]}},
+        {"date": "2022-03-31", "deps": {"Canelones": [{"age": 66, "s": "M"}], "Lavalleja": [{"age": 99, "s": "F"}], "Montevideo": [{"age": 99, "s": "F"}]}}
     ]
 }
