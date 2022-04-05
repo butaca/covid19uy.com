@@ -9650,6 +9650,18 @@
             "hcRecovered": 19694,
             "hcDeaths": 30,
             "newCases": 381
+        },
+        {
+            "date": "2022-04-04",
+            "tests": 6038,
+            "cases": 890140,
+            "recovered": 877795,
+            "deaths": 7169,
+            "icu": 38,
+            "hc": 19923,
+            "hcRecovered": 19727,
+            "hcDeaths": 30,
+            "newCases": 627
         }
     ]
 }
