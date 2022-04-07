@@ -512,6 +512,7 @@
         {"date": "2022-04-03", "deps": {"Paysandú": [{"age": 93, "s": "M"}], "Canelones": [{"age": 87, "s": "F"}, {"age": 67, "s": "M"}], "Montevideo": [{"age": 85, "s": "M"}]}},
         {"date": "2022-04-04", "deps": {"Canelones": [{"age": 95, "s": "M"}], "Montevideo": [{"age": 82, "s": "F"}, {"age": 83, "s": "F"}]}},
         {"date": "2022-04-05", "deps": {"Canelones": [{"age": 89, "s": "F"}, {"age": 89, "s": "F"}]}},
-        {"date": "2022-04-06", "deps": {"Cerro Largo": [{"age": 93, "s": "F"}], "Durazno": [{"age": 98, "s": "M"}], "Montevideo": [{"age": 94, "s": "F"}, {"age": 85, "s": "M"}], "Salto": [{"age": 65, "s": "M"}]}}
+        {"date": "2022-04-06", "deps": {"Cerro Largo": [{"age": 93, "s": "F"}], "Durazno": [{"age": 98, "s": "M"}], "Montevideo": [{"age": 94, "s": "F"}, {"age": 85, "s": "M"}], "Salto": [{"age": 65, "s": "M"}]}},
+        {"date": "2022-04-07", "deps": {"Canelones": [{"age": 94, "s": "F"}], "Montevideo": [{"age": 68, "s": "F"}], "Rocha": [{"age": 80, "s": "M"}]}}
     ]
 }
