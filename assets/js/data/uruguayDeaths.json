@@ -518,6 +518,7 @@
         {"date": "2022-04-10", "deps": {"Canelones": [{"age": 92, "s": "F"}]}},
         {"date": "2022-04-11", "deps": {"Canelones": [{"age": 80, "s": "M"}]}},
         {"date": "2022-04-12", "deps": {"Canelones": [{"age": 95, "s": "M"}], "Montevideo": [{"age": 80, "s": "M"}, {"age": 73, "s": "F"}]}},
-        {"date": "2022-04-13", "deps": {"Montevideo": [{"age": 90, "s": "F"}], "Rivera": [{"age": 87, "s": "M"}]}}
+        {"date": "2022-04-13", "deps": {"Montevideo": [{"age": 90, "s": "F"}], "Rivera": [{"age": 87, "s": "M"}]}},
+        {"date": "2022-04-14", "deps": {"Cerro Largo": [{"age": 86, "s": "M"}], "Rivera": [{"age": 72, "s": "M"}]}}
     ]
 }
