@@ -520,6 +520,7 @@
         {"date": "2022-04-12", "deps": {"Canelones": [{"age": 95, "s": "M"}], "Montevideo": [{"age": 80, "s": "M"}, {"age": 73, "s": "F"}]}},
         {"date": "2022-04-13", "deps": {"Montevideo": [{"age": 90, "s": "F"}], "Rivera": [{"age": 87, "s": "M"}]}},
         {"date": "2022-04-14", "deps": {"Cerro Largo": [{"age": 86, "s": "M"}], "Rivera": [{"age": 72, "s": "M"}]}},
-        {"date": "2022-04-15", "deps": {"Paysandú": [{"age": 70, "s": "F"}, {"age": 76, "s": "M"}], "Salto": [{"age": 64, "s": "F"}]}}
+        {"date": "2022-04-15", "deps": {"Paysandú": [{"age": 70, "s": "F"}, {"age": 76, "s": "M"}], "Salto": [{"age": 64, "s": "F"}]}},
+        {"date": "2022-04-17", "deps": {"Canelones": [{"age": 53, "s": "F"}], "Paysandú": [{"age": 82, "s": "F"}], "Río Negro": [{"age": 89, "s": "F"}], "Tacuarembó": [{"age": 92, "s": "F"}]}}
     ]
 }
