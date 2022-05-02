@@ -1,11 +1,17 @@
 import { getTotal, createDefaultChartOptions, pieToolTips } from './util'
 
-function chart(chartData, lang) {
+function chart(_, lang, uruguayWeeklyData) {
     var ctx = document.getElementById('chart-total');
     if (ctx) {
         var htmlLang = document.documentElement.getAttribute("lang");
+        
+        const week = uruguayWeeklyData.data[uruguayWeeklyData.data.length - 1];
+        const activeCases = week.active;
+        const totalDeaths = week.totalDeaths;
+        const totalCases = week.totalCases;
+        const recovered = totalCases - totalDeaths - activeCases;
 
-        var dataChartTotal = [chartData.activeCases[chartData.activeCases.length - 1], chartData.recovered[chartData.recovered.length - 1], chartData.deaths[chartData.deaths.length - 1]];
+        var dataChartTotal = [activeCases, recovered, totalDeaths];
         var totalChartTotal = getTotal(dataChartTotal);
         var labelsChartTotal = [lang.activeCases.other, lang.recovered.other, lang.deaths.other];
         labelsChartTotal = labelsChartTotal.map(function (label, index) { return label + ': ' + (dataChartTotal[index] / totalChartTotal * 100).toFixed(2) + '%' });
@@ -21,7 +27,7 @@ function chart(chartData, lang) {
         };
         options.elements = {
             center: {
-                text: lang.totalCases.other + ': ' + chartData.cases[chartData.cases.length - 1].toLocaleString(htmlLang),
+                text: lang.totalCases.other + ': ' + totalCases.toLocaleString(htmlLang),
                 color: '#36A2EB',
                 fontStyle: 'Helvetica',
                 sidePadding: 15

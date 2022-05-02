@@ -1,11 +1,5 @@
 [
     {
-        "id": "chart-harvard-index",
-        "title": "harvardIndex",
-        "desc": "harvardIndexDesc",
-        "displayUnreliableDataMessage": true
-    },
-    {
         "id": "chart-total-vacs",
         "title": "graphTotalVacs",
         "desc": "graphTotalVacsDesc",
@@ -24,35 +18,9 @@
         "displayVacErrorsInfo": true
     },
     {
-        "id": "chart-active-cases",
-        "title": "graphTitleActiveCases",
-        "desc": "graphTitleActiveCasesDesc",
-        "displayPositivesAndCasesInfo": true,
-        "displayUnreliableDataMessage": true
-    },
-    {
-        "id": "chart-total-cases",
-        "title": "graphTitleTotalCases",
-        "desc": "graphTitleTotalCasesDesc",
-        "displayPositivesAndCasesInfo": true,
-        "displayUnreliableDataMessage": true
-    },
-    {
         "id": "chart-total",
         "title": "graphTitleTotals",
         "desc": "graphTitleTotalsDesc"
-    },
-    {
-        "id": "chart-daily-tests-new",
-        "title": "graphTitleDailyTestsNew",
-        "desc": "graphTitleDailyTestsNewDesc",
-        "displayUnreliableDataMessage": true
-    },
-    {
-        "id": "chart-daily-positivity-rate",
-        "title": "graphPositivityRate",
-        "desc": "graphPositivityRateDesc",
-        "displayUnreliableDataMessage": true
     },
     {
         "id": "chart-daily-cases",
@@ -60,44 +28,6 @@
         "desc": "graphTitleDailyCasesDesc",
         "displayPositivesAndCasesInfo": true,
         "displayUnreliableDataMessage": true
-    },
-    {
-        "id": "chart-daily-active-cases",
-        "title": "graphTitleDailyActiveCases",
-        "desc": "graphTitleDailyActiveCasesDesc",
-        "displayPositivesAndCasesInfo": true,
-        "displayUnreliableDataMessage": true
-    },
-    {
-        "id": "chart-healthcare-workers",
-        "title": "graphTitleHealthcareWorkers",
-        "desc": "graphTitleHealthcareWorkersDesc",
-        "displayPositivesAndCasesInfo": true,
-        "displayUnreliableDataMessage": true
-    },
-    {
-        "id": "chart-healthcare-workers-percent",
-        "title": "graphTitleHealthcareWorkersPercent",
-        "desc": "graphTitleHealthcareWorkersPercentDesc",
-        "displayPositivesAndCasesInfo": true,
-        "displayUnreliableDataMessage": true
-    },
-    {
-        "id": "chart-daily-hospitalizations",
-        "title": "graphTitleDailyHospitalizations",
-        "desc": "graphTitleDailyHospitalizationsDesc"
-    },
-    {
-        "id": "chart-daily-hospitalizations-percent",
-        "title": "graphTitleDailyHospitalizationsPercent",
-        "desc": "graphTitleDailyHospitalizationsPercentDesc",
-        "displayUnreliableDataMessage": true
-    },
-    {
-        "id": "chart-deaths-new",
-        "title": "graphDeathsNew",
-        "desc": "graphDeathsNewDesc",
-        "displayDeathsInfo": true
     },
     {
         "id": "chart-daily-deaths",

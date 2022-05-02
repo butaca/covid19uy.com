@@ -6,6 +6,7 @@ import nfCookies from './nf-cookies'
 import burger from './burger'
 import './icons'
 import chartData from "./data/chartData.json"
+import uruguayWeeklyData from "./data/uruguayWeekly.json"
 import charts from "./charts";
 import uruguayMap from "./uruguay-map";
 
@@ -37,10 +38,16 @@ function main() {
         for (let i = 0; i < chartData.dates.length; ++i) {
             const date = chartData.dates[i];
             const tokens = date.split("/")
-            chartData.date = tokens[1] + "/" + tokens[0];
+            chartData.dates[i] = tokens[1] + "/" + tokens[0];
+        }
+
+        for (let i = 0; i < chartData.datesWeeklyData.length; ++i) {
+            const date = chartData.datesWeeklyData[i];
+            const tokens = date.split("/")
+            chartData.datesWeeklyData[i] = tokens[1] + "/" + tokens[0];
         }
     }
 
-    charts(chartData, lang);
+    charts(chartData, lang, uruguayWeeklyData);
     uruguayMap();
 }

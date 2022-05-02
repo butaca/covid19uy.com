@@ -93,12 +93,17 @@ function chart(chartData, lang) {
 
     ctx = document.getElementById('chart-daily-deaths');
     options = createDefaultChartOptions();
+    
+    const datesWithWeeklyData = [];
+    datesWithWeeklyData.push(...chartData.dates);
+    datesWithWeeklyData.push(...chartData.datesWeeklyData);
+    
     if (ctx) {
         var dailyDeathsFiltered = chartData.dailyDeaths.slice(chartData.deathsFirstIndex);
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: chartData.dates.slice(chartData.deathsFirstIndex),
+                labels: datesWithWeeklyData.slice(chartData.deathsFirstIndex),
                 datasets: [
                     createMovingAverageDataset(dailyDeathsFiltered, MOVING_AVERAGE_DELTA, "#0033bb88"),
                     {

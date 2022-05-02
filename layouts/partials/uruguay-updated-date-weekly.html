@@ -1,0 +1,3 @@
+<div class="is-size-7 has-margin-top-xs date">
+    {{ i18n "updated" }}: {{ dateFormat .Site.Params.dateFormatCompact (index (last 1 .Site.Data.uruguayWeekly.data) 0).dateTo }}
+</div>

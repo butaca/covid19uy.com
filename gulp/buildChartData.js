@@ -5,6 +5,7 @@ const { promisify } = require('util');
 const readFilePromise = promisify(fs.readFile);
 const writeFilePromise = promisify(fs.writeFile);
 const gulp = require('gulp');
+const moment = require('moment');
 const HARVARD_INDEX_DAYS = 7;
 const HarvardIndexMode = {
     NEW_CASES: "newcases",
@@ -17,6 +18,9 @@ const hiMode = HarvardIndexMode.NEW_CASES_WITH_LATE_DATA;
 async function buildChartData() {
     const uruguayData = await readFilePromise("./" + DATA_DIR + "uruguay.json");
     const uruguay = JSON.parse(uruguayData);
+
+    const uruguayWeeklyData = await readFilePromise("./" + DATA_DIR + "uruguayWeekly.json");
+    const uruguayWeekly = JSON.parse(uruguayWeeklyData);
 
     var positives = [];
     var dialyPositives = [];
@@ -201,6 +205,24 @@ async function buildChartData() {
         }
     });
 
+    var datesWeeklyData = [];
+
+    uruguayWeekly.data.forEach(function (el, index) {
+        const dailyData = el.dailyData;
+        for(let i = 0; i < dailyData.length; ++i) {
+            // skip the first day of the weekly data because it is already in the uruguay.json
+            if(index == 0 && i == 0) {
+                continue;
+            }
+            const day = dailyData[i];
+            const date = moment(el.dateFrom).add(i, 'd');
+            datesWeeklyData.push(date.format("DD/MM"));
+            dailyDeaths.push(day.deaths);
+            dailyCases.push(day.cases);
+            dailyCasesWithLateData.push(day.cases);
+        }
+    });
+
     const uruguayDeathsData = await readFilePromise("./" + DATA_DIR + "uruguayDeaths.json");
     const uruguayDeaths = JSON.parse(uruguayDeathsData);
 
@@ -263,6 +285,7 @@ async function buildChartData() {
         dialyPositives: dialyPositives,
         dates: dates,
         fullDates: fullDates,
+        datesWeeklyData: datesWeeklyData,
         deaths: deaths,
         recovered: recovered,
         activeCases: activeCases,

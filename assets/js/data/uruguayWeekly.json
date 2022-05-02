@@ -1,0 +1,44 @@
+{
+    "data": [
+        {
+            "dateTo": "2022-04-23",
+            "dateFrom": "2022-04-17",
+            "totalCases": 897867,
+            "totalDeaths": 7203,
+            "newTests": 26500,
+            "newCases": 2158,
+            "newDeaths": 8,
+            "active": 2175,
+            "dailyData": [
+                {
+                    "cases": 161,
+                    "deaths": 3
+                },
+                {
+                    "cases": 280,
+                    "deaths": 1
+                },
+                {
+                    "cases": 444,
+                    "deaths": 2
+                },
+                {
+                    "cases": 380,
+                    "deaths": 1
+                },
+                {
+                    "cases": 394,
+                    "deaths": 1
+                },
+                {
+                    "cases": 301,
+                    "deaths": 0
+                },
+                {
+                    "cases": 198,
+                    "deaths": 0
+                }
+            ]
+        }
+    ]
+}

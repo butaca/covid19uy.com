@@ -3,12 +3,13 @@ const fs = require('fs');
 const { promisify } = require('util');
 const moment = require("moment");
 const axios = require('axios');
-const cheerio = require("cheerio");
+//const cheerio = require("cheerio");
 const DATA_DIR = "assets/js/data/"
 const DATE_FORMAT = "YYYY-MM-DD";
 const DATE_DEFAULT_TIME = "T00:00:00";
-const REPORT_BASE_URL = "https://www.gub.uy/sistema-nacional-emergencias/comunicacion/comunicados/informe-situacion-sobre-coronavirus-covid-19-uruguay-";
+//const REPORT_BASE_URL = "https://www.gub.uy/sistema-nacional-emergencias/comunicacion/comunicados/informe-situacion-sobre-coronavirus-covid-19-uruguay-";
 
+/*
 async function request(url, params) {
     if (params) {
         url += "?" + new URLSearchParams(params).toString();
@@ -25,6 +26,7 @@ async function request(url, params) {
         throw e;
     }
 }
+*/
 
 describe('Test data', function () {
 
@@ -32,6 +34,7 @@ describe('Test data', function () {
     let departmentsData = null;
     let uruguayDeaths = null;
     let icu = null;
+    let uruguayWeekly = null;
 
     before(async function () {
         const readFile = promisify(fs.readFile);
@@ -48,6 +51,9 @@ describe('Test data', function () {
             }).catch(assert.Throw),
             readFile(DATA_DIR + "icuHistory.json").then(data => {
                 icu = JSON.parse(data.toString());
+            }).catch(assert.Throw),
+            readFile(DATA_DIR + "uruguayWeekly.json").then(data => {
+                uruguayWeekly = JSON.parse(data.toString());
             }).catch(assert.Throw)
         ]);
     });
@@ -390,6 +396,7 @@ describe('Test data', function () {
     });
     */
 
+    /*
     it('Compare uruguay.json with report data', function () {
         const today = uruguay.data[uruguay.data.length - 1];
         const todayDate = moment(today.date, DATE_FORMAT);
@@ -479,5 +486,27 @@ describe('Test data', function () {
             assert.equal(hcRecovered, today.hcRecovered, "hcRecovered values don't match");
             assert.equal(hcDeaths, today.hcDeaths, "hcDeaths values don't match");
         });
+    }); */
+
+    it('Test uruguayWeekly.json data', function () {
+        for (let i = 0; i < uruguayWeekly.data.length; ++i) {
+            const week = uruguayWeekly.data[i];
+            const dateFrom = new Date(week.dateFrom + DATE_DEFAULT_TIME);
+            const dateTo = new Date(week.dateTo + DATE_DEFAULT_TIME);
+            assert.equal(dateTo - dateFrom, 1000 * 60 * 60 * 24 * 6, "Invalid week dates");
+
+            const dailyData = week.dailyData;
+            let newCases = 0;
+            let newDeaths = 0;
+            for(let j = 0; j < dailyData.length; ++j) {
+                const day = dailyData[j];
+                newCases += day.cases;
+                newDeaths += day.deaths;
+            } 
+
+            assert.equal(newCases, week.newCases, "Daily new cases sum not equal to week total new cases");
+            assert.equal(newDeaths, week.newDeaths, "Daily new deaths sum not equal to week total new deaths");
+        }
+
     });
 });

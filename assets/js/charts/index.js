@@ -17,7 +17,7 @@ import chartsRegion from './charts-region'
 import chartsDeaths from './charts-deaths'
 import chartsVac from './charts-vac'
 
-function init(chartData, lang) {
+function init(chartData, lang, uruguayWeeklyData) {
     const charts = [];
     charts.push(chartActiveCases);
     charts.push(chartTotalCases);
@@ -39,7 +39,7 @@ function init(chartData, lang) {
     charts.push(chartsVac);
 
     for (let i = 0; i < charts.length; ++i) {
-        charts[i](chartData, lang);
+        charts[i](chartData, lang, uruguayWeeklyData);
     }
 }
 
