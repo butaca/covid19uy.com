@@ -1,14 +1,15 @@
 {
     "data": [
         {
-            "dateTo": "2022-04-23",
             "dateFrom": "2022-04-17",
+            "dateTo": "2022-04-23",
             "totalCases": 897867,
             "totalDeaths": 7203,
             "newTests": 26500,
             "newCases": 2158,
             "newDeaths": 8,
             "active": 2175,
+            "positivityRate": 8,
             "dailyData": [
                 {
                     "cases": 161,
@@ -37,6 +38,47 @@
                 {
                     "cases": 198,
                     "deaths": 0
+                }
+            ]
+        },
+        {
+            "dateFrom": "2022-04-24",
+            "dateTo": "2022-04-30",
+            "totalCases": 899723,
+            "totalDeaths": 7210,
+            "newTests": 23069,
+            "newCases": 1867,
+            "newDeaths": 6,
+            "active": 2095,
+            "positivityRate": 7.8,
+            "dailyData": [
+                {
+                    "cases": 111,
+                    "deaths": 0
+                },
+                {
+                    "cases": 263,
+                    "deaths": 1
+                },
+                {
+                    "cases": 307,
+                    "deaths": 0
+                },
+                {
+                    "cases": 299,
+                    "deaths": 1
+                },
+                {
+                    "cases": 357,
+                    "deaths": 1
+                },
+                {
+                    "cases": 295,
+                    "deaths": 2
+                },
+                {
+                    "cases": 235,
+                    "deaths": 1
                 }
             ]
         }

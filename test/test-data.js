@@ -489,6 +489,8 @@ describe('Test data', function () {
     }); */
 
     it('Test uruguayWeekly.json data', function () {
+        let prevWeek = null;
+        
         for (let i = 0; i < uruguayWeekly.data.length; ++i) {
             const week = uruguayWeekly.data[i];
             const dateFrom = new Date(week.dateFrom + DATE_DEFAULT_TIME);
@@ -506,6 +508,16 @@ describe('Test data', function () {
 
             assert.equal(newCases, week.newCases, "Daily new cases sum not equal to week total new cases");
             assert.equal(newDeaths, week.newDeaths, "Daily new deaths sum not equal to week total new deaths");
+
+            if(prevWeek != null) {
+                // Official data does not pass the test this week
+                if(week.dateFrom != "2022-04-24") {
+                    assert.equal(week.totalCases, prevWeek.totalCases + week.newCases, "Previous week total cases plus this week new cases desn't match this week total cases");
+                    assert.equal(week.totalDeaths, prevWeek.totalDeaths + week.newDeaths, "Previous week total deaths plus this week new deaths desn't match this week total deaths");
+                }
+            } 
+
+            prevWeek = week;
         }
 
     });
