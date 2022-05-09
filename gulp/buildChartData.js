@@ -217,7 +217,7 @@ async function buildChartData() {
             const day = dailyData[i];
             const date = moment(el.dateFrom).add(i, 'd');
             datesWeeklyData.push(date.format("DD/MM"));
-            dailyDeaths.push(day.deaths);
+            dailyDeaths.push(day.deaths || 0);
             dailyCases.push(day.cases);
             dailyCasesWithLateData.push(day.cases);
         }

@@ -81,6 +81,44 @@
                     "deaths": 1
                 }
             ]
+        },
+        {
+            "dateFrom": "2022-05-01",
+            "dateTo": "2022-05-07",
+            "totalCases": 902540,
+            "totalDeaths": 7213,
+            "newTests": 23634,
+            "newCases": 2830,
+            "newDeaths": 3,
+            "active": 2893,
+            "positivityRate": 10.8,
+            "lateDeletedCases": 13,
+            "dailyData": [
+                {
+                    "cases": 133,
+                    "deaths": 1
+                },
+                {
+                    "cases": 377,
+                    "deaths": 1
+                },
+                {
+                    "cases": 368
+                },
+                {
+                    "cases": 486
+                },
+                {
+                    "cases": 508
+                },
+                {
+                    "cases": 530
+                },
+                {
+                    "cases": 428,
+                    "deaths": 1
+                }
+            ]
         }
     ]
 }

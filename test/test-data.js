@@ -503,7 +503,7 @@ describe('Test data', function () {
             for(let j = 0; j < dailyData.length; ++j) {
                 const day = dailyData[j];
                 newCases += day.cases;
-                newDeaths += day.deaths;
+                newDeaths += (day.deaths || 0);
             } 
 
             assert.equal(newCases, week.newCases, "Daily new cases sum not equal to week total new cases");
@@ -512,7 +512,7 @@ describe('Test data', function () {
             if(prevWeek != null) {
                 // Official data does not pass the test this week
                 if(week.dateFrom != "2022-04-24") {
-                    assert.equal(week.totalCases, prevWeek.totalCases + week.newCases, "Previous week total cases plus this week new cases desn't match this week total cases");
+                    assert.equal(week.totalCases, prevWeek.totalCases + week.newCases - (week.lateDeletedCases || 0), "Previous week total cases plus this week new cases desn't match this week total cases");
                     assert.equal(week.totalDeaths, prevWeek.totalDeaths + week.newDeaths, "Previous week total deaths plus this week new deaths desn't match this week total deaths");
                 }
             } 
