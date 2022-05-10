@@ -62,16 +62,16 @@ async function downloadUruguayVaccinationData() {
             const date = moment(data['Fecha'], 'DD/MM/YYYY').format('YYYY-MM-DD');
             const firstDose = parseInt(data['Total Dosis 1']);
             const secondDose = parseInt(data['Total Dosis 2']);
-            const boosterDose = parseInt(data['Total Dosis R']);
+            const boosterDose = parseInt(data['Total Dosis 3']) + parseInt(data['Total Dosis 4']);
             const sinovacFirstDose = parseInt(data['1era Dosis Sinovac']);
             const sinovacSecondDose = parseInt(data['2da Dosis Sinovac']);
-            const sinovacBoosterDose = parseInt(data['Refuerzo Dosis Sinovac']);
+            const sinovacBoosterDose = parseInt(data['3era Dosis Sinovac']) + parseInt(data['4ta Dosis Sinovac']);
             const pfizerFirstDose = parseInt(data['1era Dosis Pfizer']);
             const pfizerSecondDose = parseInt(data['2da Dosis Pfizer']);
-            const pfizerBoosterDose = parseInt(data['Refuerzo Dosis Pfizer']);
+            const pfizerBoosterDose = parseInt(data['3era Dosis Pfizer']) + parseInt(data['4ta Dosis Pfizer']);
             const astrazenecaFirstDose = parseInt(data['1era Dosis Astrazeneca']);
             const astrazenecaSecondDose = parseInt(data['2da Dosis Astrazeneca']);
-            const astrazenecaBoosterDose = parseInt(data['Refuerzo Dosis Astrazeneca']);
+            const astrazenecaBoosterDose = parseInt(data['3era Dosis Astrazeneca']) + parseInt(data['4ta Dosis Astrazeneca']);
 
             const total = firstDose + secondDose + boosterDose;
             const sinovacTotal = sinovacFirstDose + sinovacSecondDose + sinovacBoosterDose;
