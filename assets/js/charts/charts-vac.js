@@ -133,7 +133,8 @@ function chart(_chartData, lang) {
 
     const firstDoseTotal = getDailyTotals(vaccinationData.history.firstDose);
     const secondDoseTotal = getDailyTotals(vaccinationData.history.secondDose);
-    const boosterDoseTotal = getDailyTotals(vaccinationData.history.boosterDose);
+    const thirdDoseTotal = getDailyTotals(vaccinationData.history.thirdDose);
+    const fourthDoseTotal = getDailyTotals(vaccinationData.history.fourthDose);
 
     if (ctx) {
         const options = createDefaultChartOptions();
@@ -144,10 +145,16 @@ function chart(_chartData, lang) {
 
         const doseHistoryDatasets = [
             {
+                pointBackgroundColor: "#118311ff",
+                backgroundColor: "#118311ff",
+                label: lang.fourthDose.other,
+                data: fourthDoseTotal,
+            },
+            {
                 pointBackgroundColor: "#1ac71aff",
                 backgroundColor: "#1ac71aff",
-                label: lang.boosterDose.other,
-                data: boosterDoseTotal,
+                label: lang.thirdDose.other,
+                data: thirdDoseTotal,
             },
             {
                 pointBackgroundColor: "#77ed77ff",

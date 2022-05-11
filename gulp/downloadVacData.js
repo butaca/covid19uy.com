@@ -28,14 +28,16 @@ async function downloadUruguayVaccinationData() {
             astrazeneca: [],
             firstDose: [],
             secondDose: [],
-            boosterDose: []
+            thirdDose: [],
+            fourthDose: []
         },
         date: 0,
         todayTotal: 0,
         total: 0,
         firstDoseTotal: 0,
         secondDoseTotal: 0,
-        boosterDoseTotal: 0,
+        thirdDoseTotal: 0,
+        fourthDoseTotal: 0,
         coronavacTotal: 0,
         astrazenecaTotal: 0,
         pfizerTotal: 0,
@@ -62,26 +64,31 @@ async function downloadUruguayVaccinationData() {
             const date = moment(data['Fecha'], 'DD/MM/YYYY').format('YYYY-MM-DD');
             const firstDose = parseInt(data['Total Dosis 1']);
             const secondDose = parseInt(data['Total Dosis 2']);
-            const boosterDose = parseInt(data['Total Dosis 3']) + parseInt(data['Total Dosis 4']);
+            const thirdDose = parseInt(data['Total Dosis 3']);
+            const fourthDose = parseInt(data['Total Dosis 4']);
             const sinovacFirstDose = parseInt(data['1era Dosis Sinovac']);
             const sinovacSecondDose = parseInt(data['2da Dosis Sinovac']);
-            const sinovacBoosterDose = parseInt(data['3era Dosis Sinovac']) + parseInt(data['4ta Dosis Sinovac']);
+            const sinovacThirdDose = parseInt(data['3era Dosis Sinovac']);
+            const sinovacFourthDose = parseInt(data['4ta Dosis Sinovac']);
             const pfizerFirstDose = parseInt(data['1era Dosis Pfizer']);
             const pfizerSecondDose = parseInt(data['2da Dosis Pfizer']);
-            const pfizerBoosterDose = parseInt(data['3era Dosis Pfizer']) + parseInt(data['4ta Dosis Pfizer']);
+            const pfizerThirdDose = parseInt(data['3era Dosis Pfizer']);
+            const pfizerFourthDose = parseInt(data['4ta Dosis Pfizer']);
             const astrazenecaFirstDose = parseInt(data['1era Dosis Astrazeneca']);
             const astrazenecaSecondDose = parseInt(data['2da Dosis Astrazeneca']);
-            const astrazenecaBoosterDose = parseInt(data['3era Dosis Astrazeneca']) + parseInt(data['4ta Dosis Astrazeneca']);
+            const astrazenecaThridDose = parseInt(data['3era Dosis Astrazeneca']);
+            const astrazenecaFourthDose = parseInt(data['4ta Dosis Astrazeneca']);
 
-            const total = firstDose + secondDose + boosterDose;
-            const sinovacTotal = sinovacFirstDose + sinovacSecondDose + sinovacBoosterDose;
-            const pfizerTotal = pfizerFirstDose + pfizerSecondDose + pfizerBoosterDose;
-            const astrazenecaTotal = astrazenecaFirstDose + astrazenecaSecondDose + astrazenecaBoosterDose;
+            const total = firstDose + secondDose + thirdDose + fourthDose;
+            const sinovacTotal = sinovacFirstDose + sinovacSecondDose + sinovacFourthDose;
+            const pfizerTotal = pfizerFirstDose + pfizerSecondDose + pfizerThirdDose + pfizerFourthDose;
+            const astrazenecaTotal = astrazenecaFirstDose + astrazenecaSecondDose + astrazenecaThridDose + astrazenecaFourthDose;
 
             history.date.push(date);
             history.firstDose.push(firstDose);
             history.secondDose.push(secondDose);
-            history.boosterDose.push(boosterDose);
+            history.thirdDose.push(thirdDose);
+            history.fourthDose.push(fourthDose);
             history.total.push(total);
             history.coronavac.push(sinovacTotal);
             history.pfizer.push(pfizerTotal);
@@ -89,7 +96,8 @@ async function downloadUruguayVaccinationData() {
 
             vacData.firstDoseTotal += firstDose;
             vacData.secondDoseTotal += secondDose;
-            vacData.boosterDoseTotal += boosterDose;
+            vacData.thirdDoseTotal += thirdDose;
+            vacData.fourthDoseTotal += fourthDose;
             vacData.total += total;
             vacData.coronavacTotal += sinovacTotal;
             vacData.pfizerTotal += pfizerTotal;
@@ -104,7 +112,8 @@ async function downloadUruguayVaccinationData() {
         history.date.reverse();
         history.firstDose.reverse();
         history.secondDose.reverse();
-        history.boosterDose.reverse();
+        history.thirdDose.reverse();
+        history.fourthDose.reverse();
         history.total.reverse();
         history.coronavac.reverse();
         history.pfizer.reverse();

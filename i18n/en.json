@@ -210,7 +210,7 @@
         "other": "Total dose"
     },
     "graphDailyDoseDesc": {
-        "other": "Total first, second and booster dose per day"
+        "other": "Total first, second, third and fourth dose per day"
     },
     "graphTotalVacs": {
         "other": "Vaccination total"
@@ -386,11 +386,17 @@
     "vaccinationProgressSecondDoseDesc": {
         "other": "Percentage of the population that received two doses."
     },
-    "vaccinationProgressBoosterDose": {
-        "other": "Booster Dose"
+    "vaccinationProgressThirdDose": {
+        "other": "Third Dose"
     },
-    "vaccinationProgressBoosterDoseDesc": {
-        "other": "Percentage of the population that received a booster dose (third dose)."
+    "vaccinationProgressThirdDoseDesc": {
+        "other": "Percentage of the population that received a third dose"
+    },
+    "vaccinationProgressFourthDose": {
+        "other": "Fourth Dose"
+    },
+    "vaccinationProgressFourthDoseDesc": {
+        "other": "Percentage of the population that received a fourth dose"
     },
     "harvardIndex": {
         "other": "Harvard Index"
@@ -437,8 +443,11 @@
     "secondDose": {
         "other": "Second Dose"
     },
-    "boosterDose": {
-        "other": "Booster Dose"
+    "thirdDose": {
+        "other": "Third Dose"
+    },
+    "fourthDose": {
+        "other": "Fourth Dose"
     },
     "vaceta": {
         "other": "Estimated 75% second dose"

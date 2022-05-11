@@ -2,13 +2,16 @@
     {{- $vacData := site.Data.uruguayVaccination -}}
     {{- $firstDoseTotal := $vacData.firstDoseTotal -}}
     {{- $secondDoseTotal := $vacData.secondDoseTotal -}}
-    {{- $boosterDoseTotal := $vacData.boosterDoseTotal -}}
+    {{- $thirdDoseTotal := $vacData.thirdDoseTotal -}}
+    {{- $fourthDoseTotal := $vacData.fourthDoseTotal -}}
     {{- $firstDoseVacProgress := div $firstDoseTotal $vacData.population -}}
     {{- $firstDoseVacProgressPercent := lang.NumFmt 2 (mul 100 $firstDoseVacProgress) .Site.Params.numberFormat -}}
     {{- $secondDoseVacProgress := div $secondDoseTotal $vacData.population -}}
     {{- $secondDoseVacProgressPercent := lang.NumFmt 2 (mul 100 $secondDoseVacProgress) .Site.Params.numberFormat -}}
-    {{- $boosterDoseVacProgress := div $boosterDoseTotal $vacData.population -}}
-    {{- $boosterDoseVacProgressPercent := lang.NumFmt 2 (mul 100 $boosterDoseVacProgress) .Site.Params.numberFormat -}}
+    {{- $thirdDoseVacProgress := div $thirdDoseTotal $vacData.population -}}
+    {{- $thirdDoseVacProgressPercent := lang.NumFmt 2 (mul 100 $thirdDoseVacProgress) .Site.Params.numberFormat -}}
+    {{- $fourthDoseVacProgress := div $fourthDoseTotal $vacData.population -}}
+    {{- $fourthDoseVacProgressPercent := lang.NumFmt 2 (mul 100 $fourthDoseVacProgress) .Site.Params.numberFormat -}}
     {{- $date := time $vacData.date -}}
     {{- $totalVacs := $vacData.total -}}
     {{- $todayVacs := $vacData.todayTotal -}}
@@ -35,13 +38,22 @@
             </div>
             {{- if site.Params.showBoosterDoseProgress -}} 
             <div>
-                <div class="has-tooltip-multiline" data-tooltip='{{ i18n "vaccinationProgressBoosterDoseDesc"}}'>
-                    <span class="is-pulled-left">{{ i18n "vaccinationProgressBoosterDose" }}</span>
-                    <span class="is-pulled-right"><span class="has-margin-right-sm">{{ $boosterDoseVacProgressPercent
+                <div class="has-tooltip-multiline" data-tooltip='{{ i18n "vaccinationProgressThirdDoseDesc"}}'>
+                    <span class="is-pulled-left">{{ i18n "vaccinationProgressThirdDose" }}</span>
+                    <span class="is-pulled-right"><span class="has-margin-right-sm">{{ $thirdDoseVacProgressPercent
                             }}%</span><i class="far fa-question-circle"></i></span>
                 </div>
-                <progress class="progress is-success" value="{{ $boosterDoseVacProgress }}" max="1">{{
-                    $boosterDoseVacProgressPercent }}%</progress>
+                <progress class="progress is-success" value="{{ $thirdDoseVacProgress }}" max="1">{{
+                    $thirdDoseVacProgressPercent }}%</progress>
+            </div>
+            <div>
+                <div class="has-tooltip-multiline" data-tooltip='{{ i18n "vaccinationProgressFourthDoseDesc"}}'>
+                    <span class="is-pulled-left">{{ i18n "vaccinationProgressFourthDose" }}</span>
+                    <span class="is-pulled-right"><span class="has-margin-right-sm">{{ $fourthDoseVacProgressPercent
+                            }}%</span><i class="far fa-question-circle"></i></span>
+                </div>
+                <progress class="progress is-success" value="{{ $fourthDoseVacProgress }}" max="1">{{
+                    $fourthDoseVacProgressPercent }}%</progress>
             </div>
             {{- end -}} 
             {{- if site.Params.eta -}}
@@ -52,7 +64,7 @@
         </div>
         <div class="column is-three-fifths">
             <div class="columns is-multiline">
-                <div class="column is-6 has-text-centered">
+                <div class="column is-4 has-text-centered">
                     <div class="subtitle is-marginless">{{ i18n "firstDose" }}</div>
                     <div class="title is-marginless">
                         {{- lang.NumFmt 0 $firstDoseTotal site.Params.numberFormat -}}
@@ -60,7 +72,7 @@
                     <!--<span class="is-size-7 has-text-grey">{{ i18n "today" }}: {{ lang.NumFmt 0 $todayVacs site.Params.numberFormat
                 -}}</span>-->
                 </div>
-                <div class="column is-6 has-text-centered">
+                <div class="column is-4 has-text-centered">
                     <div class="subtitle is-marginless">{{ i18n "secondDose" }}</div>
                     <div class="title is-marginless">
                         {{- lang.NumFmt 0 $secondDoseTotal site.Params.numberFormat -}}
@@ -68,15 +80,23 @@
                     <!--<span class="is-size-7 has-text-grey">{{ i18n "today" }}: {{ lang.NumFmt 0 $todayVacs site.Params.numberFormat
                 -}}</span>-->
                 </div>
-                <div class="column is-6 has-text-centered">
-                    <div class="subtitle is-marginless">{{ i18n "boosterDose" }}</div>
+                <div class="column is-4 has-text-centered">
+                    <div class="subtitle is-marginless">{{ i18n "thirdDose" }}</div>
                     <div class="title is-marginless">
-                        {{- lang.NumFmt 0 $boosterDoseTotal site.Params.numberFormat -}}
+                        {{- lang.NumFmt 0 $thirdDoseTotal site.Params.numberFormat -}}
                     </div>
                     <!--<span class="is-size-7 has-text-grey">{{ i18n "today" }}: {{ lang.NumFmt 0 $todayVacs site.Params.numberFormat
                 -}}</span>-->
                 </div>
-                <div class="column is-6 has-text-centered">
+                <div class="column is-4 has-text-centered">
+                    <div class="subtitle is-marginless">{{ i18n "fourthDose" }}</div>
+                    <div class="title is-marginless">
+                        {{- lang.NumFmt 0 $fourthDoseTotal site.Params.numberFormat -}}
+                    </div>
+                    <!--<span class="is-size-7 has-text-grey">{{ i18n "today" }}: {{ lang.NumFmt 0 $todayVacs site.Params.numberFormat
+                -}}</span>-->
+                </div>
+                <div class="column is-4 has-text-centered">
                     <div class="subtitle is-marginless">{{ i18n "dosesTotal" }}</div>
                     <div class="title is-marginless">
                         {{- lang.NumFmt 0 $totalVacs site.Params.numberFormat -}}

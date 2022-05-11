@@ -386,11 +386,17 @@
     "vaccinationProgressSecondDoseDesc": {
         "other": "Porcentaje de la población recibió dos dosis."
     },
-    "vaccinationProgressBoosterDose": {
-        "other": "Refuerzo"
+    "vaccinationProgressThirdDose": {
+        "other": "Tercera Dosis"
     },
-    "vaccinationProgressBoosterDoseDesc": {
+    "vaccinationProgressThirdDoseDesc": {
         "other": "Porcentaje de la población recibió una tarcera dosis de refuerzo."
+    },
+    "vaccinationProgressFourthDose": {
+        "other": "Cuarta Dosis"
+    },
+    "vaccinationProgressFourthDoseDesc": {
+        "other": "Porcentaje de la población recibió una cuarta dosis de refuerzo."
     },
     "harvardIndex": {
         "other": "Índice de Harvard"
@@ -437,8 +443,11 @@
     "secondDose": {
         "other": "Segunda Dosis"
     },
-    "boosterDose": {
-        "other": "Dosis Refuerzo"
+    "thirdDose": {
+        "other": "Tercera Dosis"
+    },
+    "fourthDose": {
+        "other": "Cuarta Dosis"
     },
     "vaceta": {
         "other": "Estimación 75% segunda dosis"
