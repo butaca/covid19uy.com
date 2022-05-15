@@ -22,6 +22,10 @@ async function buildChartData() {
     const uruguayWeeklyData = await readFilePromise("./" + DATA_DIR + "uruguayWeekly.json");
     const uruguayWeekly = JSON.parse(uruguayWeeklyData);
 
+    function getPopulation(dateStr) {
+        return new Date(dateStr).getTime() >= new Date("2021-08-07").getTime() ? uruguay.population2021 : uruguay.population;
+    } 
+
     var positives = [];
     var dialyPositives = [];
     var dates = [];
@@ -60,6 +64,11 @@ async function buildChartData() {
     var harvardIndexNewCases = [];
     var harvardIndexSum = 0;
     var fullDates = [];
+
+    function getHarvardIndex(newCasesSum, dateStr) {
+        const population = getPopulation(dateStr);
+        return (newCasesSum / HARVARD_INDEX_DAYS) * (100000.0 / population);
+    } 
 
     uruguay.data.forEach(function (el, index) {
         var todayPositives = el.positives;
@@ -199,15 +208,16 @@ async function buildChartData() {
             if (index - HARVARD_INDEX_DAYS >= 0) {
                 harvardIndexSum -= harvardIndexNewCases[index - HARVARD_INDEX_DAYS];
             }
-            const population = new Date(el.date).getTime() >= new Date("2021-08-07").getTime() ? uruguay.population2021 : uruguay.population;
-            const harvardIndex = (harvardIndexSum / HARVARD_INDEX_DAYS) * (100000.0 / population);
+            const harvardIndex = getHarvardIndex(harvardIndexSum, el.date);
             harvardIndexDaily.push(harvardIndex);
         }
     });
 
     var datesWeeklyData = [];
+    var fullDatesWeeklyData = [];
 
     uruguayWeekly.data.forEach(function (el, index) {
+        let dayIndex = harvardIndexNewCases.length;
         const dailyData = el.dailyData;
         for(let i = 0; i < dailyData.length; ++i) {
             // skip the first day of the weekly data because it is already in the uruguay.json
@@ -217,9 +227,18 @@ async function buildChartData() {
             const day = dailyData[i];
             const date = moment(el.dateFrom).add(i, 'd');
             datesWeeklyData.push(date.format("DD/MM"));
+            fullDatesWeeklyData.push(date.toDate().toISOString())
             dailyDeaths.push(day.deaths || 0);
             dailyCases.push(day.cases);
             dailyCasesWithLateData.push(day.cases);
+            
+            harvardIndexNewCases.push(day.cases);
+            harvardIndexSum += day.cases;
+            harvardIndexSum -= harvardIndexNewCases[dayIndex - HARVARD_INDEX_DAYS];
+            const harvardIndex = getHarvardIndex(harvardIndexSum, date.format("YYYY-MM-DD"));
+            harvardIndexDaily.push(harvardIndex);
+
+            dayIndex++;
         }
     });
 
@@ -286,6 +305,7 @@ async function buildChartData() {
         dates: dates,
         fullDates: fullDates,
         datesWeeklyData: datesWeeklyData,
+        fullDatesWeeklyData: fullDatesWeeklyData,
         deaths: deaths,
         recovered: recovered,
         activeCases: activeCases,

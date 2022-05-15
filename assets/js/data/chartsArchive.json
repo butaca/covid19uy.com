@@ -1,11 +1,5 @@
 [
     {
-        "id": "chart-harvard-index",
-        "title": "harvardIndex",
-        "desc": "harvardIndexDesc",
-        "displayUnreliableDataMessage": true
-    },
-    {
         "id": "chart-active-cases",
         "title": "graphTitleActiveCases",
         "desc": "graphTitleActiveCasesDesc",

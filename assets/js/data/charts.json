@@ -7,6 +7,12 @@
         "displayUnreliableDataMessage": true
     },
     {
+        "id": "chart-harvard-index",
+        "title": "harvardIndex",
+        "desc": "harvardIndexDesc",
+        "displayUnreliableDataMessage": true
+    },
+    {
         "id": "chart-daily-deaths",
         "title": "graphDailyDeaths",
         "desc": "graphDailyDeathsDesc",

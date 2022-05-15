@@ -38,6 +38,14 @@ function RGBToHex(c) {
 const HARVARD_COLOR_LIMIT = 25;
 
 function chart(chartData, lang) {
+    const datesWithWeeklyData = [];
+    datesWithWeeklyData.push(...chartData.dates);
+    datesWithWeeklyData.push(...chartData.datesWeeklyData);
+
+    const fullDatesWithWeeklyData = [];
+    fullDatesWithWeeklyData.push(...chartData.fullDates);
+    fullDatesWithWeeklyData.push(...chartData.fullDatesWeeklyData);
+
     const startColor = {
         r: 240,
         g: 248,
@@ -59,7 +67,7 @@ function chart(chartData, lang) {
     const colors = [];
     for (let i = 0; i < chartData.harvardIndexDaily.length; ++i) {
         const harvardIndex = chartData.harvardIndexDaily[i];
-        const fullDate = chartData.fullDates[i];
+        const fullDate = fullDatesWithWeeklyData[i];
 
         let color;
 
@@ -93,7 +101,7 @@ function chart(chartData, lang) {
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: chartData.dates.slice(chartData.dates.length - chartData.harvardIndexDaily.length),
+                labels: datesWithWeeklyData.slice(datesWithWeeklyData.length - chartData.harvardIndexDaily.length),
                 datasets: [
                     {
                         pointBackgroundColor: "#28b8d6ff",
