@@ -1,5 +1,18 @@
 [
     {
+        "id": "chart-daily-cases",
+        "title": "graphTitleDailyCases",
+        "desc": "graphTitleDailyCasesDesc",
+        "displayPositivesAndCasesInfo": true,
+        "displayUnreliableDataMessage": true
+    },
+    {
+        "id": "chart-daily-deaths",
+        "title": "graphDailyDeaths",
+        "desc": "graphDailyDeathsDesc",
+        "displayUnreliableDataMessage": true
+    },
+    {
         "id": "chart-total-vacs",
         "title": "graphTotalVacs",
         "desc": "graphTotalVacsDesc",
@@ -21,18 +34,5 @@
         "id": "chart-total",
         "title": "graphTitleTotals",
         "desc": "graphTitleTotalsDesc"
-    },
-    {
-        "id": "chart-daily-cases",
-        "title": "graphTitleDailyCases",
-        "desc": "graphTitleDailyCasesDesc",
-        "displayPositivesAndCasesInfo": true,
-        "displayUnreliableDataMessage": true
-    },
-    {
-        "id": "chart-daily-deaths",
-        "title": "graphDailyDeaths",
-        "desc": "graphDailyDeathsDesc",
-        "displayUnreliableDataMessage": true
     }
 ]
