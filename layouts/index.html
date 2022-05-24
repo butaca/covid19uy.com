@@ -45,6 +45,7 @@
                 {{- end -}}
                 {{- end -}}
             </div>
+            {{ partial "footnotes.html" }}
             <div class="content">
                 <br>
                 {{ .Content }}
@@ -72,37 +73,7 @@
                 <div class="content">
                     {{ partial "uruguay-departments.html" . }}
                 </div>
-                <div>
-                    <p class="is-size-7">
-                        {{ i18n "positivesAndCasesInfo" }}
-                    </p>
-                    <p class="is-size-7">
-                        {{ i18n "deathsInfo" }}
-                    </p>
-                    <p class="is-size-7">
-                        <a href='https://www.gub.uy/ministerio-salud-publica/sites/ministerio-salud-publica/files/documentos/noticias/Actualización%20de%20casos%20y%20test%209%20de%20abril.pdf'
-                            target='blank'>
-                            {{ i18n "unreliableData" }}
-                        </a>
-                    </p>
-                    <p class="has-text-centered is-size-7 has-padding-top-sm">{{ i18n "dataSource" }}:
-                        <a href="https://www.gub.uy/ministerio-salud-publica/coronavirus" target="_blank"
-                            rel="noopener noreferrer">{{ i18n "msp" }}</a> ({{ i18n "publishedBy" }}
-                        <a href="https://www.gub.uy/sistema-nacional-emergencias/" target="_blank"
-                            rel="noopener noreferrer">{{ i18n "sinae" }}</a>),
-                        <a href="https://catalogodatos.gub.uy/dataset/vacunacion-por-covid-19" target="_blank"
-                            rel="noopener noreferrer">{{ i18n "vacDataName" }}</a>
-                        {{ i18n "providedBy" }}
-                        <a href="https://www.gub.uy/ministerio-salud-publica/coronavirus" target="_blank"
-                            rel="noopener noreferrer">{{ i18n "msp" }}</a>
-                        {{ i18n "licenseUnder" }}
-                        <a href="https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf"
-                            target="_blank" rel="noopener noreferrer">{{
-                            i18n "vacDataLicense" }}</a>,
-                        <a href="https://www.gub.uy/sistema-nacional-emergencias/pagina-embebida/visualizador-ocupacion-camas-cti-personas-adultas"
-                            target="_blank" rel="noopener noreferrer">{{ i18n "icuMonitor" }}</a>.
-                    </p>
-                </div>
+                {{ partial "footnotes.html" }}
                 {{- end -}}
             </div>
         </div>

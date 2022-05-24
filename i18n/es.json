@@ -263,6 +263,12 @@
     "msp": {
         "other": "Ministerio de Salud Pública"
     },
+    "dailyMSPReports": {
+        "other": "Informes diarios del Ministerio de Salud Pública"
+    },
+    "weeklyMPSReports": {
+        "other": "Informes semanales del Ministerio de Salud Pública"
+    },
     "negatives": {
         "other": "Negativos"
     },

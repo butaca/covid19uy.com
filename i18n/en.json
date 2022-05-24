@@ -263,6 +263,12 @@
     "msp": {
         "other": "Ministry of Public Health"
     },
+    "dailyMSPReports": {
+        "other": "Ministry of Public Health daily reports"
+    },
+    "weeklyMPSReports": {
+        "other": "Ministry of Public Health weekly reports"
+    },
     "negatives": {
         "other": "Negatives"
     },
