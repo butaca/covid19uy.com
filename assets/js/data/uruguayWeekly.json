@@ -197,6 +197,45 @@
                     "deaths": 3
                 }
             ]
+        },
+        {
+            "dateFrom": "2022-05-22",
+            "dateTo": "2022-05-28",
+            "totalCases": 925777,
+            "totalDeaths": 7238,
+            "newTests": 39795,
+            "newCases": 9389,
+            "newDeaths": 11,
+            "active": 8036,
+            "positivityRate": 20.5,
+            "lateDeletedCases": 0,
+            "dailyData": [
+                {
+                    "cases": 941,
+                    "deaths": 5
+                },
+                {
+                    "cases": 1560
+                },
+                {
+                    "cases": 1545,
+                    "deaths": 3
+                },
+                {
+                    "cases": 1579,
+                    "deaths": 1
+                },
+                {
+                    "cases": 1269
+                },
+                {
+                    "cases": 1550,
+                    "deaths": 2
+                },
+                {
+                    "cases": 945
+                }
+            ]
         }
     ]
 }
