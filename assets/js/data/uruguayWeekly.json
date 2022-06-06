@@ -236,6 +236,48 @@
                     "cases": 945
                 }
             ]
+        },
+        {
+            "dateFrom": "2022-05-29",
+            "dateTo": "2022-06-04",
+            "totalCases": 934961,
+            "totalDeaths": 7262,
+            "newTests": 34072,
+            "newCases": 9184,
+            "newDeaths": 24,
+            "active": 7661,
+            "positivityRate": 20.6,
+            "lateDeletedCases": 0,
+            "dailyData": [
+                {
+                    "cases": 708,
+                    "deaths": 3
+                },
+                {
+                    "cases": 1335,
+                    "deaths":2
+                },
+                {
+                    "cases": 1319,
+                    "deaths": 1
+                },
+                {
+                    "cases": 1471,
+                    "deaths": 4
+                },
+                {
+                    "cases": 1039,
+                    "deaths": 4
+                },
+                {
+                    "cases": 2288,
+                    "deaths": 6
+                },
+                {
+                    "cases": 1024,
+                    "deaths": 4
+                }
+            ]
         }
     ]
 }
