@@ -28,7 +28,7 @@ describe('Test Twitter data', function () {
         return T.get("account/verify_credentials").catch(assert.Throw);
     });
 
-    it('All tweets should exists', async function () {
+    it('All tweets should exist', async function () {
         this.timeout(10000);
         const maxTweets = 100;
 
