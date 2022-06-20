@@ -320,6 +320,48 @@
                     "deaths": 6
                 }
             ]
+        },
+        {
+            "dateFrom": "2022-06-12",
+            "dateTo": "2022-06-18",
+            "totalCases": 951948,
+            "totalDeaths": 7312,
+            "newTests": 41863,
+            "newCases": 8071,
+            "newDeaths": 22,
+            "active": 7496,
+            "positivityRate": 19.3,
+            "lateDeletedCases": 0,
+            "dailyData": [
+                {
+                    "cases": 610,
+                    "deaths": 5
+                },
+                {
+                    "cases": 1412,
+                    "deaths": 3
+                },
+                {
+                    "cases": 1428,
+                    "deaths": 3
+                },
+                {
+                    "cases": 1341,
+                    "deaths": 6
+                },
+                {
+                    "cases": 1238,
+                    "deaths": 2
+                },
+                {
+                    "cases": 1224,
+                    "deaths": 2
+                },
+                {
+                    "cases": 818,
+                    "deaths": 1
+                }
+            ]
         }
     ]
 }
