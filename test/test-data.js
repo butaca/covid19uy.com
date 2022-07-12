@@ -517,7 +517,7 @@ describe('Test data', function () {
 
                 // Official data does not pass the test these weeks
                 if(week.dateFrom != "2022-04-24" && week.dateFrom != "2022-06-26") {
-                    assert.equal(week.totalDeaths, prevWeek.totalDeaths + week.newDeaths, "Previous week total deaths plus this week new deaths desn't match this week total deaths");
+                    assert.equal(week.totalDeaths, prevWeek.totalDeaths + week.newDeaths + (week.lateDeaths || 0), "Previous week total deaths plus this week new deaths desn't match this week total deaths");
                 }
             } 
 
