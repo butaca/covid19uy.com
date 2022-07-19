@@ -489,6 +489,49 @@
                     "deaths": 4
                 }
             ]
+        },
+        {
+            "dateFrom": "2022-07-10",
+            "dateTo": "2022-07-16",
+            "newCases": 2438,
+            "active": 2019,
+            "totalCases": 967808,
+            "newTests": 21818,
+            "positivityRate": 11.2,
+            "newDeaths": 11,
+            "totalDeaths": 7387,
+            "lateDeletedCases": 0,
+            "lateDeaths": 3,
+            "dailyData": [
+                {
+                    "cases": 210,
+                    "deaths": 2
+                },
+                {
+                    "cases": 423,
+                    "deaths": 1
+                },
+                {
+                    "cases": 485,
+                    "deaths": 1
+                },
+                {
+                    "cases": 217,
+                    "deaths": 2
+                },
+                {
+                    "cases": 522,
+                    "deaths": 2
+                },
+                {
+                    "cases": 357,
+                    "deaths": 1
+                },
+                {
+                    "cases": 224,
+                    "deaths": 2
+                }
+            ]
         }
     ]
 }
