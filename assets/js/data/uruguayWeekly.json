@@ -532,6 +532,49 @@
                     "deaths": 2
                 }
             ]
+        },
+        {
+            "dateFrom": "2022-07-17",
+            "dateTo": "2022-07-23",
+            "newCases": 1995,
+            "active": 1768,
+            "totalCases": 969803,
+            "newTests": 19289,
+            "positivityRate": 10.3,
+            "newDeaths": 16,
+            "totalDeaths": 7403,
+            "lateDeletedCases": 0,
+            "lateDeaths": 0,
+            "dailyData": [
+                {
+                    "cases": 158,
+                    "deaths": 1
+                },
+                {
+                    "cases": 213,
+                    "deaths": 4
+                },
+                {
+                    "cases": 389,
+                    "deaths": 1
+                },
+                {
+                    "cases": 345,
+                    "deaths": 4
+                },
+                {
+                    "cases": 315,
+                    "deaths": 1
+                },
+                {
+                    "cases": 359,
+                    "deaths": 3
+                },
+                {
+                    "cases": 216,
+                    "deaths": 2
+                }
+            ]
         }
     ]
 }
