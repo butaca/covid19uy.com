@@ -20,3 +20,4 @@ assets/js/data/chartData.json
 assets/js/data/icu.json
 cache
 .vscode/settings.json
+.hugo_build.lock

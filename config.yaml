@@ -37,6 +37,11 @@ module:
 build:
   noJSConfigInAssets: true
 
+security:
+  funcs:
+    getenv: 
+      - CONTEXT
+
 params:
   eta: false
   archiveEnabled: true
