@@ -919,6 +919,49 @@
                     "deaths": 3
                 }
             ]
+        },
+        {
+            "dateFrom": "2022-09-18",
+            "dateTo": "2022-09-24",
+            "newCases": 1270,
+            "active": 1177,
+            "totalCases": 985422,
+            "newTests": 15108,
+            "positivityRate": 8.4,
+            "newDeaths": 10,
+            "totalDeaths": 7485,
+            "lateDeletedCases": 0,
+            "lateDeaths": 2,
+            "dailyData": [
+                {
+                    "cases": 110,
+                    "deaths": 2
+                },
+                {
+                    "cases": 247,
+                    "deaths": 2
+                },
+                {
+                    "cases": 200,
+                    "deaths": 1
+                },
+                {
+                    "cases": 225,
+                    "deaths": 1
+                },
+                {
+                    "cases": 177,
+                    "deaths": 0
+                },
+                {
+                    "cases": 201,
+                    "deaths": 3
+                },
+                {
+                    "cases": 110,
+                    "deaths": 1
+                }
+            ]
         }
     ]
 }
