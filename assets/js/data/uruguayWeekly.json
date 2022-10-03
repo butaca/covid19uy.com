@@ -962,6 +962,49 @@
                     "deaths": 1
                 }
             ]
+        },
+        {
+            "dateFrom": "2022-09-25",
+            "dateTo": "2022-10-01",
+            "newCases": 1024,
+            "active": 996,
+            "totalCases": 986446,
+            "newTests": 13571,
+            "positivityRate": 7.6,
+            "newDeaths": 9,
+            "totalDeaths": 7495,
+            "lateDeletedCases": 0,
+            "lateDeaths": 1,
+            "dailyData": [
+                {
+                    "cases": 88,
+                    "deaths": 0
+                },
+                {
+                    "cases": 75,
+                    "deaths": 2
+                },
+                {
+                    "cases": 259,
+                    "deaths": 2
+                },
+                {
+                    "cases": 219,
+                    "deaths": 3
+                },
+                {
+                    "cases": 157,
+                    "deaths": 1
+                },
+                {
+                    "cases": 155,
+                    "deaths": 1
+                },
+                {
+                    "cases": 71,
+                    "deaths": 0
+                }
+            ]
         }
     ]
 }
