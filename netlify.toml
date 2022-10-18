@@ -1,11 +1,11 @@
 [context.deploy-preview.environment]
-  HUGO_VERSION = "0.104.2"
+  HUGO_VERSION = "0.104.3"
 
 [context.production.environment]
-  HUGO_VERSION = "0.104.2"
+  HUGO_VERSION = "0.104.3"
 
 [context.branch-deploy.environment]
-  HUGO_VERSION = "0.104.2"
+  HUGO_VERSION = "0.104.3"
 
 [build]
 publish = "public"
