@@ -387,10 +387,10 @@
         "other": "Porcentaje de la población recibió al menos una dosis."
     },
     "vaccinationProgressSecondDose": {
-        "other": "Dos dosis"
+        "other": "Segunda dosis"
     },
     "vaccinationProgressSecondDoseDesc": {
-        "other": "Porcentaje de la población recibió dos dosis."
+        "other": "Porcentaje de la población recibió una segunda dosis."
     },
     "vaccinationProgressThirdDose": {
         "other": "Tercera Dosis"
