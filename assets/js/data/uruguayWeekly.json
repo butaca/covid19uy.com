@@ -1263,6 +1263,49 @@
                     "deaths": 0
                 }
             ]
+        },
+        {
+            "dateFrom": "2022-11-13",
+            "dateTo": "2022-11-19",
+            "newCases": 852,
+            "active": 881,
+            "totalCases": 992887,
+            "newTests": 12257,
+            "positivityRate": 6.9,
+            "newDeaths": 1,
+            "totalDeaths": 7530,
+            "lateDeletedCases": 0,
+            "lateDeaths": 0,
+            "dailyData": [
+                {
+                    "cases": 68,
+                    "deaths": 0
+                },
+                {
+                    "cases": 173,
+                    "deaths": 0
+                },
+                {
+                    "cases": 109,
+                    "deaths": 1
+                },
+                {
+                    "cases": 166,
+                    "deaths": 0
+                },
+                {
+                    "cases": 111,
+                    "deaths": 0
+                },
+                {
+                    "cases": 147,
+                    "deaths": 0
+                },
+                {
+                    "cases": 78,
+                    "deaths": 0
+                }
+            ]
         }
     ]
 }
