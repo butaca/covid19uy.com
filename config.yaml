@@ -2,7 +2,7 @@ baseURL: "https://covid19uy.com/"
 languageCode: "es-UY"
 DefaultContentLanguage: es
 enableRobotsTXT: true
-googleAnalytics: UA-161714981-1
+googleAnalytics: G-D69JZ634ZE
 
 dataDir: "assets/js/data"
 

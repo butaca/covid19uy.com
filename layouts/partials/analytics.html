@@ -2,5 +2,5 @@
 {{- $context := getenv "CONTEXT" -}}
 {{- $branchDeploy := or (eq $context "branch-deploy") (eq $context "deploy-preview") -}}
 {{- if (not (or $developmentBuild $branchDeploy)) -}}
-{{ template "_internal/google_analytics_async.html" . }}
+{{ template "_internal/google_analytics.html" . }}
 {{- end -}}
