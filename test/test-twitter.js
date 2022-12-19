@@ -1,3 +1,5 @@
+const testEnabled = false;
+
 var assert = require('chai').assert;
 const fs = require('fs');
 const { promisify } = require('util');
@@ -17,10 +19,15 @@ describe('Test Twitter data', function () {
     let tweets = null;
 
     before(async function () {
-        const readFile = promisify(fs.readFile);
-        await readFile(DATA_DIR + "twitter.json").then(data => {
-            tweets = JSON.parse(data.toString());
-        }).catch(assert.Throw);
+        if(testEnabled) {
+            const readFile = promisify(fs.readFile);
+            await readFile(DATA_DIR + "twitter.json").then(data => {
+                tweets = JSON.parse(data.toString());
+            }).catch(assert.Throw);
+        }
+        else {
+            this.skip();
+        }
     });
 
     it('Twitter login', function () {
