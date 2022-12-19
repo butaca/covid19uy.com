@@ -3,10 +3,11 @@
         <div class="content has-text-centered is-size-7">
             {{ if ne .Kind "404" }}
             {{- $twitterPage := .GetPage "twitter" -}}
+            {{- with $twitterPage -}}
             <p class="has-margin-bottom-sm">
-                {{- $twitterPage := .GetPage "twitter" -}}
-                <a href="{{ $twitterPage.Permalink }}">{{ $twitterPage.Title }}</a>
+                <a href="{{ $twitterPage.Permalink }}">{{ .Title }}</a>
             </p>
+            {{- end -}}
             {{ partial "share.html" . }}
             <hr>
             {{ end }}
