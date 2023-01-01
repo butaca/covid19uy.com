@@ -24,7 +24,7 @@
         "regression": "^2.0.1",
         "sass": "^1.50.0",
         "twitter-widgets": "^2.0.0",
-        "yaml-loader": "^0.6.0"
+        "yaml-loader": "^0.8.0"
     },
     "scripts": {
         "preinstall": "npx npm-force-resolutions",
