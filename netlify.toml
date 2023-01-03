@@ -149,10 +149,10 @@ force = false
 from = "/twitter"
 to = "/"
 status = 410
-force = false
+force = true
 
 [[redirects]]
 from = "/en/twitter"
 to = "/"
 status = 410
-force = false
+force = true
