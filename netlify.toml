@@ -19,6 +19,22 @@ package = "netlify-plugin-cache"
   [plugins.inputs]
   paths = ["cache"]
 
+#### Twitter pages 410
+
+[[redirects]]
+from = "/twitter"
+to = "/"
+status = 410
+force = true
+
+[[redirects]]
+from = "/en/twitter"
+to = "/"
+status = 410
+force = true
+
+#### Netlify subdomains redirects
+
 [[redirects]]
 from = "https://coronavirusuy.netlify.com/*"
 to = "https://covid19uy.com/:splat"
@@ -42,6 +58,8 @@ from = "https://covid19uy.netlify.app/*"
 to = "https://covid19uy.com/:splat"
 status = 301
 force = true
+
+#### Enflish pages
 
 [[redirects]]
 from = "/"
@@ -137,22 +155,10 @@ force = true
 
 #### Workaround end
 
+#### 404 English page
+
 [[redirects]]
 from = "/en/*"
 to = "/en/404.html"
 status = 404
 force = false
-
-#### Twitter pages 410
-
-[[redirects]]
-from = "/twitter"
-to = "/"
-status = 410
-force = true
-
-[[redirects]]
-from = "/en/twitter"
-to = "/"
-status = 410
-force = true
