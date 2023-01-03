@@ -1521,6 +1521,49 @@
                     "deaths": 0
                 }
             ]
+        },
+        {
+            "dateFrom": "2022-12-25",
+            "dateTo": "2022-12-31",
+            "newCases": 8957,
+            "active": 8285,
+            "totalCases": 1020161,
+            "newTests": 28464,
+            "positivityRate": 31.5,
+            "newDeaths": 4,
+            "totalDeaths": 7570,
+            "lateDeletedCases": 0,
+            "lateDeaths": 4,
+            "dailyData": [
+                {
+                    "cases": 388,
+                    "deaths": 1
+                },
+                {
+                    "cases": 1622,
+                    "deaths": 1
+                },
+                {
+                    "cases": 1547,
+                    "deaths": 0
+                },
+                {
+                    "cases": 1734,
+                    "deaths": 0
+                },
+                {
+                    "cases": 1594,
+                    "deaths": 0
+                },
+                {
+                    "cases": 1456,
+                    "deaths": 2
+                },
+                {
+                    "cases": 616,
+                    "deaths": 0
+                }
+            ]
         }
     ]
 }
