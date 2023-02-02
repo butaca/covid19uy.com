@@ -1693,6 +1693,49 @@
                     "deaths": 0
                 }
             ]
+        },
+        {
+            "dateFrom": "2023-01-22",
+            "dateTo": "2023-01-28",
+            "newCases": 1129,
+            "active": 1162,
+            "totalCases": 1032710,
+            "newTests": 11934,
+            "positivityRate": 9.5,
+            "newDeaths": 3,
+            "totalDeaths": 7609,
+            "lateDeletedCases": 0,
+            "lateDeaths": 5,
+            "dailyData": [
+                {
+                    "cases": 81,
+                    "deaths": 1
+                },
+                {
+                    "cases": 280,
+                    "deaths": 0
+                },
+                {
+                    "cases": 196,
+                    "deaths": 0
+                },
+                {
+                    "cases": 183,
+                    "deaths": 0
+                },
+                {
+                    "cases": 162,
+                    "deaths": 1
+                },
+                {
+                    "cases": 172,
+                    "deaths": 1
+                },
+                {
+                    "cases": 55,
+                    "deaths": 0
+                }
+            ]
         }
     ]
 }
