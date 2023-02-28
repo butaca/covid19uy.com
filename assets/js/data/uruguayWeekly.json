@@ -1822,6 +1822,92 @@
                     "deaths": 0
                 }
             ]
+        },
+        {
+            "dateFrom": "2023-02-12",
+            "dateTo": "2023-02-18",
+            "newCases": 280,
+            "active": 434,
+            "totalCases": 1034046,
+            "newTests": 9432,
+            "positivityRate": 3.0,
+            "newDeaths": 0,
+            "totalDeaths": 7617,
+            "lateDeletedCases": 0,
+            "lateDeaths": 0,
+            "dailyData": [
+                {
+                    "cases": 20,
+                    "deaths": 0
+                },
+                {
+                    "cases": 58,
+                    "deaths": 0
+                },
+                {
+                    "cases": 62,
+                    "deaths": 0
+                },
+                {
+                    "cases": 36,
+                    "deaths": 0
+                },
+                {
+                    "cases": 45,
+                    "deaths": 0
+                },
+                {
+                    "cases": 47,
+                    "deaths": 0
+                },
+                {
+                    "cases": 12,
+                    "deaths": 0
+                }
+            ]
+        },
+        {
+            "dateFrom": "2023-02-19",
+            "dateTo": "2023-02-25",
+            "newCases": 258,
+            "active": 500,
+            "totalCases": 1034303,
+            "newTests": 8870,
+            "positivityRate": 2.9,
+            "newDeaths": 0,
+            "totalDeaths": 7617,
+            "lateDeletedCases": 1,
+            "lateDeaths": 0,
+            "dailyData": [
+                {
+                    "cases": 12,
+                    "deaths": 0
+                },
+                {
+                    "cases": 25,
+                    "deaths": 0
+                },
+                {
+                    "cases": 18,
+                    "deaths": 0
+                },
+                {
+                    "cases": 65,
+                    "deaths": 0
+                },
+                {
+                    "cases": 62,
+                    "deaths": 0
+                },
+                {
+                    "cases": 39,
+                    "deaths": 0
+                },
+                {
+                    "cases": 37,
+                    "deaths": 0
+                }
+            ]
         }
     ]
 }
