@@ -490,14 +490,27 @@ describe('Test data', function () {
 
     it('Test uruguayWeekly.json data', function () {
         let prevWeek = null;
+        let prevWeekDateTo = null;
         
         for (let i = 0; i < uruguayWeekly.data.length; ++i) {
             const week = uruguayWeekly.data[i];
             const dateFrom = new Date(week.dateFrom + DATE_DEFAULT_TIME);
             const dateTo = new Date(week.dateTo + DATE_DEFAULT_TIME);
-            assert.equal(dateTo - dateFrom, 1000 * 60 * 60 * 24 * 6, "Invalid week dates");
+            const dayMillis = 1000 * 60 * 60 * 24;
 
+            if(prevWeekDateTo != null) {
+                assert.equal(dateFrom - prevWeekDateTo, dayMillis, "Weeks aren't consecutive");
+            }
+            
+            const diffMillis = (dateTo - dateFrom + dayMillis);
+            const days = diffMillis / dayMillis;
+            
+            // Assuming the ranges are weeks (which, as today, is actually true)
+            assert.isTrue(days % 7 == 0, "Invalid week range, check dateFrom and dateTo");
+            
             const dailyData = week.dailyData;
+            assert.equal(dailyData.length, days, "Daily data count doesn't match the range days");
+
             let newCases = 0;
             let newDeaths = 0;
             for(let j = 0; j < dailyData.length; ++j) {
@@ -522,6 +535,7 @@ describe('Test data', function () {
             } 
 
             prevWeek = week;
+            prevWeekDateTo = dateTo;
         }
 
     });
