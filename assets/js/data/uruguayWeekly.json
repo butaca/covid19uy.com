@@ -2051,6 +2051,78 @@
                     "deaths": 0
                 }
             ]
+        },
+        {
+            "dateFrom": "2023-03-26",
+            "dateTo": "2023-04-08",
+            "newCases": 937,
+            "active": 478,
+            "totalCases": 1037095,
+            "newTests": 5935,
+            "positivityRate": 15.8,
+            "newDeaths": 0,
+            "totalDeaths": 7621,
+            "lateDeletedCases": 1,
+            "lateDeaths": 0,
+            "lateNewCases": 0,
+            "dailyData": [
+                {
+                    "cases": 37,
+                    "deaths": 0
+                },
+                {
+                    "cases": 43,
+                    "deaths": 0
+                },
+                {
+                    "cases": 137,
+                    "deaths": 0
+                },
+                {
+                    "cases": 100,
+                    "deaths": 0
+                },
+                {
+                    "cases": 91,
+                    "deaths": 0
+                },
+                {
+                    "cases": 96,
+                    "deaths": 0
+                },
+                {
+                    "cases": 69,
+                    "deaths": 0
+                },
+                {
+                    "cases": 26,
+                    "deaths": 0
+                },
+                {
+                    "cases": 70,
+                    "deaths": 0
+                },
+                {
+                    "cases": 67,
+                    "deaths": 0
+                },
+                {
+                    "cases": 89,
+                    "deaths": 0
+                },
+                {
+                    "cases": 46,
+                    "deaths": 0
+                },
+                {
+                    "cases": 25,
+                    "deaths": 0
+                },
+                {
+                    "cases": 41,
+                    "deaths": 0
+                }
+            ]
         }
     ]
 }
