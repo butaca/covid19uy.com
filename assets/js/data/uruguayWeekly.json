@@ -2195,6 +2195,150 @@
                     "deaths": 0
                 }
             ]
+        },
+        {
+            "dateFrom": "2023-04-23",
+            "dateTo": "2023-05-06",
+            "newCases": 595,
+            "active": 365,
+            "totalCases": 1038487,
+            "newTests": 4440,
+            "positivityRate": 13.4,
+            "newDeaths": 4,
+            "totalDeaths": 7630,
+            "lateDeletedCases": 1,
+            "lateDeaths": 1,
+            "lateNewCases": 0,
+            "dailyData": [
+                {
+                    "cases": 28,
+                    "deaths": 0
+                },
+                {
+                    "cases": 85,
+                    "deaths": 0
+                },
+                {
+                    "cases": 73,
+                    "deaths": 0
+                },
+                {
+                    "cases": 58,
+                    "deaths": 0
+                },
+                {
+                    "cases": 45,
+                    "deaths": 1
+                },
+                {
+                    "cases": 46,
+                    "deaths": 1
+                },
+                {
+                    "cases": 13,
+                    "deaths": 0
+                },
+                {
+                    "cases": 19,
+                    "deaths": 0
+                },
+                {
+                    "cases": 20,
+                    "deaths": 0
+                },
+                {
+                    "cases": 74,
+                    "deaths": 1
+                },
+                {
+                    "cases": 40,
+                    "deaths": 1
+                },
+                {
+                    "cases": 42,
+                    "deaths": 0
+                },
+                {
+                    "cases": 33,
+                    "deaths": 0
+                },
+                {
+                    "cases": 19,
+                    "deaths": 0
+                }
+            ]
+        },
+        {
+            "dateFrom": "2023-05-07",
+            "dateTo": "2023-05-20",
+            "newCases": 260,
+            "active": 196,
+            "totalCases": 1038744,
+            "newTests": 4306,
+            "positivityRate": 6.03,
+            "newDeaths": 3,
+            "totalDeaths": 7634,
+            "lateDeletedCases": 3,
+            "lateDeaths": 1,
+            "lateNewCases": 0,
+            "dailyData": [
+                {
+                    "cases": 3,
+                    "deaths": 2
+                },
+                {
+                    "cases": 43,
+                    "deaths": 0
+                },
+                {
+                    "cases": 28,
+                    "deaths": 0
+                },
+                {
+                    "cases": 13,
+                    "deaths": 1
+                },
+                {
+                    "cases": 13,
+                    "deaths": 0
+                },
+                {
+                    "cases": 27,
+                    "deaths": 0
+                },
+                {
+                    "cases": 11,
+                    "deaths": 0
+                },
+                {
+                    "cases": 3,
+                    "deaths": 0
+                },
+                {
+                    "cases": 32,
+                    "deaths": 0
+                },
+                {
+                    "cases": 21,
+                    "deaths": 0
+                },
+                {
+                    "cases": 29,
+                    "deaths": 0
+                },
+                {
+                    "cases": 8,
+                    "deaths": 0
+                },
+                {
+                    "cases": 22,
+                    "deaths": 0
+                },
+                {
+                    "cases": 7,
+                    "deaths": 0
+                }
+            ]
         }
     ]
 }
