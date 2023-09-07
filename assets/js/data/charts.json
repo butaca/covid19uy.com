@@ -22,19 +22,22 @@
         "id": "chart-total-vacs",
         "title": "graphTotalVacs",
         "desc": "graphTotalVacsDesc",
-        "displayVacErrorsInfo": true
+        "displayVacErrorsInfo": true,
+        "disabled": true
     },
     {
         "id": "chart-daily-vacs",
         "title": "graphDailyVacs",
         "desc": "graphDailyVacsDesc",
-        "displayVacErrorsInfo": true
+        "displayVacErrorsInfo": true,
+        "disabled": true
     },
     {
         "id": "chart-daily-dose",
         "title": "graphDailyDose",
         "desc": "graphDailyDoseDesc",
-        "displayVacErrorsInfo": true
+        "displayVacErrorsInfo": true,
+        "disabled": true
     },
     {
         "id": "chart-total",

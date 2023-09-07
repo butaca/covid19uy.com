@@ -43,6 +43,7 @@ security:
       - CONTEXT
 
 params:
+  vaccination: false
   eta: false
   archiveEnabled: true
   showBoosterDoseProgress: true

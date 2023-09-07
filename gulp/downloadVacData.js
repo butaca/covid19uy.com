@@ -80,7 +80,7 @@ async function downloadUruguayVaccinationData() {
             const astrazenecaFourthDose = parseInt(data['4ta Dosis Astrazeneca']);
 
             const total = firstDose + secondDose + thirdDose + fourthDose;
-            const sinovacTotal = sinovacFirstDose + sinovacSecondDose + sinovacFourthDose;
+            const sinovacTotal = sinovacFirstDose + sinovacSecondDose + sinovacThirdDose + sinovacFourthDose;
             const pfizerTotal = pfizerFirstDose + pfizerSecondDose + pfizerThirdDose + pfizerFourthDose;
             const astrazenecaTotal = astrazenecaFirstDose + astrazenecaSecondDose + astrazenecaThridDose + astrazenecaFourthDose;
 
