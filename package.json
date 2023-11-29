@@ -37,7 +37,7 @@
         "js-yaml": "^4.1.0",
         "puppeteer": "^13.5.2",
         "pushover-notifications": "^1.2.2",
-        "sharp": "^0.30.5",
+        "sharp": "^0.32.6",
         "twitter-lite": "^1.1.0",
         "twitter-text": "^3.1.0"
     },
