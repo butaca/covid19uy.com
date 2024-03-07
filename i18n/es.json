@@ -475,5 +475,11 @@
     },
     "licenseUnder": {
         "other": "bajo"
-    }
+    },
+    "byeTitle": {
+        "other": "Adiós! 👋"
+    },
+    "byeContent": {
+        "other": "Está planificado dar de baja este sitio el 23 de marzo. Mi percepción personal es que su utilidad ya no es relevante dada la evolución del virus. Si piensas que hay una buena razón para dejarlo online, por favor contáctame."
+    } 
 }

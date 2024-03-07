@@ -475,5 +475,11 @@
     },
     "licenseUnder": {
         "other": "under"
-    }
+    },
+    "byeTitle": {
+        "other": "Bye bye! 👋"
+    },
+    "byeContent": {
+        "other": "This site is planned to be taken down on March 23. My personal perception is that its usefulness is no longer relevant given the evolution of the virus. If you think there is a good reason to leave it online, please contact me."
+    } 
 }

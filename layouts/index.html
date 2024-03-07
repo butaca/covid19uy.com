@@ -21,6 +21,15 @@
     {{ partial "navbar.html" . }}
     <section class="section">
         <div class="container">
+            <article class="message is-warning">
+                <div class="message-header">
+                    <p>{{ i18n "byeTitle" }}</p>
+                </div>
+                <div class="message-body">
+                    {{ i18n "byeContent"}}
+                </div>
+            </article>
+
             <h1 class="title has-margin-bottom-sm">
                 {{ .Title }}
             </h1>
