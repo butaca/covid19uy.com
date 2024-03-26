@@ -1,6 +1,8 @@
 # Coronavirus COVID-19 en Uruguay
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/c50f5a55-4199-4886-8eb9-971a690d145d/deploy-status)](https://app.netlify.com/sites/covid19uy/deploys)
+⚠️⚠️⚠️ El repositorio está archivado porque el sitio se ha dado de baja. ⚠️⚠️⚠️
+
+Por tal motivo la información siguiente es vieja y está desactualizada.
 
 ## Introducción
 
